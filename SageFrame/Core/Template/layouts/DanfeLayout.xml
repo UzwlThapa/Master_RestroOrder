@@ -1,0 +1,7 @@
+<layout name="layout_all">
+  <section name="DanfeLayout">
+    <placeholder name="Layout" wrapinner="0">BreadCrumbb</placeholder>
+    <placeholder name="LayoutA" class="layoutAll" wrapinner="0" width="10,30,20,40">A,B,C,D</placeholder>
+    <placeholder name="LayoutB" class="layoutAll" wrapinner="0" width="10,15,25,12,13,25">E,F,G,H1,H2,I</placeholder>
+  </section>
+</layout>

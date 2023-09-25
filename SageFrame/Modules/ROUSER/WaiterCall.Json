@@ -1,0 +1,13 @@
+[
+  {
+    "WaiterName": "bikash",
+    "ItemName": null,
+    "RoomName": null,
+    "TableName": null,
+    "WaiterIP": "http://192.168.1.98:8000",
+    "Department": null,
+    "OrderDetailId": 0,
+    "image": "",
+    "CompId": 0
+  }
+]

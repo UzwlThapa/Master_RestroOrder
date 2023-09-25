@@ -1,0 +1,21 @@
+
+
+CREATE TABLE [dbo].[CoreModules](
+	[CoreModuleID] [int] IDENTITY(1,1) NOT NULL,
+	[ModuleID] [int] NULL,
+ CONSTRAINT [PK_CoreModules] PRIMARY KEY CLUSTERED 
+(
+	[CoreModuleID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+
+ALTER TABLE [dbo].[CoreModules]  WITH CHECK ADD  CONSTRAINT [FK_CoreModules_Modules] FOREIGN KEY([ModuleID])
+REFERENCES [dbo].[Modules] ([ModuleID])
+GO
+
+ALTER TABLE [dbo].[CoreModules] CHECK CONSTRAINT [FK_CoreModules_Modules]
+GO
+
+

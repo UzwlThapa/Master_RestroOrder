@@ -1,0 +1,15 @@
+
+
+CREATE TABLE [dbo].[PagePreview](
+	[PreviewID] [int] IDENTITY(1,1) NOT NULL,
+	[PageID] [int] NULL,
+	[PreviewCode] [nvarchar](256) NULL,
+ CONSTRAINT [PK_PagePreview] PRIMARY KEY CLUSTERED 
+(
+	[PreviewID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+
+

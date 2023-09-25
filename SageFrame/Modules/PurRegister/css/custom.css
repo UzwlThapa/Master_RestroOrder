@@ -1,0 +1,27 @@
+﻿table.pur-static-tbl th {
+    background: #ff9933;
+    color: #FFF;
+    border-right: 1px solid #FFF;
+    border-bottom: 0px;
+}
+
+table.pur-static-tbl tbody td , table.pur-static-tbl tfoot td {
+    text-align: center;
+    border-right: 1px solid #ececec;
+    border-bottom: 1px solid #ececec;
+    padding: 8px 10px;
+}
+
+table.pur-static-tbl tfoot td,table.pur-static-tbl tbody td.r{
+    text-align:right;
+}
+
+table.pur-static-tbl1 {
+    margin: 0;
+}
+
+table.pur-static-tbl1 td {
+    text-align: center;
+    font-size: 18px;
+    background: #FFF;
+}

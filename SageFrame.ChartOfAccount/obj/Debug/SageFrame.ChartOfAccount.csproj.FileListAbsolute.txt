@@ -1,0 +1,95 @@
+F:\Roman\Restro_Order\restroorder\SageFrame\bin\SageFrame.ChartOfAccount.dll
+F:\Roman\Restro_Order\restroorder\SageFrame\bin\SageFrame.ChartOfAccount.pdb
+F:\Roman\Restro_Order\restroorder\SageFrame.ChartOfAccount\obj\Debug\SageFrame.ChartOfAccount.dll
+F:\Roman\Restro_Order\restroorder\SageFrame.ChartOfAccount\obj\Debug\SageFrame.ChartOfAccount.pdb
+E:\gitProject\New folder\restroorder\SageFrame\bin\SageFrame.ChartOfAccount.dll
+E:\gitProject\New folder\restroorder\SageFrame\bin\SageFrame.ChartOfAccount.pdb
+E:\gitProject\New folder\restroorder\SageFrame.ChartOfAccount\obj\Debug\SageFrame.ChartOfAccount.csprojResolveAssemblyReference.cache
+E:\gitProject\New folder\restroorder\SageFrame.ChartOfAccount\obj\Debug\SageFrame.ChartOfAccount.dll
+E:\gitProject\New folder\restroorder\SageFrame.ChartOfAccount\obj\Debug\SageFrame.ChartOfAccount.pdb
+E:\Danfe Project\Git\restroorder\SageFrame\bin\SageFrame.ChartOfAccount.dll
+E:\Danfe Project\Git\restroorder\SageFrame\bin\SageFrame.ChartOfAccount.pdb
+E:\Danfe Project\Git\restroorder\SageFrame.ChartOfAccount\obj\Debug\SageFrame.ChartOfAccount.dll
+E:\Danfe Project\Git\restroorder\SageFrame.ChartOfAccount\obj\Debug\SageFrame.ChartOfAccount.pdb
+E:\roman\Restro\restroorder\SageFrame\bin\SageFrame.ChartOfAccount.dll
+E:\roman\Restro\restroorder\SageFrame\bin\SageFrame.ChartOfAccount.pdb
+E:\roman\Restro\restroorder\SageFrame.ChartOfAccount\obj\Debug\SageFrame.ChartOfAccount.dll
+E:\roman\Restro\restroorder\SageFrame.ChartOfAccount\obj\Debug\SageFrame.ChartOfAccount.pdb
+E:\Danfe Project\Git\restroorder\SageFrame.ChartOfAccount\obj\Debug\SageFrame.ChartOfAccount.csprojResolveAssemblyReference.cache
+E:\Projects\RestroOrder\restroorder\SageFrame\bin\SageFrame.ChartOfAccount.dll
+E:\Projects\RestroOrder\restroorder\SageFrame\bin\SageFrame.ChartOfAccount.pdb
+E:\Projects\RestroOrder\restroorder\SageFrame.ChartOfAccount\obj\Debug\SageFrame.ChartOfAccount.dll
+E:\Projects\RestroOrder\restroorder\SageFrame.ChartOfAccount\obj\Debug\SageFrame.ChartOfAccount.pdb
+D:\Projects\RestroOder\restroorder\SageFrame\bin\SageFrame.ChartOfAccount.dll
+D:\Projects\RestroOder\restroorder\SageFrame\bin\SageFrame.ChartOfAccount.pdb
+D:\Projects\RestroOder\restroorder\SageFrame.ChartOfAccount\obj\Debug\SageFrame.ChartOfAccount.dll
+D:\Projects\RestroOder\restroorder\SageFrame.ChartOfAccount\obj\Debug\SageFrame.ChartOfAccount.pdb
+E:\Restro_Order\Developer\restroorder\SageFrame\bin\SageFrame.ChartOfAccount.dll
+E:\Restro_Order\Developer\restroorder\SageFrame\bin\SageFrame.ChartOfAccount.pdb
+E:\Restro_Order\Developer\restroorder\SageFrame.ChartOfAccount\obj\Debug\SageFrame.ChartOfAccount.dll
+E:\Restro_Order\Developer\restroorder\SageFrame.ChartOfAccount\obj\Debug\SageFrame.ChartOfAccount.pdb
+D:\Roman Workspace\Restro Order\restroorder\SageFrame\bin\SageFrame.ChartOfAccount.dll
+D:\Roman Workspace\Restro Order\restroorder\SageFrame\bin\SageFrame.ChartOfAccount.pdb
+D:\Roman Workspace\Restro Order\restroorder\SageFrame.ChartOfAccount\obj\Debug\SageFrame.ChartOfAccount.csprojResolveAssemblyReference.cache
+D:\Roman Workspace\Restro Order\restroorder\SageFrame.ChartOfAccount\obj\Debug\SageFrame.ChartOfAccount.dll
+D:\Roman Workspace\Restro Order\restroorder\SageFrame.ChartOfAccount\obj\Debug\SageFrame.ChartOfAccount.pdb
+E:\SAROJ CAKE ORDER 8Mar2021\cakeorders\cakeorders\SageFrame\bin\SageFrame.ChartOfAccount.dll
+E:\SAROJ CAKE ORDER 8Mar2021\cakeorders\cakeorders\SageFrame\bin\SageFrame.ChartOfAccount.pdb
+E:\SAROJ CAKE ORDER 8Mar2021\cakeorders\cakeorders\SageFrame.ChartOfAccount\obj\Debug\SageFrame.ChartOfAccount.dll
+E:\SAROJ CAKE ORDER 8Mar2021\cakeorders\cakeorders\SageFrame.ChartOfAccount\obj\Debug\SageFrame.ChartOfAccount.pdb
+F:\Workspace\Danfe\akuj\akuj_kot_bot.git\SageFrame\bin\SageFrame.ChartOfAccount.dll
+F:\Workspace\Danfe\akuj\akuj_kot_bot.git\SageFrame\bin\SageFrame.ChartOfAccount.pdb
+F:\Workspace\Danfe\akuj\akuj_kot_bot.git\SageFrame.ChartOfAccount\obj\Debug\SageFrame.ChartOfAccount.csproj.AssemblyReference.cache
+F:\Workspace\Danfe\akuj\akuj_kot_bot.git\SageFrame.ChartOfAccount\obj\Debug\SageFrame.ChartOfAccount.csproj.CoreCompileInputs.cache
+F:\Workspace\Danfe\akuj\akuj_kot_bot.git\SageFrame.ChartOfAccount\obj\Debug\SageFrame.ChartOfAccount.csproj.CopyComplete
+F:\Workspace\Danfe\akuj\akuj_kot_bot.git\SageFrame.ChartOfAccount\obj\Debug\SageFrame.ChartOfAccount.dll
+F:\Workspace\Danfe\akuj\akuj_kot_bot.git\SageFrame.ChartOfAccount\obj\Debug\SageFrame.ChartOfAccount.pdb
+G:\Development\RestroOrderSource-2023-02-14\restro_master\SageFrame\bin\SageFrame.ChartOfAccount.dll
+G:\Development\RestroOrderSource-2023-02-14\restro_master\SageFrame\bin\SageFrame.ChartOfAccount.pdb
+G:\Development\RestroOrderSource-2023-02-14\restro_master\SageFrame.ChartOfAccount\obj\Debug\SageFrame.ChartOfAccount.csproj.AssemblyReference.cache
+G:\Development\RestroOrderSource-2023-02-14\restro_master\SageFrame.ChartOfAccount\obj\Debug\SageFrame.ChartOfAccount.csproj.CoreCompileInputs.cache
+G:\Development\RestroOrderSource-2023-02-14\restro_master\SageFrame.ChartOfAccount\obj\Debug\SageFrame.ChartOfAccount.csproj.CopyComplete
+G:\Development\RestroOrderSource-2023-02-14\restro_master\SageFrame.ChartOfAccount\obj\Debug\SageFrame.ChartOfAccount.dll
+G:\Development\RestroOrderSource-2023-02-14\restro_master\SageFrame.ChartOfAccount\obj\Debug\SageFrame.ChartOfAccount.pdb
+E:\Development-Shree\RestroOrderSource-Master-2023-07-19\restro_master\SageFrame\bin\SageFrame.ChartOfAccount.dll
+E:\Development-Shree\RestroOrderSource-Master-2023-07-19\restro_master\SageFrame\bin\SageFrame.ChartOfAccount.pdb
+E:\Development-Shree\RestroOrderSource-Master-2023-07-19\restro_master\SageFrame.ChartOfAccount\obj\Debug\SageFrame.ChartOfAccount.csproj.AssemblyReference.cache
+E:\Development-Shree\RestroOrderSource-Master-2023-07-19\restro_master\SageFrame.ChartOfAccount\obj\Debug\SageFrame.ChartOfAccount.csproj.CoreCompileInputs.cache
+E:\Development-Shree\RestroOrderSource-Master-2023-07-19\restro_master\SageFrame.ChartOfAccount\obj\Debug\SageFrame.ChartOfAccount.csproj.CopyComplete
+E:\Development-Shree\RestroOrderSource-Master-2023-07-19\restro_master\SageFrame.ChartOfAccount\obj\Debug\SageFrame.ChartOfAccount.dll
+E:\Development-Shree\RestroOrderSource-Master-2023-07-19\restro_master\SageFrame.ChartOfAccount\obj\Debug\SageFrame.ChartOfAccount.pdb
+E:\Development-Shree\RestroOrder-Merge-2023-07-26\restro_master\SageFrame\bin\SageFrame.ChartOfAccount.dll
+E:\Development-Shree\RestroOrder-Merge-2023-07-26\restro_master\SageFrame\bin\SageFrame.ChartOfAccount.pdb
+E:\Development-Shree\RestroOrder-Merge-2023-07-26\restro_master\SageFrame.ChartOfAccount\obj\Debug\SageFrame.ChartOfAccount.csproj.AssemblyReference.cache
+E:\Development-Shree\RestroOrder-Merge-2023-07-26\restro_master\SageFrame.ChartOfAccount\obj\Debug\SageFrame.ChartOfAccount.csproj.CoreCompileInputs.cache
+E:\Development-Shree\RestroOrder-Merge-2023-07-26\restro_master\SageFrame.ChartOfAccount\obj\Debug\SageFrame.ChartOfAccount.csproj.CopyComplete
+E:\Development-Shree\RestroOrder-Merge-2023-07-26\restro_master\SageFrame.ChartOfAccount\obj\Debug\SageFrame.ChartOfAccount.dll
+E:\Development-Shree\RestroOrder-Merge-2023-07-26\restro_master\SageFrame.ChartOfAccount\obj\Debug\SageFrame.ChartOfAccount.pdb
+G:\Development\RestroOrderSource-2023-02-14\RestroOrderSource-2023-08-01\restro_master\SageFrame\bin\SageFrame.ChartOfAccount.dll
+G:\Development\RestroOrderSource-2023-02-14\RestroOrderSource-2023-08-01\restro_master\SageFrame\bin\SageFrame.ChartOfAccount.pdb
+G:\Development\RestroOrderSource-2023-02-14\RestroOrderSource-2023-08-01\restro_master\SageFrame.ChartOfAccount\obj\Debug\SageFrame.ChartOfAccount.csproj.AssemblyReference.cache
+G:\Development\RestroOrderSource-2023-02-14\RestroOrderSource-2023-08-01\restro_master\SageFrame.ChartOfAccount\obj\Debug\SageFrame.ChartOfAccount.csproj.CoreCompileInputs.cache
+G:\Development\RestroOrderSource-2023-02-14\RestroOrderSource-2023-08-01\restro_master\SageFrame.ChartOfAccount\obj\Debug\SageFrame.ChartOfAccount.csproj.CopyComplete
+G:\Development\RestroOrderSource-2023-02-14\RestroOrderSource-2023-08-01\restro_master\SageFrame.ChartOfAccount\obj\Debug\SageFrame.ChartOfAccount.dll
+G:\Development\RestroOrderSource-2023-02-14\RestroOrderSource-2023-08-01\restro_master\SageFrame.ChartOfAccount\obj\Debug\SageFrame.ChartOfAccount.pdb
+G:\GITDevelopment\Bishal-Raj-Parajuli\RestroOrder_Master\SageFrame\bin\SageFrame.ChartOfAccount.dll
+G:\GITDevelopment\Bishal-Raj-Parajuli\RestroOrder_Master\SageFrame\bin\SageFrame.ChartOfAccount.pdb
+G:\GITDevelopment\Bishal-Raj-Parajuli\RestroOrder_Master\SageFrame.ChartOfAccount\obj\Debug\SageFrame.ChartOfAccount.csproj.AssemblyReference.cache
+G:\GITDevelopment\Bishal-Raj-Parajuli\RestroOrder_Master\SageFrame.ChartOfAccount\obj\Debug\SageFrame.ChartOfAccount.csproj.CoreCompileInputs.cache
+G:\GITDevelopment\Bishal-Raj-Parajuli\RestroOrder_Master\SageFrame.ChartOfAccount\obj\Debug\SageFrame.ChartOfAccount.csproj.CopyComplete
+G:\GITDevelopment\Bishal-Raj-Parajuli\RestroOrder_Master\SageFrame.ChartOfAccount\obj\Debug\SageFrame.ChartOfAccount.dll
+G:\GITDevelopment\Bishal-Raj-Parajuli\RestroOrder_Master\SageFrame.ChartOfAccount\obj\Debug\SageFrame.ChartOfAccount.pdb
+G:\GITDevelopment\Master_RestroOrder\SageFrame\bin\SageFrame.ChartOfAccount.dll
+G:\GITDevelopment\Master_RestroOrder\SageFrame\bin\SageFrame.ChartOfAccount.pdb
+G:\GITDevelopment\Master_RestroOrder\SageFrame.ChartOfAccount\obj\Debug\SageFrame.ChartOfAccount.csproj.AssemblyReference.cache
+G:\GITDevelopment\Master_RestroOrder\SageFrame.ChartOfAccount\obj\Debug\SageFrame.ChartOfAccount.csproj.CoreCompileInputs.cache
+G:\GITDevelopment\Master_RestroOrder\SageFrame.ChartOfAccount\obj\Debug\SageFrame.ChartOfAccount.csproj.CopyComplete
+G:\GITDevelopment\Master_RestroOrder\SageFrame.ChartOfAccount\obj\Debug\SageFrame.ChartOfAccount.dll
+G:\GITDevelopment\Master_RestroOrder\SageFrame.ChartOfAccount\obj\Debug\SageFrame.ChartOfAccount.pdb
+G:\GITDevelopment\Chicken\SageFrame\bin\SageFrame.ChartOfAccount.dll
+G:\GITDevelopment\Chicken\SageFrame\bin\SageFrame.ChartOfAccount.pdb
+G:\GITDevelopment\Chicken\SageFrame.ChartOfAccount\obj\Debug\SageFrame.ChartOfAccount.csproj.AssemblyReference.cache
+G:\GITDevelopment\Chicken\SageFrame.ChartOfAccount\obj\Debug\SageFrame.ChartOfAccount.csproj.CoreCompileInputs.cache
+G:\GITDevelopment\Chicken\SageFrame.ChartOfAccount\obj\Debug\SageFrame.ChartOfAccount.csproj.CopyComplete
+G:\GITDevelopment\Chicken\SageFrame.ChartOfAccount\obj\Debug\SageFrame.ChartOfAccount.dll
+G:\GITDevelopment\Chicken\SageFrame.ChartOfAccount\obj\Debug\SageFrame.ChartOfAccount.pdb

@@ -1,0 +1,120 @@
+﻿.sfLoggedTopBar{
+
+	position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background: url('/../images/frontpagebg.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    height: 100%;
+	}
+
+.ROblockpart{
+    display: -wekbit-flex;
+    display: flex;
+    list-style-type: none;
+    flex-wrap:wrap;
+}
+
+.sfWrapper2 .ROblockpart > li {
+    background: rgba(148, 103, 77, 0.2784313725490196);
+    margin-bottom: 10px;
+    width: 32.3%;
+    /*margin-right: 1%;*/
+    text-align: center;
+    color: #FFF;
+    padding: 20px 0px;
+    border: 0.01px solid rgba(255, 255, 255, 0.5);
+    border-radius: 5px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+    .sfWrapper2 .ROblockpart > li:hover {
+        transform: scale(1.05) rotate(-0deg);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+
+.ROblockpart > li {
+    background: rgba(148, 103, 77, 0.2784313725490196);
+    margin-bottom: 10px;
+    width: 32.3%;
+    margin-right: 1%;
+    color: #FFF;
+}
+
+.ROblockpart > li:nth-child(3n){
+    margin-right:0;
+}
+
+.ROblockpart li a{
+    font-family: "RobotoCondensed-Regular",sans-serif;
+}
+
+.ROblockpart > li > a span.sfPagename{
+    margin: 0px;
+    color: #FFF;
+    padding: 10px;
+    font-size: 22px;
+    cursor: default;
+}
+
+.ROblockpart ul {
+    max-height: 216px;
+    height: 100%;
+}
+
+span.sfPageicon img{
+    height: 30px;
+    margin: auto;
+}
+
+span.sfPagename{
+    margin: auto;
+    margin-left: 10px;
+    font-size: 12px;
+    line-height: 1.4;
+    flex: 1;
+}
+
+li.sfFirst.sfParent em {
+    display: none;
+}
+
+
+.ROblockpart > li ul li{
+    display: inline-block;
+    width: 46%;
+    border: 1px solid rgba(255, 255, 255, 0.3607843137254902);
+    margin: 5px;
+    color: #FFF;
+    display: none;
+}
+
+.ROblockpart > li ul li:nth-child(-n+6){
+    display: inline-block;
+}
+
+.ROblockpart > li ul li:hover{
+    background: rgba(0, 0, 0, 0.16862745098039217);
+    transition: all linear 0.3s;
+}
+
+.ROblockpart > li ul li a{
+    min-height: 60px;
+    padding-left: 10px;
+    padding-right: 10px;
+    display: flex;
+    align-items: center;
+    color: #FFF;
+    justify-content: space-between;
+}
+
+.ROblockpart li a:hover{
+    text-decoration: none;
+}
+
+

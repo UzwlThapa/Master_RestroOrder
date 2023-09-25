@@ -1,0 +1,8 @@
+<layout name="layout_all">
+  <section name="Content">
+    <placeholder name="middlemaincurrent" wrapinner="0">middlemaincurrent</placeholder>
+  </section>
+  <section name="sfFooter">
+    <placeholder name="footer" wrapinner="0">footer</placeholder>
+  </section>
+</layout>

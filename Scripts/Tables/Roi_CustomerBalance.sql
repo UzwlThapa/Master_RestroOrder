@@ -1,0 +1,16 @@
+
+
+CREATE TABLE [dbo].[Roi_CustomerBalance](
+	[ID] [int] IDENTITY(1,1) NOT NULL,
+	[CustomerID] [int] NULL,
+	[Sales MasterID] [int] NULL,
+	[Balance] [decimal](18, 2) NULL,
+ CONSTRAINT [PK_Roi_CustomerBalance] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+
+

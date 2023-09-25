@@ -1,0 +1,24 @@
+
+
+CREATE TABLE [dbo].[ROI_ITEMDetls](
+	[ITId] [int] IDENTITY(1,1) NOT NULL,
+	[ITCode] [varchar](250) NOT NULL,
+	[MUnitId] [int] NOT NULL,
+	[DSUnitId] [int] NOT NULL,
+	[DPUnitId] [int] NOT NULL,
+	[IsExpirable] [bit] NOT NULL,
+	[IsProdMaterial] [bit] NOT NULL,
+	[ROrderLevel] [int] NOT NULL,
+	[IsUnitWiseRate] [bit] NOT NULL,
+ CONSTRAINT [PK_ITEMDetails] PRIMARY KEY CLUSTERED 
+(
+	[ITId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+
+SET ANSI_PADDING OFF
+GO
+
+

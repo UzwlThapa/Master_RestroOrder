@@ -1,0 +1,5 @@
+<layout name="layout_all">
+  <section name="sfFrontpage">
+    <placeholder name="middlemaincurrent" class="middlemaincurrent" wrapinner="0">middlemaincurrent</placeholder>
+  </section>
+</layout>

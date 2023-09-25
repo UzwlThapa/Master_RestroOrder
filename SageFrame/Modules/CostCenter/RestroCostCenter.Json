@@ -1,0 +1,50 @@
+[
+  {
+    "CostCenterId": 1,
+    "CostCenterName": "Kot",
+    "CostCenterAddedDate": "2015-12-21T10:03:41.5Z",
+    "CostCenterAddedBy": "superuser",
+    "Username": null,
+    "DefaultPrinter": "192.168.1.10"
+  },
+  {
+    "CostCenterId": 2,
+    "CostCenterName": "Bar",
+    "CostCenterAddedDate": "2015-12-21T10:03:54.817Z",
+    "CostCenterAddedBy": "superuser",
+    "Username": null,
+    "DefaultPrinter": "192.168.1.11"
+  },
+  {
+    "CostCenterId": 3,
+    "CostCenterName": "Cafe",
+    "CostCenterAddedDate": "2015-11-08T07:23:07.963Z",
+    "CostCenterAddedBy": "superuser",
+    "Username": null,
+    "DefaultPrinter": ""
+  },
+  {
+    "CostCenterId": 4,
+    "CostCenterName": "Bakery",
+    "CostCenterAddedDate": "2015-11-08T07:23:07.963Z",
+    "CostCenterAddedBy": "superuser",
+    "Username": null,
+    "DefaultPrinter": ""
+  },
+  {
+    "CostCenterId": 7,
+    "CostCenterName": "Street Food",
+    "CostCenterAddedDate": "2015-12-07T05:44:07.433Z",
+    "CostCenterAddedBy": "sheela",
+    "Username": null,
+    "DefaultPrinter": ""
+  }
+  {
+    "CostCenterId": 8,
+    "CostCenterName": "COT",
+    "CostCenterAddedDate": "2015-12-07T05:44:07.433Z",
+    "CostCenterAddedBy": "sheela",
+    "Username": null,
+    "DefaultPrinter": ""
+  }
+]

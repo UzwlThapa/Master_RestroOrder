@@ -1,0 +1,40 @@
+﻿.auto-style1 {
+    text-align: center;
+}
+
+.hide {
+    display: none;
+}
+
+.auto-style1 {
+    text-align: left;
+}
+
+.salesTable td:first-child {
+    width: 160px;
+}
+
+#txtStartDate {
+    margin-bottom: 15px;
+}
+
+.inputBtns input {
+    margin-bottom: 15px;
+}
+
+.ui-datepicker td {
+    padding: 7px;
+}
+
+#DailyReport .sfGridwrapper tr td.a {
+    width: 52px;
+}
+
+#DailyReport .sfGridwrapper tr td.b {
+    width: 240px;
+}
+
+.ui-datepicker .ui-datepicker-prev,
+.ui-datepicker .ui-datepicker-next {
+    display: none;
+}

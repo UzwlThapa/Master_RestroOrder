@@ -1,0 +1,19 @@
+{
+  "MergeTableInfo": [
+    {
+      "TableID": 19,
+      "MergeID": 20,
+      "MergeTableList": 19
+    },
+    {
+      "TableID": 20,
+      "MergeID": 7,
+      "MergeTableList": 19
+    },
+    {
+      "TableID": 22,
+      "MergeID": 22,
+      "MergeTableList": 19
+    }
+  ]
+}

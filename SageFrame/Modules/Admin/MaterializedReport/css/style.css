@@ -1,0 +1,31 @@
+﻿.cbms-header {
+    padding: 10px;
+    text-align: center;
+    background: #f5f5f5;
+}
+table.tableForMaterizedView.sfGridwrapper.display{
+	border-collapse: separate!important;
+}
+
+table.tableForMaterizedView.sfGridwrapper.display > tbody tr:nth-child(odd) {
+   background: whitesmoke;
+}
+
+table.tableForMaterizedView.sfGridwrapper.display > tbody tr:hover{
+	 background: #e7e7e7;
+}
+
+table.tableForMaterizedView.sfGridwrapper.display > tfoot th {
+    background: #e6e6e6;
+    border:none!important;
+    border-right: 1px solid #FFFFFF!important;
+    font-weight: bold;
+}
+
+table.tableForMaterizedView.sfGridwrapper.display > thead th {
+	 border: 1px solid #f0f0f0!important;
+}
+
+table.tableForMaterizedView.sfGridwrapper.display > tbody td {
+	border:none!important;
+}

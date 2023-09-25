@@ -1,0 +1,163 @@
+﻿.sfCol_60.menu-bg {
+    height: 745px;
+    background: rgba(255, 255, 255, 0.5);
+    margin-top:5px;
+}  
+
+.sfCol_40.order-list-bg {
+    height: 750px;
+    background: rgba(255, 255, 255, 0.5);
+    overflow-y:scroll;
+
+}
+
+.restaurant-part-menu {
+    padding: 5px 50px;
+    /*background:white;*/
+    /*text-align: center;*/
+}
+
+    .restaurant-part-menu h3 {
+        color: orange;
+    }
+
+.restaurant-part-menu li {
+    display: inline-block;
+}
+
+.restaurant-part-menu img {
+   width: 100%;
+    height: 100px;
+    object-fit: cover;
+}
+
+    .restaurant-part-menu h5 {
+    text-align: center;
+    border: 1px solid orange;
+    color: orange;
+    padding: 10px 0px;
+    font-size: 13px;
+}
+
+    .order-list {
+    padding: 5px 15px;
+    background: rgba(255, 211, 188, 0.7);
+    min-height: 750px;
+}
+  
+
+    .order-list h3 {
+    color: orangered;
+    text-align: center;
+}
+
+    .order-list th {
+       background: white;
+    color: orangered;
+        border-right: 1px solid gainsboro;
+}
+
+    .order-list td {
+    text-align: center;
+    color: orangered;
+    font-family: monospace;
+}
+
+    .order-list h6 {
+    color: orangered;
+}
+
+    .owl-pagination {
+    display: none;
+}
+
+.owl-wrapper-outer img {
+    cursor: pointer;
+    }
+
+.owl-theme .owl-controls .owl-buttons div {
+    color: #FFF;
+    display: inline-block;
+    zoom: 1;
+    margin: 5px;
+    padding: 3px 10px;
+    font-size: 12px;
+    /*-webkit-border-radius: 30px;
+    -moz-border-radius: 30px;*/
+    border-radius: 30px;
+   background: linear-gradient(to right bottom , #FF993E, rgb(255, 68, 10))!important;
+    filter: Alpha(Opacity=50);
+    opacity: 0.5;
+}
+
+.owl-item.active {
+    padding: 0px 3px;
+}
+
+.splitMainView {
+    color: orangered;
+}
+
+input.qty {
+    width: 30%;
+    padding: 5px 0px;
+    text-align: center;
+    border: 1px solid #DDDDDD;
+}
+
+label.itmname {
+    color: black;
+    font-family: monospace;
+        width: 130px;
+}
+
+.sfBtn1{
+    margin: 0 5px 0px 0;
+    color: #F1592A;
+    padding: 5px 8px;
+    cursor: pointer;
+    display: inline-block;
+    background: #fff;
+    border: 1px solid #DDDDDD;
+    font-weight: bold;
+    border-radius:3px;
+}
+
+select#billno {
+    width: 15%;
+    padding: 4px 0px;
+    border-radius: 3px;
+}
+
+.restaurant-part-menu img:hover {
+    box-shadow: 5px 5px 8px 0px rgba(0,0,0,.37);
+}
+
+.restaurant-part-menu label:hover {
+    box-shadow: 5px 5px 8px 0px rgba(0,0,0,.37);
+}
+
+.sfCol_40.order-list-bg::-webkit-scrollbar {
+    width: 7px;
+}
+.sfCol_40.order-list-bg::-webkit-scrollbar-track {
+    border-radius:5px;
+    -webkit-box-shadow: inset 0 0 px rgba(0,0,0,0.3); 
+}
+ 
+.sfCol_40.order-list-bg::-webkit-scrollbar-thumb {
+    border-radius:5px;
+    -webkit-box-shadow: inset 0 0 5px rgba(0,0,0,0.5);
+    background:rgb(253, 197, 169);
+    
+}
+
+/*::-webkit-scrollbar-thumb:window-inactive {
+	background: rgba(255,0,0,0.4); 
+}*/
+
+
+/*tbody.bindorderlist tr:nth-child(odd) {
+    background-color: rgb(212, 97, 33);
+}*/
+

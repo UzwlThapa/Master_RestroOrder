@@ -1,0 +1,105 @@
+E:\Projects\restroorder_inventory\RestroOrder\SageFrame.DailyChalan\bin\Debug\SageFrame.DailyChalan.dll
+E:\Projects\restroorder_inventory\RestroOrder\SageFrame.DailyChalan\bin\Debug\SageFrame.DailyChalan.pdb
+E:\Projects\restroorder_inventory\RestroOrder\SageFrame.DailyChalan\bin\Debug\SageFrame.Common.dll
+E:\Projects\restroorder_inventory\RestroOrder\SageFrame.DailyChalan\bin\Debug\SageFrame.Common.pdb
+E:\Projects\restroorder_inventory\RestroOrder\SageFrame.DailyChalan\obj\Debug\SageFrame.DailyChalan.dll
+E:\Projects\restroorder_inventory\RestroOrder\SageFrame.DailyChalan\obj\Debug\SageFrame.DailyChalan.pdb
+E:\gitProject\New folder\restroorder\SageFrame.DailyChalan\bin\Debug\SageFrame.DailyChalan.dll
+E:\gitProject\New folder\restroorder\SageFrame.DailyChalan\bin\Debug\SageFrame.DailyChalan.pdb
+E:\gitProject\New folder\restroorder\SageFrame.DailyChalan\bin\Debug\SageFrame.Common.dll
+E:\gitProject\New folder\restroorder\SageFrame.DailyChalan\bin\Debug\SageFrame.Common.pdb
+E:\gitProject\New folder\restroorder\SageFrame.DailyChalan\obj\Debug\SageFrame.DailyChalan.csprojResolveAssemblyReference.cache
+E:\gitProject\New folder\restroorder\SageFrame.DailyChalan\obj\Debug\SageFrame.DailyChalan.dll
+E:\gitProject\New folder\restroorder\SageFrame.DailyChalan\obj\Debug\SageFrame.DailyChalan.pdb
+E:\Danfe Project\Git\restroorder\SageFrame.DailyChalan\bin\Debug\SageFrame.DailyChalan.dll
+E:\Danfe Project\Git\restroorder\SageFrame.DailyChalan\bin\Debug\SageFrame.DailyChalan.pdb
+E:\Danfe Project\Git\restroorder\SageFrame.DailyChalan\bin\Debug\SageFrame.Common.dll
+E:\Danfe Project\Git\restroorder\SageFrame.DailyChalan\bin\Debug\SageFrame.Common.pdb
+E:\Danfe Project\Git\restroorder\SageFrame.DailyChalan\obj\Debug\SageFrame.DailyChalan.dll
+E:\Danfe Project\Git\restroorder\SageFrame.DailyChalan\obj\Debug\SageFrame.DailyChalan.pdb
+E:\roman\Restro\restroorder\SageFrame.DailyChalan\bin\Debug\SageFrame.DailyChalan.dll
+E:\roman\Restro\restroorder\SageFrame.DailyChalan\bin\Debug\SageFrame.DailyChalan.pdb
+E:\roman\Restro\restroorder\SageFrame.DailyChalan\bin\Debug\SageFrame.Common.dll
+E:\roman\Restro\restroorder\SageFrame.DailyChalan\bin\Debug\SageFrame.Common.pdb
+E:\roman\Restro\restroorder\SageFrame.DailyChalan\obj\Debug\SageFrame.DailyChalan.dll
+E:\roman\Restro\restroorder\SageFrame.DailyChalan\obj\Debug\SageFrame.DailyChalan.pdb
+E:\Projects\RestroOrder\restroorder\SageFrame.DailyChalan\bin\Debug\SageFrame.DailyChalan.dll
+E:\Projects\RestroOrder\restroorder\SageFrame.DailyChalan\bin\Debug\SageFrame.DailyChalan.pdb
+E:\Projects\RestroOrder\restroorder\SageFrame.DailyChalan\bin\Debug\SageFrame.Common.dll
+E:\Projects\RestroOrder\restroorder\SageFrame.DailyChalan\bin\Debug\SageFrame.Common.pdb
+E:\Projects\RestroOrder\restroorder\SageFrame.DailyChalan\obj\Debug\SageFrame.DailyChalan.dll
+E:\Projects\RestroOrder\restroorder\SageFrame.DailyChalan\obj\Debug\SageFrame.DailyChalan.pdb
+D:\Projects\RestroOder\restroorder\SageFrame.DailyChalan\bin\Debug\SageFrame.DailyChalan.dll
+D:\Projects\RestroOder\restroorder\SageFrame.DailyChalan\bin\Debug\SageFrame.DailyChalan.pdb
+D:\Projects\RestroOder\restroorder\SageFrame.DailyChalan\bin\Debug\SageFrame.Common.dll
+D:\Projects\RestroOder\restroorder\SageFrame.DailyChalan\obj\Debug\SageFrame.DailyChalan.dll
+D:\Projects\RestroOder\restroorder\SageFrame.DailyChalan\obj\Debug\SageFrame.DailyChalan.pdb
+E:\Restro_Order\Developer\restroorder\SageFrame.DailyChalan\bin\Debug\SageFrame.DailyChalan.dll
+E:\Restro_Order\Developer\restroorder\SageFrame.DailyChalan\bin\Debug\SageFrame.DailyChalan.pdb
+E:\Restro_Order\Developer\restroorder\SageFrame.DailyChalan\bin\Debug\SageFrame.Common.dll
+E:\Restro_Order\Developer\restroorder\SageFrame.DailyChalan\bin\Debug\SageFrame.Common.pdb
+E:\Restro_Order\Developer\restroorder\SageFrame.DailyChalan\obj\Debug\SageFrame.DailyChalan.dll
+E:\Restro_Order\Developer\restroorder\SageFrame.DailyChalan\obj\Debug\SageFrame.DailyChalan.pdb
+E:\SAROJ CAKE ORDER 8Mar2021\cakeorders\cakeorders\SageFrame.DailyChalan\bin\Debug\SageFrame.DailyChalan.dll
+E:\SAROJ CAKE ORDER 8Mar2021\cakeorders\cakeorders\SageFrame.DailyChalan\bin\Debug\SageFrame.DailyChalan.pdb
+E:\SAROJ CAKE ORDER 8Mar2021\cakeorders\cakeorders\SageFrame.DailyChalan\bin\Debug\SageFrame.Common.dll
+E:\SAROJ CAKE ORDER 8Mar2021\cakeorders\cakeorders\SageFrame.DailyChalan\bin\Debug\SageFrame.Common.pdb
+E:\SAROJ CAKE ORDER 8Mar2021\cakeorders\cakeorders\SageFrame.DailyChalan\obj\Debug\SageFrame.DailyChalan.dll
+E:\SAROJ CAKE ORDER 8Mar2021\cakeorders\cakeorders\SageFrame.DailyChalan\obj\Debug\SageFrame.DailyChalan.pdb
+G:\Development\RestroOrderSource-2023-02-14\restro_master\SageFrame.DailyChalan\bin\Debug\SageFrame.DailyChalan.dll
+G:\Development\RestroOrderSource-2023-02-14\restro_master\SageFrame.DailyChalan\bin\Debug\SageFrame.DailyChalan.pdb
+G:\Development\RestroOrderSource-2023-02-14\restro_master\SageFrame.DailyChalan\bin\Debug\SageFrame.Common.dll
+G:\Development\RestroOrderSource-2023-02-14\restro_master\SageFrame.DailyChalan\bin\Debug\SageFrame.Common.pdb
+G:\Development\RestroOrderSource-2023-02-14\restro_master\SageFrame.DailyChalan\obj\Debug\SageFrame.DailyChalan.csproj.AssemblyReference.cache
+G:\Development\RestroOrderSource-2023-02-14\restro_master\SageFrame.DailyChalan\obj\Debug\SageFrame.DailyChalan.csproj.CoreCompileInputs.cache
+G:\Development\RestroOrderSource-2023-02-14\restro_master\SageFrame.DailyChalan\obj\Debug\SageFrame.DailyChalan.csproj.CopyComplete
+G:\Development\RestroOrderSource-2023-02-14\restro_master\SageFrame.DailyChalan\obj\Debug\SageFrame.DailyChalan.dll
+G:\Development\RestroOrderSource-2023-02-14\restro_master\SageFrame.DailyChalan\obj\Debug\SageFrame.DailyChalan.pdb
+E:\Development-Shree\RestroOrderSource-Master-2023-07-19\restro_master\SageFrame.DailyChalan\bin\Debug\SageFrame.DailyChalan.dll
+E:\Development-Shree\RestroOrderSource-Master-2023-07-19\restro_master\SageFrame.DailyChalan\bin\Debug\SageFrame.DailyChalan.pdb
+E:\Development-Shree\RestroOrderSource-Master-2023-07-19\restro_master\SageFrame.DailyChalan\bin\Debug\SageFrame.Common.dll
+E:\Development-Shree\RestroOrderSource-Master-2023-07-19\restro_master\SageFrame.DailyChalan\obj\Debug\SageFrame.DailyChalan.csproj.AssemblyReference.cache
+E:\Development-Shree\RestroOrderSource-Master-2023-07-19\restro_master\SageFrame.DailyChalan\obj\Debug\SageFrame.DailyChalan.csproj.CoreCompileInputs.cache
+E:\Development-Shree\RestroOrderSource-Master-2023-07-19\restro_master\SageFrame.DailyChalan\obj\Debug\SageFrame.DailyChalan.csproj.CopyComplete
+E:\Development-Shree\RestroOrderSource-Master-2023-07-19\restro_master\SageFrame.DailyChalan\obj\Debug\SageFrame.DailyChalan.dll
+E:\Development-Shree\RestroOrderSource-Master-2023-07-19\restro_master\SageFrame.DailyChalan\obj\Debug\SageFrame.DailyChalan.pdb
+E:\Development-Shree\RestroOrder-Merge-2023-07-26\restro_master\SageFrame.DailyChalan\bin\Debug\SageFrame.DailyChalan.dll
+E:\Development-Shree\RestroOrder-Merge-2023-07-26\restro_master\SageFrame.DailyChalan\bin\Debug\SageFrame.DailyChalan.pdb
+E:\Development-Shree\RestroOrder-Merge-2023-07-26\restro_master\SageFrame.DailyChalan\bin\Debug\SageFrame.Common.dll
+E:\Development-Shree\RestroOrder-Merge-2023-07-26\restro_master\SageFrame.DailyChalan\obj\Debug\SageFrame.DailyChalan.csproj.AssemblyReference.cache
+E:\Development-Shree\RestroOrder-Merge-2023-07-26\restro_master\SageFrame.DailyChalan\obj\Debug\SageFrame.DailyChalan.csproj.CoreCompileInputs.cache
+E:\Development-Shree\RestroOrder-Merge-2023-07-26\restro_master\SageFrame.DailyChalan\obj\Debug\SageFrame.DailyChalan.csproj.CopyComplete
+E:\Development-Shree\RestroOrder-Merge-2023-07-26\restro_master\SageFrame.DailyChalan\obj\Debug\SageFrame.DailyChalan.dll
+E:\Development-Shree\RestroOrder-Merge-2023-07-26\restro_master\SageFrame.DailyChalan\obj\Debug\SageFrame.DailyChalan.pdb
+G:\Development\RestroOrderSource-2023-02-14\RestroOrderSource-2023-08-01\restro_master\SageFrame.DailyChalan\bin\Debug\SageFrame.DailyChalan.dll
+G:\Development\RestroOrderSource-2023-02-14\RestroOrderSource-2023-08-01\restro_master\SageFrame.DailyChalan\bin\Debug\SageFrame.DailyChalan.pdb
+G:\Development\RestroOrderSource-2023-02-14\RestroOrderSource-2023-08-01\restro_master\SageFrame.DailyChalan\bin\Debug\SageFrame.Common.dll
+G:\Development\RestroOrderSource-2023-02-14\RestroOrderSource-2023-08-01\restro_master\SageFrame.DailyChalan\obj\Debug\SageFrame.DailyChalan.csproj.AssemblyReference.cache
+G:\Development\RestroOrderSource-2023-02-14\RestroOrderSource-2023-08-01\restro_master\SageFrame.DailyChalan\obj\Debug\SageFrame.DailyChalan.csproj.CoreCompileInputs.cache
+G:\Development\RestroOrderSource-2023-02-14\RestroOrderSource-2023-08-01\restro_master\SageFrame.DailyChalan\obj\Debug\SageFrame.DailyChalan.csproj.CopyComplete
+G:\Development\RestroOrderSource-2023-02-14\RestroOrderSource-2023-08-01\restro_master\SageFrame.DailyChalan\obj\Debug\SageFrame.DailyChalan.dll
+G:\Development\RestroOrderSource-2023-02-14\RestroOrderSource-2023-08-01\restro_master\SageFrame.DailyChalan\obj\Debug\SageFrame.DailyChalan.pdb
+G:\GITDevelopment\Bishal-Raj-Parajuli\RestroOrder_Master\SageFrame.DailyChalan\bin\Debug\SageFrame.DailyChalan.dll
+G:\GITDevelopment\Bishal-Raj-Parajuli\RestroOrder_Master\SageFrame.DailyChalan\bin\Debug\SageFrame.DailyChalan.pdb
+G:\GITDevelopment\Bishal-Raj-Parajuli\RestroOrder_Master\SageFrame.DailyChalan\bin\Debug\SageFrame.Common.dll
+G:\GITDevelopment\Bishal-Raj-Parajuli\RestroOrder_Master\SageFrame.DailyChalan\obj\Debug\SageFrame.DailyChalan.csproj.AssemblyReference.cache
+G:\GITDevelopment\Bishal-Raj-Parajuli\RestroOrder_Master\SageFrame.DailyChalan\obj\Debug\SageFrame.DailyChalan.csproj.CoreCompileInputs.cache
+G:\GITDevelopment\Bishal-Raj-Parajuli\RestroOrder_Master\SageFrame.DailyChalan\obj\Debug\SageFrame.DailyChalan.csproj.CopyComplete
+G:\GITDevelopment\Bishal-Raj-Parajuli\RestroOrder_Master\SageFrame.DailyChalan\obj\Debug\SageFrame.DailyChalan.dll
+G:\GITDevelopment\Bishal-Raj-Parajuli\RestroOrder_Master\SageFrame.DailyChalan\obj\Debug\SageFrame.DailyChalan.pdb
+G:\GITDevelopment\Master_RestroOrder\SageFrame.DailyChalan\bin\Debug\SageFrame.DailyChalan.dll
+G:\GITDevelopment\Master_RestroOrder\SageFrame.DailyChalan\bin\Debug\SageFrame.DailyChalan.pdb
+G:\GITDevelopment\Master_RestroOrder\SageFrame.DailyChalan\bin\Debug\SageFrame.Common.dll
+G:\GITDevelopment\Master_RestroOrder\SageFrame.DailyChalan\obj\Debug\SageFrame.DailyChalan.csproj.AssemblyReference.cache
+G:\GITDevelopment\Master_RestroOrder\SageFrame.DailyChalan\obj\Debug\SageFrame.DailyChalan.csproj.CoreCompileInputs.cache
+G:\GITDevelopment\Master_RestroOrder\SageFrame.DailyChalan\obj\Debug\SageFrame.DailyChalan.csproj.CopyComplete
+G:\GITDevelopment\Master_RestroOrder\SageFrame.DailyChalan\obj\Debug\SageFrame.DailyChalan.dll
+G:\GITDevelopment\Master_RestroOrder\SageFrame.DailyChalan\obj\Debug\SageFrame.DailyChalan.pdb
+G:\GITDevelopment\Chicken\SageFrame.DailyChalan\bin\Debug\SageFrame.DailyChalan.dll
+G:\GITDevelopment\Chicken\SageFrame.DailyChalan\bin\Debug\SageFrame.DailyChalan.pdb
+G:\GITDevelopment\Chicken\SageFrame.DailyChalan\bin\Debug\SageFrame.Common.dll
+G:\GITDevelopment\Chicken\SageFrame.DailyChalan\obj\Debug\SageFrame.DailyChalan.csproj.AssemblyReference.cache
+G:\GITDevelopment\Chicken\SageFrame.DailyChalan\obj\Debug\SageFrame.DailyChalan.csproj.CoreCompileInputs.cache
+G:\GITDevelopment\Chicken\SageFrame.DailyChalan\obj\Debug\SageFrame.DailyChalan.csproj.CopyComplete
+G:\GITDevelopment\Chicken\SageFrame.DailyChalan\obj\Debug\SageFrame.DailyChalan.dll
+G:\GITDevelopment\Chicken\SageFrame.DailyChalan\obj\Debug\SageFrame.DailyChalan.pdb

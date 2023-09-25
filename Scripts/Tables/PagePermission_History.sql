@@ -1,0 +1,35 @@
+
+
+CREATE TABLE [dbo].[PagePermission_History](
+	[OperationDate] [datetime] NOT NULL,
+	[OperationType] [char](1) NOT NULL,
+	[OperationId] [nvarchar](256) NOT NULL,
+	[PagePermissionID] [int] NULL,
+	[PageID] [int] NULL,
+	[PermissionID] [int] NULL,
+	[AllowAccess] [bit] NULL,
+	[RoleID] [uniqueidentifier] NULL,
+	[Username] [nvarchar](256) NULL,
+	[IsActive] [bit] NULL,
+	[IsDeleted] [bit] NULL,
+	[IsModified] [bit] NULL,
+	[AddedOn] [datetime] NULL,
+	[UpdatedOn] [datetime] NULL,
+	[DeletedOn] [datetime] NULL,
+	[PortalID] [int] NULL,
+	[AddedBy] [nvarchar](256) NULL,
+	[UpdatedBy] [nvarchar](256) NULL,
+	[DeletedBy] [nvarchar](256) NULL,
+	[HistoryID] [int] IDENTITY(1,1) NOT NULL,
+ CONSTRAINT [PK_PagePermission_History] PRIMARY KEY CLUSTERED 
+(
+	[HistoryID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+
+SET ANSI_PADDING OFF
+GO
+
+

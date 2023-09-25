@@ -1,0 +1,16 @@
+
+
+CREATE TABLE [dbo].[SuspendedIP](
+	[IPAddressID] [int] IDENTITY(1,1) NOT NULL,
+	[IpAddress] [nvarchar](50) NULL,
+	[SuspendedTime] [nvarchar](50) NULL,
+	[IsSuspended] [bit] NULL,
+ CONSTRAINT [PK_SuspendedIP] PRIMARY KEY CLUSTERED 
+(
+	[IPAddressID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+
+

@@ -1,0 +1,2 @@
+<%@ Control Language="C#" ClassName=License %>
+<div id='sfOuterWrapper' class="sfCurve" runat="server"><div id='sfMiddlemaincurrent' class='sfOuterwrapper clearfix'><div class='sfMoreblocks clearfix'><div class='sfCol_100'><div class='sfWrapper'><asp:PlaceHolder ID='pch_middlemaincurrent' runat='server'></asp:Placeholder></div></div></div></div><div id='sfFooter' class='sfOuterwrapper clearfix'><div class='sfMoreblocks clearfix'><div class='sfCol_100'><div class='sfWrapper'><asp:PlaceHolder ID='pch_footer' runat='server'></asp:Placeholder></div></div></div></div></div>

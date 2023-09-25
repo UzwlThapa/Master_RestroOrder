@@ -1,0 +1,30 @@
+.menus , .itemsss , .items , .menuss{
+    display: flex;
+    display: -webkit-flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+}
+
+.menus > div , .itemsss > div , .items > div , .menuss > div{
+    position: relative;
+    width: 18%;
+    margin-right: 2%;
+    margin-bottom: 15px;
+    padding-right: 25px;
+}
+
+.restaurant-part-menu .orderbackA , .restaurant-part-menu .orderbackB {
+   float: left;
+    margin-top: 7px;
+    width: 25px;
+    height: 25px;
+    opacity: 0.9;
+}
+
+.restaurant-part-menu .orderbackA:hover , .restaurant-part-menu .orderbackB:hover{
+	opacity: 1;
+}
+
+.restaurant-part-menu img {
+	cursor: pointer;
+}

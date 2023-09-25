@@ -1,0 +1,79 @@
+﻿.sfBreadcrumb {
+   position: fixed;
+    top: 0;
+    left: 0;
+    background: #ff9933;
+    z-index: 9999;
+    width: 100%;
+}
+
+.sfBreadcrumb li {
+	float:left;
+	padding:0px 5px;
+	list-style:none;
+	background:#eee; border-right: none;
+	text-align: center;
+	font-size:17px;
+	color: #FFF;
+	display: none;
+
+}
+.sfBreadcrumb li:first-child {
+	border-radius:5px 0 0 5px; }
+
+.sfBreadcrumb li:first-child a{ background:url(../images/home.png) no-repeat center; text-indent: -9999px; display: inline-block; width: 16px;}
+
+.sfBreadcrumb li.sfLast {
+	background:none; position: relative;display: block;
+}
+
+.iframeeright{
+    position: fixed;
+    display: flex;
+    display: -webkit-flex;
+    height: 28px;
+    top:0;
+    right: 0px;
+    z-index: 99999;
+
+}
+
+.refreshbtn , .minimizebtn{
+    border: none;
+    background: transparent;
+    opacity: 0.7;
+}
+
+.refreshbtn:hover , .minimizebtn:hover{
+    opacity: 1;
+}
+
+.refreshbtn:focus , .minimizebtn:focus{
+    outline: 0;
+}
+
+
+.iframeeClose {
+    width: 34px;
+    border: none;
+    background: #c7514f;
+    opacity: 0.9;
+}
+
+.iframeeClose:hover{
+    background: #d31b17;
+    opacity: 1;
+}
+
+.iframeeClose:focus{
+    outline: 0;
+}
+
+input.refreshbtn {
+    background: url('/images/refresh.png');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 22px;
+    width: 35px;
+}
+

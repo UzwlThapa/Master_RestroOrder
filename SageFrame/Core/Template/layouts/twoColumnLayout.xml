@@ -1,0 +1,8 @@
+<layout name="layout_all">
+	<section name="sfHeader">
+		<placeholder name="headers" wrapinner="0">Topbar</placeholder>
+	</section>
+	<section name="Landingpage">
+		<placeholder name="Landingpage" class="mCustomScrollbar" width="75,25">LandingPageA,LandingPageB</placeholder>
+	</section>
+</layout>

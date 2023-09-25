@@ -1,0 +1,16 @@
+
+
+CREATE TABLE [dbo].[Ro_Ingredient](
+	[IngredientID] [int] IDENTITY(1,1) NOT NULL,
+	[ItemID] [int] NULL,
+	[Ingredient] [int] NULL,
+	[Quantity] [int] NULL,
+ CONSTRAINT [PK_Ro_Ingredient] PRIMARY KEY CLUSTERED 
+(
+	[IngredientID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+
+

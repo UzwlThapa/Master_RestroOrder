@@ -1,0 +1,17 @@
+
+
+CREATE TABLE [dbo].[Portal](
+	[PortalID] [int] IDENTITY(1,1) NOT NULL,
+	[Name] [nvarchar](200) NOT NULL,
+	[SEOName] [nvarchar](100) NULL,
+	[IsParent] [bit] NULL,
+	[ParentID] [int] NULL,
+ CONSTRAINT [PK_Portal] PRIMARY KEY CLUSTERED 
+(
+	[PortalID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+
+

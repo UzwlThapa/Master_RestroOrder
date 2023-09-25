@@ -1,0 +1,105 @@
+﻿<%@ WebService Language="C#" Class="RestroWebService" %>
+
+using System;
+using System.Web;
+using System.Web.Services;
+using System.Web.Services.Protocols;
+using System.Web.Script.Serialization;
+using System.Linq;
+using System.Collections.Generic;
+using SageFrame.CostCenter;
+using SageFrame.RestroOrder;
+using Newtonsoft.Json;
+
+[WebService(Namespace = "http://tempuri.org/")]
+[WebServiceBinding(ConformsTo = WsiProfiles.BasicProfile1_1)]
+// To allow this Web Service to be called from script, using ASP.NET AJAX, uncomment the following line. 
+[System.Web.Script.Services.ScriptService]
+public class RestroWebService  : System.Web.Services.WebService {
+
+    RestrOrderController roController = new RestrOrderController();
+    JavaScriptSerializer serializer = new JavaScriptSerializer();
+
+    [WebMethod]
+    public string GetAllUserRoles()
+    {
+        List<PinUser> userroles = roController.GetAllUserRoles();
+        return JsonConvert.SerializeObject(userroles);
+    }
+
+    [WebMethod]
+    public string GetPinSettings()
+    {
+        List<PinUser> rolePinSettings = roController.GetPinSettings();
+        return JsonConvert.SerializeObject(rolePinSettings);
+    }
+
+    [WebMethod]
+    public string CheckPinCodeMatch(string PinCode,string username)
+    {
+        string available = roController.CheckPinCodeMatch(PinCode,username);
+        return JsonConvert.SerializeObject(available);
+    }
+
+    [WebMethod]
+    public void shiftItems(string json)
+    {
+        var shiftItems = serializer.Deserialize<ShiftItems>(json);
+        Context.Response.Clear();
+        Context.Response.ContentType = "application/json";
+        try
+        {
+            roController.shiftItems(shiftItems);
+            Context.Response.Write("{statusCode:200, message: \"Success\"}");
+        }
+        catch (Exception ex)
+        {
+            Context.Response.Write("{statusCode:100, message:\""+ex.Message+"\"}");
+        }
+    }
+    [WebMethod]
+    public void shiftItemsWeb(ShiftItems shiftItems)
+    {
+        roController.shiftItems(shiftItems);
+    }
+    [WebMethod]
+    public string getDataForShift(int orderMasterId)
+    {
+        List<RestroRoom> rooms = roController.getRestroRoom();
+        return JsonConvert.SerializeObject(roController.getOrderDetailByOrderMasterId(orderMasterId));
+    }
+    [WebMethod]
+    public string getRooms()
+    {
+        return serializer.Serialize(roController.getRestroRoom());
+    }
+    [WebMethod]
+    public string getTablesData()
+    {
+        return serializer.Serialize(roController.getTablesDataWithCurrentSplitNo());
+    }
+    [WebMethod]
+    public int SaveSales(SalesMaster salesMaster, List<SalesDetails> salesDetail, int splited, List<customerBilling> billingTerm, flatorperdiscount flatorperdiscount, SalesPayment payment, bool isFoodCourt)
+    {
+        int salesMasterId = roController.saveSalesBill(salesMaster, salesDetail, splited, billingTerm, flatorperdiscount);
+        if (isFoodCourt)
+        {
+            payment.salesMasterId = salesMasterId;
+            roController.UpdateSalesPayMode(payment);
+        }
+        return salesMasterId;
+    }
+    [WebMethod]
+    public string SendToCBMS(int salesMasterId)
+    {
+        bool result = roController.SendToCBMS(salesMasterId);
+        if (result)
+        {
+            CBMS cbms = new CBMS();
+            cbms.sendSales(salesMasterId);
+        }
+        return result.ToString();
+    }
+
+    
+}

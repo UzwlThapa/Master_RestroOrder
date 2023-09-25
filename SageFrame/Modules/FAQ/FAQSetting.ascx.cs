@@ -1,0 +1,10 @@
+﻿using System;
+using SageFrame.Web;
+
+public partial class Modules_FAQ_FAQSetting : BaseAdministrationUserControl
+{
+    protected void Page_Load(object sender, EventArgs e)
+    {
+
+    }
+}

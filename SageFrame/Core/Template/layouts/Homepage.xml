@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?><layout name="layout_all">
+  <section name="sfHeader">
+    <placeholder name="headers" width="75,25">navigation,loginstatus</placeholder>
+  </section>
+  <section name="Content">
+    <placeholder name="middlemaincurrent" width="95" wrapinner="0">middlemaincurrent,middlemaincurrent1</placeholder>
+  </section>
+</layout>

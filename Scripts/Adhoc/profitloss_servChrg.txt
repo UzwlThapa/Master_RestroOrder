@@ -1,0 +1,3 @@
+
+ delete from Ac_FinancialAc where FinancialAcID=23
+update Ac_FinancialAc set PFinancialAcID=21 where FinancialAcID=31

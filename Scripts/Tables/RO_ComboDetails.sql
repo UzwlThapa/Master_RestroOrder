@@ -1,0 +1,18 @@
+
+
+CREATE TABLE [dbo].[RO_ComboDetails](
+	[ComboDetailsID] [int] IDENTITY(1,1) NOT NULL,
+	[ComboID] [int] NULL,
+	[ItemID] [int] NULL,
+	[ItemRate] [decimal](18, 2) NULL,
+	[Quantity] [float] NULL,
+	[TotalPrice] [decimal](18, 2) NULL,
+ CONSTRAINT [PK_RO_ComboDetails] PRIMARY KEY CLUSTERED 
+(
+	[ComboDetailsID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+
+

@@ -1,0 +1,15 @@
+
+
+CREATE TABLE [dbo].[NewsRssContent](
+	[NewsContent] [text] NULL,
+	[UpdatedDate] [datetime] NULL,
+	[NewsContentID] [int] IDENTITY(1,1) NOT NULL,
+ CONSTRAINT [PK_NewsRssContent] PRIMARY KEY CLUSTERED 
+(
+	[NewsContentID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+
+GO
+
+

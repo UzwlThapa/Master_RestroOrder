@@ -1,0 +1,21 @@
+
+
+CREATE TABLE [dbo].[Ro_RoomType](
+	[RoomTypeID] [int] IDENTITY(1,1) NOT NULL,
+	[Title] [varchar](200) NULL,
+	[Description] [varchar](max) NULL,
+	[InsertedBy] [varchar](50) NULL,
+	[UpdateBy] [varchar](50) NULL,
+	[DeleteBy] [varchar](50) NULL,
+ CONSTRAINT [PK_Ro_RoomType] PRIMARY KEY CLUSTERED 
+(
+	[RoomTypeID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+
+GO
+
+SET ANSI_PADDING OFF
+GO
+
+

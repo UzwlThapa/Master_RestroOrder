@@ -1,0 +1,21 @@
+.itmname{
+	position: relative;
+    background:rgb(121, 94, 67);
+    text-align: center;
+    padding: 4px;
+}
+
+.owl-prev{
+	top: -70%!important;
+    transform: translateY(-70%);
+}
+
+.owl-next{
+	top: -70%!important;
+    transform: translateY(-70%);
+}
+
+.itmname:hover {
+    background: rgb(146, 112, 76);
+    transition: all linear 0.3s;
+}

@@ -1,0 +1,130 @@
+E:\Projects\restroorder_inventory\RestroOrder\SageFrame\bin\SageFrame.DBBackupNRestore.dll
+E:\Projects\restroorder_inventory\RestroOrder\SageFrame\bin\SageFrame.DBBackupNRestore.pdb
+E:\Projects\restroorder_inventory\RestroOrder\SageFrame.DBBackupNRestore\obj\Release\SageFrame.DBBackupNRestore.dll
+E:\Projects\restroorder_inventory\RestroOrder\SageFrame.DBBackupNRestore\obj\Release\SageFrame.DBBackupNRestore.pdb
+F:\Roman\Restro_Order\restroorder\SageFrame\bin\SageFrame.DBBackupNRestore.dll
+F:\Roman\Restro_Order\restroorder\SageFrame\bin\SageFrame.DBBackupNRestore.pdb
+F:\Roman\Restro_Order\restroorder\SageFrame.DBBackupNRestore\obj\Release\SageFrame.DBBackupNRestore.dll
+F:\Roman\Restro_Order\restroorder\SageFrame.DBBackupNRestore\obj\Release\SageFrame.DBBackupNRestore.pdb
+E:\gitProject\New folder\restroorder\SageFrame\bin\SageFrame.DBBackupNRestore.dll
+E:\gitProject\New folder\restroorder\SageFrame\bin\SageFrame.DBBackupNRestore.pdb
+E:\gitProject\New folder\restroorder\SageFrame.DBBackupNRestore\obj\Release\SageFrame.DBBackupNRestore.csprojResolveAssemblyReference.cache
+E:\gitProject\New folder\restroorder\SageFrame.DBBackupNRestore\obj\Release\SageFrame.DBBackupNRestore.dll
+E:\gitProject\New folder\restroorder\SageFrame.DBBackupNRestore\obj\Release\SageFrame.DBBackupNRestore.pdb
+E:\Danfe Project\Git\restroorder\SageFrame\bin\SageFrame.DBBackupNRestore.dll
+E:\Danfe Project\Git\restroorder\SageFrame\bin\SageFrame.DBBackupNRestore.pdb
+E:\Danfe Project\Git\restroorder\SageFrame.DBBackupNRestore\obj\Release\SageFrame.DBBackupNRestore.dll
+E:\Danfe Project\Git\restroorder\SageFrame.DBBackupNRestore\obj\Release\SageFrame.DBBackupNRestore.pdb
+E:\roman\Restro\restroorder\SageFrame\bin\SageFrame.DBBackupNRestore.dll
+E:\roman\Restro\restroorder\SageFrame\bin\SageFrame.DBBackupNRestore.pdb
+E:\roman\Restro\restroorder\SageFrame.DBBackupNRestore\obj\Release\SageFrame.DBBackupNRestore.dll
+E:\roman\Restro\restroorder\SageFrame.DBBackupNRestore\obj\Release\SageFrame.DBBackupNRestore.pdb
+E:\Projects\RestroOrder\restroorder\SageFrame\bin\SageFrame.DBBackupNRestore.dll
+E:\Projects\RestroOrder\restroorder\SageFrame\bin\SageFrame.DBBackupNRestore.pdb
+E:\Projects\RestroOrder\restroorder\SageFrame.DBBackupNRestore\obj\Release\SageFrame.DBBackupNRestore.dll
+E:\Projects\RestroOrder\restroorder\SageFrame.DBBackupNRestore\obj\Release\SageFrame.DBBackupNRestore.pdb
+D:\Projects\RestroOder\restroorder\SageFrame\bin\SageFrame.DBBackupNRestore.dll
+D:\Projects\RestroOder\restroorder\SageFrame\bin\SageFrame.DBBackupNRestore.pdb
+D:\Projects\RestroOder\restroorder\SageFrame.DBBackupNRestore\obj\Release\SageFrame.DBBackupNRestore.dll
+D:\Projects\RestroOder\restroorder\SageFrame.DBBackupNRestore\obj\Release\SageFrame.DBBackupNRestore.pdb
+E:\Restro_Order\Developer\restroorder\SageFrame\bin\SageFrame.DBBackupNRestore.dll
+E:\Restro_Order\Developer\restroorder\SageFrame\bin\SageFrame.DBBackupNRestore.pdb
+E:\Restro_Order\Developer\restroorder\SageFrame.DBBackupNRestore\obj\Release\SageFrame.DBBackupNRestore.csprojResolveAssemblyReference.cache
+E:\Restro_Order\Developer\restroorder\SageFrame.DBBackupNRestore\obj\Release\SageFrame.DBBackupNRestore.dll
+E:\Restro_Order\Developer\restroorder\SageFrame.DBBackupNRestore\obj\Release\SageFrame.DBBackupNRestore.pdb
+D:\Roman Workspace\Restro Order\restroorder\SageFrame\bin\SageFrame.DBBackupNRestore.dll
+D:\Roman Workspace\Restro Order\restroorder\SageFrame\bin\SageFrame.DBBackupNRestore.pdb
+D:\Roman Workspace\Restro Order\restroorder\SageFrame.DBBackupNRestore\obj\Release\SageFrame.DBBackupNRestore.csprojResolveAssemblyReference.cache
+D:\Roman Workspace\Restro Order\restroorder\SageFrame.DBBackupNRestore\obj\Release\SageFrame.DBBackupNRestore.dll
+D:\Roman Workspace\Restro Order\restroorder\SageFrame.DBBackupNRestore\obj\Release\SageFrame.DBBackupNRestore.pdb
+D:\RestroOrder\developer\restroorder\SageFrame\bin\SageFrame.DBBackupNRestore.dll
+D:\RestroOrder\developer\restroorder\SageFrame\bin\SageFrame.DBBackupNRestore.pdb
+D:\RestroOrder\developer\restroorder\SageFrame.DBBackupNRestore\obj\Release\SageFrame.DBBackupNRestore.csprojResolveAssemblyReference.cache
+D:\RestroOrder\developer\restroorder\SageFrame.DBBackupNRestore\obj\Release\SageFrame.DBBackupNRestore.dll
+D:\RestroOrder\developer\restroorder\SageFrame.DBBackupNRestore\obj\Release\SageFrame.DBBackupNRestore.pdb
+E:\Restro_Order\Dev\restroorder\SageFrame\bin\SageFrame.DBBackupNRestore.dll
+E:\Restro_Order\Dev\restroorder\SageFrame\bin\SageFrame.DBBackupNRestore.pdb
+E:\Restro_Order\Dev\restroorder\SageFrame.DBBackupNRestore\obj\Release\SageFrame.DBBackupNRestore.csprojResolveAssemblyReference.cache
+E:\Restro_Order\Dev\restroorder\SageFrame.DBBackupNRestore\obj\Release\SageFrame.DBBackupNRestore.dll
+E:\Restro_Order\Dev\restroorder\SageFrame.DBBackupNRestore\obj\Release\SageFrame.DBBackupNRestore.pdb
+D:\Project\Binod\wholesale_restro\cakeorders\SageFrame\bin\SageFrame.DBBackupNRestore.dll
+D:\Project\Binod\wholesale_restro\cakeorders\SageFrame\bin\SageFrame.DBBackupNRestore.pdb
+D:\Project\Binod\wholesale_restro\cakeorders\SageFrame.DBBackupNRestore\obj\Release\SageFrame.DBBackupNRestore.csprojResolveAssemblyReference.cache
+D:\Project\Binod\wholesale_restro\cakeorders\SageFrame.DBBackupNRestore\obj\Release\SageFrame.DBBackupNRestore.dll
+D:\Project\Binod\wholesale_restro\cakeorders\SageFrame.DBBackupNRestore\obj\Release\SageFrame.DBBackupNRestore.pdb
+D:\Project\Binod\Cake_orders20210219\cakeorders\SageFrame\bin\SageFrame.DBBackupNRestore.dll
+D:\Project\Binod\Cake_orders20210219\cakeorders\SageFrame\bin\SageFrame.DBBackupNRestore.pdb
+D:\Project\Binod\Cake_orders20210219\cakeorders\SageFrame.DBBackupNRestore\obj\Release\SageFrame.DBBackupNRestore.csprojResolveAssemblyReference.cache
+D:\Project\Binod\Cake_orders20210219\cakeorders\SageFrame.DBBackupNRestore\obj\Release\SageFrame.DBBackupNRestore.dll
+D:\Project\Binod\Cake_orders20210219\cakeorders\SageFrame.DBBackupNRestore\obj\Release\SageFrame.DBBackupNRestore.pdb
+D:\My projects\CakeOrder\cakeorders\SageFrame\bin\SageFrame.DBBackupNRestore.dll
+D:\My projects\CakeOrder\cakeorders\SageFrame\bin\SageFrame.DBBackupNRestore.pdb
+D:\My projects\CakeOrder\cakeorders\SageFrame.DBBackupNRestore\obj\Release\SageFrame.DBBackupNRestore.csprojResolveAssemblyReference.cache
+D:\My projects\CakeOrder\cakeorders\SageFrame.DBBackupNRestore\obj\Release\SageFrame.DBBackupNRestore.dll
+D:\My projects\CakeOrder\cakeorders\SageFrame.DBBackupNRestore\obj\Release\SageFrame.DBBackupNRestore.pdb
+D:\My projects\cakeorder-akuj\SageFrame\bin\SageFrame.DBBackupNRestore.dll
+D:\My projects\cakeorder-akuj\SageFrame\bin\SageFrame.DBBackupNRestore.pdb
+D:\My projects\cakeorder-akuj\SageFrame.DBBackupNRestore\obj\Release\SageFrame.DBBackupNRestore.csprojResolveAssemblyReference.cache
+D:\My projects\cakeorder-akuj\SageFrame.DBBackupNRestore\obj\Release\SageFrame.DBBackupNRestore.dll
+D:\My projects\cakeorder-akuj\SageFrame.DBBackupNRestore\obj\Release\SageFrame.DBBackupNRestore.pdb
+D:\Projects\akuj_kot_bot\SageFrame\bin\SageFrame.DBBackupNRestore.dll
+D:\Projects\akuj_kot_bot\SageFrame\bin\SageFrame.DBBackupNRestore.pdb
+D:\Projects\akuj_kot_bot\SageFrame.DBBackupNRestore\obj\Release\SageFrame.DBBackupNRestore.csprojResolveAssemblyReference.cache
+D:\Projects\akuj_kot_bot\SageFrame.DBBackupNRestore\obj\Release\SageFrame.DBBackupNRestore.dll
+D:\Projects\akuj_kot_bot\SageFrame.DBBackupNRestore\obj\Release\SageFrame.DBBackupNRestore.pdb
+G:\Development\RestroOrderSource-2023-01-08\restro_master\SageFrame\bin\SageFrame.DBBackupNRestore.dll
+G:\Development\RestroOrderSource-2023-01-08\restro_master\SageFrame\bin\SageFrame.DBBackupNRestore.pdb
+G:\Development\RestroOrderSource-2023-01-08\restro_master\SageFrame.DBBackupNRestore\obj\Release\SageFrame.DBBackupNRestore.csproj.AssemblyReference.cache
+G:\Development\RestroOrderSource-2023-01-08\restro_master\SageFrame.DBBackupNRestore\obj\Release\SageFrame.DBBackupNRestore.csproj.CoreCompileInputs.cache
+G:\Development\RestroOrderSource-2023-01-08\restro_master\SageFrame.DBBackupNRestore\obj\Release\SageFrame.DBBackupNRestore.csproj.CopyComplete
+G:\Development\RestroOrderSource-2023-01-08\restro_master\SageFrame.DBBackupNRestore\obj\Release\SageFrame.DBBackupNRestore.dll
+G:\Development\RestroOrderSource-2023-01-08\restro_master\SageFrame.DBBackupNRestore\obj\Release\SageFrame.DBBackupNRestore.pdb
+G:\Development\RestroOrderSource-2023-02-14\restro_master\SageFrame\bin\SageFrame.DBBackupNRestore.dll
+G:\Development\RestroOrderSource-2023-02-14\restro_master\SageFrame\bin\SageFrame.DBBackupNRestore.pdb
+G:\Development\RestroOrderSource-2023-02-14\restro_master\SageFrame.DBBackupNRestore\obj\Release\SageFrame.DBBackupNRestore.csproj.AssemblyReference.cache
+G:\Development\RestroOrderSource-2023-02-14\restro_master\SageFrame.DBBackupNRestore\obj\Release\SageFrame.DBBackupNRestore.csproj.CoreCompileInputs.cache
+G:\Development\RestroOrderSource-2023-02-14\restro_master\SageFrame.DBBackupNRestore\obj\Release\SageFrame.DBBackupNRestore.csproj.CopyComplete
+G:\Development\RestroOrderSource-2023-02-14\restro_master\SageFrame.DBBackupNRestore\obj\Release\SageFrame.DBBackupNRestore.dll
+G:\Development\RestroOrderSource-2023-02-14\restro_master\SageFrame.DBBackupNRestore\obj\Release\SageFrame.DBBackupNRestore.pdb
+E:\Development-Shree\RestroOrderSource-Master-2023-07-19\restro_master\SageFrame\bin\SageFrame.DBBackupNRestore.dll
+E:\Development-Shree\RestroOrderSource-Master-2023-07-19\restro_master\SageFrame\bin\SageFrame.DBBackupNRestore.pdb
+E:\Development-Shree\RestroOrderSource-Master-2023-07-19\restro_master\SageFrame.DBBackupNRestore\obj\Release\SageFrame.DBBackupNRestore.csproj.AssemblyReference.cache
+E:\Development-Shree\RestroOrderSource-Master-2023-07-19\restro_master\SageFrame.DBBackupNRestore\obj\Release\SageFrame.DBBackupNRestore.csproj.CoreCompileInputs.cache
+E:\Development-Shree\RestroOrderSource-Master-2023-07-19\restro_master\SageFrame.DBBackupNRestore\obj\Release\SageFrame.DBBackupNRestore.csproj.CopyComplete
+E:\Development-Shree\RestroOrderSource-Master-2023-07-19\restro_master\SageFrame.DBBackupNRestore\obj\Release\SageFrame.DBBackupNRestore.dll
+E:\Development-Shree\RestroOrderSource-Master-2023-07-19\restro_master\SageFrame.DBBackupNRestore\obj\Release\SageFrame.DBBackupNRestore.pdb
+E:\Development-Shree\RestroOrder-Merge-2023-07-26\restro_master\SageFrame\bin\SageFrame.DBBackupNRestore.dll
+E:\Development-Shree\RestroOrder-Merge-2023-07-26\restro_master\SageFrame\bin\SageFrame.DBBackupNRestore.pdb
+E:\Development-Shree\RestroOrder-Merge-2023-07-26\restro_master\SageFrame.DBBackupNRestore\obj\Release\SageFrame.DBBackupNRestore.csproj.AssemblyReference.cache
+E:\Development-Shree\RestroOrder-Merge-2023-07-26\restro_master\SageFrame.DBBackupNRestore\obj\Release\SageFrame.DBBackupNRestore.csproj.CoreCompileInputs.cache
+E:\Development-Shree\RestroOrder-Merge-2023-07-26\restro_master\SageFrame.DBBackupNRestore\obj\Release\SageFrame.DBBackupNRestore.csproj.CopyComplete
+E:\Development-Shree\RestroOrder-Merge-2023-07-26\restro_master\SageFrame.DBBackupNRestore\obj\Release\SageFrame.DBBackupNRestore.dll
+E:\Development-Shree\RestroOrder-Merge-2023-07-26\restro_master\SageFrame.DBBackupNRestore\obj\Release\SageFrame.DBBackupNRestore.pdb
+G:\Development\RestroOrderSource-2023-02-14\RestroOrderSource-2023-08-01\restro_master\SageFrame\bin\SageFrame.DBBackupNRestore.dll
+G:\Development\RestroOrderSource-2023-02-14\RestroOrderSource-2023-08-01\restro_master\SageFrame\bin\SageFrame.DBBackupNRestore.pdb
+G:\Development\RestroOrderSource-2023-02-14\RestroOrderSource-2023-08-01\restro_master\SageFrame.DBBackupNRestore\obj\Release\SageFrame.DBBackupNRestore.csproj.AssemblyReference.cache
+G:\Development\RestroOrderSource-2023-02-14\RestroOrderSource-2023-08-01\restro_master\SageFrame.DBBackupNRestore\obj\Release\SageFrame.DBBackupNRestore.csproj.CoreCompileInputs.cache
+G:\Development\RestroOrderSource-2023-02-14\RestroOrderSource-2023-08-01\restro_master\SageFrame.DBBackupNRestore\obj\Release\SageFrame.DBBackupNRestore.csproj.CopyComplete
+G:\Development\RestroOrderSource-2023-02-14\RestroOrderSource-2023-08-01\restro_master\SageFrame.DBBackupNRestore\obj\Release\SageFrame.DBBackupNRestore.dll
+G:\Development\RestroOrderSource-2023-02-14\RestroOrderSource-2023-08-01\restro_master\SageFrame.DBBackupNRestore\obj\Release\SageFrame.DBBackupNRestore.pdb
+G:\GITDevelopment\Bishal-Raj-Parajuli\RestroOrder_Master\SageFrame\bin\SageFrame.DBBackupNRestore.dll
+G:\GITDevelopment\Bishal-Raj-Parajuli\RestroOrder_Master\SageFrame\bin\SageFrame.DBBackupNRestore.pdb
+G:\GITDevelopment\Bishal-Raj-Parajuli\RestroOrder_Master\SageFrame.DBBackupNRestore\obj\Release\SageFrame.DBBackupNRestore.csproj.AssemblyReference.cache
+G:\GITDevelopment\Bishal-Raj-Parajuli\RestroOrder_Master\SageFrame.DBBackupNRestore\obj\Release\SageFrame.DBBackupNRestore.csproj.CoreCompileInputs.cache
+G:\GITDevelopment\Bishal-Raj-Parajuli\RestroOrder_Master\SageFrame.DBBackupNRestore\obj\Release\SageFrame.DBBackupNRestore.csproj.CopyComplete
+G:\GITDevelopment\Bishal-Raj-Parajuli\RestroOrder_Master\SageFrame.DBBackupNRestore\obj\Release\SageFrame.DBBackupNRestore.dll
+G:\GITDevelopment\Bishal-Raj-Parajuli\RestroOrder_Master\SageFrame.DBBackupNRestore\obj\Release\SageFrame.DBBackupNRestore.pdb
+G:\GITDevelopment\Master_RestroOrder\SageFrame\bin\SageFrame.DBBackupNRestore.dll
+G:\GITDevelopment\Master_RestroOrder\SageFrame\bin\SageFrame.DBBackupNRestore.pdb
+G:\GITDevelopment\Master_RestroOrder\SageFrame.DBBackupNRestore\obj\Release\SageFrame.DBBackupNRestore.csproj.AssemblyReference.cache
+G:\GITDevelopment\Master_RestroOrder\SageFrame.DBBackupNRestore\obj\Release\SageFrame.DBBackupNRestore.csproj.CoreCompileInputs.cache
+G:\GITDevelopment\Master_RestroOrder\SageFrame.DBBackupNRestore\obj\Release\SageFrame.DBBackupNRestore.csproj.CopyComplete
+G:\GITDevelopment\Master_RestroOrder\SageFrame.DBBackupNRestore\obj\Release\SageFrame.DBBackupNRestore.dll
+G:\GITDevelopment\Master_RestroOrder\SageFrame.DBBackupNRestore\obj\Release\SageFrame.DBBackupNRestore.pdb
+G:\GITDevelopment\Chicken\SageFrame\bin\SageFrame.DBBackupNRestore.dll
+G:\GITDevelopment\Chicken\SageFrame\bin\SageFrame.DBBackupNRestore.pdb
+G:\GITDevelopment\Chicken\SageFrame.DBBackupNRestore\obj\Release\SageFrame.DBBackupNRestore.csproj.AssemblyReference.cache
+G:\GITDevelopment\Chicken\SageFrame.DBBackupNRestore\obj\Release\SageFrame.DBBackupNRestore.csproj.CoreCompileInputs.cache
+G:\GITDevelopment\Chicken\SageFrame.DBBackupNRestore\obj\Release\SageFrame.DBBackupNRestore.csproj.CopyComplete
+G:\GITDevelopment\Chicken\SageFrame.DBBackupNRestore\obj\Release\SageFrame.DBBackupNRestore.dll
+G:\GITDevelopment\Chicken\SageFrame.DBBackupNRestore\obj\Release\SageFrame.DBBackupNRestore.pdb

@@ -1,0 +1,15 @@
+
+
+CREATE TABLE [dbo].[BlogRssContent](
+	[BlogContent] [text] NULL,
+	[UpdatedDate] [datetime] NULL,
+	[BlogContentID] [int] IDENTITY(1,1) NOT NULL,
+ CONSTRAINT [PK_BlogRssContent] PRIMARY KEY CLUSTERED 
+(
+	[BlogContentID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+
+GO
+
+

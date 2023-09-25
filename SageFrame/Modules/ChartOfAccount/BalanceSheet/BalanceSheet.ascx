@@ -1,0 +1,74 @@
+﻿<%@ Control Language="C#" AutoEventWireup="true" CodeFile="BalanceSheet.ascx.cs" Inherits="Modules_ChartOfAccount_BalanceSheet_BalanceSheet" %>
+
+<script>
+    $(function () {
+        $(this).companyProfEDIT({
+             HostUrl: "<%= HostUrl %>"
+        });
+        $("#tabs").tabs();
+        $("#btnAdd").click(function () {
+            $("#divForFinancialAc").hide();
+            $("#btnAdd").hide();
+            $(".AccountForm").show();
+        });
+
+        $(".txtStartDate").datepicker({
+            dateFormat: "yy-mm-dd",
+            changeMonth: true,
+            changeYear: true,
+        }).datepicker("setDate", '2000-05-01');
+
+        $(".txtEndDate").datepicker({
+            dateFormat: "yy-mm-dd",
+            changeMonth: true,
+            changeYear: true,
+        }).datepicker("setDate", "0");
+    
+    });
+</script>
+<style type="text/css">
+    .isGrouptrue {
+        font-weight: bold;
+    }
+</style>
+<div class="RO_wrapper">
+<div>
+        <table style="display:block;">
+            <tr>
+                <td>
+                    <label>
+                        Start Date : </label></td>
+                <td><input type="text" class="sfInputbox txtStartDate" id="txtStartDate" style="width:100px;"/>
+                   <td>
+                    <label>
+                        End Date : </label></td>
+                <td><input type="text" class="sfInputbox txtEndDate" id="txtEndDate" style="width:100px;"/>
+                </td>
+                <td style="display:none;">
+                    <label>Show Zero : </label>
+                    </td>
+                    <td style="display:none;">
+                        <select id="sltIsZero" class="sfInputbox" style="width:100px;">
+                            <option value="Yes">Yes</option>
+                            <option value="No">No</option>
+                        </select></td>
+                <td>
+                       <button type="button" class="sfBtn restro-btn fa fa-eye" id="btnView">View</button>
+                    <%--<input type='button' value="Excel" id="button" class="sfBtn restro-btn"/>--%>
+                   <%-- <input type='button' value="Pdf" id="buttonPdf"/>--%>
+                </td>
+            </tr>
+        </table>
+          <div class="report-view" style="display:none;">
+          <div class="report-printt">
+                <button type="button" class="sfBtn restro-btn fa fa-print" id="btnPrint" style="margin-right:2px;">Print</button>
+                <button type="button" class="sfBtn restro-btn fa fa-file-excel-o" id="btnExport"  style="margin-right:2px;" >Excel</button>
+                <button type="button" class="sfBtn restro-btn fa fa-file-pdf-o" id="btnPdf" style="margin-right:2px;" >PDF</button>
+                    </div>
+             </div>
+    <div id="divForBalanceSheet" class="restrowrapper"></div>
+    </div>
+    </div>
+  <div id="divForFinancialDetails"> </div>
+<%--<link href="path/to/jquery.treetable.css" rel="stylesheet" type="text/css" />
+<script src="path/to/jquery.treetable.js"></script>--%>

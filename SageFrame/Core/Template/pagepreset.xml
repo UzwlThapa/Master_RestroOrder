@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<pagepreset>
+  <layout>
+    <preset layout="Contact">Contact</preset>
+    <preset layout="oneColumnLayout">All</preset>
+    <preset layout="UnderConstruction">Under-Construction</preset>
+    <preset layout="Unsubsribe">UnSubscribe</preset>
+    <preset layout="orderlist">Order,CounterPerson,CustomerBill,FoodCode,Food-Court,Complementary,Take-Away,Dining,Cake-Orders,Cake-Billing,Add-Agent,Agent-List</preset>
+    <preset layout="drawer">Open-Drawer</preset>
+    <preset layout="homelayout">HomeLayout</preset>
+    <preset layout="homelayoutA">SilverLine-Layout</preset>
+    <preset layout="Dvenue">Dvenue</preset>
+    <preset layout="twoColumnLayout">Components,Generate-Json,Menu,ITEM,CATEGORY,LOGIN,UPDATE-ITEM,UNIT,Kitchen-Report,ORDERED-ITEMS,ORDERED-ITEM,CUSTOMER-REPORT,Restro-Table,TABLE-INFO,CURRENT-ORDER,CURRENCY,AccountGroup,AccountSubGroup,ROOM,DashBoard,Restaurent-part,LoyaltyMembership,PickOrderView,ROIItem,Sales-Bill,BakeryCafe,CustomerCredit,ComplementaryItems,Kitchen-Order,Home,DASHBOARD,Start</preset>
+    <preset layout="Testt">Testt</preset>
+    <preset layout="License">LiscenceExpired,FrontPage</preset>
+    <preset layout="LandingPage">Test-Page,Landing-Page,Dashboard-Menu</preset>
+    <preset layout="Customer">Customer-Details</preset>
+    <preset layout="Frontpage">Add-Vendor,Vendor-Details,Generate-Bills,Unpaid-Bills,Dinning,Merge-Table,Close-Day,Cafe,CostCenter,CBMS,BILLING-TERM,Billing-Term,Bar,Bakery-Cafe,Financial-Account,Temporary-Voucher-Entry,Veried-Voucher-Entry,General-Ledger,Trail-Balance,Profit-Loss,Balance-Sheet,Transaction-Report,Transaction-Detail-Report,Setting,Provider-List,Membership-Form,Store,Table-Info,Restro-Rooms,Room-Types,Cost-Center,Fiscal-Year-Settings,Restro-Help,Inventory,Item-Unit,Issue,Goods-Receive,Item,Opening-Balance,Stock-Report,Adjustment,Item-Categories,Combo-Pack,Consumption-Report,Purchase-Reports,Adjustment-Reports,Item-Ingredient,Item-COGS,Extra-Item,Recquistions,MainRecquistion,VerificationReport,RecquistionSlip,Report,Sales-Item-Record,CusReport,VaultReport,Sales-Report,Cancelled-Bill-Reports,Customer-Balance,Order-Cancellation-Report,Order-Cancel-Report,Vendor-Report,Closing-Report,Item-Sales-Report,Vendor-Balance,Credit-Pay-Report,Complementary--Report,Ordered-Items-Report,Providers-Report,Cost-Center-Report,Sales-Book,Materialized-Report,Activity-Log,Export-Table,Sales-Returned-Book,House-Keeping,House-Keepings,Out-of-Order,Lost-and-Found,Lnf-Report,Out-of-Order-Report,Accounting,Voucher-Type,Company-Info,Lost-and-Found-Report,Generate-Bill,Add-Customer,Vendor-List,Customer-List,Main-Requisition,Requisition-Slip,Requisitions,Verification-Report,Menu-Item,Ingredient-Item,DB-Backup,CloseDay,Beverage-Item,Call-Waiter-Test,Merge-Table-Test,User-Profile,Call-Waiter,Sales-Summary-Report,Item-Shift-Report,Report-Item-Sales,Pizza,Menu-Ingredient,Ingredients,Lost-n-Found,Item-Ledger,Production-House,Production-List,Point-Scheme,Discount-Coupon-Report,PurchaseReturn,Goods-Receive-Report,Purchase-Return,Billing,Issue-Report,PurchaseBook,Purchase-Book,Verified-Voucher-Entry,Table-Reservation,Table-Reservation-Report,Close-Day-Report,Order-Detail-Report,RoomBooking-Report,Room-Booking-Report,Globalization-Menu,Food-Delivery,Delivery-Details,LoyalityCardType,Loyality-CardType,Employee,Daily-Item-Profit,Cost-Center-Discount,Retail,Invoice,Bakery,Bakery-Order,Bakery-Billing,Retail-Invoice,Trade-Billing,Wholesale-Invoice,Cost-Centers,Customer-Aging-Report,Vendor-Aging-Report,Whole-Sale,Sales-Return,Purchase,KOT,BOT,POS</preset>
+    <preset layout="DanfeLayout">RestroLayout</preset>
+    <preset layout="ShortcutLanding">Dashboard</preset>
+  </layout>
+  <theme>default</theme>
+  <width>fluid</width>
+</pagepreset>

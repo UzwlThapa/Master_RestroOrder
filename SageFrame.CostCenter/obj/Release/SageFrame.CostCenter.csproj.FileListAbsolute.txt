@@ -1,0 +1,371 @@
+E:\Projects\restroorder_inventory\RestroOrder\SageFrame.CostCenter\bin\Release\SageFrame.CostCenter.dll
+E:\Projects\restroorder_inventory\RestroOrder\SageFrame.CostCenter\bin\Release\SageFrame.CostCenter.pdb
+E:\Projects\restroorder_inventory\RestroOrder\SageFrame.CostCenter\bin\Release\SageFrame.Common.dll
+E:\Projects\restroorder_inventory\RestroOrder\SageFrame.CostCenter\bin\Release\SageFrame.Security.dll
+E:\Projects\restroorder_inventory\RestroOrder\SageFrame.CostCenter\bin\Release\SageFrame.Common.pdb
+E:\Projects\restroorder_inventory\RestroOrder\SageFrame.CostCenter\bin\Release\SageFrame.Security.pdb
+E:\Projects\restroorder_inventory\RestroOrder\SageFrame.CostCenter\obj\Release\SageFrame.CostCenter.csprojResolveAssemblyReference.cache
+E:\Projects\restroorder_inventory\RestroOrder\SageFrame.CostCenter\obj\Release\SageFrame.CostCenter.dll
+E:\Projects\restroorder_inventory\RestroOrder\SageFrame.CostCenter\obj\Release\SageFrame.CostCenter.pdb
+F:\Roman\Restro_Order\restroorder\SageFrame.CostCenter\bin\Release\SageFrame.CostCenter.dll
+F:\Roman\Restro_Order\restroorder\SageFrame.CostCenter\bin\Release\SageFrame.CostCenter.pdb
+F:\Roman\Restro_Order\restroorder\SageFrame.CostCenter\bin\Release\SageFrame.Common.dll
+F:\Roman\Restro_Order\restroorder\SageFrame.CostCenter\bin\Release\SageFrame.Security.dll
+F:\Roman\Restro_Order\restroorder\SageFrame.CostCenter\bin\Release\SageFrame.Common.pdb
+F:\Roman\Restro_Order\restroorder\SageFrame.CostCenter\bin\Release\SageFrame.Security.pdb
+F:\Roman\Restro_Order\restroorder\SageFrame.CostCenter\obj\Release\SageFrame.CostCenter.csprojResolveAssemblyReference.cache
+F:\Roman\Restro_Order\restroorder\SageFrame.CostCenter\obj\Release\SageFrame.CostCenter.dll
+F:\Roman\Restro_Order\restroorder\SageFrame.CostCenter\obj\Release\SageFrame.CostCenter.pdb
+E:\gitProject\New folder\restroorder\SageFrame.CostCenter\bin\Release\SageFrame.CostCenter.dll
+E:\gitProject\New folder\restroorder\SageFrame.CostCenter\bin\Release\SageFrame.CostCenter.pdb
+E:\gitProject\New folder\restroorder\SageFrame.CostCenter\bin\Release\SageFrame.Common.dll
+E:\gitProject\New folder\restroorder\SageFrame.CostCenter\bin\Release\SageFrame.Security.dll
+E:\gitProject\New folder\restroorder\SageFrame.CostCenter\bin\Release\SageFrame.Common.pdb
+E:\gitProject\New folder\restroorder\SageFrame.CostCenter\bin\Release\SageFrame.Security.pdb
+E:\gitProject\New folder\restroorder\SageFrame.CostCenter\obj\Release\SageFrame.CostCenter.csprojResolveAssemblyReference.cache
+E:\gitProject\New folder\restroorder\SageFrame.CostCenter\obj\Release\SageFrame.CostCenter.dll
+E:\gitProject\New folder\restroorder\SageFrame.CostCenter\obj\Release\SageFrame.CostCenter.pdb
+E:\Danfe Project\Git\restroorder\SageFrame.CostCenter\bin\Release\SageFrame.CostCenter.dll
+E:\Danfe Project\Git\restroorder\SageFrame.CostCenter\bin\Release\SageFrame.CostCenter.pdb
+E:\Danfe Project\Git\restroorder\SageFrame.CostCenter\bin\Release\SageFrame.Common.dll
+E:\Danfe Project\Git\restroorder\SageFrame.CostCenter\bin\Release\SageFrame.Security.dll
+E:\Danfe Project\Git\restroorder\SageFrame.CostCenter\bin\Release\SageFrame.Common.pdb
+E:\Danfe Project\Git\restroorder\SageFrame.CostCenter\bin\Release\SageFrame.Security.pdb
+E:\Danfe Project\Git\restroorder\SageFrame.CostCenter\obj\Release\SageFrame.CostCenter.csprojResolveAssemblyReference.cache
+E:\Danfe Project\Git\restroorder\SageFrame.CostCenter\obj\Release\SageFrame.CostCenter.dll
+E:\Danfe Project\Git\restroorder\SageFrame.CostCenter\obj\Release\SageFrame.CostCenter.pdb
+E:\roman\Restro\restroorder\SageFrame.CostCenter\bin\Release\SageFrame.CostCenter.dll
+E:\roman\Restro\restroorder\SageFrame.CostCenter\bin\Release\SageFrame.CostCenter.pdb
+E:\roman\Restro\restroorder\SageFrame.CostCenter\bin\Release\SageFrame.Common.dll
+E:\roman\Restro\restroorder\SageFrame.CostCenter\bin\Release\SageFrame.Security.dll
+E:\roman\Restro\restroorder\SageFrame.CostCenter\bin\Release\SageFrame.Common.pdb
+E:\roman\Restro\restroorder\SageFrame.CostCenter\bin\Release\SageFrame.Security.pdb
+E:\roman\Restro\restroorder\SageFrame.CostCenter\obj\Release\SageFrame.CostCenter.csprojResolveAssemblyReference.cache
+E:\roman\Restro\restroorder\SageFrame.CostCenter\obj\Release\SageFrame.CostCenter.dll
+E:\roman\Restro\restroorder\SageFrame.CostCenter\obj\Release\SageFrame.CostCenter.pdb
+E:\Projects\RestroOrder\restroorder\SageFrame.CostCenter\bin\Release\SageFrame.CostCenter.dll
+E:\Projects\RestroOrder\restroorder\SageFrame.CostCenter\bin\Release\SageFrame.CostCenter.pdb
+E:\Projects\RestroOrder\restroorder\SageFrame.CostCenter\bin\Release\SageFrame.Common.dll
+E:\Projects\RestroOrder\restroorder\SageFrame.CostCenter\bin\Release\SageFrame.Security.dll
+E:\Projects\RestroOrder\restroorder\SageFrame.CostCenter\bin\Release\SageFrame.Common.pdb
+E:\Projects\RestroOrder\restroorder\SageFrame.CostCenter\bin\Release\SageFrame.Security.pdb
+E:\Projects\RestroOrder\restroorder\SageFrame.CostCenter\obj\Release\SageFrame.CostCenter.csprojResolveAssemblyReference.cache
+E:\Projects\RestroOrder\restroorder\SageFrame.CostCenter\obj\Release\SageFrame.CostCenter.dll
+E:\Projects\RestroOrder\restroorder\SageFrame.CostCenter\obj\Release\SageFrame.CostCenter.pdb
+D:\Projects\RestroOder\restroorder\SageFrame.CostCenter\bin\Release\SageFrame.CostCenter.dll
+D:\Projects\RestroOder\restroorder\SageFrame.CostCenter\bin\Release\SageFrame.CostCenter.pdb
+D:\Projects\RestroOder\restroorder\SageFrame.CostCenter\bin\Release\SageFrame.Common.dll
+D:\Projects\RestroOder\restroorder\SageFrame.CostCenter\bin\Release\SageFrame.Core.dll
+D:\Projects\RestroOder\restroorder\SageFrame.CostCenter\bin\Release\SageFrame.Security.dll
+D:\Projects\RestroOder\restroorder\SageFrame.CostCenter\bin\Release\AjaxControlToolkit.dll
+D:\Projects\RestroOder\restroorder\SageFrame.CostCenter\bin\Release\SageFrame.Templating.dll
+D:\Projects\RestroOder\restroorder\SageFrame.CostCenter\bin\Release\SageFrame.CDN.dll
+D:\Projects\RestroOder\restroorder\SageFrame.CostCenter\bin\Release\ICSharpCode.SharpZipLib.dll
+D:\Projects\RestroOder\restroorder\SageFrame.CostCenter\bin\Release\Ionic.Zip.dll
+D:\Projects\RestroOder\restroorder\SageFrame.CostCenter\obj\Release\SageFrame.CostCenter.dll
+D:\Projects\RestroOder\restroorder\SageFrame.CostCenter\obj\Release\SageFrame.CostCenter.pdb
+E:\roman\Restro\restroorder\SageFrame.CostCenter\bin\Release\SageFrame.Core.dll
+E:\roman\Restro\restroorder\SageFrame.CostCenter\bin\Release\AjaxControlToolkit.dll
+E:\roman\Restro\restroorder\SageFrame.CostCenter\bin\Release\SageFrame.Templating.dll
+E:\roman\Restro\restroorder\SageFrame.CostCenter\bin\Release\SageFrame.CDN.dll
+E:\roman\Restro\restroorder\SageFrame.CostCenter\bin\Release\ICSharpCode.SharpZipLib.dll
+E:\roman\Restro\restroorder\SageFrame.CostCenter\bin\Release\Ionic.Zip.dll
+E:\Restro_Order\Developer\restroorder\SageFrame.CostCenter\bin\Release\SageFrame.CostCenter.dll
+E:\Restro_Order\Developer\restroorder\SageFrame.CostCenter\bin\Release\SageFrame.CostCenter.pdb
+E:\Restro_Order\Developer\restroorder\SageFrame.CostCenter\bin\Release\SageFrame.Common.dll
+E:\Restro_Order\Developer\restroorder\SageFrame.CostCenter\bin\Release\SageFrame.Core.dll
+E:\Restro_Order\Developer\restroorder\SageFrame.CostCenter\bin\Release\SageFrame.Security.dll
+E:\Restro_Order\Developer\restroorder\SageFrame.CostCenter\bin\Release\AjaxControlToolkit.dll
+E:\Restro_Order\Developer\restroorder\SageFrame.CostCenter\bin\Release\SageFrame.Templating.dll
+E:\Restro_Order\Developer\restroorder\SageFrame.CostCenter\bin\Release\SageFrame.CDN.dll
+E:\Restro_Order\Developer\restroorder\SageFrame.CostCenter\bin\Release\ICSharpCode.SharpZipLib.dll
+E:\Restro_Order\Developer\restroorder\SageFrame.CostCenter\bin\Release\Ionic.Zip.dll
+E:\Restro_Order\Developer\restroorder\SageFrame.CostCenter\bin\Release\SageFrame.Common.pdb
+E:\Restro_Order\Developer\restroorder\SageFrame.CostCenter\bin\Release\SageFrame.Security.pdb
+E:\Restro_Order\Developer\restroorder\SageFrame.CostCenter\obj\Release\SageFrame.CostCenter.csprojResolveAssemblyReference.cache
+E:\Restro_Order\Developer\restroorder\SageFrame.CostCenter\obj\Release\SageFrame.CostCenter.dll
+E:\Restro_Order\Developer\restroorder\SageFrame.CostCenter\obj\Release\SageFrame.CostCenter.pdb
+D:\Roman Workspace\Restro Order\restroorder\SageFrame.CostCenter\bin\Release\SageFrame.CostCenter.dll
+D:\Roman Workspace\Restro Order\restroorder\SageFrame.CostCenter\bin\Release\SageFrame.CostCenter.pdb
+D:\Roman Workspace\Restro Order\restroorder\SageFrame.CostCenter\bin\Release\SageFrame.Common.dll
+D:\Roman Workspace\Restro Order\restroorder\SageFrame.CostCenter\bin\Release\SageFrame.Core.dll
+D:\Roman Workspace\Restro Order\restroorder\SageFrame.CostCenter\bin\Release\SageFrame.Security.dll
+D:\Roman Workspace\Restro Order\restroorder\SageFrame.CostCenter\bin\Release\AjaxControlToolkit.dll
+D:\Roman Workspace\Restro Order\restroorder\SageFrame.CostCenter\bin\Release\SageFrame.Templating.dll
+D:\Roman Workspace\Restro Order\restroorder\SageFrame.CostCenter\bin\Release\SageFrame.CDN.dll
+D:\Roman Workspace\Restro Order\restroorder\SageFrame.CostCenter\bin\Release\ICSharpCode.SharpZipLib.dll
+D:\Roman Workspace\Restro Order\restroorder\SageFrame.CostCenter\bin\Release\Ionic.Zip.dll
+D:\Roman Workspace\Restro Order\restroorder\SageFrame.CostCenter\bin\Release\SageFrame.Common.pdb
+D:\Roman Workspace\Restro Order\restroorder\SageFrame.CostCenter\bin\Release\SageFrame.Security.pdb
+D:\Roman Workspace\Restro Order\restroorder\SageFrame.CostCenter\obj\Release\SageFrame.CostCenter.csprojResolveAssemblyReference.cache
+D:\Roman Workspace\Restro Order\restroorder\SageFrame.CostCenter\obj\Release\SageFrame.CostCenter.dll
+D:\Roman Workspace\Restro Order\restroorder\SageFrame.CostCenter\obj\Release\SageFrame.CostCenter.pdb
+D:\RestroOrder\developer\restroorder\SageFrame.CostCenter\bin\Release\SageFrame.CostCenter.dll
+D:\RestroOrder\developer\restroorder\SageFrame.CostCenter\bin\Release\SageFrame.CostCenter.pdb
+D:\RestroOrder\developer\restroorder\SageFrame.CostCenter\bin\Release\SageFrame.Common.dll
+D:\RestroOrder\developer\restroorder\SageFrame.CostCenter\bin\Release\SageFrame.Core.dll
+D:\RestroOrder\developer\restroorder\SageFrame.CostCenter\bin\Release\SageFrame.Security.dll
+D:\RestroOrder\developer\restroorder\SageFrame.CostCenter\bin\Release\AjaxControlToolkit.dll
+D:\RestroOrder\developer\restroorder\SageFrame.CostCenter\bin\Release\SageFrame.Templating.dll
+D:\RestroOrder\developer\restroorder\SageFrame.CostCenter\bin\Release\SageFrame.CDN.dll
+D:\RestroOrder\developer\restroorder\SageFrame.CostCenter\bin\Release\ICSharpCode.SharpZipLib.dll
+D:\RestroOrder\developer\restroorder\SageFrame.CostCenter\bin\Release\Ionic.Zip.dll
+D:\RestroOrder\developer\restroorder\SageFrame.CostCenter\bin\Release\SageFrame.Common.pdb
+D:\RestroOrder\developer\restroorder\SageFrame.CostCenter\bin\Release\SageFrame.Security.pdb
+D:\RestroOrder\developer\restroorder\SageFrame.CostCenter\obj\Release\SageFrame.CostCenter.csprojResolveAssemblyReference.cache
+D:\RestroOrder\developer\restroorder\SageFrame.CostCenter\obj\Release\SageFrame.CostCenter.dll
+D:\RestroOrder\developer\restroorder\SageFrame.CostCenter\obj\Release\SageFrame.CostCenter.pdb
+E:\Restro_Order\Dev\restroorder\SageFrame.CostCenter\bin\Release\SageFrame.CostCenter.dll
+E:\Restro_Order\Dev\restroorder\SageFrame.CostCenter\bin\Release\SageFrame.CostCenter.pdb
+E:\Restro_Order\Dev\restroorder\SageFrame.CostCenter\bin\Release\SageFrame.Common.dll
+E:\Restro_Order\Dev\restroorder\SageFrame.CostCenter\bin\Release\SageFrame.Core.dll
+E:\Restro_Order\Dev\restroorder\SageFrame.CostCenter\bin\Release\SageFrame.Security.dll
+E:\Restro_Order\Dev\restroorder\SageFrame.CostCenter\bin\Release\AjaxControlToolkit.dll
+E:\Restro_Order\Dev\restroorder\SageFrame.CostCenter\bin\Release\SageFrame.Templating.dll
+E:\Restro_Order\Dev\restroorder\SageFrame.CostCenter\bin\Release\SageFrame.CDN.dll
+E:\Restro_Order\Dev\restroorder\SageFrame.CostCenter\bin\Release\ICSharpCode.SharpZipLib.dll
+E:\Restro_Order\Dev\restroorder\SageFrame.CostCenter\bin\Release\Ionic.Zip.dll
+E:\Restro_Order\Dev\restroorder\SageFrame.CostCenter\bin\Release\SageFrame.Common.pdb
+E:\Restro_Order\Dev\restroorder\SageFrame.CostCenter\bin\Release\SageFrame.Security.pdb
+E:\Restro_Order\Dev\restroorder\SageFrame.CostCenter\obj\Release\SageFrame.CostCenter.csprojResolveAssemblyReference.cache
+E:\Restro_Order\Dev\restroorder\SageFrame.CostCenter\obj\Release\SageFrame.CostCenter.dll
+E:\Restro_Order\Dev\restroorder\SageFrame.CostCenter\obj\Release\SageFrame.CostCenter.pdb
+D:\Project\Binod\wholesale_restro\cakeorders\SageFrame.CostCenter\bin\Release\SageFrame.CostCenter.dll
+D:\Project\Binod\wholesale_restro\cakeorders\SageFrame.CostCenter\bin\Release\SageFrame.CostCenter.pdb
+D:\Project\Binod\wholesale_restro\cakeorders\SageFrame.CostCenter\bin\Release\SageFrame.Common.dll
+D:\Project\Binod\wholesale_restro\cakeorders\SageFrame.CostCenter\bin\Release\SageFrame.Core.dll
+D:\Project\Binod\wholesale_restro\cakeorders\SageFrame.CostCenter\bin\Release\SageFrame.Security.dll
+D:\Project\Binod\wholesale_restro\cakeorders\SageFrame.CostCenter\bin\Release\AjaxControlToolkit.dll
+D:\Project\Binod\wholesale_restro\cakeorders\SageFrame.CostCenter\bin\Release\SageFrame.Templating.dll
+D:\Project\Binod\wholesale_restro\cakeorders\SageFrame.CostCenter\bin\Release\SageFrame.CDN.dll
+D:\Project\Binod\wholesale_restro\cakeorders\SageFrame.CostCenter\bin\Release\ICSharpCode.SharpZipLib.dll
+D:\Project\Binod\wholesale_restro\cakeorders\SageFrame.CostCenter\bin\Release\Ionic.Zip.dll
+D:\Project\Binod\wholesale_restro\cakeorders\SageFrame.CostCenter\bin\Release\SageFrame.Common.pdb
+D:\Project\Binod\wholesale_restro\cakeorders\SageFrame.CostCenter\bin\Release\SageFrame.Security.pdb
+D:\Project\Binod\wholesale_restro\cakeorders\SageFrame.CostCenter\obj\Release\SageFrame.CostCenter.csprojResolveAssemblyReference.cache
+D:\Project\Binod\wholesale_restro\cakeorders\SageFrame.CostCenter\obj\Release\SageFrame.CostCenter.dll
+D:\Project\Binod\wholesale_restro\cakeorders\SageFrame.CostCenter\obj\Release\SageFrame.CostCenter.pdb
+D:\Project\Binod\Cake_orders20210219\cakeorders\SageFrame.CostCenter\bin\Release\SageFrame.CostCenter.dll
+D:\Project\Binod\Cake_orders20210219\cakeorders\SageFrame.CostCenter\bin\Release\SageFrame.CostCenter.pdb
+D:\Project\Binod\Cake_orders20210219\cakeorders\SageFrame.CostCenter\bin\Release\SageFrame.Common.dll
+D:\Project\Binod\Cake_orders20210219\cakeorders\SageFrame.CostCenter\bin\Release\SageFrame.Core.dll
+D:\Project\Binod\Cake_orders20210219\cakeorders\SageFrame.CostCenter\bin\Release\SageFrame.Security.dll
+D:\Project\Binod\Cake_orders20210219\cakeorders\SageFrame.CostCenter\bin\Release\AjaxControlToolkit.dll
+D:\Project\Binod\Cake_orders20210219\cakeorders\SageFrame.CostCenter\bin\Release\SageFrame.Templating.dll
+D:\Project\Binod\Cake_orders20210219\cakeorders\SageFrame.CostCenter\bin\Release\SageFrame.CDN.dll
+D:\Project\Binod\Cake_orders20210219\cakeorders\SageFrame.CostCenter\bin\Release\ICSharpCode.SharpZipLib.dll
+D:\Project\Binod\Cake_orders20210219\cakeorders\SageFrame.CostCenter\bin\Release\Ionic.Zip.dll
+D:\Project\Binod\Cake_orders20210219\cakeorders\SageFrame.CostCenter\bin\Release\SageFrame.Common.pdb
+D:\Project\Binod\Cake_orders20210219\cakeorders\SageFrame.CostCenter\bin\Release\SageFrame.Security.pdb
+D:\Project\Binod\Cake_orders20210219\cakeorders\SageFrame.CostCenter\obj\Release\SageFrame.CostCenter.csprojResolveAssemblyReference.cache
+D:\Project\Binod\Cake_orders20210219\cakeorders\SageFrame.CostCenter\obj\Release\SageFrame.CostCenter.dll
+D:\Project\Binod\Cake_orders20210219\cakeorders\SageFrame.CostCenter\obj\Release\SageFrame.CostCenter.pdb
+D:\My projects\CakeOrder\cakeorders\SageFrame.CostCenter\bin\Release\SageFrame.CostCenter.dll
+D:\My projects\CakeOrder\cakeorders\SageFrame.CostCenter\bin\Release\SageFrame.CostCenter.pdb
+D:\My projects\CakeOrder\cakeorders\SageFrame.CostCenter\bin\Release\SageFrame.Common.dll
+D:\My projects\CakeOrder\cakeorders\SageFrame.CostCenter\bin\Release\SageFrame.Core.dll
+D:\My projects\CakeOrder\cakeorders\SageFrame.CostCenter\bin\Release\SageFrame.Security.dll
+D:\My projects\CakeOrder\cakeorders\SageFrame.CostCenter\bin\Release\AjaxControlToolkit.dll
+D:\My projects\CakeOrder\cakeorders\SageFrame.CostCenter\bin\Release\SageFrame.Templating.dll
+D:\My projects\CakeOrder\cakeorders\SageFrame.CostCenter\bin\Release\SageFrame.CDN.dll
+D:\My projects\CakeOrder\cakeorders\SageFrame.CostCenter\bin\Release\ICSharpCode.SharpZipLib.dll
+D:\My projects\CakeOrder\cakeorders\SageFrame.CostCenter\bin\Release\Ionic.Zip.dll
+D:\My projects\CakeOrder\cakeorders\SageFrame.CostCenter\bin\Release\SageFrame.Common.pdb
+D:\My projects\CakeOrder\cakeorders\SageFrame.CostCenter\bin\Release\SageFrame.Security.pdb
+D:\My projects\CakeOrder\cakeorders\SageFrame.CostCenter\obj\Release\SageFrame.CostCenter.csprojResolveAssemblyReference.cache
+D:\My projects\CakeOrder\cakeorders\SageFrame.CostCenter\obj\Release\SageFrame.CostCenter.dll
+D:\My projects\CakeOrder\cakeorders\SageFrame.CostCenter\obj\Release\SageFrame.CostCenter.pdb
+D:\My projects\cakeorder-akuj\SageFrame.CostCenter\bin\Release\SageFrame.CostCenter.dll
+D:\My projects\cakeorder-akuj\SageFrame.CostCenter\bin\Release\SageFrame.CostCenter.pdb
+D:\My projects\cakeorder-akuj\SageFrame.CostCenter\bin\Release\SageFrame.Common.dll
+D:\My projects\cakeorder-akuj\SageFrame.CostCenter\bin\Release\SageFrame.Core.dll
+D:\My projects\cakeorder-akuj\SageFrame.CostCenter\bin\Release\SageFrame.Security.dll
+D:\My projects\cakeorder-akuj\SageFrame.CostCenter\bin\Release\AjaxControlToolkit.dll
+D:\My projects\cakeorder-akuj\SageFrame.CostCenter\bin\Release\SageFrame.Templating.dll
+D:\My projects\cakeorder-akuj\SageFrame.CostCenter\bin\Release\SageFrame.CDN.dll
+D:\My projects\cakeorder-akuj\SageFrame.CostCenter\bin\Release\ICSharpCode.SharpZipLib.dll
+D:\My projects\cakeorder-akuj\SageFrame.CostCenter\bin\Release\Ionic.Zip.dll
+D:\My projects\cakeorder-akuj\SageFrame.CostCenter\bin\Release\SageFrame.Common.pdb
+D:\My projects\cakeorder-akuj\SageFrame.CostCenter\bin\Release\SageFrame.Security.pdb
+D:\My projects\cakeorder-akuj\SageFrame.CostCenter\obj\Release\SageFrame.CostCenter.csprojResolveAssemblyReference.cache
+D:\My projects\cakeorder-akuj\SageFrame.CostCenter\obj\Release\SageFrame.CostCenter.dll
+D:\My projects\cakeorder-akuj\SageFrame.CostCenter\obj\Release\SageFrame.CostCenter.pdb
+D:\Projects\akuj_kot_bot\SageFrame.CostCenter\bin\Release\SageFrame.CostCenter.dll
+D:\Projects\akuj_kot_bot\SageFrame.CostCenter\bin\Release\SageFrame.CostCenter.pdb
+D:\Projects\akuj_kot_bot\SageFrame.CostCenter\bin\Release\SageFrame.Common.dll
+D:\Projects\akuj_kot_bot\SageFrame.CostCenter\bin\Release\SageFrame.Core.dll
+D:\Projects\akuj_kot_bot\SageFrame.CostCenter\bin\Release\SageFrame.Security.dll
+D:\Projects\akuj_kot_bot\SageFrame.CostCenter\bin\Release\AjaxControlToolkit.dll
+D:\Projects\akuj_kot_bot\SageFrame.CostCenter\bin\Release\SageFrame.Templating.dll
+D:\Projects\akuj_kot_bot\SageFrame.CostCenter\bin\Release\SageFrame.CDN.dll
+D:\Projects\akuj_kot_bot\SageFrame.CostCenter\bin\Release\ICSharpCode.SharpZipLib.dll
+D:\Projects\akuj_kot_bot\SageFrame.CostCenter\bin\Release\Ionic.Zip.dll
+D:\Projects\akuj_kot_bot\SageFrame.CostCenter\bin\Release\SageFrame.Common.pdb
+D:\Projects\akuj_kot_bot\SageFrame.CostCenter\bin\Release\SageFrame.Security.pdb
+D:\Projects\akuj_kot_bot\SageFrame.CostCenter\obj\Release\SageFrame.CostCenter.csprojResolveAssemblyReference.cache
+D:\Projects\akuj_kot_bot\SageFrame.CostCenter\obj\Release\SageFrame.CostCenter.dll
+D:\Projects\akuj_kot_bot\SageFrame.CostCenter\obj\Release\SageFrame.CostCenter.pdb
+G:\Development\RestroOrderSource-2023-01-08\restro_master\SageFrame.CostCenter\bin\Release\SageFrame.CostCenter.dll
+G:\Development\RestroOrderSource-2023-01-08\restro_master\SageFrame.CostCenter\bin\Release\SageFrame.CostCenter.pdb
+G:\Development\RestroOrderSource-2023-01-08\restro_master\SageFrame.CostCenter\bin\Release\SageFrame.Common.dll
+G:\Development\RestroOrderSource-2023-01-08\restro_master\SageFrame.CostCenter\bin\Release\SageFrame.Core.dll
+G:\Development\RestroOrderSource-2023-01-08\restro_master\SageFrame.CostCenter\bin\Release\SageFrame.Security.dll
+G:\Development\RestroOrderSource-2023-01-08\restro_master\SageFrame.CostCenter\bin\Release\AjaxControlToolkit.dll
+G:\Development\RestroOrderSource-2023-01-08\restro_master\SageFrame.CostCenter\bin\Release\SageFrame.Templating.dll
+G:\Development\RestroOrderSource-2023-01-08\restro_master\SageFrame.CostCenter\bin\Release\SageFrame.CDN.dll
+G:\Development\RestroOrderSource-2023-01-08\restro_master\SageFrame.CostCenter\bin\Release\ICSharpCode.SharpZipLib.dll
+G:\Development\RestroOrderSource-2023-01-08\restro_master\SageFrame.CostCenter\bin\Release\Ionic.Zip.dll
+G:\Development\RestroOrderSource-2023-01-08\restro_master\SageFrame.CostCenter\bin\Release\SageFrame.Common.pdb
+G:\Development\RestroOrderSource-2023-01-08\restro_master\SageFrame.CostCenter\bin\Release\SageFrame.Security.pdb
+G:\Development\RestroOrderSource-2023-01-08\restro_master\SageFrame.CostCenter\obj\Release\SageFrame.CostCenter.csproj.AssemblyReference.cache
+G:\Development\RestroOrderSource-2023-01-08\restro_master\SageFrame.CostCenter\obj\Release\SageFrame.CostCenter.csproj.CoreCompileInputs.cache
+G:\Development\RestroOrderSource-2023-01-08\restro_master\SageFrame.CostCenter\obj\Release\SageFrame.CostCenter.csproj.CopyComplete
+G:\Development\RestroOrderSource-2023-01-08\restro_master\SageFrame.CostCenter\obj\Release\SageFrame.CostCenter.dll
+G:\Development\RestroOrderSource-2023-01-08\restro_master\SageFrame.CostCenter\obj\Release\SageFrame.CostCenter.pdb
+G:\Development\RestroMasterV3\RestroOrderSource-2023-01-17\restro_master\SageFrame.CostCenter\bin\Release\SageFrame.CostCenter.dll
+G:\Development\RestroMasterV3\RestroOrderSource-2023-01-17\restro_master\SageFrame.CostCenter\bin\Release\SageFrame.CostCenter.pdb
+G:\Development\RestroMasterV3\RestroOrderSource-2023-01-17\restro_master\SageFrame.CostCenter\bin\Release\SageFrame.Common.dll
+G:\Development\RestroMasterV3\RestroOrderSource-2023-01-17\restro_master\SageFrame.CostCenter\bin\Release\SageFrame.Core.dll
+G:\Development\RestroMasterV3\RestroOrderSource-2023-01-17\restro_master\SageFrame.CostCenter\bin\Release\SageFrame.Security.dll
+G:\Development\RestroMasterV3\RestroOrderSource-2023-01-17\restro_master\SageFrame.CostCenter\bin\Release\AjaxControlToolkit.dll
+G:\Development\RestroMasterV3\RestroOrderSource-2023-01-17\restro_master\SageFrame.CostCenter\bin\Release\SageFrame.Templating.dll
+G:\Development\RestroMasterV3\RestroOrderSource-2023-01-17\restro_master\SageFrame.CostCenter\bin\Release\SageFrame.CDN.dll
+G:\Development\RestroMasterV3\RestroOrderSource-2023-01-17\restro_master\SageFrame.CostCenter\bin\Release\ICSharpCode.SharpZipLib.dll
+G:\Development\RestroMasterV3\RestroOrderSource-2023-01-17\restro_master\SageFrame.CostCenter\bin\Release\Ionic.Zip.dll
+G:\Development\RestroMasterV3\RestroOrderSource-2023-01-17\restro_master\SageFrame.CostCenter\bin\Release\SageFrame.Common.pdb
+G:\Development\RestroMasterV3\RestroOrderSource-2023-01-17\restro_master\SageFrame.CostCenter\bin\Release\SageFrame.Security.pdb
+G:\Development\RestroMasterV3\RestroOrderSource-2023-01-17\restro_master\SageFrame.CostCenter\obj\Release\SageFrame.CostCenter.csproj.AssemblyReference.cache
+G:\Development\RestroMasterV3\RestroOrderSource-2023-01-17\restro_master\SageFrame.CostCenter\obj\Release\SageFrame.CostCenter.csproj.CoreCompileInputs.cache
+G:\Development\RestroMasterV3\RestroOrderSource-2023-01-17\restro_master\SageFrame.CostCenter\obj\Release\SageFrame.CostCenter.csproj.CopyComplete
+G:\Development\RestroMasterV3\RestroOrderSource-2023-01-17\restro_master\SageFrame.CostCenter\obj\Release\SageFrame.CostCenter.dll
+G:\Development\RestroMasterV3\RestroOrderSource-2023-01-17\restro_master\SageFrame.CostCenter\obj\Release\SageFrame.CostCenter.pdb
+G:\Development\RestroOrder20230214Source\restro_master\SageFrame.CostCenter\bin\Release\SageFrame.CostCenter.dll
+G:\Development\RestroOrder20230214Source\restro_master\SageFrame.CostCenter\bin\Release\SageFrame.CostCenter.pdb
+G:\Development\RestroOrder20230214Source\restro_master\SageFrame.CostCenter\bin\Release\SageFrame.Common.dll
+G:\Development\RestroOrder20230214Source\restro_master\SageFrame.CostCenter\bin\Release\SageFrame.Core.dll
+G:\Development\RestroOrder20230214Source\restro_master\SageFrame.CostCenter\bin\Release\SageFrame.Security.dll
+G:\Development\RestroOrder20230214Source\restro_master\SageFrame.CostCenter\bin\Release\AjaxControlToolkit.dll
+G:\Development\RestroOrder20230214Source\restro_master\SageFrame.CostCenter\bin\Release\SageFrame.Templating.dll
+G:\Development\RestroOrder20230214Source\restro_master\SageFrame.CostCenter\bin\Release\SageFrame.CDN.dll
+G:\Development\RestroOrder20230214Source\restro_master\SageFrame.CostCenter\bin\Release\ICSharpCode.SharpZipLib.dll
+G:\Development\RestroOrder20230214Source\restro_master\SageFrame.CostCenter\bin\Release\Ionic.Zip.dll
+G:\Development\RestroOrder20230214Source\restro_master\SageFrame.CostCenter\bin\Release\SageFrame.Common.pdb
+G:\Development\RestroOrder20230214Source\restro_master\SageFrame.CostCenter\bin\Release\SageFrame.Security.pdb
+G:\Development\RestroOrder20230214Source\restro_master\SageFrame.CostCenter\obj\Release\SageFrame.CostCenter.csproj.AssemblyReference.cache
+G:\Development\RestroOrder20230214Source\restro_master\SageFrame.CostCenter\obj\Release\SageFrame.CostCenter.csproj.CoreCompileInputs.cache
+G:\Development\RestroOrder20230214Source\restro_master\SageFrame.CostCenter\obj\Release\SageFrame.CostCenter.csproj.CopyComplete
+G:\Development\RestroOrder20230214Source\restro_master\SageFrame.CostCenter\obj\Release\SageFrame.CostCenter.dll
+G:\Development\RestroOrder20230214Source\restro_master\SageFrame.CostCenter\obj\Release\SageFrame.CostCenter.pdb
+G:\Development\RestroOrderSource-2023-02-14\restro_master\SageFrame.CostCenter\bin\Release\SageFrame.CostCenter.dll
+G:\Development\RestroOrderSource-2023-02-14\restro_master\SageFrame.CostCenter\bin\Release\SageFrame.CostCenter.pdb
+G:\Development\RestroOrderSource-2023-02-14\restro_master\SageFrame.CostCenter\bin\Release\SageFrame.Common.dll
+G:\Development\RestroOrderSource-2023-02-14\restro_master\SageFrame.CostCenter\bin\Release\SageFrame.Core.dll
+G:\Development\RestroOrderSource-2023-02-14\restro_master\SageFrame.CostCenter\bin\Release\SageFrame.Security.dll
+G:\Development\RestroOrderSource-2023-02-14\restro_master\SageFrame.CostCenter\bin\Release\AjaxControlToolkit.dll
+G:\Development\RestroOrderSource-2023-02-14\restro_master\SageFrame.CostCenter\bin\Release\SageFrame.Templating.dll
+G:\Development\RestroOrderSource-2023-02-14\restro_master\SageFrame.CostCenter\bin\Release\SageFrame.CDN.dll
+G:\Development\RestroOrderSource-2023-02-14\restro_master\SageFrame.CostCenter\bin\Release\ICSharpCode.SharpZipLib.dll
+G:\Development\RestroOrderSource-2023-02-14\restro_master\SageFrame.CostCenter\bin\Release\Ionic.Zip.dll
+G:\Development\RestroOrderSource-2023-02-14\restro_master\SageFrame.CostCenter\bin\Release\SageFrame.Common.pdb
+G:\Development\RestroOrderSource-2023-02-14\restro_master\SageFrame.CostCenter\bin\Release\SageFrame.Security.pdb
+G:\Development\RestroOrderSource-2023-02-14\restro_master\SageFrame.CostCenter\obj\Release\SageFrame.CostCenter.csproj.AssemblyReference.cache
+G:\Development\RestroOrderSource-2023-02-14\restro_master\SageFrame.CostCenter\obj\Release\SageFrame.CostCenter.csproj.CoreCompileInputs.cache
+G:\Development\RestroOrderSource-2023-02-14\restro_master\SageFrame.CostCenter\obj\Release\SageFrame.CostCenter.csproj.CopyComplete
+G:\Development\RestroOrderSource-2023-02-14\restro_master\SageFrame.CostCenter\obj\Release\SageFrame.CostCenter.dll
+G:\Development\RestroOrderSource-2023-02-14\restro_master\SageFrame.CostCenter\obj\Release\SageFrame.CostCenter.pdb
+E:\Development-Shree\RestroOrderSource-Master-2023-07-19\restro_master\SageFrame.CostCenter\bin\Release\SageFrame.CostCenter.dll
+E:\Development-Shree\RestroOrderSource-Master-2023-07-19\restro_master\SageFrame.CostCenter\bin\Release\SageFrame.CostCenter.pdb
+E:\Development-Shree\RestroOrderSource-Master-2023-07-19\restro_master\SageFrame.CostCenter\bin\Release\SageFrame.Common.dll
+E:\Development-Shree\RestroOrderSource-Master-2023-07-19\restro_master\SageFrame.CostCenter\bin\Release\SageFrame.Core.dll
+E:\Development-Shree\RestroOrderSource-Master-2023-07-19\restro_master\SageFrame.CostCenter\bin\Release\SageFrame.Security.dll
+E:\Development-Shree\RestroOrderSource-Master-2023-07-19\restro_master\SageFrame.CostCenter\bin\Release\AjaxControlToolkit.dll
+E:\Development-Shree\RestroOrderSource-Master-2023-07-19\restro_master\SageFrame.CostCenter\bin\Release\SageFrame.Templating.dll
+E:\Development-Shree\RestroOrderSource-Master-2023-07-19\restro_master\SageFrame.CostCenter\bin\Release\SageFrame.CDN.dll
+E:\Development-Shree\RestroOrderSource-Master-2023-07-19\restro_master\SageFrame.CostCenter\bin\Release\ICSharpCode.SharpZipLib.dll
+E:\Development-Shree\RestroOrderSource-Master-2023-07-19\restro_master\SageFrame.CostCenter\bin\Release\Ionic.Zip.dll
+E:\Development-Shree\RestroOrderSource-Master-2023-07-19\restro_master\SageFrame.CostCenter\bin\Release\SageFrame.Security.pdb
+E:\Development-Shree\RestroOrderSource-Master-2023-07-19\restro_master\SageFrame.CostCenter\obj\Release\SageFrame.CostCenter.csproj.AssemblyReference.cache
+E:\Development-Shree\RestroOrderSource-Master-2023-07-19\restro_master\SageFrame.CostCenter\obj\Release\SageFrame.CostCenter.csproj.CoreCompileInputs.cache
+E:\Development-Shree\RestroOrderSource-Master-2023-07-19\restro_master\SageFrame.CostCenter\obj\Release\SageFrame.CostCenter.csproj.CopyComplete
+E:\Development-Shree\RestroOrderSource-Master-2023-07-19\restro_master\SageFrame.CostCenter\obj\Release\SageFrame.CostCenter.dll
+E:\Development-Shree\RestroOrderSource-Master-2023-07-19\restro_master\SageFrame.CostCenter\obj\Release\SageFrame.CostCenter.pdb
+E:\Development-Shree\RestroOrder-Merge-2023-07-26\restro_master\SageFrame.CostCenter\bin\Release\SageFrame.CostCenter.dll
+E:\Development-Shree\RestroOrder-Merge-2023-07-26\restro_master\SageFrame.CostCenter\bin\Release\SageFrame.CostCenter.pdb
+E:\Development-Shree\RestroOrder-Merge-2023-07-26\restro_master\SageFrame.CostCenter\bin\Release\SageFrame.Common.dll
+E:\Development-Shree\RestroOrder-Merge-2023-07-26\restro_master\SageFrame.CostCenter\bin\Release\SageFrame.Core.dll
+E:\Development-Shree\RestroOrder-Merge-2023-07-26\restro_master\SageFrame.CostCenter\bin\Release\SageFrame.Security.dll
+E:\Development-Shree\RestroOrder-Merge-2023-07-26\restro_master\SageFrame.CostCenter\bin\Release\AjaxControlToolkit.dll
+E:\Development-Shree\RestroOrder-Merge-2023-07-26\restro_master\SageFrame.CostCenter\bin\Release\SageFrame.Templating.dll
+E:\Development-Shree\RestroOrder-Merge-2023-07-26\restro_master\SageFrame.CostCenter\bin\Release\SageFrame.CDN.dll
+E:\Development-Shree\RestroOrder-Merge-2023-07-26\restro_master\SageFrame.CostCenter\bin\Release\ICSharpCode.SharpZipLib.dll
+E:\Development-Shree\RestroOrder-Merge-2023-07-26\restro_master\SageFrame.CostCenter\bin\Release\Ionic.Zip.dll
+E:\Development-Shree\RestroOrder-Merge-2023-07-26\restro_master\SageFrame.CostCenter\bin\Release\SageFrame.Security.pdb
+E:\Development-Shree\RestroOrder-Merge-2023-07-26\restro_master\SageFrame.CostCenter\obj\Release\SageFrame.CostCenter.csproj.AssemblyReference.cache
+E:\Development-Shree\RestroOrder-Merge-2023-07-26\restro_master\SageFrame.CostCenter\obj\Release\SageFrame.CostCenter.csproj.CoreCompileInputs.cache
+E:\Development-Shree\RestroOrder-Merge-2023-07-26\restro_master\SageFrame.CostCenter\obj\Release\SageFrame.CostCenter.csproj.CopyComplete
+E:\Development-Shree\RestroOrder-Merge-2023-07-26\restro_master\SageFrame.CostCenter\obj\Release\SageFrame.CostCenter.dll
+E:\Development-Shree\RestroOrder-Merge-2023-07-26\restro_master\SageFrame.CostCenter\obj\Release\SageFrame.CostCenter.pdb
+G:\Development\RestroOrderSource-2023-02-14\RestroOrderSource-2023-08-01\restro_master\SageFrame.CostCenter\bin\Release\SageFrame.CostCenter.dll
+G:\Development\RestroOrderSource-2023-02-14\RestroOrderSource-2023-08-01\restro_master\SageFrame.CostCenter\bin\Release\SageFrame.CostCenter.pdb
+G:\Development\RestroOrderSource-2023-02-14\RestroOrderSource-2023-08-01\restro_master\SageFrame.CostCenter\bin\Release\SageFrame.Common.dll
+G:\Development\RestroOrderSource-2023-02-14\RestroOrderSource-2023-08-01\restro_master\SageFrame.CostCenter\bin\Release\SageFrame.Core.dll
+G:\Development\RestroOrderSource-2023-02-14\RestroOrderSource-2023-08-01\restro_master\SageFrame.CostCenter\bin\Release\SageFrame.Security.dll
+G:\Development\RestroOrderSource-2023-02-14\RestroOrderSource-2023-08-01\restro_master\SageFrame.CostCenter\bin\Release\AjaxControlToolkit.dll
+G:\Development\RestroOrderSource-2023-02-14\RestroOrderSource-2023-08-01\restro_master\SageFrame.CostCenter\bin\Release\SageFrame.Templating.dll
+G:\Development\RestroOrderSource-2023-02-14\RestroOrderSource-2023-08-01\restro_master\SageFrame.CostCenter\bin\Release\SageFrame.CDN.dll
+G:\Development\RestroOrderSource-2023-02-14\RestroOrderSource-2023-08-01\restro_master\SageFrame.CostCenter\bin\Release\ICSharpCode.SharpZipLib.dll
+G:\Development\RestroOrderSource-2023-02-14\RestroOrderSource-2023-08-01\restro_master\SageFrame.CostCenter\bin\Release\Ionic.Zip.dll
+G:\Development\RestroOrderSource-2023-02-14\RestroOrderSource-2023-08-01\restro_master\SageFrame.CostCenter\bin\Release\SageFrame.Security.pdb
+G:\Development\RestroOrderSource-2023-02-14\RestroOrderSource-2023-08-01\restro_master\SageFrame.CostCenter\obj\Release\SageFrame.CostCenter.csproj.AssemblyReference.cache
+G:\Development\RestroOrderSource-2023-02-14\RestroOrderSource-2023-08-01\restro_master\SageFrame.CostCenter\obj\Release\SageFrame.CostCenter.csproj.CoreCompileInputs.cache
+G:\Development\RestroOrderSource-2023-02-14\RestroOrderSource-2023-08-01\restro_master\SageFrame.CostCenter\obj\Release\SageFrame.CostCenter.csproj.CopyComplete
+G:\Development\RestroOrderSource-2023-02-14\RestroOrderSource-2023-08-01\restro_master\SageFrame.CostCenter\obj\Release\SageFrame.CostCenter.dll
+G:\Development\RestroOrderSource-2023-02-14\RestroOrderSource-2023-08-01\restro_master\SageFrame.CostCenter\obj\Release\SageFrame.CostCenter.pdb
+G:\GITDevelopment\Bishal-Raj-Parajuli\RestroOrder_Master\SageFrame.CostCenter\bin\Release\SageFrame.CostCenter.dll
+G:\GITDevelopment\Bishal-Raj-Parajuli\RestroOrder_Master\SageFrame.CostCenter\bin\Release\SageFrame.CostCenter.pdb
+G:\GITDevelopment\Bishal-Raj-Parajuli\RestroOrder_Master\SageFrame.CostCenter\bin\Release\SageFrame.Common.dll
+G:\GITDevelopment\Bishal-Raj-Parajuli\RestroOrder_Master\SageFrame.CostCenter\bin\Release\SageFrame.Core.dll
+G:\GITDevelopment\Bishal-Raj-Parajuli\RestroOrder_Master\SageFrame.CostCenter\bin\Release\SageFrame.Security.dll
+G:\GITDevelopment\Bishal-Raj-Parajuli\RestroOrder_Master\SageFrame.CostCenter\bin\Release\AjaxControlToolkit.dll
+G:\GITDevelopment\Bishal-Raj-Parajuli\RestroOrder_Master\SageFrame.CostCenter\bin\Release\SageFrame.Templating.dll
+G:\GITDevelopment\Bishal-Raj-Parajuli\RestroOrder_Master\SageFrame.CostCenter\bin\Release\SageFrame.CDN.dll
+G:\GITDevelopment\Bishal-Raj-Parajuli\RestroOrder_Master\SageFrame.CostCenter\bin\Release\ICSharpCode.SharpZipLib.dll
+G:\GITDevelopment\Bishal-Raj-Parajuli\RestroOrder_Master\SageFrame.CostCenter\bin\Release\Ionic.Zip.dll
+G:\GITDevelopment\Bishal-Raj-Parajuli\RestroOrder_Master\SageFrame.CostCenter\bin\Release\SageFrame.Security.pdb
+G:\GITDevelopment\Bishal-Raj-Parajuli\RestroOrder_Master\SageFrame.CostCenter\obj\Release\SageFrame.CostCenter.csproj.AssemblyReference.cache
+G:\GITDevelopment\Bishal-Raj-Parajuli\RestroOrder_Master\SageFrame.CostCenter\obj\Release\SageFrame.CostCenter.csproj.CoreCompileInputs.cache
+G:\GITDevelopment\Bishal-Raj-Parajuli\RestroOrder_Master\SageFrame.CostCenter\obj\Release\SageFrame.CostCenter.csproj.CopyComplete
+G:\GITDevelopment\Bishal-Raj-Parajuli\RestroOrder_Master\SageFrame.CostCenter\obj\Release\SageFrame.CostCenter.dll
+G:\GITDevelopment\Bishal-Raj-Parajuli\RestroOrder_Master\SageFrame.CostCenter\obj\Release\SageFrame.CostCenter.pdb
+G:\GITDevelopment\Master_RestroOrder\SageFrame.CostCenter\bin\Release\SageFrame.CostCenter.dll
+G:\GITDevelopment\Master_RestroOrder\SageFrame.CostCenter\bin\Release\SageFrame.CostCenter.pdb
+G:\GITDevelopment\Master_RestroOrder\SageFrame.CostCenter\bin\Release\SageFrame.Common.dll
+G:\GITDevelopment\Master_RestroOrder\SageFrame.CostCenter\bin\Release\SageFrame.Core.dll
+G:\GITDevelopment\Master_RestroOrder\SageFrame.CostCenter\bin\Release\SageFrame.Security.dll
+G:\GITDevelopment\Master_RestroOrder\SageFrame.CostCenter\bin\Release\AjaxControlToolkit.dll
+G:\GITDevelopment\Master_RestroOrder\SageFrame.CostCenter\bin\Release\SageFrame.Templating.dll
+G:\GITDevelopment\Master_RestroOrder\SageFrame.CostCenter\bin\Release\SageFrame.CDN.dll
+G:\GITDevelopment\Master_RestroOrder\SageFrame.CostCenter\bin\Release\ICSharpCode.SharpZipLib.dll
+G:\GITDevelopment\Master_RestroOrder\SageFrame.CostCenter\bin\Release\Ionic.Zip.dll
+G:\GITDevelopment\Master_RestroOrder\SageFrame.CostCenter\bin\Release\SageFrame.Security.pdb
+G:\GITDevelopment\Master_RestroOrder\SageFrame.CostCenter\obj\Release\SageFrame.CostCenter.csproj.AssemblyReference.cache
+G:\GITDevelopment\Master_RestroOrder\SageFrame.CostCenter\obj\Release\SageFrame.CostCenter.csproj.CoreCompileInputs.cache
+G:\GITDevelopment\Master_RestroOrder\SageFrame.CostCenter\obj\Release\SageFrame.CostCenter.csproj.CopyComplete
+G:\GITDevelopment\Master_RestroOrder\SageFrame.CostCenter\obj\Release\SageFrame.CostCenter.dll
+G:\GITDevelopment\Master_RestroOrder\SageFrame.CostCenter\obj\Release\SageFrame.CostCenter.pdb
+G:\GITDevelopment\Chicken\SageFrame.CostCenter\bin\Release\SageFrame.CostCenter.dll
+G:\GITDevelopment\Chicken\SageFrame.CostCenter\bin\Release\SageFrame.CostCenter.pdb
+G:\GITDevelopment\Chicken\SageFrame.CostCenter\bin\Release\SageFrame.Common.dll
+G:\GITDevelopment\Chicken\SageFrame.CostCenter\bin\Release\SageFrame.Core.dll
+G:\GITDevelopment\Chicken\SageFrame.CostCenter\bin\Release\SageFrame.Security.dll
+G:\GITDevelopment\Chicken\SageFrame.CostCenter\bin\Release\AjaxControlToolkit.dll
+G:\GITDevelopment\Chicken\SageFrame.CostCenter\bin\Release\SageFrame.Templating.dll
+G:\GITDevelopment\Chicken\SageFrame.CostCenter\bin\Release\SageFrame.CDN.dll
+G:\GITDevelopment\Chicken\SageFrame.CostCenter\bin\Release\ICSharpCode.SharpZipLib.dll
+G:\GITDevelopment\Chicken\SageFrame.CostCenter\bin\Release\Ionic.Zip.dll
+G:\GITDevelopment\Chicken\SageFrame.CostCenter\bin\Release\SageFrame.Security.pdb
+G:\GITDevelopment\Chicken\SageFrame.CostCenter\obj\Release\SageFrame.CostCenter.csproj.AssemblyReference.cache
+G:\GITDevelopment\Chicken\SageFrame.CostCenter\obj\Release\SageFrame.CostCenter.csproj.CoreCompileInputs.cache
+G:\GITDevelopment\Chicken\SageFrame.CostCenter\obj\Release\SageFrame.CostCenter.csproj.CopyComplete
+G:\GITDevelopment\Chicken\SageFrame.CostCenter\obj\Release\SageFrame.CostCenter.dll
+G:\GITDevelopment\Chicken\SageFrame.CostCenter\obj\Release\SageFrame.CostCenter.pdb

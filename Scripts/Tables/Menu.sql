@@ -1,0 +1,24 @@
+
+
+CREATE TABLE [dbo].[Menu](
+	[MenuID] [int] IDENTITY(1,1) NOT NULL,
+	[MenuName] [nvarchar](100) NULL,
+	[MenuType] [nvarchar](50) NULL,
+	[IsDefault] [bit] NULL,
+	[PortalID] [int] NULL,
+ CONSTRAINT [PK_dbo.Menu] PRIMARY KEY CLUSTERED 
+(
+	[MenuID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+
+ALTER TABLE [dbo].[Menu]  WITH CHECK ADD  CONSTRAINT [FK_Menu_Menu] FOREIGN KEY([MenuID])
+REFERENCES [dbo].[Menu] ([MenuID])
+GO
+
+ALTER TABLE [dbo].[Menu] CHECK CONSTRAINT [FK_Menu_Menu]
+GO
+
+

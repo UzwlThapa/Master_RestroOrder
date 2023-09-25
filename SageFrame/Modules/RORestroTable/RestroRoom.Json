@@ -1,0 +1,124 @@
+[
+  {
+    "restroRoomId": 1,
+    "restroRoom": "Open",
+    "tableList": [
+      {
+        "restrotableId": 71,
+        "restrotableTitle": "T-1",
+        "restroRoomId": 0,
+        "restroRoom": null,
+        "Seatcap": 0,
+        "restrotablesStatusID": 0
+      },
+      {
+        "restrotableId": 72,
+        "restrotableTitle": "T-2",
+        "restroRoomId": 0,
+        "restroRoom": null,
+        "Seatcap": 0,
+        "restrotablesStatusID": 0
+      },
+      {
+        "restrotableId": 73,
+        "restrotableTitle": "T-3",
+        "restroRoomId": 0,
+        "restroRoom": null,
+        "Seatcap": 0,
+        "restrotablesStatusID": 0
+      },
+      {
+        "restrotableId": 74,
+        "restrotableTitle": "T-4",
+        "restroRoomId": 0,
+        "restroRoom": null,
+        "Seatcap": 0,
+        "restrotablesStatusID": 0
+      },
+      {
+        "restrotableId": 75,
+        "restrotableTitle": "T-5",
+        "restroRoomId": 0,
+        "restroRoom": null,
+        "Seatcap": 0,
+        "restrotablesStatusID": 0
+      },
+      {
+        "restrotableId": 76,
+        "restrotableTitle": "T-6",
+        "restroRoomId": 0,
+        "restroRoom": null,
+        "Seatcap": 0,
+        "restrotablesStatusID": 0
+      },
+      {
+        "restrotableId": 77,
+        "restrotableTitle": "T-7",
+        "restroRoomId": 0,
+        "restroRoom": null,
+        "Seatcap": 0,
+        "restrotablesStatusID": 0
+      },
+      {
+        "restrotableId": 78,
+        "restrotableTitle": "T-8",
+        "restroRoomId": 0,
+        "restroRoom": null,
+        "Seatcap": 0,
+        "restrotablesStatusID": 0
+      },
+      {
+        "restrotableId": 79,
+        "restrotableTitle": "T-9",
+        "restroRoomId": 0,
+        "restroRoom": null,
+        "Seatcap": 0,
+        "restrotablesStatusID": 0
+      },
+      {
+        "restrotableId": 80,
+        "restrotableTitle": "T-10",
+        "restroRoomId": 0,
+        "restroRoom": null,
+        "Seatcap": 0,
+        "restrotablesStatusID": 0
+      },
+      {
+        "restrotableId": 81,
+        "restrotableTitle": "T-14",
+        "restroRoomId": 0,
+        "restroRoom": null,
+        "Seatcap": 0,
+        "restrotablesStatusID": 0
+      },
+      {
+        "restrotableId": 82,
+        "restrotableTitle": "T-15",
+        "restroRoomId": 0,
+        "restroRoom": null,
+        "Seatcap": 0,
+        "restrotablesStatusID": 0
+      },
+      {
+        "restrotableId": 83,
+        "restrotableTitle": "T-16",
+        "restroRoomId": 0,
+        "restroRoom": null,
+        "Seatcap": 0,
+        "restrotablesStatusID": 0
+      },
+      {
+        "restrotableId": 84,
+        "restrotableTitle": "T-17",
+        "restroRoomId": 0,
+        "restroRoom": null,
+        "Seatcap": 0,
+        "restrotablesStatusID": 0
+      }
+    ],
+    "Title": null,
+    "RoomStatusId": 1,
+    "RoomTypeID": 1,
+    "RoomType": null
+  }
+]

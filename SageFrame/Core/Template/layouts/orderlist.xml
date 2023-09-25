@@ -1,0 +1,5 @@
+<layout name="layout_all">
+  <section name="Content">
+    <placeholder name="orderlist" wrapinner="0">orderlist</placeholder>
+  </section>
+</layout>

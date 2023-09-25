@@ -1,0 +1,24 @@
+
+
+CREATE TABLE [dbo].[aspnet_Applications](
+	[ApplicationName] [nvarchar](256) NOT NULL,
+	[LoweredApplicationName] [nvarchar](256) NOT NULL,
+	[ApplicationId] [uniqueidentifier] NOT NULL CONSTRAINT [DF__aspnet_Ap__Appli__24134F1B]  DEFAULT (newid()),
+	[Description] [nvarchar](256) NULL,
+ CONSTRAINT [PK__aspnet_Applicati__2136E270] PRIMARY KEY NONCLUSTERED 
+(
+	[ApplicationId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY],
+ CONSTRAINT [UQ__aspnet_Applicati__222B06A9] UNIQUE NONCLUSTERED 
+(
+	[LoweredApplicationName] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY],
+ CONSTRAINT [UQ__aspnet_Applicati__231F2AE2] UNIQUE NONCLUSTERED 
+(
+	[ApplicationName] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+
+

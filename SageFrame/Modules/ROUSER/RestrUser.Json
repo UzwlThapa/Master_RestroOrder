@@ -1,0 +1,8 @@
+{
+  "Username": "superuser",
+  "Password": "Encrypted",
+  "WaiterIP": "http://192.168.1.23:8000",
+  "UserID": 1,
+  "Status": "Success",
+  "RoleNames": "Super User,Site Admin"
+}

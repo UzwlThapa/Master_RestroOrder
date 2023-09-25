@@ -1,0 +1,186 @@
+﻿.layoutall {
+    display: none;
+}
+
+.Layoutwrapper ul {
+    list-style-type: none;
+        margin: 0;
+}
+
+.Layoutwrapper > ul{
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.Layoutwrapper ul > li{
+    position: relative;
+    display:block;
+    text-align:center;
+  
+
+}
+
+.sfModule.threeRow .Layoutwrapper ul > li {
+    display: inline-block;
+    width: 33.3%;
+    text-align: center;
+}
+
+.sfModule.twoRow .Layoutwrapper ul > li {
+    display: inline-block;
+    width: 50%;
+    text-align: center;
+}
+
+
+div#lytA_sfOuterWrapper {
+    height: 100vh;
+    background: url(/../images/white-tilebg.jpg);
+    background-size: auto;
+}
+
+div#sfA , div#sfE {
+    text-align:center;
+}
+
+
+div#sfB {
+    background: #84BF3A;
+    background: url('/images/garden.jpg');
+    background-size: auto;
+}
+
+
+div#sfB .Layoutwrapper ul > li a h5{
+    color:#FFF;
+}
+
+
+.sfModule.store{
+    height:150px;
+    border-right: 2px solid #d8c8b4;
+    border-bottom: 2px solid #dbccb5;
+    border-radius: 0px 40px 40px 0px;
+    background: #e6d9ca;
+}
+
+.sfLogged.sfModule.Kitchen {
+    background-size: cover;
+    height:300px;
+    width:100%;
+    background: #e6d9ca;
+}
+
+.TablesForLayout li{
+    position: relative;
+    display: inline-block;
+    width: 15%;
+    text-align: center;
+    padding-top: 25px;
+    border: 1px solid #dddddd;
+    text-transform: uppercase;
+    margin-right: 15px;
+    margin-bottom: 15px;
+    border-radius: 3px;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+.imgtablelayout{
+    position: absolute;
+    left: 10px;
+    bottom: 10px;
+}
+
+.sfModule.layout_mrg {
+    margin-top: 28px;
+}
+
+
+ .Layoutwrapper ul > li > a {
+    position: relative;
+    display: inline-block;
+      cursor: pointer;
+}
+
+.Layoutwrapper ul > li > a h5 {
+    width: 100%;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    color: #FFF;
+    margin: 0px;
+    font-size: 13px;
+     transform: translate(-50%,-50%);
+     -webkit-transform:translate(-50%,-50%);
+     -moz-transform:translate(-50%,-50%);
+}
+
+.KOT {
+    font-size: 18px;
+    color: #4e8b00;
+    font-weight: bold;
+}
+
+.store , #swimmingpool{
+    display: flex;
+    font-size: 18px;
+    color: #4e8b00;
+    font-weight: bold;
+    height: 150px;
+    text-align: center;
+    justify-content: center;
+}
+
+.store strong , #swimmingpool strong{
+    margin: auto;
+}
+
+div#sfD {
+    background: #46CBE8;
+    background: url('/images/swimming-pool.jpg');
+    background-size: auto;
+}
+
+#swimmingpool{
+    height: 180px;
+    color: #FFF;
+}
+
+div#sfA , div#sfC , div#sfI, div#sfH1, div#sfG, div#sfF , div#sfH2{
+    background: url('/images/wooden.jpg');
+    background-size: 50px;
+}
+
+div#sfC , div#sfH2{
+    height: 180px;
+}
+
+
+
+.sfModule.kitchen{
+    border-bottom: 2px solid #dbccb5;
+    border-right: 2px solid #d8c8b4;
+    border-top-right-radius: 50px;
+    background: #e6d9ca;
+}
+
+div#sfG , div#sfF {
+    position: relative;
+    display: block;
+}
+
+.sfLogged.sfModule.pathway {
+    position: absolute;
+    font-size: 26px;
+    bottom: -120px;
+}
+
+.sfModule.pathwayA{
+    position: absolute;
+     font-size: 26px;
+     left: 50%;
+     transform:translateX(-50%);
+     -webkit-transform:translateX(-50%);
+     -moz-transform:translateX(-50%);
+}

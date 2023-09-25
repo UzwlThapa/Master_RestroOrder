@@ -1,0 +1,16 @@
+
+
+CREATE TABLE [dbo].[MessageTemplateTypeMap](
+	[MessageTemplateTypeID] [int] NULL,
+	[PortalSpecID] [int] NULL,
+	[PortalID] [int] NULL,
+	[MessageTemplateTypeMapID] [int] IDENTITY(1,1) NOT NULL,
+ CONSTRAINT [PK_MessageTemplateTypeMap] PRIMARY KEY CLUSTERED 
+(
+	[MessageTemplateTypeMapID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+
+

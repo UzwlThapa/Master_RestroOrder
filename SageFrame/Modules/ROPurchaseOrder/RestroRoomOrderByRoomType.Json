@@ -1,0 +1,29 @@
+[
+  {
+    "restroRoomId": 9,
+    "restroRoom": "Standards",
+    "tableList": null,
+    "Title": "Hotel Rooms",
+    "RoomStatusId": -1,
+    "RoomTypeID": 17,
+    "RoomType": null
+  },
+  {
+    "restroRoomId": 10,
+    "restroRoom": "Delux",
+    "tableList": null,
+    "Title": "Hotel Rooms",
+    "RoomStatusId": -1,
+    "RoomTypeID": 17,
+    "RoomType": null
+  },
+  {
+    "restroRoomId": 11,
+    "restroRoom": "Normal",
+    "tableList": null,
+    "Title": "Hotel Rooms",
+    "RoomStatusId": -1,
+    "RoomTypeID": 17,
+    "RoomType": null
+  }
+]

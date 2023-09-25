@@ -1,0 +1,53 @@
+
+.CBMS-dash li {
+	float: left;
+    display: flex;
+    display: -webkit-flex;
+    width: 19%;
+    padding: 0px 20px;
+    color: #5a5a5a;
+    background: #fff;
+    border-color: #dcdfe0;
+    margin: 0 5px 5px;
+    font-size: 12px;
+    text-align: center;
+    border-radius: 3px;
+    border: 1px solid #dcdfe0;
+    text-decoration: none;
+    height: 120px;
+    box-sizing: border-box;
+    -webkit-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+    overflow: hidden;
+}
+
+.CBMS-dash li img , .CBMS-dash li .CBMS-dashTotal{
+    margin: auto;
+}
+
+.CBMS-dash-number {
+    display: block;
+    font-size: 22px;
+}
+
+span.CBMS-dash-Title{
+    display: block;
+}
+
+.cbms-datas{
+	margin-top: 15px;
+}
+
+
+div#salesBookDiv {
+    background: #FFF;
+}
+
+
+/*Responsive*/
+
+ @media screen and (max-width:1136px) {
+    .CBMS-dash li {
+    width: 23%;
+}
+ }

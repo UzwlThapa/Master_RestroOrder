@@ -1,0 +1,163 @@
+﻿
+.dbsum-stats .dbsum-wrapper{
+    float: left;
+    margin: 5px 0 5px 0;
+    margin-right: 7px;
+    padding-right: 7px;
+}
+.dbsum-stats .dbsum-wrapper.dbsum-section {
+    border-right: 1px solid gainsboro;
+}
+
+.dbsum-title {
+    font-size: 22px;
+    color: #FFFFFF;
+    margin-bottom: 10px;
+}
+
+.dbsum-stats .dbsum-wrapper-count{
+    display: block;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.dbsum-popular-list {
+    -webkit-display: flex;
+    display: flex;
+    padding: 5px 0px;
+}
+
+.dbsum-item-name {
+    color: #FFF;
+    flex: 3;
+}
+
+.dbsummation-total-sales , .overallvisitor , .dbsum-items-listing , .dbsum-tables-listing , .dbsum-rooms-listing , .room-section, .guest-section {
+    background: #FFFFFF;
+    padding: 15px;
+    border: 1px solid #dcdfe0;
+    border-radius: 3px;
+}
+
+.dbsum-items-listing , .dbsum-tables-listing,  .dbsum-rooms-listing {
+    margin-bottom: 20px;
+}
+
+.success-border{
+    width: 90%;
+    margin-top: 20px;
+    background: #cecece;
+    height: 2px;
+}
+
+.dbsum-progress-bar {
+    width: 50%;
+    background: #ff7828;
+    background-image: none;
+    height: 100%;
+}
+
+.dbsum-result {
+    margin-top: 10px;
+}
+
+.dbsummation-total-sales {
+    margin-top: 20px;
+}
+
+.dbsum-totalsales-list-section {
+    -webkit-display: flex;
+    display: flex;
+}
+
+.dbsum-totalsales-list {
+    border-right: 1px solid gainsboro;
+    text-align: center;
+    flex: 1;
+}
+
+.dbsum-totalsales-list:last-child{
+    border: none;
+}
+
+.dbsum-totalsales-list .dbsum-totalsales-value{
+    margin-top: 5px;
+    font-size: 17px;
+    display: block;
+    font-weight: bold;
+    color: #ff7828;
+}
+
+.dbsum-item-percent {
+    background: #ff7828;
+    width: 60px;
+    height: 22px;
+    color: #FFF;
+    text-align: center;
+    border-radius: 3px;
+}
+
+.dbSummary {
+    margin-bottom: 20px;
+}
+
+.dbsum-popular {
+    max-height: 221px;
+    height: 100%;
+    color: #FFF;
+}
+
+
+
+/*js chart*/
+
+.sfCol_70 table.jqplot-table-legend {
+    display: block;
+    left:83%!important;
+    top: 0px!important;
+}
+
+.jqplot-title {
+   
+    color: #ff7828;
+    margin-bottom: 10px;
+}
+
+.dbsummation-total-sales.jqplot-target .jqplot-axis.jqplot-yaxis .jqplot-yaxis-tick{
+    right: -7px;
+}
+
+.jqplot-title {
+    margin-top: 0px;
+    padding: 15px;
+    font-size: 15px;
+}
+
+.dbsummation-total-sales {
+    margin-bottom: 20px!important;
+}
+
+.sfCol_97.total-room {
+    display: flex;
+    display: -webkit-flex;
+    justify-content:space-between;
+}
+
+.room-section , .guest-section {
+    width: 45%;
+}
+
+.sfCol_50.avairoom, .sfCol_50.occuroom , .sfCol_50.guestmale , .sfCol_50.guestfemale{
+    text-align: center;
+    font-size: 20px;
+}
+
+.sfCol_50.avairoom , .sfCol_50.guestmale {
+    border-right: 1px solid gainsboro;
+}
+
+.dash_closeday {
+    text-align: right;
+    margin-bottom: 10px;
+}
+

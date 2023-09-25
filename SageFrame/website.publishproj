@@ -1,0 +1,93 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+
+***********************************************************************************************
+website.publishproj
+
+WARNING: DO NOT MODIFY this file, it is used for the web publish process.
+
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+***********************************************************************************************
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>10.0.30319</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{05495558-1e03-44c2-a0c8-1eb48c405eab}</ProjectGuid>
+    <SourceWebPhysicalPath>$(MSBuildThisFileDirectory)</SourceWebPhysicalPath>
+    <SourceWebVirtualPath>/SageFrame</SourceWebVirtualPath>
+    <TargetFrameworkVersion>v4.8.1</TargetFrameworkVersion>
+    <SourceWebProject>
+    </SourceWebProject>
+    <SourceWebMetabasePath>
+    </SourceWebMetabasePath>
+  </PropertyGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <!-- for VS2010 we need to use 10.5 but for VS2012+ we should use VisualStudioVersion -->
+    <WebPublishTargetsVersion Condition=" '$(WebPublishTargetsVersion)' =='' and '$(VisualStudioVersion)' == 10.0 ">10.5</WebPublishTargetsVersion>
+    <WebPublishTargetsVersion Condition=" '$(WebPublishTargetsVersion)'=='' ">$(VisualStudioVersion)</WebPublishTargetsVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(WebPublishTargetsVersion)</VSToolsPath>
+    <_WebPublishTargetsPath Condition=" '$(_WebPublishTargetsPath)'=='' ">$(VSToolsPath)</_WebPublishTargetsPath>
+    <AssemblyFileVersion Condition="'$(AssemblyFileVersion)' == ''">1.0.0.0</AssemblyFileVersion>
+    <AssemblyVersion Condition="'$(AssemblyVersion)' == ''">1.0.0.0</AssemblyVersion>
+  </PropertyGroup>
+  <ItemGroup>
+    <AssemblyAttributes Include="AssemblyFileVersion">
+      <Value>$(AssemblyFileVersion)</Value>
+    </AssemblyAttributes>
+    <AssemblyAttributes Include="AssemblyVersion">
+      <Value>$(AssemblyVersion)</Value>
+    </AssemblyAttributes>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SageFrame.CakeOrder\SageFrame.CakeOrder.csproj">
+      <Project>{BCACCC57-D1EC-40F5-B141-049CC3DA1385}</Project>
+      <Name>SageFrame.CakeOrder</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SageFrame.ChartOfAccount\SageFrame.ChartOfAccount.csproj">
+      <Project>{50ECEB31-7962-444B-923A-0256909D9CD3}</Project>
+      <Name>SageFrame.ChartOfAccount</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SageFrame.CostCenter\SageFrame.CostCenter.csproj">
+      <Project>{00613E6E-7435-4FC8-AEF8-28A99199FA36}</Project>
+      <Name>SageFrame.CostCenter</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SageFrame.DailyChalan\SageFrame.DailyChalan.csproj">
+      <Project>{EDC38182-EFCC-4BD7-B123-629C6D8E0BEF}</Project>
+      <Name>SageFrame.DailyChalan</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SageFrame.DBBackupNRestore\SageFrame.DBBackupNRestore.csproj">
+      <Project>{A1B535C6-02F7-4261-8877-06DA3449BF94}</Project>
+      <Name>SageFrame.DBBackupNRestore</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SageFrame.FiscalYear\SageFrame.FiscalYear.csproj">
+      <Project>{879D24B6-5E53-453A-A196-102759C92069}</Project>
+      <Name>SageFrame.FiscalYear</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SageFrame.HouseKeeping\SageFrame.HouseKeeping.csproj">
+      <Project>{DED45C30-88C6-48E4-B9E0-EDE8C96A0109}</Project>
+      <Name>SageFrame.HouseKeeping</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SageFrame.Laundry\SageFrame.Laundry.csproj">
+      <Project>{BF01A8D4-50D3-4EA5-86B7-38562F8A9B94}</Project>
+      <Name>SageFrame.Laundry</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SageFrame.RestoLoyalty\SageFrame.RestoLoyalty.csproj">
+      <Project>{AD0A3C3B-5778-4ACF-B6D6-6583206A3B6F}</Project>
+      <Name>SageFrame.RestoLoyalty</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SageFrame.RestroOrder\SageFrame.RestroOrder.csproj">
+      <Project>{243193C1-1FF6-4614-8771-FED7DE16FD33}</Project>
+      <Name>SageFrame.RestroOrder</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SageFrame.Sales\SageFrame.Sales.csproj">
+      <Project>{A9E2534C-85A7-41E7-AF99-D79DC2E869F3}</Project>
+      <Name>SageFrame.Sales</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(_WebPublishTargetsPath)\Web\Microsoft.WebSite.Publishing.targets" />
+</Project>

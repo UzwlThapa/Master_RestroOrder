@@ -1,0 +1,35 @@
+
+CREATE TABLE [dbo].[RO_AccountGroup](
+	[AccountGroupID] [int] IDENTITY(1,1) NOT NULL,
+	[AccountCode] [nvarchar](16) NOT NULL,
+	[AccountName] [nvarchar](128) NOT NULL,
+	[Type] [smallint] NOT NULL,
+	[Schedule] [int] NOT NULL,
+	[CreatedBy] [nvarchar](64) NULL,
+	[CreateDate] [datetime] NULL,
+	[LastUpdateBy] [nvarchar](64) NULL,
+	[LastUpdateDate] [datetime] NULL,
+ CONSTRAINT [PK_Account_Group_Id] PRIMARY KEY CLUSTERED 
+(
+	[AccountGroupID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY],
+ CONSTRAINT [UQ__Account___616AC79434C8D9D1] UNIQUE NONCLUSTERED 
+(
+	[Schedule] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY],
+ CONSTRAINT [UQ__Account___A25C5AA737A5467C] UNIQUE NONCLUSTERED 
+(
+	[AccountCode] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+
+ALTER TABLE [dbo].[RO_AccountGroup]  WITH CHECK ADD  CONSTRAINT [FK_Account_Group_Typee] FOREIGN KEY([Type])
+REFERENCES [dbo].[RO_Enum] ([EnumId])
+GO
+
+ALTER TABLE [dbo].[RO_AccountGroup] CHECK CONSTRAINT [FK_Account_Group_Typee]
+GO
+
+

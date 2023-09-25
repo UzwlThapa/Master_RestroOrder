@@ -1,0 +1,18 @@
+
+
+CREATE TABLE [dbo].[tbl_Roi_Data](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[NoteID] [int] NULL,
+	[Number] [int] NULL,
+	[CTID] [nchar](10) NULL,
+	[CTcID] [nchar](10) NULL,
+	[TID] [int] NULL,
+ CONSTRAINT [PK_tbl_Roi_Data_1] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+
+

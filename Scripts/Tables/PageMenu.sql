@@ -1,0 +1,18 @@
+
+
+CREATE TABLE [dbo].[PageMenu](
+	[PageMenuID] [int] IDENTITY(1,1) NOT NULL,
+	[PageID] [int] NULL,
+	[PortalID] [int] NULL,
+	[IsAdmin] [bit] NULL,
+	[IsFooter] [bit] NULL,
+	[ShowInMenu] [bit] NULL CONSTRAINT [DF_PageMenu_ShowInMenu]  DEFAULT ((1)),
+ CONSTRAINT [PK_PageMenu] PRIMARY KEY CLUSTERED 
+(
+	[PageMenuID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+
+

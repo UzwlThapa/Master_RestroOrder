@@ -1,0 +1,606 @@
+﻿function Print() {
+    $('#printedDate').show();
+    $('#lblPrintedOn').html(new Date());
+    var contents = $('#DailyReport').clone();
+    //contents.find('tr th:nth-child(14), tr td:nth-child(14)').remove();
+    $('#printedDate').hide();
+    var frame1 = document.createElement('iframe');
+    frame1.name = "frame1";
+    document.body.appendChild(frame1);
+    var frameDoc = frame1.contentWindow ? frame1.contentWindow : frame1.contentDocument.document ? frame1.contentDocument.document : frame1.contentDocument;
+    frameDoc.document.open();
+    frameDoc.document.write('<html><head><title></title>');
+    frameDoc.document.write('</head><body>');
+    frameDoc.document.write(contents.get(0).innerHTML);
+    frameDoc.document.write('</body>');
+    frameDoc.document.close();
+    setTimeout(function () {
+        window.frames["frame1"].focus();
+        window.frames["frame1"].print();
+        document.body.removeChild(frame1);
+    }, 500);
+}
+
+(function ($) {
+    var tabs = $("#tabs").tabs();
+    $.companyProfcreate = function (p) {
+        p = $.extend
+            ({
+                UserModuleID: '',
+                ModulePath: '/Modules/RoiPurchase/'
+            }, p);
+        var v = 0;
+        var waiter = 0;
+        var room = 0;
+        var table = 0;
+        var year = 0;
+        var month = 0;
+        var TotalAmount = 0;
+
+        var eventFunction = {
+            config: {
+                isPostBack: false,
+                async: false,
+                cache: false,
+                type: 'POST',
+                contentType: "application/json; charset=utf-8",
+                data: {},
+                dataType: 'json',
+                baseURL: p.ModulePath + "PurchaseWebservice.asmx/",
+                method: "",
+                url: "",
+                ajaxCallMode: 0
+
+
+            },
+            InitialSetup: function () {
+
+                $("#txtMonthlyDate").datepicker({
+                    dateFormat: 'yy-m',
+                });
+
+                $(".hide").hide();
+
+                for (i = new Date().getFullYear(); i > 2014; i--) {
+                    $('#seit').append($('<option/>').val(i).html(i));
+                }
+                eventFunction.GetStore();
+                //eventFunction.stockreport();
+            },
+            init: function () {
+
+                eventFunction.InitialSetup();
+                //----------------------------------------Master----------------
+
+
+
+
+
+                $("#waiter").on('click', function () {
+
+
+                    if (waiter == 0) {
+                        waiter = 1;
+                    }
+                    else {
+                        waiter = 0;
+                    }
+                });
+                $("#table").on('click', function () {
+
+                    if (table == 0) {
+                        table = 1;
+                    }
+                    else {
+                        table = 0;
+                    }
+                });
+                $("#room").on('click', function () {
+
+                    if (room == 0) {
+                        room = 1;
+                    }
+                    else {
+                        room = 0;
+                    }
+
+
+                });
+
+                $("#btnView").on('click', function () {
+                    eventFunction.stockreport();
+                    $('.report-view').show();
+                });
+
+
+                //--------------------------Export To PDF----------------
+
+                //--------------------------Print PDF----------------
+                
+                $('#btnPrint').on('click', function () {
+                    Print();
+                });
+
+                //--------------------------Export To EXCEL----------------
+
+                $("#btnExport").click(function (e) {
+                    $('#printedDate').show();
+                    var dNow = new Date();
+                    $('#lblPrintedOn').html(dNow);
+                    var contents = $('#DailyReport').clone();
+                    //contents.find('tr th:nth-child(14), tr td:nth-child(14)').remove();
+                    let file = new Blob([contents.get(0).innerHTML], { type: "application/vnd.ms-excel" });
+                    let url = URL.createObjectURL(file);
+                    let a = $("<a />", {
+                        href: url,
+                        download: "Stock Report_.xls"
+                    }).appendTo("body").get(0).click();
+                    e.preventDefault();
+                    $('#printedDate').hide();
+                });
+
+                $('#btnPdf').click(function () {
+                    $('#printedDate').show();
+                    var dNow = new Date();
+                    var contents = $('#DailyReport');
+                    //contents.find('tr th:nth-child(14), tr td:nth-child(14)').hide();
+                    $('#lblPrintedOn').html(dNow);
+                    var options = {
+                        background: '#FFFFFF',
+                        pagesplit: true,
+                    };
+                    var pdf = new jsPDF('p', 'pt', 'a4');
+                    pdf.internal.scaleFactor = 2.22;
+                    pdf.addHTML(contents, 0, 0, options, function () {
+                        pdf.save('SalesReport_.pdf');
+                    });
+                    //contents.find('tr th:nth-child(14), tr td:nth-child(14)').show();
+                    $('#printedDate').hide();
+
+                });
+
+                $('#DailyReport').on('click', '.btnStockDetail', function () {
+                    var itemid = $(this).attr('id');
+                    var storeId = $('#ddlStore').val();
+
+                    $('#divItemledger').html('');
+
+                    $('#StockDetailView').dialog({
+                        'title': 'Stock Details ',
+                        width: '90%',
+                        height: 'auto',
+                        modal: true,
+                        position: ['center', 'center'],
+                        dialogClass: 'popup-titlebg',
+                    });
+
+                    var detail = itemid + '_' + storeId;
+                    $('#txtDetailHidden').attr('data-detail',detail);
+
+                });
+
+                $('#StockDetailView').on('click','#btnDetailView',function(){
+                    var itemId =  ($('#txtDetailHidden').attr('data-detail')).split('_')[0];
+                    var storeId = ($('#txtDetailHidden').attr('data-detail')).split('_')[1];
+                    
+                    var obj = {};
+                    obj.ItemId = itemId;
+                    obj.StoreId = storeId;
+                    obj.StartDate = $('#txtDetailStartDate').val();
+                    obj.EndDate = $('#txtDetailEndDate').val();
+
+                    eventFunction.GetStockDetailByItem(obj);
+
+                });
+
+
+            },
+            ajaxCall: function (config) {
+                $.ajax({
+                    type: eventFunction.config.type,
+                    contentType: eventFunction.config.contentType,
+                    async: eventFunction.config.async,
+                    cache: eventFunction.config.cache,
+                    url: eventFunction.config.url,
+                    data: eventFunction.config.data,
+                    dataType: eventFunction.config.dataType,
+                    success: eventFunction.ajaxSuccess,
+                    error: eventFunction.ajaxFailure
+                });
+            },
+            ajaxSuccess: function (data) {
+                switch (parseInt(eventFunction.config.ajaxCallMode)) {
+                    case 0:
+                        break;
+                    case 1:
+                        eventFunction.BindSalesDaily(data.d);
+                        break;
+                    case 2:
+                        eventFunction.BindStore(data.d);
+                        break;  
+                    case 3:
+                        eventFunction.BindStockDetails(data.d);
+                        break;  
+                }
+            },
+            ajaxFailure: function () {
+            },
+
+            GetStore: function () {
+                eventFunction.config.method = "getIssueToDDl";
+                eventFunction.config.url = eventFunction.config.baseURL + eventFunction.config.method;
+                eventFunction.config.data = eventFunction.config.data;
+                eventFunction.config.ajaxCallMode = 2;
+                eventFunction.ajaxCall(eventFunction.config);
+            },
+
+            GetStockDetailByItem: function (obj) {
+                eventFunction.config.method = "getStockDetailByItem";
+                eventFunction.config.url = eventFunction.config.baseURL + eventFunction.config.method;
+                eventFunction.config.data = JSON2.stringify({ obj: obj});
+                eventFunction.config.data = eventFunction.config.data;
+                eventFunction.config.ajaxCallMode = 3;
+                eventFunction.ajaxCall(eventFunction.config);
+            },
+
+            BindStockDetails: function (data) {
+                var ledger = JSON.parse(data);
+
+                var salesQuantity = 0.0;
+                var salesReturnQuantity = 0.0;
+                var purchaseQuantity = 0.0;
+                var openingQty = 0.0;
+                var complimentryQty = 0.0;
+                var issueQty = 0.0;
+                var adjustmentQuantity = 0.0;
+                var purchaseReturnQuantity = 0.0;
+ 
+                var htmls = "";
+                var htmls = "<table id='Brandtable' class='reportsprint' style='width: 100%' cellspacing='0'>"
+                htmls += "<thead>"
+                htmls += "<tr>"
+                htmls += "<th>Date</th><th>Item Name</th><th>Opening Qty </th><th> Purchase Qty </th><th> Sales Qty </th><th> Return Qty </th><th> Adjust Qty </th><th> Complementry Qty </th><th> Issue Qty </th><th> Balance</th><th> Unit Description</th>";
+                htmls += "</tr>"
+                htmls += "</thead>"
+                htmls += "<tbody>"
+                if (ledger.length > 0) {
+                    htmls += "<tbody>"
+                    $.each(ledger, function (index, value) {
+
+                        salesQuantity += (value.SalesQty == null ? 0 : value.SalesQty);
+                        purchaseQuantity += (value.PurchaseQty == null ? 0 : value.PurchaseQty);
+                        openingQty += (value.OpeningQty == null ? 0 : value.OpeningQty);
+                        complimentryQty += (value.ComplementQty == null ? 0 : value.ComplementQty);
+                        issueQty += (value.IssueQty == null ? 0 : value.IssueQty);
+                        adjustmentQuantity += (value.AdjustQty == null ? 0 : value.AdjustQty);
+                        salesReturnQuantity += (value.SalesReturnQty == null ? 0 : value.SalesReturnQty);
+
+                        htmls += "<tr>";
+                        htmls += "<td>" + value.TransactionDate.split('T')[0] + "</td>";
+                        htmls += "<td>" + value.ITCode + "</td>";
+                        if (value.OpeningQty == null) {
+                            htmls += "<td>-</td>";
+                        } else {
+                            htmls += "<td>" + value.OpeningQty + "</td>";
+                        }
+                        if (value.PurchaseQty == null) {
+                            htmls += "<td>-</td>";
+                        } else {
+                            htmls += "<td>" + value.PurchaseQty + "</td>";
+                        }
+                        if (value.SalesQty == null) {
+                            htmls += "<td>-</td>";
+                        } else {
+                            htmls += "<td>(" + value.SalesQty + ")</td>";
+                        }
+                        if (value.SalesReturnQty == null) {
+                            htmls += "<td>-</td>";
+                        } else {
+                            htmls += "<td>" + value.SalesReturnQty + "</td>";
+                        }
+                        if (value.AdjustQty == null) {
+                            htmls += "<td>-</td>";
+                        } else {
+                            htmls += "<td>" + value.AdjustQty + "</td>";
+                        }
+                        if (value.ComplementQty == null) {
+                            htmls += "<td>-</td>";
+                        } else {
+                            htmls += "<td>(" + value.ComplementQty + ")</td>";
+                        }
+                        if (value.IssueQty == null) {
+                            htmls += "<td>-</td>";
+                        } else {
+                            htmls += "<td>" + value.IssueQty + "</td>";
+                        }
+                        
+
+                        if (value.ItemBalance == 0) {
+                            htmls += "<td>-</td>";
+                        } else {
+                            htmls += "<td>" + value.ItemBalance + "</td>";
+                        }
+                        htmls += "<td>" + value.Symbol + "</td>";
+
+                        htmls += "</tr>"
+                    });
+                    htmls += "</tbody>";
+                    htmls += `<tr style='font-weight: bold' ><td></td><td>Total</td><td>${openingQty}</td><td>${purchaseQuantity}</td><td>${salesQuantity}</td><td>${salesReturnQuantity}</td><td>${adjustmentQuantity}</td>
+                                <td>${complimentryQty}</td><td>${issueQty}</td><td></td>
+                                <td></td></tr>`;
+                }
+
+                else {
+                    $('#divItemledger').html('No data');
+                }
+                htmls += "</table>";
+                $('#divItemledger').html(htmls);
+
+
+            },
+
+            BindStore: function (data) {
+                datas = JSON.parse(data);
+                var htmls = "";
+                htmls = "<option value='0' selected> --All-- </option>";
+                if (datas.length > 0) {
+                    $.each(datas, function (index, value) {
+                        htmls += "<option value='" + value.STId + "'>" + value.StName + "</option>";
+                    });
+                    $("#ddlStore").html(htmls);
+                }
+            },
+
+            stockreport: function () {
+                
+                //var valuedate = $("#txtStartDate").val();
+                var storeID = $("#ddlStore").val();
+                var searchText = $("#txtSearchText").val();
+                eventFunction.config.method = "stockreport";
+                eventFunction.config.url = eventFunction.config.baseURL + eventFunction.config.method;
+                eventFunction.config.data = JSON2.stringify({ storeID: storeID, searchText: searchText });
+                eventFunction.config.data = eventFunction.config.data;
+                eventFunction.config.ajaxCallMode = 1;
+                eventFunction.ajaxCall(eventFunction.config);
+            },
+
+            stockreportDaily: function () {
+                var valuedate = $("#txtStartDate").val();
+                eventFunction.config.method = "stockreportdaily";
+                eventFunction.config.url = eventFunction.config.baseURL + eventFunction.config.method;
+                eventFunction.config.data = JSON2.stringify({ TodayDate: valuedate });
+                eventFunction.config.data = eventFunction.config.data;
+                eventFunction.config.ajaxCallMode = 1;
+                eventFunction.ajaxCall(eventFunction.config);
+            },
+
+            stockreportWeekly: function () {
+                var valuedate = $("#txtStartDate").val();
+
+                eventFunction.config.method = "stockreportWeekly";
+                eventFunction.config.url = eventFunction.config.baseURL + eventFunction.config.method;
+                eventFunction.config.data = JSON2.stringify({ TodayDate: valuedate });
+                eventFunction.config.data = eventFunction.config.data;
+                eventFunction.config.ajaxCallMode = 1;
+                eventFunction.ajaxCall(eventFunction.config);
+            },
+
+            stockreportMonthly: function () {
+                var year = $("#seit").val();
+                var month = $("#month").val();
+                eventFunction.config.method = "stockreportMonthly";
+                eventFunction.config.url = eventFunction.config.baseURL + eventFunction.config.method;
+                eventFunction.config.data = JSON2.stringify({ year: year, month: month });
+                eventFunction.config.data = eventFunction.config.data;
+                eventFunction.config.ajaxCallMode = 1;
+                eventFunction.ajaxCall(eventFunction.config);
+            },
+
+            stockreportYearly: function () {
+                var year = $("#seit").val();
+                eventFunction.config.method = "stockreportYear";
+                eventFunction.config.url = eventFunction.config.baseURL + eventFunction.config.method;
+                eventFunction.config.data = JSON2.stringify({ year: year });
+                eventFunction.config.data = eventFunction.config.data;
+                eventFunction.config.ajaxCallMode = 1;
+                eventFunction.ajaxCall(eventFunction.config);
+            },
+
+            stockreportRange: function () {
+                var StartDate = $("#txtStartDate").val();
+                var EndDate = $("#txtToDate").val();
+                eventFunction.config.method = "stockreportRange";
+                eventFunction.config.url = eventFunction.config.baseURL + eventFunction.config.method;
+                eventFunction.config.data = JSON2.stringify({ StartDate: StartDate, EndDate: EndDate });
+                eventFunction.config.data = eventFunction.config.data;
+                eventFunction.config.ajaxCallMode = 1;
+                eventFunction.ajaxCall(eventFunction.config);
+            },
+
+            //<<-----------------------------------BindTable Herere ------------------------------------->>>
+
+
+
+            BindSalesDaily: function (data) {
+                $("#DailyReport").show();
+                $("#DailyReport").html('');
+
+                var storeid = $('#ddlStore').val();
+
+                var totalStockValue = 0.00;
+                datas = JSON.parse(data);
+                var htmls = "<table id='salseReport' class='reportsprint' cellspacing='0' style='border:none;width:100%;'>"
+                    htmls += "<thead>"
+                    htmls += "<tr>"
+                htmls += "<th>SN</th><th>ItemName</th><th class='table'>Stocks</th><th class='table'>Stock Value</th>";
+                if (storeid != 0) {
+                    htmls += "<th>Action</th>";
+                }
+                    // htmls += "<th class='table'>Purchase Date</th>";
+                    htmls += "</tr>"
+                    htmls += "</thead>"
+                    htmls += "<tbody>"
+                if (datas.length > 0) {
+                    var count = 1;
+                    $.each(datas, function (index, value) {
+                        htmls += "<tr>";
+                        htmls += "<td>" + count + "</td>";
+                        htmls += "<td>" + value.ITName + "</td>";
+                        //htmls += "<td>" + value.StName + "</td>";
+                        //htmls += "<td>" + value.OPBal + " ("+ value.ITUnit + ")</td>";
+                        htmls += "<td>" + value.CLBal + " (" + value.Symbol + ")</td>";
+                        //htmls += "<td>" + value.CLRate + "</td>";
+                        htmls += "<td>" + value.TotalValue + " (Rs)</td>";
+                        if (storeid != 0) {
+                            htmls += "<td><label id='" + value.ITId + "' class='btnStockDetail  view icon-preview'></label></td>";
+
+                        }//htmls += "<td>" + value.PbDate + "</td>";
+                        //htmls += "<td>" + value.PbDate + "</td>";
+                        //htmls += "<td class='h'>" + value.PbDate + "</td>";
+                        htmls += "</tr>"
+                        count++;
+                        //TotalAmount = TotalAmount + value.NetAmount;
+                        totalStockValue += value.TotalValue;
+                    });
+                    htmls += "<tr><td colspan='3' style='text-align:right;'><strong>Total Stock Value: </strong></td><td><strong>" + totalStockValue + " (Rs)</strong></td></tr>"
+                    //htmls += "<thead class='Sales-total_amount'>"
+                    //htmls += "<tr>";
+                    //htmls += "<th colspan='3' class='a' style='text-align:right;'>" + "Total Amount :" + "</th>";
+                    //htmls += "<th class='f'>" + TotalAmount + "</th>";
+                    //htmls += "</tr>"
+                    //htmls += "</thead>"
+
+                    $("#SumAmount").text(TotalAmount);
+                    TotalAmount = 0;
+                } else {
+                    htmls += "<tr><td></td>";
+                    htmls += "<td>No data</td><td></td></tr>";
+                   // $('#DailyReport').html('No data');
+                }
+                    htmls += "</tbody>";
+                    htmls += "</table>";
+
+                    $('#DailyReport').html(htmls);
+
+                    // $('#salseReport').DataTable({
+                    //     "bJQueryUI": true,
+                    //     "pageLength": 50,
+                    //     dom: 'Bfrtip',
+
+                    //     buttons: [
+
+                    //         'csv', 'excel', 'pdf', 'print'
+                    //     ]
+                    // });
+
+
+
+
+
+
+
+
+            },
+
+
+            //BindSalesDaily: function (data) {
+            //    $("#DailyReport").show();
+            //    $("#DailyReport").html('');
+
+            //    var datas = data.d;
+            //    if (datas.length > 0) {
+            //        var htmls = "<table id='stockreport' class='sfGridwrapper nowrap display' cellspacing='0'>"
+            //        htmls += "<thead>"
+            //        htmls += "<tr>"
+            //        htmls += "<th>SN</th><th>ItemName</th><th class='waiter'>StoreName</th><th class='table'>OP Ballance</th><th>Closing Ballance</th> <th>Expire Date </th> <th>Purchase Date</th>";
+            //        htmls += "</tr>"
+            //        htmls += "</thead>"
+            //        htmls += "<tbody>"
+            //        var count = 1;
+            //        $.each(datas, function (index, value) {
+            //            htmls += "<tr>";
+            //            htmls += "<td class='a'>" + count + "</td>";
+            //            htmls += "<td class='b'>" + value.ITName + "</td>";
+            //            htmls += "<td class='c'>" + value.StName + "</td>";
+            //            htmls += "<td class='e'>" + value.OPBal + "</td>";
+            //            htmls += "<td class='f'>" + value.CLBal + "</td>";
+            //            htmls += "<td class='f'>" + value.ExpDate + "</td>";
+            //            htmls += "<td class='f'>" + value.PbDate + "</td>";
+            //            htmls += "</tr>"
+            //            count++;
+
+            //        });
+            //        htmls += "<thead>"
+
+            //        htmls += "</tbody>";
+            //        htmls += "</table>";
+
+            //        $('#DailyReport').html(htmls);
+
+            //        //$('#stockreport').DataTable({
+
+            //        //    dom: 'Bfrtip',
+
+            //        //    buttons: [
+
+            //        //         'copy', 'csv', 'excel', 'pdf', 'print'
+            //        //    ]
+            //        //});
+
+
+
+            //    } else {
+            //        $('#DailyReport').html('No data');
+            //    }
+
+
+            //},
+
+
+
+
+
+            //bindSumDaily: function (data) {
+            //    var datas = data.d;
+
+            //     $("#SumAmount").text(datas[0].sumAmount);
+
+            //},
+            //<<-----------------------------------Reset & Validation ------------------------------------->>>
+
+            ResetAll: function () {
+                //Unit
+                $('#textUnit').val('');
+            },
+
+            ValidationForm: function () {
+                v = $('#form1').validate({
+                    rules: {
+
+                        //StoreItem
+                        textUnit: {
+                            required: true,
+                        },
+
+                    },
+                    messages: {
+                        textUnit: {
+                            number: '*'
+                        },
+                    },
+                });
+                if (v.form()) {
+                    return true;
+                }
+                else
+                    return false;
+            },
+
+
+        };
+        eventFunction.init();
+    };
+    $.fn.companyProfEDIT = function (p) {
+        $.companyProfcreate(p);
+    };
+})(jQuery);

@@ -1,0 +1,20 @@
+
+
+CREATE TABLE [dbo].[tbl_CounterTotal](
+	[CTID] [int] IDENTITY(1,1) NOT NULL,
+	[Balance] [decimal](18, 2) NULL,
+	[IsClosing] [bit] NULL,
+	[CCID] [int] NULL,
+	[DifAmount] [decimal](18, 2) NULL,
+	[Date] [date] NULL,
+	[CID] [int] NULL,
+	[ApprovedBy] [int] NULL,
+ CONSTRAINT [PK_tbl_CounterTotal] PRIMARY KEY CLUSTERED 
+(
+	[CTID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+
+

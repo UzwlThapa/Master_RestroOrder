@@ -1,0 +1,19 @@
+
+
+CREATE TABLE [dbo].[ROI_ITEMBal](
+	[ItemBalID] [int] IDENTITY(1,1) NOT NULL,
+	[ITId] [int] NOT NULL,
+	[PDId] [int] NULL,
+	[STId] [int] NOT NULL,
+	[OPBal] [bigint] NOT NULL,
+	[CLBal] [bigint] NOT NULL,
+	[PostedDate] [datetime] NULL CONSTRAINT [DF_ROI_ITEMBal_PostedDate]  DEFAULT (getdate()),
+ CONSTRAINT [PK_ROI_ITEMBal] PRIMARY KEY CLUSTERED 
+(
+	[ItemBalID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+
+
