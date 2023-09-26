@@ -35,6 +35,7 @@ namespace SageFrame.RestoLoyalty
         public int iscustomer { get; set; }
         public int salesMasterId { get; set; }
         public string Remarks { get; set; }
+        public string SalesType { get; set; }
     }
     public class MemberInfo
     {

@@ -270,6 +270,8 @@ function Print() {
                         eventFunction.InitialSetup();
                         break;
                     case 11:
+
+                        console.log(data);
                         eventFunction.bindCustomerTransactionbyID(data);
                         break;
                     case 12:
@@ -546,13 +548,13 @@ function Print() {
                             htmls += "<td></td>";
                         }
                         else {
-                            htmls += "<td style='text-align:left;border:1px solid #575757;padding:2px;'>" + value.AddedOn + " <a target='_blank' id='" + value.salesMasterId + "' class='billView' >(" + value.billNo + ")</a></td>";
+                            htmls += "<td style='text-align:left;border:1px solid #575757;padding:2px;'>" + value.AddedOn + " <a target='_blank' id='" + value.salesMasterId+"_"+value.SalesType+ "' class='billView' >(" + value.billNo + ")</a></td>";
                             htmls += "<td style='text-align:center;border:1px solid #575757;padding:2px;'>" + value.Remarks + "</td>";
                             //<a target="_blank" href="http://your_url_here.html">Link</a>
                         }
                     }
                     else {
-                        htmls += "<td style='text-align:left;border:1px solid #575757;padding:2px;'>" + value.AddedOn + " <a target='_blank' id='" + value.MemberPayID + "' class='CreditView' >(CreditPay -" + sn + ")</a></td>";
+                        htmls += "<td style='text-align:left;border:1px solid #575757;padding:2px;'>" + value.AddedOn + " <a target='_blank' id='" + value.MemberPayID + "' class='                 ' >(CreditPay -" + sn + ")</a></td>";
                         htmls += "<td></td>";
                     }
                     var bal = parseFloat(currentBal);
@@ -606,8 +608,18 @@ function Print() {
 
 
                 $('#tblForCustomerTransaction').on('click', '.billView', function () {
-                    var salesmasterid = $(this).attr('id');
-                    getBill(salesmasterid, false);
+
+
+                    var ids = $(this).attr('id').split("_");
+
+                    if (ids[1] != "") {
+                        getSalesReport_CakeBill(ids[0], ids[1])
+                    }
+                    else {
+                        var salesmasterid = ids[0];
+                        getBill(salesmasterid, false);
+                    }
+                    
 
                     $("#BillingView").dialog({
                         'title': 'Vat Bill',
