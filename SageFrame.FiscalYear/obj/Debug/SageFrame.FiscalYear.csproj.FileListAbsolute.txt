@@ -99,3 +99,10 @@ G:\GITDevelopment\Chicken\SageFrame.FiscalYear\obj\Debug\SageFrame.FiscalYear.cs
 G:\GITDevelopment\Chicken\SageFrame.FiscalYear\obj\Debug\SageFrame.FiscalYear.csproj.CopyComplete
 G:\GITDevelopment\Chicken\SageFrame.FiscalYear\obj\Debug\SageFrame.FiscalYear.dll
 G:\GITDevelopment\Chicken\SageFrame.FiscalYear\obj\Debug\SageFrame.FiscalYear.pdb
+G:\Yawa\Master_RestroOrder\SageFrame\bin\SageFrame.FiscalYear.dll
+G:\Yawa\Master_RestroOrder\SageFrame\bin\SageFrame.FiscalYear.pdb
+G:\Yawa\Master_RestroOrder\SageFrame.FiscalYear\obj\Debug\SageFrame.FiscalYear.csproj.AssemblyReference.cache
+G:\Yawa\Master_RestroOrder\SageFrame.FiscalYear\obj\Debug\SageFrame.FiscalYear.csproj.CoreCompileInputs.cache
+G:\Yawa\Master_RestroOrder\SageFrame.FiscalYear\obj\Debug\SageFrame.FiscalYear.csproj.CopyComplete
+G:\Yawa\Master_RestroOrder\SageFrame.FiscalYear\obj\Debug\SageFrame.FiscalYear.dll
+G:\Yawa\Master_RestroOrder\SageFrame.FiscalYear\obj\Debug\SageFrame.FiscalYear.pdb

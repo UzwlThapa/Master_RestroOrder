@@ -166,3 +166,11 @@ G:\GITDevelopment\Chicken\SageFrame.DailyChalan\obj\Release\SageFrame.DailyChala
 G:\GITDevelopment\Chicken\SageFrame.DailyChalan\obj\Release\SageFrame.DailyChalan.csproj.CopyComplete
 G:\GITDevelopment\Chicken\SageFrame.DailyChalan\obj\Release\SageFrame.DailyChalan.dll
 G:\GITDevelopment\Chicken\SageFrame.DailyChalan\obj\Release\SageFrame.DailyChalan.pdb
+G:\Yawa\Master_RestroOrder\SageFrame.DailyChalan\bin\Release\SageFrame.DailyChalan.dll
+G:\Yawa\Master_RestroOrder\SageFrame.DailyChalan\bin\Release\SageFrame.DailyChalan.pdb
+G:\Yawa\Master_RestroOrder\SageFrame.DailyChalan\bin\Release\SageFrame.Common.dll
+G:\Yawa\Master_RestroOrder\SageFrame.DailyChalan\obj\Release\SageFrame.DailyChalan.csproj.AssemblyReference.cache
+G:\Yawa\Master_RestroOrder\SageFrame.DailyChalan\obj\Release\SageFrame.DailyChalan.csproj.CoreCompileInputs.cache
+G:\Yawa\Master_RestroOrder\SageFrame.DailyChalan\obj\Release\SageFrame.DailyChalan.csproj.CopyComplete
+G:\Yawa\Master_RestroOrder\SageFrame.DailyChalan\obj\Release\SageFrame.DailyChalan.dll
+G:\Yawa\Master_RestroOrder\SageFrame.DailyChalan\obj\Release\SageFrame.DailyChalan.pdb

@@ -103,3 +103,11 @@ G:\GITDevelopment\Chicken\SageFrame.DailyChalan\obj\Debug\SageFrame.DailyChalan.
 G:\GITDevelopment\Chicken\SageFrame.DailyChalan\obj\Debug\SageFrame.DailyChalan.csproj.CopyComplete
 G:\GITDevelopment\Chicken\SageFrame.DailyChalan\obj\Debug\SageFrame.DailyChalan.dll
 G:\GITDevelopment\Chicken\SageFrame.DailyChalan\obj\Debug\SageFrame.DailyChalan.pdb
+G:\Yawa\Master_RestroOrder\SageFrame.DailyChalan\bin\Debug\SageFrame.DailyChalan.dll
+G:\Yawa\Master_RestroOrder\SageFrame.DailyChalan\bin\Debug\SageFrame.DailyChalan.pdb
+G:\Yawa\Master_RestroOrder\SageFrame.DailyChalan\bin\Debug\SageFrame.Common.dll
+G:\Yawa\Master_RestroOrder\SageFrame.DailyChalan\obj\Debug\SageFrame.DailyChalan.csproj.AssemblyReference.cache
+G:\Yawa\Master_RestroOrder\SageFrame.DailyChalan\obj\Debug\SageFrame.DailyChalan.csproj.CoreCompileInputs.cache
+G:\Yawa\Master_RestroOrder\SageFrame.DailyChalan\obj\Debug\SageFrame.DailyChalan.csproj.CopyComplete
+G:\Yawa\Master_RestroOrder\SageFrame.DailyChalan\obj\Debug\SageFrame.DailyChalan.dll
+G:\Yawa\Master_RestroOrder\SageFrame.DailyChalan\obj\Debug\SageFrame.DailyChalan.pdb
