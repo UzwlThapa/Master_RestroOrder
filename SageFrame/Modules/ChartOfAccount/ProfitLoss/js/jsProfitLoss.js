@@ -207,10 +207,7 @@
                     });
 
                     $('#tbl_PLDr').html(htmDr);
-
-
-                   
-
+                     
                     //Looping inside Credit List 
                     $.each(crlist, function (index, value) {
                         if (value.isGroup) {

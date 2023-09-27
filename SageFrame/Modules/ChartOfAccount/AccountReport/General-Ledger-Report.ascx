@@ -1,8 +1,7 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeFile="General-Ledger-Report.ascx.cs" Inherits="Modules_ChartOfAccount_AccountReport_VoucherReport" %>
 <%@ Register Assembly="Microsoft.ReportViewer.WebForms, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" Namespace="Microsoft.Reporting.WebForms" TagPrefix="rsweb" %>
 <style type="text/css">
-    
-.hide {
+    .hide {
         display: none;
     }
 
@@ -38,7 +37,7 @@
 </script>
 <div class="RO_wrapper">
     <div id="div1">
-        <table class="salesTable" style="display:block;">
+        <table class="salesTable" style="display: block;">
             <tr>
                 <td id="Datess">Dates :
                 </td>
@@ -50,28 +49,27 @@
                 </td>
                 <td>
                     <input type="hidden" id="hdnFinancialID" />
-                    <input type="text" class="sfInputbox" placeholder="Financial A/C" id="voucherDropDownList" style="width: 200px;" />
-<%--                    <asp:DropDownList ID="voucherDropDownList" ClientIDMode="Static" CssClass="sfInputbox" runat="server" style="width:200px;">
-                    </asp:DropDownList>--%>
-                </td>
+                    <label for="voucherDropDownList"></label>
+                    <input type="text" class="sfInputbox" placeholder="Financial A/C" id="voucherDropDownList" autocomplete="off" style="width: 500px;" />
+                </td> 
                 <td>
                     <button type="button" class="sfBtn restro-btn fa fa-eye" id="btnView">View</button>
-                    <%--<input type="button" class="sfBtn restro-btn" id="btnPrint" value="Print" style="display: none" />--%></td>
+                </td>
 
             </tr>
         </table>
-         <div class="report-view" style="display:none;">
-          <div class="report-printt">
-                <button type="button" class="sfBtn restro-btn fa fa-print" id="btnPrint" style="margin-right:2px;">Print</button>
-                <button type="button" class="sfBtn restro-btn fa fa-file-excel-o" id="btnExport"  style="margin-right:2px;" >Excel</button>
-                <button type="button" class="sfBtn restro-btn fa fa-file-pdf-o" id="btnPdf" style="margin-right:2px;" >PDF</button>
-                    </div>
-             </div>
+        <div class="report-view" style="display: none;">
+            <div class="report-printt">
+                <button type="button" class="sfBtn restro-btn fa fa-print" id="btnPrint" style="margin-right: 2px;">Print</button>
+                <button type="button" class="sfBtn restro-btn fa fa-file-excel-o" id="btnExport" style="margin-right: 2px;">Excel</button>
+                <button type="button" class="sfBtn restro-btn fa fa-file-pdf-o" id="btnPdf" style="margin-right: 2px;">PDF</button>
+            </div>
+        </div>
         <div class="restrowrapper" id="DailyReport" style="border: none;">
         </div>
     </div>
 
-    
+
     <div id="divFinancialView" class="popup-tbl" style="display: none;"></div>
 
 </div>

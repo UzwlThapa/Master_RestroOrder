@@ -33,7 +33,7 @@
             InitialSetup: function () {
                 eventFunction.getFinancialAcName();
                 if (p.FinancialID != "") {
-                    $("#hdnFinancialID").val(p.FinancialID);
+                    $("#hdnFinancialID").val(p.FinancialID.toString());
                     $("#txtStartDate").val(p.Fromdate == "" ? $("#txtStartDate").val() : p.Fromdate);
                     $("#txtToDate").val(p.Todate == "" ? $("#txtToDate").val() : p.Todate);
                     eventFunction.GeneralLedgerReport();
@@ -41,14 +41,15 @@
 
 
                 $("#btnView").on('click', function () {
-                    if ($("#hdnFinancialID").val() == 0) {
-                        jAlert("Please select one of the Finanacial Account", 'Information!!', function () { $.alerts.dialogClass = null; });
-                    }
-                    else {
-                        $(".report-view").show();
-                        eventFunction.GeneralLedgerReport();
-                    }
-
+                    //if (["", null].includes($("#hdnFinancialID").val())) {
+                    //    jAlert("Please select atleast one finanacial account!", 'Information!!', function () { $.alerts.dialogClass = null; });
+                    //}
+                    //else {
+                    //    $(".report-view").show();
+                    //    eventFunction.GeneralLedgerReport();
+                    //}
+                    $(".report-view").show();
+                    eventFunction.GeneralLedgerReport();
                 });
                 $("#btnExport").click(function (e) {
                     $('#printedDate').show();
@@ -154,10 +155,10 @@
 
                 var StartDate = $("#txtStartDate").val();
                 var EndDate = $("#txtToDate").val();
-                var VoucherNo = $("#hdnFinancialID").val();
+                var faIds = $("#hdnFinancialID").val();
                 eventFunction.config.method = "GeneralLedgerReport";
                 eventFunction.config.url = eventFunction.config.baseURL + eventFunction.config.method;
-                eventFunction.config.data = JSON2.stringify({ StartDate: StartDate, EndDate: EndDate, VoucherNo: VoucherNo });
+                eventFunction.config.data = JSON2.stringify({ StartDate: StartDate, EndDate: EndDate, FaIds: faIds });
                 eventFunction.config.data = eventFunction.config.data;
                 eventFunction.config.ajaxCallMode = 1;
                 eventFunction.ajaxCall(eventFunction.config);
@@ -175,13 +176,56 @@
                     });
                 }
 
-                $("#voucherDropDownList").autocomplete({
-                    source: AutocompleteFinancialAc,
-                    delay: 0,
-                    select: function (event, ui) {
-                        $('#hdnFinancialID').val(ui.item.id);
-                    }
-                });
+                function split(val) {
+                    return val.split(/,\s*/);
+                }
+                function extractLast(term) {
+                    return split(term).pop();
+                }
+
+                $("#voucherDropDownList")
+                    // don't navigate away from the field on tab when selecting an item
+                    .on("keydown", function (event) {
+                        if (event.keyCode === $.ui.keyCode.TAB &&
+                            $(this).autocomplete("instance").menu.active) {
+                            event.preventDefault();
+                        }
+                    }).
+                    autocomplete({
+                        minLength: 0,
+                        delay: 0,
+                        // delegate back to autocomplete, but extract the last term
+                        source: function (request, response) {
+                            response($.ui.autocomplete.filter(
+                                AutocompleteFinancialAc, extractLast(request.term)));
+                        },
+                        // prevent value inserted on focus
+                        focus: function () {
+                            return false;
+                        },
+                        select: function (event, ui) {
+
+                            var terms = split(this.value);
+                            // remove the current input value
+                            terms.pop();
+                            // add the selected item
+                            var label = ui.item.label.replace(/[^a-zA-Z0-9]/g, '');
+                            if (terms.includes(label)) {
+                                jAlert("Finanacial account already selected!", 'Information!!', function () { $.alerts.dialogClass = null; });
+                            } else {
+                                terms.push(label);
+                                // add placeholder to get the comma-and-space at the end
+                                terms.push("");
+                                this.value = terms.join(", ");
+
+                                let a = $('#hdnFinancialID').val().split(",");
+                                a.push(ui.item.id);
+                                $('#hdnFinancialID').val(a.filter(x => x).join(", "));
+                            }
+
+                            return false;
+                        }
+                    });
             },
 
             BindNewGeneralLedger: function (data) {
@@ -195,34 +239,95 @@
                 htmls += '<p id="printedDate" style="display:none;text-align:center;margin:0;margin-bottom:5px;">Printed On : <label id="lblPrintedOn"></label></p></div>';
                 htmls += "<table id='unittableSecond' class='sfGridwrapper  display pur-static-tbl tablee-section reportsprint' cellspacing='0' style='border:none;width:100%;border-collapse:collapse;'>";
                 htmls += "<thead>";
-                htmls += "<tr>";
-                htmls += "<th style='text-align:center;border:1px solid #575757;padding:2px;'>Date</th><th style='text-align:center;border:1px solid #575757;padding:2px;'>VoucherNo</th><th style='text-align:center;border:1px solid #575757;padding:2px;'>AccountHead</th><th style='text-align:center;border:1px solid #575757;padding:2px;'>Particulars</th><th style='text-align:right;border:1px solid #575757;padding:2px;'>Debit</th><th style='text-align:right;border:1px solid #575757;padding:2px;'>Credit</th><th style='text-align:right;border:1px solid #575757;padding:2px;'>Balance</th>";
+                htmls += '<tr style="font-weight:bold;">';
+                htmls += "<th style='text-align:left;border:1px solid #575757;padding-left:2rem !important;'>Date</th><th style='text-align:left;border:1px solid #575757;padding:2px;'>Particulars</th><th style='text-align:right;border:1px solid #575757;padding:2px;'>Debit</th><th style='text-align:right;border:1px solid #575757;padding:2px;'>Credit</th><th style='text-align:right;border:1px solid #575757;padding-right: 8px !important;'>Balance</th>";
                 htmls += "</tr>";
                 htmls += "</thead>";
                 htmls += "<tbody>";
 
                 if (datas.length > 0) {
-                    $.each(datas, function (index, value) {
-                        var date = value.Date;
-                        var split = date.split(" ");
-                        var dta = split[0];
-                        let voucherHtml = value.VoucherNo;
-                        if (value.TransactionID > 0) {
-                            voucherHtml = `<span class="lblVoucherLink" data-id='${value.TransactionID}'>${value.VoucherNo}</span>`;
-                        }
 
-                        htmls += '<tr>';
-                        htmls += '<td style="text-align:center;border:1px solid #575757;padding:2px;">' + dta + '</td>';
-                        htmls += '<td style="text-align:center;border:1px solid #575757;padding:2px;">' + voucherHtml + '</td>';
-                        htmls += '<td style="text-align:center;border:1px solid #575757;padding:2px;">' + value.AccountHead + '</td>';
-                        htmls += '<td style="text-align:center;border:1px solid #575757;padding:2px;">' + value.Particulars + '</td>';
-                        htmls += '<td style="text-align:right;border:1px solid #575757;padding:2px;">' + value.Debit + '</td>';
-                        htmls += '<td style="text-align:right;border:1px solid #575757;padding:2px;">' + value.Credit + '</td>';
-                        //htmls += '<td style="text-align:right;border:1px solid #575757;padding:2px;">' + (value.Balance >= 0 ? value.Balance : '('+ Math.abs(value.Balance) +')') + '</td>';
-                        htmls += '<td style="text-align:right;border:1px solid #575757;padding:2px;">' + Math.abs(value.Balance) + (value.Balance >= 0 ? ' Dr' : ' Cr') + '</td>';
+                    const groupNameList = [...new Set(datas.map(item => item.ParentAccount))];
+                    groupNameList.pop("");
+                    var groupTotalDr = 0;
+                    var groupTotalCr = 0;
+                    var groupTotalBal = 0;
+                    var grandTotalDr = 0;
+                    var grandTotalCr = 0;
+                    var grandTotalBal = 0;
+
+                    $.each(groupNameList, function (index, value) {
+                        // Group Header
+                        htmls += '<tr style="text-align:left;background:#e1dfdf;font-weight:bold;">';
+                        htmls += `<td style="text-align:center;border:1px solid #575757;text-align:left;padding-left:2rem!important;">Ledger: ${value}</td>`;
+                        htmls += '<td></td>';
+                        htmls += '<td></td>';
+                        htmls += '<td></td>';
+                        htmls += '<td></td>';
                         htmls += '</tr>';
+
+
+                        var groupData = datas.filter((item) => item.ParentAccount == value && item.AccountHead != 'Opening Balance');
+                        // Opening Balance
+
+                        var openingBalance = datas.filter((item) => item.ParentAccount == value && item.AccountHead == 'Opening Balance');
+                        htmls += '<tr style="text-align:left;background:#f7ebeb;font-weight:bold;">';
+                        htmls += `<td style="text-align:left;border:1px solid #575757;padding-left:4rem!important;">${openingBalance[0].AccountHead}</td>`;
+                        htmls += `<td style="text-align:left;border:1px solid #575757;"></td>`;
+                        htmls += `<td style="text-align:right;border:1px solid #575757;">${openingBalance[0].Debit}</td>`;
+                        htmls += `<td style="text-align:right;border:1px solid #575757;">${openingBalance[0].Credit}</td>`;
+                        htmls += `<td style="text-align:right;border:1px solid #575757;padding-right: 8px !important;">${Math.abs(openingBalance[0].Balance) + (openingBalance[0].Balance >= 0 ? ' Dr' : ' Cr')}</td>`;
+
+                        htmls += '</tr>';
+
+                        $.each(groupData, function (index, value) {
+
+                            groupTotalDr += value.Debit;
+                            groupTotalCr += value.Credit;
+                            groupTotalBal += value.Balance;
+                            grandTotalDr += value.Debit;
+                            grandTotalCr += value.Credit;
+                            grandTotalBal += value.Balance;
+
+                            var date = value.Date;
+                            var split = date.split(" ");
+                            var dta = split[0];
+
+                            htmls += '<tr>';
+                            htmls += `<td style="text-align:left;border:1px solid #575757;padding-left:4rem!important;">${dta} ${value.AccountHead}</td>`;
+                            htmls += `<td style="text-align:left;border:1px solid #575757;">${value.Particulars}</td>`;
+                            htmls += `<td style="text-align:right;border:1px solid #575757;">${value.Debit}</td>`;
+                            htmls += `<td style="text-align:right;border:1px solid #575757;">${value.Credit}</td>`;
+                            htmls += `<td style="text-align:right;border:1px solid #575757;padding-right: 8px !important;">${Math.abs(value.Balance) + (value.Balance >= 0 ? ' Dr' : ' Cr')}</td>`;
+                            htmls += '</tr>';
+                        });
+
+                        // Group Footer
+                        htmls += '<tr style="text-align:left;background:#cfcfcf;font-weight:bold;">';
+                        htmls += '<td></td>';
+                        htmls += '<td></td>';
+                        htmls += `<td style="text-align:right;">Ledger Total: ${groupTotalDr}</td>`;
+                        htmls += `<td style="text-align:right;">${groupTotalCr}</td>`;
+                        htmls += `<td style="text-align:right;padding-right: 8px !important;">${Math.abs(groupTotalBal).toFixed(2).toString() + (groupTotalBal >= 0 ? ' Dr' : ' Cr')}</td>`;
+                        htmls += '</tr>';
+
+                        groupTotalDr = 0;
+                        groupTotalCr = 0;
+                        groupTotalBal = 0;
                     });
 
+                    // Grand Total Footer
+                    htmls += '<tr style="text-align:left;background:#d3c5c5;font-weight:bold;">';
+                    htmls += '<td></td>';
+                    htmls += '<td></td>';
+                    htmls += `<td style="text-align:right;">Grand Total:${grandTotalDr}</td>`;
+                    htmls += `<td style="text-align:right;">${grandTotalCr}</td>`;
+                    htmls += `<td style="text-align:right;padding-right: 8px !important;">${Math.abs(grandTotalBal).toFixed(2).toString() + (grandTotalBal >= 0 ? ' Dr' : ' Cr')}</td>`;
+                    htmls += '</tr>';
+
+                    grandTotalDr = 0;
+                    grandTotalCr = 0;
+                    grandTotalBal = 0;
                 }
                 else {
                     $('#DailyReport').html('No data');
@@ -255,35 +360,35 @@
                 $("#divFinancialView").html(htmls);
 
                 var companyInfo = JSON.parse(localStorage.getItem("companyInfo"));
-                htmls += `<label class="icon-print sfBtn restro-btn" id="btnPrintVerifiedTransaction">
-                Print</label>
-                        <style>
-                           .popup-tblTop, #tableTransactionByIDInDialog {
-                                border: 1px solid;
-                                border-collapse: collapse;
+                htmls += `< label class="icon-print sfBtn restro-btn" id = "btnPrintVerifiedTransaction" >
+                            Print</label >
+                                <style>
+                                    .popup-tblTop, #tableTransactionByIDInDialog {
+                                        border: 1px solid;
+                                    border-collapse: collapse;
 
                             }
-                            .popup-tblTop tr, #tableTransactionByIDInDialog tr{
-                            border: 1px solid;
-                                border-collapse: collapse;
-
-                            }
-
-                            .popup-tblTop tr, #tableTransactionByIDInDialog th{
-                            border: 1px solid;
-                                border-collapse: collapse;
+                                    .popup-tblTop tr, #tableTransactionByIDInDialog tr{
+                                        border: 1px solid;
+                                    border-collapse: collapse;
 
                             }
 
-                            .popup-tblTop td, #tableTransactionByIDInDialog td {
-                            border: 1px solid;
-                                border-collapse: collapse;
+                                    .popup-tblTop tr, #tableTransactionByIDInDialog th{
+                                        border: 1px solid;
+                                    border-collapse: collapse;
 
                             }
-                                                    </style>
-                            `;
+
+                                    .popup-tblTop td, #tableTransactionByIDInDialog td {
+                                        border: 1px solid;
+                                    border-collapse: collapse;
+
+                            }
+                                </style>
+                        `;
                 //htmls += "<div class='' style='text-align:center; width: 100%'>";
-                htmls += `<table align="center" >
+                htmls += `< table align = "center" >
                                 <tr>
                                     <td colspan="2" style="text-align: center; padding: 0px;">
                                         <img src="/Modules/ROCompanyInfo/logo/${companyInfo.Logo}" style="width:70px;"></td>
@@ -295,7 +400,7 @@
                                     <td colspan="7" style="font-size: 12px; text-align: center; padding: 0px;">${companyInfo.Address} , ${(companyInfo.IsPan ? 'PAN' : 'VAT')} : ${companyInfo.PAN}</td>
                                 </tr>
                                 <tr><td colspan="7" style="font-size: 12px; text-align: center; padding: 0px;"></td></tr>
-                              </table>`;
+                              </table > `;
                 htmls += "<table class='popup-tblTop'><tr><td>Voucher No. : " + ledgerInfo.VoucherNo + "</td>";
                 htmls += "<td> Voucher : " + ledgerInfo.VoucherName + "</td></tr>";
                 htmls += "<tr><td> Descriptions : " + ledgerInfo.Descriptions + "</td>";
@@ -330,9 +435,9 @@
                 }
 
                 //let footerHtml = '';
-                htmls += `<table  style='margin-top:25px; float:right'>
-                                        <tr><td colspan="7"><div style="width:225px;text-align:center;border-top:1px solid;float:right;">Verified By</div></td></tr>
-                                    </table>`;
+                htmls += `< table  style = 'margin-top:25px; float:right' >
+            <tr><td colspan="7"><div style="width:225px;text-align:center;border-top:1px solid;float:right;">Verified By</div></td></tr>
+                                    </table > `;
                 $("#divFinancialView").html(htmls);
 
 

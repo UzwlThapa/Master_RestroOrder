@@ -33,12 +33,11 @@ public class SalesReport : System.Web.Services.WebService
         return "Hello World";
     }
 
-
     [WebMethod]
-    public string GeneralLedgerReport(DateTime StartDate, DateTime EndDate, string VoucherNo)
+    public string GeneralLedgerReport(DateTime StartDate, DateTime EndDate, string FaIds)
     {
         AccountReportController con = new AccountReportController();
-        List<AccountReportInfo> ledgerReport = con.GeneralLedgerReport(StartDate, EndDate, VoucherNo);
+        List<AccountReportInfo> ledgerReport = con.GeneralLedgerReport(StartDate, EndDate, FaIds);
         return JsonConvert.SerializeObject(ledgerReport);
     }
 
@@ -50,7 +49,6 @@ public class SalesReport : System.Web.Services.WebService
         return JsonConvert.SerializeObject(res);
     }
 
-
     [WebMethod]
     public string GetTransactionReport(DateTime From, DateTime To)
     {
@@ -58,8 +56,6 @@ public class SalesReport : System.Web.Services.WebService
         List<TransactionReportInfo> transReport = con.GetTransactionReport(From, To);
         return JsonConvert.SerializeObject(transReport);
     }
-
-
 
     [WebMethod]
     public string GetTransactionDetailReport(DateTime From, DateTime To, int GL_ID)
@@ -98,6 +94,4 @@ public class SalesReport : System.Web.Services.WebService
         List<companyInfo> info = con.getcompanyInfo();
         return JsonConvert.SerializeObject(info);
     }
-
-
 }
