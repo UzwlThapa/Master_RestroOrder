@@ -71,6 +71,7 @@
 
 
     <div id="divFinancialView" class="popup-tbl" style="display: none;"></div>
+    <div id="divFinancialDetailView" class="popup-tbl" style="display: none;"></div>
 
 </div>
 

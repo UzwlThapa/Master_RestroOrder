@@ -28,6 +28,7 @@
                 baseURL: p.ModulePath + "Reportwebservice.asmx/",
                 method: "",
                 url: "",
+                transactionID: 0,
                 ajaxCallMode: 0
             },
             InitialSetup: function () {
@@ -137,6 +138,9 @@
                     case 2:
                         eventFunction.BindLedgerDetail(data.d);
                         break;
+                    case 3:
+                        eventFunction.getTransactionByIDInDialog(data.d);
+                        break;
 
 
                 }
@@ -240,7 +244,7 @@
                 htmls += "<table id='unittableSecond' class='sfGridwrapper  display pur-static-tbl tablee-section reportsprint' cellspacing='0' style='border:none;width:100%;border-collapse:collapse;'>";
                 htmls += "<thead>";
                 htmls += '<tr style="font-weight:bold;">';
-                htmls += "<th style='text-align:left;border:1px solid #575757;padding-left:2rem !important;'>Date</th><th style='text-align:left;border:1px solid #575757;padding:2px;'>Particulars</th><th style='text-align:right;border:1px solid #575757;padding:2px;'>Debit</th><th style='text-align:right;border:1px solid #575757;padding:2px;'>Credit</th><th style='text-align:right;border:1px solid #575757;padding-right: 8px !important;'>Balance</th>";
+                htmls += "<th style='text-align:left;border:1px solid #575757;padding-left:2rem !important;'>Date</th><th style='text-align:left;border:1px solid #575757;padding:2px;'>Particulars</th><th style='text-align:right;border:1px solid #575757;padding:2px;'>Debit</th><th style='text-align:right;border:1px solid #575757;padding:2px;'>Credit</th><th style='text-align:right;border:1px solid #575757;padding-right: 8px !important;'>Balance</th><th style='text-align:right;border:1px solid #575757;padding-right: 8px !important;'>View</th>";
                 htmls += "</tr>";
                 htmls += "</thead>";
                 htmls += "<tbody>";
@@ -264,6 +268,7 @@
                         htmls += '<td></td>';
                         htmls += '<td></td>';
                         htmls += '<td></td>';
+                        htmls += '<td></td>';
                         htmls += '</tr>';
 
 
@@ -277,7 +282,7 @@
                         htmls += `<td style="text-align:right;border:1px solid #575757;">${openingBalance[0].Debit}</td>`;
                         htmls += `<td style="text-align:right;border:1px solid #575757;">${openingBalance[0].Credit}</td>`;
                         htmls += `<td style="text-align:right;border:1px solid #575757;padding-right: 8px !important;">${Math.abs(openingBalance[0].Balance) + (openingBalance[0].Balance >= 0 ? ' Dr' : ' Cr')}</td>`;
-
+                        htmls += '<td></td>';
                         htmls += '</tr>';
 
                         $.each(groupData, function (index, value) {
@@ -299,11 +304,13 @@
                             htmls += `<td style="text-align:right;border:1px solid #575757;">${value.Debit}</td>`;
                             htmls += `<td style="text-align:right;border:1px solid #575757;">${value.Credit}</td>`;
                             htmls += `<td style="text-align:right;border:1px solid #575757;padding-right: 8px !important;">${Math.abs(value.Balance) + (value.Balance >= 0 ? ' Dr' : ' Cr')}</td>`;
+                            htmls += `<td style="text-align:right;border:1px solid #575757;padding:2px;"><button class="icon-preview btnViewTransaction" type='button' id="${value.TransactionID}"></button></td>`;
                             htmls += '</tr>';
                         });
 
                         // Group Footer
                         htmls += '<tr style="text-align:left;background:#cfcfcf;font-weight:bold;">';
+                        htmls += '<td></td>';
                         htmls += '<td></td>';
                         htmls += '<td></td>';
                         htmls += `<td style="text-align:right;">Ledger Total: ${groupTotalDr}</td>`;
@@ -318,6 +325,7 @@
 
                     // Grand Total Footer
                     htmls += '<tr style="text-align:left;background:#d3c5c5;font-weight:bold;">';
+                    htmls += '<td></td>';
                     htmls += '<td></td>';
                     htmls += '<td></td>';
                     htmls += `<td style="text-align:right;">Grand Total:${grandTotalDr}</td>`;
@@ -344,6 +352,88 @@
                     eventFunction.config.data = eventFunction.config.data;
                     eventFunction.config.ajaxCallMode = 2;
                     eventFunction.ajaxCall(eventFunction.config);
+                });
+
+                $("#unittableSecond").on("click", ".btnViewTransaction", function () {
+                    var row = $(this).parents('tr');
+                    var id = parseInt($(this).attr('id'));
+
+                    console.log(id);
+                    eventFunction.config.transactionID = id;
+                    let htmls = '';
+                    $("#divFinancialDetailView").html(htmls);
+
+                    var companyInfo = JSON.parse(localStorage.getItem("companyInfo"));
+                    htmls += `<label class="icon-print sfBtn restro-btn" id="btnPrintVerifiedTransaction">
+                Print</label>
+                        <style>
+                           .popup-tblTop, #tableTransactionByIDInDialog {
+                                border: 1px solid;
+                                border-collapse: collapse;
+
+                            }
+                            .popup-tblTop tr,#tableTransactionByIDInDialog tr{
+                            border: 1px solid;
+                                border-collapse: collapse;
+
+                            }
+
+                            .popup-tblTop tr,#tableTransactionByIDInDialog th{
+                            border: 1px solid;
+                                border-collapse: collapse;
+
+                            }
+
+                            .popup-tblTop td, #tableTransactionByIDInDialog td {
+                            border: 1px solid;
+                                border-collapse: collapse;
+
+                            }
+                                                    </style>
+                            `;
+                    htmls += `<table align="center" >
+                                <tr>
+                                    <td colspan="2" style="text-align: center; padding: 0px;">
+                                        <img src="/Modules/ROCompanyInfo/logo/${companyInfo.Logo}" style="width:70px;"></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="7" style="font-size: 16px; text-align: center; font-weight: bold; padding: 0px;">${companyInfo.Name}</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="7" style="font-size: 12px; text-align: center; padding: 0px;">${companyInfo.Address} , ${(companyInfo.IsPan ? 'PAN' : 'VAT')} : ${companyInfo.PAN}</td>
+                                </tr>
+                                <tr><td colspan="7" style="font-size: 12px; text-align: center; padding: 0px;"></td></tr>
+                              </table>`;
+                    htmls += "<table class='popup-tblTop'><tr><td>Voucher No. : " + row.find('td:eq(1)').text() + "</td>";
+                    htmls += "<td> Voucher : " + row.find('td:eq(2)').text() + "</td></tr>";
+                    htmls += "<tr><td> Descriptions : " + row.find('td:eq(3)').text() + "</td>";
+                    htmls += "<td>TransactionDate : " + row.find('td:eq(4)').text() + "</td></tr>";
+                    htmls += "<tr><td>Total Debit : " + row.find('td:eq(5)').text() + "</td>";
+                    htmls += "<td>Total Credit : " + row.find('td:eq(6)').text() + "</td></tr>";
+                    htmls += '</table>';
+                    $("#divFinancialDetailView").html(htmls);
+
+                    eventFunction.config.method = "getVerifiedTransactionByID";
+                    eventFunction.config.url = "/Modules/ChartOfAccount/verifyTransactionEntry/webService/wsVerifyTransactionEntry.asmx/getVerifiedTransactionByID";
+                    eventFunction.config.data = JSON2.stringify({ transactionID: id });
+                    eventFunction.config.ajaxCallMode = 3;
+                    eventFunction.ajaxCall(eventFunction.config);
+
+                    let footerHtml = '';
+                    footerHtml += `<table  style='margin-top:25px; float:right'>
+                    <tr><td colspan="7"><div style="width:225px;text-align:center;border-top:1px solid;float:right;">Verified By</div></td></tr>
+                                    </table>`;
+                    $("#divFinancialDetailView").append(footerHtml);
+
+                    $("#divFinancialDetailView").dialog({
+                        'title': 'Transaction',
+                        width: 1024,
+                        modal: true,
+                        resizable: true,
+                        dialogClass: 'popup-titlebg',
+                    });
+
+                    eventFunction.PrintFunction();
                 });
 
             },
@@ -451,7 +541,45 @@
 
                 eventFunction.PrintFunction();
             },
-
+            getTransactionByIDInDialog: function (datas) {
+                //var datas = result.d;
+                //$("#DivForViewItemByID").html('');
+                if (datas.length > 0) {
+                    var htmls = '';
+                    var a = 0;
+                    htmls += "<table id='tableTransactionByIDInDialog' class='display dataTable no-footer'><thead><tr><th>S.N.</th><th>FinancialAc</th><th>FinancialAcID</th><th>Particulars</th><th>Debit</th><th>Credit</th><th>Cheque No.</th><th>Cheque Date</th></tr></thead><tbody>";
+                    var valids = "";
+                    $.each(datas, function (index, value) {
+                        a++;
+                        htmls += '<tr><td>' + a + '</td>';
+                        htmls += '<td>' + value.financialAcName + '</td>';
+                        htmls += '<td>' + value.FinancialAcID + '</td>';
+                        htmls += '<td>' + value.Particulars + '</td>';
+                        htmls += '<td class="tdrate">' + parseFloat(value.Debit).toFixed(2) + '</td>';
+                        htmls += '<td class="tdrate">' + parseFloat(value.Credit).toFixed(2) + '</td>';
+                        htmls += '<td>' + value.ChequeNo + '</td>';
+                        dates = value.ChequeDate.split(" ");
+                        htmls += '<td>' + dates[0] + '</td>';
+                        //htmls += '<td><label value="Delete" class="delete icon-delete" id="' + value.FinancialAcID + '"></label></td></tr>';
+                        $("#hdnPostedBy").val(value.PostedBy);
+                        datess = value.PostedOn.split(" ");
+                        $("#hdnPostedOn").val(datess[0]);
+                        VoucherTypeID = value.VoucherTypeID;
+                    });
+                    htmls += "</tbody></table>";
+                    $("#divFinancialDetailView").append(htmls);
+                    $("#tableTransactionByIDInDialog").dataTable({
+                        search: false,
+                        paging: false,
+                        info: false,
+                        ordering: false,
+                        "jqueryUI": true
+                    });
+                }
+                else {
+                    $("#divFinancialDetailView").append("<br/>  No Data");
+                }
+            },
             PrintFunction: function () {
 
                 $('#btnPrintVerifiedTransaction').off('click').on('click', function () {
