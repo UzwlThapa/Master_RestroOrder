@@ -207,7 +207,12 @@
                 function extractLast(term) {
                     return split(term).pop();
                 }
-
+                // clear input on textbox clear
+                $("#voucherDropDownList").keyup(function () {
+                    if (!this.value) {
+                        $('#hdnFinancialID').val('');
+                    }
+                });
                 $("#voucherDropDownList")
                     // don't navigate away from the field on tab when selecting an item
                     .on("keydown", function (event) {
