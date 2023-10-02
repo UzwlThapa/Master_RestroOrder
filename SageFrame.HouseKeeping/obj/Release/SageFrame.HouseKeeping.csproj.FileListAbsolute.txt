@@ -88,3 +88,11 @@ G:\GITDevelopment\Chicken\SageFrame.HouseKeeping\obj\Release\SageFrame.HouseKeep
 G:\GITDevelopment\Chicken\SageFrame.HouseKeeping\obj\Release\SageFrame.HouseKeeping.csproj.CopyComplete
 G:\GITDevelopment\Chicken\SageFrame.HouseKeeping\obj\Release\SageFrame.HouseKeeping.dll
 G:\GITDevelopment\Chicken\SageFrame.HouseKeeping\obj\Release\SageFrame.HouseKeeping.pdb
+G:\Yawa\Master_RestroOrder\SageFrame.HouseKeeping\bin\Release\SageFrame.HouseKeeping.dll
+G:\Yawa\Master_RestroOrder\SageFrame.HouseKeeping\bin\Release\SageFrame.HouseKeeping.pdb
+G:\Yawa\Master_RestroOrder\SageFrame.HouseKeeping\bin\Release\SageFrame.Common.dll
+G:\Yawa\Master_RestroOrder\SageFrame.HouseKeeping\obj\Release\SageFrame.HouseKeeping.csproj.AssemblyReference.cache
+G:\Yawa\Master_RestroOrder\SageFrame.HouseKeeping\obj\Release\SageFrame.HouseKeeping.csproj.CoreCompileInputs.cache
+G:\Yawa\Master_RestroOrder\SageFrame.HouseKeeping\obj\Release\SageFrame.HouseKeeping.csproj.CopyComplete
+G:\Yawa\Master_RestroOrder\SageFrame.HouseKeeping\obj\Release\SageFrame.HouseKeeping.dll
+G:\Yawa\Master_RestroOrder\SageFrame.HouseKeeping\obj\Release\SageFrame.HouseKeeping.pdb

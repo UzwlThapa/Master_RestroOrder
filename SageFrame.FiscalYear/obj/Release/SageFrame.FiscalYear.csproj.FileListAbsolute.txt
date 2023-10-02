@@ -194,3 +194,11 @@ G:\GITDevelopment\Chicken\SageFrame.FiscalYear\obj\Release\SageFrame.FiscalYear.
 G:\GITDevelopment\Chicken\SageFrame.FiscalYear\obj\Release\SageFrame.FiscalYear.csproj.CopyComplete
 G:\GITDevelopment\Chicken\SageFrame.FiscalYear\obj\Release\SageFrame.FiscalYear.dll
 G:\GITDevelopment\Chicken\SageFrame.FiscalYear\obj\Release\SageFrame.FiscalYear.pdb
+G:\Yawa\Master_RestroOrder\SageFrame.FiscalYear\bin\Release\SageFrame.FiscalYear.dll
+G:\Yawa\Master_RestroOrder\SageFrame.FiscalYear\bin\Release\SageFrame.FiscalYear.pdb
+G:\Yawa\Master_RestroOrder\SageFrame.FiscalYear\bin\Release\SageFrame.Common.dll
+G:\Yawa\Master_RestroOrder\SageFrame.FiscalYear\obj\Release\SageFrame.FiscalYear.csproj.AssemblyReference.cache
+G:\Yawa\Master_RestroOrder\SageFrame.FiscalYear\obj\Release\SageFrame.FiscalYear.csproj.CoreCompileInputs.cache
+G:\Yawa\Master_RestroOrder\SageFrame.FiscalYear\obj\Release\SageFrame.FiscalYear.csproj.CopyComplete
+G:\Yawa\Master_RestroOrder\SageFrame.FiscalYear\obj\Release\SageFrame.FiscalYear.dll
+G:\Yawa\Master_RestroOrder\SageFrame.FiscalYear\obj\Release\SageFrame.FiscalYear.pdb

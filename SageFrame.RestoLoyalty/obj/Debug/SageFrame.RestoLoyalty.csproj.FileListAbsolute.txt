@@ -192,3 +192,11 @@ G:\GITDevelopment\Chicken\SageFrame.RestoLoyalty\obj\Debug\SageFrame.RestoLoyalt
 G:\GITDevelopment\Chicken\SageFrame.RestoLoyalty\obj\Debug\SageFrame.RestoLoyalty.csproj.CopyComplete
 G:\GITDevelopment\Chicken\SageFrame.RestoLoyalty\obj\Debug\SageFrame.RestoLoyalty.dll
 G:\GITDevelopment\Chicken\SageFrame.RestoLoyalty\obj\Debug\SageFrame.RestoLoyalty.pdb
+G:\Yawa\Master_RestroOrder\SageFrame.RestoLoyalty\bin\Debug\SageFrame.RestoLoyalty.dll
+G:\Yawa\Master_RestroOrder\SageFrame.RestoLoyalty\bin\Debug\SageFrame.RestoLoyalty.pdb
+G:\Yawa\Master_RestroOrder\SageFrame.RestoLoyalty\bin\Debug\SageFrame.Common.dll
+G:\Yawa\Master_RestroOrder\SageFrame.RestoLoyalty\obj\Debug\SageFrame.RestoLoyalty.csproj.AssemblyReference.cache
+G:\Yawa\Master_RestroOrder\SageFrame.RestoLoyalty\obj\Debug\SageFrame.RestoLoyalty.csproj.CoreCompileInputs.cache
+G:\Yawa\Master_RestroOrder\SageFrame.RestoLoyalty\obj\Debug\SageFrame.RestoLoyalty.csproj.CopyComplete
+G:\Yawa\Master_RestroOrder\SageFrame.RestoLoyalty\obj\Debug\SageFrame.RestoLoyalty.dll
+G:\Yawa\Master_RestroOrder\SageFrame.RestoLoyalty\obj\Debug\SageFrame.RestoLoyalty.pdb
