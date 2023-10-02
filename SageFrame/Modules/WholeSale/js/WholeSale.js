@@ -110,7 +110,7 @@ function GetItemForSearch() {
         async: false,
         cache: false,
         url: baseUrl + "GetItemForWholeSaleSearch",
-        data: JSON2.stringify({ LookUpName : lookUpName }),
+        data: JSON2.stringify({ LookUpName: lookUpName }),
         //data: "",
         contentType: "application/json; charset=utf-8",
         dataType: "json",
@@ -593,20 +593,20 @@ function isNumber(evt) {
 }
 function calculateSurpDefct(str)  //// str->1 for Tender, str->2 for Return amt
 {
-   
+
     var surpDfct = 0;
     var returnAmt = 0;
     if (str == 1) {
         if ($("#txtTenderAmount").val() > $("#txtTotalCalc").val()) {
             returnAmt = $("#txtTenderAmount").val() - $("#txtTotalCalc").val();
         }
-       
+
         surpDfct = $("#txtTenderAmount").val() - returnAmt - $("#txtTotalCalc").val();
     } else {
         returnAmt = $("#txtReturnAmount").val();
         surpDfct = $("#txtTenderAmount").val() - returnAmt - $("#txtTotalCalc").val();
     }
-    
+
     $("#lblSurpDefct").text(surpDfct.toFixed(2));
     if (surpDfct < 0) {
         $(".clsSurpDefct").css('color', 'red');
@@ -615,7 +615,7 @@ function calculateSurpDefct(str)  //// str->1 for Tender, str->2 for Return amt
     } else {
         $(".clsSurpDefct").css('color', 'black');
     }
-    
+
 }
 function validateFloatKeyPress(el, evt) {
     var charCode = (evt.which) ? evt.which : event.keyCode;
@@ -755,16 +755,16 @@ function SaveOrderedData() {
     for (var i = 0; i < OrderListArray.length; i++) {
         var orderDetail = new Object();
         orderDetail.Quantity = OrderListArray[i].Quantity,
-        orderDetail.ItemId = OrderListArray[i].ItemId,
-        orderDetail.ItemName = OrderListArray[i].ItemName,
-        orderDetail.IsCombo = OrderListArray[i].IsCombo,
-        orderDetail.AddedBy = SageFrameUserName,
-        orderDetail.UpdatedBy = '',
-        orderDetail.IsArchived = false,
-        orderDetail.ArchivedBy = SageFrameUserName,
-        orderDetail.Rate = 0.0,
-        orderDetail.Note = OrderListArray[i].Note,
-        orderDetail.SeatNo = OrderListArray[i].SeatNo;
+            orderDetail.ItemId = OrderListArray[i].ItemId,
+            orderDetail.ItemName = OrderListArray[i].ItemName,
+            orderDetail.IsCombo = OrderListArray[i].IsCombo,
+            orderDetail.AddedBy = SageFrameUserName,
+            orderDetail.UpdatedBy = '',
+            orderDetail.IsArchived = false,
+            orderDetail.ArchivedBy = SageFrameUserName,
+            orderDetail.Rate = 0.0,
+            orderDetail.Note = OrderListArray[i].Note,
+            orderDetail.SeatNo = OrderListArray[i].SeatNo;
         orderDetail.Amount = 0.0
         orderDetail.Waiter = SageFrameUserName;
         cakeOrderList.push(orderDetail);
@@ -979,13 +979,13 @@ function GetDataForSalesBill(orderMasterId) {
             });
 
             $('#DialogOrderDetail').dialog(
-           {
-               'title': 'Sales Bill',
-               width: DialogWidth,
-               modal: true,
-               dialogClass: 'CheckEnable unpaidd',
-               position: ['center', 'center']
-           });
+                {
+                    'title': 'Sales Bill',
+                    width: DialogWidth,
+                    modal: true,
+                    dialogClass: 'CheckEnable unpaidd',
+                    position: ['center', 'center']
+                });
 
             //if (tokeninfo.length > 0) {
             //    if (tokeninfo[0].CustomerID > 0) {
@@ -993,7 +993,7 @@ function GetDataForSalesBill(orderMasterId) {
             //    }
             //}
 
-            if (foodCourtOrder) {                
+            if (foodCourtOrder) {
                 getProviderList();
                 $("#selPayMode").on('change', function () {
 
@@ -1096,7 +1096,7 @@ function GetDataForSalesBill(orderMasterId) {
                 }
             })
             //$("#selDiscountType").on('change', function () {
-                
+
             //    amt = 0.00;
             //    totalAmount = 0.00;
             //    totaldis = 0.00;
@@ -1341,13 +1341,13 @@ function GetCustomeronCheck() {
                 htmls += "</table>";
                 $('#membeshipformlist').html(htmls);
                 $('#customertable').DataTable(
-                     {
-                         //"scrollY": false,
-                         //"scrollCollapse": false,
-                         "jQueryUI": true,
-                         // "scrollX" : true,
+                    {
+                        //"scrollY": false,
+                        //"scrollCollapse": false,
+                        "jQueryUI": true,
+                        // "scrollX" : true,
 
-                     });
+                    });
 
                 $("#membeshipformlist").dialog({
                     'title': 'Customer',
@@ -1425,7 +1425,7 @@ function saveCakeSalesBill(salesMaster, salesDetail, billingTerm, Payment, disco
             $('#InvoiceType').html('INVOICE');
             Print();
             $('#BillingView').dialog('close');
-                      
+
             jAlert('Bill printed successfully', "Information!!", function () {
                 window.location.reload();
             });
@@ -1531,32 +1531,33 @@ function CancelOrderedData() {
     var cancel = false;
     var ordermaster = new Object();
     ordermaster.TableId = TableId,
-    ordermaster.RoomId = RoomId,
-    ordermaster.OID = parseInt(OID);
+        ordermaster.RoomId = RoomId,
+        ordermaster.OID = parseInt(OID);
     ordermaster.OrderMasterID = OrderMasterID,
-    ordermaster.GuestNo = parseInt($('#splitNoCancel').text());
+        ordermaster.GuestNo = parseInt($('#splitNoCancel').text());
     ordermaster.CancelReason = $("#canceltextarea").val();
     ordermaster.CancelBy = $('#hdnPinBy').val();
     ordermaster.UserName = $('#hdnPinBy').val();
     ordermaster.IsCancelled = true,
-    $.ajax({
-        type: "POST",
-        async: false,
-        cache: false,
-        url: baseUrl + "CancelOrderIntoDataBase",
-        data: JSON2.stringify({ orderMasterInfo: ordermaster }),
-        contentType: "application/json; charset=utf-8",
-        dataType: "json",
-        success: function (data) {
-            jAlert('Ordered Cancelled successfully', 'Information!!', function () {
-                parent.$.colorbox.close();
-            });
-        },
-        failure: function (response) {
-            jAlert("Sorry some error occured. Contact the support team.", "Error!!");
-        }
-    });
+        $.ajax({
+            type: "POST",
+            async: false,
+            cache: false,
+            url: baseUrl + "CancelOrderIntoDataBase",
+            data: JSON2.stringify({ orderMasterInfo: ordermaster }),
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (data) {
+                jAlert('Ordered Cancelled successfully', 'Information!!', function () {
+                    parent.$.colorbox.close();
+                });
+            },
+            failure: function (response) {
+                jAlert("Sorry some error occured. Contact the support team.", "Error!!");
+            }
+        });
 }
+
 function initialSetup(tableId, oId, hostUrl, foodCourt, Delievery) {
     if (userRole == 'Super User') {
         $(".restrologo").css("display", "none");
@@ -1892,56 +1893,56 @@ function initialSetup(tableId, oId, hostUrl, foodCourt, Delievery) {
         $(".sele").css("display", "none");
 
         $('.extradiv').dialog(
-         {
-             'title': splitindex[4],
-             "resize": "auto",
-             width: 300,
-             buttons: {
-                 "Submit": function () {
-                     var arrlength = ExtraItems.length;
-                     for (var i = arrlength - 1; i >= 0; i--) {
-                         if (itemID == ExtraItems[i].ItemID && selectedBillNo == ExtraItems[i].SeatNo) {
-                             ExtraItems.splice(i, 1);
-                         }
-                     }
+            {
+                'title': splitindex[4],
+                "resize": "auto",
+                width: 300,
+                buttons: {
+                    "Submit": function () {
+                        var arrlength = ExtraItems.length;
+                        for (var i = arrlength - 1; i >= 0; i--) {
+                            if (itemID == ExtraItems[i].ItemID && selectedBillNo == ExtraItems[i].SeatNo) {
+                                ExtraItems.splice(i, 1);
+                            }
+                        }
 
-                     $('.ckbxExtraItem').each(function (i, obj) {
-                         if ($(this).is(':checked')) {
-                             //$('.ddlSpicy').val($('.ddlSpicy').val() + ', ' + $(this).attr('id').split('_')[1]);
-                             var word = $(this).attr('id').split("_");
-                             var extra = new Object;
-                             extra.ItemID = parseInt(itemID);
-                             extra.ExtraItemID = parseInt(word[0]);
-                             extra.ExtraItem = word[1];
-                             extra.ExtraPrice = parseFloat(word[2]);
-                             extra.Quantity = parseInt($('#Qnty_' + parseInt(word[0])).val());
-                             extra.SeatNo = parseInt(selectedBillNo);
-                             ExtraItems.push(extra);
-                         }
+                        $('.ckbxExtraItem').each(function (i, obj) {
+                            if ($(this).is(':checked')) {
+                                //$('.ddlSpicy').val($('.ddlSpicy').val() + ', ' + $(this).attr('id').split('_')[1]);
+                                var word = $(this).attr('id').split("_");
+                                var extra = new Object;
+                                extra.ItemID = parseInt(itemID);
+                                extra.ExtraItemID = parseInt(word[0]);
+                                extra.ExtraItem = word[1];
+                                extra.ExtraPrice = parseFloat(word[2]);
+                                extra.Quantity = parseInt($('#Qnty_' + parseInt(word[0])).val());
+                                extra.SeatNo = parseInt(selectedBillNo);
+                                ExtraItems.push(extra);
+                            }
 
-                     });
-                     if ($('.ChkboxHomedelivery').is(':checked')) {
-                         OrderListArray[parseInt(splitindex[1])].IsHomeDelivery = true;
-                         OrderListArray[parseInt(splitindex[1])].HomeDeliveyNumber = $('.sele').val();
-                     } else {
-                         OrderListArray[parseInt(splitindex[1])].IsHomeDelivery = false;
-                         OrderListArray[parseInt(splitindex[1])].HomeDeliveyNumber = 0;
-                     }
-                     OrderListArray[parseInt(splitindex[1])].Note = $('.ddlSpicy').val();
-                     OrderListArray[parseInt(splitindex[1])].ExtraItem = "";
-                     //OrderListArray[parseInt(splitindex[1])].ExtraCharge = parseFloat($('.HomeDelivs').val());
-                     OrderListArray[parseInt(splitindex[1])].ExtraCharge = parseFloat($('.HomeDelivs').val());
+                        });
+                        if ($('.ChkboxHomedelivery').is(':checked')) {
+                            OrderListArray[parseInt(splitindex[1])].IsHomeDelivery = true;
+                            OrderListArray[parseInt(splitindex[1])].HomeDeliveyNumber = $('.sele').val();
+                        } else {
+                            OrderListArray[parseInt(splitindex[1])].IsHomeDelivery = false;
+                            OrderListArray[parseInt(splitindex[1])].HomeDeliveyNumber = 0;
+                        }
+                        OrderListArray[parseInt(splitindex[1])].Note = $('.ddlSpicy').val();
+                        OrderListArray[parseInt(splitindex[1])].ExtraItem = "";
+                        //OrderListArray[parseInt(splitindex[1])].ExtraCharge = parseFloat($('.HomeDelivs').val());
+                        OrderListArray[parseInt(splitindex[1])].ExtraCharge = parseFloat($('.HomeDelivs').val());
 
-                     CalculateTotal();
-                     $(this).dialog('close');
-                 },
-                 Cancel: function () {
-                     $('.ddlSpicy').val('');
-                     $('.HomeDelivs').val('');
-                     $(this).dialog('close');
-                 }
-             }
-         });
+                        CalculateTotal();
+                        $(this).dialog('close');
+                    },
+                    Cancel: function () {
+                        $('.ddlSpicy').val('');
+                        $('.HomeDelivs').val('');
+                        $(this).dialog('close');
+                    }
+                }
+            });
 
         $('.ChkboxHomedelivery').on('click', function () {
             var index = $(this).attr('id');
@@ -2205,8 +2206,8 @@ function paynows() {
 
     jConfirm('Are You Sure  ?', 'Pay', function (confirmed) {
         if (confirmed) {
-                    saveCakeSalesBill(salesMaster, salesDetail, billingTerm, Payment, discount)
-            }
+            saveCakeSalesBill(salesMaster, salesDetail, billingTerm, Payment, discount)
+        }
     });
 
     //    if (foodCourtAutoBillGenerate) {
@@ -2221,9 +2222,9 @@ function paynows() {
     //} else {
     //    jConfirm('Are You Sure  ?', 'Pay', function (confirmed) {
     //        if (confirmed) {
-                //SaveSalesBill(salesMaster, salesDetail, splited, billingTerm, discount)
-        //    }
-        //});
+    //SaveSalesBill(salesMaster, salesDetail, splited, billingTerm, discount)
+    //    }
+    //});
     //}
 }
 function GetPreviousItemByID(Id, OID) {
@@ -2386,7 +2387,7 @@ function GetPreviousItemByID(Id, OID) {
     });
 }
 function getProviderList() {
-    
+
     $.ajax({
         type: "POST",
         async: false,
