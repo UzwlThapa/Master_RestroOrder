@@ -144,103 +144,112 @@
                 //Updated By Bishal Open
                 htmls += '<div class="sfCol_50"><table id="tblOfFinancialAcDr" class="sfGridwrapper display dataTable no-footer reportsprint" style="border:none;width:100%;border-collapse:collapse;">' +
                     '<thead><tr style="font-weight: bold;background-color: #ff9933;color: white;">' +
-                    '<th style="width: 100px;text-align:center;border:1px solid #575757;padding:2px;">EXPENSES OR LOSSES </th>' +
-                    '<th style="width: 20px;text-align:right;border:1px solid #575757;padding:2px;">(Dr.) Amount</th>' +
+                    '<th style="width: 100px;text-align:center;border:1px solid #575757;padding:2px;font-weight:bold;">EXPENSES OR LOSSES </th>' +
+                    '<th style="width: 20px;text-align:right;border:1px solid #575757;padding:2px;font-weight:bold;font-weight:bold;">(Dr.) Amount</th>' +
                     '</tr></thead><tbody id="tbl_PLDr"></tbody></table></div>';
                 htmls += '<div class="sfCol_50"><table id="tblOfFinancialAcCr" class="sfGridwrapper display dataTable no-footer reportsprint" style="border:none;width:100%;border-collapse:collapse;">' +
                     '<thead><tr style="font-weight: bold;background-color: #ff9933;color: white;">' +
-                    '<th style="width: 100px;text-align:center;border:1px solid #575757;padding:2px;">INCOME OR GAIN</th>' +
-                    '<th style="width: 20px;text-align:right;border:1px solid #575757;padding:2px;">(Cr.) Amount</th>' +
+                    '<th style="width: 100px;text-align:center;border:1px solid #575757;padding:2px;font-weight:bold;">INCOME OR GAIN</th>' +
+                    '<th style="width: 20px;text-align:right;border:1px solid #575757;padding:2px;font-weight:bold;">(Cr.) Amount</th>' +
                     '</tr></thead><tbody id="tbl_PLCr"></tbody></table></div>';
 
                 $("#divForBalanceSheet").append(htmls);
 
                 if (data.length > 0) {
-                    console.log(data);
+
                     var htmDr = '';
-                    var htmCr = '';
-                    var brind;
+                    var htmCr = ''; 
                     var drlist = [];
-                    var crlist = [];
-                    var drsn = 1;
-                    var crsn = 1;
+                    var crlist = []; 
                     var drdiff = 0;
                     var crdiff = 0;
-                    var totalDrAmt = 0;
-                    var totalCrAmt = 0;
-
 
                     //Creating two list of datas for Dr value and Cr Value
                     $.each(data, function (index, value) { 
-                        if (value.IsDebit == false) {
-                            
+                        if (value.IsDebit == false) {                            
                             crlist.push(value);
                         }
                         if (value.IsDebit == true) {
                             drlist.push(value);
                         }
                     });
-                    
+                     
+                    var grandTotalDr = 0;
+                    var grandTotalCr = 0; 
+
                     //Looping inside Debit List 
-                    $.each(drlist, function (index, value) {
-                        if (value.isGroup) {
-                            htmDr += '<tr style="font-weight:bold;">' +
-                                '<td style="border:1px solid #575757;">' + value.items + '</td>';
+                    // Opening
+                    var opening = drlist.filter((item) => item.FinancialAcName.toLowerCase() == 'opening stock');
+                    htmDr += '<tr style="text-align:left;background:#f7ebeb;font-weight:bold;">';
+                    htmDr += `<td style="text-align:left;border:1px solid #575757;">${opening[0].FinancialAcName}</td>`;
+                    htmDr += `<td style="text-align:right;border:1px solid #575757;">${opening[0].Debit}</td>`;
+                    htmDr += '</tr>';
 
+                    const groupNameListDr = [...new Set(drlist.map(item => item.PFinancialAcName))];
+                    groupNameListDr.pop("");
 
-                            if (value.Debit <= 0 && value.Credit <= 0) {
-                                htmDr += '<td></td></tr>';
-                            } else {
-                                var accDiff = value.Debit - value.Credit;
-                                htmDr += '<td style="text-align:right;border:1px solid #575757;">' + (accDiff >= 0 ? accDiff.toFixed(2) : "(" + accDiff.toFixed(2) + ")") + '</td></tr>';
-                                totalDrAmt += accDiff;
-                            }
+                    $.each(groupNameListDr, function (index, value) {                       
+                        var groupData = drlist.filter((item) => item.PFinancialAcName == value && item.FinancialAcName.toLowerCase() != 'opening stock');
+                        if (groupData.length > 0) {
 
-                        } else {
-                            var accDiff = value.Debit - value.Credit;
-                            htmDr += '<tr">' +
-                                '<td style="border:1px solid #575757;">' + value.items + '</td>' +
-                                '<td style="text-align:right;border:1px solid #575757;">' + (accDiff >= 0 ? accDiff.toFixed(2) : "(" + accDiff.toFixed(2) + ")") + '</td></tr>';
-                            totalDrAmt += accDiff;
+                            // Group Header
+                            htmDr += '<tr style="text-align:left;background:#e1dfdf;font-weight:bold;">';
+                            htmDr += `<td style="text-align:center;border:1px solid #575757;text-align:left;padding-left:2rem!important;">${value}</td>`;
+                            htmDr += '<td></td>';
+                            htmDr += '</tr>';
+
+                            // Rows
+                            $.each(groupData, function (index, value) {
+                                grandTotalDr += value.Debit;
+                                htmDr += '<tr>';
+                                htmDr += `<td style="text-align:left;border:1px solid #575757;padding-left:4rem!important;">${value.FinancialAcName}</td>`;
+                                htmDr += `<td style="text-align:right;border:1px solid #575757;">${value.Debit}</td>`;
+                                htmDr += '</tr>';
+                            });
                         }
-                        drsn++;
-                    });
+                        
+                    }); 
 
                     $('#tbl_PLDr').html(htmDr);
                      
-                    //Looping inside Credit List 
-                    $.each(crlist, function (index, value) {
-                        if (value.isGroup) {
-                            htmCr += '<tr style="font-weight:bold;">' +
-                                '<td style="border:1px solid #575757;">' + value.items + '</td>';
+                    //Looping inside Credit List  
+                    // closing
+                    var closing = crlist.filter((item) => item.FinancialAcName.toLowerCase() == 'closing stock');
+                    htmCr += '<tr style="text-align:left;background:#f7ebeb;font-weight:bold;">';
+                    htmCr += `<td style="text-align:left;border:1px solid #575757;">${closing[0].FinancialAcName}</td>`;
+                    htmCr += `<td style="text-align:right;border:1px solid #575757;">${closing[0].Debit}</td>`;
+                    htmCr += '</tr>';
 
-                            if (value.Debit <= 0 && value.Credit <= 0) {
-                                htmCr += '<td></td></tr>';
-                            } else {
-                                var accDiff = value.Credit - value.Debit;
-                                htmCr += '<td style="text-align:right;border:1px solid #575757;">' + (accDiff >= 0 ? accDiff.toFixed(2) : "(" + accDiff.toFixed(2) + ")") + '</td></tr>';
-                                totalCrAmt += accDiff;
-                            }
+                    const groupNameListCr = [...new Set(crlist.map(item => item.PFinancialAcName))];
+                    groupNameListCr.pop("");
 
-                        } else {
-                            var accDiff = value.Credit - value.Debit;
-                            htmCr += '<tr>' +
-                                '<td style="border:1px solid #575757;">' + value.items + '</td>' +
-                                '<td style="text-align:right;border:1px solid #575757;">' + (accDiff >= 0 ? accDiff.toFixed(2) : "(" + accDiff.toFixed(2) + ")") + '</td></tr>';
-                            totalCrAmt += accDiff;
-                        }
+                    $.each(groupNameListCr, function (index, value) {
+                        var groupData = crlist.filter((item) => item.PFinancialAcName == value && item.FinancialAcName.toLowerCase() != 'closing stock');
+                        if (groupData.length > 0) {
 
-                        crsn++;
+                            // Group Header
+                            htmCr += '<tr style="text-align:left;background:#e1dfdf;font-weight:bold;">';
+                            htmCr += `<td style="text-align:center;border:1px solid #575757;text-align:left;padding-left:2rem!important;">${value}</td>`;
+                            htmCr += '<td></td>';
+                            htmCr += '</tr>';
+
+                            // Rows
+                            $.each(groupData, function (index, value) {
+                                grandTotalCr += value.Credit;
+                                htmCr += '<tr>';
+                                htmCr += `<td style="text-align:left;border:1px solid #575757;padding-left:4rem!important;">${value.FinancialAcName}</td>`;
+                                htmCr += `<td style="text-align:right;border:1px solid #575757;">${value.Credit}</td>`;
+                                htmCr += '</tr>';
+                            }); 
+                        } 
                     });
-                    $('#tbl_PLCr').html(htmCr);
 
+                    $('#tbl_PLCr').html(htmCr);
+                     
+                    //Checking if one list is greater than other to inster blank rows for design
                     $('#tbl_PLCr').append('<tr><td>&nbsp;</td><td>&nbsp;</td></tr>')
                     $('#tbl_PLDr').append('<tr><td>&nbsp;</td><td>&nbsp;</td></tr>')
 
-
-
-
-                    //Checking if one list is greater than other to inster blank rows for design;
                     if (drlist.length != crlist.length) {
                         if (drlist.length > crlist.length) {
                             crdiff = drlist.length - crlist.length
@@ -259,129 +268,17 @@
                         }
                     }
 
-                    if (totalCrAmt > totalDrAmt) {
+                    if (grandTotalCr > grandTotalDr) {
                         $('#tbl_PLCr').append('<tr><td>&nbsp;</td><td>&nbsp;</td></tr>')
-                        $('#tbl_PLDr').append('<tr style="font-weight: bold;"><td>Net Profit (Transfered to Capital)</td><td style="text-align:right;">' + (totalCrAmt - totalDrAmt).toFixed(2) + '</td></tr>')
+                        $('#tbl_PLDr').append('<tr style="font-weight: bold;"><td>Net Profit (Transfered to Capital)</td><td style="text-align:right;">' + (grandTotalCr - grandTotalDr).toFixed(2) + '</td></tr>')
                     }
-                    if (totalCrAmt < totalDrAmt) {
+                    if (grandTotalCr < grandTotalDr) {
                         $('#tbl_PLDr').append('<tr><td>&nbsp;</td><td>&nbsp;</td></tr>')
-                        $('#tbl_PLCr').append('<tr style="font-weight: bold;"><td>Net Loss (Transfered to Capital)</td><td style="text-align:right;">' + (totalDrAmt - totalCrAmt).toFixed(2) + '</td></tr>')
-                    }
-                   
-                        $('#tbl_PLCr').append('<tr style="background-color: #ff9933;color: white;"><td style="text-align:right;">TotalAmount</td><td style="text-align:right;">' + totalDrAmt + '</td></tr>')
-                        $('#tbl_PLDr').append('<tr style="background-color: #ff9933;color: white;"><td style="text-align:right;">TotalAmount</td><td style="text-align:right;">' + totalDrAmt + '</td></tr>')
-
-                }
-
-                
-
-
-
-                //Updated By Bishal Close
-
-                //htmls += '<table id="tblOfFinancialAc" class="sfGridwrapper display dataTable no-footer reportsprint" style="border:none;width:100%;border-collapse:collapse;"><thead><tr><th style="width: 88px;text-align:center;border:1px solid #575757;padding:2px;">S.N.</th><th style="text-align:left;border:1px solid #575757;padding:2px;">Particulars</th><th style="width: 150px;text-align:right;border:1px solid #575757;padding:2px;">Amount</th></tr></thead><tbody>';
-                //if (data.length > 0) {                
-                //    var tDebit = 0;
-                //    var tCredit = 0;
-                //    var tmpDebid = 0;
-                //    var tmpCredid = 0;
-                //    sn = 1;
-                //    fnId = 4;
-                //    tmpInc = 0.00;
-                //    tmpExp = 0.00;
-                //    $.each(data, function (index, value) {
-                //        debugger;
-                //        var tr = false;
-                //        if (value.isGroup) {
-                //            tr = true;
-                //        } else {
-                //            if (!(value.Debit == 0 && value.Credit == 0)) {
-                //                tr = true;
-                //            }
-                //            if (ShowZero) {
-                //                tr = true;
-                //            }
-                //        }
-                //        if (tr) {
-                //            if (value.PFinancialAcID == 0) {
-                //                if (value.FinancialAcID != 4) {
-                //                    fnId = 3;
-                //                    htmls += '<tr class="isGrouptrue"><td colspan="2" style="text-align:right;border:1px solid #575757;padding:2px;">Sub Total : </td><td style="text-align:right;border:1px solid #575757;padding:2px;">' + tmpExp.toFixed(2) + '</td></tr>';
-                //                    tmpDebid = 0;
-                //                    tmpCredid = 0;
-                //                }
-                //            }
-                //            htmls += '<tr id="' + value.FinancialAcID + '" class="isGroup' +
-                //                value.isGroup +
-                //                ' ' + ((value.Debit > 0 && value.Credit > 0) && value.isGroup ? 'showDetails' : '') +
-                //                '"><td style="text-align:center;border:1px solid #575757;padding:2px;">' +
-                //                sn + '</td>';
-                //            sn++;
-                //            var Item = '';
-                //            for (var i = 0; i < value.level; i++) {
-                //                if (value.level == i + 1) {
-                //                    Item += "<div class='Lline'></div><span>";
-                //                }
-                //                else {
-                //                    Item += "<div class='vline'></div><span>";
-                //                }
-                //            }
-                //            Item += value.items;
-                //            Item += '</span>';
-                //            htmls += '<td class="abc" style="text-align:left;border:1px solid #575757;padding:2px;"">' + Item + '</td>';
-                //            if (value.isGroup && (value.Debit == 0 && value.Credit == 0)) {
-                //                htmls += '<td style="text-align:center;border:1px solid #575757;padding:2px;"></td>';
-                //            }
-                //            else {
-                //                tDebit += value.Debit;
-                //                tCredit += value.Credit;
-                //                tmpDebid += value.Debit;
-                //                tmpCredid += value.Credit;
-                //                bal = 0.00;
-                //                if (fnId == 3) {
-                //                    tmpInc += (value.Credit - value.Debit);
-                //                    bal = (value.Credit - value.Debit);
-                //                } else {
-                //                    tmpExp += (value.Debit - value.Credit);
-                //                    bal = (value.Debit - value.Credit);
-                //                }
-                //                htmls += '<td style="text-align:right;border:1px solid #575757;padding:2px;">' + (bal >= 0 ? bal.toFixed(2) : '(' + Math.abs(bal.toFixed(2)) + ')') + '</td>';
-                //                //htmls += '<td style="text-align:right;border:1px solid #575757;padding:2px;">' + value.Credit.toFixed(2) + '</td></tr>';
-                //                htmls += '</tr>';
-                //            }
-
-                //        }
-                //    });
-                //    htmls += '<tr class="isGrouptrue"><td colspan="2" style="text-align:right;border:1px solid #575757;padding:2px;">Sub Total : </td><td style="text-align:right;border:1px solid #575757;padding:2px;">' + tmpInc.toFixed(2) + '</td></tr>';
-                //    htmls += '<tr><th colspan="2" style="text-align:right;border:1px solid #575757;padding:2px;"></th><th style="text-align:right;border:1px solid #575757;padding:2px;"></th></tr>';
-                //    //htmls += '<tr><th colspan="2" style="text-align:right;border:1px solid #575757;padding:2px;">Total : </th><th style="text-align:right;border:1px solid #575757;padding:2px;">' + tDebit.toFixed(2) + '</th><th style="text-align:right;border:1px solid #575757;padding:2px;">' + tCredit.toFixed(2) + '</th></tr>';
-                //    var proLoss = 0;
-                //    var Statement = "";
-                //    if (tmpExp < tmpInc) {
-                //        Statement = "Operational Profit"
-                //        proLoss = tmpInc - tmpExp;
-                //    }
-                //    else {
-                //        Statement = "Operational Loss"
-                //        proLoss = tmpExp - tmpInc;
-                //    }
-                //    htmls += '<tr><th colspan="2" style="text-align:right;border:1px solid #575757;padding:2px;">' + Statement + ': </th><th style="text-align:right;border:1px solid #575757;padding:2px;">' + proLoss.toFixed(2) + '</th></tr>';
-                //    //htmls += '<tr><th colspan="2" style="text-align:right;border:1px solid #575757;padding:2px;">Grand Total : </th><th style="text-align:right;border:1px solid #575757;padding:2px;">' + tDebit.toFixed(2) + '</th><th style="text-align:right;border:1px solid #575757;padding:2px;">' + tCredit.toFixed(2) + '</th></tr>';
-                //    htmls += '</tbody></table>';
-                //    $("#divForBalanceSheet").append(htmls);
-                //    $('#tblOfFinancialAc').on('click', '.showDetails', function () {
-                //        var financialAcId = $(this).closest('tr').attr('id');
-                //        eventFunction.config.method = "getFinancialAcDetails";
-                //        eventFunction.config.url = eventFunction.config.baseURL + eventFunction.config.method;
-                //        eventFunction.config.data = JSON2.stringify({ financialAcId: financialAcId, date: $("#txtDate").val() });
-                //        eventFunction.config.ajaxCallMode = 4;
-                //        eventFunction.ajaxCall(eventFunction.config);
-                //    });
-
-                //} else {
-                //    $("#divForBalanceSheet").append(htmls);
-                //}
-                
+                        $('#tbl_PLCr').append('<tr style="font-weight: bold;"><td>Net Loss (Transfered to Capital)</td><td style="text-align:right;">' + (grandTotalDr - grandTotalCr).toFixed(2) + '</td></tr>')
+                    } 
+                    $('#tbl_PLCr').append('<tr style="background-color: #ff9933;color: white;"><td style="text-align:right;">Total Amount</td><td style="text-align:right;">' + grandTotalDr + '</td></tr>')
+                    $('#tbl_PLDr').append('<tr style="background-color: #ff9933;color: white;"><td style="text-align:right;">Total Amount</td><td style="text-align:right;">' + grandTotalCr + '</td></tr>')
+                } 
             },
             bindFinancialAcDetails: function (data) {
                 var result = JSON.parse(data);
