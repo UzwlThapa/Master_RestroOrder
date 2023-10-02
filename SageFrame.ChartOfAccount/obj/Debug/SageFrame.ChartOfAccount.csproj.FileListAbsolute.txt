@@ -93,3 +93,10 @@ G:\GITDevelopment\Chicken\SageFrame.ChartOfAccount\obj\Debug\SageFrame.ChartOfAc
 G:\GITDevelopment\Chicken\SageFrame.ChartOfAccount\obj\Debug\SageFrame.ChartOfAccount.csproj.CopyComplete
 G:\GITDevelopment\Chicken\SageFrame.ChartOfAccount\obj\Debug\SageFrame.ChartOfAccount.dll
 G:\GITDevelopment\Chicken\SageFrame.ChartOfAccount\obj\Debug\SageFrame.ChartOfAccount.pdb
+E:\Development\Restro-GIT\AdarshaGit\SageFrame\bin\SageFrame.ChartOfAccount.dll
+E:\Development\Restro-GIT\AdarshaGit\SageFrame\bin\SageFrame.ChartOfAccount.pdb
+E:\Development\Restro-GIT\AdarshaGit\SageFrame.ChartOfAccount\obj\Debug\SageFrame.ChartOfAccount.csproj.AssemblyReference.cache
+E:\Development\Restro-GIT\AdarshaGit\SageFrame.ChartOfAccount\obj\Debug\SageFrame.ChartOfAccount.csproj.CoreCompileInputs.cache
+E:\Development\Restro-GIT\AdarshaGit\SageFrame.ChartOfAccount\obj\Debug\SageFrame.ChartOfAccount.csproj.CopyComplete
+E:\Development\Restro-GIT\AdarshaGit\SageFrame.ChartOfAccount\obj\Debug\SageFrame.ChartOfAccount.dll
+E:\Development\Restro-GIT\AdarshaGit\SageFrame.ChartOfAccount\obj\Debug\SageFrame.ChartOfAccount.pdb

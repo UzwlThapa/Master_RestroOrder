@@ -96,3 +96,10 @@ G:\GITDevelopment\Chicken\AccountReport\obj\Debug\SageFrame.AccountReport.csproj
 G:\GITDevelopment\Chicken\AccountReport\obj\Debug\SageFrame.AccountReport.csproj.CopyComplete
 G:\GITDevelopment\Chicken\AccountReport\obj\Debug\SageFrame.AccountReport.dll
 G:\GITDevelopment\Chicken\AccountReport\obj\Debug\SageFrame.AccountReport.pdb
+E:\Development\Restro-GIT\AdarshaGit\SageFrame\bin\SageFrame.AccountReport.dll
+E:\Development\Restro-GIT\AdarshaGit\SageFrame\bin\SageFrame.AccountReport.pdb
+E:\Development\Restro-GIT\AdarshaGit\AccountReport\obj\Debug\SageFrame.AccountReport.csproj.AssemblyReference.cache
+E:\Development\Restro-GIT\AdarshaGit\AccountReport\obj\Debug\SageFrame.AccountReport.csproj.CoreCompileInputs.cache
+E:\Development\Restro-GIT\AdarshaGit\AccountReport\obj\Debug\SageFrame.AccountReport.csproj.CopyComplete
+E:\Development\Restro-GIT\AdarshaGit\AccountReport\obj\Debug\SageFrame.AccountReport.dll
+E:\Development\Restro-GIT\AdarshaGit\AccountReport\obj\Debug\SageFrame.AccountReport.pdb

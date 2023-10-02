@@ -208,3 +208,13 @@ G:\GITDevelopment\Chicken\SageFrame.CakeOrder\obj\Debug\SageFrame.CakeOrder.cspr
 G:\GITDevelopment\Chicken\SageFrame.CakeOrder\obj\Debug\SageFrame.CakeOrder.csproj.CopyComplete
 G:\GITDevelopment\Chicken\SageFrame.CakeOrder\obj\Debug\SageFrame.CakeOrder.dll
 G:\GITDevelopment\Chicken\SageFrame.CakeOrder\obj\Debug\SageFrame.CakeOrder.pdb
+E:\Development\Restro-GIT\AdarshaGit\SageFrame.CakeOrder\bin\Debug\SageFrame.CakeOrder.dll
+E:\Development\Restro-GIT\AdarshaGit\SageFrame.CakeOrder\bin\Debug\SageFrame.CakeOrder.pdb
+E:\Development\Restro-GIT\AdarshaGit\SageFrame.CakeOrder\bin\Debug\SageFrame.Common.dll
+E:\Development\Restro-GIT\AdarshaGit\SageFrame.CakeOrder\bin\Debug\SageFrame.RestoLoyalty.dll
+E:\Development\Restro-GIT\AdarshaGit\SageFrame.CakeOrder\bin\Debug\SageFrame.RestoLoyalty.pdb
+E:\Development\Restro-GIT\AdarshaGit\SageFrame.CakeOrder\obj\Debug\SageFrame.CakeOrder.csproj.AssemblyReference.cache
+E:\Development\Restro-GIT\AdarshaGit\SageFrame.CakeOrder\obj\Debug\SageFrame.CakeOrder.csproj.CoreCompileInputs.cache
+E:\Development\Restro-GIT\AdarshaGit\SageFrame.CakeOrder\obj\Debug\SageFrame.CakeOrder.csproj.CopyComplete
+E:\Development\Restro-GIT\AdarshaGit\SageFrame.CakeOrder\obj\Debug\SageFrame.CakeOrder.dll
+E:\Development\Restro-GIT\AdarshaGit\SageFrame.CakeOrder\obj\Debug\SageFrame.CakeOrder.pdb

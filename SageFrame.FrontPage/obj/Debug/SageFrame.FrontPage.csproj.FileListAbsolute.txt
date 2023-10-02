@@ -136,3 +136,10 @@ G:\GITDevelopment\Chicken\SageFrame.FrontPage\obj\Debug\SageFrame.FrontPage.cspr
 G:\GITDevelopment\Chicken\SageFrame.FrontPage\obj\Debug\SageFrame.FrontPage.csproj.CopyComplete
 G:\GITDevelopment\Chicken\SageFrame.FrontPage\obj\Debug\SageFrame.FrontPage.dll
 G:\GITDevelopment\Chicken\SageFrame.FrontPage\obj\Debug\SageFrame.FrontPage.pdb
+E:\Development\Restro-GIT\AdarshaGit\SageFrame\bin\SageFrame.FrontPage.dll
+E:\Development\Restro-GIT\AdarshaGit\SageFrame\bin\SageFrame.FrontPage.pdb
+E:\Development\Restro-GIT\AdarshaGit\SageFrame.FrontPage\obj\Debug\SageFrame.FrontPage.csproj.AssemblyReference.cache
+E:\Development\Restro-GIT\AdarshaGit\SageFrame.FrontPage\obj\Debug\SageFrame.FrontPage.csproj.CoreCompileInputs.cache
+E:\Development\Restro-GIT\AdarshaGit\SageFrame.FrontPage\obj\Debug\SageFrame.FrontPage.csproj.CopyComplete
+E:\Development\Restro-GIT\AdarshaGit\SageFrame.FrontPage\obj\Debug\SageFrame.FrontPage.dll
+E:\Development\Restro-GIT\AdarshaGit\SageFrame.FrontPage\obj\Debug\SageFrame.FrontPage.pdb

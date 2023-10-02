@@ -194,3 +194,11 @@ G:\GITDevelopment\Chicken\SageFrame.FiscalYear\obj\Release\SageFrame.FiscalYear.
 G:\GITDevelopment\Chicken\SageFrame.FiscalYear\obj\Release\SageFrame.FiscalYear.csproj.CopyComplete
 G:\GITDevelopment\Chicken\SageFrame.FiscalYear\obj\Release\SageFrame.FiscalYear.dll
 G:\GITDevelopment\Chicken\SageFrame.FiscalYear\obj\Release\SageFrame.FiscalYear.pdb
+E:\Development\Restro-GIT\AdarshaGit\SageFrame.FiscalYear\bin\Release\SageFrame.FiscalYear.dll
+E:\Development\Restro-GIT\AdarshaGit\SageFrame.FiscalYear\bin\Release\SageFrame.FiscalYear.pdb
+E:\Development\Restro-GIT\AdarshaGit\SageFrame.FiscalYear\bin\Release\SageFrame.Common.dll
+E:\Development\Restro-GIT\AdarshaGit\SageFrame.FiscalYear\obj\Release\SageFrame.FiscalYear.csproj.AssemblyReference.cache
+E:\Development\Restro-GIT\AdarshaGit\SageFrame.FiscalYear\obj\Release\SageFrame.FiscalYear.csproj.CoreCompileInputs.cache
+E:\Development\Restro-GIT\AdarshaGit\SageFrame.FiscalYear\obj\Release\SageFrame.FiscalYear.csproj.CopyComplete
+E:\Development\Restro-GIT\AdarshaGit\SageFrame.FiscalYear\obj\Release\SageFrame.FiscalYear.dll
+E:\Development\Restro-GIT\AdarshaGit\SageFrame.FiscalYear\obj\Release\SageFrame.FiscalYear.pdb

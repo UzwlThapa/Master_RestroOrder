@@ -97,3 +97,17 @@ G:\GITDevelopment\Chicken\SageFrame.FrontPage\obj\Release\SageFrame.FrontPage.cs
 G:\GITDevelopment\Chicken\SageFrame.FrontPage\obj\Release\SageFrame.FrontPage.csproj.CopyComplete
 G:\GITDevelopment\Chicken\SageFrame.FrontPage\obj\Release\SageFrame.FrontPage.dll
 G:\GITDevelopment\Chicken\SageFrame.FrontPage\obj\Release\SageFrame.FrontPage.pdb
+E:\Development\Restro-GIT\AdarshaGit\SageFrame.FrontPage\bin\Release\SageFrame.FrontPage.dll
+E:\Development\Restro-GIT\AdarshaGit\SageFrame.FrontPage\bin\Release\SageFrame.FrontPage.pdb
+E:\Development\Restro-GIT\AdarshaGit\SageFrame.FrontPage\bin\Release\SageFrame.Common.dll
+E:\Development\Restro-GIT\AdarshaGit\SageFrame.FrontPage\bin\Release\SageFrame.Core.dll
+E:\Development\Restro-GIT\AdarshaGit\SageFrame.FrontPage\bin\Release\AjaxControlToolkit.dll
+E:\Development\Restro-GIT\AdarshaGit\SageFrame.FrontPage\bin\Release\SageFrame.Templating.dll
+E:\Development\Restro-GIT\AdarshaGit\SageFrame.FrontPage\bin\Release\SageFrame.CDN.dll
+E:\Development\Restro-GIT\AdarshaGit\SageFrame.FrontPage\bin\Release\ICSharpCode.SharpZipLib.dll
+E:\Development\Restro-GIT\AdarshaGit\SageFrame.FrontPage\bin\Release\Ionic.Zip.dll
+E:\Development\Restro-GIT\AdarshaGit\SageFrame.FrontPage\obj\Release\SageFrame.FrontPage.csproj.AssemblyReference.cache
+E:\Development\Restro-GIT\AdarshaGit\SageFrame.FrontPage\obj\Release\SageFrame.FrontPage.csproj.CoreCompileInputs.cache
+E:\Development\Restro-GIT\AdarshaGit\SageFrame.FrontPage\obj\Release\SageFrame.FrontPage.csproj.CopyComplete
+E:\Development\Restro-GIT\AdarshaGit\SageFrame.FrontPage\obj\Release\SageFrame.FrontPage.dll
+E:\Development\Restro-GIT\AdarshaGit\SageFrame.FrontPage\obj\Release\SageFrame.FrontPage.pdb

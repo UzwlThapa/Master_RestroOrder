@@ -97,3 +97,17 @@ G:\GITDevelopment\Chicken\AccountReport\obj\Release\SageFrame.AccountReport.cspr
 G:\GITDevelopment\Chicken\AccountReport\obj\Release\SageFrame.AccountReport.csproj.CopyComplete
 G:\GITDevelopment\Chicken\AccountReport\obj\Release\SageFrame.AccountReport.dll
 G:\GITDevelopment\Chicken\AccountReport\obj\Release\SageFrame.AccountReport.pdb
+E:\Development\Restro-GIT\AdarshaGit\AccountReport\bin\Release\SageFrame.AccountReport.dll
+E:\Development\Restro-GIT\AdarshaGit\AccountReport\bin\Release\SageFrame.AccountReport.pdb
+E:\Development\Restro-GIT\AdarshaGit\AccountReport\bin\Release\SageFrame.Common.dll
+E:\Development\Restro-GIT\AdarshaGit\AccountReport\bin\Release\SageFrame.Core.dll
+E:\Development\Restro-GIT\AdarshaGit\AccountReport\bin\Release\AjaxControlToolkit.dll
+E:\Development\Restro-GIT\AdarshaGit\AccountReport\bin\Release\SageFrame.Templating.dll
+E:\Development\Restro-GIT\AdarshaGit\AccountReport\bin\Release\SageFrame.CDN.dll
+E:\Development\Restro-GIT\AdarshaGit\AccountReport\bin\Release\ICSharpCode.SharpZipLib.dll
+E:\Development\Restro-GIT\AdarshaGit\AccountReport\bin\Release\Ionic.Zip.dll
+E:\Development\Restro-GIT\AdarshaGit\AccountReport\obj\Release\SageFrame.AccountReport.csproj.AssemblyReference.cache
+E:\Development\Restro-GIT\AdarshaGit\AccountReport\obj\Release\SageFrame.AccountReport.csproj.CoreCompileInputs.cache
+E:\Development\Restro-GIT\AdarshaGit\AccountReport\obj\Release\SageFrame.AccountReport.csproj.CopyComplete
+E:\Development\Restro-GIT\AdarshaGit\AccountReport\obj\Release\SageFrame.AccountReport.dll
+E:\Development\Restro-GIT\AdarshaGit\AccountReport\obj\Release\SageFrame.AccountReport.pdb

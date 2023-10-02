@@ -192,3 +192,11 @@ G:\GITDevelopment\Chicken\SageFrame.RestoLoyalty\obj\Debug\SageFrame.RestoLoyalt
 G:\GITDevelopment\Chicken\SageFrame.RestoLoyalty\obj\Debug\SageFrame.RestoLoyalty.csproj.CopyComplete
 G:\GITDevelopment\Chicken\SageFrame.RestoLoyalty\obj\Debug\SageFrame.RestoLoyalty.dll
 G:\GITDevelopment\Chicken\SageFrame.RestoLoyalty\obj\Debug\SageFrame.RestoLoyalty.pdb
+E:\Development\Restro-GIT\AdarshaGit\SageFrame.RestoLoyalty\bin\Debug\SageFrame.RestoLoyalty.dll
+E:\Development\Restro-GIT\AdarshaGit\SageFrame.RestoLoyalty\bin\Debug\SageFrame.RestoLoyalty.pdb
+E:\Development\Restro-GIT\AdarshaGit\SageFrame.RestoLoyalty\bin\Debug\SageFrame.Common.dll
+E:\Development\Restro-GIT\AdarshaGit\SageFrame.RestoLoyalty\obj\Debug\SageFrame.RestoLoyalty.csproj.AssemblyReference.cache
+E:\Development\Restro-GIT\AdarshaGit\SageFrame.RestoLoyalty\obj\Debug\SageFrame.RestoLoyalty.csproj.CoreCompileInputs.cache
+E:\Development\Restro-GIT\AdarshaGit\SageFrame.RestoLoyalty\obj\Debug\SageFrame.RestoLoyalty.csproj.CopyComplete
+E:\Development\Restro-GIT\AdarshaGit\SageFrame.RestoLoyalty\obj\Debug\SageFrame.RestoLoyalty.dll
+E:\Development\Restro-GIT\AdarshaGit\SageFrame.RestoLoyalty\obj\Debug\SageFrame.RestoLoyalty.pdb
