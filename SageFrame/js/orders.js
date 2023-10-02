@@ -2238,7 +2238,7 @@ function CancelOrderedData() {
 //Avata Change
 //function initialSetup(tableId, oId, hostUrl, foodCourt, Delievery, yoga = false, spa = false) {
 function initialSetup(tableId, oId, hostUrl, foodCourt, Delievery) {
-    debugger
+    
     //document.onkeydown = BillShortcutKey;
     $('#hdnPinMatch').on('change', function () {
         if ($('#hdnPinMatch').val() == "true") {
