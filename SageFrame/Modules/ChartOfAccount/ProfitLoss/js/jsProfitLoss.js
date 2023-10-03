@@ -257,13 +257,11 @@
                                 } else {
 
                                     // Rows
-                                    $.each(groupDataDr, function (index, child) {
-                                        htmDr += '<tr>';
-                                        htmDr += `<td style="text-align:left;border:1px solid #575757;padding-left:4rem!important;">${child.FinancialAcName}</td>`;
-                                        htmDr += `<td style="text-align:right;border:1px solid #575757;">${moneyPlaceholder(child.Debit)}</td>`;
-                                        htmDr += '</tr>';
-                                        drRowCount++;
-                                    });
+                                    htmDr += '<tr>';
+                                    htmDr += `<td style="text-align:left;border:1px solid #575757;padding-left:4rem!important;">${child.FinancialAcName}</td>`;
+                                    htmDr += `<td style="text-align:right;border:1px solid #575757;">${moneyPlaceholder(child.Debit)}</td>`;
+                                    htmDr += '</tr>';
+                                    drRowCount++;
                                 }
                             });
                         }
@@ -331,13 +329,11 @@
                                 } else {
 
                                     // Rows
-                                    $.each(groupDataCr, function (index, child) {
-                                        htmCr += '<tr>';
-                                        htmCr += `<td style="text-align:left;border:1px solid #575757;padding-left:4rem!important;">${child.FinancialAcName}</td>`;
-                                        htmCr += `<td style="text-align:right;border:1px solid #575757;">${moneyPlaceholder(child.Credit)}</td>`;
-                                        htmCr += '</tr>';
-                                        crRowCount++;
-                                    });
+                                    htmCr += '<tr>';
+                                    htmCr += `<td style="text-align:left;border:1px solid #575757;padding-left:4rem!important;">${child.FinancialAcName}</td>`;
+                                    htmCr += `<td style="text-align:right;border:1px solid #575757;">${moneyPlaceholder(child.Credit)}</td>`;
+                                    htmCr += '</tr>';
+                                    crRowCount++;
                                 }
                             });
                         }

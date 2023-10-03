@@ -187,47 +187,44 @@ end
 if not exists(select 1 from Ac_FinancialAc where name = 'FOOD SALES A/C')
 begin 
 INSERT INTO Ac_FinancialAc(Name,PFinancialAcID,FinancialSysID,AddedBy,AddedOn,IsArchived,IsDebit,AccEntryType) 
-VALUES('FOOD SALES A/C',@BARsalesAcId,@TransactionNodeId,'danfe',GETDATE(),0,0,@AccEntryTypeId);
+VALUES('FOOD SALES A/C',@salesAcId,@TransactionNodeId,'danfe',GETDATE(),0,0,@AccEntryTypeId);
 end
 else
 begin
-UPDATE Ac_FinancialAc SET FinancialSysID = @TransactionNodeId,PFinancialAcID = @BARsalesAcId,IsDebit = 0,AccEntryType = @AccEntryTypeId WHERE name ='FOOD SALES A/C'
+UPDATE Ac_FinancialAc SET FinancialSysID = @TransactionNodeId,PFinancialAcID = @salesAcId,IsDebit = 0,AccEntryType = @AccEntryTypeId WHERE name ='FOOD SALES A/C'
 end
 
 --- add OTHER SALES A/C
 if not exists(select 1 from Ac_FinancialAc where name = 'OTHER SALES A/C')
 begin
 INSERT INTO Ac_FinancialAc(Name,PFinancialAcID,FinancialSysID,AddedBy,AddedOn,IsArchived,IsDebit,AccEntryType) 
-VALUES('OTHER SALES A/C',@salesAcId,@GroupNodeId,'danfe',GETDATE(),0,0,@AccEntryTypeId);
+VALUES('OTHER SALES A/C',@salesAcId,@TransactionNodeId,'danfe',GETDATE(),0,0,@AccEntryTypeId);
 end
 else
 begin
-UPDATE Ac_FinancialAc SET FinancialSysID = @GroupNodeId,PFinancialAcID = @salesAcId,IsDebit = 0,AccEntryType = @AccEntryTypeId WHERE name ='OTHER SALES A/C'
+UPDATE Ac_FinancialAc SET FinancialSysID = @TransactionNodeId,PFinancialAcID = @salesAcId,IsDebit = 0,AccEntryType = @AccEntryTypeId WHERE name ='OTHER SALES A/C'
 end
- 
-DECLARE @OTHERSalesId int
-SELECT @OTHERSalesId  = FinancialAcID from Ac_FinancialAc where Name = 'OTHER SALES A/C'
-
+  
 --- add PURCHASE DISCOUNT A/C
 if not exists(select 1 from Ac_FinancialAc where name = 'PURCHASE DISCOUNT A/C')
 begin
 INSERT INTO Ac_FinancialAc(Name,PFinancialAcID,FinancialSysID,AddedBy,AddedOn,IsArchived,IsDebit,AccEntryType) 
-VALUES('PURCHASE DISCOUNT A/C',@OTHERSalesId,@TransactionNodeId,'danfe',GETDATE(),0,0,@AccEntryTypeId);
+VALUES('PURCHASE DISCOUNT A/C',@salesAcId,@TransactionNodeId,'danfe',GETDATE(),0,0,@AccEntryTypeId);
 end
 else
 begin
-UPDATE Ac_FinancialAc SET FinancialSysID = @TransactionNodeId,PFinancialAcID = @OTHERSalesId,IsDebit = 0,AccEntryType = @AccEntryTypeId WHERE name ='PURCHASE DISCOUNT A/C'
+UPDATE Ac_FinancialAc SET FinancialSysID = @TransactionNodeId,PFinancialAcID = @salesAcId,IsDebit = 0,AccEntryType = @AccEntryTypeId WHERE name ='PURCHASE DISCOUNT A/C'
 end
 
 --- add SURPLUS/DEFLICT A/C
 if not exists(select 1 from Ac_FinancialAc where name = 'SURPLUS/DEFLICT A/C')
 begin
 INSERT INTO Ac_FinancialAc(Name,PFinancialAcID,FinancialSysID,AddedBy,AddedOn,IsArchived,IsDebit,AccEntryType) 
-VALUES('SURPLUS/DEFLICT A/C',@OTHERSalesId,@TransactionNodeId,'danfe',GETDATE(),0,0,@AccEntryTypeId);
+VALUES('SURPLUS/DEFLICT A/C',@salesAcId,@TransactionNodeId,'danfe',GETDATE(),0,0,@AccEntryTypeId);
 end
 else
 begin
-UPDATE Ac_FinancialAc SET FinancialSysID = @TransactionNodeId,PFinancialAcID = @OTHERSalesId,IsDebit = 0,AccEntryType = @AccEntryTypeId WHERE name ='SURPLUS/DEFLICT A/C'
+UPDATE Ac_FinancialAc SET FinancialSysID = @TransactionNodeId,PFinancialAcID = @salesAcId,IsDebit = 0,AccEntryType = @AccEntryTypeId WHERE name ='SURPLUS/DEFLICT A/C'
 end
  
   
