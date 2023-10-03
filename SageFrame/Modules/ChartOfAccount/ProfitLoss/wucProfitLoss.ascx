@@ -1,4 +1,5 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeFile="wucProfitLoss.ascx.cs" Inherits="Modules_ChartOfAccount_ProfitLoss_wucProfitLoss" %>
+<script src="../../../Scripts/main.js"></script>
 <script>
     $(function () {
         $(this).companyProfEDIT({});
