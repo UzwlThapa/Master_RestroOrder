@@ -566,6 +566,16 @@
                                 htmls += '</tr>';
 
                             }
+                            else {
+                                htmls += '<tr style="text-align:left;background:#f7ebeb;font-weight:bold;">';
+                                htmls += `<td style="text-align:left;border:1px solid #575757;padding-left:4rem!important;">Opening Balance</td>`;
+                                htmls += `<td style="text-align:left;border:1px solid #575757;"></td>`;
+                                htmls += `<td style="text-align:right;border:1px solid #575757;">0</td>`;
+                                htmls += `<td style="text-align:right;border:1px solid #575757;">0</td>`;
+                                htmls += `<td style="text-align:right;border:1px solid #575757;padding-right: 8px !important;">0</td>`;
+                                htmls += '<td></td>';
+                                htmls += '</tr>';
+                            }
 
                             $.each(groupData, function (index, value) {
 

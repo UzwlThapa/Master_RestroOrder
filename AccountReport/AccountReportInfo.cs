@@ -3,7 +3,6 @@
     public class AccountReportInfo
     {
         public int TransactionID { get; set; }
-
         public int FinancialAcID { get; set; }
         public string TransactionDate { get; set; }
         public string FinanceName { get; set; }
