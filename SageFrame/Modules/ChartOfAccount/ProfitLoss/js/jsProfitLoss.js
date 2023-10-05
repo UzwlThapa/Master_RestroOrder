@@ -274,7 +274,7 @@
                     var closing = crlist.filter((item) => item.FinancialAcName.toLowerCase() == 'closing stock');
                     htmCr += '<tr style="text-align:left;background:#f7ebeb;font-weight:bold;">';
                     htmCr += `<td style="text-align:left;border:1px solid #575757;">${closing[0].FinancialAcName}</td>`;
-                    htmCr += `<td style="text-align:right;border:1px solid #575757;">${moneyPlaceholder(closing[0].Debit)}</td>`;
+                    htmCr += `<td style="text-align:right;border:1px solid #575757;">${moneyPlaceholder(closing[0].Credit)}</td>`;
                     htmCr += '</tr>';
                     crRowCount++;
 

@@ -189,7 +189,7 @@ public class Printer
         }
         else
         {
-            graphic.DrawString("    " + kot.CostCenterTitle, new Font("Courier New", 14, FontStyle.Bold), new SolidBrush(Color.Black), startX, startY + 10);
+            graphic.DrawString("    " + kot.CostCenterTitle +" '"+kot.TableId+"'", new Font("Courier New", 14, FontStyle.Bold), new SolidBrush(Color.Black), startX, startY + 10);
 
         }
         offset = offset + (int)fontHeight;
