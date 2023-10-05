@@ -2,10 +2,10 @@
 (function ($) {
     $.companyProfcreate = function (p) {
         p = $.extend
-             ({
-                 UserModuleID: '',
-                 ModulePath: '/Modules/ChartOfAccount/ProfitLoss/webService/'
-             }, p);
+            ({
+                UserModuleID: '',
+                ModulePath: '/Modules/ChartOfAccount/ProfitLoss/webService/'
+            }, p);
         var companyInfo = JSON.parse(localStorage.getItem("companyInfo"));
         var eventFunction = {
             config: {
@@ -28,8 +28,8 @@
                 //eventFunction.getAllFinancialAcForGrid();
             },
             init: function () {
-        
-                $("#btnView").on('click',function () {
+
+                $("#btnView").on('click', function () {
                     $('.report-view').show();
                     eventFunction.getAllFinancialAcForGrid();
                 });
@@ -135,7 +135,6 @@
                 $("#divForBalanceSheet").show();
                 data = JSON.parse(result);
                 var htmls = "";
-                var ShowZero = $('#sltIsZero').val() == "Yes" ? true : false;
                 htmls += '<div class="Report_header"><h4 style="text-align:center;margin:0;">' + companyInfo.Name + '</h4>';
                 htmls += '<p style="text-align:center;margin:0;">' + companyInfo.Address + ' , ' + (companyInfo.IsPan ? 'PAN' : 'VAT') + ' : ' + companyInfo.PAN + '</p>';
                 htmls += '<p style="margin:0;text-align:center;">Profit & Loss Statement For ' + $('#txtStartDate').val() + ' to ' + $('#txtEndDate').val() + '</p>';
@@ -145,124 +144,218 @@
                 htmls += '<div class="sfCol_50"><table id="tblOfFinancialAcDr" class="sfGridwrapper display dataTable no-footer reportsprint" style="border:none;width:100%;border-collapse:collapse;">' +
                     '<thead><tr style="font-weight: bold;background-color: #ff9933;color: white;">' +
                     '<th style="width: 100px;text-align:center;border:1px solid #575757;padding:2px;font-weight:bold;">EXPENSES OR LOSSES </th>' +
-                    '<th style="width: 20px;text-align:right;border:1px solid #575757;padding:2px;font-weight:bold;font-weight:bold;">(Dr.) Amount</th>' +
+                    '<th style="width: 20px;text-align:right;border:1px solid #575757;padding:2px;font-weight:bold;font-weight:bold;">(Dr.) AMOUNT</th>' +
                     '</tr></thead><tbody id="tbl_PLDr"></tbody></table></div>';
                 htmls += '<div class="sfCol_50"><table id="tblOfFinancialAcCr" class="sfGridwrapper display dataTable no-footer reportsprint" style="border:none;width:100%;border-collapse:collapse;">' +
                     '<thead><tr style="font-weight: bold;background-color: #ff9933;color: white;">' +
                     '<th style="width: 100px;text-align:center;border:1px solid #575757;padding:2px;font-weight:bold;">INCOME OR GAIN</th>' +
-                    '<th style="width: 20px;text-align:right;border:1px solid #575757;padding:2px;font-weight:bold;">(Cr.) Amount</th>' +
+                    '<th style="width: 20px;text-align:right;border:1px solid #575757;padding:2px;font-weight:bold;">(Cr.) AMOUNT</th>' +
                     '</tr></thead><tbody id="tbl_PLCr"></tbody></table></div>';
 
                 $("#divForBalanceSheet").append(htmls);
 
+                function getGroupTotal(group, data, type) {
+                    groupTotalTemp = 0;
+                    var childList = data.filter((item) => item.PFinancialAcName == group && item.FinancialAcName != group);
+                    if (childList.length > 0) {
+                        $.each(childList, function (index, parent) {
+                            var childList2 = data.filter((item) => item.PFinancialAcName == parent.FinancialAcName && item.FinancialAcName != parent.FinancialAcName);
+                            if (childList2.length > 0) {
+                                childList2.map((child) => groupTotalTemp += child[type]);
+                            } else {
+                                groupTotalTemp += parent[type]
+                            }
+                        });
+                    } else {
+                        groupTotalTemp += group[type]
+                    }
+
+                    return groupTotalTemp;
+                }
+
                 if (data.length > 0) {
 
                     var htmDr = '';
-                    var htmCr = ''; 
+                    var htmCr = '';
                     var drlist = [];
-                    var crlist = []; 
-                    var drdiff = 0;
-                    var crdiff = 0;
+                    var crlist = [];
+                    var groupTotal = 0;
+                    var groupTotalTemp = 0;
+                    var grandTotalDr = 0;
+                    var grandTotalCr = 0;
+                    var drRowCount = 0;
+                    var crRowCount = 0;
 
                     //Creating two list of datas for Dr value and Cr Value
-                    $.each(data, function (index, value) { 
-                        if (value.IsDebit == false) {                            
+                    $.each(data, function (index, value) {
+                        if (value.IsDebit == false) {
                             crlist.push(value);
                         }
                         if (value.IsDebit == true) {
                             drlist.push(value);
                         }
                     });
-                     
-                    var grandTotalDr = 0;
-                    var grandTotalCr = 0; 
 
                     //Looping inside Debit List 
                     // Opening
                     var opening = drlist.filter((item) => item.FinancialAcName.toLowerCase() == 'opening stock');
                     htmDr += '<tr style="text-align:left;background:#f7ebeb;font-weight:bold;">';
-                    htmDr += `<td style="text-align:left;border:1px solid #575757;">${opening[0].FinancialAcName}</td>`;
-                    htmDr += `<td style="text-align:right;border:1px solid #575757;">${opening[0].Debit}</td>`;
+                    htmDr += `<td style="text-align:left;border:1px solid #575757;padding-left:2rem!important;">${opening[0].FinancialAcName}</td>`;
+                    htmDr += `<td style="text-align:right;border:1px solid #575757;padding-left:2rem!important;">${moneyPlaceholder(opening[0].Debit)}</td>`;
                     htmDr += '</tr>';
+                    drRowCount++;
 
-                    const groupNameListDr = [...new Set(drlist.map(item => item.PFinancialAcName))];
-                    groupNameListDr.pop("");
+                    var groupNameListDr = [...new Set(drlist.map(item => item.PFinancialAcName))];
+                    groupNameListDr.splice(groupNameListDr.indexOf("OPENING STOCK"), 1);
+                    if (groupNameListDr.includes("")) {
+                        groupNameListDr.pop("");
+                    }
 
-                    $.each(groupNameListDr, function (index, value) {                       
-                        var groupData = drlist.filter((item) => item.PFinancialAcName == value && item.FinancialAcName.toLowerCase() != 'opening stock');
-                        if (groupData.length > 0) {
+                    $.each(groupNameListDr, function (index, group) {
+
+                        var groupDataDr = drlist.filter((item) => item.PFinancialAcName == group && item.FinancialAcName != group);
+                        if (groupDataDr.length > 0) {
 
                             // Group Header
+                            groupTotal = getGroupTotal(group, drlist, 'Debit');
                             htmDr += '<tr style="text-align:left;background:#e1dfdf;font-weight:bold;">';
-                            htmDr += `<td style="text-align:center;border:1px solid #575757;text-align:left;padding-left:2rem!important;">${value}</td>`;
-                            htmDr += '<td></td>';
+                            htmDr += `<td style="text-align:center;border:1px solid #575757;text-align:left;padding-left:2rem!important;">${group}</td>`;
+                            htmDr += `<td style="text-align:right;">${moneyPlaceholder(groupTotal)}</td>`;
                             htmDr += '</tr>';
+                            grandTotalDr += groupTotal;
+                            groupTotal = 0;
+                            drRowCount++;
 
                             // Rows
-                            $.each(groupData, function (index, value) {
-                                grandTotalDr += value.Debit;
-                                htmDr += '<tr>';
-                                htmDr += `<td style="text-align:left;border:1px solid #575757;padding-left:4rem!important;">${value.FinancialAcName}</td>`;
-                                htmDr += `<td style="text-align:right;border:1px solid #575757;">${value.Debit}</td>`;
-                                htmDr += '</tr>';
+                            $.each(groupDataDr, function (index, child) {
+
+                                // if third level child is present, find child of the 3rd level parent instead
+                                if (groupNameListDr.includes(child.FinancialAcName) && child.FinancialAcName.toLowerCase() != 'opening stock') {
+                                    // remove group from list
+                                    groupNameListDr.splice(groupNameListDr.indexOf(child.FinancialAcName), 1);
+
+                                    var groupDataDr2 = drlist.filter((item) => item.PFinancialAcName == child.FinancialAcName && item.FinancialAcName != child.FinancialAcName);
+                                    if (groupDataDr2.length > 0) {
+
+                                        // Group Sub Header
+                                        groupTotal = getGroupTotal(child.FinancialAcName, drlist, 'Debit');
+                                        htmDr += '<tr style="text-align:left;background:#e1dfdf;font-weight:bold;">';
+                                        htmDr += `<td style="text-align:center;border:1px solid #575757;text-align:left;padding-left:4rem!important;">${child.FinancialAcName}</td>`;
+                                        htmDr += `<td style="text-align:right;">${moneyPlaceholder(groupTotal)}</td>`;
+                                        htmDr += '</tr>';
+                                        drRowCount++;
+
+                                        // Rows
+                                        $.each(groupDataDr2, function (index, child2) {
+                                            htmDr += '<tr>';
+                                            htmDr += `<td style="text-align:left;border:1px solid #575757;padding-left:6rem!important;">${child2.FinancialAcName}</td>`;
+                                            htmDr += `<td style="text-align:right;border:1px solid #575757;">${moneyPlaceholder(child2.Debit)}</td>`;
+                                            htmDr += '</tr>';
+                                            drRowCount++;
+                                        });
+                                    }
+                                } else {
+
+                                    // Rows
+                                    htmDr += '<tr>';
+                                    htmDr += `<td style="text-align:left;border:1px solid #575757;padding-left:4rem!important;">${child.FinancialAcName}</td>`;
+                                    htmDr += `<td style="text-align:right;border:1px solid #575757;">${moneyPlaceholder(child.Debit)}</td>`;
+                                    htmDr += '</tr>';
+                                    drRowCount++;
+                                }
                             });
                         }
-                        
-                    }); 
+                    });
 
                     $('#tbl_PLDr').html(htmDr);
-                     
+
                     //Looping inside Credit List  
                     // closing
                     var closing = crlist.filter((item) => item.FinancialAcName.toLowerCase() == 'closing stock');
                     htmCr += '<tr style="text-align:left;background:#f7ebeb;font-weight:bold;">';
                     htmCr += `<td style="text-align:left;border:1px solid #575757;">${closing[0].FinancialAcName}</td>`;
-                    htmCr += `<td style="text-align:right;border:1px solid #575757;">${closing[0].Debit}</td>`;
+                    htmCr += `<td style="text-align:right;border:1px solid #575757;">${moneyPlaceholder(closing[0].Debit)}</td>`;
                     htmCr += '</tr>';
+                    crRowCount++;
 
-                    const groupNameListCr = [...new Set(crlist.map(item => item.PFinancialAcName))];
-                    groupNameListCr.pop("");
+                    var groupNameListCr = [...new Set(crlist.map(item => item.PFinancialAcName))];
+                    groupNameListCr.splice(groupNameListCr.indexOf("CLOSING STOCK"), 1);
+                    if (groupNameListCr.includes("")) {
+                        groupNameListCr.pop("");
+                    }
 
-                    $.each(groupNameListCr, function (index, value) {
-                        var groupData = crlist.filter((item) => item.PFinancialAcName == value && item.FinancialAcName.toLowerCase() != 'closing stock');
-                        if (groupData.length > 0) {
+                    $.each(groupNameListCr, function (index, group) {
+                        var groupDataCr = crlist.filter((item) => item.PFinancialAcName == group && item.FinancialAcName != group);
+                        if (groupDataCr.length > 0) {
 
                             // Group Header
+                            groupTotal = getGroupTotal(group, crlist, 'Credit');
                             htmCr += '<tr style="text-align:left;background:#e1dfdf;font-weight:bold;">';
-                            htmCr += `<td style="text-align:center;border:1px solid #575757;text-align:left;padding-left:2rem!important;">${value}</td>`;
-                            htmCr += '<td></td>';
+                            htmCr += `<td style="text-align:center;border:1px solid #575757;text-align:left;padding-left:2rem!important;">${group}</td>`;
+                            htmCr += `<td style="text-align:right;">${moneyPlaceholder(groupTotal)}</td>`;
                             htmCr += '</tr>';
+                            grandTotalCr += groupTotal;
+                            groupTotal = 0;
+                            crRowCount++;
 
                             // Rows
-                            $.each(groupData, function (index, value) {
-                                grandTotalCr += value.Credit;
-                                htmCr += '<tr>';
-                                htmCr += `<td style="text-align:left;border:1px solid #575757;padding-left:4rem!important;">${value.FinancialAcName}</td>`;
-                                htmCr += `<td style="text-align:right;border:1px solid #575757;">${value.Credit}</td>`;
-                                htmCr += '</tr>';
-                            }); 
-                        } 
+                            $.each(groupDataCr, function (index, child) {
+
+                                // if third level child is present, find child of the 3rd level parent instead
+                                if (groupNameListCr.includes(child.FinancialAcName) && child.FinancialAcName.toLowerCase() != 'closing stock') {
+                                    // remove group from list
+                                    groupNameListCr.splice(groupNameListCr.indexOf(child.FinancialAcName), 1);
+
+                                    var groupDataCr2 = crlist.filter((item) => item.PFinancialAcName == child.FinancialAcName && item.FinancialAcName != child.FinancialAcName);
+                                    if (groupDataCr2.length > 0) {
+
+                                        // Group Sub Header 
+                                        groupTotal = getGroupTotal(child.FinancialAcName, crlist, 'Credit');
+                                        htmCr += '<tr style="text-align:left;background:#e1dfdf;font-weight:bold;">';
+                                        htmCr += `<td style="text-align:center;border:1px solid #575757;text-align:left;padding-left:4rem!important;">${child.FinancialAcName}</td>`;
+                                        htmCr += `<td style="text-align:right;">${moneyPlaceholder(groupTotal)}</td>`;
+                                        htmCr += '</tr>';
+                                        crRowCount++;
+
+                                        // Rows
+                                        $.each(groupDataCr2, function (index, child2) {
+                                            htmCr += '<tr>';
+                                            htmCr += `<td style="text-align:left;border:1px solid #575757;padding-left:6rem!important;">${child2.FinancialAcName}</td>`;
+                                            htmCr += `<td style="text-align:right;border:1px solid #575757;">${moneyPlaceholder(child2.Credit)}</td>`;
+                                            htmCr += '</tr>';
+                                            crRowCount++;
+                                        });
+                                    }
+                                } else {
+
+                                    // Rows
+                                    htmCr += '<tr>';
+                                    htmCr += `<td style="text-align:left;border:1px solid #575757;padding-left:4rem!important;">${child.FinancialAcName}</td>`;
+                                    htmCr += `<td style="text-align:right;border:1px solid #575757;">${moneyPlaceholder(child.Credit)}</td>`;
+                                    htmCr += '</tr>';
+                                    crRowCount++;
+                                }
+                            });
+                        }
                     });
 
                     $('#tbl_PLCr').html(htmCr);
-                     
+
                     //Checking if one list is greater than other to inster blank rows for design
                     $('#tbl_PLCr').append('<tr><td>&nbsp;</td><td>&nbsp;</td></tr>')
                     $('#tbl_PLDr').append('<tr><td>&nbsp;</td><td>&nbsp;</td></tr>')
 
-                    if (drlist.length != crlist.length) {
-                        if (drlist.length > crlist.length) {
-                            crdiff = drlist.length - crlist.length
-
-                            for (i = 0; i < crdiff; i++) {
+                    var rowDiff = 0;
+                    if (drRowCount != crRowCount) {
+                        if (drRowCount > crRowCount) {
+                            rowDiff = drRowCount - crRowCount;
+                            for (i = 0; i < rowDiff; i++) {
                                 $('#tbl_PLCr').append('<tr><td>&nbsp;</td><td>&nbsp;</td></tr>')
                             }
-
                         }
-                        if (drlist.length < crlist.length) {
-                            drdiff = crlist.length - drlist.length
-
-                            for (i = 0; i < drdiff; i++) {
+                        if (drRowCount < crRowCount) {
+                            rowDiff = crRowCount - drRowCount;
+                            for (i = 0; i < rowDiff; i++) {
                                 $('#tbl_PLDr').append('<tr><td>&nbsp;</td><td>&nbsp;</td></tr>')
                             }
                         }
@@ -270,15 +363,15 @@
 
                     if (grandTotalCr > grandTotalDr) {
                         $('#tbl_PLCr').append('<tr><td>&nbsp;</td><td>&nbsp;</td></tr>')
-                        $('#tbl_PLDr').append('<tr style="font-weight: bold;"><td>Net Profit (Transfered to Capital)</td><td style="text-align:right;">' + (grandTotalCr - grandTotalDr).toFixed(2) + '</td></tr>')
+                        $('#tbl_PLDr').append('<tr style="font-weight: bold;"><td style="text-align:left;">Net Profit (Transfered to Capital)</td><td style="text-align:right;">' + moneyPlaceholder((grandTotalCr - grandTotalDr).toFixed(2)) + '</td></tr>')
                     }
                     if (grandTotalCr < grandTotalDr) {
                         $('#tbl_PLDr').append('<tr><td>&nbsp;</td><td>&nbsp;</td></tr>')
-                        $('#tbl_PLCr').append('<tr style="font-weight: bold;"><td>Net Loss (Transfered to Capital)</td><td style="text-align:right;">' + (grandTotalDr - grandTotalCr).toFixed(2) + '</td></tr>')
-                    } 
-                    $('#tbl_PLCr').append('<tr style="background-color: #ff9933;color: white;"><td style="text-align:right;">Total Amount</td><td style="text-align:right;">' + grandTotalDr + '</td></tr>')
-                    $('#tbl_PLDr').append('<tr style="background-color: #ff9933;color: white;"><td style="text-align:right;">Total Amount</td><td style="text-align:right;">' + grandTotalCr + '</td></tr>')
-                } 
+                        $('#tbl_PLCr').append('<tr style="font-weight: bold;"><td style="text-align:left;">Net Loss (Transfered to Capital)</td><td style="text-align:right;">' + moneyPlaceholder((grandTotalDr - grandTotalCr).toFixed(2)) + '</td></tr>')
+                    }
+                    $('#tbl_PLCr').append('<tr style="background-color: #ff9933;color: white;font-weight: bold;"><td style="text-align:left;">Total Amount</td><td style="text-align:right;">' + moneyPlaceholder(grandTotalCr) + '</td></tr>')
+                    $('#tbl_PLDr').append('<tr style="background-color: #ff9933;color: white;font-weight: bold;"><td style="text-align:left;">Total Amount</td><td style="text-align:right;">' + moneyPlaceholder(grandTotalDr) + '</td></tr>')
+                }
             },
             bindFinancialAcDetails: function (data) {
                 var result = JSON.parse(data);
