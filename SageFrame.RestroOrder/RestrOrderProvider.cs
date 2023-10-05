@@ -616,7 +616,7 @@ namespace SageFrame.RestroOrder
                 throw ex;
             }
         }
-        
+
 
 
         internal void shiftTable(int fromordermasterid, int totableID, int fromSeatNo, int toSeatNo, string shiftedby)
@@ -1684,7 +1684,7 @@ namespace SageFrame.RestroOrder
                 throw;
             }
         }
-        
+
         internal List<dailyreports> getAccSalesReport(DateTime startDate, DateTime endDate, string PaymentMode, int Status, int OrdertypeID, string custName)
         {
             List<KeyValuePair<string, object>> Param = new List<KeyValuePair<string, object>>();
@@ -3316,9 +3316,16 @@ namespace SageFrame.RestroOrder
             List<FiscalYearInfo> list = sqlHandler.ExecuteAsList<FiscalYearInfo>("[usp_ro_GetCurrentActiveFiscalYear]");
             return list;
         }
-        internal void CancelBillWithReason(int id, string userName, string reason, bool restoreOrder)
+        internal void CancelBillWithReason(int id, string userName, string reason, bool restoreOrder, bool? isWholesale = false)
         {
-                try
+            try
+            {
+
+                if(isWholesale != false)
+                {
+
+                }
+                else
                 {
                     if (restoreOrder)
                     {
@@ -3353,10 +3360,12 @@ namespace SageFrame.RestroOrder
                         sqlHandler.ExecuteNonQuery("[dbo].[ROI_SAVESalesReturnItemBal]", Param4);
                     }
                 }
-                catch (Exception)
-                {
-                    throw;
-                }
+               
+            }
+            catch (Exception)
+            {
+                throw;
+            }
 
         }
 
@@ -3404,7 +3413,7 @@ namespace SageFrame.RestroOrder
             {
                 int smId = salesPayment.FirstOrDefault().salesMasterId;
 
-                if(salesPayment.Count > 0)
+                if (salesPayment.Count > 0)
                 {
                     List<KeyValuePair<string, object>> Param1 = new List<KeyValuePair<string, object>>();
                     Param1.Add(new KeyValuePair<string, object>("@SalesMasterId", smId));
@@ -3451,7 +3460,7 @@ namespace SageFrame.RestroOrder
                 ts.Complete();
 
 
-                
+
             }
         }
 
@@ -4326,7 +4335,7 @@ namespace SageFrame.RestroOrder
             return sqlHandler.ExecuteAsList<CostCenterGroup>("[USP_RO_GetCostCenterGroupClosing]", Param);
         }
 
-        
+
         internal List<StatementInfo> StatementMonthlyReportDatewise(DateTime startdate, DateTime enddate)
         {
             List<KeyValuePair<string, object>> Param = new List<KeyValuePair<string, object>>();
@@ -4524,7 +4533,7 @@ namespace SageFrame.RestroOrder
                     //    sqlHandler.ExecuteNonQuery("usp_ro_updateOrderDetails", Param3);
                     //    Param3.Clear();
                     //}
-                    foreach(CostCenterGroup cg in flatorperdiscount.CCGroup)
+                    foreach (CostCenterGroup cg in flatorperdiscount.CCGroup)
                     {
                         List<KeyValuePair<string, object>> Param4 = new List<KeyValuePair<string, object>>();
                         Param4.Add(new KeyValuePair<string, object>("@SalesMasterId", salesMasterId));
@@ -6037,7 +6046,7 @@ namespace SageFrame.RestroOrder
             List<OrderDetailCancel> Unitinfo = sqlHandler.ExecuteAsList<OrderDetailCancel>("USP_GetOrderCancelResponsible");
             return Unitinfo;
         }
-        internal List<goodsReceiveMain> getGoodsReceiveReport(string startDate, string endDate, string PoNO, string GmNo, string itemname,int paymentID)
+        internal List<goodsReceiveMain> getGoodsReceiveReport(string startDate, string endDate, string PoNO, string GmNo, string itemname, int paymentID)
         {
             List<KeyValuePair<string, object>> Param = new List<KeyValuePair<string, object>>();
             Param.Add(new KeyValuePair<string, object>("@StartDate", startDate));
@@ -6528,7 +6537,7 @@ namespace SageFrame.RestroOrder
         {
             try
             {
-                
+
                 sqlHandler.ExecuteNonQuery("USP_UpdateAcc");
 
             }
@@ -6537,7 +6546,7 @@ namespace SageFrame.RestroOrder
                 throw;
             }
         }
-        
+
 
         internal List<CheckBill> checkOrder(int orderMasterId, int seatNo, int tableId)
         {

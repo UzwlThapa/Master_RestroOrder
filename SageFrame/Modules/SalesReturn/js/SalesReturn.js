@@ -86,7 +86,7 @@ function IntegerAndDecimal(evt, element) {
                     salesId = $(this).attr('id');
                     $('#hdnPinFor').val('CancelBill');
                     InitializePin();
-                    
+              
 
                 });
 
