@@ -141,11 +141,11 @@ end
 if not exists(select 1 from Ac_FinancialAc where name = 'FOOD PURCHASE A/C')
 begin
 INSERT INTO Ac_FinancialAc(Name,PFinancialAcID,FinancialSysID,AddedBy,AddedOn,IsArchived,IsDebit,AccEntryType) 
-VALUES('FOOD PURCHASE A/C',@BARPurchaseId,@TransactionNodeId,'danfe',GETDATE(),0,1,@AccEntryTypeId);
+VALUES('FOOD PURCHASE A/C',@DirectExpensesId,@TransactionNodeId,'danfe',GETDATE(),0,1,@AccEntryTypeId);
 end
 else
 begin
-UPDATE Ac_FinancialAc SET FinancialSysID = @TransactionNodeId,PFinancialAcID = @BARPurchaseId,IsDebit = 1,AccEntryType = @AccEntryTypeId WHERE name ='FOOD PURCHASE A/C'
+UPDATE Ac_FinancialAc SET FinancialSysID = @TransactionNodeId,PFinancialAcID = @DirectExpensesId,IsDebit = 1,AccEntryType = @AccEntryTypeId WHERE name ='FOOD PURCHASE A/C'
 end
 
 
@@ -227,8 +227,7 @@ begin
 UPDATE Ac_FinancialAc SET FinancialSysID = @TransactionNodeId,PFinancialAcID = @salesAcId,IsDebit = 0,AccEntryType = @AccEntryTypeId WHERE name ='SURPLUS/DEFLICT A/C'
 end
  
-  
-delete d from Ac_FinancialAc  d where   Name = 'FOOD PURCHASE A/C' and PFinancialAcID <> @BARPurchaseId and AccEntryType = @AccEntryTypeId
+   
 delete d from Ac_FinancialAc  d where   Name = 'SERVICES' and AccEntryType = @AccEntryTypeId
 delete d from Ac_FinancialAc  d where   Name = 'BAR SALES A/C' and PFinancialAcID = @RegularPurchaseId and AccEntryType = @AccEntryTypeId
 delete d from Ac_FinancialAc  d where   Name  like '%Staff%' and PFinancialAcID = @RegularPurchaseId and AddedBy = 'danfe'  and AccEntryType = @AccEntryTypeId
