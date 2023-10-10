@@ -1,0 +1,145 @@
+F:\Projects\git projects\restroorder\SageFrame\bin\SageFrame.FrontPage.dll
+F:\Projects\git projects\restroorder\SageFrame\bin\SageFrame.FrontPage.pdb
+F:\Projects\git projects\restroorder\SageFrame.FrontPage\obj\Debug\SageFrame.FrontPage.csprojResolveAssemblyReference.cache
+F:\Projects\git projects\restroorder\SageFrame.FrontPage\obj\Debug\SageFrame.FrontPage.dll
+F:\Projects\git projects\restroorder\SageFrame.FrontPage\obj\Debug\SageFrame.FrontPage.pdb
+F:\RestroOrder3Jan\cakeorders\SageFrame\bin\SageFrame.FrontPage.dll
+F:\RestroOrder3Jan\cakeorders\SageFrame\bin\SageFrame.FrontPage.pdb
+F:\RestroOrder3Jan\cakeorders\SageFrame.FrontPage\obj\Debug\SageFrame.FrontPage.dll
+F:\RestroOrder3Jan\cakeorders\SageFrame.FrontPage\obj\Debug\SageFrame.FrontPage.pdb
+F:\RestroOrder3Jan\cakeorders\SageFrame.FrontPage\obj\Debug\SageFrame.FrontPage.csprojResolveAssemblyReference.cache
+E:\Backup\vlc media player\old-res\Res\cakeorders\SageFrame\bin\SageFrame.FrontPage.dll
+E:\Backup\vlc media player\old-res\Res\cakeorders\SageFrame\bin\SageFrame.FrontPage.pdb
+E:\Backup\vlc media player\old-res\Res\cakeorders\SageFrame.FrontPage\obj\Debug\SageFrame.FrontPage.csprojResolveAssemblyReference.cache
+E:\Backup\vlc media player\old-res\Res\cakeorders\SageFrame.FrontPage\obj\Debug\SageFrame.FrontPage.dll
+E:\Backup\vlc media player\old-res\Res\cakeorders\SageFrame.FrontPage\obj\Debug\SageFrame.FrontPage.pdb
+D:\My projects\CakeOrder\Cake_orders20210303\cakeorders\SageFrame\bin\SageFrame.FrontPage.dll
+D:\My projects\CakeOrder\Cake_orders20210303\cakeorders\SageFrame\bin\SageFrame.FrontPage.pdb
+D:\My projects\CakeOrder\Cake_orders20210303\cakeorders\SageFrame.FrontPage\obj\Debug\SageFrame.FrontPage.csprojResolveAssemblyReference.cache
+D:\My projects\CakeOrder\Cake_orders20210303\cakeorders\SageFrame.FrontPage\obj\Debug\SageFrame.FrontPage.dll
+D:\My projects\CakeOrder\Cake_orders20210303\cakeorders\SageFrame.FrontPage\obj\Debug\SageFrame.FrontPage.pdb
+E:\SAROJ CAKE ORDER 8Mar2021\cakeorders\cakeorders\SageFrame\bin\SageFrame.FrontPage.dll
+E:\SAROJ CAKE ORDER 8Mar2021\cakeorders\cakeorders\SageFrame\bin\SageFrame.FrontPage.pdb
+E:\SAROJ CAKE ORDER 8Mar2021\cakeorders\cakeorders\SageFrame.FrontPage\obj\Debug\SageFrame.FrontPage.dll
+E:\SAROJ CAKE ORDER 8Mar2021\cakeorders\cakeorders\SageFrame.FrontPage\obj\Debug\SageFrame.FrontPage.pdb
+E:\SAROJ CAKE ORDER 8Mar2021\cakeorders\cakeorders\SageFrame.FrontPage\obj\Debug\SageFrame.FrontPage.csprojResolveAssemblyReference.cache
+D:\My projects\CakeOrder\cakeorders\SageFrame\bin\SageFrame.FrontPage.dll
+D:\My projects\CakeOrder\cakeorders\SageFrame\bin\SageFrame.FrontPage.pdb
+D:\My projects\CakeOrder\cakeorders\SageFrame.FrontPage\obj\Debug\SageFrame.FrontPage.csprojResolveAssemblyReference.cache
+D:\My projects\CakeOrder\cakeorders\SageFrame.FrontPage\obj\Debug\SageFrame.FrontPage.dll
+D:\My projects\CakeOrder\cakeorders\SageFrame.FrontPage\obj\Debug\SageFrame.FrontPage.pdb
+D:\My projects\cakeorder-akuj\SageFrame\bin\SageFrame.FrontPage.dll
+D:\My projects\cakeorder-akuj\SageFrame\bin\SageFrame.FrontPage.pdb
+D:\My projects\cakeorder-akuj\SageFrame.FrontPage\obj\Debug\SageFrame.FrontPage.csprojResolveAssemblyReference.cache
+D:\My projects\cakeorder-akuj\SageFrame.FrontPage\obj\Debug\SageFrame.FrontPage.dll
+D:\My projects\cakeorder-akuj\SageFrame.FrontPage\obj\Debug\SageFrame.FrontPage.pdb
+D:\cakeorder-akuj\SageFrame\bin\SageFrame.FrontPage.dll
+D:\cakeorder-akuj\SageFrame\bin\SageFrame.FrontPage.pdb
+D:\cakeorder-akuj\SageFrame.FrontPage\obj\Debug\SageFrame.FrontPage.csprojAssemblyReference.cache
+D:\cakeorder-akuj\SageFrame.FrontPage\obj\Debug\SageFrame.FrontPage.csproj.CoreCompileInputs.cache
+D:\cakeorder-akuj\SageFrame.FrontPage\obj\Debug\SageFrame.FrontPage.csproj.CopyComplete
+D:\cakeorder-akuj\SageFrame.FrontPage\obj\Debug\SageFrame.FrontPage.dll
+D:\cakeorder-akuj\SageFrame.FrontPage\obj\Debug\SageFrame.FrontPage.pdb
+D:\Projects\akuj_kot_bot\SageFrame\bin\SageFrame.FrontPage.dll
+D:\Projects\akuj_kot_bot\SageFrame\bin\SageFrame.FrontPage.pdb
+D:\Projects\akuj_kot_bot\SageFrame.FrontPage\obj\Debug\SageFrame.FrontPage.csprojResolveAssemblyReference.cache
+D:\Projects\akuj_kot_bot\SageFrame.FrontPage\obj\Debug\SageFrame.FrontPage.dll
+D:\Projects\akuj_kot_bot\SageFrame.FrontPage\obj\Debug\SageFrame.FrontPage.pdb
+D:\Projects\Restro\akuj\akuj_kot_bot.git\SageFrame\bin\SageFrame.FrontPage.dll
+D:\Projects\Restro\akuj\akuj_kot_bot.git\SageFrame\bin\SageFrame.FrontPage.pdb
+D:\Projects\Restro\akuj\akuj_kot_bot.git\SageFrame.FrontPage\obj\Debug\SageFrame.FrontPage.csproj.AssemblyReference.cache
+D:\Projects\Restro\akuj\akuj_kot_bot.git\SageFrame.FrontPage\obj\Debug\SageFrame.FrontPage.csproj.CoreCompileInputs.cache
+D:\Projects\Restro\akuj\akuj_kot_bot.git\SageFrame.FrontPage\obj\Debug\SageFrame.FrontPage.csproj.CopyComplete
+D:\Projects\Restro\akuj\akuj_kot_bot.git\SageFrame.FrontPage\obj\Debug\SageFrame.FrontPage.dll
+D:\Projects\Restro\akuj\akuj_kot_bot.git\SageFrame.FrontPage\obj\Debug\SageFrame.FrontPage.pdb
+F:\Workspace\Danfe\akuj\akuj_kot_bot.git\SageFrame\bin\SageFrame.FrontPage.dll
+F:\Workspace\Danfe\akuj\akuj_kot_bot.git\SageFrame\bin\SageFrame.FrontPage.pdb
+F:\Workspace\Danfe\akuj\akuj_kot_bot.git\SageFrame.FrontPage\obj\Debug\SageFrame.FrontPage.csproj.AssemblyReference.cache
+F:\Workspace\Danfe\akuj\akuj_kot_bot.git\SageFrame.FrontPage\obj\Debug\SageFrame.FrontPage.csproj.CoreCompileInputs.cache
+F:\Workspace\Danfe\akuj\akuj_kot_bot.git\SageFrame.FrontPage\obj\Debug\SageFrame.FrontPage.csproj.CopyComplete
+F:\Workspace\Danfe\akuj\akuj_kot_bot.git\SageFrame.FrontPage\obj\Debug\SageFrame.FrontPage.dll
+F:\Workspace\Danfe\akuj\akuj_kot_bot.git\SageFrame.FrontPage\obj\Debug\SageFrame.FrontPage.pdb
+F:\Workspace\Danfe\master\restro_master\SageFrame\bin\SageFrame.FrontPage.dll
+F:\Workspace\Danfe\master\restro_master\SageFrame\bin\SageFrame.FrontPage.pdb
+F:\Workspace\Danfe\master\restro_master\SageFrame.FrontPage\obj\Debug\SageFrame.FrontPage.csproj.AssemblyReference.cache
+F:\Workspace\Danfe\master\restro_master\SageFrame.FrontPage\obj\Debug\SageFrame.FrontPage.csproj.CoreCompileInputs.cache
+F:\Workspace\Danfe\master\restro_master\SageFrame.FrontPage\obj\Debug\SageFrame.FrontPage.csproj.CopyComplete
+F:\Workspace\Danfe\master\restro_master\SageFrame.FrontPage\obj\Debug\SageFrame.FrontPage.dll
+F:\Workspace\Danfe\master\restro_master\SageFrame.FrontPage\obj\Debug\SageFrame.FrontPage.pdb
+G:\Development\RestroOrderSource-2023-01-08\restro_master\SageFrame\bin\SageFrame.FrontPage.dll
+G:\Development\RestroOrderSource-2023-01-08\restro_master\SageFrame\bin\SageFrame.FrontPage.pdb
+G:\Development\RestroOrderSource-2023-01-08\restro_master\SageFrame.FrontPage\obj\Debug\SageFrame.FrontPage.csproj.AssemblyReference.cache
+G:\Development\RestroOrderSource-2023-01-08\restro_master\SageFrame.FrontPage\obj\Debug\SageFrame.FrontPage.csproj.CoreCompileInputs.cache
+G:\Development\RestroOrderSource-2023-01-08\restro_master\SageFrame.FrontPage\obj\Debug\SageFrame.FrontPage.csproj.CopyComplete
+G:\Development\RestroOrderSource-2023-01-08\restro_master\SageFrame.FrontPage\obj\Debug\SageFrame.FrontPage.dll
+G:\Development\RestroOrderSource-2023-01-08\restro_master\SageFrame.FrontPage\obj\Debug\SageFrame.FrontPage.pdb
+G:\Development\RestroOrder20230214Source\restro_master\SageFrame\bin\SageFrame.FrontPage.dll
+G:\Development\RestroOrder20230214Source\restro_master\SageFrame\bin\SageFrame.FrontPage.pdb
+G:\Development\RestroOrder20230214Source\restro_master\SageFrame.FrontPage\obj\Debug\SageFrame.FrontPage.csproj.AssemblyReference.cache
+G:\Development\RestroOrder20230214Source\restro_master\SageFrame.FrontPage\obj\Debug\SageFrame.FrontPage.csproj.CoreCompileInputs.cache
+G:\Development\RestroOrder20230214Source\restro_master\SageFrame.FrontPage\obj\Debug\SageFrame.FrontPage.csproj.CopyComplete
+G:\Development\RestroOrder20230214Source\restro_master\SageFrame.FrontPage\obj\Debug\SageFrame.FrontPage.dll
+G:\Development\RestroOrder20230214Source\restro_master\SageFrame.FrontPage\obj\Debug\SageFrame.FrontPage.pdb
+G:\Development\RestroOrderSource-2023-02-14\restro_master\SageFrame\bin\SageFrame.FrontPage.dll
+G:\Development\RestroOrderSource-2023-02-14\restro_master\SageFrame\bin\SageFrame.FrontPage.pdb
+G:\Development\RestroOrderSource-2023-02-14\restro_master\SageFrame.FrontPage\obj\Debug\SageFrame.FrontPage.csproj.AssemblyReference.cache
+G:\Development\RestroOrderSource-2023-02-14\restro_master\SageFrame.FrontPage\obj\Debug\SageFrame.FrontPage.csproj.CoreCompileInputs.cache
+G:\Development\RestroOrderSource-2023-02-14\restro_master\SageFrame.FrontPage\obj\Debug\SageFrame.FrontPage.csproj.CopyComplete
+G:\Development\RestroOrderSource-2023-02-14\restro_master\SageFrame.FrontPage\obj\Debug\SageFrame.FrontPage.dll
+G:\Development\RestroOrderSource-2023-02-14\restro_master\SageFrame.FrontPage\obj\Debug\SageFrame.FrontPage.pdb
+E:\Development-Shree\RestroOrderSource-2023-6-30\restro_master\SageFrame\bin\SageFrame.FrontPage.dll
+E:\Development-Shree\RestroOrderSource-2023-6-30\restro_master\SageFrame\bin\SageFrame.FrontPage.pdb
+E:\Development-Shree\RestroOrderSource-2023-6-30\restro_master\SageFrame.FrontPage\obj\Debug\SageFrame.FrontPage.csproj.AssemblyReference.cache
+E:\Development-Shree\RestroOrderSource-2023-6-30\restro_master\SageFrame.FrontPage\obj\Debug\SageFrame.FrontPage.csproj.CoreCompileInputs.cache
+E:\Development-Shree\RestroOrderSource-2023-6-30\restro_master\SageFrame.FrontPage\obj\Debug\SageFrame.FrontPage.csproj.CopyComplete
+E:\Development-Shree\RestroOrderSource-2023-6-30\restro_master\SageFrame.FrontPage\obj\Debug\SageFrame.FrontPage.dll
+E:\Development-Shree\RestroOrderSource-2023-6-30\restro_master\SageFrame.FrontPage\obj\Debug\SageFrame.FrontPage.pdb
+E:\Development-Shree\RestroOrderSource-Master-2023-07-19\restro_master\SageFrame\bin\SageFrame.FrontPage.dll
+E:\Development-Shree\RestroOrderSource-Master-2023-07-19\restro_master\SageFrame\bin\SageFrame.FrontPage.pdb
+E:\Development-Shree\RestroOrderSource-Master-2023-07-19\restro_master\SageFrame.FrontPage\obj\Debug\SageFrame.FrontPage.csproj.AssemblyReference.cache
+E:\Development-Shree\RestroOrderSource-Master-2023-07-19\restro_master\SageFrame.FrontPage\obj\Debug\SageFrame.FrontPage.csproj.CoreCompileInputs.cache
+E:\Development-Shree\RestroOrderSource-Master-2023-07-19\restro_master\SageFrame.FrontPage\obj\Debug\SageFrame.FrontPage.csproj.CopyComplete
+E:\Development-Shree\RestroOrderSource-Master-2023-07-19\restro_master\SageFrame.FrontPage\obj\Debug\SageFrame.FrontPage.dll
+E:\Development-Shree\RestroOrderSource-Master-2023-07-19\restro_master\SageFrame.FrontPage\obj\Debug\SageFrame.FrontPage.pdb
+E:\Development-Shree\RestroOrder-Merge-2023-07-26\restro_master\SageFrame\bin\SageFrame.FrontPage.dll
+E:\Development-Shree\RestroOrder-Merge-2023-07-26\restro_master\SageFrame\bin\SageFrame.FrontPage.pdb
+E:\Development-Shree\RestroOrder-Merge-2023-07-26\restro_master\SageFrame.FrontPage\obj\Debug\SageFrame.FrontPage.csproj.AssemblyReference.cache
+E:\Development-Shree\RestroOrder-Merge-2023-07-26\restro_master\SageFrame.FrontPage\obj\Debug\SageFrame.FrontPage.csproj.CoreCompileInputs.cache
+E:\Development-Shree\RestroOrder-Merge-2023-07-26\restro_master\SageFrame.FrontPage\obj\Debug\SageFrame.FrontPage.csproj.CopyComplete
+E:\Development-Shree\RestroOrder-Merge-2023-07-26\restro_master\SageFrame.FrontPage\obj\Debug\SageFrame.FrontPage.dll
+E:\Development-Shree\RestroOrder-Merge-2023-07-26\restro_master\SageFrame.FrontPage\obj\Debug\SageFrame.FrontPage.pdb
+G:\Development\RestroOrderSource-2023-02-14\RestroOrderSource-2023-08-01\restro_master\SageFrame\bin\SageFrame.FrontPage.dll
+G:\Development\RestroOrderSource-2023-02-14\RestroOrderSource-2023-08-01\restro_master\SageFrame\bin\SageFrame.FrontPage.pdb
+G:\Development\RestroOrderSource-2023-02-14\RestroOrderSource-2023-08-01\restro_master\SageFrame.FrontPage\obj\Debug\SageFrame.FrontPage.csproj.AssemblyReference.cache
+G:\Development\RestroOrderSource-2023-02-14\RestroOrderSource-2023-08-01\restro_master\SageFrame.FrontPage\obj\Debug\SageFrame.FrontPage.csproj.CoreCompileInputs.cache
+G:\Development\RestroOrderSource-2023-02-14\RestroOrderSource-2023-08-01\restro_master\SageFrame.FrontPage\obj\Debug\SageFrame.FrontPage.csproj.CopyComplete
+G:\Development\RestroOrderSource-2023-02-14\RestroOrderSource-2023-08-01\restro_master\SageFrame.FrontPage\obj\Debug\SageFrame.FrontPage.dll
+G:\Development\RestroOrderSource-2023-02-14\RestroOrderSource-2023-08-01\restro_master\SageFrame.FrontPage\obj\Debug\SageFrame.FrontPage.pdb
+G:\GITDevelopment\Bishal-Raj-Parajuli\RestroOrder_Master\SageFrame\bin\SageFrame.FrontPage.dll
+G:\GITDevelopment\Bishal-Raj-Parajuli\RestroOrder_Master\SageFrame\bin\SageFrame.FrontPage.pdb
+G:\GITDevelopment\Bishal-Raj-Parajuli\RestroOrder_Master\SageFrame.FrontPage\obj\Debug\SageFrame.FrontPage.csproj.AssemblyReference.cache
+G:\GITDevelopment\Bishal-Raj-Parajuli\RestroOrder_Master\SageFrame.FrontPage\obj\Debug\SageFrame.FrontPage.csproj.CoreCompileInputs.cache
+G:\GITDevelopment\Bishal-Raj-Parajuli\RestroOrder_Master\SageFrame.FrontPage\obj\Debug\SageFrame.FrontPage.csproj.CopyComplete
+G:\GITDevelopment\Bishal-Raj-Parajuli\RestroOrder_Master\SageFrame.FrontPage\obj\Debug\SageFrame.FrontPage.dll
+G:\GITDevelopment\Bishal-Raj-Parajuli\RestroOrder_Master\SageFrame.FrontPage\obj\Debug\SageFrame.FrontPage.pdb
+G:\GITDevelopment\Master_RestroOrder\SageFrame\bin\SageFrame.FrontPage.dll
+G:\GITDevelopment\Master_RestroOrder\SageFrame\bin\SageFrame.FrontPage.pdb
+G:\GITDevelopment\Master_RestroOrder\SageFrame.FrontPage\obj\Debug\SageFrame.FrontPage.csproj.AssemblyReference.cache
+G:\GITDevelopment\Master_RestroOrder\SageFrame.FrontPage\obj\Debug\SageFrame.FrontPage.csproj.CoreCompileInputs.cache
+G:\GITDevelopment\Master_RestroOrder\SageFrame.FrontPage\obj\Debug\SageFrame.FrontPage.csproj.CopyComplete
+G:\GITDevelopment\Master_RestroOrder\SageFrame.FrontPage\obj\Debug\SageFrame.FrontPage.dll
+G:\GITDevelopment\Master_RestroOrder\SageFrame.FrontPage\obj\Debug\SageFrame.FrontPage.pdb
+G:\GITDevelopment\Chicken\SageFrame\bin\SageFrame.FrontPage.dll
+G:\GITDevelopment\Chicken\SageFrame\bin\SageFrame.FrontPage.pdb
+G:\GITDevelopment\Chicken\SageFrame.FrontPage\obj\Debug\SageFrame.FrontPage.csproj.AssemblyReference.cache
+G:\GITDevelopment\Chicken\SageFrame.FrontPage\obj\Debug\SageFrame.FrontPage.csproj.CoreCompileInputs.cache
+G:\GITDevelopment\Chicken\SageFrame.FrontPage\obj\Debug\SageFrame.FrontPage.csproj.CopyComplete
+G:\GITDevelopment\Chicken\SageFrame.FrontPage\obj\Debug\SageFrame.FrontPage.dll
+G:\GITDevelopment\Chicken\SageFrame.FrontPage\obj\Debug\SageFrame.FrontPage.pdb
+E:\Development\Restro-GIT\AdarshaGit\SageFrame\bin\SageFrame.FrontPage.dll
+E:\Development\Restro-GIT\AdarshaGit\SageFrame\bin\SageFrame.FrontPage.pdb
+E:\Development\Restro-GIT\AdarshaGit\SageFrame.FrontPage\obj\Debug\SageFrame.FrontPage.csproj.AssemblyReference.cache
+E:\Development\Restro-GIT\AdarshaGit\SageFrame.FrontPage\obj\Debug\SageFrame.FrontPage.csproj.CoreCompileInputs.cache
+E:\Development\Restro-GIT\AdarshaGit\SageFrame.FrontPage\obj\Debug\SageFrame.FrontPage.csproj.CopyComplete
+E:\Development\Restro-GIT\AdarshaGit\SageFrame.FrontPage\obj\Debug\SageFrame.FrontPage.dll
+E:\Development\Restro-GIT\AdarshaGit\SageFrame.FrontPage\obj\Debug\SageFrame.FrontPage.pdb

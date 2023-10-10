@@ -1,0 +1,149 @@
+F:\Roman\Restro_Order\restroorder\SageFrame.Sales\bin\Debug\SageFrame.Sales.dll
+F:\Roman\Restro_Order\restroorder\SageFrame.Sales\bin\Debug\SageFrame.Sales.pdb
+F:\Roman\Restro_Order\restroorder\SageFrame.Sales\bin\Debug\SageFrame.Common.dll
+F:\Roman\Restro_Order\restroorder\SageFrame.Sales\bin\Debug\SageFrame.Common.pdb
+F:\Roman\Restro_Order\restroorder\SageFrame.Sales\obj\Debug\SageFrame.Sales.dll
+F:\Roman\Restro_Order\restroorder\SageFrame.Sales\obj\Debug\SageFrame.Sales.pdb
+E:\gitProject\New folder\restroorder\SageFrame.Sales\bin\Debug\SageFrame.Sales.dll
+E:\gitProject\New folder\restroorder\SageFrame.Sales\bin\Debug\SageFrame.Sales.pdb
+E:\gitProject\New folder\restroorder\SageFrame.Sales\bin\Debug\SageFrame.Common.dll
+E:\gitProject\New folder\restroorder\SageFrame.Sales\bin\Debug\SageFrame.Common.pdb
+E:\gitProject\New folder\restroorder\SageFrame.Sales\obj\Debug\SageFrame.Sales.csprojResolveAssemblyReference.cache
+E:\gitProject\New folder\restroorder\SageFrame.Sales\obj\Debug\SageFrame.Sales.dll
+E:\gitProject\New folder\restroorder\SageFrame.Sales\obj\Debug\SageFrame.Sales.pdb
+E:\Danfe Project\Git\restroorder\SageFrame.Sales\bin\Debug\SageFrame.Sales.dll
+E:\Danfe Project\Git\restroorder\SageFrame.Sales\bin\Debug\SageFrame.Sales.pdb
+E:\Danfe Project\Git\restroorder\SageFrame.Sales\bin\Debug\SageFrame.Common.dll
+E:\Danfe Project\Git\restroorder\SageFrame.Sales\bin\Debug\SageFrame.Common.pdb
+E:\Danfe Project\Git\restroorder\SageFrame.Sales\obj\Debug\SageFrame.Sales.dll
+E:\Danfe Project\Git\restroorder\SageFrame.Sales\obj\Debug\SageFrame.Sales.pdb
+E:\roman\Restro\restroorder\SageFrame.Sales\bin\Debug\SageFrame.Sales.dll
+E:\roman\Restro\restroorder\SageFrame.Sales\bin\Debug\SageFrame.Sales.pdb
+E:\roman\Restro\restroorder\SageFrame.Sales\bin\Debug\SageFrame.Common.dll
+E:\roman\Restro\restroorder\SageFrame.Sales\bin\Debug\SageFrame.Common.pdb
+E:\roman\Restro\restroorder\SageFrame.Sales\obj\Debug\SageFrame.Sales.dll
+E:\roman\Restro\restroorder\SageFrame.Sales\obj\Debug\SageFrame.Sales.pdb
+F:\Rasmila\DEV\restroorder\SageFrame.Sales\bin\Debug\SageFrame.Sales.dll
+F:\Rasmila\DEV\restroorder\SageFrame.Sales\bin\Debug\SageFrame.Sales.pdb
+F:\Rasmila\DEV\restroorder\SageFrame.Sales\bin\Debug\SageFrame.Common.dll
+F:\Rasmila\DEV\restroorder\SageFrame.Sales\bin\Debug\SageFrame.Common.pdb
+F:\Rasmila\DEV\restroorder\SageFrame.Sales\obj\Debug\SageFrame.Sales.csprojResolveAssemblyReference.cache
+F:\Rasmila\DEV\restroorder\SageFrame.Sales\obj\Debug\SageFrame.Sales.dll
+F:\Rasmila\DEV\restroorder\SageFrame.Sales\obj\Debug\SageFrame.Sales.pdb
+E:\Projects\RestroOrder\restroorder\SageFrame.Sales\bin\Debug\SageFrame.Sales.dll
+E:\Projects\RestroOrder\restroorder\SageFrame.Sales\bin\Debug\SageFrame.Sales.pdb
+E:\Projects\RestroOrder\restroorder\SageFrame.Sales\bin\Debug\SageFrame.Common.dll
+E:\Projects\RestroOrder\restroorder\SageFrame.Sales\bin\Debug\SageFrame.Common.pdb
+E:\Projects\RestroOrder\restroorder\SageFrame.Sales\obj\Debug\SageFrame.Sales.dll
+E:\Projects\RestroOrder\restroorder\SageFrame.Sales\obj\Debug\SageFrame.Sales.pdb
+D:\Projects\RestroOder\restroorder\SageFrame.Sales\bin\Debug\SageFrame.Sales.dll
+D:\Projects\RestroOder\restroorder\SageFrame.Sales\bin\Debug\SageFrame.Sales.pdb
+D:\Projects\RestroOder\restroorder\SageFrame.Sales\bin\Debug\SageFrame.Common.dll
+D:\Projects\RestroOder\restroorder\SageFrame.Sales\obj\Debug\SageFrame.Sales.dll
+D:\Projects\RestroOder\restroorder\SageFrame.Sales\obj\Debug\SageFrame.Sales.pdb
+D:\Projects\RO_developer\restroorder\SageFrame.Sales\bin\Debug\SageFrame.Sales.dll
+D:\Projects\RO_developer\restroorder\SageFrame.Sales\bin\Debug\SageFrame.Sales.pdb
+D:\Projects\RO_developer\restroorder\SageFrame.Sales\bin\Debug\SageFrame.Common.dll
+D:\Projects\RO_developer\restroorder\SageFrame.Sales\bin\Debug\SageFrame.Common.pdb
+D:\Projects\RO_developer\restroorder\SageFrame.Sales\obj\Debug\SageFrame.Sales.csprojResolveAssemblyReference.cache
+D:\Projects\RO_developer\restroorder\SageFrame.Sales\obj\Debug\SageFrame.Sales.dll
+D:\Projects\RO_developer\restroorder\SageFrame.Sales\obj\Debug\SageFrame.Sales.pdb
+E:\Restro_Order\Developer\restroorder\SageFrame.Sales\bin\Debug\SageFrame.Sales.dll
+E:\Restro_Order\Developer\restroorder\SageFrame.Sales\bin\Debug\SageFrame.Sales.pdb
+E:\Restro_Order\Developer\restroorder\SageFrame.Sales\bin\Debug\SageFrame.Common.dll
+E:\Restro_Order\Developer\restroorder\SageFrame.Sales\bin\Debug\SageFrame.Common.pdb
+E:\Restro_Order\Developer\restroorder\SageFrame.Sales\obj\Debug\SageFrame.Sales.dll
+E:\Restro_Order\Developer\restroorder\SageFrame.Sales\obj\Debug\SageFrame.Sales.pdb
+E:\Restro_Order\Developerr\restroorder\SageFrame.Sales\bin\Debug\SageFrame.Sales.dll
+E:\Restro_Order\Developerr\restroorder\SageFrame.Sales\bin\Debug\SageFrame.Sales.pdb
+E:\Restro_Order\Developerr\restroorder\SageFrame.Sales\bin\Debug\SageFrame.Common.dll
+E:\Restro_Order\Developerr\restroorder\SageFrame.Sales\bin\Debug\SageFrame.Common.pdb
+E:\Restro_Order\Developerr\restroorder\SageFrame.Sales\obj\Debug\SageFrame.Sales.csprojResolveAssemblyReference.cache
+E:\Restro_Order\Developerr\restroorder\SageFrame.Sales\obj\Debug\SageFrame.Sales.dll
+E:\Restro_Order\Developerr\restroorder\SageFrame.Sales\obj\Debug\SageFrame.Sales.pdb
+E:\SAROJ CAKE ORDER 8Mar2021\cakeorders\cakeorders\SageFrame.Sales\bin\Debug\SageFrame.Sales.dll
+E:\SAROJ CAKE ORDER 8Mar2021\cakeorders\cakeorders\SageFrame.Sales\bin\Debug\SageFrame.Sales.pdb
+E:\SAROJ CAKE ORDER 8Mar2021\cakeorders\cakeorders\SageFrame.Sales\bin\Debug\SageFrame.Common.dll
+E:\SAROJ CAKE ORDER 8Mar2021\cakeorders\cakeorders\SageFrame.Sales\bin\Debug\SageFrame.Common.pdb
+E:\SAROJ CAKE ORDER 8Mar2021\cakeorders\cakeorders\SageFrame.Sales\obj\Debug\SageFrame.Sales.dll
+E:\SAROJ CAKE ORDER 8Mar2021\cakeorders\cakeorders\SageFrame.Sales\obj\Debug\SageFrame.Sales.pdb
+D:\My projects\CakeOrder\cakeorders\SageFrame.Sales\bin\Debug\SageFrame.Sales.dll
+D:\My projects\CakeOrder\cakeorders\SageFrame.Sales\bin\Debug\SageFrame.Sales.pdb
+D:\My projects\CakeOrder\cakeorders\SageFrame.Sales\bin\Debug\SageFrame.Common.dll
+D:\My projects\CakeOrder\cakeorders\SageFrame.Sales\bin\Debug\SageFrame.Common.pdb
+D:\My projects\CakeOrder\cakeorders\SageFrame.Sales\obj\Debug\SageFrame.Sales.dll
+D:\My projects\CakeOrder\cakeorders\SageFrame.Sales\obj\Debug\SageFrame.Sales.pdb
+G:\Development\RestroMasterV3\RestroOrderSource-2023-01-17\restro_master\SageFrame.Sales\bin\Debug\SageFrame.Sales.dll
+G:\Development\RestroMasterV3\RestroOrderSource-2023-01-17\restro_master\SageFrame.Sales\bin\Debug\SageFrame.Sales.pdb
+G:\Development\RestroMasterV3\RestroOrderSource-2023-01-17\restro_master\SageFrame.Sales\bin\Debug\SageFrame.Common.dll
+G:\Development\RestroMasterV3\RestroOrderSource-2023-01-17\restro_master\SageFrame.Sales\bin\Debug\SageFrame.Common.pdb
+G:\Development\RestroMasterV3\RestroOrderSource-2023-01-17\restro_master\SageFrame.Sales\obj\Debug\SageFrame.Sales.csproj.AssemblyReference.cache
+G:\Development\RestroMasterV3\RestroOrderSource-2023-01-17\restro_master\SageFrame.Sales\obj\Debug\SageFrame.Sales.csproj.CoreCompileInputs.cache
+G:\Development\RestroMasterV3\RestroOrderSource-2023-01-17\restro_master\SageFrame.Sales\obj\Debug\SageFrame.Sales.csproj.CopyComplete
+G:\Development\RestroMasterV3\RestroOrderSource-2023-01-17\restro_master\SageFrame.Sales\obj\Debug\SageFrame.Sales.dll
+G:\Development\RestroMasterV3\RestroOrderSource-2023-01-17\restro_master\SageFrame.Sales\obj\Debug\SageFrame.Sales.pdb
+G:\Development\RestroOrderSource-2023-02-14\restro_master\SageFrame.Sales\bin\Debug\SageFrame.Sales.dll
+G:\Development\RestroOrderSource-2023-02-14\restro_master\SageFrame.Sales\bin\Debug\SageFrame.Sales.pdb
+G:\Development\RestroOrderSource-2023-02-14\restro_master\SageFrame.Sales\bin\Debug\SageFrame.Common.dll
+G:\Development\RestroOrderSource-2023-02-14\restro_master\SageFrame.Sales\bin\Debug\SageFrame.Common.pdb
+G:\Development\RestroOrderSource-2023-02-14\restro_master\SageFrame.Sales\obj\Debug\SageFrame.Sales.csproj.AssemblyReference.cache
+G:\Development\RestroOrderSource-2023-02-14\restro_master\SageFrame.Sales\obj\Debug\SageFrame.Sales.csproj.CoreCompileInputs.cache
+G:\Development\RestroOrderSource-2023-02-14\restro_master\SageFrame.Sales\obj\Debug\SageFrame.Sales.csproj.CopyComplete
+G:\Development\RestroOrderSource-2023-02-14\restro_master\SageFrame.Sales\obj\Debug\SageFrame.Sales.dll
+G:\Development\RestroOrderSource-2023-02-14\restro_master\SageFrame.Sales\obj\Debug\SageFrame.Sales.pdb
+E:\Development-Shree\RestroOrderSource-Master-2023-07-19\restro_master\SageFrame.Sales\bin\Debug\SageFrame.Sales.dll
+E:\Development-Shree\RestroOrderSource-Master-2023-07-19\restro_master\SageFrame.Sales\bin\Debug\SageFrame.Sales.pdb
+E:\Development-Shree\RestroOrderSource-Master-2023-07-19\restro_master\SageFrame.Sales\bin\Debug\SageFrame.Common.dll
+E:\Development-Shree\RestroOrderSource-Master-2023-07-19\restro_master\SageFrame.Sales\obj\Debug\SageFrame.Sales.csproj.AssemblyReference.cache
+E:\Development-Shree\RestroOrderSource-Master-2023-07-19\restro_master\SageFrame.Sales\obj\Debug\SageFrame.Sales.csproj.CoreCompileInputs.cache
+E:\Development-Shree\RestroOrderSource-Master-2023-07-19\restro_master\SageFrame.Sales\obj\Debug\SageFrame.Sales.csproj.CopyComplete
+E:\Development-Shree\RestroOrderSource-Master-2023-07-19\restro_master\SageFrame.Sales\obj\Debug\SageFrame.Sales.dll
+E:\Development-Shree\RestroOrderSource-Master-2023-07-19\restro_master\SageFrame.Sales\obj\Debug\SageFrame.Sales.pdb
+E:\Development-Shree\RestroOrder-Merge-2023-07-26\restro_master\SageFrame.Sales\bin\Debug\SageFrame.Sales.dll
+E:\Development-Shree\RestroOrder-Merge-2023-07-26\restro_master\SageFrame.Sales\bin\Debug\SageFrame.Sales.pdb
+E:\Development-Shree\RestroOrder-Merge-2023-07-26\restro_master\SageFrame.Sales\bin\Debug\SageFrame.Common.dll
+E:\Development-Shree\RestroOrder-Merge-2023-07-26\restro_master\SageFrame.Sales\obj\Debug\SageFrame.Sales.csproj.AssemblyReference.cache
+E:\Development-Shree\RestroOrder-Merge-2023-07-26\restro_master\SageFrame.Sales\obj\Debug\SageFrame.Sales.csproj.CoreCompileInputs.cache
+E:\Development-Shree\RestroOrder-Merge-2023-07-26\restro_master\SageFrame.Sales\obj\Debug\SageFrame.Sales.csproj.CopyComplete
+E:\Development-Shree\RestroOrder-Merge-2023-07-26\restro_master\SageFrame.Sales\obj\Debug\SageFrame.Sales.dll
+E:\Development-Shree\RestroOrder-Merge-2023-07-26\restro_master\SageFrame.Sales\obj\Debug\SageFrame.Sales.pdb
+G:\Development\RestroOrderSource-2023-02-14\RestroOrderSource-2023-08-01\restro_master\SageFrame.Sales\bin\Debug\SageFrame.Sales.dll
+G:\Development\RestroOrderSource-2023-02-14\RestroOrderSource-2023-08-01\restro_master\SageFrame.Sales\bin\Debug\SageFrame.Sales.pdb
+G:\Development\RestroOrderSource-2023-02-14\RestroOrderSource-2023-08-01\restro_master\SageFrame.Sales\bin\Debug\SageFrame.Common.dll
+G:\Development\RestroOrderSource-2023-02-14\RestroOrderSource-2023-08-01\restro_master\SageFrame.Sales\obj\Debug\SageFrame.Sales.csproj.AssemblyReference.cache
+G:\Development\RestroOrderSource-2023-02-14\RestroOrderSource-2023-08-01\restro_master\SageFrame.Sales\obj\Debug\SageFrame.Sales.csproj.CoreCompileInputs.cache
+G:\Development\RestroOrderSource-2023-02-14\RestroOrderSource-2023-08-01\restro_master\SageFrame.Sales\obj\Debug\SageFrame.Sales.csproj.CopyComplete
+G:\Development\RestroOrderSource-2023-02-14\RestroOrderSource-2023-08-01\restro_master\SageFrame.Sales\obj\Debug\SageFrame.Sales.dll
+G:\Development\RestroOrderSource-2023-02-14\RestroOrderSource-2023-08-01\restro_master\SageFrame.Sales\obj\Debug\SageFrame.Sales.pdb
+G:\GITDevelopment\Bishal-Raj-Parajuli\RestroOrder_Master\SageFrame.Sales\bin\Debug\SageFrame.Sales.dll
+G:\GITDevelopment\Bishal-Raj-Parajuli\RestroOrder_Master\SageFrame.Sales\bin\Debug\SageFrame.Sales.pdb
+G:\GITDevelopment\Bishal-Raj-Parajuli\RestroOrder_Master\SageFrame.Sales\bin\Debug\SageFrame.Common.dll
+G:\GITDevelopment\Bishal-Raj-Parajuli\RestroOrder_Master\SageFrame.Sales\obj\Debug\SageFrame.Sales.csproj.AssemblyReference.cache
+G:\GITDevelopment\Bishal-Raj-Parajuli\RestroOrder_Master\SageFrame.Sales\obj\Debug\SageFrame.Sales.csproj.CoreCompileInputs.cache
+G:\GITDevelopment\Bishal-Raj-Parajuli\RestroOrder_Master\SageFrame.Sales\obj\Debug\SageFrame.Sales.csproj.CopyComplete
+G:\GITDevelopment\Bishal-Raj-Parajuli\RestroOrder_Master\SageFrame.Sales\obj\Debug\SageFrame.Sales.dll
+G:\GITDevelopment\Bishal-Raj-Parajuli\RestroOrder_Master\SageFrame.Sales\obj\Debug\SageFrame.Sales.pdb
+G:\GITDevelopment\Master_RestroOrder\SageFrame.Sales\bin\Debug\SageFrame.Sales.dll
+G:\GITDevelopment\Master_RestroOrder\SageFrame.Sales\bin\Debug\SageFrame.Sales.pdb
+G:\GITDevelopment\Master_RestroOrder\SageFrame.Sales\bin\Debug\SageFrame.Common.dll
+G:\GITDevelopment\Master_RestroOrder\SageFrame.Sales\obj\Debug\SageFrame.Sales.csproj.AssemblyReference.cache
+G:\GITDevelopment\Master_RestroOrder\SageFrame.Sales\obj\Debug\SageFrame.Sales.csproj.CoreCompileInputs.cache
+G:\GITDevelopment\Master_RestroOrder\SageFrame.Sales\obj\Debug\SageFrame.Sales.csproj.CopyComplete
+G:\GITDevelopment\Master_RestroOrder\SageFrame.Sales\obj\Debug\SageFrame.Sales.dll
+G:\GITDevelopment\Master_RestroOrder\SageFrame.Sales\obj\Debug\SageFrame.Sales.pdb
+G:\GITDevelopment\Chicken\SageFrame.Sales\bin\Debug\SageFrame.Sales.dll
+G:\GITDevelopment\Chicken\SageFrame.Sales\bin\Debug\SageFrame.Sales.pdb
+G:\GITDevelopment\Chicken\SageFrame.Sales\bin\Debug\SageFrame.Common.dll
+G:\GITDevelopment\Chicken\SageFrame.Sales\obj\Debug\SageFrame.Sales.csproj.AssemblyReference.cache
+G:\GITDevelopment\Chicken\SageFrame.Sales\obj\Debug\SageFrame.Sales.csproj.CoreCompileInputs.cache
+G:\GITDevelopment\Chicken\SageFrame.Sales\obj\Debug\SageFrame.Sales.csproj.CopyComplete
+G:\GITDevelopment\Chicken\SageFrame.Sales\obj\Debug\SageFrame.Sales.dll
+G:\GITDevelopment\Chicken\SageFrame.Sales\obj\Debug\SageFrame.Sales.pdb
+E:\Development\Restro-GIT\AdarshaGit\SageFrame.Sales\bin\Debug\SageFrame.Sales.dll
+E:\Development\Restro-GIT\AdarshaGit\SageFrame.Sales\bin\Debug\SageFrame.Sales.pdb
+E:\Development\Restro-GIT\AdarshaGit\SageFrame.Sales\bin\Debug\SageFrame.Common.dll
+E:\Development\Restro-GIT\AdarshaGit\SageFrame.Sales\obj\Debug\SageFrame.Sales.csproj.AssemblyReference.cache
+E:\Development\Restro-GIT\AdarshaGit\SageFrame.Sales\obj\Debug\SageFrame.Sales.csproj.CoreCompileInputs.cache
+E:\Development\Restro-GIT\AdarshaGit\SageFrame.Sales\obj\Debug\SageFrame.Sales.csproj.CopyComplete
+E:\Development\Restro-GIT\AdarshaGit\SageFrame.Sales\obj\Debug\SageFrame.Sales.dll
+E:\Development\Restro-GIT\AdarshaGit\SageFrame.Sales\obj\Debug\SageFrame.Sales.pdb

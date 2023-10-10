@@ -1,0 +1,216 @@
+E:\Projects\restroorder_inventory\RestroOrder\SageFrame.RestoLoyalty\bin\Release\SageFrame.RestoLoyalty.dll
+E:\Projects\restroorder_inventory\RestroOrder\SageFrame.RestoLoyalty\bin\Release\SageFrame.RestoLoyalty.pdb
+E:\Projects\restroorder_inventory\RestroOrder\SageFrame.RestoLoyalty\bin\Release\SageFrame.Common.dll
+E:\Projects\restroorder_inventory\RestroOrder\SageFrame.RestoLoyalty\bin\Release\SageFrame.Common.pdb
+E:\Projects\restroorder_inventory\RestroOrder\SageFrame.RestoLoyalty\obj\Release\SageFrame.RestoLoyalty.csprojResolveAssemblyReference.cache
+E:\Projects\restroorder_inventory\RestroOrder\SageFrame.RestoLoyalty\obj\Release\SageFrame.RestoLoyalty.dll
+E:\Projects\restroorder_inventory\RestroOrder\SageFrame.RestoLoyalty\obj\Release\SageFrame.RestoLoyalty.pdb
+F:\Roman\Restro_Order\restroorder\SageFrame.RestoLoyalty\bin\Release\SageFrame.RestoLoyalty.dll
+F:\Roman\Restro_Order\restroorder\SageFrame.RestoLoyalty\bin\Release\SageFrame.RestoLoyalty.pdb
+F:\Roman\Restro_Order\restroorder\SageFrame.RestoLoyalty\bin\Release\SageFrame.Common.dll
+F:\Roman\Restro_Order\restroorder\SageFrame.RestoLoyalty\bin\Release\SageFrame.Common.pdb
+F:\Roman\Restro_Order\restroorder\SageFrame.RestoLoyalty\obj\Release\SageFrame.RestoLoyalty.csprojResolveAssemblyReference.cache
+F:\Roman\Restro_Order\restroorder\SageFrame.RestoLoyalty\obj\Release\SageFrame.RestoLoyalty.dll
+F:\Roman\Restro_Order\restroorder\SageFrame.RestoLoyalty\obj\Release\SageFrame.RestoLoyalty.pdb
+E:\gitProject\New folder\restroorder\SageFrame.RestoLoyalty\bin\Release\SageFrame.RestoLoyalty.dll
+E:\gitProject\New folder\restroorder\SageFrame.RestoLoyalty\bin\Release\SageFrame.RestoLoyalty.pdb
+E:\gitProject\New folder\restroorder\SageFrame.RestoLoyalty\bin\Release\SageFrame.Common.dll
+E:\gitProject\New folder\restroorder\SageFrame.RestoLoyalty\bin\Release\SageFrame.Common.pdb
+E:\gitProject\New folder\restroorder\SageFrame.RestoLoyalty\obj\Release\SageFrame.RestoLoyalty.csprojResolveAssemblyReference.cache
+E:\gitProject\New folder\restroorder\SageFrame.RestoLoyalty\obj\Release\SageFrame.RestoLoyalty.dll
+E:\gitProject\New folder\restroorder\SageFrame.RestoLoyalty\obj\Release\SageFrame.RestoLoyalty.pdb
+E:\Danfe Project\Git\restroorder\SageFrame.RestoLoyalty\bin\Release\SageFrame.RestoLoyalty.dll
+E:\Danfe Project\Git\restroorder\SageFrame.RestoLoyalty\bin\Release\SageFrame.RestoLoyalty.pdb
+E:\Danfe Project\Git\restroorder\SageFrame.RestoLoyalty\bin\Release\SageFrame.Common.dll
+E:\Danfe Project\Git\restroorder\SageFrame.RestoLoyalty\bin\Release\SageFrame.Common.pdb
+E:\Danfe Project\Git\restroorder\SageFrame.RestoLoyalty\obj\Release\SageFrame.RestoLoyalty.csprojResolveAssemblyReference.cache
+E:\Danfe Project\Git\restroorder\SageFrame.RestoLoyalty\obj\Release\SageFrame.RestoLoyalty.dll
+E:\Danfe Project\Git\restroorder\SageFrame.RestoLoyalty\obj\Release\SageFrame.RestoLoyalty.pdb
+E:\roman\Restro\restroorder\SageFrame.RestoLoyalty\bin\Release\SageFrame.RestoLoyalty.dll
+E:\roman\Restro\restroorder\SageFrame.RestoLoyalty\bin\Release\SageFrame.RestoLoyalty.pdb
+E:\roman\Restro\restroorder\SageFrame.RestoLoyalty\bin\Release\SageFrame.Common.dll
+E:\roman\Restro\restroorder\SageFrame.RestoLoyalty\bin\Release\SageFrame.Common.pdb
+E:\roman\Restro\restroorder\SageFrame.RestoLoyalty\obj\Release\SageFrame.RestoLoyalty.csprojResolveAssemblyReference.cache
+E:\roman\Restro\restroorder\SageFrame.RestoLoyalty\obj\Release\SageFrame.RestoLoyalty.dll
+E:\roman\Restro\restroorder\SageFrame.RestoLoyalty\obj\Release\SageFrame.RestoLoyalty.pdb
+E:\Projects\RestroOrder\restroorder\SageFrame.RestoLoyalty\bin\Release\SageFrame.RestoLoyalty.dll
+E:\Projects\RestroOrder\restroorder\SageFrame.RestoLoyalty\bin\Release\SageFrame.RestoLoyalty.pdb
+E:\Projects\RestroOrder\restroorder\SageFrame.RestoLoyalty\bin\Release\SageFrame.Common.dll
+E:\Projects\RestroOrder\restroorder\SageFrame.RestoLoyalty\bin\Release\SageFrame.Common.pdb
+E:\Projects\RestroOrder\restroorder\SageFrame.RestoLoyalty\obj\Release\SageFrame.RestoLoyalty.csprojResolveAssemblyReference.cache
+E:\Projects\RestroOrder\restroorder\SageFrame.RestoLoyalty\obj\Release\SageFrame.RestoLoyalty.dll
+E:\Projects\RestroOrder\restroorder\SageFrame.RestoLoyalty\obj\Release\SageFrame.RestoLoyalty.pdb
+D:\Projects\RestroOder\restroorder\SageFrame.RestoLoyalty\bin\Release\SageFrame.RestoLoyalty.dll
+D:\Projects\RestroOder\restroorder\SageFrame.RestoLoyalty\bin\Release\SageFrame.RestoLoyalty.pdb
+D:\Projects\RestroOder\restroorder\SageFrame.RestoLoyalty\bin\Release\SageFrame.Common.dll
+D:\Projects\RestroOder\restroorder\SageFrame.RestoLoyalty\obj\Release\SageFrame.RestoLoyalty.dll
+D:\Projects\RestroOder\restroorder\SageFrame.RestoLoyalty\obj\Release\SageFrame.RestoLoyalty.pdb
+E:\Restro_Order\Developer\restroorder\SageFrame.RestoLoyalty\bin\Release\SageFrame.RestoLoyalty.dll
+E:\Restro_Order\Developer\restroorder\SageFrame.RestoLoyalty\bin\Release\SageFrame.RestoLoyalty.pdb
+E:\Restro_Order\Developer\restroorder\SageFrame.RestoLoyalty\bin\Release\SageFrame.Common.dll
+E:\Restro_Order\Developer\restroorder\SageFrame.RestoLoyalty\bin\Release\SageFrame.Common.pdb
+E:\Restro_Order\Developer\restroorder\SageFrame.RestoLoyalty\obj\Release\SageFrame.RestoLoyalty.csprojResolveAssemblyReference.cache
+E:\Restro_Order\Developer\restroorder\SageFrame.RestoLoyalty\obj\Release\SageFrame.RestoLoyalty.dll
+E:\Restro_Order\Developer\restroorder\SageFrame.RestoLoyalty\obj\Release\SageFrame.RestoLoyalty.pdb
+D:\Roman Workspace\Restro Order\restroorder\SageFrame.RestoLoyalty\bin\Release\SageFrame.RestoLoyalty.dll
+D:\Roman Workspace\Restro Order\restroorder\SageFrame.RestoLoyalty\bin\Release\SageFrame.RestoLoyalty.pdb
+D:\Roman Workspace\Restro Order\restroorder\SageFrame.RestoLoyalty\bin\Release\SageFrame.Common.dll
+D:\Roman Workspace\Restro Order\restroorder\SageFrame.RestoLoyalty\bin\Release\SageFrame.Common.pdb
+D:\Roman Workspace\Restro Order\restroorder\SageFrame.RestoLoyalty\obj\Release\SageFrame.RestoLoyalty.csprojResolveAssemblyReference.cache
+D:\Roman Workspace\Restro Order\restroorder\SageFrame.RestoLoyalty\obj\Release\SageFrame.RestoLoyalty.dll
+D:\Roman Workspace\Restro Order\restroorder\SageFrame.RestoLoyalty\obj\Release\SageFrame.RestoLoyalty.pdb
+D:\RestroOrder\developer\restroorder\SageFrame.RestoLoyalty\bin\Release\SageFrame.RestoLoyalty.dll
+D:\RestroOrder\developer\restroorder\SageFrame.RestoLoyalty\bin\Release\SageFrame.RestoLoyalty.pdb
+D:\RestroOrder\developer\restroorder\SageFrame.RestoLoyalty\bin\Release\SageFrame.Common.dll
+D:\RestroOrder\developer\restroorder\SageFrame.RestoLoyalty\bin\Release\SageFrame.Common.pdb
+D:\RestroOrder\developer\restroorder\SageFrame.RestoLoyalty\obj\Release\SageFrame.RestoLoyalty.csprojResolveAssemblyReference.cache
+D:\RestroOrder\developer\restroorder\SageFrame.RestoLoyalty\obj\Release\SageFrame.RestoLoyalty.dll
+D:\RestroOrder\developer\restroorder\SageFrame.RestoLoyalty\obj\Release\SageFrame.RestoLoyalty.pdb
+E:\Restro_Order\Dev\restroorder\SageFrame.RestoLoyalty\bin\Release\SageFrame.RestoLoyalty.dll
+E:\Restro_Order\Dev\restroorder\SageFrame.RestoLoyalty\bin\Release\SageFrame.RestoLoyalty.pdb
+E:\Restro_Order\Dev\restroorder\SageFrame.RestoLoyalty\bin\Release\SageFrame.Common.dll
+E:\Restro_Order\Dev\restroorder\SageFrame.RestoLoyalty\bin\Release\SageFrame.Common.pdb
+E:\Restro_Order\Dev\restroorder\SageFrame.RestoLoyalty\obj\Release\SageFrame.RestoLoyalty.csprojResolveAssemblyReference.cache
+E:\Restro_Order\Dev\restroorder\SageFrame.RestoLoyalty\obj\Release\SageFrame.RestoLoyalty.dll
+E:\Restro_Order\Dev\restroorder\SageFrame.RestoLoyalty\obj\Release\SageFrame.RestoLoyalty.pdb
+E:\Restro_Order\RestroRder\restroorder\SageFrame.RestoLoyalty\bin\Release\SageFrame.RestoLoyalty.dll
+E:\Restro_Order\RestroRder\restroorder\SageFrame.RestoLoyalty\bin\Release\SageFrame.RestoLoyalty.pdb
+E:\Restro_Order\RestroRder\restroorder\SageFrame.RestoLoyalty\bin\Release\SageFrame.Common.dll
+E:\Restro_Order\RestroRder\restroorder\SageFrame.RestoLoyalty\bin\Release\SageFrame.Common.pdb
+E:\Restro_Order\RestroRder\restroorder\SageFrame.RestoLoyalty\obj\Release\SageFrame.RestoLoyalty.csprojResolveAssemblyReference.cache
+E:\Restro_Order\RestroRder\restroorder\SageFrame.RestoLoyalty\obj\Release\SageFrame.RestoLoyalty.dll
+E:\Restro_Order\RestroRder\restroorder\SageFrame.RestoLoyalty\obj\Release\SageFrame.RestoLoyalty.pdb
+E:\Restro_Order\Developerr\restroorder\SageFrame.RestoLoyalty\bin\Release\SageFrame.RestoLoyalty.dll
+E:\Restro_Order\Developerr\restroorder\SageFrame.RestoLoyalty\bin\Release\SageFrame.RestoLoyalty.pdb
+E:\Restro_Order\Developerr\restroorder\SageFrame.RestoLoyalty\bin\Release\SageFrame.Common.dll
+E:\Restro_Order\Developerr\restroorder\SageFrame.RestoLoyalty\bin\Release\SageFrame.Common.pdb
+E:\Restro_Order\Developerr\restroorder\SageFrame.RestoLoyalty\obj\Release\SageFrame.RestoLoyalty.csprojResolveAssemblyReference.cache
+E:\Restro_Order\Developerr\restroorder\SageFrame.RestoLoyalty\obj\Release\SageFrame.RestoLoyalty.dll
+E:\Restro_Order\Developerr\restroorder\SageFrame.RestoLoyalty\obj\Release\SageFrame.RestoLoyalty.pdb
+D:\Project\Binod\wholesale_restro\cakeorders\SageFrame.RestoLoyalty\bin\Release\SageFrame.RestoLoyalty.dll
+D:\Project\Binod\wholesale_restro\cakeorders\SageFrame.RestoLoyalty\bin\Release\SageFrame.RestoLoyalty.pdb
+D:\Project\Binod\wholesale_restro\cakeorders\SageFrame.RestoLoyalty\bin\Release\SageFrame.Common.dll
+D:\Project\Binod\wholesale_restro\cakeorders\SageFrame.RestoLoyalty\bin\Release\SageFrame.Common.pdb
+D:\Project\Binod\wholesale_restro\cakeorders\SageFrame.RestoLoyalty\obj\Release\SageFrame.RestoLoyalty.csprojResolveAssemblyReference.cache
+D:\Project\Binod\wholesale_restro\cakeorders\SageFrame.RestoLoyalty\obj\Release\SageFrame.RestoLoyalty.dll
+D:\Project\Binod\wholesale_restro\cakeorders\SageFrame.RestoLoyalty\obj\Release\SageFrame.RestoLoyalty.pdb
+D:\Project\Binod\Cake_orders20210219\cakeorders\SageFrame.RestoLoyalty\bin\Release\SageFrame.RestoLoyalty.dll
+D:\Project\Binod\Cake_orders20210219\cakeorders\SageFrame.RestoLoyalty\bin\Release\SageFrame.RestoLoyalty.pdb
+D:\Project\Binod\Cake_orders20210219\cakeorders\SageFrame.RestoLoyalty\bin\Release\SageFrame.Common.dll
+D:\Project\Binod\Cake_orders20210219\cakeorders\SageFrame.RestoLoyalty\bin\Release\SageFrame.Common.pdb
+D:\Project\Binod\Cake_orders20210219\cakeorders\SageFrame.RestoLoyalty\obj\Release\SageFrame.RestoLoyalty.csprojResolveAssemblyReference.cache
+D:\Project\Binod\Cake_orders20210219\cakeorders\SageFrame.RestoLoyalty\obj\Release\SageFrame.RestoLoyalty.dll
+D:\Project\Binod\Cake_orders20210219\cakeorders\SageFrame.RestoLoyalty\obj\Release\SageFrame.RestoLoyalty.pdb
+D:\My projects\CakeOrder\cakeorders\SageFrame.RestoLoyalty\bin\Release\SageFrame.RestoLoyalty.dll
+D:\My projects\CakeOrder\cakeorders\SageFrame.RestoLoyalty\bin\Release\SageFrame.RestoLoyalty.pdb
+D:\My projects\CakeOrder\cakeorders\SageFrame.RestoLoyalty\bin\Release\SageFrame.Common.dll
+D:\My projects\CakeOrder\cakeorders\SageFrame.RestoLoyalty\bin\Release\SageFrame.Common.pdb
+D:\My projects\CakeOrder\cakeorders\SageFrame.RestoLoyalty\obj\Release\SageFrame.RestoLoyalty.csprojResolveAssemblyReference.cache
+D:\My projects\CakeOrder\cakeorders\SageFrame.RestoLoyalty\obj\Release\SageFrame.RestoLoyalty.dll
+D:\My projects\CakeOrder\cakeorders\SageFrame.RestoLoyalty\obj\Release\SageFrame.RestoLoyalty.pdb
+D:\My projects\cakeorder-akuj\SageFrame.RestoLoyalty\bin\Release\SageFrame.RestoLoyalty.dll
+D:\My projects\cakeorder-akuj\SageFrame.RestoLoyalty\bin\Release\SageFrame.RestoLoyalty.pdb
+D:\My projects\cakeorder-akuj\SageFrame.RestoLoyalty\bin\Release\SageFrame.Common.dll
+D:\My projects\cakeorder-akuj\SageFrame.RestoLoyalty\bin\Release\SageFrame.Common.pdb
+D:\My projects\cakeorder-akuj\SageFrame.RestoLoyalty\obj\Release\SageFrame.RestoLoyalty.csprojResolveAssemblyReference.cache
+D:\My projects\cakeorder-akuj\SageFrame.RestoLoyalty\obj\Release\SageFrame.RestoLoyalty.dll
+D:\My projects\cakeorder-akuj\SageFrame.RestoLoyalty\obj\Release\SageFrame.RestoLoyalty.pdb
+D:\Projects\akuj_kot_bot\SageFrame.RestoLoyalty\bin\Release\SageFrame.RestoLoyalty.dll
+D:\Projects\akuj_kot_bot\SageFrame.RestoLoyalty\bin\Release\SageFrame.RestoLoyalty.pdb
+D:\Projects\akuj_kot_bot\SageFrame.RestoLoyalty\bin\Release\SageFrame.Common.dll
+D:\Projects\akuj_kot_bot\SageFrame.RestoLoyalty\bin\Release\SageFrame.Common.pdb
+D:\Projects\akuj_kot_bot\SageFrame.RestoLoyalty\obj\Release\SageFrame.RestoLoyalty.csprojResolveAssemblyReference.cache
+D:\Projects\akuj_kot_bot\SageFrame.RestoLoyalty\obj\Release\SageFrame.RestoLoyalty.dll
+D:\Projects\akuj_kot_bot\SageFrame.RestoLoyalty\obj\Release\SageFrame.RestoLoyalty.pdb
+G:\Development\RestroOrderSource-2023-01-08\restro_master\SageFrame.RestoLoyalty\bin\Release\SageFrame.RestoLoyalty.dll
+G:\Development\RestroOrderSource-2023-01-08\restro_master\SageFrame.RestoLoyalty\bin\Release\SageFrame.RestoLoyalty.pdb
+G:\Development\RestroOrderSource-2023-01-08\restro_master\SageFrame.RestoLoyalty\bin\Release\SageFrame.Common.dll
+G:\Development\RestroOrderSource-2023-01-08\restro_master\SageFrame.RestoLoyalty\bin\Release\SageFrame.Common.pdb
+G:\Development\RestroOrderSource-2023-01-08\restro_master\SageFrame.RestoLoyalty\obj\Release\SageFrame.RestoLoyalty.csproj.AssemblyReference.cache
+G:\Development\RestroOrderSource-2023-01-08\restro_master\SageFrame.RestoLoyalty\obj\Release\SageFrame.RestoLoyalty.csproj.CoreCompileInputs.cache
+G:\Development\RestroOrderSource-2023-01-08\restro_master\SageFrame.RestoLoyalty\obj\Release\SageFrame.RestoLoyalty.csproj.CopyComplete
+G:\Development\RestroOrderSource-2023-01-08\restro_master\SageFrame.RestoLoyalty\obj\Release\SageFrame.RestoLoyalty.dll
+G:\Development\RestroOrderSource-2023-01-08\restro_master\SageFrame.RestoLoyalty\obj\Release\SageFrame.RestoLoyalty.pdb
+G:\Development\RestroMasterV3\RestroOrderSource-2023-01-17\restro_master\SageFrame.RestoLoyalty\bin\Release\SageFrame.RestoLoyalty.dll
+G:\Development\RestroMasterV3\RestroOrderSource-2023-01-17\restro_master\SageFrame.RestoLoyalty\bin\Release\SageFrame.RestoLoyalty.pdb
+G:\Development\RestroMasterV3\RestroOrderSource-2023-01-17\restro_master\SageFrame.RestoLoyalty\bin\Release\SageFrame.Common.dll
+G:\Development\RestroMasterV3\RestroOrderSource-2023-01-17\restro_master\SageFrame.RestoLoyalty\bin\Release\SageFrame.Common.pdb
+G:\Development\RestroMasterV3\RestroOrderSource-2023-01-17\restro_master\SageFrame.RestoLoyalty\obj\Release\SageFrame.RestoLoyalty.csproj.AssemblyReference.cache
+G:\Development\RestroMasterV3\RestroOrderSource-2023-01-17\restro_master\SageFrame.RestoLoyalty\obj\Release\SageFrame.RestoLoyalty.csproj.CoreCompileInputs.cache
+G:\Development\RestroMasterV3\RestroOrderSource-2023-01-17\restro_master\SageFrame.RestoLoyalty\obj\Release\SageFrame.RestoLoyalty.csproj.CopyComplete
+G:\Development\RestroMasterV3\RestroOrderSource-2023-01-17\restro_master\SageFrame.RestoLoyalty\obj\Release\SageFrame.RestoLoyalty.dll
+G:\Development\RestroMasterV3\RestroOrderSource-2023-01-17\restro_master\SageFrame.RestoLoyalty\obj\Release\SageFrame.RestoLoyalty.pdb
+G:\Development\RestroOrder20230214Source\restro_master\SageFrame.RestoLoyalty\bin\Release\SageFrame.RestoLoyalty.dll
+G:\Development\RestroOrder20230214Source\restro_master\SageFrame.RestoLoyalty\bin\Release\SageFrame.RestoLoyalty.pdb
+G:\Development\RestroOrder20230214Source\restro_master\SageFrame.RestoLoyalty\bin\Release\SageFrame.Common.dll
+G:\Development\RestroOrder20230214Source\restro_master\SageFrame.RestoLoyalty\bin\Release\SageFrame.Common.pdb
+G:\Development\RestroOrder20230214Source\restro_master\SageFrame.RestoLoyalty\obj\Release\SageFrame.RestoLoyalty.csproj.AssemblyReference.cache
+G:\Development\RestroOrder20230214Source\restro_master\SageFrame.RestoLoyalty\obj\Release\SageFrame.RestoLoyalty.csproj.CoreCompileInputs.cache
+G:\Development\RestroOrder20230214Source\restro_master\SageFrame.RestoLoyalty\obj\Release\SageFrame.RestoLoyalty.csproj.CopyComplete
+G:\Development\RestroOrder20230214Source\restro_master\SageFrame.RestoLoyalty\obj\Release\SageFrame.RestoLoyalty.dll
+G:\Development\RestroOrder20230214Source\restro_master\SageFrame.RestoLoyalty\obj\Release\SageFrame.RestoLoyalty.pdb
+G:\Development\RestroOrderSource-2023-02-14\restro_master\SageFrame.RestoLoyalty\bin\Release\SageFrame.RestoLoyalty.dll
+G:\Development\RestroOrderSource-2023-02-14\restro_master\SageFrame.RestoLoyalty\bin\Release\SageFrame.RestoLoyalty.pdb
+G:\Development\RestroOrderSource-2023-02-14\restro_master\SageFrame.RestoLoyalty\bin\Release\SageFrame.Common.dll
+G:\Development\RestroOrderSource-2023-02-14\restro_master\SageFrame.RestoLoyalty\bin\Release\SageFrame.Common.pdb
+G:\Development\RestroOrderSource-2023-02-14\restro_master\SageFrame.RestoLoyalty\obj\Release\SageFrame.RestoLoyalty.csproj.AssemblyReference.cache
+G:\Development\RestroOrderSource-2023-02-14\restro_master\SageFrame.RestoLoyalty\obj\Release\SageFrame.RestoLoyalty.csproj.CoreCompileInputs.cache
+G:\Development\RestroOrderSource-2023-02-14\restro_master\SageFrame.RestoLoyalty\obj\Release\SageFrame.RestoLoyalty.csproj.CopyComplete
+G:\Development\RestroOrderSource-2023-02-14\restro_master\SageFrame.RestoLoyalty\obj\Release\SageFrame.RestoLoyalty.dll
+G:\Development\RestroOrderSource-2023-02-14\restro_master\SageFrame.RestoLoyalty\obj\Release\SageFrame.RestoLoyalty.pdb
+E:\Development-Shree\RestroOrderSource-Master-2023-07-19\restro_master\SageFrame.RestoLoyalty\bin\Release\SageFrame.RestoLoyalty.dll
+E:\Development-Shree\RestroOrderSource-Master-2023-07-19\restro_master\SageFrame.RestoLoyalty\bin\Release\SageFrame.RestoLoyalty.pdb
+E:\Development-Shree\RestroOrderSource-Master-2023-07-19\restro_master\SageFrame.RestoLoyalty\bin\Release\SageFrame.Common.dll
+E:\Development-Shree\RestroOrderSource-Master-2023-07-19\restro_master\SageFrame.RestoLoyalty\obj\Release\SageFrame.RestoLoyalty.csproj.AssemblyReference.cache
+E:\Development-Shree\RestroOrderSource-Master-2023-07-19\restro_master\SageFrame.RestoLoyalty\obj\Release\SageFrame.RestoLoyalty.csproj.CoreCompileInputs.cache
+E:\Development-Shree\RestroOrderSource-Master-2023-07-19\restro_master\SageFrame.RestoLoyalty\obj\Release\SageFrame.RestoLoyalty.csproj.CopyComplete
+E:\Development-Shree\RestroOrderSource-Master-2023-07-19\restro_master\SageFrame.RestoLoyalty\obj\Release\SageFrame.RestoLoyalty.dll
+E:\Development-Shree\RestroOrderSource-Master-2023-07-19\restro_master\SageFrame.RestoLoyalty\obj\Release\SageFrame.RestoLoyalty.pdb
+E:\Development-Shree\RestroOrder-Merge-2023-07-26\restro_master\SageFrame.RestoLoyalty\bin\Release\SageFrame.RestoLoyalty.dll
+E:\Development-Shree\RestroOrder-Merge-2023-07-26\restro_master\SageFrame.RestoLoyalty\bin\Release\SageFrame.RestoLoyalty.pdb
+E:\Development-Shree\RestroOrder-Merge-2023-07-26\restro_master\SageFrame.RestoLoyalty\bin\Release\SageFrame.Common.dll
+E:\Development-Shree\RestroOrder-Merge-2023-07-26\restro_master\SageFrame.RestoLoyalty\obj\Release\SageFrame.RestoLoyalty.csproj.AssemblyReference.cache
+E:\Development-Shree\RestroOrder-Merge-2023-07-26\restro_master\SageFrame.RestoLoyalty\obj\Release\SageFrame.RestoLoyalty.csproj.CoreCompileInputs.cache
+E:\Development-Shree\RestroOrder-Merge-2023-07-26\restro_master\SageFrame.RestoLoyalty\obj\Release\SageFrame.RestoLoyalty.csproj.CopyComplete
+E:\Development-Shree\RestroOrder-Merge-2023-07-26\restro_master\SageFrame.RestoLoyalty\obj\Release\SageFrame.RestoLoyalty.dll
+E:\Development-Shree\RestroOrder-Merge-2023-07-26\restro_master\SageFrame.RestoLoyalty\obj\Release\SageFrame.RestoLoyalty.pdb
+G:\Development\RestroOrderSource-2023-02-14\RestroOrderSource-2023-08-01\restro_master\SageFrame.RestoLoyalty\bin\Release\SageFrame.RestoLoyalty.dll
+G:\Development\RestroOrderSource-2023-02-14\RestroOrderSource-2023-08-01\restro_master\SageFrame.RestoLoyalty\bin\Release\SageFrame.RestoLoyalty.pdb
+G:\Development\RestroOrderSource-2023-02-14\RestroOrderSource-2023-08-01\restro_master\SageFrame.RestoLoyalty\bin\Release\SageFrame.Common.dll
+G:\Development\RestroOrderSource-2023-02-14\RestroOrderSource-2023-08-01\restro_master\SageFrame.RestoLoyalty\obj\Release\SageFrame.RestoLoyalty.csproj.AssemblyReference.cache
+G:\Development\RestroOrderSource-2023-02-14\RestroOrderSource-2023-08-01\restro_master\SageFrame.RestoLoyalty\obj\Release\SageFrame.RestoLoyalty.csproj.CoreCompileInputs.cache
+G:\Development\RestroOrderSource-2023-02-14\RestroOrderSource-2023-08-01\restro_master\SageFrame.RestoLoyalty\obj\Release\SageFrame.RestoLoyalty.csproj.CopyComplete
+G:\Development\RestroOrderSource-2023-02-14\RestroOrderSource-2023-08-01\restro_master\SageFrame.RestoLoyalty\obj\Release\SageFrame.RestoLoyalty.dll
+G:\Development\RestroOrderSource-2023-02-14\RestroOrderSource-2023-08-01\restro_master\SageFrame.RestoLoyalty\obj\Release\SageFrame.RestoLoyalty.pdb
+G:\GITDevelopment\Bishal-Raj-Parajuli\RestroOrder_Master\SageFrame.RestoLoyalty\bin\Release\SageFrame.RestoLoyalty.dll
+G:\GITDevelopment\Bishal-Raj-Parajuli\RestroOrder_Master\SageFrame.RestoLoyalty\bin\Release\SageFrame.RestoLoyalty.pdb
+G:\GITDevelopment\Bishal-Raj-Parajuli\RestroOrder_Master\SageFrame.RestoLoyalty\bin\Release\SageFrame.Common.dll
+G:\GITDevelopment\Bishal-Raj-Parajuli\RestroOrder_Master\SageFrame.RestoLoyalty\obj\Release\SageFrame.RestoLoyalty.csproj.AssemblyReference.cache
+G:\GITDevelopment\Bishal-Raj-Parajuli\RestroOrder_Master\SageFrame.RestoLoyalty\obj\Release\SageFrame.RestoLoyalty.csproj.CoreCompileInputs.cache
+G:\GITDevelopment\Bishal-Raj-Parajuli\RestroOrder_Master\SageFrame.RestoLoyalty\obj\Release\SageFrame.RestoLoyalty.csproj.CopyComplete
+G:\GITDevelopment\Bishal-Raj-Parajuli\RestroOrder_Master\SageFrame.RestoLoyalty\obj\Release\SageFrame.RestoLoyalty.dll
+G:\GITDevelopment\Bishal-Raj-Parajuli\RestroOrder_Master\SageFrame.RestoLoyalty\obj\Release\SageFrame.RestoLoyalty.pdb
+G:\GITDevelopment\Master_RestroOrder\SageFrame.RestoLoyalty\bin\Release\SageFrame.RestoLoyalty.dll
+G:\GITDevelopment\Master_RestroOrder\SageFrame.RestoLoyalty\bin\Release\SageFrame.RestoLoyalty.pdb
+G:\GITDevelopment\Master_RestroOrder\SageFrame.RestoLoyalty\bin\Release\SageFrame.Common.dll
+G:\GITDevelopment\Master_RestroOrder\SageFrame.RestoLoyalty\obj\Release\SageFrame.RestoLoyalty.csproj.AssemblyReference.cache
+G:\GITDevelopment\Master_RestroOrder\SageFrame.RestoLoyalty\obj\Release\SageFrame.RestoLoyalty.csproj.CoreCompileInputs.cache
+G:\GITDevelopment\Master_RestroOrder\SageFrame.RestoLoyalty\obj\Release\SageFrame.RestoLoyalty.csproj.CopyComplete
+G:\GITDevelopment\Master_RestroOrder\SageFrame.RestoLoyalty\obj\Release\SageFrame.RestoLoyalty.dll
+G:\GITDevelopment\Master_RestroOrder\SageFrame.RestoLoyalty\obj\Release\SageFrame.RestoLoyalty.pdb
+G:\GITDevelopment\Chicken\SageFrame.RestoLoyalty\bin\Release\SageFrame.RestoLoyalty.dll
+G:\GITDevelopment\Chicken\SageFrame.RestoLoyalty\bin\Release\SageFrame.RestoLoyalty.pdb
+G:\GITDevelopment\Chicken\SageFrame.RestoLoyalty\bin\Release\SageFrame.Common.dll
+G:\GITDevelopment\Chicken\SageFrame.RestoLoyalty\obj\Release\SageFrame.RestoLoyalty.csproj.AssemblyReference.cache
+G:\GITDevelopment\Chicken\SageFrame.RestoLoyalty\obj\Release\SageFrame.RestoLoyalty.csproj.CoreCompileInputs.cache
+G:\GITDevelopment\Chicken\SageFrame.RestoLoyalty\obj\Release\SageFrame.RestoLoyalty.csproj.CopyComplete
+G:\GITDevelopment\Chicken\SageFrame.RestoLoyalty\obj\Release\SageFrame.RestoLoyalty.dll
+G:\GITDevelopment\Chicken\SageFrame.RestoLoyalty\obj\Release\SageFrame.RestoLoyalty.pdb
+E:\Development\Restro-GIT\AdarshaGit\SageFrame.RestoLoyalty\bin\Release\SageFrame.RestoLoyalty.dll
+E:\Development\Restro-GIT\AdarshaGit\SageFrame.RestoLoyalty\bin\Release\SageFrame.RestoLoyalty.pdb
+E:\Development\Restro-GIT\AdarshaGit\SageFrame.RestoLoyalty\bin\Release\SageFrame.Common.dll
+E:\Development\Restro-GIT\AdarshaGit\SageFrame.RestoLoyalty\obj\Release\SageFrame.RestoLoyalty.csproj.AssemblyReference.cache
+E:\Development\Restro-GIT\AdarshaGit\SageFrame.RestoLoyalty\obj\Release\SageFrame.RestoLoyalty.csproj.CoreCompileInputs.cache
+E:\Development\Restro-GIT\AdarshaGit\SageFrame.RestoLoyalty\obj\Release\SageFrame.RestoLoyalty.csproj.CopyComplete
+E:\Development\Restro-GIT\AdarshaGit\SageFrame.RestoLoyalty\obj\Release\SageFrame.RestoLoyalty.dll
+E:\Development\Restro-GIT\AdarshaGit\SageFrame.RestoLoyalty\obj\Release\SageFrame.RestoLoyalty.pdb
