@@ -1,4 +1,5 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeFile="ClosingReport3_Monthly.ascx.cs" Inherits="Modules_Admin_ClosingReport3_Monthly_ClosingReport3_Monthly" %>
+<script src="../../Scripts/main.js"></script>
 <script type="text/javascript">
     $(function () {
         $(this).CReports({
@@ -23,15 +24,6 @@
             }
         });
         $("#txtEndDate").datepicker().datepicker("setDate", new Date());
-        //jQuery("#txtEndDate").datepicker({
-        //    dateFormat: 'yy-mm-dd',
-        //    changeMonth: true,
-        //    changeYear: true,
-        //    maxDate: '0',
-        //    onClose: function (selectedDate) {
-        //        jQuery("#txtStartDate").datepicker("option", "maxDate", selectedDate);
-        //    }
-        //});
         $('#tabs').tabs();
     });
 </script>

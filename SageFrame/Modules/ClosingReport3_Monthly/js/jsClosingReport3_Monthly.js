@@ -11,11 +11,11 @@ function onlyUnique(value, index, self) {
     $.CReport = function (p) {
         var arrayNote = [];
         p = $.extend
-             ({
-                 UserModuleID: '',
-                 ModulePath: '/Modules/ClosingReport3_Monthly/service/',
-                 master: '0',
-             }, p);
+            ({
+                UserModuleID: '',
+                ModulePath: '/Modules/ClosingReport3_Monthly/service/',
+                master: '0',
+            }, p);
         var v = 0;
         var DiffAmount = 0;
         var Statement = "";
@@ -67,13 +67,13 @@ function onlyUnique(value, index, self) {
                 $("#btnViewStatement").click(function () {
                     viewType = 'Statement';
                     eventFunction.getStatementDataByDates();
-                     $('.report-view').show();
+                    $('.report-view').show();
                 });
 
                 $("#btnViewDatewise").click(function () {
                     viewType = 'DateWise';
                     eventFunction.getStatementDatewise();
-                     $('.report-view').show();
+                    $('.report-view').show();
                 });
                 $("#btnExport").click(function (e) {
                     $('.printedDate').show();
@@ -160,8 +160,6 @@ function onlyUnique(value, index, self) {
                 stat = 0;
                 datas = JSON.parse(result);
                 var htmls = "";
-                var prev = "";
-                var count = "";
                 var tblQty = 0;
                 var tblRate = 0;
                 var tblTotal = 0;
@@ -171,15 +169,14 @@ function onlyUnique(value, index, self) {
                 htmls += '<p style="margin:0;text-align:center;">Closing Report </p> <p style="text-align:center;margin:0;">From :  ' + $('#txtStartDate').val() + ' To :  ' + $('#txtEndDate').val() + '</p>';
                 htmls += '<p class="printedDate" style="display:none;text-align:center;margin:0;margin-bottom:5px;">Printed On : <label class="lblPrintedOn">' + new Date() + '</label></p></div>';
                 htmls += '<table class="tableForMaterizedView reportsprint" cellspacing="0" style="border:none;width:100%;border-collapse:collapse;"><thead><tr>'
-                htmls += '<th style="text-align:center;border:1px solid #575757;padding:2px;">Item ID</th>' 
+                htmls += '<th style="text-align:center;border:1px solid #575757;padding:2px;">Item ID</th>'
                 htmls += '<th style="text-align:left;border:1px solid #575757;padding:2px;">ITName</th><th style="text-align:center;border:1px solid #575757;padding:2px;">CostCenterName</th><th style="text-align:center;border:1px solid #575757;padding:2px;">QTY</th><th style="text-align:center;border:1px solid #575757;padding:2px;">Symbol</th><th style="text-align:right;border:1px solid #575757;padding:2px;">Rate</th><th style="text-align:right;border:1px solid #575757;padding:2px;">Total</th></tr></thead><tbody>';
                 if (datas.length > 0) {
                     $.each(datas, function (index, value) {
-                        htmls += '<tr>' 
-                       htmls += '<td  style="text-align:center;border:1px solid #575757;padding:2px;">' + value.ITId + '</td>';
+                        htmls += '<tr>'
+                        htmls += '<td  style="text-align:center;border:1px solid #575757;padding:2px;">' + value.ITId + '</td>';
                         htmls += '<td  style="text-align:left;border:1px solid #575757;padding:2px;">' + value.ITName + '</td>';
                         htmls += '<td  style="text-align:center;border:1px solid #575757;padding:2px;">' + value.CostCenterName + '</td>';
-                        //htmls += '<td>' + value.Conversion + '</td>';
                         htmls += '<td  style="text-align:center;border:1px solid #575757;padding:2px;">' + value.QTY + '</td>';
                         htmls += '<td  style="text-align:center;border:1px solid #575757;padding:2px;">' + value.Symbol + '</td>';
                         htmls += '<td  style="text-align:right;border:1px solid #575757;padding:2px;">' + value.Rate + '</td>';
@@ -210,11 +207,8 @@ function onlyUnique(value, index, self) {
                 htmls += '</tr>';
                 htmls += "</tfoot>";
                 htmls += '</table>';
-                    $("#DailyReport").html(htmls);
-                    //$(".tableForMaterizedView").dataTable({
-                    //     "bJQueryUI": true,
-                    //});
-            
+                $("#DailyReport").html(htmls);
+                
                 Statement = "";
                 Statement += "<div id='StatementPrint'>";
                 Statement += '<div class="Report_header"><h4 style="text-align:center;margin:0;">' + companyInfo.Name + '</h4>';
@@ -240,7 +234,6 @@ function onlyUnique(value, index, self) {
                         if (count == 0) {
                             Statement += "<tr><td colspan='4' style='border-bottom:1px dashed;border-bottom:1px dashed;margin-bottom:10px;'><Strong>" + value.CostCenterName + "</strong></td></tr>";
                         }
-                        // Statement += "<tr><td style='text-align:left;list-item-type:disc;' class='unique_Id'>" + value.ITId+ "</td>"  
                         Statement += "<td style='text-align:left;list-item-type:disc;'>" + value.ITName + "</td><td style='text-align:right;'>" + value.QTY + "</td>";
                         Statement += "<td style='text-align:right;list-item-type:disc;'>" + value.Rate + "</td><td style='text-align:right;'>" + (value.Rate * value.QTY) + "</td></tr>";
                         grptotal = grptotal + value.QTY;
@@ -261,7 +254,7 @@ function onlyUnique(value, index, self) {
                 costcenterGroup = r.getCostcenterGroup;
                 var htmls = "";
                 if (datas.length > 0) {
-                    
+
                     SalesStatement = " ";
                     SalesStatement += "<div>";
                     SalesStatement += '<div class="Report_header"><h4 style="text-align:center;margin:0;">' + companyInfo.Name + '</h4>';
@@ -274,40 +267,34 @@ function onlyUnique(value, index, self) {
 
                         if (costcenterGroup.length > 0) {
                             $.each(costcenterGroup, function (index, value) {
-                                SalesStatement += '</tr><tr><td style="text-align:left;padding:2px;">' + value.GroupName + ' Sales</td><td style="text-align:left;padding:2px;">Rs. ' + value.TotalAmt.toFixed(2) + '</td>';
-                                subTotal += value.TotalAmt; 
+                                SalesStatement += '</tr><tr><td style="text-align:left;padding:2px;">' + value.GroupName + ' Sales</td><td style="text-align:left;padding:2px;">Rs. ' + moneyPlaceholder(value.TotalAmt) + '</td>';
+                                subTotal += value.TotalAmt;
                             });
 
                         }
-                        //SalesStatement += '</tr><tr><td style="text-align:left;padding:2px;">Bar Sales</td><td style="text-align:left;padding:2px;">Rs. ' + value.BEV.toFixed(2) + '</td>';
-                        //SalesStatement += '</tr><tr><td style="text-align:left;padding:2px;">Cafe Sales</td><td style="text-align:left;padding:2px;">Rs. ' + value.Bakery.toFixed(2) + '</td>';
+                        var netAmt = (subTotal + value.TaxCharge + value.ServiceCharge) - value.DISCOUNT;
+                        var totalAmt = (value.CashReceived + value.ChequeReceived + value.CardReceived + value.eSewaReceived + value.CreditReceived + value.FonePayReceived + value.SurplusDeficit + value.Complementry);
 
-                        SalesStatement += '</tr><tr><td style="text-align:left;border-top:1px solid black;padding:2px;">Sub Total</td><td style="text-align:left;border-top:1px solid black;padding:2px;">Rs. ' + subTotal.toFixed(2) + '</td>';
-                        SalesStatement += '</tr><tr><td style="text-align:left;padding:2px;">Total Discount (-)</td><td style="text-align:left;padding:2px;">Rs. ' + value.DISCOUNT.toFixed(2) + '</td>';
-                        SalesStatement += '</tr><tr><td style="text-align:left;padding:2px;">Service Charge (+)</td><td style="text-align:left;padding:2px;">Rs. ' + value.ServiceCharge.toFixed(2) + '</td>';
-                        SalesStatement += '</tr><tr><td style="text-align:left;padding:2px;">VAT</td><td style="text-align:left;padding:2px;">Rs. ' + value.TaxCharge.toFixed(2) + '</td>';
-                        SalesStatement += '</tr><tr><td style="text-align:left;border-top:1px solid black;border-bottom:1px solid black;padding:2px;">Net Sales</td><td style="text-align:left;border-top:1px solid black;border-bottom:1px solid black;padding:2px;">Rs. ' + value.NetAmount.toFixed(2) + '</td>';
+                        SalesStatement += '</tr><tr><td style="text-align:left;border-top:1px solid black;padding:2px;">Sub Total</td><td style="text-align:left;border-top:1px solid black;padding:2px;">Rs. ' + moneyPlaceholder(subTotal.toFixed()) + '</td>';
+                        SalesStatement += '</tr><tr><td style="text-align:left;padding:2px;">Total Discount (-)</td><td style="text-align:left;padding:2px;">Rs. ' + moneyPlaceholder(value.DISCOUNT) + '</td>';
+                        SalesStatement += '</tr><tr><td style="text-align:left;padding:2px;">Service Charge (+)</td><td style="text-align:left;padding:2px;">Rs. ' + moneyPlaceholder(value.ServiceCharge) + '</td>';
+                        SalesStatement += '</tr><tr><td style="text-align:left;padding:2px;">VAT</td><td style="text-align:left;padding:2px;">Rs. ' + moneyPlaceholder(value.TaxCharge) + '</td>';
+                        SalesStatement += '</tr><tr><td style="text-align:left;border-top:1px solid black;border-bottom:1px solid black;padding:2px;">Net Sales</td><td style="text-align:left;border-top:1px solid black;border-bottom:1px solid black;padding:2px;">Rs. ' + moneyPlaceholder(netAmt.toFixed()) + '</td>';
                         SalesStatement += '</tr><tr><td style="text-align:center;padding:2px;font-weight: bolder;">Sales Description</td>';
-                        SalesStatement += '</tr><tr><td style="text-align:left;padding:2px;">Cash</td><td style="text-align:left;padding:2px;">Rs. ' + value.CashReceived.toFixed(2) + '</td>';
-                        SalesStatement += '</tr><tr><td style="text-align:left;padding:2px;">Cheque</td><td style="text-align:left;padding:2px;">Rs. ' + value.ChequeReceived.toFixed(2) + '</td>';
-                        SalesStatement += '</tr><tr><td style="text-align:left;padding:2px;">Card</td><td style="text-align:left;padding:2px;">Rs. ' + value.CardReceived.toFixed(2) + '</td>';
-                        SalesStatement += '</tr><tr><td style="text-align:left;padding:2px;">Credit</td><td style="text-align:left;padding:2px;">Rs. ' + value.CreditReceived.toFixed(2) + '</td>';
-                        SalesStatement += '</tr><tr><td style="text-align:left;padding:2px;">eSewa</td><td style="text-align:left;padding:2px;">Rs. ' + value.eSewaReceived.toFixed(2) + '</td>';
-                        SalesStatement += '</tr><tr><td style="text-align:left;padding:2px;">FonePay</td><td style="text-align:left;padding:2px;">Rs. ' + value.FonePayReceived.toFixed(2) + '</td>';
-                        SalesStatement += '</tr><tr><td style="text-align:left;padding:2px;">Surplus/Deficit</td><td style="text-align:left;padding:2px;">Rs. ' + value.SurplusDeficit.toFixed(2) + '</td>';
-                        SalesStatement += '</tr><tr><td style="text-align:left;padding:2px;">Complementry</td><td style="text-align:left;padding:2px;">Rs. ' + value.Complementry.toFixed(2) + '</td>';
-                        SalesStatement += '</tr><tr><td style="text-align:left;border-top:1px solid black;border-bottom:1px solid black;padding:2px;">Total Amt</td><td style="text-align:left;border-top:1px solid black;border-bottom:1px solid black;padding:2px;">Rs. ' + (value.NetAmount + value.Complementry).toFixed(2) + '</td>';
+                        SalesStatement += '</tr><tr><td style="text-align:left;padding:2px;">Cash</td><td style="text-align:left;padding:2px;">Rs. ' + moneyPlaceholder(value.CashReceived) + '</td>';
+                        SalesStatement += '</tr><tr><td style="text-align:left;padding:2px;">Cheque</td><td style="text-align:left;padding:2px;">Rs. ' + moneyPlaceholder(value.ChequeReceived) + '</td>';
+                        SalesStatement += '</tr><tr><td style="text-align:left;padding:2px;">Card</td><td style="text-align:left;padding:2px;">Rs. ' + moneyPlaceholder(value.CardReceived) + '</td>';
+                        SalesStatement += '</tr><tr><td style="text-align:left;padding:2px;">Credit</td><td style="text-align:left;padding:2px;">Rs. ' + moneyPlaceholder(value.CreditReceived) + '</td>';
+                        SalesStatement += '</tr><tr><td style="text-align:left;padding:2px;">eSewa</td><td style="text-align:left;padding:2px;">Rs. ' + moneyPlaceholder(value.eSewaReceived) + '</td>';
+                        SalesStatement += '</tr><tr><td style="text-align:left;padding:2px;">FonePay</td><td style="text-align:left;padding:2px;">Rs. ' + moneyPlaceholder(value.FonePayReceived) + '</td>';
+                        SalesStatement += '</tr><tr><td style="text-align:left;padding:2px;">Surplus/Deficit</td><td style="text-align:left;padding:2px;">Rs. ' + moneyPlaceholder(value.SurplusDeficit) + '</td>';
+                        SalesStatement += '</tr><tr><td style="text-align:left;padding:2px;">Complementry</td><td style="text-align:left;padding:2px;">Rs. ' + moneyPlaceholder(value.Complementry) + '</td>';
+                        SalesStatement += '</tr><tr><td style="text-align:left;border-top:1px solid black;border-bottom:1px solid black;padding:2px;">Total Amt</td><td style="text-align:left;border-top:1px solid black;border-bottom:1px solid black;padding:2px;">Rs. ' + moneyPlaceholder(totalAmt.toFixed()) + '</td>';
                         SalesStatement += '</tr>';
                     });
                     SalesStatement += '</tbody></table>';
                     SalesStatement += "</div>";
-                    $("#DailyReport").html(SalesStatement);
-                    //$("#DailyReport").html(htmls);
-                    //$(".tableForMaterizedView").dataTable({
-                    //     "bJQueryUI": true,
-                    //    ordering: true,
-                    //    scrollX: true
-                    //});
+                    $("#DailyReport").html(SalesStatement); 
                 } else {
                     $("#DailyReport").html("No Data");
                     $("#btnPrint").hide();
@@ -339,7 +326,7 @@ function onlyUnique(value, index, self) {
                 taxCTotal = 0.00;
                 netAmntTotal = 0.00;
                 htmls += '<div class="Report_header"><h4 style="text-align:center;margin:0;">' + companyInfo.Name + '</h4>';
-                htmls += '<p style="text-align:center;margin:0;">' + companyInfo.Address + ' , ' + (companyInfo.IsPan ? 'PAN' : 'VAT') + ' : ' + companyInfo.PAN + '</p>';        
+                htmls += '<p style="text-align:center;margin:0;">' + companyInfo.Address + ' , ' + (companyInfo.IsPan ? 'PAN' : 'VAT') + ' : ' + companyInfo.PAN + '</p>';
                 htmls += '<p style="margin:0;text-align:center;">Closing Report Datewise </p> <p style="text-align:center;margin:0;">From :  ' + $('#txtStartDate').val() + ' To : ' + $('#txtEndDate').val() + '</p>';
                 htmls += '<p class="printedDate" style="text-align:center;margin:0;margin-bottom:5px;">Printed On : <label class="lblPrintedOn">' + new Date() + '</label></p></div>';
                 htmls += '<table class="tableForMaterizedView reportsprint" cellspacing="0" style="border:none;"><thead><tr><th style="text-align:center;border:1px solid #575757;padding:2px;">DATE</th>';
@@ -415,7 +402,7 @@ function onlyUnique(value, index, self) {
                     $("#btnExport").hide();
                     $("#btnPdf").hide();
                 }
-                
+
 
                 htmls += '<tr><td style="text-align:right;border:1px solid #575757;padding:2px;"></td>';
                 htmls += '<td style="text-align:center;border:1px solid #575757;padding:2px;"><b>Total</b></td>';
@@ -438,40 +425,40 @@ function onlyUnique(value, index, self) {
                 htmls += '<td class="tot-rig" style="text-align:right;border:1px solid #575757;padding:2px;"><b> Rs. ' + netAmntTotal.toFixed(2) + '</b></td>';
                 //htmls += '<td></td>';
                 htmls += '</tr>';
-                    htmls += '</tbody></table>';
-                    StatementDatewise += htmls;
-                    //SalesStatement += "<div style='width:90%;'>";
-                    ////  SalesStatement += '<table class="tableForMaterizedView sfGridwrapper nowrap display" cellspacing="0" style="border:none;width:100%px;">';//<thead><tr><th style="width:100px;">DATE</th style="width:150px;"><th>No Of Bill</th><th style="width:100px;"> Total </th><th style="width:100px;"> BEV</th><th style="width:100px;"> KOT</th><th style="width:100px;"> DISCOUNT</th><th style="width:100px;">Total</th><th style="width:150px;"> Service Charge</th><th style="width:150px;"> Tax Charge</th><th style="width:150px;"> Net Amount</th><th style="width:150px;"> Sales Per Bill</th></tr></thead><tbody>';
-                    ////   SalesStatement += '<table class="tableForMaterizedView sfGridwrapper nowrap display" cellspacing="0" style="border:none;width:100%px;">
-                    ////<thead><tr><th style="width:100px;">DATE</th style="width:150px;"><th>No Of Bill</th>
-                    ////<th style="width:100px;"> Total </th><th style="width:100px;"> BEV</th><th style="width:100px;"> KOT</th>
-                    ////<th style="width:100px;"> DISCOUNT</th><th style="width:100px;">Total</th><th style="width:150px;"> Service Charge</th>
-                    ////<th style="width:150px;"> Tax Charge</th><th style="width:150px;"> Net Amount</th><th style="width:150px;"> Sales Per Bill</th></tr></thead><tbody>';
-                    ////     SalesStatement += "<caption>Date : " + $('#txtStartDate').val(); "</caption>";
-                    //SalesStatement += "<table style='font-size:18px;border:none;width:100%;'><tbody>";
-                    //$.each(datas, function (index, value) {
-                    //    SalesStatement += '<tr><td>DATE</td><td style="text-align:right;">' + value.DATE.split(' ')[0] + '</td>';
-                    //    SalesStatement += '</tr><tr><td>No Of Bill</td><td style="text-align:right;">' + value.BillNo + '</td>';
-                    //    SalesStatement += '</tr><tr><td>Total</td><td style="text-align:right;">' + value.TotalAll.toFixed(2) + '</td>';
-                    //    SalesStatement += '</tr><tr><td>BEV</td><td style="text-align:right;">' + value.BEV.toFixed(2) + '</td>';
-                    //    SalesStatement += '</tr><tr><td>KOT</td><td style="text-align:right;">' + value.KOT.toFixed(2) + '</td>';
-                    //    SalesStatement += '</tr><tr><td>DISCOUNT</td><td style="text-align:right;">' + value.DISCOUNT.toFixed(2) + '</td>';
-                    //    SalesStatement += '</tr><tr><td>Total</td><td style="text-align:right;">' + value.Total.toFixed(2) + '</td>';
-                    //    SalesStatement += '</tr><tr><td>Service Charge</td><td style="text-align:right;">' + value.ServiceCharge.toFixed(2) + '</td>';
-                    //    SalesStatement += '</tr><tr><td>Tax Charge</td><td style="text-align:right;">' + value.TaxCharge.toFixed(2) + '</td>';
-                    //    SalesStatement += '</tr><tr><td>Net Amount</td><td style="text-align:right;">' + value.NetAmount.toFixed(2) + '</td>';
-                    //    SalesStatement += '</tr><tr><td>Sales Per Bill</td><td style="text-align:right;">' + value.SalesPerBill.toFixed(2) + '</td>';
-                    //    SalesStatement += '</tr>';
-                    //});
-                    //SalesStatement += '</tbody></table>';
-                    //SalesStatement += "</div>";
-                    $("#DailyReport").html(htmls);
-                    //$(".tableForMaterizedView").dataTable({
-                    //    "bJQueryUI" : true,
-                    //    scrollX : true
-                    //});
-                    $('.printedDate').hide();
-             
+                htmls += '</tbody></table>';
+                StatementDatewise += htmls;
+                //SalesStatement += "<div style='width:90%;'>";
+                ////  SalesStatement += '<table class="tableForMaterizedView sfGridwrapper nowrap display" cellspacing="0" style="border:none;width:100%px;">';//<thead><tr><th style="width:100px;">DATE</th style="width:150px;"><th>No Of Bill</th><th style="width:100px;"> Total </th><th style="width:100px;"> BEV</th><th style="width:100px;"> KOT</th><th style="width:100px;"> DISCOUNT</th><th style="width:100px;">Total</th><th style="width:150px;"> Service Charge</th><th style="width:150px;"> Tax Charge</th><th style="width:150px;"> Net Amount</th><th style="width:150px;"> Sales Per Bill</th></tr></thead><tbody>';
+                ////   SalesStatement += '<table class="tableForMaterizedView sfGridwrapper nowrap display" cellspacing="0" style="border:none;width:100%px;">
+                ////<thead><tr><th style="width:100px;">DATE</th style="width:150px;"><th>No Of Bill</th>
+                ////<th style="width:100px;"> Total </th><th style="width:100px;"> BEV</th><th style="width:100px;"> KOT</th>
+                ////<th style="width:100px;"> DISCOUNT</th><th style="width:100px;">Total</th><th style="width:150px;"> Service Charge</th>
+                ////<th style="width:150px;"> Tax Charge</th><th style="width:150px;"> Net Amount</th><th style="width:150px;"> Sales Per Bill</th></tr></thead><tbody>';
+                ////     SalesStatement += "<caption>Date : " + $('#txtStartDate').val(); "</caption>";
+                //SalesStatement += "<table style='font-size:18px;border:none;width:100%;'><tbody>";
+                //$.each(datas, function (index, value) {
+                //    SalesStatement += '<tr><td>DATE</td><td style="text-align:right;">' + value.DATE.split(' ')[0] + '</td>';
+                //    SalesStatement += '</tr><tr><td>No Of Bill</td><td style="text-align:right;">' + value.BillNo + '</td>';
+                //    SalesStatement += '</tr><tr><td>Total</td><td style="text-align:right;">' + value.TotalAll.toFixed(2) + '</td>';
+                //    SalesStatement += '</tr><tr><td>BEV</td><td style="text-align:right;">' + value.BEV.toFixed(2) + '</td>';
+                //    SalesStatement += '</tr><tr><td>KOT</td><td style="text-align:right;">' + value.KOT.toFixed(2) + '</td>';
+                //    SalesStatement += '</tr><tr><td>DISCOUNT</td><td style="text-align:right;">' + value.DISCOUNT.toFixed(2) + '</td>';
+                //    SalesStatement += '</tr><tr><td>Total</td><td style="text-align:right;">' + value.Total.toFixed(2) + '</td>';
+                //    SalesStatement += '</tr><tr><td>Service Charge</td><td style="text-align:right;">' + value.ServiceCharge.toFixed(2) + '</td>';
+                //    SalesStatement += '</tr><tr><td>Tax Charge</td><td style="text-align:right;">' + value.TaxCharge.toFixed(2) + '</td>';
+                //    SalesStatement += '</tr><tr><td>Net Amount</td><td style="text-align:right;">' + value.NetAmount.toFixed(2) + '</td>';
+                //    SalesStatement += '</tr><tr><td>Sales Per Bill</td><td style="text-align:right;">' + value.SalesPerBill.toFixed(2) + '</td>';
+                //    SalesStatement += '</tr>';
+                //});
+                //SalesStatement += '</tbody></table>';
+                //SalesStatement += "</div>";
+                $("#DailyReport").html(htmls);
+                //$(".tableForMaterizedView").dataTable({
+                //    "bJQueryUI" : true,
+                //    scrollX : true
+                //});
+                $('.printedDate').hide();
+
             },
 
             ajaxCall: function (config) {
