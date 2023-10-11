@@ -8,10 +8,10 @@ AS
 BEGIN
 
 --DEFAULT DECLARATION FROM COST CENTER GROUPS
-Declare @FoodFcid INT = 19
-Declare @BarFcid INT = 20
+DECLARE @FoodFcid INT = 19
+DECLARE @BarFcid INT = 20
 DECLARE @BakeryFcid INT  = 32
-Declare @OtherSalesFcid INT = 24
+DECLARE @OtherSalesFcid INT = 24
  
     DECLARE @PREFX NVARCHAR(10),
             @VoucherCount INT = 0,
