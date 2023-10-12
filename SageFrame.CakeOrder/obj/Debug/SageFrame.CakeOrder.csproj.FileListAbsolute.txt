@@ -1,0 +1,220 @@
+F:\RestroOrder3Jan\cakeorders\SageFrame.CakeOrder\bin\Debug\SageFrame.CakeOrder.dll
+F:\RestroOrder3Jan\cakeorders\SageFrame.CakeOrder\bin\Debug\SageFrame.CakeOrder.pdb
+F:\RestroOrder3Jan\cakeorders\SageFrame.CakeOrder\obj\Debug\SageFrame.CakeOrder.dll
+F:\RestroOrder3Jan\cakeorders\SageFrame.CakeOrder\obj\Debug\SageFrame.CakeOrder.pdb
+F:\RestroOrder3Jan\cakeorders\SageFrame.CakeOrder\bin\Debug\SageFrame.Common.dll
+F:\RestroOrder3Jan\cakeorders\SageFrame.CakeOrder\bin\Debug\SageFrame.Common.pdb
+D:\Project\Binod\wholesale_restro\cakeorders\SageFrame.CakeOrder\bin\Debug\SageFrame.CakeOrder.dll
+D:\Project\Binod\wholesale_restro\cakeorders\SageFrame.CakeOrder\bin\Debug\SageFrame.CakeOrder.pdb
+D:\Project\Binod\wholesale_restro\cakeorders\SageFrame.CakeOrder\bin\Debug\SageFrame.Common.dll
+D:\Project\Binod\wholesale_restro\cakeorders\SageFrame.CakeOrder\bin\Debug\SageFrame.Common.pdb
+D:\Project\Binod\wholesale_restro\cakeorders\SageFrame.CakeOrder\obj\Debug\SageFrame.CakeOrder.dll
+D:\Project\Binod\wholesale_restro\cakeorders\SageFrame.CakeOrder\obj\Debug\SageFrame.CakeOrder.pdb
+F:\RestroOrder3Jan\cakeorders\SageFrame.CakeOrder\obj\Debug\SageFrame.CakeOrder.csprojResolveAssemblyReference.cache
+E:\Backup\vlc media player\old-res\Res\cakeorders\SageFrame.CakeOrder\bin\Debug\SageFrame.CakeOrder.dll
+E:\Backup\vlc media player\old-res\Res\cakeorders\SageFrame.CakeOrder\bin\Debug\SageFrame.CakeOrder.pdb
+E:\Backup\vlc media player\old-res\Res\cakeorders\SageFrame.CakeOrder\bin\Debug\SageFrame.Common.dll
+E:\Backup\vlc media player\old-res\Res\cakeorders\SageFrame.CakeOrder\bin\Debug\SageFrame.Common.pdb
+E:\Backup\vlc media player\old-res\Res\cakeorders\SageFrame.CakeOrder\obj\Debug\SageFrame.CakeOrder.csprojResolveAssemblyReference.cache
+E:\Backup\vlc media player\old-res\Res\cakeorders\SageFrame.CakeOrder\obj\Debug\SageFrame.CakeOrder.dll
+E:\Backup\vlc media player\old-res\Res\cakeorders\SageFrame.CakeOrder\obj\Debug\SageFrame.CakeOrder.pdb
+D:\Project\Binod\Cake_orders20210219\cakeorders\SageFrame.CakeOrder\bin\Debug\SageFrame.CakeOrder.dll
+D:\Project\Binod\Cake_orders20210219\cakeorders\SageFrame.CakeOrder\bin\Debug\SageFrame.CakeOrder.pdb
+D:\Project\Binod\Cake_orders20210219\cakeorders\SageFrame.CakeOrder\bin\Debug\SageFrame.Common.dll
+D:\Project\Binod\Cake_orders20210219\cakeorders\SageFrame.CakeOrder\bin\Debug\SageFrame.Common.pdb
+D:\Project\Binod\Cake_orders20210219\cakeorders\SageFrame.CakeOrder\obj\Debug\SageFrame.CakeOrder.csprojResolveAssemblyReference.cache
+D:\Project\Binod\Cake_orders20210219\cakeorders\SageFrame.CakeOrder\obj\Debug\SageFrame.CakeOrder.dll
+D:\Project\Binod\Cake_orders20210219\cakeorders\SageFrame.CakeOrder\obj\Debug\SageFrame.CakeOrder.pdb
+D:\My projects\CakeOrder\Cake_orders20210303\cakeorders\SageFrame.CakeOrder\bin\Debug\SageFrame.CakeOrder.dll
+D:\My projects\CakeOrder\Cake_orders20210303\cakeorders\SageFrame.CakeOrder\bin\Debug\SageFrame.CakeOrder.pdb
+D:\My projects\CakeOrder\Cake_orders20210303\cakeorders\SageFrame.CakeOrder\bin\Debug\SageFrame.Common.dll
+D:\My projects\CakeOrder\Cake_orders20210303\cakeorders\SageFrame.CakeOrder\bin\Debug\SageFrame.Common.pdb
+D:\My projects\CakeOrder\Cake_orders20210303\cakeorders\SageFrame.CakeOrder\obj\Debug\SageFrame.CakeOrder.csprojResolveAssemblyReference.cache
+D:\My projects\CakeOrder\Cake_orders20210303\cakeorders\SageFrame.CakeOrder\obj\Debug\SageFrame.CakeOrder.dll
+D:\My projects\CakeOrder\Cake_orders20210303\cakeorders\SageFrame.CakeOrder\obj\Debug\SageFrame.CakeOrder.pdb
+E:\SAROJ CAKE ORDER 8Mar2021\cakeorders\cakeorders\SageFrame.CakeOrder\bin\Debug\SageFrame.CakeOrder.dll
+E:\SAROJ CAKE ORDER 8Mar2021\cakeorders\cakeorders\SageFrame.CakeOrder\bin\Debug\SageFrame.CakeOrder.pdb
+E:\SAROJ CAKE ORDER 8Mar2021\cakeorders\cakeorders\SageFrame.CakeOrder\bin\Debug\SageFrame.Common.dll
+E:\SAROJ CAKE ORDER 8Mar2021\cakeorders\cakeorders\SageFrame.CakeOrder\bin\Debug\SageFrame.Common.pdb
+E:\SAROJ CAKE ORDER 8Mar2021\cakeorders\cakeorders\SageFrame.CakeOrder\obj\Debug\SageFrame.CakeOrder.dll
+E:\SAROJ CAKE ORDER 8Mar2021\cakeorders\cakeorders\SageFrame.CakeOrder\obj\Debug\SageFrame.CakeOrder.pdb
+E:\SAROJ CAKE ORDER 8Mar2021\cakeorders\cakeorders\SageFrame.CakeOrder\obj\Debug\SageFrame.CakeOrder.csprojResolveAssemblyReference.cache
+D:\My projects\CakeOrder\cakeorders\SageFrame.CakeOrder\bin\Debug\SageFrame.CakeOrder.dll
+D:\My projects\CakeOrder\cakeorders\SageFrame.CakeOrder\bin\Debug\SageFrame.CakeOrder.pdb
+D:\My projects\CakeOrder\cakeorders\SageFrame.CakeOrder\bin\Debug\SageFrame.Common.dll
+D:\My projects\CakeOrder\cakeorders\SageFrame.CakeOrder\bin\Debug\SageFrame.Common.pdb
+D:\My projects\CakeOrder\cakeorders\SageFrame.CakeOrder\obj\Debug\SageFrame.CakeOrder.dll
+D:\My projects\CakeOrder\cakeorders\SageFrame.CakeOrder\obj\Debug\SageFrame.CakeOrder.pdb
+D:\Project\Binod\cake-latest\cakeorder-akuj\SageFrame.CakeOrder\bin\Debug\SageFrame.CakeOrder.dll
+D:\Project\Binod\cake-latest\cakeorder-akuj\SageFrame.CakeOrder\bin\Debug\SageFrame.CakeOrder.pdb
+D:\Project\Binod\cake-latest\cakeorder-akuj\SageFrame.CakeOrder\bin\Debug\SageFrame.Common.dll
+D:\Project\Binod\cake-latest\cakeorder-akuj\SageFrame.CakeOrder\bin\Debug\SageFrame.Common.pdb
+D:\Project\Binod\cake-latest\cakeorder-akuj\SageFrame.CakeOrder\obj\Debug\SageFrame.CakeOrder.csprojResolveAssemblyReference.cache
+D:\Project\Binod\cake-latest\cakeorder-akuj\SageFrame.CakeOrder\obj\Debug\SageFrame.CakeOrder.dll
+D:\Project\Binod\cake-latest\cakeorder-akuj\SageFrame.CakeOrder\obj\Debug\SageFrame.CakeOrder.pdb
+D:\My projects\cakeorder-akuj\SageFrame.CakeOrder\bin\Debug\SageFrame.CakeOrder.dll
+D:\My projects\cakeorder-akuj\SageFrame.CakeOrder\bin\Debug\SageFrame.CakeOrder.pdb
+D:\My projects\cakeorder-akuj\SageFrame.CakeOrder\bin\Debug\SageFrame.Common.dll
+D:\My projects\cakeorder-akuj\SageFrame.CakeOrder\bin\Debug\SageFrame.Common.pdb
+D:\My projects\cakeorder-akuj\SageFrame.CakeOrder\obj\Debug\SageFrame.CakeOrder.csprojResolveAssemblyReference.cache
+D:\My projects\cakeorder-akuj\SageFrame.CakeOrder\obj\Debug\SageFrame.CakeOrder.dll
+D:\My projects\cakeorder-akuj\SageFrame.CakeOrder\obj\Debug\SageFrame.CakeOrder.pdb
+D:\cakeorder-akuj\SageFrame.CakeOrder\bin\Debug\SageFrame.CakeOrder.dll
+D:\cakeorder-akuj\SageFrame.CakeOrder\bin\Debug\SageFrame.CakeOrder.pdb
+D:\cakeorder-akuj\SageFrame.CakeOrder\bin\Debug\SageFrame.Common.dll
+D:\cakeorder-akuj\SageFrame.CakeOrder\bin\Debug\SageFrame.Common.pdb
+D:\cakeorder-akuj\SageFrame.CakeOrder\obj\Debug\SageFrame.CakeOrder.csprojAssemblyReference.cache
+D:\cakeorder-akuj\SageFrame.CakeOrder\obj\Debug\SageFrame.CakeOrder.csproj.CoreCompileInputs.cache
+D:\cakeorder-akuj\SageFrame.CakeOrder\obj\Debug\SageFrame.CakeOrder.csproj.CopyComplete
+D:\cakeorder-akuj\SageFrame.CakeOrder\obj\Debug\SageFrame.CakeOrder.dll
+D:\cakeorder-akuj\SageFrame.CakeOrder\obj\Debug\SageFrame.CakeOrder.pdb
+D:\My projects\cakeorder-akuj_kot_bot\cakeorder-akuj\SageFrame.CakeOrder\bin\Debug\SageFrame.CakeOrder.dll
+D:\My projects\cakeorder-akuj_kot_bot\cakeorder-akuj\SageFrame.CakeOrder\bin\Debug\SageFrame.CakeOrder.pdb
+D:\My projects\cakeorder-akuj_kot_bot\cakeorder-akuj\SageFrame.CakeOrder\bin\Debug\SageFrame.Common.dll
+D:\My projects\cakeorder-akuj_kot_bot\cakeorder-akuj\SageFrame.CakeOrder\bin\Debug\SageFrame.Common.pdb
+D:\My projects\cakeorder-akuj_kot_bot\cakeorder-akuj\SageFrame.CakeOrder\obj\Debug\SageFrame.CakeOrder.csprojResolveAssemblyReference.cache
+D:\My projects\cakeorder-akuj_kot_bot\cakeorder-akuj\SageFrame.CakeOrder\obj\Debug\SageFrame.CakeOrder.dll
+D:\My projects\cakeorder-akuj_kot_bot\cakeorder-akuj\SageFrame.CakeOrder\obj\Debug\SageFrame.CakeOrder.pdb
+D:\Projects\akuj_kot_bot\SageFrame.CakeOrder\bin\Debug\SageFrame.CakeOrder.dll
+D:\Projects\akuj_kot_bot\SageFrame.CakeOrder\bin\Debug\SageFrame.CakeOrder.pdb
+D:\Projects\akuj_kot_bot\SageFrame.CakeOrder\bin\Debug\SageFrame.Common.dll
+D:\Projects\akuj_kot_bot\SageFrame.CakeOrder\bin\Debug\SageFrame.Common.pdb
+D:\Projects\akuj_kot_bot\SageFrame.CakeOrder\obj\Debug\SageFrame.CakeOrder.csprojResolveAssemblyReference.cache
+D:\Projects\akuj_kot_bot\SageFrame.CakeOrder\obj\Debug\SageFrame.CakeOrder.dll
+D:\Projects\akuj_kot_bot\SageFrame.CakeOrder\obj\Debug\SageFrame.CakeOrder.pdb
+D:\Projects\Restro\akuj\akuj_kot_bot.git\SageFrame.CakeOrder\bin\Debug\SageFrame.CakeOrder.dll
+D:\Projects\Restro\akuj\akuj_kot_bot.git\SageFrame.CakeOrder\bin\Debug\SageFrame.CakeOrder.pdb
+D:\Projects\Restro\akuj\akuj_kot_bot.git\SageFrame.CakeOrder\bin\Debug\SageFrame.Common.dll
+D:\Projects\Restro\akuj\akuj_kot_bot.git\SageFrame.CakeOrder\bin\Debug\SageFrame.Common.pdb
+D:\Projects\Restro\akuj\akuj_kot_bot.git\SageFrame.CakeOrder\obj\Debug\SageFrame.CakeOrder.csproj.AssemblyReference.cache
+D:\Projects\Restro\akuj\akuj_kot_bot.git\SageFrame.CakeOrder\obj\Debug\SageFrame.CakeOrder.csproj.CoreCompileInputs.cache
+D:\Projects\Restro\akuj\akuj_kot_bot.git\SageFrame.CakeOrder\obj\Debug\SageFrame.CakeOrder.csproj.CopyComplete
+D:\Projects\Restro\akuj\akuj_kot_bot.git\SageFrame.CakeOrder\obj\Debug\SageFrame.CakeOrder.dll
+D:\Projects\Restro\akuj\akuj_kot_bot.git\SageFrame.CakeOrder\obj\Debug\SageFrame.CakeOrder.pdb
+F:\Workspace\Danfe\akuj\akuj_kot_bot.git\SageFrame.CakeOrder\bin\Debug\SageFrame.CakeOrder.dll
+F:\Workspace\Danfe\akuj\akuj_kot_bot.git\SageFrame.CakeOrder\bin\Debug\SageFrame.CakeOrder.pdb
+F:\Workspace\Danfe\akuj\akuj_kot_bot.git\SageFrame.CakeOrder\bin\Debug\SageFrame.Common.dll
+F:\Workspace\Danfe\akuj\akuj_kot_bot.git\SageFrame.CakeOrder\bin\Debug\SageFrame.Common.pdb
+F:\Workspace\Danfe\akuj\akuj_kot_bot.git\SageFrame.CakeOrder\obj\Debug\SageFrame.CakeOrder.csproj.AssemblyReference.cache
+F:\Workspace\Danfe\akuj\akuj_kot_bot.git\SageFrame.CakeOrder\obj\Debug\SageFrame.CakeOrder.csproj.CoreCompileInputs.cache
+F:\Workspace\Danfe\akuj\akuj_kot_bot.git\SageFrame.CakeOrder\obj\Debug\SageFrame.CakeOrder.csproj.CopyComplete
+F:\Workspace\Danfe\akuj\akuj_kot_bot.git\SageFrame.CakeOrder\obj\Debug\SageFrame.CakeOrder.dll
+F:\Workspace\Danfe\akuj\akuj_kot_bot.git\SageFrame.CakeOrder\obj\Debug\SageFrame.CakeOrder.pdb
+F:\Workspace\Danfe\master\restro_master\SageFrame.CakeOrder\bin\Debug\SageFrame.CakeOrder.dll
+F:\Workspace\Danfe\master\restro_master\SageFrame.CakeOrder\bin\Debug\SageFrame.CakeOrder.pdb
+F:\Workspace\Danfe\master\restro_master\SageFrame.CakeOrder\bin\Debug\SageFrame.Common.dll
+F:\Workspace\Danfe\master\restro_master\SageFrame.CakeOrder\bin\Debug\SageFrame.Common.pdb
+F:\Workspace\Danfe\master\restro_master\SageFrame.CakeOrder\obj\Debug\SageFrame.CakeOrder.csproj.AssemblyReference.cache
+F:\Workspace\Danfe\master\restro_master\SageFrame.CakeOrder\obj\Debug\SageFrame.CakeOrder.csproj.CoreCompileInputs.cache
+F:\Workspace\Danfe\master\restro_master\SageFrame.CakeOrder\obj\Debug\SageFrame.CakeOrder.csproj.CopyComplete
+F:\Workspace\Danfe\master\restro_master\SageFrame.CakeOrder\obj\Debug\SageFrame.CakeOrder.dll
+F:\Workspace\Danfe\master\restro_master\SageFrame.CakeOrder\obj\Debug\SageFrame.CakeOrder.pdb
+E:\RestroOrderSourceFiles20220109\RestroOrder\restro_master\SageFrame.CakeOrder\bin\Debug\SageFrame.CakeOrder.dll
+E:\RestroOrderSourceFiles20220109\RestroOrder\restro_master\SageFrame.CakeOrder\bin\Debug\SageFrame.CakeOrder.pdb
+E:\RestroOrderSourceFiles20220109\RestroOrder\restro_master\SageFrame.CakeOrder\bin\Debug\SageFrame.Common.dll
+E:\RestroOrderSourceFiles20220109\RestroOrder\restro_master\SageFrame.CakeOrder\bin\Debug\SageFrame.Common.pdb
+E:\RestroOrderSourceFiles20220109\RestroOrder\restro_master\SageFrame.CakeOrder\obj\Debug\SageFrame.CakeOrder.csproj.AssemblyReference.cache
+E:\RestroOrderSourceFiles20220109\RestroOrder\restro_master\SageFrame.CakeOrder\obj\Debug\SageFrame.CakeOrder.csproj.CoreCompileInputs.cache
+E:\RestroOrderSourceFiles20220109\RestroOrder\restro_master\SageFrame.CakeOrder\obj\Debug\SageFrame.CakeOrder.csproj.CopyComplete
+E:\RestroOrderSourceFiles20220109\RestroOrder\restro_master\SageFrame.CakeOrder\obj\Debug\SageFrame.CakeOrder.dll
+E:\RestroOrderSourceFiles20220109\RestroOrder\restro_master\SageFrame.CakeOrder\obj\Debug\SageFrame.CakeOrder.pdb
+E:\Development\Restro-Fresh\RestroOrderSource-2023-02-01\restro_master\SageFrame.CakeOrder\bin\Debug\SageFrame.CakeOrder.dll
+E:\Development\Restro-Fresh\RestroOrderSource-2023-02-01\restro_master\SageFrame.CakeOrder\bin\Debug\SageFrame.CakeOrder.pdb
+E:\Development\Restro-Fresh\RestroOrderSource-2023-02-01\restro_master\SageFrame.CakeOrder\bin\Debug\SageFrame.Common.dll
+E:\Development\Restro-Fresh\RestroOrderSource-2023-02-01\restro_master\SageFrame.CakeOrder\bin\Debug\SageFrame.Common.pdb
+E:\Development\Restro-Fresh\RestroOrderSource-2023-02-01\restro_master\SageFrame.CakeOrder\obj\Debug\SageFrame.CakeOrder.csproj.AssemblyReference.cache
+E:\Development\Restro-Fresh\RestroOrderSource-2023-02-01\restro_master\SageFrame.CakeOrder\obj\Debug\SageFrame.CakeOrder.csproj.CoreCompileInputs.cache
+E:\Development\Restro-Fresh\RestroOrderSource-2023-02-01\restro_master\SageFrame.CakeOrder\obj\Debug\SageFrame.CakeOrder.csproj.CopyComplete
+E:\Development\Restro-Fresh\RestroOrderSource-2023-02-01\restro_master\SageFrame.CakeOrder\obj\Debug\SageFrame.CakeOrder.dll
+E:\Development\Restro-Fresh\RestroOrderSource-2023-02-01\restro_master\SageFrame.CakeOrder\obj\Debug\SageFrame.CakeOrder.pdb
+G:\Development\RestroOrderSource-2023-02-14\restro_master\SageFrame.CakeOrder\bin\Debug\SageFrame.CakeOrder.dll
+G:\Development\RestroOrderSource-2023-02-14\restro_master\SageFrame.CakeOrder\bin\Debug\SageFrame.CakeOrder.pdb
+G:\Development\RestroOrderSource-2023-02-14\restro_master\SageFrame.CakeOrder\bin\Debug\SageFrame.Common.dll
+G:\Development\RestroOrderSource-2023-02-14\restro_master\SageFrame.CakeOrder\bin\Debug\SageFrame.RestoLoyalty.dll
+G:\Development\RestroOrderSource-2023-02-14\restro_master\SageFrame.CakeOrder\bin\Debug\SageFrame.RestoLoyalty.pdb
+G:\Development\RestroOrderSource-2023-02-14\restro_master\SageFrame.CakeOrder\bin\Debug\SageFrame.Common.pdb
+G:\Development\RestroOrderSource-2023-02-14\restro_master\SageFrame.CakeOrder\obj\Debug\SageFrame.CakeOrder.csproj.AssemblyReference.cache
+G:\Development\RestroOrderSource-2023-02-14\restro_master\SageFrame.CakeOrder\obj\Debug\SageFrame.CakeOrder.csproj.CoreCompileInputs.cache
+G:\Development\RestroOrderSource-2023-02-14\restro_master\SageFrame.CakeOrder\obj\Debug\SageFrame.CakeOrder.csproj.CopyComplete
+G:\Development\RestroOrderSource-2023-02-14\restro_master\SageFrame.CakeOrder\obj\Debug\SageFrame.CakeOrder.dll
+G:\Development\RestroOrderSource-2023-02-14\restro_master\SageFrame.CakeOrder\obj\Debug\SageFrame.CakeOrder.pdb
+E:\Development-Shree\RestroOrderSource-2023-6-30\restro_master\SageFrame.CakeOrder\bin\Debug\SageFrame.CakeOrder.dll
+E:\Development-Shree\RestroOrderSource-2023-6-30\restro_master\SageFrame.CakeOrder\bin\Debug\SageFrame.CakeOrder.pdb
+E:\Development-Shree\RestroOrderSource-2023-6-30\restro_master\SageFrame.CakeOrder\bin\Debug\SageFrame.Common.dll
+E:\Development-Shree\RestroOrderSource-2023-6-30\restro_master\SageFrame.CakeOrder\bin\Debug\SageFrame.RestoLoyalty.dll
+E:\Development-Shree\RestroOrderSource-2023-6-30\restro_master\SageFrame.CakeOrder\bin\Debug\SageFrame.RestoLoyalty.pdb
+E:\Development-Shree\RestroOrderSource-2023-6-30\restro_master\SageFrame.CakeOrder\obj\Debug\SageFrame.CakeOrder.csproj.AssemblyReference.cache
+E:\Development-Shree\RestroOrderSource-2023-6-30\restro_master\SageFrame.CakeOrder\obj\Debug\SageFrame.CakeOrder.csproj.CoreCompileInputs.cache
+E:\Development-Shree\RestroOrderSource-2023-6-30\restro_master\SageFrame.CakeOrder\obj\Debug\SageFrame.CakeOrder.csproj.CopyComplete
+E:\Development-Shree\RestroOrderSource-2023-6-30\restro_master\SageFrame.CakeOrder\obj\Debug\SageFrame.CakeOrder.dll
+E:\Development-Shree\RestroOrderSource-2023-6-30\restro_master\SageFrame.CakeOrder\obj\Debug\SageFrame.CakeOrder.pdb
+E:\Development-Shree\RestroOrderSource-Master-2023-07-19\restro_master\SageFrame.CakeOrder\bin\Debug\SageFrame.CakeOrder.dll
+E:\Development-Shree\RestroOrderSource-Master-2023-07-19\restro_master\SageFrame.CakeOrder\bin\Debug\SageFrame.CakeOrder.pdb
+E:\Development-Shree\RestroOrderSource-Master-2023-07-19\restro_master\SageFrame.CakeOrder\bin\Debug\SageFrame.Common.dll
+E:\Development-Shree\RestroOrderSource-Master-2023-07-19\restro_master\SageFrame.CakeOrder\bin\Debug\SageFrame.RestoLoyalty.dll
+E:\Development-Shree\RestroOrderSource-Master-2023-07-19\restro_master\SageFrame.CakeOrder\bin\Debug\SageFrame.RestoLoyalty.pdb
+E:\Development-Shree\RestroOrderSource-Master-2023-07-19\restro_master\SageFrame.CakeOrder\obj\Debug\SageFrame.CakeOrder.csproj.AssemblyReference.cache
+E:\Development-Shree\RestroOrderSource-Master-2023-07-19\restro_master\SageFrame.CakeOrder\obj\Debug\SageFrame.CakeOrder.csproj.CoreCompileInputs.cache
+E:\Development-Shree\RestroOrderSource-Master-2023-07-19\restro_master\SageFrame.CakeOrder\obj\Debug\SageFrame.CakeOrder.csproj.CopyComplete
+E:\Development-Shree\RestroOrderSource-Master-2023-07-19\restro_master\SageFrame.CakeOrder\obj\Debug\SageFrame.CakeOrder.dll
+E:\Development-Shree\RestroOrderSource-Master-2023-07-19\restro_master\SageFrame.CakeOrder\obj\Debug\SageFrame.CakeOrder.pdb
+E:\Development-Shree\RestroOrder-Merge-2023-07-26\restro_master\SageFrame.CakeOrder\bin\Debug\SageFrame.CakeOrder.dll
+E:\Development-Shree\RestroOrder-Merge-2023-07-26\restro_master\SageFrame.CakeOrder\bin\Debug\SageFrame.CakeOrder.pdb
+E:\Development-Shree\RestroOrder-Merge-2023-07-26\restro_master\SageFrame.CakeOrder\bin\Debug\SageFrame.Common.dll
+E:\Development-Shree\RestroOrder-Merge-2023-07-26\restro_master\SageFrame.CakeOrder\bin\Debug\SageFrame.RestoLoyalty.dll
+E:\Development-Shree\RestroOrder-Merge-2023-07-26\restro_master\SageFrame.CakeOrder\bin\Debug\SageFrame.RestoLoyalty.pdb
+E:\Development-Shree\RestroOrder-Merge-2023-07-26\restro_master\SageFrame.CakeOrder\obj\Debug\SageFrame.CakeOrder.csproj.AssemblyReference.cache
+E:\Development-Shree\RestroOrder-Merge-2023-07-26\restro_master\SageFrame.CakeOrder\obj\Debug\SageFrame.CakeOrder.csproj.CoreCompileInputs.cache
+E:\Development-Shree\RestroOrder-Merge-2023-07-26\restro_master\SageFrame.CakeOrder\obj\Debug\SageFrame.CakeOrder.csproj.CopyComplete
+E:\Development-Shree\RestroOrder-Merge-2023-07-26\restro_master\SageFrame.CakeOrder\obj\Debug\SageFrame.CakeOrder.dll
+E:\Development-Shree\RestroOrder-Merge-2023-07-26\restro_master\SageFrame.CakeOrder\obj\Debug\SageFrame.CakeOrder.pdb
+G:\Development\RestroOrderSource-2023-02-14\RestroOrderSource-2023-08-01\restro_master\SageFrame.CakeOrder\bin\Debug\SageFrame.CakeOrder.dll
+G:\Development\RestroOrderSource-2023-02-14\RestroOrderSource-2023-08-01\restro_master\SageFrame.CakeOrder\bin\Debug\SageFrame.CakeOrder.pdb
+G:\Development\RestroOrderSource-2023-02-14\RestroOrderSource-2023-08-01\restro_master\SageFrame.CakeOrder\bin\Debug\SageFrame.Common.dll
+G:\Development\RestroOrderSource-2023-02-14\RestroOrderSource-2023-08-01\restro_master\SageFrame.CakeOrder\bin\Debug\SageFrame.RestoLoyalty.dll
+G:\Development\RestroOrderSource-2023-02-14\RestroOrderSource-2023-08-01\restro_master\SageFrame.CakeOrder\bin\Debug\SageFrame.RestoLoyalty.pdb
+G:\Development\RestroOrderSource-2023-02-14\RestroOrderSource-2023-08-01\restro_master\SageFrame.CakeOrder\obj\Debug\SageFrame.CakeOrder.csproj.AssemblyReference.cache
+G:\Development\RestroOrderSource-2023-02-14\RestroOrderSource-2023-08-01\restro_master\SageFrame.CakeOrder\obj\Debug\SageFrame.CakeOrder.csproj.CoreCompileInputs.cache
+G:\Development\RestroOrderSource-2023-02-14\RestroOrderSource-2023-08-01\restro_master\SageFrame.CakeOrder\obj\Debug\SageFrame.CakeOrder.csproj.CopyComplete
+G:\Development\RestroOrderSource-2023-02-14\RestroOrderSource-2023-08-01\restro_master\SageFrame.CakeOrder\obj\Debug\SageFrame.CakeOrder.dll
+G:\Development\RestroOrderSource-2023-02-14\RestroOrderSource-2023-08-01\restro_master\SageFrame.CakeOrder\obj\Debug\SageFrame.CakeOrder.pdb
+G:\GITDevelopment\Bishal-Raj-Parajuli\RestroOrder_Master\SageFrame.CakeOrder\bin\Debug\SageFrame.CakeOrder.dll
+G:\GITDevelopment\Bishal-Raj-Parajuli\RestroOrder_Master\SageFrame.CakeOrder\bin\Debug\SageFrame.CakeOrder.pdb
+G:\GITDevelopment\Bishal-Raj-Parajuli\RestroOrder_Master\SageFrame.CakeOrder\bin\Debug\SageFrame.Common.dll
+G:\GITDevelopment\Bishal-Raj-Parajuli\RestroOrder_Master\SageFrame.CakeOrder\bin\Debug\SageFrame.RestoLoyalty.dll
+G:\GITDevelopment\Bishal-Raj-Parajuli\RestroOrder_Master\SageFrame.CakeOrder\bin\Debug\SageFrame.RestoLoyalty.pdb
+G:\GITDevelopment\Bishal-Raj-Parajuli\RestroOrder_Master\SageFrame.CakeOrder\obj\Debug\SageFrame.CakeOrder.csproj.AssemblyReference.cache
+G:\GITDevelopment\Bishal-Raj-Parajuli\RestroOrder_Master\SageFrame.CakeOrder\obj\Debug\SageFrame.CakeOrder.csproj.CoreCompileInputs.cache
+G:\GITDevelopment\Bishal-Raj-Parajuli\RestroOrder_Master\SageFrame.CakeOrder\obj\Debug\SageFrame.CakeOrder.csproj.CopyComplete
+G:\GITDevelopment\Bishal-Raj-Parajuli\RestroOrder_Master\SageFrame.CakeOrder\obj\Debug\SageFrame.CakeOrder.dll
+G:\GITDevelopment\Bishal-Raj-Parajuli\RestroOrder_Master\SageFrame.CakeOrder\obj\Debug\SageFrame.CakeOrder.pdb
+G:\GITDevelopment\Master_RestroOrder\SageFrame.CakeOrder\bin\Debug\SageFrame.CakeOrder.dll
+G:\GITDevelopment\Master_RestroOrder\SageFrame.CakeOrder\bin\Debug\SageFrame.CakeOrder.pdb
+G:\GITDevelopment\Master_RestroOrder\SageFrame.CakeOrder\bin\Debug\SageFrame.Common.dll
+G:\GITDevelopment\Master_RestroOrder\SageFrame.CakeOrder\bin\Debug\SageFrame.RestoLoyalty.dll
+G:\GITDevelopment\Master_RestroOrder\SageFrame.CakeOrder\bin\Debug\SageFrame.RestoLoyalty.pdb
+G:\GITDevelopment\Master_RestroOrder\SageFrame.CakeOrder\obj\Debug\SageFrame.CakeOrder.csproj.AssemblyReference.cache
+G:\GITDevelopment\Master_RestroOrder\SageFrame.CakeOrder\obj\Debug\SageFrame.CakeOrder.csproj.CoreCompileInputs.cache
+G:\GITDevelopment\Master_RestroOrder\SageFrame.CakeOrder\obj\Debug\SageFrame.CakeOrder.csproj.CopyComplete
+G:\GITDevelopment\Master_RestroOrder\SageFrame.CakeOrder\obj\Debug\SageFrame.CakeOrder.dll
+G:\GITDevelopment\Master_RestroOrder\SageFrame.CakeOrder\obj\Debug\SageFrame.CakeOrder.pdb
+G:\GITDevelopment\Chicken\SageFrame.CakeOrder\bin\Debug\SageFrame.CakeOrder.dll
+G:\GITDevelopment\Chicken\SageFrame.CakeOrder\bin\Debug\SageFrame.CakeOrder.pdb
+G:\GITDevelopment\Chicken\SageFrame.CakeOrder\bin\Debug\SageFrame.Common.dll
+G:\GITDevelopment\Chicken\SageFrame.CakeOrder\bin\Debug\SageFrame.RestoLoyalty.dll
+G:\GITDevelopment\Chicken\SageFrame.CakeOrder\bin\Debug\SageFrame.RestoLoyalty.pdb
+G:\GITDevelopment\Chicken\SageFrame.CakeOrder\obj\Debug\SageFrame.CakeOrder.csproj.AssemblyReference.cache
+G:\GITDevelopment\Chicken\SageFrame.CakeOrder\obj\Debug\SageFrame.CakeOrder.csproj.CoreCompileInputs.cache
+G:\GITDevelopment\Chicken\SageFrame.CakeOrder\obj\Debug\SageFrame.CakeOrder.csproj.CopyComplete
+G:\GITDevelopment\Chicken\SageFrame.CakeOrder\obj\Debug\SageFrame.CakeOrder.dll
+G:\GITDevelopment\Chicken\SageFrame.CakeOrder\obj\Debug\SageFrame.CakeOrder.pdb
+E:\Development\Restro-GIT\AdarshaGit\SageFrame.CakeOrder\bin\Debug\SageFrame.CakeOrder.dll
+E:\Development\Restro-GIT\AdarshaGit\SageFrame.CakeOrder\bin\Debug\SageFrame.CakeOrder.pdb
+E:\Development\Restro-GIT\AdarshaGit\SageFrame.CakeOrder\bin\Debug\SageFrame.Common.dll
+E:\Development\Restro-GIT\AdarshaGit\SageFrame.CakeOrder\bin\Debug\SageFrame.RestoLoyalty.dll
+E:\Development\Restro-GIT\AdarshaGit\SageFrame.CakeOrder\bin\Debug\SageFrame.RestoLoyalty.pdb
+E:\Development\Restro-GIT\AdarshaGit\SageFrame.CakeOrder\obj\Debug\SageFrame.CakeOrder.csproj.AssemblyReference.cache
+E:\Development\Restro-GIT\AdarshaGit\SageFrame.CakeOrder\obj\Debug\SageFrame.CakeOrder.csproj.CoreCompileInputs.cache
+E:\Development\Restro-GIT\AdarshaGit\SageFrame.CakeOrder\obj\Debug\SageFrame.CakeOrder.csproj.CopyComplete
+E:\Development\Restro-GIT\AdarshaGit\SageFrame.CakeOrder\obj\Debug\SageFrame.CakeOrder.dll
+E:\Development\Restro-GIT\AdarshaGit\SageFrame.CakeOrder\obj\Debug\SageFrame.CakeOrder.pdb

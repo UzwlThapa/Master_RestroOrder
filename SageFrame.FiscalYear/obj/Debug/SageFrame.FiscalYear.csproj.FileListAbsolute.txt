@@ -1,0 +1,108 @@
+E:\Projects\restroorder_inventory\RestroOrder\SageFrame\bin\SageFrame.FiscalYear.dll
+E:\Projects\restroorder_inventory\RestroOrder\SageFrame\bin\SageFrame.FiscalYear.pdb
+E:\Projects\restroorder_inventory\RestroOrder\SageFrame.FiscalYear\obj\Debug\SageFrame.FiscalYear.dll
+E:\Projects\restroorder_inventory\RestroOrder\SageFrame.FiscalYear\obj\Debug\SageFrame.FiscalYear.pdb
+E:\gitProject\New folder\restroorder\SageFrame\bin\SageFrame.FiscalYear.dll
+E:\gitProject\New folder\restroorder\SageFrame\bin\SageFrame.FiscalYear.pdb
+E:\gitProject\New folder\restroorder\SageFrame.FiscalYear\obj\Debug\SageFrame.FiscalYear.csprojResolveAssemblyReference.cache
+E:\gitProject\New folder\restroorder\SageFrame.FiscalYear\obj\Debug\SageFrame.FiscalYear.dll
+E:\gitProject\New folder\restroorder\SageFrame.FiscalYear\obj\Debug\SageFrame.FiscalYear.pdb
+E:\Danfe Project\Git\restroorder\SageFrame\bin\SageFrame.FiscalYear.dll
+E:\Danfe Project\Git\restroorder\SageFrame\bin\SageFrame.FiscalYear.pdb
+E:\Danfe Project\Git\restroorder\SageFrame.FiscalYear\obj\Debug\SageFrame.FiscalYear.dll
+E:\Danfe Project\Git\restroorder\SageFrame.FiscalYear\obj\Debug\SageFrame.FiscalYear.pdb
+E:\roman\Restro\restroorder\SageFrame\bin\SageFrame.FiscalYear.dll
+E:\roman\Restro\restroorder\SageFrame\bin\SageFrame.FiscalYear.pdb
+E:\roman\Restro\restroorder\SageFrame.FiscalYear\obj\Debug\SageFrame.FiscalYear.dll
+E:\roman\Restro\restroorder\SageFrame.FiscalYear\obj\Debug\SageFrame.FiscalYear.pdb
+E:\Danfe Project\Git\restroorder\SageFrame.FiscalYear\obj\Debug\SageFrame.FiscalYear.csprojResolveAssemblyReference.cache
+E:\Projects\RestroOrder\restroorder\SageFrame\bin\SageFrame.FiscalYear.dll
+E:\Projects\RestroOrder\restroorder\SageFrame\bin\SageFrame.FiscalYear.pdb
+E:\Projects\RestroOrder\restroorder\SageFrame.FiscalYear\obj\Debug\SageFrame.FiscalYear.dll
+E:\Projects\RestroOrder\restroorder\SageFrame.FiscalYear\obj\Debug\SageFrame.FiscalYear.pdb
+D:\Projects\RestroOder\restroorder\SageFrame\bin\SageFrame.FiscalYear.dll
+D:\Projects\RestroOder\restroorder\SageFrame\bin\SageFrame.FiscalYear.pdb
+D:\Projects\RestroOder\restroorder\SageFrame.FiscalYear\obj\Debug\SageFrame.FiscalYear.dll
+D:\Projects\RestroOder\restroorder\SageFrame.FiscalYear\obj\Debug\SageFrame.FiscalYear.pdb
+E:\Restro_Order\Developer\restroorder\SageFrame\bin\SageFrame.FiscalYear.dll
+E:\Restro_Order\Developer\restroorder\SageFrame\bin\SageFrame.FiscalYear.pdb
+E:\Restro_Order\Developer\restroorder\SageFrame.FiscalYear\obj\Debug\SageFrame.FiscalYear.dll
+E:\Restro_Order\Developer\restroorder\SageFrame.FiscalYear\obj\Debug\SageFrame.FiscalYear.pdb
+E:\SAROJ CAKE ORDER 8Mar2021\cakeorders\cakeorders\SageFrame\bin\SageFrame.FiscalYear.dll
+E:\SAROJ CAKE ORDER 8Mar2021\cakeorders\cakeorders\SageFrame\bin\SageFrame.FiscalYear.pdb
+E:\SAROJ CAKE ORDER 8Mar2021\cakeorders\cakeorders\SageFrame.FiscalYear\obj\Debug\SageFrame.FiscalYear.dll
+E:\SAROJ CAKE ORDER 8Mar2021\cakeorders\cakeorders\SageFrame.FiscalYear\obj\Debug\SageFrame.FiscalYear.pdb
+D:\My projects\CakeOrder\cakeorders\SageFrame\bin\SageFrame.FiscalYear.dll
+D:\My projects\CakeOrder\cakeorders\SageFrame\bin\SageFrame.FiscalYear.pdb
+D:\My projects\CakeOrder\cakeorders\SageFrame.FiscalYear\obj\Debug\SageFrame.FiscalYear.dll
+D:\My projects\CakeOrder\cakeorders\SageFrame.FiscalYear\obj\Debug\SageFrame.FiscalYear.pdb
+G:\Development\RestroMasterV3\RestroOrderSource-2023-01-17\restro_master\SageFrame\bin\SageFrame.FiscalYear.dll
+G:\Development\RestroMasterV3\RestroOrderSource-2023-01-17\restro_master\SageFrame\bin\SageFrame.FiscalYear.pdb
+G:\Development\RestroMasterV3\RestroOrderSource-2023-01-17\restro_master\SageFrame.FiscalYear\obj\Debug\SageFrame.FiscalYear.csproj.AssemblyReference.cache
+G:\Development\RestroMasterV3\RestroOrderSource-2023-01-17\restro_master\SageFrame.FiscalYear\obj\Debug\SageFrame.FiscalYear.csproj.CoreCompileInputs.cache
+G:\Development\RestroMasterV3\RestroOrderSource-2023-01-17\restro_master\SageFrame.FiscalYear\obj\Debug\SageFrame.FiscalYear.csproj.CopyComplete
+G:\Development\RestroMasterV3\RestroOrderSource-2023-01-17\restro_master\SageFrame.FiscalYear\obj\Debug\SageFrame.FiscalYear.dll
+G:\Development\RestroMasterV3\RestroOrderSource-2023-01-17\restro_master\SageFrame.FiscalYear\obj\Debug\SageFrame.FiscalYear.pdb
+G:\Development\RestroOrder20230214Source\restro_master\SageFrame\bin\SageFrame.FiscalYear.dll
+G:\Development\RestroOrder20230214Source\restro_master\SageFrame\bin\SageFrame.FiscalYear.pdb
+G:\Development\RestroOrder20230214Source\restro_master\SageFrame.FiscalYear\obj\Debug\SageFrame.FiscalYear.csproj.AssemblyReference.cache
+G:\Development\RestroOrder20230214Source\restro_master\SageFrame.FiscalYear\obj\Debug\SageFrame.FiscalYear.csproj.CoreCompileInputs.cache
+G:\Development\RestroOrder20230214Source\restro_master\SageFrame.FiscalYear\obj\Debug\SageFrame.FiscalYear.csproj.CopyComplete
+G:\Development\RestroOrder20230214Source\restro_master\SageFrame.FiscalYear\obj\Debug\SageFrame.FiscalYear.dll
+G:\Development\RestroOrder20230214Source\restro_master\SageFrame.FiscalYear\obj\Debug\SageFrame.FiscalYear.pdb
+G:\Development\RestroOrderSource-2023-02-14\restro_master\SageFrame\bin\SageFrame.FiscalYear.dll
+G:\Development\RestroOrderSource-2023-02-14\restro_master\SageFrame\bin\SageFrame.FiscalYear.pdb
+G:\Development\RestroOrderSource-2023-02-14\restro_master\SageFrame.FiscalYear\obj\Debug\SageFrame.FiscalYear.csproj.AssemblyReference.cache
+G:\Development\RestroOrderSource-2023-02-14\restro_master\SageFrame.FiscalYear\obj\Debug\SageFrame.FiscalYear.csproj.CoreCompileInputs.cache
+G:\Development\RestroOrderSource-2023-02-14\restro_master\SageFrame.FiscalYear\obj\Debug\SageFrame.FiscalYear.csproj.CopyComplete
+G:\Development\RestroOrderSource-2023-02-14\restro_master\SageFrame.FiscalYear\obj\Debug\SageFrame.FiscalYear.dll
+G:\Development\RestroOrderSource-2023-02-14\restro_master\SageFrame.FiscalYear\obj\Debug\SageFrame.FiscalYear.pdb
+E:\Development-Shree\RestroOrderSource-Master-2023-07-19\restro_master\SageFrame\bin\SageFrame.FiscalYear.dll
+E:\Development-Shree\RestroOrderSource-Master-2023-07-19\restro_master\SageFrame\bin\SageFrame.FiscalYear.pdb
+E:\Development-Shree\RestroOrderSource-Master-2023-07-19\restro_master\SageFrame.FiscalYear\obj\Debug\SageFrame.FiscalYear.csproj.AssemblyReference.cache
+E:\Development-Shree\RestroOrderSource-Master-2023-07-19\restro_master\SageFrame.FiscalYear\obj\Debug\SageFrame.FiscalYear.csproj.CoreCompileInputs.cache
+E:\Development-Shree\RestroOrderSource-Master-2023-07-19\restro_master\SageFrame.FiscalYear\obj\Debug\SageFrame.FiscalYear.csproj.CopyComplete
+E:\Development-Shree\RestroOrderSource-Master-2023-07-19\restro_master\SageFrame.FiscalYear\obj\Debug\SageFrame.FiscalYear.dll
+E:\Development-Shree\RestroOrderSource-Master-2023-07-19\restro_master\SageFrame.FiscalYear\obj\Debug\SageFrame.FiscalYear.pdb
+E:\Development-Shree\RestroOrder-Merge-2023-07-26\restro_master\SageFrame\bin\SageFrame.FiscalYear.dll
+E:\Development-Shree\RestroOrder-Merge-2023-07-26\restro_master\SageFrame\bin\SageFrame.FiscalYear.pdb
+E:\Development-Shree\RestroOrder-Merge-2023-07-26\restro_master\SageFrame.FiscalYear\obj\Debug\SageFrame.FiscalYear.csproj.AssemblyReference.cache
+E:\Development-Shree\RestroOrder-Merge-2023-07-26\restro_master\SageFrame.FiscalYear\obj\Debug\SageFrame.FiscalYear.csproj.CoreCompileInputs.cache
+E:\Development-Shree\RestroOrder-Merge-2023-07-26\restro_master\SageFrame.FiscalYear\obj\Debug\SageFrame.FiscalYear.csproj.CopyComplete
+E:\Development-Shree\RestroOrder-Merge-2023-07-26\restro_master\SageFrame.FiscalYear\obj\Debug\SageFrame.FiscalYear.dll
+E:\Development-Shree\RestroOrder-Merge-2023-07-26\restro_master\SageFrame.FiscalYear\obj\Debug\SageFrame.FiscalYear.pdb
+G:\Development\RestroOrderSource-2023-02-14\RestroOrderSource-2023-08-01\restro_master\SageFrame\bin\SageFrame.FiscalYear.dll
+G:\Development\RestroOrderSource-2023-02-14\RestroOrderSource-2023-08-01\restro_master\SageFrame\bin\SageFrame.FiscalYear.pdb
+G:\Development\RestroOrderSource-2023-02-14\RestroOrderSource-2023-08-01\restro_master\SageFrame.FiscalYear\obj\Debug\SageFrame.FiscalYear.csproj.AssemblyReference.cache
+G:\Development\RestroOrderSource-2023-02-14\RestroOrderSource-2023-08-01\restro_master\SageFrame.FiscalYear\obj\Debug\SageFrame.FiscalYear.csproj.CoreCompileInputs.cache
+G:\Development\RestroOrderSource-2023-02-14\RestroOrderSource-2023-08-01\restro_master\SageFrame.FiscalYear\obj\Debug\SageFrame.FiscalYear.csproj.CopyComplete
+G:\Development\RestroOrderSource-2023-02-14\RestroOrderSource-2023-08-01\restro_master\SageFrame.FiscalYear\obj\Debug\SageFrame.FiscalYear.dll
+G:\Development\RestroOrderSource-2023-02-14\RestroOrderSource-2023-08-01\restro_master\SageFrame.FiscalYear\obj\Debug\SageFrame.FiscalYear.pdb
+G:\GITDevelopment\Bishal-Raj-Parajuli\RestroOrder_Master\SageFrame\bin\SageFrame.FiscalYear.dll
+G:\GITDevelopment\Bishal-Raj-Parajuli\RestroOrder_Master\SageFrame\bin\SageFrame.FiscalYear.pdb
+G:\GITDevelopment\Bishal-Raj-Parajuli\RestroOrder_Master\SageFrame.FiscalYear\obj\Debug\SageFrame.FiscalYear.csproj.AssemblyReference.cache
+G:\GITDevelopment\Bishal-Raj-Parajuli\RestroOrder_Master\SageFrame.FiscalYear\obj\Debug\SageFrame.FiscalYear.csproj.CoreCompileInputs.cache
+G:\GITDevelopment\Bishal-Raj-Parajuli\RestroOrder_Master\SageFrame.FiscalYear\obj\Debug\SageFrame.FiscalYear.csproj.CopyComplete
+G:\GITDevelopment\Bishal-Raj-Parajuli\RestroOrder_Master\SageFrame.FiscalYear\obj\Debug\SageFrame.FiscalYear.dll
+G:\GITDevelopment\Bishal-Raj-Parajuli\RestroOrder_Master\SageFrame.FiscalYear\obj\Debug\SageFrame.FiscalYear.pdb
+G:\GITDevelopment\Master_RestroOrder\SageFrame\bin\SageFrame.FiscalYear.dll
+G:\GITDevelopment\Master_RestroOrder\SageFrame\bin\SageFrame.FiscalYear.pdb
+G:\GITDevelopment\Master_RestroOrder\SageFrame.FiscalYear\obj\Debug\SageFrame.FiscalYear.csproj.AssemblyReference.cache
+G:\GITDevelopment\Master_RestroOrder\SageFrame.FiscalYear\obj\Debug\SageFrame.FiscalYear.csproj.CoreCompileInputs.cache
+G:\GITDevelopment\Master_RestroOrder\SageFrame.FiscalYear\obj\Debug\SageFrame.FiscalYear.csproj.CopyComplete
+G:\GITDevelopment\Master_RestroOrder\SageFrame.FiscalYear\obj\Debug\SageFrame.FiscalYear.dll
+G:\GITDevelopment\Master_RestroOrder\SageFrame.FiscalYear\obj\Debug\SageFrame.FiscalYear.pdb
+G:\GITDevelopment\Chicken\SageFrame\bin\SageFrame.FiscalYear.dll
+G:\GITDevelopment\Chicken\SageFrame\bin\SageFrame.FiscalYear.pdb
+G:\GITDevelopment\Chicken\SageFrame.FiscalYear\obj\Debug\SageFrame.FiscalYear.csproj.AssemblyReference.cache
+G:\GITDevelopment\Chicken\SageFrame.FiscalYear\obj\Debug\SageFrame.FiscalYear.csproj.CoreCompileInputs.cache
+G:\GITDevelopment\Chicken\SageFrame.FiscalYear\obj\Debug\SageFrame.FiscalYear.csproj.CopyComplete
+G:\GITDevelopment\Chicken\SageFrame.FiscalYear\obj\Debug\SageFrame.FiscalYear.dll
+G:\GITDevelopment\Chicken\SageFrame.FiscalYear\obj\Debug\SageFrame.FiscalYear.pdb
+E:\Development\Restro-GIT\AdarshaGit\SageFrame\bin\SageFrame.FiscalYear.dll
+E:\Development\Restro-GIT\AdarshaGit\SageFrame\bin\SageFrame.FiscalYear.pdb
+E:\Development\Restro-GIT\AdarshaGit\SageFrame.FiscalYear\obj\Debug\SageFrame.FiscalYear.csproj.AssemblyReference.cache
+E:\Development\Restro-GIT\AdarshaGit\SageFrame.FiscalYear\obj\Debug\SageFrame.FiscalYear.csproj.CoreCompileInputs.cache
+E:\Development\Restro-GIT\AdarshaGit\SageFrame.FiscalYear\obj\Debug\SageFrame.FiscalYear.csproj.CopyComplete
+E:\Development\Restro-GIT\AdarshaGit\SageFrame.FiscalYear\obj\Debug\SageFrame.FiscalYear.dll
+E:\Development\Restro-GIT\AdarshaGit\SageFrame.FiscalYear\obj\Debug\SageFrame.FiscalYear.pdb
