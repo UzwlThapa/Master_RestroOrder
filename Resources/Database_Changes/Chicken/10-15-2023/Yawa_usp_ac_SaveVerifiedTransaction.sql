@@ -1,5 +1,9 @@
-SET QUOTED_IDENTIFIER ON;
-SET ANSI_NULLS ON;
+
+GO
+/****** Object:  StoredProcedure [dbo].[usp_ac_SaveVerifiedTransaction]    Script Date: 15/10/2023 11:10:54 AM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
 GO
 /*
 ====================================
@@ -17,7 +21,7 @@ EXEC dbo.usp_ac_SaveVerifiedTransaction @TransactionID = 0 ,                    
                                         @postedOn = N'' ,                          -- nvarchar(256)
                                         @verifiedBy = N''                          -- nvarchar(256)
 */
-ALTER PROC [dbo].usp_ac_SaveVerifiedTransaction
+ALTER PROC [dbo].[usp_ac_SaveVerifiedTransaction]
     @TransactionID INT ,
     @TransactionDate DATETIME ,
     @VoucherTypeID INT ,
@@ -38,9 +42,9 @@ AS
         DECLARE @SalesMasterID INT;
         DECLARE @BillDate DATETIME;
         SELECT @SalesMasterID = t.SalesMasterId ,
-               @BillDate = t.BillDate
+               @BillDate = ISNULL(t.BillDate,@postedOn)
         FROM   dbo.Ac_TempTransaction t
-        WHERE  TransactionID = @TransactionID;
+        WHERE  t.TransactionID = @TransactionID;
 
         INSERT INTO dbo.Ac_Transaction ( [TransactionDate] ,
                                          BillDate ,
@@ -53,7 +57,9 @@ AS
                                          SalesMasterId )
         VALUES ( @TransactionDate, @BillDate, @VoucherTypeID, @Descriptions, @PostedBy, @postedOn, GETDATE () ,
                  @verifiedBy , @SalesMasterID );
+
         SELECT @verifiedtransactionId = CAST (SCOPE_IDENTITY () AS INT);
+
         UPDATE dbo.Ac_TempTransaction
         SET    IsVerified = 1
         WHERE  TransactionID = @TransactionID;
@@ -96,5 +102,3 @@ AS
 
         SELECT @verifiedtransactionId;
     END;
-GO
-

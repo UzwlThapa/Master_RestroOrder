@@ -1,5 +1,8 @@
-SET QUOTED_IDENTIFIER ON;
-SET ANSI_NULLS ON;
+GO
+/****** Object:  StoredProcedure [dbo].[usp_ac_getProfitLoss]    Script Date: 15/10/2023 10:59:55 AM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
 GO
 
 /*
@@ -7,13 +10,13 @@ GO
 	Author: Unknown
     Creadted Date: Unknown
 	Last Modified By: Yawahang
-	Last Modified Date: 12/10/2023
+	Last Modified Date: 11/10/2023
 ====================================
 
-EXEC dbo.usp_ac_getProfitLoss '2018-10-14','2023-09-21'
+EXEC dbo.usp_ac_getProfitLoss '2023-09-06','2023-09-06'
 
 */
-ALTER PROCEDURE [dbo].usp_ac_getProfitLoss
+ALTER PROCEDURE [dbo].[usp_ac_getProfitLoss]
     @StartDate DATETIME ,
     @EndDate DATETIME
 AS
@@ -28,6 +31,12 @@ AS
         --SELECT @SalesVoucherTypeId = VoucherTypeID
         --FROM   dbo.Ac_VoucherType t
         --WHERE  t.VoucherName = 'Sales Voucher';
+
+        DECLARE @StartDateTime DATETIME;
+        DECLARE @EndDateTime DATETIME;
+        SELECT @StartDateTime = DATEADD (HOUR, 4, @StartDate);
+        SELECT @EndDateTime = DATEADD (MINUTE, -1, DATEADD (HOUR, 28, @EndDate));
+     
 
         CREATE TABLE #AccountLedger
         (   PFinancialAcID INT NULL ,
@@ -57,26 +66,56 @@ AS
                         INNER JOIN dbo.Ac_TransactionDetail TD ON T.TransactionID = TD.TransactionID
                         INNER JOIN dbo.Ac_FinancialAc FA ON FA.FinancialAcID = TD.FinancialAcID
                         LEFT JOIN dbo.Ac_FinancialAc AS afa ON afa.FinancialAcID = FA.PFinancialAcID
-               WHERE    T.PostedOn BETWEEN DATEADD (HOUR, 4, @StartDate) AND DATEADD (HOUR, 4, @EndDate)
-               AND      ISNULL (FA.AccEntryType, 0) = @AccEntryTypeId 
+               WHERE    ISNULL (T.BillDate, T.PostedOn) BETWEEN @StartDateTime AND @EndDateTime
+               AND      ISNULL (FA.AccEntryType, 0) = @AccEntryTypeId
+               AND      T.Descriptions NOT LIKE 'Sales Bill No%'
                GROUP BY TD.FinancialAcID ,
                         FA.Name ,
                         FA.PFinancialAcID ,
                         afa.Name ,
                         FA.IsDebit;
-						 
+
+        -- insert sales
+        INSERT #AccountLedger ( PFinancialAcID ,
+                                FinancialAcID ,
+                                PFinancialAcName ,
+                                FinancialAcName ,
+                                Debit ,
+                                Credit ,
+                                IsDebit )
+               SELECT   FA.PFinancialAcID ,
+                        TD.FinancialAcID ,
+                        afa.Name ,
+                        FA.Name ,
+                        SUM (TD.Debit) ,
+                        SUM (TD.Credit) ,
+                        FA.IsDebit
+               FROM     dbo.Ac_Transaction T
+                        INNER JOIN dbo.Ac_TransactionDetail TD ON T.TransactionID = TD.TransactionID
+                        INNER JOIN dbo.Ac_FinancialAc FA ON FA.FinancialAcID = TD.FinancialAcID
+                        LEFT JOIN dbo.Ac_FinancialAc AS afa ON afa.FinancialAcID = FA.PFinancialAcID
+                        --INNER JOIN dbo.RO_SalesMaster sm ON sm.salesMasterId = T.SalesMasterId
+               WHERE    ISNULL (T.BillDate, T.PostedOn) BETWEEN @StartDateTime AND @EndDateTime
+			   -- ISNULL (sm.BillDate, ISNULL (T.BillDate, T.PostedOn)) BETWEEN @StartDateTime AND @EndDateTime
+               --AND      T.VoucherTypeID = @SalesVoucherTypeId
+               AND      T.Descriptions NOT LIKE 'Sales Return Bill No%'
+               GROUP BY TD.FinancialAcID ,
+                        FA.Name ,
+                        FA.PFinancialAcID ,
+                        afa.Name ,
+                        FA.IsDebit 
 
         DECLARE @OpeningStock DECIMAL (18, 2);
         SELECT @OpeningStock = SUM (TD.Debit) - SUM (TD.Credit)
         FROM   dbo.Ac_Transaction tt
                INNER JOIN dbo.Ac_TransactionDetail TD ON tt.TransactionID = TD.TransactionID
-        WHERE  tt.PostedOn < @StartDate;
+        WHERE  ISNULL (tt.BillDate, tt.PostedOn) < @StartDateTime;
 
         DECLARE @ClosingStock DECIMAL (18, 2);
         SELECT @ClosingStock = SUM (TD.Debit) - SUM (TD.Credit)
         FROM   dbo.Ac_Transaction tt
                INNER JOIN dbo.Ac_TransactionDetail TD ON tt.TransactionID = TD.TransactionID
-        WHERE  tt.PostedOn <= @EndDate;
+        WHERE  ISNULL (tt.BillDate, ISNULL (tt.BillDate, tt.PostedOn)) <= @EndDateTime;
 
         INSERT #AccountLedger ( PFinancialAcID ,
                                 FinancialAcID ,
@@ -117,5 +156,3 @@ AS
 
         DROP TABLE IF EXISTS #AccountLedger;
     END;
-GO
-
