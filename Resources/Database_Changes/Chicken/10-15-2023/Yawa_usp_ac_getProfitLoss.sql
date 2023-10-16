@@ -1,5 +1,6 @@
+USE [RO-CHICKENSTATION]
 GO
-/****** Object:  StoredProcedure [dbo].[usp_ac_getProfitLoss]    Script Date: 15/10/2023 10:59:55 AM ******/
+/****** Object:  StoredProcedure [dbo].[usp_ac_getProfitLoss]    Script Date: 15/10/2023 12:43:18 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -27,10 +28,10 @@ AS
         FROM   dbo.Ac_EntryType
         WHERE  AccountEntryType = 'Profit & Loss A/C';
 
-        --DECLARE @SalesVoucherTypeId INT;
-        --SELECT @SalesVoucherTypeId = VoucherTypeID
-        --FROM   dbo.Ac_VoucherType t
-        --WHERE  t.VoucherName = 'Sales Voucher';
+        DECLARE @SalesVoucherTypeId INT;
+        SELECT @SalesVoucherTypeId = VoucherTypeID
+        FROM   dbo.Ac_VoucherType t
+        WHERE  t.VoucherName = 'Sales Voucher';
 
         DECLARE @StartDateTime DATETIME;
         DECLARE @EndDateTime DATETIME;
@@ -94,11 +95,10 @@ AS
                         INNER JOIN dbo.Ac_TransactionDetail TD ON T.TransactionID = TD.TransactionID
                         INNER JOIN dbo.Ac_FinancialAc FA ON FA.FinancialAcID = TD.FinancialAcID
                         LEFT JOIN dbo.Ac_FinancialAc AS afa ON afa.FinancialAcID = FA.PFinancialAcID
-                        --INNER JOIN dbo.RO_SalesMaster sm ON sm.salesMasterId = T.SalesMasterId
                WHERE    ISNULL (T.BillDate, T.PostedOn) BETWEEN @StartDateTime AND @EndDateTime
-			   -- ISNULL (sm.BillDate, ISNULL (T.BillDate, T.PostedOn)) BETWEEN @StartDateTime AND @EndDateTime
-               --AND      T.VoucherTypeID = @SalesVoucherTypeId
                AND      T.Descriptions NOT LIKE 'Sales Return Bill No%'
+			   and t.VoucherTypeID = @SalesVoucherTypeId
+               AND      ISNULL (FA.AccEntryType, 0) = @AccEntryTypeId
                GROUP BY TD.FinancialAcID ,
                         FA.Name ,
                         FA.PFinancialAcID ,
