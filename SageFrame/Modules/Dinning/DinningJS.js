@@ -819,73 +819,111 @@ function IntegerAndDecimal(evt, element) {
                     htmls += "<h4>Tables in " + datas[0].restroRoom + "</h4><hr><ul>";
 
                     $.each(datas, function (index, value) {
-                        if (!(value.MergeTableList > 0 && value.MergeTableList != value.restrotableId)) {
-                            htmls += ("<a id ='" + (value.IsTable ? "Table_" : "Room_"));
-                            if (value.BillPaid.toString() == '0' && value.IsCancelled.toString() == '0' || value.MergeTableList > 0 || value.restrotablesStatusID == 7) {
-                                if (value.MergeTableList > 0) {
-                                    if (value.restrotablesStatusID == 6) {
-                                        htmls += ("" + value.restrotableId + "_img_yes_notoccupied_" + value.restrotableTitle + "' class = 'imgtable'  >");
-                                        htmls += ("<li>");
-                                        htmls += ("<img src='" + p.HostUrl + "/Modules/RestroDashboard/image/" + (value.IsTable ? "tablegreen.png" : "room-green.png") + "'> ");
-                                    } else {
-                                        htmls += ("" + value.restrotableId + "_img_yes_occupied_" + value.restrotableTitle + "' class = 'imgtable'  >");
-                                        htmls += ("<li>");
-                                        htmls += ("<img src='" + p.HostUrl + "/Modules/RestroDashboard/image/" + (value.IsTable ? "tablered.png" : "room-red.png") + "'> ");
-                                    }
-                                }
-                                else if (value.IsTable == false && value.OrderMasterId < 0) {
-                                    htmls += ("" + value.restrotableId + "_img_no_occupied_" + value.restrotableTitle + "' class = 'imgtable'  >");
-                                    htmls += ("<li>");
-                                    htmls += ("<img src='" + p.HostUrl + "/Modules/RestroDashboard/image/" + (value.IsTable ? "tablegreen.png" : "room-green.png") + "'> ");
-                                }
-                                else {
-                                    htmls += ("" + value.restrotableId + "_img_no_occupied_" + value.restrotableTitle + "' class = 'imgtable'  >");
-                                    htmls += ("<li>");
-                                    htmls += ("<img src='" + p.HostUrl + "/Modules/RestroDashboard/image/" + (value.IsTable ? "tablered.png" : "room-red.png") + "'> ");
-                                }
-                            }
-                            else {
-                                htmls += ("" + value.restrotableId + "_img_no_notoccupied_" + value.restrotableTitle + "' class = 'imgtable'  >");
-                                htmls += ("<li>");
-                                htmls += ("<img src='" + p.HostUrl + "/Modules/RestroDashboard/image/" + (value.IsTable ? "tablegreen.png" : "room-green.png") + "'> ");
-                            }
-                            htmls += ("<h5 class='");
-                            htmls += (value.BillPaid.toString() == '0' && value.IsCancelled.toString() == '0' && value.IsTable ? "NotPaid" : "Paid");
-                            htmls += ("' >" + (value.MergeTableList > 0 ? value.MergeTableName : value.restrotableTitle) + "</h5>");
 
-
-                            //if (value.BillPaid.toString() == '0' && value.IsCancelled.toString() == '0') {
-                            if (value.tableDate !== "") {
-                                htmls += ("<h5 class='order-time'");
-
-                                var dateprev = new Date(value.tableDate);
-                                var datet = new Date();
-                                var diff = (datet - dateprev) / 1000;
-                                function secondsTimeSpanToHMS(s) {
-                                    var h = Math.floor(s / 3600); //Get whole hours
-                                    s -= h * 3600;
-                                    var m = Math.floor(s / 60); //Get remaining minutes
-                                    s -= m * 60;
-                                    if (h == 0) {
-                                        return (m < 10 ? '0' + m : m) + "M";//zero padding on minutes and seconds                           }
-                                    } else {
-                                        return h + ":" + (m < 10 ? '0' + m : m) + "M";//zero padding on minutes and seconds                           }
-                                    }
-
-                                }
-                                var dinal = secondsTimeSpanToHMS(diff)
-                                //console.log(); // 30
-                                htmls += ("' >" + value.tabletime + "</h5><h5 class='order-timeA'>" + dinal + "</h5>");
-
-                            }
-
-                            htmls += ("</li></a>");
+                        // new added for table bill not cleared issue majheri
+                        htmls += ("<a id ='" + (value.IsTable ? "Table_" : "Room_"));
+                        if (value.tableDate == "") {
+                            htmls += ("" + value.restrotableId + "_img_yes_notoccupied_" + value.restrotableTitle + "' class = 'imgtable'  >");
+                            htmls += ("<li>");
+                            htmls += ("<img src='" + p.HostUrl + "/Modules/RestroDashboard/image/" + (value.IsTable ? "tablegreen.png" : "room-green.png") + "'> ");
+                        } else {
+                            htmls += ("" + value.restrotableId + "_img_yes_occupied_" + value.restrotableTitle + "' class = 'imgtable'  >");
+                            htmls += ("<li>");
+                            htmls += ("<img src='" + p.HostUrl + "/Modules/RestroDashboard/image/" + (value.IsTable ? "tablered.png" : "room-red.png") + "'> ");
                         }
 
+                        htmls += ("<h5 class='");
+                        htmls += (value.BillPaid.toString() == '0' && value.IsCancelled.toString() == '0' && value.IsTable ? "NotPaid" : "Paid");
+                        htmls += ("' >" + (value.MergeTableList > 0 ? value.MergeTableName : value.restrotableTitle) + "</h5>");
 
+                         
+                        if (value.tableDate !== "") {
+                            htmls += ("<h5 class='order-time'");
+
+                            var dateprev = new Date(value.tableDate);
+                            var datet = new Date();
+                            var diff = (datet - dateprev) / 1000;
+                            function secondsTimeSpanToHMS(s) {
+                                var h = Math.floor(s / 3600); //Get whole hours
+                                s -= h * 3600;
+                                var m = Math.floor(s / 60); //Get remaining minutes
+                                s -= m * 60;
+                                if (h == 0) {
+                                    return (m < 10 ? '0' + m : m) + "M";//zero padding on minutes and seconds                           
+                                } else {
+                                    return h + ":" + (m < 10 ? '0' + m : m) + "M";//zero padding on minutes and seconds                          
+                                } 
+                            }
+                            var dinal = secondsTimeSpanToHMS(diff)
+                            //console.log(); // 30
+                            htmls += ("' >" + value.tabletime + "</h5><h5 class='order-timeA'>" + dinal + "</h5>"); 
+                        }
+
+                        htmls += ("</li></a>");
+                        //if (!(value.MergeTableList > 0 && value.MergeTableList != value.restrotableId)) {
+                        //    htmls += ("<a id ='" + (value.IsTable ? "Table_" : "Room_"));
+                        //    if (value.BillPaid.toString() == '0' && value.IsCancelled.toString() == '0' || value.MergeTableList > 0 || value.restrotablesStatusID == 7) {
+                        //        if (value.MergeTableList > 0) {
+                        //            if (value.restrotablesStatusID == 6) {
+                        //                htmls += ("" + value.restrotableId + "_img_yes_notoccupied_" + value.restrotableTitle + "' class = 'imgtable'  >");
+                        //                htmls += ("<li>");
+                        //                htmls += ("<img src='" + p.HostUrl + "/Modules/RestroDashboard/image/" + (value.IsTable ? "tablegreen.png" : "room-green.png") + "'> ");
+                        //            } else {
+                        //                htmls += ("" + value.restrotableId + "_img_yes_occupied_" + value.restrotableTitle + "' class = 'imgtable'  >");
+                        //                htmls += ("<li>");
+                        //                htmls += ("<img src='" + p.HostUrl + "/Modules/RestroDashboard/image/" + (value.IsTable ? "tablered.png" : "room-red.png") + "'> ");
+                        //            }
+                        //        }
+                        //        else if (value.IsTable == false && value.OrderMasterId < 0) {
+                        //            htmls += ("" + value.restrotableId + "_img_no_occupied_" + value.restrotableTitle + "' class = 'imgtable'  >");
+                        //            htmls += ("<li>");
+                        //            htmls += ("<img src='" + p.HostUrl + "/Modules/RestroDashboard/image/" + (value.IsTable ? "tablegreen.png" : "room-green.png") + "'> ");
+                        //        }
+                        //        else {
+                        //            htmls += ("" + value.restrotableId + "_img_no_occupied_" + value.restrotableTitle + "' class = 'imgtable'  >");
+                        //            htmls += ("<li>");
+                        //            htmls += ("<img src='" + p.HostUrl + "/Modules/RestroDashboard/image/" + (value.IsTable ? "tablered.png" : "room-red.png") + "'> ");
+                        //        }
+                        //    }
+                        //    else {
+                        //        htmls += ("" + value.restrotableId + "_img_no_notoccupied_" + value.restrotableTitle + "' class = 'imgtable'  >");
+                        //        htmls += ("<li>");
+                        //        htmls += ("<img src='" + p.HostUrl + "/Modules/RestroDashboard/image/" + (value.IsTable ? "tablegreen.png" : "room-green.png") + "'> ");
+                        //    }
+                        //    htmls += ("<h5 class='");
+                        //    htmls += (value.BillPaid.toString() == '0' && value.IsCancelled.toString() == '0' && value.IsTable ? "NotPaid" : "Paid");
+                        //    htmls += ("' >" + (value.MergeTableList > 0 ? value.MergeTableName : value.restrotableTitle) + "</h5>");
+
+
+                        //    //if (value.BillPaid.toString() == '0' && value.IsCancelled.toString() == '0') {
+                        //    if (value.tableDate !== "") {
+                        //        htmls += ("<h5 class='order-time'");
+
+                        //        var dateprev = new Date(value.tableDate);
+                        //        var datet = new Date();
+                        //        var diff = (datet - dateprev) / 1000;
+                        //        function secondsTimeSpanToHMS(s) {
+                        //            var h = Math.floor(s / 3600); //Get whole hours
+                        //            s -= h * 3600;
+                        //            var m = Math.floor(s / 60); //Get remaining minutes
+                        //            s -= m * 60;
+                        //            if (h == 0) {
+                        //                return (m < 10 ? '0' + m : m) + "M";//zero padding on minutes and seconds                           }
+                        //            } else {
+                        //                return h + ":" + (m < 10 ? '0' + m : m) + "M";//zero padding on minutes and seconds                           }
+                        //            }
+
+                        //        }
+                        //        var dinal = secondsTimeSpanToHMS(diff)
+                        //        //console.log(); // 30
+                        //        htmls += ("' >" + value.tabletime + "</h5><h5 class='order-timeA'>" + dinal + "</h5>");
+
+                        //    }
+
+                        //    htmls += ("</li></a>");
+                        //} 
                     });
-                    htmls += "</ul>";
-
+                    htmls += "</ul>"; 
                     $('.TablesInRooms').html(htmls);
 
                 } else {
