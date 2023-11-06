@@ -22,7 +22,7 @@
 }
 
 function formatMoney(x) {
-    if (x != null && x > 0) {
+    if (x != null) {
         return x.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     } else {
         return x;
