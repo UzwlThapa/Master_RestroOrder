@@ -3123,7 +3123,7 @@ function print() {
                 $("#OccTablesLength").text(data.length);
                 htmls += ("<div class ='Tables'><table id='OccupiedTables' class='BookedTable-list-tbl'>");
                 htmls += ("<thead><th>Room / Table</th><th>Check In</th><th>Amount</th><th>Action</th></thead><tbody>");
-                if (data.length > 0) {
+                if (data != null && data.length > 0) {
                     var sn = 1;
                     $.each(data, function (index, type) {
                         if (type.IsTable) {
