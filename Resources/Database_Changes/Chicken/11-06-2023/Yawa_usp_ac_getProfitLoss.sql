@@ -1,9 +1,9 @@
-USE [RO-CHICKENSTATION]
+USE [RO-CHICKENSTATION];
 GO
 /****** Object:  StoredProcedure [dbo].[usp_ac_getProfitLoss]    Script Date: 15/10/2023 12:43:18 PM ******/
-SET ANSI_NULLS ON
+SET ANSI_NULLS ON;
 GO
-SET QUOTED_IDENTIFIER ON
+SET QUOTED_IDENTIFIER ON;
 GO
 
 /*
@@ -14,7 +14,7 @@ GO
 	Last Modified Date: 11/10/2023
 ====================================
 
-EXEC dbo.usp_ac_getProfitLoss '2023-09-06','2023-09-06'
+EXEC dbo.usp_ac_getProfitLoss '2023-01-01','2023-11-06'
 
 */
 ALTER PROCEDURE [dbo].[usp_ac_getProfitLoss]
@@ -37,7 +37,7 @@ AS
         DECLARE @EndDateTime DATETIME;
         SELECT @StartDateTime = DATEADD (HOUR, 4, @StartDate);
         SELECT @EndDateTime = DATEADD (MINUTE, -1, DATEADD (HOUR, 28, @EndDate));
-     
+
 
         CREATE TABLE #AccountLedger
         (   PFinancialAcID INT NULL ,
@@ -69,53 +69,50 @@ AS
                         LEFT JOIN dbo.Ac_FinancialAc AS afa ON afa.FinancialAcID = FA.PFinancialAcID
                WHERE    ISNULL (T.BillDate, T.PostedOn) BETWEEN @StartDateTime AND @EndDateTime
                AND      ISNULL (FA.AccEntryType, 0) = @AccEntryTypeId
-               AND      T.Descriptions NOT LIKE 'Sales Bill No%'
+               AND      ( T.Descriptions NOT LIKE 'Sales Bill No%'
+                       OR ( T.Descriptions NOT LIKE 'Sales Return Bill No%'
+                        AND T.VoucherTypeID = @SalesVoucherTypeId ))
                GROUP BY TD.FinancialAcID ,
                         FA.Name ,
                         FA.PFinancialAcID ,
                         afa.Name ,
                         FA.IsDebit;
 
-        -- insert sales
-        INSERT #AccountLedger ( PFinancialAcID ,
-                                FinancialAcID ,
-                                PFinancialAcName ,
-                                FinancialAcName ,
-                                Debit ,
-                                Credit ,
-                                IsDebit )
-               SELECT   FA.PFinancialAcID ,
-                        TD.FinancialAcID ,
-                        afa.Name ,
-                        FA.Name ,
-                        SUM (TD.Debit) ,
-                        SUM (TD.Credit) ,
-                        FA.IsDebit
-               FROM     dbo.Ac_Transaction T
-                        INNER JOIN dbo.Ac_TransactionDetail TD ON T.TransactionID = TD.TransactionID
-                        INNER JOIN dbo.Ac_FinancialAc FA ON FA.FinancialAcID = TD.FinancialAcID
-                        LEFT JOIN dbo.Ac_FinancialAc AS afa ON afa.FinancialAcID = FA.PFinancialAcID
-               WHERE    ISNULL (T.BillDate, T.PostedOn) BETWEEN @StartDateTime AND @EndDateTime
-               AND      T.Descriptions NOT LIKE 'Sales Return Bill No%'
-			   and t.VoucherTypeID = @SalesVoucherTypeId
-               AND      ISNULL (FA.AccEntryType, 0) = @AccEntryTypeId
-               GROUP BY TD.FinancialAcID ,
-                        FA.Name ,
-                        FA.PFinancialAcID ,
-                        afa.Name ,
-                        FA.IsDebit 
-
         DECLARE @OpeningStock DECIMAL (18, 2);
-        SELECT @OpeningStock = SUM (TD.Debit) - SUM (TD.Credit)
-        FROM   dbo.Ac_Transaction tt
-               INNER JOIN dbo.Ac_TransactionDetail TD ON tt.TransactionID = TD.TransactionID
-        WHERE  ISNULL (tt.BillDate, tt.PostedOn) < @StartDateTime;
+        SELECT   @OpeningStock = SUM (TD.Debit) - SUM (TD.Credit)
+        FROM     dbo.Ac_Transaction T
+                 INNER JOIN dbo.Ac_TransactionDetail TD ON T.TransactionID = TD.TransactionID
+                 INNER JOIN dbo.Ac_FinancialAc FA ON FA.FinancialAcID = TD.FinancialAcID
+                 LEFT JOIN dbo.Ac_FinancialAc AS afa ON afa.FinancialAcID = FA.PFinancialAcID
+        WHERE    ISNULL (T.BillDate, T.PostedOn) < @StartDateTime
+        AND      ISNULL (FA.AccEntryType, 0) = @AccEntryTypeId
+        AND      T.Descriptions NOT LIKE 'Sales Bill No%'
+        OR       ( T.Descriptions NOT LIKE 'Sales Return Bill No%'
+               AND T.VoucherTypeID = @SalesVoucherTypeId )
+        GROUP BY TD.FinancialAcID ,
+                 FA.Name ,
+                 FA.PFinancialAcID ,
+                 afa.Name ,
+                 FA.IsDebit;
+
 
         DECLARE @ClosingStock DECIMAL (18, 2);
-        SELECT @ClosingStock = SUM (TD.Debit) - SUM (TD.Credit)
-        FROM   dbo.Ac_Transaction tt
-               INNER JOIN dbo.Ac_TransactionDetail TD ON tt.TransactionID = TD.TransactionID
-        WHERE  ISNULL (tt.BillDate, ISNULL (tt.BillDate, tt.PostedOn)) <= @EndDateTime;
+        SELECT   @ClosingStock = SUM (TD.Debit) - SUM (TD.Credit)
+        FROM     dbo.Ac_Transaction T
+                 INNER JOIN dbo.Ac_TransactionDetail TD ON T.TransactionID = TD.TransactionID
+                 INNER JOIN dbo.Ac_FinancialAc FA ON FA.FinancialAcID = TD.FinancialAcID
+                 LEFT JOIN dbo.Ac_FinancialAc AS afa ON afa.FinancialAcID = FA.PFinancialAcID
+        WHERE    ISNULL (T.BillDate, T.PostedOn) <= @EndDateTime
+        AND      ISNULL (FA.AccEntryType, 0) = @AccEntryTypeId
+        AND      T.Descriptions NOT LIKE 'Sales Bill No%'
+        OR       ( T.Descriptions NOT LIKE 'Sales Return Bill No%'
+               AND T.VoucherTypeID = @SalesVoucherTypeId )
+        GROUP BY TD.FinancialAcID ,
+                 FA.Name ,
+                 FA.PFinancialAcID ,
+                 afa.Name ,
+                 FA.IsDebit;
+
 
         INSERT #AccountLedger ( PFinancialAcID ,
                                 FinancialAcID ,
@@ -140,18 +137,17 @@ AS
                       ISNULL (@ClosingStock, 0) ,
                       0;
 
-        SELECT   FinancialAcID ,
+        SELECT   DISTINCT FinancialAcID ,
+                          PFinancialAcName ,
+                          FinancialAcName ,
+                          SUM (Debit) AS Debit ,
+                          SUM (Credit) AS Credit ,
+                          IsDebit
+        FROM     #AccountLedger
+        GROUP BY FinancialAcID ,
                  PFinancialAcName ,
                  FinancialAcName ,
-                 Debit ,
-                 Credit ,
-                 IsDebit
-        FROM     #AccountLedger
-        ORDER BY IsDebit ,
-                 PFinancialAcID ,
-                 PFinancialAcName ,
-                 FinancialAcID ,
-                 FinancialAcName;
+                 IsDebit;
 
 
         DROP TABLE IF EXISTS #AccountLedger;

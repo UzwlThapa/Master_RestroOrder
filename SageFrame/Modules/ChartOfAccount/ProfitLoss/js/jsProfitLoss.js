@@ -363,11 +363,11 @@
 
                     if (grandTotalCr > grandTotalDr) {
                         $('#tbl_PLCr').append('<tr><td>&nbsp;</td><td>&nbsp;</td></tr>')
-                        $('#tbl_PLDr').append('<tr style="font-weight: bold;"><td style="text-align:left;">Net Profit (Transfered to Capital)</td><td style="text-align:right;">' + formatMoney((grandTotalCr - grandTotalDr).toFixed(2)) + '</td></tr>')
+                        $('#tbl_PLDr').append('<tr style="font-weight: bold;"><td style="text-align:left;">Net Profit (Transfered to Capital)</td><td style="text-align:right;">' + formatMoney(grandTotalCr - grandTotalDr) + '</td></tr>')
                     }
                     if (grandTotalCr < grandTotalDr) {
                         $('#tbl_PLDr').append('<tr><td>&nbsp;</td><td>&nbsp;</td></tr>')
-                        $('#tbl_PLCr').append('<tr style="font-weight: bold;"><td style="text-align:left;">Net Loss (Transfered to Capital)</td><td style="text-align:right;">' + formatMoney((grandTotalDr - grandTotalCr).toFixed(2)) + '</td></tr>')
+                        $('#tbl_PLCr').append('<tr style="font-weight: bold;"><td style="text-align:left;">Net Loss (Transfered to Capital)</td><td style="text-align:right;">' + formatMoney(grandTotalDr - grandTotalCr) + '</td></tr>')
                     }
                     $('#tbl_PLCr').append('<tr style="background-color: #ff9933;color: white;font-weight: bold;"><td style="text-align:left;">Total Amount</td><td style="text-align:right;">' + formatMoney(grandTotalCr) + '</td></tr>')
                     $('#tbl_PLDr').append('<tr style="background-color: #ff9933;color: white;font-weight: bold;"><td style="text-align:left;">Total Amount</td><td style="text-align:right;">' + formatMoney(grandTotalDr) + '</td></tr>')
