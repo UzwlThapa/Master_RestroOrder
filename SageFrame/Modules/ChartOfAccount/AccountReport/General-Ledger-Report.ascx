@@ -36,6 +36,7 @@
     });
 </script>
 <div class="RO_wrapper">
+    
     <div id="div1">
         <table class="salesTable" style="display: block;">
             <tr>
@@ -51,9 +52,13 @@
                     <input type="hidden" id="hdnFinancialID" />
                     <label for="voucherDropDownList"></label>
                     <input type="text" class="sfInputbox" placeholder="Financial A/C" id="voucherDropDownList" autocomplete="off" style="width: 500px;" />
-                </td> 
+                </td>
+   
                 <td>
                     <button type="button" class="sfBtn restro-btn fa fa-eye" id="btnView">View</button>
+                </td>
+                <td>
+                    <button type="button" class="sfBtn restro-btn fa fa-eye" id="btnSalaryView">Salary View</button>
                 </td>
 
             </tr>

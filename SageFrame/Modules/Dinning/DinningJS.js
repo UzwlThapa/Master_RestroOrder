@@ -1061,6 +1061,7 @@ function IntegerAndDecimal(evt, element) {
                     //htmls += ("<input id='Save_" + datas[0].restrotableId + "' type='button' class='sfBtn SaveSplitData restro-btn splithead' value='Save Split' style='margin-left:10px;margin-top:10px'/></div>");
 
                     var Roles = userRole.split(",");
+                    console.log(Roles);
 
                     if (datas[0].Note != null && datas[0].Note != "") {
                         //////htmls += ("<div class='ordering'><input id='Merge_" + datas[0].restrotableId + "' type='button' class='sfBtn removeMerge restro-btn' value='Remove Merge' />");
@@ -1262,6 +1263,8 @@ function IntegerAndDecimal(evt, element) {
                 htmls += ("<button id='Add_" + roominfo.restrotableId + "' type='button' class='sfBtn addNew restro-btn fa fa-plus'>Add</button></div>");
                 var DialogWidth = '';
 
+                var Roles = userRole.split(",");
+
                 if (datas.length > 0) {
                     DialogWidth = '700';
                     htmls += ("<table class='booking-list-tbl'><thead>");
@@ -1273,8 +1276,12 @@ function IntegerAndDecimal(evt, element) {
                         htmls += ("<td>" + value.BookedFrom + "</td>");
                         htmls += ("<td>" + value.BookedTo + "</td>");
                         htmls += ("<td><input id='Order_" + value.OrderMasterId + "' type='button' class='sfBtn ordernow restro-btn' value='Order'/>");
-                        htmls += ("<input id='Pay_" + value.OrderMasterId + "' type='button'  class='sfBtn roompaynow restro-btn' value='Pay' style='margin-left:10px;'/>");
-                        htmls += ("<input id='Cancel_" + value.OrderMasterId + "_" + value.TableId + "_" + 1 + "' type='button'  class='sfBtn cancelorder restro-btn' value='Cancel' style='margin-left:10px;'/>");
+                        if (Roles.includes("cashier") || Roles.includes("Super User")) {
+                            htmls += ("<input id='Pay_" + value.OrderMasterId + "' type='button'  class='sfBtn roompaynow restro-btn' value='Pay' style='margin-left:10px;'/>");
+                        }
+                        if (Roles.includes("Cancel Order") || Roles.includes("Super User")) {
+                            htmls += ("<input id='Cancel_" + value.OrderMasterId + "_" + value.TableId + "_" + 1 + "' type='button'  class='sfBtn cancelorder restro-btn' value='Cancel' style='margin-left:10px;'/>");
+                        }
                         htmls += ("</td>");
                         htmls += "</tr>";
                     });
@@ -1295,7 +1302,7 @@ function IntegerAndDecimal(evt, element) {
                     $('#DialogOrderDetail').dialog('close');
                     var id = $(this).attr('id');
                     var data = id.split('_');
-                    DashboardFunction.GetDataForSalesBill(data[1]);
+                    DashboardFunction.GetDataForSalesBillFromPay(data[1]);
                 });
                 $('.booking-list-tbl').on('click', '.cancelorder', function () {
                     $('#DialogOrderDetail').dialog('close');

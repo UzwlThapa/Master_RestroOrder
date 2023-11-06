@@ -15,6 +15,7 @@
         public string AccountHead { get; set; }
         public string Particulars { get; set; }
         public float Balance { get; set; }
+ 
     }
 
 
