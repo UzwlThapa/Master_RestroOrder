@@ -2,7 +2,6 @@
     $('#printedDate').show();
     $('#lblPrintedOn').html(new Date());
     var contents = $('#DailyReport').clone();
-    //contents.find('tr th:nth-child(14), tr td:nth-child(14)').remove();
     $('#printedDate').hide();
     var frame1 = document.createElement('iframe');
     frame1.name = "frame1";
@@ -72,12 +71,7 @@
                 eventFunction.InitialSetup();
                 //----------------------------------------Master----------------
 
-
-
-
-
                 $("#waiter").on('click', function () {
-
 
                     if (waiter == 0) {
                         waiter = 1;
@@ -103,15 +97,12 @@
                     else {
                         room = 0;
                     }
-
-
                 });
 
                 $("#btnView").on('click', function () {
                     eventFunction.stockreport();
                     $('.report-view').show();
                 });
-
 
                 //--------------------------Export To PDF----------------
 
@@ -143,7 +134,6 @@
                     $('#printedDate').show();
                     var dNow = new Date();
                     var contents = $('#DailyReport');
-                    //contents.find('tr th:nth-child(14), tr td:nth-child(14)').hide();
                     $('#lblPrintedOn').html(dNow);
                     var options = {
                         background: '#FFFFFF',
@@ -154,7 +144,6 @@
                     pdf.addHTML(contents, 0, 0, options, function () {
                         pdf.save('SalesReport_.pdf');
                     });
-                    //contents.find('tr th:nth-child(14), tr td:nth-child(14)').show();
                     $('#printedDate').hide();
 
                 });
@@ -176,7 +165,6 @@
 
                     var detail = itemid + '_' + storeId;
                     $('#txtDetailHidden').attr('data-detail',detail);
-
                 });
 
                 $('#StockDetailView').on('click','#btnDetailView',function(){
@@ -188,12 +176,8 @@
                     obj.StoreId = storeId;
                     obj.StartDate = $('#txtDetailStartDate').val();
                     obj.EndDate = $('#txtDetailEndDate').val();
-
                     eventFunction.GetStockDetailByItem(obj);
-
                 });
-
-
             },
             ajaxCall: function (config) {
                 $.ajax({
@@ -253,7 +237,6 @@
                 var complimentryQty = 0.0;
                 var issueQty = 0.0;
                 var adjustmentQuantity = 0.0;
-                var purchaseReturnQuantity = 0.0;
  
                 var htmls = "";
                 var htmls = "<table id='Brandtable' class='reportsprint' style='width: 100%' cellspacing='0'>"
@@ -281,55 +264,55 @@
                         if (value.OpeningQty == null) {
                             htmls += "<td>-</td>";
                         } else {
-                            htmls += "<td>" + value.OpeningQty + "</td>";
+                            htmls += "<td>" + formatMoney(value.OpeningQty) + "</td>";
                         }
                         if (value.PurchaseQty == null) {
                             htmls += "<td>-</td>";
                         } else {
-                            htmls += "<td>" + value.PurchaseQty + "</td>";
+                            htmls += "<td>" + formatMoney(value.PurchaseQty) + "</td>";
                         }
                         if (value.SalesQty == null) {
                             htmls += "<td>-</td>";
                         } else {
-                            htmls += "<td>(" + value.SalesQty + ")</td>";
+                            htmls += "<td>(" + formatMoney(value.SalesQty) + ")</td>";
                         }
                         if (value.SalesReturnQty == null) {
                             htmls += "<td>-</td>";
                         } else {
-                            htmls += "<td>" + value.SalesReturnQty + "</td>";
+                            htmls += "<td>" + formatMoney(value.SalesReturnQty) + "</td>";
                         }
                         if (value.AdjustQty == null) {
                             htmls += "<td>-</td>";
                         } else {
-                            htmls += "<td>" + value.AdjustQty + "</td>";
+                            htmls += "<td>" + formatMoney(value.AdjustQty) + "</td>";
                         }
                         if (value.ComplementQty == null) {
                             htmls += "<td>-</td>";
                         } else {
-                            htmls += "<td>(" + value.ComplementQty + ")</td>";
+                            htmls += "<td>(" + formatMoney(value.ComplementQty) + ")</td>";
                         }
                         if (value.IssueQty == null) {
                             htmls += "<td>-</td>";
                         } else {
-                            htmls += "<td>" + value.IssueQty + "</td>";
+                            htmls += "<td>" + (value.IssueQty) + "</td>";
                         }
                         
 
                         if (value.ItemBalance == 0) {
                             htmls += "<td>-</td>";
                         } else {
-                            htmls += "<td>" + value.ItemBalance + "</td>";
+                            htmls += "<td>" + formatMoney(value.ItemBalance) + "</td>";
                         }
                         htmls += "<td>" + value.Symbol + "</td>";
 
                         htmls += "</tr>"
                     });
                     htmls += "</tbody>";
-                    htmls += `<tr style='font-weight: bold' ><td></td><td>Total</td><td>${openingQty}</td><td>${purchaseQuantity}</td><td>${salesQuantity}</td><td>${salesReturnQuantity}</td><td>${adjustmentQuantity}</td>
-                                <td>${complimentryQty}</td><td>${issueQty}</td><td></td>
+                    htmls += `<tr style='font-weight: bold' ><td></td><td>Total</td><td>${formatMoney(openingQty)}</td><td>${formatMoney(purchaseQuantity)}</td><td>${formatMoney(salesQuantity)}</td>
+                    <td>${formatMoney(salesReturnQuantity)}</td><td>${formatMoney(adjustmentQuantity)}</td>
+                                <td>${formatMoney(complimentryQty)}</td><td>${formatMoney(issueQty)}</td><td></td>
                                 <td></td></tr>`;
                 }
-
                 else {
                     $('#divItemledger').html('No data');
                 }
@@ -419,8 +402,6 @@
 
             //<<-----------------------------------BindTable Herere ------------------------------------->>>
 
-
-
             BindSalesDaily: function (data) {
                 $("#DailyReport").show();
                 $("#DailyReport").html('');
@@ -446,11 +427,8 @@
                         htmls += "<tr>";
                         htmls += "<td>" + count + "</td>";
                         htmls += "<td>" + value.ITName + "</td>";
-                        //htmls += "<td>" + value.StName + "</td>";
-                        //htmls += "<td>" + value.OPBal + " ("+ value.ITUnit + ")</td>";
-                        htmls += "<td>" + value.CLBal + " (" + value.Symbol + ")</td>";
-                        //htmls += "<td>" + value.CLRate + "</td>";
-                        htmls += "<td>" + value.TotalValue + " (Rs)</td>";
+                        htmls += "<td>" + formatMoney(value.CLBal) + " (" + value.Symbol + ")</td>";
+                        htmls += "<td>" + formatMoney(value.TotalValue) + " (Rs)</td>";
                         if (storeid != 0) {
                             htmls += "<td><label id='" + value.ITId + "' class='btnStockDetail  view icon-preview'></label></td>";
 
@@ -462,7 +440,7 @@
                         //TotalAmount = TotalAmount + value.NetAmount;
                         totalStockValue += value.TotalValue;
                     });
-                    htmls += "<tr><td colspan='3' style='text-align:right;'><strong>Total Stock Value: </strong></td><td><strong>" + totalStockValue + " (Rs)</strong></td></tr>"
+                    htmls += "<tr><td colspan='3' style='text-align:right;'><strong>Total Stock Value: </strong></td><td><strong>" + formatMoney(totalStockValue) + " (Rs)</strong></td></tr>"
                     //htmls += "<thead class='Sales-total_amount'>"
                     //htmls += "<tr>";
                     //htmls += "<th colspan='3' class='a' style='text-align:right;'>" + "Total Amount :" + "</th>";
@@ -470,102 +448,18 @@
                     //htmls += "</tr>"
                     //htmls += "</thead>"
 
-                    $("#SumAmount").text(TotalAmount);
+                    $("#SumAmount").text(formatMoney(TotalAmount));
                     TotalAmount = 0;
                 } else {
                     htmls += "<tr><td></td>";
                     htmls += "<td>No data</td><td></td></tr>";
-                   // $('#DailyReport').html('No data');
                 }
                     htmls += "</tbody>";
                     htmls += "</table>";
 
                     $('#DailyReport').html(htmls);
-
-                    // $('#salseReport').DataTable({
-                    //     "bJQueryUI": true,
-                    //     "pageLength": 50,
-                    //     dom: 'Bfrtip',
-
-                    //     buttons: [
-
-                    //         'csv', 'excel', 'pdf', 'print'
-                    //     ]
-                    // });
-
-
-
-
-
-
-
-
             },
-
-
-            //BindSalesDaily: function (data) {
-            //    $("#DailyReport").show();
-            //    $("#DailyReport").html('');
-
-            //    var datas = data.d;
-            //    if (datas.length > 0) {
-            //        var htmls = "<table id='stockreport' class='sfGridwrapper nowrap display' cellspacing='0'>"
-            //        htmls += "<thead>"
-            //        htmls += "<tr>"
-            //        htmls += "<th>SN</th><th>ItemName</th><th class='waiter'>StoreName</th><th class='table'>OP Ballance</th><th>Closing Ballance</th> <th>Expire Date </th> <th>Purchase Date</th>";
-            //        htmls += "</tr>"
-            //        htmls += "</thead>"
-            //        htmls += "<tbody>"
-            //        var count = 1;
-            //        $.each(datas, function (index, value) {
-            //            htmls += "<tr>";
-            //            htmls += "<td class='a'>" + count + "</td>";
-            //            htmls += "<td class='b'>" + value.ITName + "</td>";
-            //            htmls += "<td class='c'>" + value.StName + "</td>";
-            //            htmls += "<td class='e'>" + value.OPBal + "</td>";
-            //            htmls += "<td class='f'>" + value.CLBal + "</td>";
-            //            htmls += "<td class='f'>" + value.ExpDate + "</td>";
-            //            htmls += "<td class='f'>" + value.PbDate + "</td>";
-            //            htmls += "</tr>"
-            //            count++;
-
-            //        });
-            //        htmls += "<thead>"
-
-            //        htmls += "</tbody>";
-            //        htmls += "</table>";
-
-            //        $('#DailyReport').html(htmls);
-
-            //        //$('#stockreport').DataTable({
-
-            //        //    dom: 'Bfrtip',
-
-            //        //    buttons: [
-
-            //        //         'copy', 'csv', 'excel', 'pdf', 'print'
-            //        //    ]
-            //        //});
-
-
-
-            //    } else {
-            //        $('#DailyReport').html('No data');
-            //    }
-
-
-            //},
-
-
-
-
-
-            //bindSumDaily: function (data) {
-            //    var datas = data.d;
-
-            //     $("#SumAmount").text(datas[0].sumAmount);
-
-            //},
+             
             //<<-----------------------------------Reset & Validation ------------------------------------->>>
 
             ResetAll: function () {
@@ -575,13 +469,11 @@
 
             ValidationForm: function () {
                 v = $('#form1').validate({
-                    rules: {
-
+                    rules: { 
                         //StoreItem
                         textUnit: {
                             required: true,
-                        },
-
+                        }, 
                     },
                     messages: {
                         textUnit: {
@@ -594,9 +486,7 @@
                 }
                 else
                     return false;
-            },
-
-
+            }, 
         };
         eventFunction.init();
     };

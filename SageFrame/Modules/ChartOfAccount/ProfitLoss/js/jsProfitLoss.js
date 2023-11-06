@@ -201,7 +201,7 @@
                     var opening = drlist.filter((item) => item.FinancialAcName.toLowerCase() == 'opening stock');
                     htmDr += '<tr style="text-align:left;background:#f7ebeb;font-weight:bold;">';
                     htmDr += `<td style="text-align:left;border:1px solid #575757;padding-left:2rem!important;">${opening[0].FinancialAcName}</td>`;
-                    htmDr += `<td style="text-align:right;border:1px solid #575757;padding-left:2rem!important;">${moneyPlaceholder(opening[0].Debit)}</td>`;
+                    htmDr += `<td style="text-align:right;border:1px solid #575757;padding-left:2rem!important;">${formatMoney(opening[0].Debit)}</td>`;
                     htmDr += '</tr>';
                     drRowCount++;
 
@@ -220,7 +220,7 @@
                             groupTotal = getGroupTotal(group, drlist, 'Debit');
                             htmDr += '<tr style="text-align:left;background:#e1dfdf;font-weight:bold;">';
                             htmDr += `<td style="text-align:center;border:1px solid #575757;text-align:left;padding-left:2rem!important;">${group}</td>`;
-                            htmDr += `<td style="text-align:right;">${moneyPlaceholder(groupTotal)}</td>`;
+                            htmDr += `<td style="text-align:right;">${formatMoney(groupTotal)}</td>`;
                             htmDr += '</tr>';
                             grandTotalDr += groupTotal;
                             groupTotal = 0;
@@ -241,7 +241,7 @@
                                         groupTotal = getGroupTotal(child.FinancialAcName, drlist, 'Debit');
                                         htmDr += '<tr style="text-align:left;background:#e1dfdf;font-weight:bold;">';
                                         htmDr += `<td style="text-align:center;border:1px solid #575757;text-align:left;padding-left:4rem!important;">${child.FinancialAcName}</td>`;
-                                        htmDr += `<td style="text-align:right;">${moneyPlaceholder(groupTotal)}</td>`;
+                                        htmDr += `<td style="text-align:right;">${formatMoney(groupTotal)}</td>`;
                                         htmDr += '</tr>';
                                         drRowCount++;
 
@@ -249,7 +249,7 @@
                                         $.each(groupDataDr2, function (index, child2) {
                                             htmDr += '<tr>';
                                             htmDr += `<td style="text-align:left;border:1px solid #575757;padding-left:6rem!important;">${child2.FinancialAcName}</td>`;
-                                            htmDr += `<td style="text-align:right;border:1px solid #575757;">${moneyPlaceholder(child2.Debit)}</td>`;
+                                            htmDr += `<td style="text-align:right;border:1px solid #575757;">${formatMoney(child2.Debit)}</td>`;
                                             htmDr += '</tr>';
                                             drRowCount++;
                                         });
@@ -259,7 +259,7 @@
                                     // Rows
                                     htmDr += '<tr>';
                                     htmDr += `<td style="text-align:left;border:1px solid #575757;padding-left:4rem!important;">${child.FinancialAcName}</td>`;
-                                    htmDr += `<td style="text-align:right;border:1px solid #575757;">${moneyPlaceholder(child.Debit)}</td>`;
+                                    htmDr += `<td style="text-align:right;border:1px solid #575757;">${formatMoney(child.Debit)}</td>`;
                                     htmDr += '</tr>';
                                     drRowCount++;
                                 }
@@ -274,7 +274,7 @@
                     var closing = crlist.filter((item) => item.FinancialAcName.toLowerCase() == 'closing stock');
                     htmCr += '<tr style="text-align:left;background:#f7ebeb;font-weight:bold;">';
                     htmCr += `<td style="text-align:left;border:1px solid #575757;">${closing[0].FinancialAcName}</td>`;
-                    htmCr += `<td style="text-align:right;border:1px solid #575757;">${moneyPlaceholder(closing[0].Credit)}</td>`;
+                    htmCr += `<td style="text-align:right;border:1px solid #575757;">${formatMoney(closing[0].Credit)}</td>`;
                     htmCr += '</tr>';
                     crRowCount++;
 
@@ -292,7 +292,7 @@
                             groupTotal = getGroupTotal(group, crlist, 'Credit');
                             htmCr += '<tr style="text-align:left;background:#e1dfdf;font-weight:bold;">';
                             htmCr += `<td style="text-align:center;border:1px solid #575757;text-align:left;padding-left:2rem!important;">${group}</td>`;
-                            htmCr += `<td style="text-align:right;">${moneyPlaceholder(groupTotal)}</td>`;
+                            htmCr += `<td style="text-align:right;">${formatMoney(groupTotal)}</td>`;
                             htmCr += '</tr>';
                             grandTotalCr += groupTotal;
                             groupTotal = 0;
@@ -313,7 +313,7 @@
                                         groupTotal = getGroupTotal(child.FinancialAcName, crlist, 'Credit');
                                         htmCr += '<tr style="text-align:left;background:#e1dfdf;font-weight:bold;">';
                                         htmCr += `<td style="text-align:center;border:1px solid #575757;text-align:left;padding-left:4rem!important;">${child.FinancialAcName}</td>`;
-                                        htmCr += `<td style="text-align:right;">${moneyPlaceholder(groupTotal)}</td>`;
+                                        htmCr += `<td style="text-align:right;">${formatMoney(groupTotal)}</td>`;
                                         htmCr += '</tr>';
                                         crRowCount++;
 
@@ -321,7 +321,7 @@
                                         $.each(groupDataCr2, function (index, child2) {
                                             htmCr += '<tr>';
                                             htmCr += `<td style="text-align:left;border:1px solid #575757;padding-left:6rem!important;">${child2.FinancialAcName}</td>`;
-                                            htmCr += `<td style="text-align:right;border:1px solid #575757;">${moneyPlaceholder(child2.Credit)}</td>`;
+                                            htmCr += `<td style="text-align:right;border:1px solid #575757;">${formatMoney(child2.Credit)}</td>`;
                                             htmCr += '</tr>';
                                             crRowCount++;
                                         });
@@ -331,7 +331,7 @@
                                     // Rows
                                     htmCr += '<tr>';
                                     htmCr += `<td style="text-align:left;border:1px solid #575757;padding-left:4rem!important;">${child.FinancialAcName}</td>`;
-                                    htmCr += `<td style="text-align:right;border:1px solid #575757;">${moneyPlaceholder(child.Credit)}</td>`;
+                                    htmCr += `<td style="text-align:right;border:1px solid #575757;">${formatMoney(child.Credit)}</td>`;
                                     htmCr += '</tr>';
                                     crRowCount++;
                                 }
@@ -363,14 +363,14 @@
 
                     if (grandTotalCr > grandTotalDr) {
                         $('#tbl_PLCr').append('<tr><td>&nbsp;</td><td>&nbsp;</td></tr>')
-                        $('#tbl_PLDr').append('<tr style="font-weight: bold;"><td style="text-align:left;">Net Profit (Transfered to Capital)</td><td style="text-align:right;">' + moneyPlaceholder((grandTotalCr - grandTotalDr).toFixed(2)) + '</td></tr>')
+                        $('#tbl_PLDr').append('<tr style="font-weight: bold;"><td style="text-align:left;">Net Profit (Transfered to Capital)</td><td style="text-align:right;">' + formatMoney((grandTotalCr - grandTotalDr).toFixed(2)) + '</td></tr>')
                     }
                     if (grandTotalCr < grandTotalDr) {
                         $('#tbl_PLDr').append('<tr><td>&nbsp;</td><td>&nbsp;</td></tr>')
-                        $('#tbl_PLCr').append('<tr style="font-weight: bold;"><td style="text-align:left;">Net Loss (Transfered to Capital)</td><td style="text-align:right;">' + moneyPlaceholder((grandTotalDr - grandTotalCr).toFixed(2)) + '</td></tr>')
+                        $('#tbl_PLCr').append('<tr style="font-weight: bold;"><td style="text-align:left;">Net Loss (Transfered to Capital)</td><td style="text-align:right;">' + formatMoney((grandTotalDr - grandTotalCr).toFixed(2)) + '</td></tr>')
                     }
-                    $('#tbl_PLCr').append('<tr style="background-color: #ff9933;color: white;font-weight: bold;"><td style="text-align:left;">Total Amount</td><td style="text-align:right;">' + moneyPlaceholder(grandTotalCr) + '</td></tr>')
-                    $('#tbl_PLDr').append('<tr style="background-color: #ff9933;color: white;font-weight: bold;"><td style="text-align:left;">Total Amount</td><td style="text-align:right;">' + moneyPlaceholder(grandTotalDr) + '</td></tr>')
+                    $('#tbl_PLCr').append('<tr style="background-color: #ff9933;color: white;font-weight: bold;"><td style="text-align:left;">Total Amount</td><td style="text-align:right;">' + formatMoney(grandTotalCr) + '</td></tr>')
+                    $('#tbl_PLDr').append('<tr style="background-color: #ff9933;color: white;font-weight: bold;"><td style="text-align:left;">Total Amount</td><td style="text-align:right;">' + formatMoney(grandTotalDr) + '</td></tr>')
                 }
             },
             bindFinancialAcDetails: function (data) {

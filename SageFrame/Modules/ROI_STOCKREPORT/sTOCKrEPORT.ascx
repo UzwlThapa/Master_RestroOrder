@@ -6,7 +6,7 @@
     }
 </style>
 
-
+<script src="../../../Scripts/main.js"></script>
 
 <script type="text/javascript">
     $(document).ready(function () {

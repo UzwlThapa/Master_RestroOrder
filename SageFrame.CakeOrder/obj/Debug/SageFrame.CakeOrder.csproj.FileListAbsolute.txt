@@ -218,3 +218,13 @@ E:\Development\Restro-GIT\AdarshaGit\SageFrame.CakeOrder\obj\Debug\SageFrame.Cak
 E:\Development\Restro-GIT\AdarshaGit\SageFrame.CakeOrder\obj\Debug\SageFrame.CakeOrder.csproj.CopyComplete
 E:\Development\Restro-GIT\AdarshaGit\SageFrame.CakeOrder\obj\Debug\SageFrame.CakeOrder.dll
 E:\Development\Restro-GIT\AdarshaGit\SageFrame.CakeOrder\obj\Debug\SageFrame.CakeOrder.pdb
+Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.CakeOrder\bin\Debug\SageFrame.CakeOrder.dll
+Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.CakeOrder\bin\Debug\SageFrame.CakeOrder.pdb
+Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.CakeOrder\bin\Debug\SageFrame.Common.dll
+Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.CakeOrder\bin\Debug\SageFrame.RestoLoyalty.dll
+Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.CakeOrder\bin\Debug\SageFrame.RestoLoyalty.pdb
+Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.CakeOrder\obj\Debug\SageFrame.CakeOrder.csproj.AssemblyReference.cache
+Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.CakeOrder\obj\Debug\SageFrame.CakeOrder.csproj.CoreCompileInputs.cache
+Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.CakeOrder\obj\Debug\SageFrame.CakeOrder.csproj.CopyComplete
+Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.CakeOrder\obj\Debug\SageFrame.CakeOrder.dll
+Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.CakeOrder\obj\Debug\SageFrame.CakeOrder.pdb
