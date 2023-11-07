@@ -111,3 +111,17 @@ E:\Development\Restro-GIT\AdarshaGit\AccountReport\obj\Release\SageFrame.Account
 E:\Development\Restro-GIT\AdarshaGit\AccountReport\obj\Release\SageFrame.AccountReport.csproj.CopyComplete
 E:\Development\Restro-GIT\AdarshaGit\AccountReport\obj\Release\SageFrame.AccountReport.dll
 E:\Development\Restro-GIT\AdarshaGit\AccountReport\obj\Release\SageFrame.AccountReport.pdb
+Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\AccountReport\bin\Release\SageFrame.AccountReport.dll
+Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\AccountReport\bin\Release\SageFrame.AccountReport.pdb
+Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\AccountReport\bin\Release\SageFrame.Common.dll
+Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\AccountReport\bin\Release\SageFrame.Core.dll
+Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\AccountReport\bin\Release\AjaxControlToolkit.dll
+Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\AccountReport\bin\Release\SageFrame.Templating.dll
+Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\AccountReport\bin\Release\SageFrame.CDN.dll
+Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\AccountReport\bin\Release\ICSharpCode.SharpZipLib.dll
+Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\AccountReport\bin\Release\Ionic.Zip.dll
+Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\AccountReport\obj\Release\SageFrame.AccountReport.csproj.AssemblyReference.cache
+Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\AccountReport\obj\Release\SageFrame.AccountReport.csproj.CoreCompileInputs.cache
+Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\AccountReport\obj\Release\SageFrame.AccountReport.csproj.CopyComplete
+Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\AccountReport\obj\Release\SageFrame.AccountReport.dll
+Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\AccountReport\obj\Release\SageFrame.AccountReport.pdb

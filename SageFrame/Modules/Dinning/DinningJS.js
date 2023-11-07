@@ -836,7 +836,7 @@ function IntegerAndDecimal(evt, element) {
                         htmls += (value.BillPaid.toString() == '0' && value.IsCancelled.toString() == '0' && value.IsTable ? "NotPaid" : "Paid");
                         htmls += ("' >" + (value.MergeTableList > 0 ? value.MergeTableName : value.restrotableTitle) + "</h5>");
 
-                         
+
                         if (value.tableDate !== "") {
                             htmls += ("<h5 class='order-time'");
 
@@ -852,11 +852,11 @@ function IntegerAndDecimal(evt, element) {
                                     return (m < 10 ? '0' + m : m) + "M";//zero padding on minutes and seconds                           
                                 } else {
                                     return h + ":" + (m < 10 ? '0' + m : m) + "M";//zero padding on minutes and seconds                          
-                                } 
+                                }
                             }
                             var dinal = secondsTimeSpanToHMS(diff)
                             //console.log(); // 30
-                            htmls += ("' >" + value.tabletime + "</h5><h5 class='order-timeA'>" + dinal + "</h5>"); 
+                            htmls += ("' >" + value.tabletime + "</h5><h5 class='order-timeA'>" + dinal + "</h5>");
                         }
 
                         htmls += ("</li></a>");
@@ -923,7 +923,7 @@ function IntegerAndDecimal(evt, element) {
                         //    htmls += ("</li></a>");
                         //} 
                     });
-                    htmls += "</ul>"; 
+                    htmls += "</ul>";
                     $('.TablesInRooms').html(htmls);
 
                 } else {
@@ -1061,7 +1061,6 @@ function IntegerAndDecimal(evt, element) {
                     //htmls += ("<input id='Save_" + datas[0].restrotableId + "' type='button' class='sfBtn SaveSplitData restro-btn splithead' value='Save Split' style='margin-left:10px;margin-top:10px'/></div>");
 
                     var Roles = userRole.split(",");
-                    console.log(Roles);
 
                     if (datas[0].Note != null && datas[0].Note != "") {
                         //////htmls += ("<div class='ordering'><input id='Merge_" + datas[0].restrotableId + "' type='button' class='sfBtn removeMerge restro-btn' value='Remove Merge' />");
@@ -1263,8 +1262,6 @@ function IntegerAndDecimal(evt, element) {
                 htmls += ("<button id='Add_" + roominfo.restrotableId + "' type='button' class='sfBtn addNew restro-btn fa fa-plus'>Add</button></div>");
                 var DialogWidth = '';
 
-                var Roles = userRole.split(",");
-
                 if (datas.length > 0) {
                     DialogWidth = '700';
                     htmls += ("<table class='booking-list-tbl'><thead>");
@@ -1276,12 +1273,8 @@ function IntegerAndDecimal(evt, element) {
                         htmls += ("<td>" + value.BookedFrom + "</td>");
                         htmls += ("<td>" + value.BookedTo + "</td>");
                         htmls += ("<td><input id='Order_" + value.OrderMasterId + "' type='button' class='sfBtn ordernow restro-btn' value='Order'/>");
-                        if (Roles.includes("cashier") || Roles.includes("Super User")) {
-                            htmls += ("<input id='Pay_" + value.OrderMasterId + "' type='button'  class='sfBtn roompaynow restro-btn' value='Pay' style='margin-left:10px;'/>");
-                        }
-                        if (Roles.includes("Cancel Order") || Roles.includes("Super User")) {
-                            htmls += ("<input id='Cancel_" + value.OrderMasterId + "_" + value.TableId + "_" + 1 + "' type='button'  class='sfBtn cancelorder restro-btn' value='Cancel' style='margin-left:10px;'/>");
-                        }
+                        htmls += ("<input id='Pay_" + value.OrderMasterId + "' type='button'  class='sfBtn roompaynow restro-btn' value='Pay' style='margin-left:10px;'/>");
+                        htmls += ("<input id='Cancel_" + value.OrderMasterId + "_" + value.TableId + "_" + 1 + "' type='button'  class='sfBtn cancelorder restro-btn' value='Cancel' style='margin-left:10px;'/>");
                         htmls += ("</td>");
                         htmls += "</tr>";
                     });
@@ -1302,7 +1295,7 @@ function IntegerAndDecimal(evt, element) {
                     $('#DialogOrderDetail').dialog('close');
                     var id = $(this).attr('id');
                     var data = id.split('_');
-                    DashboardFunction.GetDataForSalesBillFromPay(data[1]);
+                    DashboardFunction.GetDataForSalesBill(data[1]);
                 });
                 $('.booking-list-tbl').on('click', '.cancelorder', function () {
                     $('#DialogOrderDetail').dialog('close');
@@ -1739,7 +1732,7 @@ function IntegerAndDecimal(evt, element) {
                             amt = parseFloat(value.Quantity) * parseFloat(value.Rate);
 
                             totalAmount += parseFloat(amt);
-;
+                            ;
                             //console.log('totalAmount: ' + totalAmount);
                             if (!isab)
                                 htmls += ("<td class='item-amount'>" + amt + "</td></tr>");
@@ -1828,7 +1821,7 @@ function IntegerAndDecimal(evt, element) {
 
                 totaldis = 0;
 
-                
+
                 htmls += ("</div>");
 
                 htmls += '<div id="divBillingTerm"></div></div></div>';
@@ -2023,9 +2016,9 @@ function IntegerAndDecimal(evt, element) {
                             qnty += parseFloat(value.Quantity);
                             amt = parseFloat(value.Quantity) * parseFloat(value.Rate);
 
-                            
+
                             totalAmount += parseFloat(amt);
-                            
+
 
 
 
@@ -2330,7 +2323,7 @@ function IntegerAndDecimal(evt, element) {
 
                                 itms += ("<td class='item-amount'>" + amt + "</td></tr>");
 
-  
+
                             }
                             sn++;
                             $('.item-list-tbl tbody').append(itms);
@@ -2404,9 +2397,9 @@ function IntegerAndDecimal(evt, element) {
                                 var rate = _this.find('td').eq(3);
                                 var itemGroupId = rate.data('groupid');
                                 var rateInt = parseFloat(rate.data('rate'));
-                                  var disAbb = parseFloat((rateInt * (100 - lolDisRate) / 100) * (1 + v_rate / 100));
-                                  rate.text(disAbb.toFixed(2))
-                                 _this.find('td').eq(4).text((qty * disAbb).toFixed(2))
+                                var disAbb = parseFloat((rateInt * (100 - lolDisRate) / 100) * (1 + v_rate / 100));
+                                rate.text(disAbb.toFixed(2))
+                                _this.find('td').eq(4).text((qty * disAbb).toFixed(2))
                                 totalAmountN += parseFloat(_this.find('td').eq(4).text());
 
                             });
@@ -2492,7 +2485,7 @@ function IntegerAndDecimal(evt, element) {
                             $(".txt_dis").each(function () {
                                 var keyIndex = $(this).attr('id').split('_')[1];
                                 dis += (parseFloat(costCenterGroup[keyIndex].TotalAmt) * (parseFloat($(this).val() / 100)));
-                                
+
                             })
 
                             totaldis = dis;
@@ -2501,7 +2494,7 @@ function IntegerAndDecimal(evt, element) {
                             $(".txt_dis").each(function () {
                                 var keyIndex = $(this).attr('id').split('_')[1];
                                 dis += (parseFloat(costCenterGroup[keyIndex].TotalAmt) * (parseFloat($(this).val() / 100)));
-                                
+
                             })
 
                             totaldis = dis;
@@ -2569,7 +2562,7 @@ function IntegerAndDecimal(evt, element) {
 
                     }
 
-                    
+
                     DashboardFunction.BindBillingTerm(totalAmount, totaldis, datas);
                 })
 

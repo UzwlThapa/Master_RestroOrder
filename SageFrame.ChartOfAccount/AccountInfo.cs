@@ -123,6 +123,7 @@ namespace SageFrame.ChartOfAccount
         public string PostedBy { get; set; }
         public string PostedOn { get; set; }
         public int VoucherTypeID { get; set; }
+        public string VoucherName { get; set; }
     }
 
     public class VoucherType {

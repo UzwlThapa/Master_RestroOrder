@@ -38,7 +38,7 @@
             dateFormat: "yy-mm-dd"
         }).datepicker("setDate", "0");
 
-       // $("#txtStartDate,#txtEndDate").datepicker().datepicker("setDate", new Date());
+        // $("#txtStartDate,#txtEndDate").datepicker().datepicker("setDate", new Date());
 
     });
 </script>
@@ -168,19 +168,7 @@
                                                 </tfoot>
                                             </table>
                                         </td>
-
                                     </tr>
-
-                                    <%-- <tr>
-                        <td>
-                            <label class="icon-save sfBtn restro-btn" id="btnSave">
-                                Verify</label>
-                            <label class="icon-close sfBtn restro-btn" id="btnCancel">
-                                Cancel</label>
-                            <label class="icon-print sfBtn restro-btn" id="btnPrintVerifiedVoucher">
-                                Print</label>
-                        </td>
-                    </tr>--%>
                                 </table>
                             </div>
                         </td>
@@ -189,14 +177,12 @@
             </div>
         </div>
         <div>
-
             <label class="icon-save sfBtn restro-btn" id="btnSave">
                 Verify</label>
             <label class="icon-close sfBtn restro-btn" id="btnCancel">
                 Cancel</label>
             <label class="icon-print sfBtn restro-btn" id="btnPrintVerifiedVoucher">
                 Print Page</label>
-
         </div>
     </div>
     <div id="tabss" class="tabsForlist" style="display: none;">
@@ -209,7 +195,6 @@
             <table class="" style="display: block;">
                 <tbody>
                     <tr>
-
                         <td>Start Date:
                         </td>
                         <td>
@@ -234,7 +219,6 @@
             <table class="" style="display: block;">
                 <tbody>
                     <tr>
-
                         <td>Start Date:
                         </td>
                         <td>
@@ -249,7 +233,6 @@
                             <button type="button" class="sfBtn restro-btn fa fa-eye" id="btnViewVerified">Search</button>
                         </td>
                     </tr>
-
                 </tbody>
             </table>
             <div id="divForListingVerifiedTransaction" class="restrowrapper"></div>

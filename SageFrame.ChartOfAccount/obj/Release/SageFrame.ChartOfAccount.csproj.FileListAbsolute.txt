@@ -172,3 +172,11 @@ E:\Development\Restro-GIT\AdarshaGit\SageFrame.ChartOfAccount\obj\Release\SageFr
 E:\Development\Restro-GIT\AdarshaGit\SageFrame.ChartOfAccount\obj\Release\SageFrame.ChartOfAccount.csproj.CopyComplete
 E:\Development\Restro-GIT\AdarshaGit\SageFrame.ChartOfAccount\obj\Release\SageFrame.ChartOfAccount.dll
 E:\Development\Restro-GIT\AdarshaGit\SageFrame.ChartOfAccount\obj\Release\SageFrame.ChartOfAccount.pdb
+Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.ChartOfAccount\bin\Release\SageFrame.ChartOfAccount.dll
+Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.ChartOfAccount\bin\Release\SageFrame.ChartOfAccount.pdb
+Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.ChartOfAccount\bin\Release\SageFrame.Common.dll
+Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.ChartOfAccount\obj\Release\SageFrame.ChartOfAccount.csproj.AssemblyReference.cache
+Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.ChartOfAccount\obj\Release\SageFrame.ChartOfAccount.csproj.CoreCompileInputs.cache
+Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.ChartOfAccount\obj\Release\SageFrame.ChartOfAccount.csproj.CopyComplete
+Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.ChartOfAccount\obj\Release\SageFrame.ChartOfAccount.dll
+Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.ChartOfAccount\obj\Release\SageFrame.ChartOfAccount.pdb

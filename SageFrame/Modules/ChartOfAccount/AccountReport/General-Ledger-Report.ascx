@@ -4,16 +4,8 @@
     .hide {
         display: none;
     }
-
-    /*.ui-datepicker td {
-        padding: 7px;
-    }
-
-    .ui-datepicker .ui-datepicker-prev,
-    .ui-datepicker .ui-datepicker-next {
-        display: none;
-    }*/
 </style>
+<script src="../../../Scripts/main.js"></script>
 <script type="text/javascript">
     $(document).ready(function () {
         $("#txtStartDate").datepicker({
@@ -32,11 +24,9 @@
             Fromdate: '<%=Fromdate%>',
             Todate: '<%=Todate%>'
         });
-
     });
 </script>
 <div class="RO_wrapper">
-    
     <div id="div1">
         <table class="salesTable" style="display: block;">
             <tr>
@@ -53,14 +43,13 @@
                     <label for="voucherDropDownList"></label>
                     <input type="text" class="sfInputbox" placeholder="Financial A/C" id="voucherDropDownList" autocomplete="off" style="width: 500px;" />
                 </td>
-   
-                <td>
-                    <button type="button" class="sfBtn restro-btn fa fa-eye" id="btnView">View</button>
-                </td>
-                <td>
-                    <button type="button" class="sfBtn restro-btn fa fa-eye" id="btnSalaryView">Salary View</button>
-                </td>
 
+                <td>
+                    <button type="button" class="sfBtn restro-btn fa fa-eye" id="btnView">Account View</button>
+                </td>
+                <td>
+                    <button type="button" class="sfBtn restro-btn fa fa-eye" id="btnSalaryView">Detail View</button>
+                </td>
             </tr>
         </table>
         <div class="report-view" style="display: none;">
@@ -73,7 +62,6 @@
         <div class="restrowrapper" id="DailyReport" style="border: none;">
         </div>
     </div>
-
 
     <div id="divFinancialView" class="popup-tbl" style="display: none;"></div>
     <div id="divFinancialDetailView" class="popup-tbl" style="display: none;"></div>

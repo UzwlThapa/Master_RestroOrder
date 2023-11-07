@@ -111,3 +111,17 @@ E:\Development\Restro-GIT\AdarshaGit\SageFrame.FrontPage\obj\Release\SageFrame.F
 E:\Development\Restro-GIT\AdarshaGit\SageFrame.FrontPage\obj\Release\SageFrame.FrontPage.csproj.CopyComplete
 E:\Development\Restro-GIT\AdarshaGit\SageFrame.FrontPage\obj\Release\SageFrame.FrontPage.dll
 E:\Development\Restro-GIT\AdarshaGit\SageFrame.FrontPage\obj\Release\SageFrame.FrontPage.pdb
+Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.FrontPage\bin\Release\SageFrame.FrontPage.dll
+Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.FrontPage\bin\Release\SageFrame.FrontPage.pdb
+Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.FrontPage\bin\Release\SageFrame.Common.dll
+Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.FrontPage\bin\Release\SageFrame.Core.dll
+Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.FrontPage\bin\Release\AjaxControlToolkit.dll
+Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.FrontPage\bin\Release\SageFrame.Templating.dll
+Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.FrontPage\bin\Release\SageFrame.CDN.dll
+Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.FrontPage\bin\Release\ICSharpCode.SharpZipLib.dll
+Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.FrontPage\bin\Release\Ionic.Zip.dll
+Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.FrontPage\obj\Release\SageFrame.FrontPage.csproj.AssemblyReference.cache
+Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.FrontPage\obj\Release\SageFrame.FrontPage.csproj.CoreCompileInputs.cache
+Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.FrontPage\obj\Release\SageFrame.FrontPage.csproj.CopyComplete
+Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.FrontPage\obj\Release\SageFrame.FrontPage.dll
+Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.FrontPage\obj\Release\SageFrame.FrontPage.pdb

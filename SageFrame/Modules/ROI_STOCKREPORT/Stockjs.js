@@ -264,32 +264,32 @@
                         if (value.OpeningQty == null) {
                             htmls += "<td>-</td>";
                         } else {
-                            htmls += "<td>" + formatMoney(value.OpeningQty) + "</td>";
+                            htmls += "<td>" + formatNumber(value.OpeningQty, false) + "</td>";
                         }
                         if (value.PurchaseQty == null) {
                             htmls += "<td>-</td>";
                         } else {
-                            htmls += "<td>" + formatMoney(value.PurchaseQty) + "</td>";
+                            htmls += "<td>" + formatNumber(value.PurchaseQty, false) + "</td>";
                         }
                         if (value.SalesQty == null) {
                             htmls += "<td>-</td>";
                         } else {
-                            htmls += "<td>(" + formatMoney(value.SalesQty) + ")</td>";
+                            htmls += "<td>(" + formatNumber(value.SalesQty) + ")</td>";
                         }
                         if (value.SalesReturnQty == null) {
                             htmls += "<td>-</td>";
                         } else {
-                            htmls += "<td>" + formatMoney(value.SalesReturnQty) + "</td>";
+                            htmls += "<td>" + formatNumber(value.SalesReturnQty, false) + "</td>";
                         }
                         if (value.AdjustQty == null) {
                             htmls += "<td>-</td>";
                         } else {
-                            htmls += "<td>" + formatMoney(value.AdjustQty) + "</td>";
+                            htmls += "<td>" + formatNumber(value.AdjustQty, false) + "</td>";
                         }
                         if (value.ComplementQty == null) {
                             htmls += "<td>-</td>";
                         } else {
-                            htmls += "<td>(" + formatMoney(value.ComplementQty) + ")</td>";
+                            htmls += "<td>(" + formatNumber(value.ComplementQty, false) + ")</td>";
                         }
                         if (value.IssueQty == null) {
                             htmls += "<td>-</td>";
@@ -297,20 +297,20 @@
                             htmls += "<td>" + (value.IssueQty) + "</td>";
                         }
 
-
                         if (value.ItemBalance == 0) {
                             htmls += "<td>-</td>";
                         } else {
-                            htmls += "<td>" + formatMoney(value.ItemBalance) + "</td>";
+                            htmls += "<td>" + formatNumber(value.ItemBalance) + "</td>";
                         }
                         htmls += "<td>" + value.Symbol + "</td>";
 
                         htmls += "</tr>"
                     });
                     htmls += "</tbody>";
-                    htmls += `<tr style='font-weight: bold' ><td></td><td>Total</td><td>${formatMoney(openingQty)}</td><td>${formatMoney(purchaseQuantity)}</td><td>${formatMoney(salesQuantity)}</td>
-                    <td>${formatMoney(salesReturnQuantity)}</td><td>${formatMoney(adjustmentQuantity)}</td>
-                                <td>${formatMoney(complimentryQty)}</td><td>${formatMoney(issueQty)}</td><td></td>
+                    htmls += `<tr style='font-weight: bold' ><td></td><td>Total</td><td>${formatNumber(openingQty, false)}</td>
+                    <td>${formatNumber(purchaseQuantity, false)}</td><td>${formatNumber(salesQuantity, false)}</td>
+                    <td>${formatNumber(salesReturnQuantity, false)}</td><td>${formatNumber(adjustmentQuantity, false)}</td>
+                                <td>${formatNumber(complimentryQty, false)}</td><td>${formatNumber(issueQty, false)}</td><td></td>
                                 <td></td></tr>`;
                 }
                 else {
@@ -318,8 +318,6 @@
                 }
                 htmls += "</table>";
                 $('#divItemledger').html(htmls);
-
-
             },
 
             BindStore: function (data) {
@@ -417,7 +415,6 @@
                 if (storeid != 0) {
                     htmls += "<th>Action</th>";
                 }
-                // htmls += "<th class='table'>Purchase Date</th>";
                 htmls += "</tr>"
                 htmls += "</thead>"
                 htmls += "<tbody>"
@@ -427,28 +424,18 @@
                         htmls += "<tr>";
                         htmls += "<td>" + count + "</td>";
                         htmls += "<td>" + value.ITName + "</td>";
-                        htmls += "<td>" + formatMoney(value.CLBal) + " (" + value.Symbol + ")</td>";
-                        htmls += "<td>" + formatMoney(value.TotalValue) + " (Rs)</td>";
+                        htmls += "<td>" + formatNumber(value.CLBal, false) + " (" + value.Symbol + ")</td>";
+                        htmls += "<td>" + formatNumber(value.TotalValue) + " (Rs)</td>";
                         if (storeid != 0) {
                             htmls += "<td><label id='" + value.ITId + "' class='btnStockDetail  view icon-preview'></label></td>";
 
-                        }//htmls += "<td>" + value.PbDate + "</td>";
-                        //htmls += "<td>" + value.PbDate + "</td>";
-                        //htmls += "<td class='h'>" + value.PbDate + "</td>";
+                        }
                         htmls += "</tr>"
                         count++;
-                        //TotalAmount = TotalAmount + value.NetAmount;
                         totalStockValue += value.TotalValue;
                     });
-                    htmls += "<tr><td colspan='3' style='text-align:right;'><strong>Total Stock Value: </strong></td><td><strong>" + formatMoney(totalStockValue) + " (Rs)</strong></td></tr>"
-                    //htmls += "<thead class='Sales-total_amount'>"
-                    //htmls += "<tr>";
-                    //htmls += "<th colspan='3' class='a' style='text-align:right;'>" + "Total Amount :" + "</th>";
-                    //htmls += "<th class='f'>" + TotalAmount + "</th>";
-                    //htmls += "</tr>"
-                    //htmls += "</thead>"
-
-                    $("#SumAmount").text(formatMoney(TotalAmount));
+                    htmls += "<tr><td colspan='3' style='text-align:right;'><strong>Total Stock Value: </strong></td><td><strong>" + formatNumber(totalStockValue) + " (Rs)</strong></td></tr>"
+                    $("#SumAmount").text(formatNumber(TotalAmount));
                     TotalAmount = 0;
                 } else {
                     htmls += "<tr><td></td>";

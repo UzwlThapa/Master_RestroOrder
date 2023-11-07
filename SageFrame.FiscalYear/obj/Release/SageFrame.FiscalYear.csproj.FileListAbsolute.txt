@@ -202,3 +202,11 @@ E:\Development\Restro-GIT\AdarshaGit\SageFrame.FiscalYear\obj\Release\SageFrame.
 E:\Development\Restro-GIT\AdarshaGit\SageFrame.FiscalYear\obj\Release\SageFrame.FiscalYear.csproj.CopyComplete
 E:\Development\Restro-GIT\AdarshaGit\SageFrame.FiscalYear\obj\Release\SageFrame.FiscalYear.dll
 E:\Development\Restro-GIT\AdarshaGit\SageFrame.FiscalYear\obj\Release\SageFrame.FiscalYear.pdb
+Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.FiscalYear\bin\Release\SageFrame.FiscalYear.dll
+Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.FiscalYear\bin\Release\SageFrame.FiscalYear.pdb
+Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.FiscalYear\bin\Release\SageFrame.Common.dll
+Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.FiscalYear\obj\Release\SageFrame.FiscalYear.csproj.AssemblyReference.cache
+Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.FiscalYear\obj\Release\SageFrame.FiscalYear.csproj.CoreCompileInputs.cache
+Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.FiscalYear\obj\Release\SageFrame.FiscalYear.csproj.CopyComplete
+Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.FiscalYear\obj\Release\SageFrame.FiscalYear.dll
+Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.FiscalYear\obj\Release\SageFrame.FiscalYear.pdb

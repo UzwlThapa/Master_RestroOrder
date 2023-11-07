@@ -575,7 +575,7 @@ function print() {
 
 
             BindBillStatus: function (data) {
-                
+
                 var result = JSON.parse(data);
                 if (result[0].ErrorNumber == 200) {
                     if ($('#hdnPinFor').val() == 'CancelOrder') {
@@ -595,7 +595,7 @@ function print() {
 
                             // Check for discount limit
                             var creditlimit = p.creditLimit; //Percentage
-                            if (creditlimit >=  disper) {
+                            if (creditlimit >= disper) {
                                 InitializePin();
                             }
                             else {
@@ -982,12 +982,12 @@ function print() {
 
             },
             BindUnoccupiedRoomByRoomTypeId: function (result) {
-                
+
                 var htmls = [];
                 $('.RoomsForShift').html("");
 
                 var datas = JSON.parse(result.d);
-                
+
                 htmls += "<select class='imgRoomForShift sfInputbox' style='width:150px;' ><option value='' disabled selected>-- select --</option>";
                 if (datas.length > 0) {
                     $.each(datas, function (index, value) {
@@ -1044,7 +1044,7 @@ function print() {
                                 htmls += ("</li>");
                             }
                         }
-                        
+
 
 
                     });
@@ -1260,7 +1260,7 @@ function print() {
                         }
                     }
 
-                    
+
 
                     isAbbreviated = true;
 
@@ -1326,9 +1326,9 @@ function print() {
                             qnty += parseFloat(value.Quantity);
                             amt = parseFloat(value.Quantity) * parseFloat(value.Rate);
 
-                           
-                                totalAmount += parseFloat(amt);
-                            
+
+                            totalAmount += parseFloat(amt);
+
 
 
 
@@ -1415,7 +1415,7 @@ function print() {
                         NRate = parseFloat(tableinfo.Rate);
                     }
 
-                    htmls += ("<td data-rate='" + tableinfo.Rate +"'>" + NRate.toFixed(2) + "</td>");
+                    htmls += ("<td data-rate='" + tableinfo.Rate + "'>" + NRate.toFixed(2) + "</td>");
                     htmls += ("<td>" + tableinfo.BookedDays + "</td>");
                     htmls += ("<td>" + (NRate * parseFloat(tableinfo.BookedDays)).toFixed(2) + "</td></tr>");
                     roomAmount += NRate * tableinfo.BookedDays;
@@ -1442,7 +1442,7 @@ function print() {
 
                 if (isab) {
                     if (isAbbreviated) {
-                        htmls += "<tr class='roomdisc' style='" + ((tableinfo.RoomBookDetailsID > 0) ? "" : "display:none") + "'><td>Room ( Rs. " + (roomAmount/1.13).toFixed(2) + " ) </td><td>";
+                        htmls += "<tr class='roomdisc' style='" + ((tableinfo.RoomBookDetailsID > 0) ? "" : "display:none") + "'><td>Room ( Rs. " + (roomAmount / 1.13).toFixed(2) + " ) </td><td>";
                     } else {
                         htmls += "<tr class='roomdisc' style='" + ((tableinfo.RoomBookDetailsID > 0) ? "" : "display:none") + "'><td>Room ( Rs. " + (roomAmount).toFixed(2) + " ) </td><td>";
                     }
@@ -1549,7 +1549,7 @@ function print() {
                         debugger;
                         $.each(datas.billingTerm, function (index, value) {
                             if (value.ID == 62) {
-                                datas.billingTerm.splice(index,1)
+                                datas.billingTerm.splice(index, 1)
                             }
                         })
                         DashboardFunction.BindBillingTerm(totalAmount, totaldis, datas);
@@ -1697,7 +1697,7 @@ function print() {
                         htm += ("<td>" + tableinfo.BookedDays + "</td>");
                         htm += ("<td>" + (NRate * parseFloat(tableinfo.BookedDays)).toFixed(2) + "</td></tr>");
                         roomAmount = tableinfo.TotalAmount
-                        
+
                         $('.room-details-tbl tbody').append(htm);
                     }
 
@@ -1803,7 +1803,7 @@ function print() {
                     }
 
                     totaldis += ((totalAmount + tableinfo.TotalAmount) * (lolDisRate) / 100);
-                    totalAmount = totalAmount + tableinfo.TotalAmount; 
+                    totalAmount = totalAmount + tableinfo.TotalAmount;
                     DashboardFunction.BindBillingTerm(totalAmount, totaldis, datas);
                 });
                 $('.txt_dis').on('keyup', function () {
@@ -1873,28 +1873,28 @@ function print() {
                                         $('.roomtotle').text((totalAmountR).toFixed(2));
                                     }
                                 }
-                               
-                                
+
+
 
 
                             } //else {
-                            
-                                $(".txt_dis").each(function () {
-                                    var keyIndex = parseFloat($(this).attr('id').split('_')[1]);
-                                    if (keyIndex >= 0) {
-                                        dis += (parseFloat(costCenterGroup[keyIndex].TotalAmt) * (parseFloat($(this).val() / 100)));
 
-                                    } else {
-                                        dis += (parseFloat(tableinfo.TotalAmount) * (parseFloat($(this).val() / 100)))
-                                    }
-                                })
+                            $(".txt_dis").each(function () {
+                                var keyIndex = parseFloat($(this).attr('id').split('_')[1]);
+                                if (keyIndex >= 0) {
+                                    dis += (parseFloat(costCenterGroup[keyIndex].TotalAmt) * (parseFloat($(this).val() / 100)));
+
+                                } else {
+                                    dis += (parseFloat(tableinfo.TotalAmount) * (parseFloat($(this).val() / 100)))
+                                }
+                            })
 
                             totaldis = dis;
 
                         } else {
                             $(".txt_dis").each(function () {
                                 _this = $(this);
-                                if (_this.attr('id') == 'txtRoomDiscount' && !$('#txtRoomDiscount').is(':visible') ) {
+                                if (_this.attr('id') == 'txtRoomDiscount' && !$('#txtRoomDiscount').is(':visible')) {
                                     return false;
                                 }
                                 if (_this.attr('id') != 'txtRoomDiscount') {
@@ -1903,8 +1903,8 @@ function print() {
                                 } else {
                                     dis += (parseFloat(tableinfo.TotalAmount) * (parseFloat($(this).val() / 100)))
                                 }
-                                
-                                
+
+
 
                             })
 
@@ -1926,7 +1926,7 @@ function print() {
                             }
 
                         }
-                        
+
                         var dis = 0
 
 
@@ -1935,7 +1935,7 @@ function print() {
                                 var ttldis = parseFloat($(this).val() == "" ? 0 : $(this).val());
                                 var ttl = 0.00;
                                 if (cgGroup != undefined) {
-                                     ttl = (cgGroup.TotalAmt == "") ? 0 : cgGroup.TotalAmt;
+                                    ttl = (cgGroup.TotalAmt == "") ? 0 : cgGroup.TotalAmt;
                                 }
 
                                 var Rttl = tableinfo.TotalAmount;
@@ -2317,9 +2317,9 @@ function print() {
                             qnty += parseFloat(value.Quantity);
                             amt = parseFloat(value.Quantity) * parseFloat(value.Rate);
 
-                            
-                                totalAmount += parseFloat(amt);
-                            
+
+                            totalAmount += parseFloat(amt);
+
 
 
 
@@ -2676,7 +2676,7 @@ function print() {
                     DashboardFunction.BindBillingTerm(totalAmount, totaldis, datas);
                 });
 
-                
+
                 $('#txtRoomDiscount').on('keyup', function (event) {
                     if ($("#selDiscountType").val() == "1") {
                         if ($('#txtRoomDiscount').val() > 100 || $('#txtRoomDiscount').val() < 0) {
@@ -2693,7 +2693,7 @@ function print() {
                     }
                     DashboardFunction.BindBillingTerm(totalAmount, totaldis, datas);
                 });
-                
+
 
                 var roles = userRole.split(',');
                 if (roles.includes("Super User") || roles.includes("Billing_Discount")) {
@@ -3028,12 +3028,12 @@ function print() {
                             }
                         }
                     }
-                        
-                    
+
+
                 });
                 netAmount = parseFloat((parseFloat(netAmount) + parseFloat(amntAfterDisc)).toFixed(2));
                 var vatTerm = datas.billingTerm.filter(x => x.ID == 54);
-                
+
                 if (datas.VATforBill) {
                     if (vatTerm[0].BillTerm == "VAT") {
 
@@ -3067,7 +3067,7 @@ function print() {
                         }
 
                         var vat = parseFloat(netAmount * 0.13).toFixed(2);
-                        
+
 
                         htmls += ("<td attr-term='VAT' attr-percent='13' ><strong>VAT(13%) : </strong><input type=\"text\" id=\"BTerm_" + vatTerm[0].ID + "_true" + "\"  value=\"Rs. " + vat + "\"  class=\"sfInputbox_bill  \" disabled  attr-amount='" + vat + "'/></td>");
                         netAmount = (parseFloat(netAmount) + parseFloat(vat)).toFixed(2);
@@ -3468,7 +3468,7 @@ function print() {
             },
 
             BindBookedRoom: function (data) {
-                
+
                 $('#BookedRoomsdiv').html('');
                 if (data.length > 0) {
                     var roomHtmls = "";
@@ -3477,7 +3477,7 @@ function print() {
                     roomHtmls += ("<div class='homebookroom'><table id='BookedRooms' class='BookedTable-list-tbl'>");
                     roomHtmls += ("<thead><th>Room</th><th>Customer</th><th>Booked On</th><th>Booked To</th><th>Action</th></thead><tbody>");
                     $.each(data, function (index, type) {
-                        
+
                         if (!type.IsTable) {
                             roomHtmls += ("<tr><td>" + type.RestroRoom + " / " + type.restrotableTitle);
                             roomHtmls += ("</td><td>" + type.CustomerName + "</td>");
@@ -3749,10 +3749,8 @@ function SaveAcc() {
                 position: ['center', 'top']
             });
             print();
-            //$('#printno').show();
             $('#InvoiceType').html('INVOICE');
             print();
-            //$('#btnPrints').click();
 
             $('#BillingView').dialog('close');
             jAlert('Bill Successfully Generated.', 'Information', function () {

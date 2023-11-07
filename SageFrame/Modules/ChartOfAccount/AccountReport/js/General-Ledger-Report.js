@@ -1,5 +1,5 @@
-﻿/// <reference path="VoucherReport.js" />
-(function ($) {
+﻿(function ($) {
+    var datas = [];
     var tabs = $("#tabs").tabs();
     $.companyProfcreate = function (p) {
         p = $.extend
@@ -40,15 +40,7 @@
                     eventFunction.GeneralLedgerReport();
                 }
 
-
                 $("#btnView").on('click', function () {
-                    //if (["", null].includes($("#hdnFinancialID").val())) {
-                    //    jAlert("Please select atleast one finanacial account!", 'Information!!', function () { $.alerts.dialogClass = null; });
-                    //}
-                    //else {
-                    //    $(".report-view").show();
-                    //    eventFunction.GeneralLedgerReport();
-                    //}
                     $(".report-view").show();
                     eventFunction.GeneralLedgerReport();
                 });
@@ -116,7 +108,6 @@
                         document.body.removeChild(frame1);
                     }, 500);
                 });
-
             },
             ajaxCall: function (config) {
                 $.ajax({
@@ -137,10 +128,8 @@
                         eventFunction.bindFinancialAcName(data.d);
                         break;
                     case 1:
-                        console.log(data);
                         eventFunction.BindNewGeneralLedger(data.d);
                         break;
-
                     case 2:
                         eventFunction.BindLedgerDetail(data.d);
                         break;
@@ -149,8 +138,6 @@
                         break;
                     case 4:
                         eventFunction.BindIndividualLedgerDetail(data.d);
-
-
                 }
             },
             ajaxFailure: function () {
@@ -187,11 +174,7 @@
                 eventFunction.config.ajaxCallMode = 4;
                 eventFunction.ajaxCall(eventFunction.config);
             },
-            
-
-
             //<<-----------------------------------BindTable Herere ------------------------------------->>>
-
             bindFinancialAcName: function (result) {
                 data = JSON.parse(result);
                 var AutocompleteFinancialAc = [];
@@ -252,7 +235,6 @@
                                 a.push(ui.item.id);
                                 $('#hdnFinancialID').val(a.filter(x => x).join(", "));
                             }
-
                             return false;
                         }
                     });
@@ -275,10 +257,7 @@
                 htmls += "</thead>";
                 htmls += "<tbody>";
 
-
                 if (datas.length > 0) {
-
-                    console.log(datas);
 
                     const groupNameList = [...new Set(datas.map(item => item.ParentAccount))];
 
@@ -303,19 +282,20 @@
                         htmls += '<td></td>';
                         htmls += '</tr>';
 
+                        // Opening Balance
+                        var openingBalance = datas.filter((item) => item.ParentAccount == value && item.AccountHead == 'Opening Balance');
+                        if (openingBalance[0]) {
+                            htmls += '<tr style="text-align:left;background:#f7ebeb;font-weight:bold;">';
+                            htmls += `<td style="text-align:left;border:1px solid #575757;padding-left:4rem!important;">${openingBalance[0].AccountHead}</td>`;
+                            htmls += `<td style="text-align:left;border:1px solid #575757;"></td>`;
+                            htmls += `<td style="text-align:right;border:1px solid #575757;">${formatNumber(openingBalance[0].Debit)}</td>`;
+                            htmls += `<td style="text-align:right;border:1px solid #575757;">${formatNumber(openingBalance[0].Credit)}</td>`;
+                            htmls += `<td style="text-align:right;border:1px solid #575757;padding-right: 8px !important;">${Math.abs(openingBalance[0].Balance) + (openingBalance[0].Balance >= 0 ? ' Dr' : ' Cr')}</td>`;
+                            htmls += '<td></td>';
+                            htmls += '</tr>';
+                        }
 
                         var groupData = datas.filter((item) => item.ParentAccount == value && item.AccountHead != 'Opening Balance');
-                        // Opening Balance
-
-                        var openingBalance = datas.filter((item) => item.ParentAccount == value && item.AccountHead == 'Opening Balance');
-                        htmls += '<tr style="text-align:left;background:#f7ebeb;font-weight:bold;">';
-                        htmls += `<td style="text-align:left;border:1px solid #575757;padding-left:4rem!important;">${openingBalance[0].AccountHead}</td>`;
-                        htmls += `<td style="text-align:left;border:1px solid #575757;"></td>`;
-                        htmls += `<td style="text-align:right;border:1px solid #575757;">${openingBalance[0].Debit}</td>`;
-                        htmls += `<td style="text-align:right;border:1px solid #575757;">${openingBalance[0].Credit}</td>`;
-                        htmls += `<td style="text-align:right;border:1px solid #575757;padding-right: 8px !important;">${Math.abs(openingBalance[0].Balance) + (openingBalance[0].Balance >= 0 ? ' Dr' : ' Cr')}</td>`;
-                        htmls += '<td></td>';
-                        htmls += '</tr>';
 
                         $.each(groupData, function (index, value) {
 
@@ -333,8 +313,8 @@
                             htmls += '<tr>';
                             htmls += `<td style="text-align:left;border:1px solid #575757;padding-left:4rem!important;">${dta} ${value.AccountHead}</td>`;
                             htmls += `<td style="text-align:left;border:1px solid #575757;">${value.Particulars}</td>`;
-                            htmls += `<td style="text-align:right;border:1px solid #575757;">${value.Debit}</td>`;
-                            htmls += `<td style="text-align:right;border:1px solid #575757;">${value.Credit}</td>`;
+                            htmls += `<td style="text-align:right;border:1px solid #575757;">${formatNumber(value.Debit)}</td>`;
+                            htmls += `<td style="text-align:right;border:1px solid #575757;">${formatNumber(value.Credit)}</td>`;
                             htmls += `<td style="text-align:right;border:1px solid #575757;padding-right: 8px !important;">${Math.abs(value.Balance) + (value.Balance >= 0 ? ' Dr' : ' Cr')}</td>`;
                             htmls += `<td style="text-align:right;border:1px solid #575757;padding:2px;"><button class="icon-preview btnViewTransaction" type='button' id="${value.TransactionID}"></button></td>`;
                             htmls += '</tr>';
@@ -360,8 +340,8 @@
                     htmls += '<td></td>';
                     htmls += '<td></td>';
                     htmls += '<td></td>';
-                    htmls += `<td style="text-align:right;">Grand Total:${grandTotalDr}</td>`;
-                    htmls += `<td style="text-align:right;">${grandTotalCr}</td>`;
+                    htmls += `<td style="text-align:right;">Grand Total:${formatNumber(grandTotalDr)}</td>`;
+                    htmls += `<td style="text-align:right;">${formatNumber(grandTotalCr)}</td>`;
                     htmls += `<td style="text-align:right;padding-right: 8px !important;">${Math.abs(grandTotalBal).toFixed(2).toString() + (grandTotalBal >= 0 ? ' Dr' : ' Cr')}</td>`;
                     htmls += '</tr>';
 
@@ -387,42 +367,34 @@
                 });
 
                 $("#unittableSecond").on("click", ".btnViewTransaction", function () {
-                    var row = $(this).parents('tr');
                     var id = parseInt($(this).attr('id'));
 
-                    console.log(id);
                     eventFunction.config.transactionID = id;
                     let htmls = '';
                     $("#divFinancialDetailView").html(htmls);
 
                     var companyInfo = JSON.parse(localStorage.getItem("companyInfo"));
-                    htmls += `<label class="icon-print sfBtn restro-btn" id="btnPrintVerifiedTransaction">
-                Print</label>
+                    htmls += `<label class="icon-print sfBtn restro-btn" id="btnPrintVerifiedTransaction">Print</label>
                         <style>
                            .popup-tblTop, #tableTransactionByIDInDialog {
                                 border: 1px solid;
                                 border-collapse: collapse;
-
                             }
                             .popup-tblTop tr,#tableTransactionByIDInDialog tr{
                             border: 1px solid;
                                 border-collapse: collapse;
 
                             }
-
                             .popup-tblTop tr,#tableTransactionByIDInDialog th{
                             border: 1px solid;
                                 border-collapse: collapse;
-
                             }
-
                             .popup-tblTop td, #tableTransactionByIDInDialog td {
                             border: 1px solid;
                                 border-collapse: collapse;
-
                             }
-                                                    </style>
-                            `;
+                        </style>`;
+
                     htmls += `<table align="center" >
                                 <tr>
                                     <td colspan="2" style="text-align: center; padding: 0px;">
@@ -436,12 +408,24 @@
                                 </tr>
                                 <tr><td colspan="7" style="font-size: 12px; text-align: center; padding: 0px;"></td></tr>
                               </table>`;
-                    htmls += "<table class='popup-tblTop'><tr><td>Voucher No. : " + row.find('td:eq(1)').text() + "</td>";
-                    htmls += "<td> Voucher : " + row.find('td:eq(2)').text() + "</td></tr>";
-                    htmls += "<tr><td> Descriptions : " + row.find('td:eq(3)').text() + "</td>";
-                    htmls += "<td>TransactionDate : " + row.find('td:eq(4)').text() + "</td></tr>";
-                    htmls += "<tr><td>Total Debit : " + row.find('td:eq(5)').text() + "</td>";
-                    htmls += "<td>Total Credit : " + row.find('td:eq(6)').text() + "</td></tr>";
+
+                    var detailRow = (datas.filter((value) => value.TransactionID == id) ?? [])[0];
+                    if (detailRow == null) {
+                        detailRow = {
+                            VoucherNo: '',
+                            VoucherName: '',
+                            Descriptions: '',
+                            Debit: '',
+                            Credit: '',
+                        };
+                    }
+
+                    htmls += "<table class='popup-tblTop'><tr><td>Voucher No. : " + detailRow.AccountHead.split('#:')[1].replace(' ', '') + "</td>";
+                    htmls += `<td id="voucherName"> Voucher : ${detailRow.VoucherName}</td></tr>`;
+                    htmls += "<tr><td> Descriptions : " + detailRow.Particulars + "</td>";
+                    htmls += "<td>TransactionDate : " + detailRow.Date + "</td></tr>";
+                    htmls += "<tr><td>Total Debit : " + formatNumber(detailRow.Debit) + "</td>";
+                    htmls += "<td>Total Credit : " + formatNumber(detailRow.Credit) + "</td></tr>";
                     htmls += '</table>';
                     $("#divFinancialDetailView").html(htmls);
 
@@ -467,14 +451,10 @@
 
                     eventFunction.PrintFunction();
                 });
-
             },
             BindIndividualLedgerDetail: function (data) {
                 $("#DailyReport").html('');
-
                 datas = JSON.parse(data);
-
-                console.log(datas);
                 var htmls = "";
                 htmls += '<div class="Report_header"><h4 style="text-align:center;margin:0;">' + companyInfo.Name + '</h4>';
                 htmls += '<p style="text-align:center;margin:0;">' + companyInfo.Address + ' , ' + (companyInfo.IsPan ? 'PAN' : 'VAT') + ' : ' + companyInfo.PAN + '</p>';
@@ -488,12 +468,14 @@
                 htmls += "</thead>";
                 htmls += "<tbody>";
 
-
                 if (datas.length > 0) {
 
                     const groupNameList = [...new Set(datas.map(item => item.AccountHead.split(" #")[0]))];
                     if (groupNameList.includes("")) {
                         groupNameList.pop("");
+                    }
+                    if (groupNameList.includes("Opening Balance")) {
+                        groupNameList.pop("Opening Balance");
                     }
 
                     var groupTotalDr = 0;
@@ -502,9 +484,6 @@
                     var grandTotalDr = 0;
                     var grandTotalCr = 0;
                     var grandTotalBal = 0;
-
-                    var isOpening = false;
-                    
 
                     $.each(groupNameList, function (index, value) {
                         // Group Header
@@ -517,17 +496,14 @@
                         htmls += '<td></td>';
                         htmls += '</tr>';
 
-
                         var groupData = datas.filter((item) => item.AccountHead.split(" #")[0] == value && item.AccountHead != 'Opening Balance');
                         // Opening Balance
-
                         if (groupData.length === 0 && value == "Opening Balance") {
 
-                            
                             var openingBalance = datas.filter((item) => item.AccountHead == 'Opening Balance' && !(groupNameList.includes(item.ParentAccount)))
 
-                            console.log(groupNameList, openingBalance);
                             $.each(openingBalance, function (index, element) {
+
                                 htmls += '<tr style="text-align:left;background:#f7ebeb;font-weight:bold;">';
                                 htmls += `<td style="text-align:left;border:1px solid #575757;padding-left:4rem!important;">${element.ParentAccount}</td>`;
                                 htmls += `<td style="text-align:left;border:1px solid #575757;padding-left:4rem!important;">${element.AccountHead}</td>`;
@@ -542,9 +518,9 @@
                                 groupTotalDr += element.Debit;
                                 groupTotalDr += element.Credit;
 
-                            })
+                            });
                         }
-                        else if(value != "Opening Balance") {
+                        else if (value != "Opening Balance") {
                             var openingBalance = datas.filter((item) => item.AccountHead == 'Opening Balance' && groupData[0].FinancialAcID == item.FinancialAcID)
                             if (openingBalance.length != 0) {
 
@@ -555,16 +531,14 @@
                                 grandTotalCr += openingBalance[0].Credit;
                                 grandTotalDr += openingBalance[0].Debit;
 
-
                                 htmls += '<tr style="text-align:left;background:#f7ebeb;font-weight:bold;">';
                                 htmls += `<td style="text-align:left;border:1px solid #575757;padding-left:4rem!important;">${openingBalance[0].AccountHead}</td>`;
                                 htmls += `<td style="text-align:left;border:1px solid #575757;"></td>`;
-                                htmls += `<td style="text-align:right;border:1px solid #575757;">${openingBalance[0].Debit}</td>`;
-                                htmls += `<td style="text-align:right;border:1px solid #575757;">${openingBalance[0].Credit}</td>`;
-                                htmls += `<td style="text-align:right;border:1px solid #575757;padding-right: 8px !important;">${Math.abs(openingBalance[0].Balance) + (openingBalance[0].Balance >= 0 ? ' Dr' : ' Cr')}</td>`;
+                                htmls += `<td style="text-align:right;border:1px solid #575757;">${formatNumber(openingBalance[0].Debit)}</td>`;
+                                htmls += `<td style="text-align:right;border:1px solid #575757;">${formatNumber(openingBalance[0].Credit)}</td>`;
+                                htmls += `<td style="text-align:right;border:1px solid #575757;padding-right: 8px !important;">${formatNumber(openingBalance[0].Balance) + (openingBalance[0].Balance >= 0 ? ' Dr' : ' Cr')}</td>`;
                                 htmls += '<td></td>';
                                 htmls += '</tr>';
-
                             }
                             else {
                                 htmls += '<tr style="text-align:left;background:#f7ebeb;font-weight:bold;">';
@@ -593,50 +567,42 @@
                                 htmls += '<tr>';
                                 htmls += `<td style="text-align:left;border:1px solid #575757;padding-left:4rem!important;">${dta} ${value.AccountHead}</td>`;
                                 htmls += `<td style="text-align:left;border:1px solid #575757;">${value.Particulars}</td>`;
-                                htmls += `<td style="text-align:right;border:1px solid #575757;">${value.Debit}</td>`;
-                                htmls += `<td style="text-align:right;border:1px solid #575757;">${value.Credit}</td>`;
-                                htmls += `<td style="text-align:right;border:1px solid #575757;padding-right: 8px !important;">${groupTotalBal + (groupTotalDr >= groupTotalCr ? ' Dr' : ' Cr')}</td>`;
+                                htmls += `<td style="text-align:right;border:1px solid #575757;">${formatNumber(value.Debit)}</td>`;
+                                htmls += `<td style="text-align:right;border:1px solid #575757;">${formatNumber(value.Credit)}</td>`;
+                                htmls += `<td style="text-align:right;border:1px solid #575757;padding-right: 8px !important;">${formatNumber(groupTotalBal) + (groupTotalDr >= groupTotalCr ? ' Dr' : ' Cr')}</td>`;
                                 htmls += `<td style="text-align:right;border:1px solid #575757;padding:2px;"><button class="icon-preview btnViewTransaction" type='button' id="${value.TransactionID}"></button></td>`;
                                 htmls += '</tr>';
                             });
                         }
-                       
-            
-
-                        
 
                         // Group Footer
-
                         htmls += '<tr style="text-align:center;background:#cfcfcf;font-weight:bold;">';
                         htmls += '<td></td>';
                         htmls += '<td></td>';
-                        
-                        htmls += `<td style="text-align:right;">Ledger Total: ${groupTotalDr}</td>`;
-                        htmls += `<td style="text-align:right;">${groupTotalCr}</td>`;
-                        htmls += `<td style="text-align:right;padding-right: 8px !important;">${Math.abs(groupTotalBal).toFixed(2).toString() + (groupTotalDr >= groupTotalCr ? ' Dr' : ' Cr')}</td>`;
+
+                        htmls += `<td style="text-align:right;">Ledger Total: ${formatNumber(groupTotalDr)}</td>`;
+                        htmls += `<td style="text-align:right;">${formatNumber(groupTotalCr)}</td>`;
+                        htmls += `<td style="text-align:right;padding-right: 8px !important;">${formatNumber(groupTotalBal) + (groupTotalDr >= groupTotalCr ? ' Dr' : ' Cr')}</td>`;
                         htmls += '<td></td>';
                         htmls += '</tr>';
 
-                       
                         groupTotalDr = 0;
                         groupTotalCr = 0;
                         groupTotalBal = 0;
                     });
 
                     // Grand Total Footer
-
                     grandTotalBal = (grandTotalDr > grandTotalCr ? grandTotalDr - grandTotalCr : grandTotalCr - grandTotalDr);
 
                     htmls += '<tr style="text-align:left;background:#d3c5c5;font-weight:bold;">';
                     htmls += '<td></td>';
                     htmls += '<td></td>';
-                    htmls += `<td style="text-align:right;">Grand Total:${grandTotalDr}</td>`;
-                    htmls += `<td style="text-align:right;">${grandTotalCr}</td>`;
-                    htmls += `<td style="text-align:right;padding-right: 8px !important;">${Math.abs(grandTotalBal).toFixed(2).toString() + (grandTotalDr >= grandTotalCr ? ' Dr' : ' Cr')}</td>`;
-                    
+                    htmls += `<td style="text-align:right;">Grand Total:${formatNumber(grandTotalDr)}</td>`;
+                    htmls += `<td style="text-align:right;">${formatNumber(grandTotalCr)}</td>`;
+                    htmls += `<td style="text-align:right;padding-right: 8px !important;">${formatNumber(grandTotalBal) + (grandTotalDr >= grandTotalCr ? ' Dr' : ' Cr')}</td>`;
+
                     htmls += '<td></td>';
                     htmls += '</tr>';
-
 
                     grandTotalDr = 0;
                     grandTotalCr = 0;
@@ -660,42 +626,35 @@
                 });
 
                 $("#unittableSecond").on("click", ".btnViewTransaction", function () {
-                    var row = $(this).parents('tr');
                     var id = parseInt($(this).attr('id'));
 
-                    console.log(id);
                     eventFunction.config.transactionID = id;
                     let htmls = '';
                     $("#divFinancialDetailView").html(htmls);
 
                     var companyInfo = JSON.parse(localStorage.getItem("companyInfo"));
-                    htmls += `<label class="icon-print sfBtn restro-btn" id="btnPrintVerifiedTransaction">
-                Print</label>
+                    htmls += `<label class="icon-print sfBtn restro-btn" id="btnPrintVerifiedTransaction">Print</label>
                         <style>
                            .popup-tblTop, #tableTransactionByIDInDialog {
                                 border: 1px solid;
                                 border-collapse: collapse;
-
                             }
                             .popup-tblTop tr,#tableTransactionByIDInDialog tr{
                             border: 1px solid;
                                 border-collapse: collapse;
-
                             }
 
                             .popup-tblTop tr,#tableTransactionByIDInDialog th{
                             border: 1px solid;
                                 border-collapse: collapse;
-
                             }
 
                             .popup-tblTop td, #tableTransactionByIDInDialog td {
                             border: 1px solid;
                                 border-collapse: collapse;
-
                             }
-                                                    </style>
-                            `;
+                        </style>`;
+
                     htmls += `<table align="center" >
                                 <tr>
                                     <td colspan="2" style="text-align: center; padding: 0px;">
@@ -709,12 +668,24 @@
                                 </tr>
                                 <tr><td colspan="7" style="font-size: 12px; text-align: center; padding: 0px;"></td></tr>
                               </table>`;
-                    htmls += "<table class='popup-tblTop'><tr><td>Voucher No. : " + row.find('td:eq(1)').text() + "</td>";
-                    htmls += "<td> Voucher : " + row.find('td:eq(2)').text() + "</td></tr>";
-                    htmls += "<tr><td> Descriptions : " + row.find('td:eq(3)').text() + "</td>";
-                    htmls += "<td>TransactionDate : " + row.find('td:eq(4)').text() + "</td></tr>";
-                    htmls += "<tr><td>Total Debit : " + row.find('td:eq(5)').text() + "</td>";
-                    htmls += "<td>Total Credit : " + row.find('td:eq(6)').text() + "</td></tr>";
+
+                    var detailRow = (datas.filter((value) => value.TransactionID == id) ?? [])[0];
+                    if (detailRow == null) {
+                        detailRow = {
+                            VoucherNo: '',
+                            VoucherName: '',
+                            Descriptions: '',
+                            Debit: '',
+                            Credit: '',
+                        };
+                    }
+
+                    htmls += "<table class='popup-tblTop'><tr><td>Voucher No. : " + detailRow.AccountHead.split('#:')[1].replace(' ', '') + "</td>";
+                    htmls += `<td id="voucherName"> Voucher : ${detailRow.VoucherName}</td></tr>`;
+                    htmls += "<tr><td> Descriptions : " + detailRow.Particulars + "</td>";
+                    htmls += "<td>TransactionDate : " + detailRow.Date + "</td></tr>";
+                    htmls += "<tr><td>Total Debit : " + formatNumber(detailRow.Debit) + "</td>";
+                    htmls += "<td>Total Credit : " + formatNumber(detailRow.Credit) + "</td></tr>";
                     htmls += '</table>';
                     $("#divFinancialDetailView").html(htmls);
 
@@ -737,10 +708,8 @@
                         resizable: true,
                         dialogClass: 'popup-titlebg',
                     });
-
                     eventFunction.PrintFunction();
                 });
-
             },
 
             BindLedgerDetail: function (data) {
@@ -749,41 +718,30 @@
                 var ledgerInfo = data.TransactionInfo[0];
                 var ledgerDetail = data.TransactionDetail;
 
-                //let htmls = '';
-
                 let htmls = '';
                 $("#divFinancialView").html(htmls);
 
                 var companyInfo = JSON.parse(localStorage.getItem("companyInfo"));
-                htmls += `< label class="icon-print sfBtn restro-btn" id = "btnPrintVerifiedTransaction" >
-                            Print</label >
+                htmls += `< label class="icon-print sfBtn restro-btn" id = "btnPrintVerifiedTransaction">Print</label>
                                 <style>
                                     .popup-tblTop, #tableTransactionByIDInDialog {
                                         border: 1px solid;
                                     border-collapse: collapse;
-
                             }
                                     .popup-tblTop tr, #tableTransactionByIDInDialog tr{
                                         border: 1px solid;
                                     border-collapse: collapse;
-
                             }
-
                                     .popup-tblTop tr, #tableTransactionByIDInDialog th{
                                         border: 1px solid;
                                     border-collapse: collapse;
-
                             }
-
                                     .popup-tblTop td, #tableTransactionByIDInDialog td {
                                         border: 1px solid;
                                     border-collapse: collapse;
+                            }</style>`;
 
-                            }
-                                </style>
-                        `;
-                //htmls += "<div class='' style='text-align:center; width: 100%'>";
-                htmls += `< table align = "center" >
+                htmls += `<table align = "center" >
                                 <tr>
                                     <td colspan="2" style="text-align: center; padding: 0px;">
                                         <img src="/Modules/ROCompanyInfo/logo/${companyInfo.Logo}" style="width:70px;"></td>
@@ -796,12 +754,13 @@
                                 </tr>
                                 <tr><td colspan="7" style="font-size: 12px; text-align: center; padding: 0px;"></td></tr>
                               </table > `;
+
                 htmls += "<table class='popup-tblTop'><tr><td>Voucher No. : " + ledgerInfo.VoucherNo + "</td>";
-                htmls += "<td> Voucher : " + ledgerInfo.VoucherName + "</td></tr>";
+                htmls += `<td id="voucherName"> Voucher : ${ledgerInfo.VoucherName}</td></tr>`;
                 htmls += "<tr><td> Descriptions : " + ledgerInfo.Descriptions + "</td>";
                 htmls += "<td>TransactionDate : " + ledgerInfo.TransactionDate + "</td></tr>";
-                htmls += "<tr><td>Total Debit : " + ledgerInfo.totalDebit + "</td>";
-                htmls += "<td>Total Credit : " + ledgerInfo.totalCredit + "</td></tr>";
+                htmls += "<tr><td>Total Debit : " + formatNumber(ledgerInfo.totalDebit) + "</td>";
+                htmls += "<td>Total Credit : " + formatNumber(ledgerInfo.totalCredit) + "</td></tr>";
                 htmls += '</table>';
 
                 htmls += "<table id='tableTransactionByIDInDialog' class='display dataTable no-footer' style='margin-top:15px;'><thead><tr><th>S.N.</th><th>FinancialAc</th><th>FinancialAcID</th><th>Particulars</th><th>Debit</th><th>Credit</th><th>Cheque No.</th><th>Cheque Date</th></tr></thead><tbody>";
@@ -812,12 +771,13 @@
                         htmls += '<td>' + value.financialAcName + '</td>';
                         htmls += '<td>' + value.FinancialAcID + '</td>';
                         htmls += '<td>' + value.Particulars + '</td>';
-                        htmls += '<td class="tdrate">' + parseFloat(value.Debit).toFixed(2) + '</td>';
-                        htmls += '<td class="tdrate">' + parseFloat(value.Credit).toFixed(2) + '</td>';
+                        htmls += '<td class="tdrate">' + formatNumber(value.Debit) + '</td>';
+                        htmls += '<td class="tdrate">' + formatNumber(value.Credit) + '</td>';
                         htmls += '<td>' + value.ChequeNo + '</td>';
                         dates = value.ChequeDate.split(" ");
                         htmls += '<td>' + dates[0] + '</td>';
                     });
+
                     htmls += '</tbody></table>';
                     $("#divForListingVerifiedTransaction").html(htmls);
                     $("#tableTransactionByIDInDialog").dataTable({
@@ -829,12 +789,10 @@
                     });
                 }
 
-                //let footerHtml = '';
-                htmls += `< table  style = 'margin-top:25px; float:right' >
-            <tr><td colspan="7"><div style="width:225px;text-align:center;border-top:1px solid;float:right;">Verified By</div></td></tr>
-                                    </table > `;
+                htmls += `< table style='margin-top:25px; float:right' >
+                                        <tr><td colspan="7"><div style="width:225px;text-align:center;border-top:1px solid;float:right;">Verified By</div></td></tr>
+                          </table >`;
                 $("#divFinancialView").html(htmls);
-
 
                 $("#divFinancialView").dialog({
                     'title': 'Detail',
@@ -847,30 +805,29 @@
                 eventFunction.PrintFunction();
             },
             getTransactionByIDInDialog: function (datas) {
-                //var datas = result.d;
-                //$("#DivForViewItemByID").html('');
+
                 if (datas.length > 0) {
                     var htmls = '';
                     var a = 0;
                     htmls += "<table id='tableTransactionByIDInDialog' class='display dataTable no-footer'><thead><tr><th>S.N.</th><th>FinancialAc</th><th>FinancialAcID</th><th>Particulars</th><th>Debit</th><th>Credit</th><th>Cheque No.</th><th>Cheque Date</th></tr></thead><tbody>";
-                    var valids = "";
+
                     $.each(datas, function (index, value) {
                         a++;
                         htmls += '<tr><td>' + a + '</td>';
                         htmls += '<td>' + value.financialAcName + '</td>';
                         htmls += '<td>' + value.FinancialAcID + '</td>';
                         htmls += '<td>' + value.Particulars + '</td>';
-                        htmls += '<td class="tdrate">' + parseFloat(value.Debit).toFixed(2) + '</td>';
-                        htmls += '<td class="tdrate">' + parseFloat(value.Credit).toFixed(2) + '</td>';
+                        htmls += '<td class="tdrate">' + formatNumber(value.Debit) + '</td>';
+                        htmls += '<td class="tdrate">' + formatNumber(value.Credit) + '</td>';
                         htmls += '<td>' + value.ChequeNo + '</td>';
                         dates = value.ChequeDate.split(" ");
                         htmls += '<td>' + dates[0] + '</td>';
-                        //htmls += '<td><label value="Delete" class="delete icon-delete" id="' + value.FinancialAcID + '"></label></td></tr>';
                         $("#hdnPostedBy").val(value.PostedBy);
                         datess = value.PostedOn.split(" ");
                         $("#hdnPostedOn").val(datess[0]);
                         VoucherTypeID = value.VoucherTypeID;
                     });
+
                     htmls += "</tbody></table>";
                     $("#divFinancialDetailView").append(htmls);
                     $("#tableTransactionByIDInDialog").dataTable({
@@ -880,6 +837,9 @@
                         ordering: false,
                         "jqueryUI": true
                     });
+
+                    const voucherName = [...new Set(datas.map(item => item.VoucherName))];
+                    $('#voucherName').html(`Voucher : ${voucherName[0] ?? ''}`);
                 }
                 else {
                     $("#divFinancialDetailView").append("<br/>  No Data");
@@ -889,7 +849,6 @@
 
                 $('#btnPrintVerifiedTransaction').off('click').on('click', function () {
                     var $clone = $('#divFinancialView').clone();
-
 
                     $('#btnPrintVerifiedTransaction').remove();
                     $('.dataTables_filter').remove();
@@ -915,23 +874,16 @@
                         window.frames["frame1"].print();
                         document.body.removeChild(frame1);
 
-                        //// refresh complimentary orders
-                        //alert('Print successfull');
                         $('#DialogOrderDetail').dialog('close');
-                        //DashboardFunction.GetComplimentaryOccupiedTables(true);
                     }, 500);
                 });
             },
-
 
             BindGeneralLedger: function (data) {
                 $("#DailyReport").html('');
 
                 datas = JSON.parse(data);
-                var StartDate = $("#txtStartDate").val();
-                var EndDate = $("#txtToDate").val();
                 var now = new Date();
-
                 var _DateStr = $.datepicker.formatDate('mm/dd/yy', now);
 
                 debit = 0.00;
@@ -950,29 +902,27 @@
                     htmls += "</thead>";
                     htmls += "<tbody>";
 
-
                     $.each(datas, function (index, value) {
                         htmls += "<tr>";
                         htmls += "<td>" + value.TransactionDate.split(' ')[0] + "</td>";
                         htmls += "<td>" + value.FinanceName + "</td>";
 
                         if (value.Debit != 0) {
-                            htmls += "<td class='tdrate'>" + parseFloat(value.Debit).toFixed(2) + "</td>";
-                            //htmls += "<td>0</td>";
-                            debit = (parseFloat(debit) + parseFloat(value.Debit)).toFixed(2);
-                            balance = (parseFloat(balance) + parseFloat(value.Debit)).toFixed(2);
+                            htmls += "<td class='tdrate'>" + formatNumber(value.Debit) + "</td>";
+
+                            debit = formatNumber(parseFloat(debit) + parseFloat(value.Debit));
+                            balance = formatNumber(parseFloat(balance) + parseFloat(value.Debit));
                             htmls += "<td class='tdrate'>" + balance + "</td>";
                         } else {
-                            //htmls += "<td>0</td>";
-                            htmls += "<td class='tdrate'>" + parseFloat(value.Credit).toFixed(2) + "</td>";
-                            credit = (parseFloat(credit) + parseFloat(value.Credit)).toFixed(2);
-                            balance = (parseFloat(balance) - parseFloat(value.Credit)).toFixed(2);
-                            htmls += "<td class='tdrate'>" + balance + "</td>";
+
+                            htmls += "<td class='tdrate'>" + parseFloat(value.Credit) + "</td>";
+                            credit = formatNumber(parseFloat(credit) + parseFloat(value.Credit));
+                            balance = formatNumber(parseFloat(balance) - parseFloat(value.Credit));
+                            htmls += "<td class='tdrate'>" + formatNumber(balance) + "</td>";
                         }
                         htmls += "</tr>";
-
                     });
-                    htmls += "<tr><th colspan='2' style='text-align:right;border-right:1px solid #FFF;'>Total :</th><th style='text-align:right;border-right:1px solid #FFF;'>" + parseFloat(debit).toFixed(2) + "</th><th style='text-align:right;border-right:1px solid #FFF;'>" + parseFloat(credit).toFixed(2) + "</th><th></th></tr>";
+                    htmls += "<tr><th colspan='2' style='text-align:right;border-right:1px solid #FFF;'>Total :</th><th style='text-align:right;border-right:1px solid #FFF;'>" + formatNumber(debit) + "</th><th style='text-align:right;border-right:1px solid #FFF;'>" + formatNumber(credit) + "</th><th></th></tr>";
                 }
                 else {
                     htmls += "<tr class='tableItem' >";
@@ -981,14 +931,8 @@
                 htmls += "</tbody>";
                 htmls += "</table>";
                 $('#DailyReport').html(htmls);
-
             },
-
-
             //<<-----------------------------------Reset & Validation ------------------------------------->>>
-
-
-
         };
         eventFunction.init();
     };

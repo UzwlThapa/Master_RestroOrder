@@ -23,13 +23,13 @@
     var tabs = $("#tabs").tabs();
     $.companyProfcreate = function (p) {
         p = $.extend
-             ({
-                 UserModuleID: '',
-                 ModulePath: '/Modules/RoReport/',
-                 CompanyName: '',
-                 Pan: ''
+            ({
+                UserModuleID: '',
+                ModulePath: '/Modules/RoReport/',
+                CompanyName: '',
+                Pan: ''
 
-             }, p);
+            }, p);
         var eventFunction = {
             config: {
                 isPostBack: false,
@@ -138,7 +138,7 @@
 
 
             GetCategoryName: function () {
-             
+
                 var categorylevel = 0;
                 eventFunction.config.method = "GetCategoryHirerchy";
                 eventFunction.config.url = eventFunction.config.baseURL + eventFunction.config.method;
@@ -218,7 +218,6 @@
                 htmls += "<thead>"
                 htmls += "<tr>"
                 htmls += "<th style='text-align:center;border:1px solid #575757;padding:2px;'>Bill Date</th>";
-                //htmls += "<th style='text-align:center;border:1px solid #575757;padding:2px;'>Item ID</th>";
                 htmls += "<th style='text-align:left;border:1px solid #575757;padding:2px;'>Item Name</th>";
                 htmls += "<th style='text-align:center;border:1px solid #575757;padding:2px;'>Cost Center</th>";
                 htmls += "<th style='text-align:center;border:1px solid #575757;padding:2px;'>Quantity</th>";
@@ -232,16 +231,15 @@
                     $.each(summarylist, function (index, value) {
                         htmls += "<tr>";
                         htmls += "<td style='text-align:center;border:1px solid #575757;padding:2px;'>" + value.BillDate.split(' ')[0] + "</td>";
-                        //htmls += "<td style='text-align:center;border:1px solid #575757;padding:2px;'>" + value.ITId + "</td>";
                         htmls += "<td style='text-align:left;border:1px solid #575757;padding:2px;'>" + value.ITName + "</td>";
                         htmls += "<td class='f' style='text-align:center;border:1px solid #575757;padding:2px;'>" + value.CostCenterName + "</td>";
-                        htmls += "<td style='text-align:center;border:1px solid #575757;padding:2px;'>" + value.Quantity + "</td>";
+                        htmls += "<td style='text-align:center;border:1px solid #575757;padding:2px;'>" + formatNumber(value.Quantity, false) + "</td>";
                         htmls += "<td style='text-align:center;border:1px solid #575757;padding:2px;'>" + value.ITUnit + "</td>";
-                        htmls += "<td style='text-align:right;border:1px solid #575757;padding:2px;'>" + value.rate.toFixed(2) + "</td>";
-                        htmls += "<td style='text-align:right;border:1px solid #575757;padding:2px;'>" + value.Quantity  * value.rate.toFixed(2) + "</td>";
+                        htmls += "<td style='text-align:right;border:1px solid #575757;padding:2px;'>" + formatNumber(value.rate) + "</td>";
+                        htmls += "<td style='text-align:right;border:1px solid #575757;padding:2px;'>" + formatNumber(value.Quantity * value.rate) + "</td>";
                         htmls += '</tr>';
 
-                        ttlQnty += parseFloat(value.Quantity);
+                        ttlQnty += value.Quantity;
                         ttlRate += parseFloat(value.rate);
                         ttlTotal += parseFloat(value.Quantity) * parseFloat(value.rate);
                     });
@@ -256,14 +254,13 @@
                 htmls += "<tfoot>";
                 htmls += "<tr>";
                 htmls += "<td colspan=3 style='text-align: right;'>Total: </td>";
-                htmls += "<td style='text-align: center;'>" + ttlQnty + "</td>"
+                htmls += "<td style='text-align: center;'>" + formatNumber(ttlQnty, false) + "</td>"
                 htmls += "<td></td>"
-                htmls += "<td style='text-align: right;'>" + ttlRate + "</td>"
-                htmls += "<td style='text-align: right;'>" + ttlTotal + "</td>"
+                htmls += "<td style='text-align: right;'>" + formatNumber(ttlRate) + "</td>"
+                htmls += "<td style='text-align: right;'>" + formatNumber(ttlTotal) + "</td>"
                 htmls += "</tfoot>"
                 htmls += "</table>";
                 $("#reportDisplay").html(htmls);
-                
             },
 
             BindSummaryItemSalesReport: function (result) {
@@ -282,7 +279,6 @@
                 htmls += "<table id='summaryItemSalesReport' class='reportsprint' cellspacing='0' style='border:none;width:100%;border-collapse:collapse;'>";
                 htmls += "<thead>";
                 htmls += "<tr>";
-               // htmls += "<th style='text-align:center;border:1px solid #575757;padding:2px;'>Item ID</th>";
                 htmls += "<th style='text-align:left;border:1px solid #575757;padding:2px;'>Item Name</th>";
                 htmls += "<th style='text-align:center;border:1px solid #575757;padding:2px;'>Cost Center</th>";
                 htmls += "<th style='text-align:center;border:1px solid #575757;padding:2px;'>Quantity</th>";
@@ -293,38 +289,36 @@
                 htmls += "</thead>";
                 htmls += "<tbody>";
                 if (summarylist.length > 0) {
-                $.each(summarylist, function (index, value) {
-                    htmls += "<tr>";
-                    //htmls += "<td style='text-align:center;border:1px solid #575757;padding:2px;'>" + value.ITId + "</td>";
-                    htmls += "<td style='text-align:left;border:1px solid #575757;padding:2px;'>" + value.ITName + "</td>";
-                    htmls += "<td class='f' style='text-align:center;border:1px solid #575757;padding:2px;'>" + value.CostCenterName + "</td>";
-                    htmls += "<td style='text-align:center;border:1px solid #575757;padding:2px;'>" + value.Quantity + "</td>";
-                    htmls += "<td style='text-align:center;border:1px solid #575757;padding:2px;'>" + value.ITUnit + "</td>";
-                    htmls += "<td style='text-align:right;border:1px solid #575757;padding:2px;'>" + value.rate.toFixed(2) + "</td>";
-                    htmls += "<td style='text-align:right;border:1px solid #575757;padding:2px;'>" + parseFloat(value.Quantity) * parseFloat(value.rate) + "</td>";
-                    htmls += '</tr>';
-                    ttlQnty += parseFloat(value.Quantity);
-                    ttlRate += parseFloat(value.rate);
-                    ttlTotal += parseFloat(value.Quantity) * parseFloat(value.rate);
-                });
-            }
+                    $.each(summarylist, function (index, value) {
+                        htmls += "<tr>";
+                        htmls += "<td style='text-align:left;border:1px solid #575757;padding:2px;'>" + value.ITName + "</td>";
+                        htmls += "<td class='f' style='text-align:center;border:1px solid #575757;padding:2px;'>" + value.CostCenterName + "</td>";
+                        htmls += "<td style='text-align:center;border:1px solid #575757;padding:2px;'>" + formatNumber(value.Quantity, false) + "</td>";
+                        htmls += "<td style='text-align:center;border:1px solid #575757;padding:2px;'>" + value.ITUnit + "</td>";
+                        htmls += "<td style='text-align:right;border:1px solid #575757;padding:2px;'>" + formatNumber(value.rate) + "</td>";
+                        htmls += "<td style='text-align:right;border:1px solid #575757;padding:2px;'>" + formatNumber(value.Quantity * value.rate) + "</td>";
+                        htmls += '</tr>';
+                        ttlQnty += value.Quantity;
+                        ttlRate += parseFloat(value.rate);
+                        ttlTotal += parseFloat(value.Quantity) * parseFloat(value.rate);
+                    });
+                }
                 else {
-                htmls += "<tr>";
-                htmls += "<td colspan='4' style='text-align:center;'> No Data </td>";
-                htmls += '</tr>';
-            }
+                    htmls += "<tr>";
+                    htmls += "<td colspan='4' style='text-align:center;'> No Data </td>";
+                    htmls += '</tr>';
+                }
                 htmls += "</tbody>";
                 htmls += "<tfoot>";
                 htmls += "<tr>";
                 htmls += "<td colspan=2 style='text-align: right;'>Total: </td>";
-                htmls += "<td style='text-align: center;'>" + ttlQnty + "</td>"
+                htmls += "<td style='text-align: center;'>" + formatNumber(ttlQnty, false) + "</td>"
                 htmls += "<td></td>"
-                htmls += "<td style='text-align: right;'>" + ttlRate + "</td>"
-                htmls += "<td style='text-align: right;'>" + ttlTotal + "</td>"
+                htmls += "<td style='text-align: right;'>" + formatNumber(ttlRate) + "</td>"
+                htmls += "<td style='text-align: right;'>" + formatNumber(ttlTotal) + "</td>"
                 htmls += "</tfoot>"
                 htmls += "</table>";
                 $("#reportDisplay").html(htmls);
-              
             },
         };
         eventFunction.init();

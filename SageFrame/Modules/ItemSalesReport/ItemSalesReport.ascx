@@ -1,5 +1,5 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeFile="ItemSalesReport.ascx.cs" Inherits="Modules_ItemSalesReport_ItemSalesReport" %>
-
+<script src="../../../Scripts/main.js"></script>
 <script type="text/javascript">
     $(document).ready(function () {
         $("#startDate").datepicker({
