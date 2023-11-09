@@ -34,10 +34,10 @@ public class SalesReport : System.Web.Services.WebService
     }
 
     [WebMethod]
-    public string GeneralLedgerReport(DateTime StartDate, DateTime EndDate, string FaIds)
+    public string GeneralLedgerReport(DateTime StartDate, DateTime EndDate, string FaIds, bool isGroup)
     {
         AccountReportController con = new AccountReportController();
-        List<AccountReportInfo> ledgerReport = con.GeneralLedgerReport(StartDate, EndDate, FaIds);
+        List<AccountReportInfo> ledgerReport = con.GeneralLedgerReport(StartDate, EndDate, FaIds, isGroup);
         return JsonConvert.SerializeObject(ledgerReport);
     }
 

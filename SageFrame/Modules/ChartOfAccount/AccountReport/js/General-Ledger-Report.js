@@ -1,5 +1,5 @@
 ﻿(function ($) {
-    var datas = [];
+
     var tabs = $("#tabs").tabs();
     $.companyProfcreate = function (p) {
         p = $.extend
@@ -157,7 +157,7 @@
                 var faIds = $("#hdnFinancialID").val();
                 eventFunction.config.method = "GeneralLedgerReport";
                 eventFunction.config.url = eventFunction.config.baseURL + eventFunction.config.method;
-                eventFunction.config.data = JSON2.stringify({ StartDate: StartDate, EndDate: EndDate, FaIds: faIds });
+                eventFunction.config.data = JSON2.stringify({ StartDate: StartDate, EndDate: EndDate, FaIds: faIds, isGroup: true });
                 eventFunction.config.data = eventFunction.config.data;
                 eventFunction.config.ajaxCallMode = 1;
                 eventFunction.ajaxCall(eventFunction.config);
@@ -169,7 +169,7 @@
                 var faIds = $("#hdnFinancialID").val();
                 eventFunction.config.method = "GeneralLedgerReport";
                 eventFunction.config.url = eventFunction.config.baseURL + eventFunction.config.method;
-                eventFunction.config.data = JSON2.stringify({ StartDate: StartDate, EndDate: EndDate, FaIds: faIds });
+                eventFunction.config.data = JSON2.stringify({ StartDate: StartDate, EndDate: EndDate, FaIds: faIds, isGroup: false });
                 eventFunction.config.data = eventFunction.config.data;
                 eventFunction.config.ajaxCallMode = 4;
                 eventFunction.ajaxCall(eventFunction.config);
@@ -243,7 +243,7 @@
             BindNewGeneralLedger: function (data) {
                 $("#DailyReport").html('');
 
-                datas = JSON.parse(data);
+                var groupLedgerData = JSON.parse(data);
                 var htmls = "";
                 htmls += '<div class="Report_header"><h4 style="text-align:center;margin:0;">' + companyInfo.Name + '</h4>';
                 htmls += '<p style="text-align:center;margin:0;">' + companyInfo.Address + ' , ' + (companyInfo.IsPan ? 'PAN' : 'VAT') + ' : ' + companyInfo.PAN + '</p>';
@@ -257,9 +257,9 @@
                 htmls += "</thead>";
                 htmls += "<tbody>";
 
-                if (datas.length > 0) {
+                if (groupLedgerData.length > 0) {
 
-                    const groupNameList = [...new Set(datas.map(item => item.ParentAccount))];
+                    const groupNameList = [...new Set(groupLedgerData.map(item => item.ParentAccount))];
 
                     if (groupNameList.includes("")) {
                         groupNameList.pop("");
@@ -283,7 +283,7 @@
                         htmls += '</tr>';
 
                         // Opening Balance
-                        var openingBalance = datas.filter((item) => item.ParentAccount == value && item.AccountHead == 'Opening Balance');
+                        var openingBalance = groupLedgerData.filter((item) => item.ParentAccount == value && item.AccountHead == 'Opening Balance');
                         if (openingBalance[0]) {
                             htmls += '<tr style="text-align:left;background:#f7ebeb;font-weight:bold;">';
                             htmls += `<td style="text-align:left;border:1px solid #575757;padding-left:4rem!important;">${openingBalance[0].AccountHead}</td>`;
@@ -295,7 +295,7 @@
                             htmls += '</tr>';
                         }
 
-                        var groupData = datas.filter((item) => item.ParentAccount == value && item.AccountHead != 'Opening Balance');
+                        var groupData = groupLedgerData.filter((item) => item.ParentAccount == value && item.AccountHead != 'Opening Balance');
 
                         $.each(groupData, function (index, value) {
 
@@ -315,8 +315,8 @@
                             htmls += `<td style="text-align:left;border:1px solid #575757;">${value.Particulars}</td>`;
                             htmls += `<td style="text-align:right;border:1px solid #575757;">${formatNumber(value.Debit)}</td>`;
                             htmls += `<td style="text-align:right;border:1px solid #575757;">${formatNumber(value.Credit)}</td>`;
-                            htmls += `<td style="text-align:right;border:1px solid #575757;padding-right: 8px !important;">${Math.abs(value.Balance) + (value.Balance >= 0 ? ' Dr' : ' Cr')}</td>`;
-                            htmls += `<td style="text-align:right;border:1px solid #575757;padding:2px;"><button class="icon-preview btnViewTransaction" type='button' id="${value.TransactionID}"></button></td>`;
+                            htmls += `<td style="text-align:right;border:1px solid #575757;padding-right: 8px !important;">${formatNumber(value.Balance) + (value.Balance >= 0 ? ' Dr' : ' Cr')}</td>`;
+                            htmls += `<td style="text-align:right;border:1px solid #575757;padding:2px;"><button class="icon-preview btnViewTransaction" type='button' faid="${value.FinancialAcID}" id="${value.TransactionID}"></button></td>`;
                             htmls += '</tr>';
                         });
 
@@ -327,7 +327,7 @@
                         htmls += '<td></td>';
                         htmls += `<td style="text-align:right;">Ledger Total: ${groupTotalDr}</td>`;
                         htmls += `<td style="text-align:right;">${groupTotalCr}</td>`;
-                        htmls += `<td style="text-align:right;padding-right: 8px !important;">${Math.abs(groupTotalBal).toFixed(2).toString() + (groupTotalBal >= 0 ? ' Dr' : ' Cr')}</td>`;
+                        htmls += `<td style="text-align:right;padding-right: 8px !important;">${formatNumber(groupTotalBal) + (groupTotalBal >= 0 ? ' Dr' : ' Cr')}</td>`;
                         htmls += '</tr>';
 
                         groupTotalDr = 0;
@@ -342,7 +342,7 @@
                     htmls += '<td></td>';
                     htmls += `<td style="text-align:right;">Grand Total:${formatNumber(grandTotalDr)}</td>`;
                     htmls += `<td style="text-align:right;">${formatNumber(grandTotalCr)}</td>`;
-                    htmls += `<td style="text-align:right;padding-right: 8px !important;">${Math.abs(grandTotalBal).toFixed(2).toString() + (grandTotalBal >= 0 ? ' Dr' : ' Cr')}</td>`;
+                    htmls += `<td style="text-align:right;padding-right: 8px !important;">${formatNumber(grandTotalBal) + (grandTotalBal >= 0 ? ' Dr' : ' Cr')}</td>`;
                     htmls += '</tr>';
 
                     grandTotalDr = 0;
@@ -367,9 +367,10 @@
                 });
 
                 $("#unittableSecond").on("click", ".btnViewTransaction", function () {
-                    var id = parseInt($(this).attr('id'));
 
-                    eventFunction.config.transactionID = id;
+                    var id = parseInt($(this).attr('id'));
+                    var faid = parseInt($(this).attr('faid'));
+
                     let htmls = '';
                     $("#divFinancialDetailView").html(htmls);
 
@@ -409,7 +410,8 @@
                                 <tr><td colspan="7" style="font-size: 12px; text-align: center; padding: 0px;"></td></tr>
                               </table>`;
 
-                    var detailRow = (datas.filter((value) => value.TransactionID == id) ?? [])[0];
+
+                    var detailRow = (groupLedgerData.filter((value) => value.TransactionID == id) ?? [])[0];
                     if (detailRow == null) {
                         detailRow = {
                             VoucherNo: '',
@@ -429,9 +431,10 @@
                     htmls += '</table>';
                     $("#divFinancialDetailView").html(htmls);
 
+                    eventFunction.config.transactionID = id;
                     eventFunction.config.method = "getVerifiedTransactionByID";
                     eventFunction.config.url = "/Modules/ChartOfAccount/verifyTransactionEntry/webService/wsVerifyTransactionEntry.asmx/getVerifiedTransactionByID";
-                    eventFunction.config.data = JSON2.stringify({ transactionID: id });
+                    eventFunction.config.data = JSON2.stringify({ transactionID: id, financialAccountId: faid });
                     eventFunction.config.ajaxCallMode = 3;
                     eventFunction.ajaxCall(eventFunction.config);
 
@@ -454,7 +457,7 @@
             },
             BindIndividualLedgerDetail: function (data) {
                 $("#DailyReport").html('');
-                datas = JSON.parse(data);
+                var individualLedgerData = JSON.parse(data);
                 var htmls = "";
                 htmls += '<div class="Report_header"><h4 style="text-align:center;margin:0;">' + companyInfo.Name + '</h4>';
                 htmls += '<p style="text-align:center;margin:0;">' + companyInfo.Address + ' , ' + (companyInfo.IsPan ? 'PAN' : 'VAT') + ' : ' + companyInfo.PAN + '</p>';
@@ -468,12 +471,14 @@
                 htmls += "</thead>";
                 htmls += "<tbody>";
 
-                if (datas.length > 0) {
+                if (individualLedgerData.length > 0) {
 
-                    const groupNameList = [...new Set(datas.map(item => item.AccountHead.split(" #")[0]))];
+                    const groupNameList = [...new Set(individualLedgerData.map(item => item.AccountHead.split(" #")[0]))];
+
                     if (groupNameList.includes("")) {
                         groupNameList.pop("");
                     }
+
                     if (groupNameList.includes("Opening Balance")) {
                         groupNameList.pop("Opening Balance");
                     }
@@ -496,94 +501,52 @@
                         htmls += '<td></td>';
                         htmls += '</tr>';
 
-                        var groupData = datas.filter((item) => item.AccountHead.split(" #")[0] == value && item.AccountHead != 'Opening Balance');
                         // Opening Balance
-                        if (groupData.length === 0 && value == "Opening Balance") {
-
-                            var openingBalance = datas.filter((item) => item.AccountHead == 'Opening Balance' && !(groupNameList.includes(item.ParentAccount)))
-
-                            $.each(openingBalance, function (index, element) {
-
-                                htmls += '<tr style="text-align:left;background:#f7ebeb;font-weight:bold;">';
-                                htmls += `<td style="text-align:left;border:1px solid #575757;padding-left:4rem!important;">${element.ParentAccount}</td>`;
-                                htmls += `<td style="text-align:left;border:1px solid #575757;padding-left:4rem!important;">${element.AccountHead}</td>`;
-                                htmls += `<td style="text-align:right;border:1px solid #575757;">${element.Debit}</td>`;
-                                htmls += `<td style="text-align:right;border:1px solid #575757;">${element.Credit}</td>`;
-                                htmls += `<td style="text-align:right;border:1px solid #575757;padding-right: 8px !important;">${Math.abs(element.Balance) + (openingBalance[0].Balance >= 0 ? ' Dr' : ' Cr')}</td>`;
-                                htmls += `<td></td>`
-                                htmls += '</tr>';
-
-                                grandTotalDr += element.Debit;
-                                grandTotalCr += element.Credit;
-                                groupTotalDr += element.Debit;
-                                groupTotalDr += element.Credit;
-
-                            });
+                        var openingBalance = individualLedgerData.filter((item) => item.ParentAccount == value && item.AccountHead == 'Opening Balance');
+                        if (openingBalance[0]) {
+                            htmls += '<tr style="text-align:left;background:#f7ebeb;font-weight:bold;">';
+                            htmls += `<td style="text-align:left;border:1px solid #575757;padding-left:4rem!important;">${openingBalance[0].AccountHead}</td>`;
+                            htmls += `<td style="text-align:left;border:1px solid #575757;"></td>`;
+                            htmls += `<td style="text-align:right;border:1px solid #575757;">${formatNumber(openingBalance[0].Debit)}</td>`;
+                            htmls += `<td style="text-align:right;border:1px solid #575757;">${formatNumber(openingBalance[0].Credit)}</td>`;
+                            htmls += `<td style="text-align:right;border:1px solid #575757;padding-right: 8px !important;">${Math.abs(openingBalance[0].Balance) + (openingBalance[0].Balance >= 0 ? ' Dr' : ' Cr')}</td>`;
+                            htmls += '<td></td>';
+                            htmls += '</tr>';
                         }
-                        else if (value != "Opening Balance") {
-                            var openingBalance = datas.filter((item) => item.AccountHead == 'Opening Balance' && groupData[0].FinancialAcID == item.FinancialAcID)
-                            if (openingBalance.length != 0) {
 
-                                groupTotalDr += openingBalance[0].Debit;
-                                groupTotalCr += openingBalance[0].Credit;
-                                groupTotalBal = openingBalance[0].Balance;
+                        var groupData = individualLedgerData.filter((item) => item.AccountHead.split(" #")[0] == value && item.AccountHead != 'Opening Balance');
 
-                                grandTotalCr += openingBalance[0].Credit;
-                                grandTotalDr += openingBalance[0].Debit;
+                        $.each(groupData, function (index, value) {
 
-                                htmls += '<tr style="text-align:left;background:#f7ebeb;font-weight:bold;">';
-                                htmls += `<td style="text-align:left;border:1px solid #575757;padding-left:4rem!important;">${openingBalance[0].AccountHead}</td>`;
-                                htmls += `<td style="text-align:left;border:1px solid #575757;"></td>`;
-                                htmls += `<td style="text-align:right;border:1px solid #575757;">${formatNumber(openingBalance[0].Debit)}</td>`;
-                                htmls += `<td style="text-align:right;border:1px solid #575757;">${formatNumber(openingBalance[0].Credit)}</td>`;
-                                htmls += `<td style="text-align:right;border:1px solid #575757;padding-right: 8px !important;">${formatNumber(openingBalance[0].Balance) + (openingBalance[0].Balance >= 0 ? ' Dr' : ' Cr')}</td>`;
-                                htmls += '<td></td>';
-                                htmls += '</tr>';
-                            }
-                            else {
-                                htmls += '<tr style="text-align:left;background:#f7ebeb;font-weight:bold;">';
-                                htmls += `<td style="text-align:left;border:1px solid #575757;padding-left:4rem!important;">Opening Balance</td>`;
-                                htmls += `<td style="text-align:left;border:1px solid #575757;"></td>`;
-                                htmls += `<td style="text-align:right;border:1px solid #575757;">0</td>`;
-                                htmls += `<td style="text-align:right;border:1px solid #575757;">0</td>`;
-                                htmls += `<td style="text-align:right;border:1px solid #575757;padding-right: 8px !important;">0</td>`;
-                                htmls += '<td></td>';
-                                htmls += '</tr>';
-                            }
+                            groupTotalDr += value.Debit;
+                            groupTotalCr += value.Credit;
+                            groupTotalBal += value.Balance;
+                            grandTotalDr += value.Debit;
+                            grandTotalCr += value.Credit;
+                            grandTotalBal += value.Balance;
 
-                            $.each(groupData, function (index, value) {
+                            var date = value.Date;
+                            var split = date.split(" ");
+                            var dta = split[0];
 
-                                groupTotalDr += value.Debit;
-                                groupTotalCr += value.Credit;
-                                groupTotalBal = (groupTotalDr > groupTotalCr ? groupTotalDr - groupTotalCr : groupTotalCr - groupTotalDr);
-
-                                grandTotalDr += value.Debit;
-                                grandTotalCr += value.Credit;
-
-                                var date = value.Date;
-                                var split = date.split(" ");
-                                var dta = split[0];
-
-                                htmls += '<tr>';
-                                htmls += `<td style="text-align:left;border:1px solid #575757;padding-left:4rem!important;">${dta} ${value.AccountHead}</td>`;
-                                htmls += `<td style="text-align:left;border:1px solid #575757;">${value.Particulars}</td>`;
-                                htmls += `<td style="text-align:right;border:1px solid #575757;">${formatNumber(value.Debit)}</td>`;
-                                htmls += `<td style="text-align:right;border:1px solid #575757;">${formatNumber(value.Credit)}</td>`;
-                                htmls += `<td style="text-align:right;border:1px solid #575757;padding-right: 8px !important;">${formatNumber(groupTotalBal) + (groupTotalDr >= groupTotalCr ? ' Dr' : ' Cr')}</td>`;
-                                htmls += `<td style="text-align:right;border:1px solid #575757;padding:2px;"><button class="icon-preview btnViewTransaction" type='button' id="${value.TransactionID}"></button></td>`;
-                                htmls += '</tr>';
-                            });
-                        }
+                            htmls += '<tr>';
+                            htmls += `<td style="text-align:left;border:1px solid #575757;padding-left:4rem!important;">${dta} ${value.AccountHead}</td>`;
+                            htmls += `<td style="text-align:left;border:1px solid #575757;">${value.Particulars}</td>`;
+                            htmls += `<td style="text-align:right;border:1px solid #575757;">${formatNumber(value.Debit)}</td>`;
+                            htmls += `<td style="text-align:right;border:1px solid #575757;">${formatNumber(value.Credit)}</td>`;
+                            htmls += `<td style="text-align:right;border:1px solid #575757;padding-right: 8px !important;">${formatNumber(value.Balance) + (value.Balance >= 0 ? ' Dr' : ' Cr')}</td>`;
+                            htmls += `<td style="text-align:right;border:1px solid #575757;padding:2px;"><button class="icon-preview btnViewTransaction" type='button' faid="${value.FinancialAcID}" id="${value.TransactionID}"></button></td>`;
+                            htmls += '</tr>';
+                        });
 
                         // Group Footer
-                        htmls += '<tr style="text-align:center;background:#cfcfcf;font-weight:bold;">';
+                        htmls += '<tr style="text-align:left;background:#cfcfcf;font-weight:bold;">';
                         htmls += '<td></td>';
                         htmls += '<td></td>';
-
-                        htmls += `<td style="text-align:right;">Ledger Total: ${formatNumber(groupTotalDr)}</td>`;
-                        htmls += `<td style="text-align:right;">${formatNumber(groupTotalCr)}</td>`;
-                        htmls += `<td style="text-align:right;padding-right: 8px !important;">${formatNumber(groupTotalBal) + (groupTotalDr >= groupTotalCr ? ' Dr' : ' Cr')}</td>`;
                         htmls += '<td></td>';
+                        htmls += `<td style="text-align:right;">Ledger Total: ${groupTotalDr}</td>`;
+                        htmls += `<td style="text-align:right;">${groupTotalCr}</td>`;
+                        htmls += `<td style="text-align:right;padding-right: 8px !important;">${formatNumber(groupTotalBal) + (groupTotalBal >= 0 ? ' Dr' : ' Cr')}</td>`;
                         htmls += '</tr>';
 
                         groupTotalDr = 0;
@@ -592,16 +555,13 @@
                     });
 
                     // Grand Total Footer
-                    grandTotalBal = (grandTotalDr > grandTotalCr ? grandTotalDr - grandTotalCr : grandTotalCr - grandTotalDr);
-
                     htmls += '<tr style="text-align:left;background:#d3c5c5;font-weight:bold;">';
+                    htmls += '<td></td>';
                     htmls += '<td></td>';
                     htmls += '<td></td>';
                     htmls += `<td style="text-align:right;">Grand Total:${formatNumber(grandTotalDr)}</td>`;
                     htmls += `<td style="text-align:right;">${formatNumber(grandTotalCr)}</td>`;
-                    htmls += `<td style="text-align:right;padding-right: 8px !important;">${formatNumber(grandTotalBal) + (grandTotalDr >= grandTotalCr ? ' Dr' : ' Cr')}</td>`;
-
-                    htmls += '<td></td>';
+                    htmls += `<td style="text-align:right;padding-right: 8px !important;">${formatNumber(grandTotalBal) + (grandTotalBal >= 0 ? ' Dr' : ' Cr')}</td>`;
                     htmls += '</tr>';
 
                     grandTotalDr = 0;
@@ -626,9 +586,10 @@
                 });
 
                 $("#unittableSecond").on("click", ".btnViewTransaction", function () {
-                    var id = parseInt($(this).attr('id'));
 
-                    eventFunction.config.transactionID = id;
+                    var id = parseInt($(this).attr('id'));
+                    var faid = parseInt($(this).attr('faid'));
+
                     let htmls = '';
                     $("#divFinancialDetailView").html(htmls);
 
@@ -669,7 +630,7 @@
                                 <tr><td colspan="7" style="font-size: 12px; text-align: center; padding: 0px;"></td></tr>
                               </table>`;
 
-                    var detailRow = (datas.filter((value) => value.TransactionID == id) ?? [])[0];
+                    var detailRow = (individualLedgerData.filter((value) => value.TransactionID == id) ?? [])[0];
                     if (detailRow == null) {
                         detailRow = {
                             VoucherNo: '',
@@ -689,9 +650,10 @@
                     htmls += '</table>';
                     $("#divFinancialDetailView").html(htmls);
 
+                    eventFunction.config.transactionID = id;
                     eventFunction.config.method = "getVerifiedTransactionByID";
                     eventFunction.config.url = "/Modules/ChartOfAccount/verifyTransactionEntry/webService/wsVerifyTransactionEntry.asmx/getVerifiedTransactionByID";
-                    eventFunction.config.data = JSON2.stringify({ transactionID: id });
+                    eventFunction.config.data = JSON2.stringify({ transactionID: id, financialAccountId: faid });
                     eventFunction.config.ajaxCallMode = 3;
                     eventFunction.ajaxCall(eventFunction.config);
 
@@ -882,16 +844,16 @@
             BindGeneralLedger: function (data) {
                 $("#DailyReport").html('');
 
-                datas = JSON.parse(data);
+                var glDatas = JSON.parse(data);
                 var now = new Date();
                 var _DateStr = $.datepicker.formatDate('mm/dd/yy', now);
 
                 debit = 0.00;
                 credit = 0.00;
                 balance = 0.00;
-                if (datas.length > 0) {
+                if (glDatas.length > 0) {
                     var htmls = "<table class='pur-static-tbl1'><tr><td colspan='2'> <h2 style='text-align: center;margin:0;'>" + $("#voucherDropDownList :selected").text() + "Transaction </h2></td></tr>";
-                    htmls += "<tr><td colspan='2'><h4 style='text-align: center;margin:0;'>" + datas[0].CompanyName + "</h4></td></tr>";
+                    htmls += "<tr><td colspan='2'><h4 style='text-align: center;margin:0;'>" + glDatas[0].CompanyName + "</h4></td></tr>";
                     htmls += "'<tr><td style='text-align:right;font-size:15px;'> From : " + $("#txtStartDate").val() + " To : " + $("#txtToDate").val() + "</td></tr>";
                     htmls += "<tr><td style='text-align:right;font-size:15px;'> Created  : " + _DateStr + "</td></tr></table>";
                     htmls += "<table id='unittableSecond' class='sfGridwrapper  display pur-static-tbl tablee-section' cellspacing='0'>";
@@ -902,7 +864,7 @@
                     htmls += "</thead>";
                     htmls += "<tbody>";
 
-                    $.each(datas, function (index, value) {
+                    $.each(glDatas, function (index, value) {
                         htmls += "<tr>";
                         htmls += "<td>" + value.TransactionDate.split(' ')[0] + "</td>";
                         htmls += "<td>" + value.FinanceName + "</td>";

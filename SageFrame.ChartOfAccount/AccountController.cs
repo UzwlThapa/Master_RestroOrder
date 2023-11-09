@@ -184,10 +184,10 @@ namespace SageFrame.ChartOfAccount
             return rep.getBankInfoByFinancialAcID(FinancialAcID);
         }
 
-        public List<TransactionDetails> getVerifiedTransactionByID(int transactionID)
+        public List<TransactionDetails> getVerifiedTransactionByID(int transactionID, int financialAccountId = 0)
         {
             AccountProvider prov = new AccountProvider();
-            return prov.getVerifiedTransactionByID(transactionID);
+            return prov.getVerifiedTransactionByID(transactionID,financialAccountId);
         }
 
 

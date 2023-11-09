@@ -327,17 +327,17 @@ namespace SageFrame.ChartOfAccount
         }
 
 
-        internal List<TransactionDetails> getVerifiedTransactionByID(int transactionID)
+        internal List<TransactionDetails> getVerifiedTransactionByID(int transactionID, int financialAccountId = 0)
         {
-            List<KeyValuePair<string, object>> param1 = new List<KeyValuePair<string, object>>();
-            param1.Add(new KeyValuePair<string, object>("@TransactionID", transactionID));
+            List<KeyValuePair<string, object>> param1 = new List<KeyValuePair<string, object>>
+            {
+                new KeyValuePair<string, object>("@TransactionID", transactionID),
+                new KeyValuePair<string, object>("@FinancialAccountId", financialAccountId)
+            };
             SQLHandler sql = new SQLHandler();
             return sql.ExecuteAsList<TransactionDetails>("usp_ac_getVerifiedTransactionByID", param1);
         }
-
-
-
-
+         
         internal void SaveVerifiedTransactionByID(List<Transaction> Transaction)
         {
             SQLHandler sqlhan = new SQLHandler();

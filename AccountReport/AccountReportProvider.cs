@@ -7,13 +7,14 @@ namespace SageFrame.AccountReport
 {
     public class AccountReportProvider
     {
-        internal List<AccountReportInfo> GeneralLedgerReport(DateTime StartDate, DateTime EndDate, string FaIds)
+        internal List<AccountReportInfo> GeneralLedgerReport(DateTime StartDate, DateTime EndDate, string FaIds, bool isGroup)
         {
             SQLHandler sqlhan = new SQLHandler();
             List<KeyValuePair<string, object>> Param = new List<KeyValuePair<string, object>>();
             Param.Add(new KeyValuePair<string, object>("@Start", StartDate));
             Param.Add(new KeyValuePair<string, object>("@End", EndDate));
             Param.Add(new KeyValuePair<string, object>("@ACID", FaIds));
+            Param.Add(new KeyValuePair<string, object>("@IsGroup", isGroup));
             return sqlhan.ExecuteAsList<AccountReportInfo>("[usp_AC_GeneralLedgerReport_New]", Param);
         }
 

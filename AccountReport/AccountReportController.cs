@@ -6,10 +6,10 @@ namespace SageFrame.AccountReport
 {
     public class AccountReportController
     {
-        public List<AccountReportInfo> GeneralLedgerReport(DateTime StartDate, DateTime EndDate, string FaIds)
+        public List<AccountReportInfo> GeneralLedgerReport(DateTime StartDate, DateTime EndDate, string FaIds, bool isGroup)
         {
             AccountReportProvider prov = new AccountReportProvider();
-            return prov.GeneralLedgerReport(StartDate, EndDate, FaIds);
+            return prov.GeneralLedgerReport(StartDate, EndDate, FaIds,isGroup);
         }
 
         public DataSet GetLedgerDetail(int transactionID)

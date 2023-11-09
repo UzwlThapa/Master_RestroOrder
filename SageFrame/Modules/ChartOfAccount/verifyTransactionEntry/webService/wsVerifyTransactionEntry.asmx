@@ -90,10 +90,10 @@ public class wsFinancialAc : System.Web.Services.WebService
     }
 
     [WebMethod]
-    public List<TransactionDetails> getVerifiedTransactionByID(int transactionID)
+    public List<TransactionDetails> getVerifiedTransactionByID(int transactionID, int financialAccountId = 0)
     {
         AccountController con = new AccountController();
-        return con.getVerifiedTransactionByID(transactionID);
+        return con.getVerifiedTransactionByID(transactionID, financialAccountId);
     }
 
     [WebMethod]
