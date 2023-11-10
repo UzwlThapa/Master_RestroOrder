@@ -239,7 +239,7 @@
                         htmls += "<td style='text-align:right;border:1px solid #575757;padding:2px;'>" + formatNumber(value.Quantity * value.rate) + "</td>";
                         htmls += '</tr>';
 
-                        ttlQnty += value.Quantity;
+                        ttlQnty += parseInt(value.Quantity);
                         ttlRate += parseFloat(value.rate);
                         ttlTotal += parseFloat(value.Quantity) * parseFloat(value.rate);
                     });
@@ -288,6 +288,7 @@
                 htmls += "</tr>";
                 htmls += "</thead>";
                 htmls += "<tbody>";
+
                 if (summarylist.length > 0) {
                     $.each(summarylist, function (index, value) {
                         htmls += "<tr>";
@@ -298,7 +299,7 @@
                         htmls += "<td style='text-align:right;border:1px solid #575757;padding:2px;'>" + formatNumber(value.rate) + "</td>";
                         htmls += "<td style='text-align:right;border:1px solid #575757;padding:2px;'>" + formatNumber(value.Quantity * value.rate) + "</td>";
                         htmls += '</tr>';
-                        ttlQnty += value.Quantity;
+                        ttlQnty += parseInt(value.Quantity);
                         ttlRate += parseFloat(value.rate);
                         ttlTotal += parseFloat(value.Quantity) * parseFloat(value.rate);
                     });
@@ -308,6 +309,7 @@
                     htmls += "<td colspan='4' style='text-align:center;'> No Data </td>";
                     htmls += '</tr>';
                 }
+                debugger;
                 htmls += "</tbody>";
                 htmls += "<tfoot>";
                 htmls += "<tr>";
@@ -323,6 +325,7 @@
         };
         eventFunction.init();
     };
+
     $.fn.companyProfEDIT = function (p) {
         $.companyProfcreate(p);
     };

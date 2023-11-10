@@ -32,9 +32,6 @@
         var waiter = 0;
         var room = 0;
         var table = 0;
-        var year = 0;
-        var month = 0;
-        var TotalAmount = 0;
 
         var eventFunction = {
             config: {
@@ -49,8 +46,6 @@
                 method: "",
                 url: "",
                 ajaxCallMode: 0
-
-
             },
             InitialSetup: function () {
 
@@ -64,7 +59,6 @@
                     $('#seit').append($('<option/>').val(i).html(i));
                 }
                 eventFunction.GetStore();
-                //eventFunction.stockreport();
             },
             init: function () {
 
@@ -119,7 +113,6 @@
                     var dNow = new Date();
                     $('#lblPrintedOn').html(dNow);
                     var contents = $('#DailyReport').clone();
-                    //contents.find('tr th:nth-child(14), tr td:nth-child(14)').remove();
                     let file = new Blob([contents.get(0).innerHTML], { type: "application/vnd.ms-excel" });
                     let url = URL.createObjectURL(file);
                     let a = $("<a />", {
@@ -333,8 +326,6 @@
             },
 
             stockreport: function () {
-
-                //var valuedate = $("#txtStartDate").val();
                 var storeID = $("#ddlStore").val();
                 var searchText = $("#txtSearchText").val();
                 eventFunction.config.method = "stockreport";
@@ -398,14 +389,12 @@
                 eventFunction.ajaxCall(eventFunction.config);
             },
 
-            //<<-----------------------------------BindTable Herere ------------------------------------->>>
-
+            //<<-----------------------------------BindTable Herere ------------------------------------->>> 
             BindSalesDaily: function (data) {
                 $("#DailyReport").show();
                 $("#DailyReport").html('');
 
                 var storeid = $('#ddlStore').val();
-
                 var totalStockValue = 0.00;
                 datas = JSON.parse(data);
                 var htmls = "<table id='salseReport' class='reportsprint' cellspacing='0' style='border:none;width:100%;'>"
@@ -419,24 +408,22 @@
                 htmls += "</thead>"
                 htmls += "<tbody>"
                 if (datas.length > 0) {
-                    var count = 1;
                     $.each(datas, function (index, value) {
                         htmls += "<tr>";
-                        htmls += "<td>" + count + "</td>";
+                        htmls += "<td>" + (index + 1) + "</td>";
                         htmls += "<td>" + value.ITName + "</td>";
                         htmls += "<td>" + formatNumber(value.CLBal, false) + " (" + value.Symbol + ")</td>";
                         htmls += "<td>" + formatNumber(value.TotalValue) + " (Rs)</td>";
                         if (storeid != 0) {
                             htmls += "<td><label id='" + value.ITId + "' class='btnStockDetail  view icon-preview'></label></td>";
-
                         }
                         htmls += "</tr>"
-                        count++;
-                        totalStockValue += value.TotalValue;
+                        totalStockValue += parseFloat((parseInt(value.TotalValue * 100) / 100)); // proper decimal places for value like: -1.5845632502852868e+29
+                        console.log('datas value.TotalValue', value.TotalValue);
+                        console.log('datas totalStockValue', totalStockValue);
                     });
-                    htmls += "<tr><td colspan='3' style='text-align:right;'><strong>Total Stock Value: </strong></td><td><strong>" + formatNumber(totalStockValue) + " (Rs)</strong></td></tr>"
-                    $("#SumAmount").text(formatNumber(TotalAmount));
-                    TotalAmount = 0;
+                    console.log('totalStockValue', totalStockValue);
+                    htmls += "<tr><td colspan='3' style='text-align:right;'><strong>Total Stock Value: </strong></td><td><strong>" + formatNumber(totalStockValue) + " (Rs)</strong></td></tr>";
                 } else {
                     htmls += "<tr><td></td>";
                     htmls += "<td>No data</td><td></td></tr>";

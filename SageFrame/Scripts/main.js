@@ -25,19 +25,12 @@ function formatNumber(x, showDecimal = true) {
     var money = "";
     var regex = /\B(?=(\d{3})+(?!\d))/g;
     if (![null, undefined, ''].includes(x)) {
-        if (typeof x == 'number') {
-            if (showDecimal) {
-                money = x.toFixed(2).replace(regex, ",");
-            } else {
-                money = x.toString().replace(regex, ",");
-            }
-
+        var properValue = parseInt(x * 100) / 100;
+        if (showDecimal) {
+            money = properValue.toString().replace(regex, ",");
         } else {
-            if (showDecimal) {
-                money = parseFloat(x).toFixed(2).replace(regex, ",");
-            } else {
-                money = x.replace(regex, ",");
-            }
+            var withoutDecimal = properValue.toString().toString().split('.')[0];
+            money = withoutDecimal.replace(regex, ",");
         }
         return money;
     } else {
