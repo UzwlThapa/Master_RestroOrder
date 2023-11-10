@@ -1,0 +1,1 @@
+DROP PROC dbo.usp_AC_GeneralLedgerReport

@@ -32,22 +32,6 @@ AS
                                              StoreId ) SV ON  SRV.ITId = SV.ITId
                                                           AND SRV.TransactionDate = SV.TransactionDate;
 
-                --					  SELECT * FROM #Temp1
-                --					  SELECT   'here',vrsrv.ITId ,
-                --                     vrsrv.ITCode AS ITName ,
-                --                     SUM ([vrsrv].ItemBalance) AS CLBal ,
-                --                     vrsrv.Symbol ,
-                --                     SUM (vrsrv.ItemValue) AS TotalValue
-                --            FROM     [dbo].[vw_ROI_StockReportView] AS [vrsrv]
-                --            WHERE    EXISTS ( SELECT 1
-                --                              FROM   #Temp1 t
-                --                              WHERE  t.StockTranMasterId = vrsrv.StockTranMasterId )
-                --            AND      ITCode LIKE '%' + @SearchText + '%'
-                --            GROUP BY vrsrv.ITId ,
-                --                     vrsrv.ITCode ,
-                --                     vrsrv.Symbol ,
-                --                     vrsrv.ItemValue
-                --ORDER BY SUM (vrsrv.ItemValue);
 
                 WITH CTE
                 AS ( SELECT   vrsrv.ITId ,

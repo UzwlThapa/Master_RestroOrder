@@ -23,6 +23,14 @@ ALTER PROCEDURE [dbo].USP_RO_SummaryItemSalesReport
     @PITId INT
 AS
     BEGIN
+
+        DECLARE @StartDateTime DATETIME;
+        DECLARE @EndDateTime DATETIME;
+        SELECT @StartDateTime = DATEADD (HOUR, 4, @startDate);
+        --SELECT @EndDateTime = DATEADD (MINUTE, -1, DATEADD (HOUR, 28, @endDate));
+        SELECT @EndDateTime = DATEADD (HOUR, 4, @endDate);
+
+
         IF @PITId = 0
             BEGIN
 
@@ -41,7 +49,6 @@ AS
                          LEFT JOIN dbo.ROI_ItemDetails rid ON rid.ITId = rim.ITId
                          LEFT JOIN dbo.ROI_Unit1 ru ON ru.Unit1Id = rid.SmallUnit
                          LEFT JOIN dbo.CostCenterInfo cci ON cci.CostCenterId = SD.CostCenterId
-                         --INNER JOIN dbo.vw_ROI_StockReportView t ON t.SalesDetailId = SD.salesDetailId
                          CROSS APPLY ( SELECT DISTINCT t.SalesReturnQty
                                        FROM   dbo.vw_ROI_StockReportView t
                                        WHERE  t.SalesDetailId = SD.salesDetailId ) t
@@ -49,7 +56,7 @@ AS
                 WHERE    SD.IsCombo = 0
                 AND      ( SD.CostCenterId = @costCenterID
                         OR @costCenterID = 0 )
-                AND      ( CAST(SM.BillDate AS DATE) BETWEEN CAST(@startDate AS DATE) AND CAST(@endDate AS DATE))
+                AND      ( SM.BillDate BETWEEN @StartDateTime AND @EndDateTime )
                 AND      ISNULL (SM.IsArchived, 0) = 0
                 GROUP BY rim.ITName ,
                          ru.Symbol ,
@@ -79,7 +86,7 @@ AS
                          LEFT JOIN dbo.RO_OrderMasters OM ON OM.OrderMasterID = SM.OrderMasterId
                 WHERE    ( SD.CostCenterId = @costCenterID
                         OR @costCenterID = 0 )
-                AND      ( CAST(SM.BillDate AS DATE) BETWEEN CAST(@startDate AS DATE) AND CAST(@endDate AS DATE))
+                AND      ( SM.BillDate BETWEEN @StartDateTime AND @EndDateTime )
                 AND      ISNULL (SM.IsArchived, 0) = 0
                 GROUP BY rim.ITName ,
                          ru.Symbol ,
@@ -136,7 +143,7 @@ AS
                      WHERE    SD.IsCombo = 0
                      AND      ( SD.CostCenterId = @costCenterID
                              OR @costCenterID = 0 )
-                     AND      ( CAST(SM.BillDate AS DATE) BETWEEN CAST(@startDate AS DATE) AND CAST(@endDate AS DATE))
+                     AND      ( SM.BillDate BETWEEN @StartDateTime AND @EndDateTime )
                      AND      ISNULL (SM.IsArchived, 0) = 0
                      GROUP BY rim.ITName ,
                               ru.Symbol ,
@@ -170,7 +177,7 @@ AS
                                             WHERE  t.SalesDetailId = SD.SalesDetailId ) t
                      WHERE    ( SD.CostCenterId = @costCenterID
                              OR @costCenterID = 0 )
-                     AND      ( CAST(SM.BillDate AS DATE) BETWEEN CAST(@startDate AS DATE) AND CAST(@endDate AS DATE))
+                     AND      ( SM.BillDate BETWEEN @StartDateTime AND @EndDateTime )
                      AND      ISNULL (SM.IsArchived, 0) = 0
                      GROUP BY rim.ITName ,
                               ru.Symbol ,
