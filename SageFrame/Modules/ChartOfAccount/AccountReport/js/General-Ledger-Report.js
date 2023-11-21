@@ -187,15 +187,18 @@
                 function split(val) {
                     return val.split(/,\s*/);
                 }
+
                 function extractLast(term) {
                     return split(term).pop();
                 }
+
                 // clear input on textbox clear
                 $("#voucherDropDownList").keyup(function () {
-                    if (!this.value) {
+                    if (!this.value || !this.value.includes(',')) {
                         $('#hdnFinancialID').val('');
                     }
                 });
+
                 $("#voucherDropDownList")
                     // don't navigate away from the field on tab when selecting an item
                     .on("keydown", function (event) {
@@ -290,7 +293,7 @@
                             htmls += `<td style="text-align:left;border:1px solid #575757;"></td>`;
                             htmls += `<td style="text-align:right;border:1px solid #575757;">${formatNumber(openingBalance[0].Debit)}</td>`;
                             htmls += `<td style="text-align:right;border:1px solid #575757;">${formatNumber(openingBalance[0].Credit)}</td>`;
-                            htmls += `<td style="text-align:right;border:1px solid #575757;padding-right: 8px !important;">${Math.abs(openingBalance[0].Balance) + (openingBalance[0].Balance >= 0 ? ' Dr' : ' Cr')}</td>`;
+                            htmls += `<td style="text-align:right;border:1px solid #575757;padding-right: 8px !important;">${formatNumber(openingBalance[0].Balance) + (openingBalance[0].Balance >= 0 ? ' Dr' : ' Cr')}</td>`;
                             htmls += '<td></td>';
                             htmls += '</tr>';
                         }
@@ -324,10 +327,10 @@
                         htmls += '<tr style="text-align:left;background:#cfcfcf;font-weight:bold;">';
                         htmls += '<td></td>';
                         htmls += '<td></td>';
-                        htmls += '<td></td>';
                         htmls += `<td style="text-align:right;">Ledger Total: ${groupTotalDr}</td>`;
                         htmls += `<td style="text-align:right;">${groupTotalCr}</td>`;
                         htmls += `<td style="text-align:right;padding-right: 8px !important;">${formatNumber(groupTotalBal) + (groupTotalBal >= 0 ? ' Dr' : ' Cr')}</td>`;
+                        htmls += '<td></td>';
                         htmls += '</tr>';
 
                         groupTotalDr = 0;
@@ -339,10 +342,10 @@
                     htmls += '<tr style="text-align:left;background:#d3c5c5;font-weight:bold;">';
                     htmls += '<td></td>';
                     htmls += '<td></td>';
-                    htmls += '<td></td>';
                     htmls += `<td style="text-align:right;">Grand Total:${formatNumber(grandTotalDr)}</td>`;
                     htmls += `<td style="text-align:right;">${formatNumber(grandTotalCr)}</td>`;
                     htmls += `<td style="text-align:right;padding-right: 8px !important;">${formatNumber(grandTotalBal) + (grandTotalBal >= 0 ? ' Dr' : ' Cr')}</td>`;
+                    htmls += '<td></td>';
                     htmls += '</tr>';
 
                     grandTotalDr = 0;
@@ -410,7 +413,6 @@
                                 <tr><td colspan="7" style="font-size: 12px; text-align: center; padding: 0px;"></td></tr>
                               </table>`;
 
-
                     var detailRow = (groupLedgerData.filter((value) => value.TransactionID == id) ?? [])[0];
                     if (detailRow == null) {
                         detailRow = {
@@ -419,6 +421,7 @@
                             Descriptions: '',
                             Debit: '',
                             Credit: '',
+                            VerifiedBy: '',
                         };
                     }
 
@@ -426,8 +429,8 @@
                     htmls += `<td id="voucherName"> Voucher : ${detailRow.VoucherName}</td></tr>`;
                     htmls += "<tr><td> Descriptions : " + detailRow.Particulars + "</td>";
                     htmls += "<td>TransactionDate : " + detailRow.Date + "</td></tr>";
-                    htmls += "<tr><td>Total Debit : " + formatNumber(detailRow.Debit) + "</td>";
-                    htmls += "<td>Total Credit : " + formatNumber(detailRow.Credit) + "</td></tr>";
+                    htmls += "<tr><td>Total Debit : " + formatNumber(detailRow.Debit > 0 ? detailRow.Debit : detailRow.Credit) + "</td>"; // Debit for purchase, Credit for Sales
+                    htmls += "<td>Total Credit : " + formatNumber(detailRow.Debit > 0 ? detailRow.Debit : detailRow.Credit) + "</td></tr>";  // Debit & Credit should balance
                     htmls += '</table>';
                     $("#divFinancialDetailView").html(htmls);
 
@@ -440,8 +443,17 @@
 
                     let footerHtml = '';
                     footerHtml += `<table  style='margin-top:25px; float:right'>
-                    <tr><td colspan="7"><div style="width:225px;text-align:center;border-top:1px solid;float:right;">Verified By</div></td></tr>
-                                    </table>`;
+                                    <tr>
+                                        <td colspan="7">
+                                            ${detailRow.VerifiedBy}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="7">
+                                            <div style="width:225px;text-align:center;border-top:1px solid;float:right;">Verified By</div>
+                                        </td>
+                                    </tr>
+                                   </table>`;
                     $("#divFinancialDetailView").append(footerHtml);
 
                     $("#divFinancialDetailView").dialog({
@@ -509,7 +521,7 @@
                             htmls += `<td style="text-align:left;border:1px solid #575757;"></td>`;
                             htmls += `<td style="text-align:right;border:1px solid #575757;">${formatNumber(openingBalance[0].Debit)}</td>`;
                             htmls += `<td style="text-align:right;border:1px solid #575757;">${formatNumber(openingBalance[0].Credit)}</td>`;
-                            htmls += `<td style="text-align:right;border:1px solid #575757;padding-right: 8px !important;">${Math.abs(openingBalance[0].Balance) + (openingBalance[0].Balance >= 0 ? ' Dr' : ' Cr')}</td>`;
+                            htmls += `<td style="text-align:right;border:1px solid #575757;padding-right: 8px !important;">${formatNumber(openingBalance[0].Balance) + (openingBalance[0].Balance >= 0 ? ' Dr' : ' Cr')}</td>`;
                             htmls += '<td></td>';
                             htmls += '</tr>';
                         }
@@ -543,10 +555,10 @@
                         htmls += '<tr style="text-align:left;background:#cfcfcf;font-weight:bold;">';
                         htmls += '<td></td>';
                         htmls += '<td></td>';
-                        htmls += '<td></td>';
                         htmls += `<td style="text-align:right;">Ledger Total: ${groupTotalDr}</td>`;
                         htmls += `<td style="text-align:right;">${groupTotalCr}</td>`;
                         htmls += `<td style="text-align:right;padding-right: 8px !important;">${formatNumber(groupTotalBal) + (groupTotalBal >= 0 ? ' Dr' : ' Cr')}</td>`;
+                        htmls += '<td></td>';
                         htmls += '</tr>';
 
                         groupTotalDr = 0;
@@ -558,10 +570,10 @@
                     htmls += '<tr style="text-align:left;background:#d3c5c5;font-weight:bold;">';
                     htmls += '<td></td>';
                     htmls += '<td></td>';
-                    htmls += '<td></td>';
                     htmls += `<td style="text-align:right;">Grand Total:${formatNumber(grandTotalDr)}</td>`;
                     htmls += `<td style="text-align:right;">${formatNumber(grandTotalCr)}</td>`;
                     htmls += `<td style="text-align:right;padding-right: 8px !important;">${formatNumber(grandTotalBal) + (grandTotalBal >= 0 ? ' Dr' : ' Cr')}</td>`;
+                    htmls += '<td></td>';
                     htmls += '</tr>';
 
                     grandTotalDr = 0;
@@ -645,8 +657,8 @@
                     htmls += `<td id="voucherName"> Voucher : ${detailRow.VoucherName}</td></tr>`;
                     htmls += "<tr><td> Descriptions : " + detailRow.Particulars + "</td>";
                     htmls += "<td>TransactionDate : " + detailRow.Date + "</td></tr>";
-                    htmls += "<tr><td>Total Debit : " + formatNumber(detailRow.Debit) + "</td>";
-                    htmls += "<td>Total Credit : " + formatNumber(detailRow.Credit) + "</td></tr>";
+                    htmls += "<tr><td>Total Debit : " + formatNumber(detailRow.Debit > 0 ? detailRow.Debit : detailRow.Credit) + "</td>"; // Debit for purchase, Credit for Sales
+                    htmls += "<td>Total Credit : " + formatNumber(detailRow.Debit > 0 ? detailRow.Debit : detailRow.Credit) + "</td></tr>";  // Debit & Credit should balance
                     htmls += '</table>';
                     $("#divFinancialDetailView").html(htmls);
 
@@ -659,8 +671,17 @@
 
                     let footerHtml = '';
                     footerHtml += `<table  style='margin-top:25px; float:right'>
-                    <tr><td colspan="7"><div style="width:225px;text-align:center;border-top:1px solid;float:right;">Verified By</div></td></tr>
-                                    </table>`;
+                                    <tr>
+                                        <td colspan="7">
+                                           ${detailRow.VerifiedBy}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="7">
+                                            <div style="width:225px;text-align:center;border-top:1px solid;float:right;">Verified By</div>
+                                        </td>
+                                    </tr>
+                                   </table>`;
                     $("#divFinancialDetailView").append(footerHtml);
 
                     $("#divFinancialDetailView").dialog({
@@ -751,9 +772,18 @@
                     });
                 }
 
-                htmls += `< table style='margin-top:25px; float:right' >
-                                        <tr><td colspan="7"><div style="width:225px;text-align:center;border-top:1px solid;float:right;">Verified By</div></td></tr>
-                          </table >`;
+                htmls += `<table  style='margin-top:25px; float:right'>
+                                    <tr>
+                                        <td colspan="7">
+                                            ${ledgerInfo.VerifiedBy}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="7">
+                                            <div style="width:225px;text-align:center;border-top:1px solid;float:right;">Verified By</div>
+                                        </td>
+                                    </tr>
+                                   </table>`;
                 $("#divFinancialView").html(htmls);
 
                 $("#divFinancialView").dialog({
