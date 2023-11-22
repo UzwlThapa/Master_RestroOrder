@@ -26,7 +26,18 @@ ALTER PROCEDURE [dbo].ROI_SAVEPURCHASEitembal
     @BillDate DATETIME = NULL
 AS
     BEGIN
-	 
+        -- use bill date as transaction date for stock
+        SELECT @BillDate = CAST(CONCAT (
+                                    DATEPART (YEAR, @BillDate) ,
+                                    DATEPART (MONTH, @BillDate),
+                                    DATEPART (DAY, @BillDate),
+                                    ' ' ,
+                                    DATEPART (HOUR, GETDATE ()),
+                                    ':' ,
+                                    DATEPART (MINUTE, GETDATE ()),
+                                    ':' ,
+                                    DATEPART (SECOND, GETDATE ())) AS DATETIME);
+
         --Updated Stock Valuation Bishal Raj Parajuli
         /*
 		Input Paramaters
