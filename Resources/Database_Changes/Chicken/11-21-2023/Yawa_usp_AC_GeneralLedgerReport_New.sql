@@ -31,6 +31,8 @@ AS
                         FROM   dbo.Ac_FinancialAc AS A
                                INNER JOIN #TempACID t ON t.FinancialAcID = A.PFinancialAcID;
 
+            SELECT *
+            FROM   #TempACID;
             CREATE TABLE #AccountLedger
             (   Id INT IDENTITY (1, 1) ,
                 TransactionID INT NULL ,
@@ -79,7 +81,9 @@ AS
                    AND      T.TransactionDate BETWEEN @Start AND @End
                    ORDER BY afa.Name ,
                             T.TransactionDate;
+ 
 
+            -- opening balance
             IF ( @IsGroup = 1 )
                 BEGIN
                     INSERT INTO #AccountLedger ( TransactionID ,

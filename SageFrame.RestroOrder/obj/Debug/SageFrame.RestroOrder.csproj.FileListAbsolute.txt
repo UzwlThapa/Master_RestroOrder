@@ -143,3 +143,10 @@ E:\Development\Restro-GIT\AdarshaGit\SageFrame.RestroOrder\obj\Debug\SageFrame.R
 E:\Development\Restro-GIT\AdarshaGit\SageFrame.RestroOrder\obj\Debug\SageFrame.RestroOrder.csproj.CopyComplete
 E:\Development\Restro-GIT\AdarshaGit\SageFrame.RestroOrder\obj\Debug\SageFrame.RestroOrder.dll
 E:\Development\Restro-GIT\AdarshaGit\SageFrame.RestroOrder\obj\Debug\SageFrame.RestroOrder.pdb
+Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame\bin\SageFrame.RestroOrder.dll
+Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame\bin\SageFrame.RestroOrder.pdb
+Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.RestroOrder\obj\Debug\SageFrame.RestroOrder.csproj.AssemblyReference.cache
+Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.RestroOrder\obj\Debug\SageFrame.RestroOrder.csproj.CoreCompileInputs.cache
+Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.RestroOrder\obj\Debug\SageFrame.RestroOrder.csproj.CopyComplete
+Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.RestroOrder\obj\Debug\SageFrame.RestroOrder.dll
+Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.RestroOrder\obj\Debug\SageFrame.RestroOrder.pdb

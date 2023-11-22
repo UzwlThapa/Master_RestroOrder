@@ -1618,6 +1618,7 @@ namespace SageFrame.RestroOrder
 
         public string InvoiceNo { get; set; }
         public DateTime InvoiceDate { get; set; }
+        public DateTime BillDate { get; set; }
 
         public string Fname { get; set; }
         public string Address { get; set; }

@@ -293,7 +293,7 @@
                             htmls += `<td style="text-align:left;border:1px solid #575757;"></td>`;
                             htmls += `<td style="text-align:right;border:1px solid #575757;">${formatNumber(openingBalance[0].Debit)}</td>`;
                             htmls += `<td style="text-align:right;border:1px solid #575757;">${formatNumber(openingBalance[0].Credit)}</td>`;
-                            htmls += `<td style="text-align:right;border:1px solid #575757;padding-right: 8px !important;">${formatNumber(openingBalance[0].Balance) + (openingBalance[0].Balance >= 0 ? ' Dr' : ' Cr')}</td>`;
+                            htmls += `<td style="text-align:right;border:1px solid #575757;padding-right: 8px !important;">${formatNumber((openingBalance[0].Balance >= 0 ? openingBalance[0].Balance : openingBalance[0].Balance * -1)) + (openingBalance[0].Balance >= 0 ? ' Dr' : ' Cr')}</td>`;
                             htmls += '<td></td>';
                             htmls += '</tr>';
                         }
@@ -318,7 +318,7 @@
                             htmls += `<td style="text-align:left;border:1px solid #575757;">${value.Particulars}</td>`;
                             htmls += `<td style="text-align:right;border:1px solid #575757;">${formatNumber(value.Debit)}</td>`;
                             htmls += `<td style="text-align:right;border:1px solid #575757;">${formatNumber(value.Credit)}</td>`;
-                            htmls += `<td style="text-align:right;border:1px solid #575757;padding-right: 8px !important;">${formatNumber(value.Balance) + (value.Balance >= 0 ? ' Dr' : ' Cr')}</td>`;
+                            htmls += `<td style="text-align:right;border:1px solid #575757;padding-right: 8px !important;">${formatNumber((openingBalance[0].Balance >= 0 ? openingBalance[0].Balance : openingBalance[0].Balance * -1)) + (value.Balance >= 0 ? ' Dr' : ' Cr')}</td>`;
                             htmls += `<td style="text-align:right;border:1px solid #575757;padding:2px;"><button class="icon-preview btnViewTransaction" type='button' faid="${value.FinancialAcID}" id="${value.TransactionID}"></button></td>`;
                             htmls += '</tr>';
                         });
@@ -329,7 +329,7 @@
                         htmls += '<td></td>';
                         htmls += `<td style="text-align:right;">Ledger Total: ${groupTotalDr}</td>`;
                         htmls += `<td style="text-align:right;">${groupTotalCr}</td>`;
-                        htmls += `<td style="text-align:right;padding-right: 8px !important;">${formatNumber(groupTotalBal) + (groupTotalBal >= 0 ? ' Dr' : ' Cr')}</td>`;
+                        htmls += `<td style="text-align:right;padding-right: 8px !important;">${formatNumber((groupTotalBal >= 0 ? groupTotalBal : groupTotalBal * -1)) + (groupTotalBal >= 0 ? ' Dr' : ' Cr')}</td>`;
                         htmls += '<td></td>';
                         htmls += '</tr>';
 
@@ -344,7 +344,7 @@
                     htmls += '<td></td>';
                     htmls += `<td style="text-align:right;">Grand Total:${formatNumber(grandTotalDr)}</td>`;
                     htmls += `<td style="text-align:right;">${formatNumber(grandTotalCr)}</td>`;
-                    htmls += `<td style="text-align:right;padding-right: 8px !important;">${formatNumber(grandTotalBal) + (grandTotalBal >= 0 ? ' Dr' : ' Cr')}</td>`;
+                    htmls += `<td style="text-align:right;padding-right: 8px !important;">${formatNumber((grandTotalBal >= 0 ? grandTotalBal : grandTotalBal * -1)) + (grandTotalBal >= 0 ? ' Dr' : ' Cr')}</td>`;
                     htmls += '<td></td>';
                     htmls += '</tr>';
 
@@ -521,7 +521,7 @@
                             htmls += `<td style="text-align:left;border:1px solid #575757;"></td>`;
                             htmls += `<td style="text-align:right;border:1px solid #575757;">${formatNumber(openingBalance[0].Debit)}</td>`;
                             htmls += `<td style="text-align:right;border:1px solid #575757;">${formatNumber(openingBalance[0].Credit)}</td>`;
-                            htmls += `<td style="text-align:right;border:1px solid #575757;padding-right: 8px !important;">${formatNumber(openingBalance[0].Balance) + (openingBalance[0].Balance >= 0 ? ' Dr' : ' Cr')}</td>`;
+                            htmls += `<td style="text-align:right;border:1px solid #575757;padding-right: 8px !important;">${formatNumber((openingBalance[0].Balance >= 0 ? openingBalance[0].Balance : openingBalance[0].Balance * -1)) + (openingBalance[0].Balance >= 0 ? ' Dr' : ' Cr')}</td>`;
                             htmls += '<td></td>';
                             htmls += '</tr>';
                         }
@@ -546,7 +546,7 @@
                             htmls += `<td style="text-align:left;border:1px solid #575757;">${value.Particulars}</td>`;
                             htmls += `<td style="text-align:right;border:1px solid #575757;">${formatNumber(value.Debit)}</td>`;
                             htmls += `<td style="text-align:right;border:1px solid #575757;">${formatNumber(value.Credit)}</td>`;
-                            htmls += `<td style="text-align:right;border:1px solid #575757;padding-right: 8px !important;">${formatNumber(value.Balance) + (value.Balance >= 0 ? ' Dr' : ' Cr')}</td>`;
+                            htmls += `<td style="text-align:right;border:1px solid #575757;padding-right: 8px !important;">${formatNumber((value.Balance >= 0 ? value.Balance : value.Balance * -1)) + (value.Balance >= 0 ? ' Dr' : ' Cr')}</td>`;
                             htmls += `<td style="text-align:right;border:1px solid #575757;padding:2px;"><button class="icon-preview btnViewTransaction" type='button' faid="${value.FinancialAcID}" id="${value.TransactionID}"></button></td>`;
                             htmls += '</tr>';
                         });
@@ -557,7 +557,7 @@
                         htmls += '<td></td>';
                         htmls += `<td style="text-align:right;">Ledger Total: ${groupTotalDr}</td>`;
                         htmls += `<td style="text-align:right;">${groupTotalCr}</td>`;
-                        htmls += `<td style="text-align:right;padding-right: 8px !important;">${formatNumber(groupTotalBal) + (groupTotalBal >= 0 ? ' Dr' : ' Cr')}</td>`;
+                        htmls += `<td style="text-align:right;padding-right: 8px !important;">${formatNumber((groupTotalBal >= 0 ? groupTotalBal : groupTotalBal * -1)) + (groupTotalBal >= 0 ? ' Dr' : ' Cr')}</td>`;
                         htmls += '<td></td>';
                         htmls += '</tr>';
 
@@ -572,7 +572,7 @@
                     htmls += '<td></td>';
                     htmls += `<td style="text-align:right;">Grand Total:${formatNumber(grandTotalDr)}</td>`;
                     htmls += `<td style="text-align:right;">${formatNumber(grandTotalCr)}</td>`;
-                    htmls += `<td style="text-align:right;padding-right: 8px !important;">${formatNumber(grandTotalBal) + (grandTotalBal >= 0 ? ' Dr' : ' Cr')}</td>`;
+                    htmls += `<td style="text-align:right;padding-right: 8px !important;">${formatNumber((grandTotalBal >= 0 ? grandTotalBal : grandTotalBal * -1)) + (grandTotalBal >= 0 ? ' Dr' : ' Cr')}</td>`;
                     htmls += '<td></td>';
                     htmls += '</tr>';
 

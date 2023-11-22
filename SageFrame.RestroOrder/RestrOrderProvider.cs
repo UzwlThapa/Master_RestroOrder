@@ -2795,6 +2795,7 @@ namespace SageFrame.RestroOrder
                         Param1.Add(new KeyValuePair<string, object>("@STId", GoodReived.PurchaseObjItemBal[i].STId));
                         Param1.Add(new KeyValuePair<string, object>("@OPBal", GoodReived.PurchaseObjItemBal[i].OPBal));
                         Param1.Add(new KeyValuePair<string, object>("@CLBal", GoodReived.PurchaseObjItemBal[i].CLBal));
+                        Param1.Add(new KeyValuePair<string, object>("@BillDate", GoodReived.BillDate));
                         var b = sqlHandler.ExecuteAsScalar<object>("[ROI_SAVEPURCHASEitembal]", Param1);
                         //ItemBal
                     }
