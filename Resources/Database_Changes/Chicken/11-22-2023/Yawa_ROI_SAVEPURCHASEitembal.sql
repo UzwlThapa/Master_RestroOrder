@@ -13,7 +13,8 @@ GO
                                   @PDId = 0 ,   -- int
                                   @STId = 0 ,   -- int
                                   @OPBal = 0 ,  -- int
-                                  @CLBal = NULL -- decimal(18, 2)
+                                  @CLBal = NULL, -- decimal(18, 2)
+								  @BillDate = NULL
   
 */
 ALTER PROCEDURE [dbo].ROI_SAVEPURCHASEitembal

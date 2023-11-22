@@ -73,15 +73,17 @@ function getBill(salesMasterId, foodCourtOrder) {
                 disc.pizzadis = 0.00;
 
                 discount = disc;
+                
             } else {
+                console.log(discount);
                 var Discount = [
                     {
                         GroupId: 1,
                         GroupName: 'KOT',
                         Discount: parseFloat(discount.kotdis),
                         NonTaxDis: discount.isflatdis ? (costCenterGroup[0].NonTaxableAmt > 0 ? (costCenterGroup[0].NonTaxableAmt / (costCenterGroup[0].NonTaxableAmt + costCenterGroup[0].TotalAmt)) * parseFloat(discount.kotdis) : 0.00) : (costCenterGroup[0].NonTaxableAmt * (parseFloat(discount.kotdis) / 100)),
-                        TaxDis: discount.isflatdis ? (costCenterGroup[0].TotalAmt > 0 ? (costCenterGroup[0].TotalAmt / (costCenterGroup[0].NonTaxableAmt + costCenterGroup[0].TotalAmt)) * parseFloat(discount.kotdis) : 0.00) : (costCenterGroup[0].NonTaxableAmt * (parseFloat(discount.kotdis) / 100)),
-                        TotalAmount: costCenterGroup[0].TotalAmt, 
+                        TaxDis: discount.isflatdis ? (costCenterGroup[0].TotalAmt > 0 ? (costCenterGroup[0].TotalAmt / (costCenterGroup[0].NonTaxableAmt + costCenterGroup[0].TotalAmt)) * parseFloat(discount.kotdis) : 0.00) : (costCenterGroup[0].TotalAmt * (parseFloat(discount.kotdis) / 100)),
+                        TotalAmount: costCenterGroup[0].TotalAmt,
                         NonTaxableAmt: costCenterGroup[0].NonTaxableAmt
                     },
                     {
@@ -89,16 +91,16 @@ function getBill(salesMasterId, foodCourtOrder) {
                         GroupName: 'BAR',
                         Discount: parseFloat(discount.bardis),
                         NonTaxDis: discount.isflatdis ? (costCenterGroup[1].NonTaxableAmt > 0 ? (costCenterGroup[1].NonTaxableAmt / (costCenterGroup[1].NonTaxableAmt + costCenterGroup[1].TotalAmt)) * parseFloat(discount.bardis) : 0.00) : (costCenterGroup[1].NonTaxableAmt * (parseFloat(discount.bardis) / 100)),
-                        TaxDis: discount.isflatdis ? (costCenterGroup[1].TotalAmt > 0 ? (costCenterGroup[1].TotalAmt / (costCenterGroup[1].NonTaxableAmt + costCenterGroup[1].TotalAmt)) * parseFloat(discount.bardis) : 0.00) : (costCenterGroup[1].NonTaxableAmt * (parseFloat(discount.bardis) / 100)),
+                        TaxDis: discount.isflatdis ? (costCenterGroup[1].TotalAmt > 0 ? (costCenterGroup[1].TotalAmt / (costCenterGroup[1].NonTaxableAmt + costCenterGroup[1].TotalAmt)) * parseFloat(discount.bardis) : 0.00) : (costCenterGroup[1].TotalAmt * (parseFloat(discount.bardis) / 100)),
                         TotalAmount: costCenterGroup[1].TotalAmt,
-                         NonTaxableAmt: costCenterGroup[1].NonTaxableAmt
+                        NonTaxableAmt: costCenterGroup[1].NonTaxableAmt
                     },
                     {
                         GroupId: 3,
                         GroupName: 'Bakery',
                         Discount: parseFloat(discount.bakerydis),
                         NonTaxDis: discount.isflatdis ? (costCenterGroup[2].NonTaxableAmt > 0 ? (costCenterGroup[2].NonTaxableAmt / (costCenterGroup[2].NonTaxableAmt + costCenterGroup[2].TotalAmt)) * parseFloat(discount.bakerydis) : 0.00) : (costCenterGroup[2].NonTaxableAmt * (parseFloat(discount.bakerydis) / 100)),
-                        TaxDis: discount.isflatdis ? (costCenterGroup[2].TotalAmt > 0 ? (costCenterGroup[2].TotalAmt / (costCenterGroup[2].NonTaxableAmt + costCenterGroup[2].TotalAmt)) * parseFloat(discount.bakerydis) : 0.00) : (costCenterGroup[2].NonTaxableAmt * (parseFloat(discount.bakerydis) / 100)),
+                        TaxDis: discount.isflatdis ? (costCenterGroup[2].TotalAmt > 0 ? (costCenterGroup[2].TotalAmt / (costCenterGroup[2].NonTaxableAmt + costCenterGroup[2].TotalAmt)) * parseFloat(discount.bakerydis) : 0.00) : (costCenterGroup[2].TotalAmt * (parseFloat(discount.bakerydis) / 100)),
                         TotalAmount: costCenterGroup[2].TotalAmt,
                         NonTaxableAmt: costCenterGroup[2].NonTaxableAmt
                     },
@@ -107,7 +109,7 @@ function getBill(salesMasterId, foodCourtOrder) {
                         GroupName: 'Trading',
                         Discount: parseFloat(discount.tradingDis),
                         NonTaxDis: discount.isflatdis ? (costCenterGroup[3].NonTaxableAmt > 0 ? (costCenterGroup[3].NonTaxableAmt / (costCenterGroup[3].NonTaxableAmt + costCenterGroup[3].TotalAmt)) * parseFloat(discount.tradingDis) : 0.00) : (costCenterGroup[3].NonTaxableAmt * (parseFloat(discount.tradingDis) / 100)),
-                        TaxDis: discount.isflatdis ? (costCenterGroup[3].TotalAmt > 0 ? (costCenterGroup[3].TotalAmt / (costCenterGroup[3].NonTaxableAmt + costCenterGroup[3].TotalAmt)) * parseFloat(discount.tradingDis) : 0.00) : (costCenterGroup[3].NonTaxableAmt * (parseFloat(discount.tradingDis) / 100)),
+                        TaxDis: discount.isflatdis ? (costCenterGroup[3].TotalAmt > 0 ? (costCenterGroup[3].TotalAmt / (costCenterGroup[3].NonTaxableAmt + costCenterGroup[3].TotalAmt)) * parseFloat(discount.tradingDis) : 0.00) : (costCenterGroup[3].TotalAmt * (parseFloat(discount.tradingDis) / 100)),
                         TotalAmount: costCenterGroup[3].TotalAmt,
                         NonTaxableAmt: costCenterGroup[3].NonTaxableAmt
                     },
@@ -131,7 +133,7 @@ function getBill(salesMasterId, foodCourtOrder) {
             comphtmls += "<input type='hidden' value='" + billBody[0].PAN + "' id='hdfPAN' />";
             comphtmls += "<input type='hidden' value='" + billBody[0].BasicAmount + "' id='hdfBasicAmount' />";
             comphtmls += ("<table style='width:100%;padding-bottom:5px;text-align:center;margin-right:10px;margin-right:10px;border-collapse:collapse;font-family: monospace;'>");
-            comphtmls += (" <tr><td colspan='7' style='text-align:center;'><img src='/Modules/ROCompanyInfo/logo/" + companyInfo[0].Logo + "' style='width:70px;'/></td></tr>");
+            //comphtmls += (" <tr><td colspan='7' style='text-align:center;'><img src='/Modules/ROCompanyInfo/logo/" + companyInfo[0].Logo + "' style='width:70px;'/></td></tr>");
             comphtmls += ("<tr><td colspan='7' style='font-size:16px;text-align:center;font-weight:bold;'>" + companyInfo[0].Name + "</td></tr>");
             comphtmls += ("<tr><td colspan='7' style='font-size:12px;text-align:center;'>" + companyInfo[0].Address + "</td></tr>");
             comphtmls += ("<tr><td colspan='7' style='font-size:12px;text-align:center;'>" + companyInfo[0].PhoneNo + "</td></tr>");
@@ -141,7 +143,7 @@ function getBill(salesMasterId, foodCourtOrder) {
                 comphtmls += ("<tr><td colspan='7' style='font-size:12px;text-align:center;'><b>Cancellation</b></td></tr>");
             }
             else {
-                if (isab) { 
+                if (isab) {
                     if (isAbbreviated) {
                         comphtmls += ("<tr><td colspan='7' style='font-size:12px;text-align:center;'><b id='InvoiceType'>ABBREVIATED TAX INVOICE</b></td></tr>");
                     }
@@ -163,7 +165,7 @@ function getBill(salesMasterId, foodCourtOrder) {
 
                 }
             }
-            
+
             var logoInfo = comphtmls;
 
             var htmls = "";
@@ -273,7 +275,7 @@ function getBill(salesMasterId, foodCourtOrder) {
                                 }
                             })
                         }
-                        
+
                         //Item Rate Including VAT without Discount (JUNAR UPDATE)
                         //htmls += ("<td style='text-align:right;font-size:12px;'>" + (item.Rate * (1 + companyInfo[0].VATRate / 100.0)).toFixed(2) + "</td>");
                         htmls += ("<td style='text-align:right;font-size:12px;'>" + (rateN * (1 + companyInfo[0].VATRate / 100.0)).toFixed(2) + "</td>");
@@ -361,7 +363,7 @@ function getBill(salesMasterId, foodCourtOrder) {
                     }
                 } else {
 
-                BasicAmt += rateN * item.Quantity;
+                    BasicAmt += rateN * item.Quantity;
                 }
 
 
@@ -391,7 +393,7 @@ function getBill(salesMasterId, foodCourtOrder) {
             if (!billBody[0].IsTable && billBody[0].BookedDays > 0 && !splitCostCenter) {
                 // htmls += ("<tr><td colspan='4' style='text-align:right;border-top:1px dotted;font-size:11px;'></td>");
                 var roomRateN = costCenterDis.RoomRate;
-                
+
                 if (isab) {
                     if (isAbbreviated) {
                         if (!costCenterDis.isFlatDis) {
@@ -402,9 +404,9 @@ function getBill(salesMasterId, foodCourtOrder) {
                             var ttldis = costCenterDis.RoomDis;
                             var ttl = costCenterDis.RoomCharge;
                             var disPercent = 0.00;
-                            if (ttldis > 0){
-                                 disPercent = (ttldis * 100) / ttl;
-                                 roomRateN = parseFloat((roomRateN * (100 - disPercent) / 100));
+                            if (ttldis > 0) {
+                                disPercent = (ttldis * 100) / ttl;
+                                roomRateN = parseFloat((roomRateN * (100 - disPercent) / 100));
                             }
                         }
                         roomRateN = roomRateN * (1 + companyInfo[0].VATRate / 100.0);
@@ -453,54 +455,54 @@ function getBill(salesMasterId, foodCourtOrder) {
                 roomAmount = billBody[0].RoomCharge;
             }
 
-                if (billBody[0].totaldiscount > 0) {
-                    htmls += ("<tr  class='orderedInfo'>");
-                    if (splitCostCenter) {
-                        htmls += ("<td colspan='3' style='text-align:right;font-size:11px;'>Disc(KOT : " + discount.kotdis + discType + ", Bar : " + discount.bardis + discType + ", Bakery : " + discount.bakerydis + discType + ", Pizza : " + discount.pizzadis + discType + ")</td>");
-                        htmls += ("<td style='text-align:right;font-size:11px;'>Rs." + parseFloat(kotdis).toFixed(2) + "</td>");
-                        htmls += ("<td style='text-align:right;font-size:11px;'>Rs." + parseFloat(bevdis).toFixed(2) + "</td>");
-                        htmls += ("<td style='text-align:right;font-size:11px;'>Rs." + parseFloat(bakerydis).toFixed(2) + "</td>");
-                        htmls += ("<td style='text-align:right;font-size:11px;margin-right:10px;'>Rs." + parseFloat(pizzadis).toFixed(2) + "</td></tr>");
-                        htmls += ("<tr><td colspan='3' style='text-align:right;font-size:11px;'>After Disc. Amnt</td>");
-                        htmls += ("<td style='text-align:right;font-size:11px;'>Rs." + parseFloat(kotAmount - kotdis).toFixed(2)) + "</td>";
-                        htmls += ("<td style='text-align:right;font-size:11px;'>Rs." + parseFloat(bevAmount - bevdis).toFixed(2) + "</td>");
-                        htmls += ("<td style='text-align:right;font-size:11px;'>Rs." + parseFloat(bakeryAmount - bakerydis).toFixed(2) + "</td>");
-                        htmls += ("<td style='text-align:right;font-size:11px;margin-right:10px;'>Rs." + parseFloat(pizzaAmount - pizzadis).toFixed(2) + "</td>");
-                    }
-                    else {
-                        if (costCenterDis.GroupDis.length > 0) {
-                            if (costCenterDis.isLoyalty) {
-                                htmls += ("<td colspan='4' style='text-align:right;font-size:11px;margin-right:10px;'><span>Loyality Disc (" + costCenterDis.LoaylityDis + "%): </span>Rs." + parseFloat(billBody[0].totaldiscount).toFixed(2) + "</td></tr>");
-                            } else {
-                                $.each(costCenterDis.GroupDis, function (index, value) {
-                                    if (value.Discount > 0) {
-                                        if (costCenterDis.isFlatDis) {
-                                            htmls += ("<td colspan='4' style='text-align:right;font-size:11px;margin-right:10px;'><span>" + value.GroupName + " Disc: </span>Rs." + parseFloat(value.Discount).toFixed(2) + "</td></tr>");
-                                            
-                                        } else {
-                                            htmls += ("<td colspan='4' style='text-align:right;font-size:11px;margin-right:10px;'><span>" + value.GroupName + " Disc (" + value.Discount + " %) : </span>Rs." + parseFloat((value.Discount / 100) * (value.TotalAmount + value.NonTaxableAmt)).toFixed(2) + "</td></tr>");
-                                        }
-                                    }
-                                });
-                                if (costCenterDis.RoomDis > 0) {
-                                    
+            if (billBody[0].totaldiscount > 0) {
+                htmls += ("<tr  class='orderedInfo'>");
+                if (splitCostCenter) {
+                    htmls += ("<td colspan='3' style='text-align:right;font-size:11px;'>Disc(KOT : " + discount.kotdis + discType + ", Bar : " + discount.bardis + discType + ", Bakery : " + discount.bakerydis + discType + ", Pizza : " + discount.pizzadis + discType + ")</td>");
+                    htmls += ("<td style='text-align:right;font-size:11px;'>Rs." + parseFloat(kotdis).toFixed(2) + "</td>");
+                    htmls += ("<td style='text-align:right;font-size:11px;'>Rs." + parseFloat(bevdis).toFixed(2) + "</td>");
+                    htmls += ("<td style='text-align:right;font-size:11px;'>Rs." + parseFloat(bakerydis).toFixed(2) + "</td>");
+                    htmls += ("<td style='text-align:right;font-size:11px;margin-right:10px;'>Rs." + parseFloat(pizzadis).toFixed(2) + "</td></tr>");
+                    htmls += ("<tr><td colspan='3' style='text-align:right;font-size:11px;'>After Disc. Amnt</td>");
+                    htmls += ("<td style='text-align:right;font-size:11px;'>Rs." + parseFloat(kotAmount - kotdis).toFixed(2)) + "</td>";
+                    htmls += ("<td style='text-align:right;font-size:11px;'>Rs." + parseFloat(bevAmount - bevdis).toFixed(2) + "</td>");
+                    htmls += ("<td style='text-align:right;font-size:11px;'>Rs." + parseFloat(bakeryAmount - bakerydis).toFixed(2) + "</td>");
+                    htmls += ("<td style='text-align:right;font-size:11px;margin-right:10px;'>Rs." + parseFloat(pizzaAmount - pizzadis).toFixed(2) + "</td>");
+                }
+                else {
+                    if (costCenterDis.GroupDis.length > 0) {
+                        if (costCenterDis.isLoyalty) {
+                            htmls += ("<td colspan='4' style='text-align:right;font-size:11px;margin-right:10px;'><span>Loyality Disc (" + costCenterDis.LoaylityDis + "%): </span>Rs." + parseFloat(billBody[0].totaldiscount).toFixed(2) + "</td></tr>");
+                        } else {
+                            $.each(costCenterDis.GroupDis, function (index, value) {
+                                if (value.Discount > 0) {
                                     if (costCenterDis.isFlatDis) {
-                                        htmls += ("<td colspan='4' style='text-align:right;font-size:11px;margin-right:10px;'><span>Room Disc: </span>Rs." + parseFloat(costCenterDis.RoomDis).toFixed(2) + "</td></tr>");
+                                        htmls += ("<td colspan='4' style='text-align:right;font-size:11px;margin-right:10px;'><span>" + value.GroupName + " Disc: </span>Rs." + parseFloat(value.Discount).toFixed(2) + "</td></tr>");
 
                                     } else {
-                                        htmls += ("<td colspan='4' style='text-align:right;font-size:11px;margin-right:10px;'><span>Room Disc (" + costCenterDis.RoomDis + " %) : </span>Rs." + parseFloat((costCenterDis.RoomDis / 100) * costCenterDis.RoomCharge).toFixed(2) + "</td></tr>");
+                                        htmls += ("<td colspan='4' style='text-align:right;font-size:11px;margin-right:10px;'><span>" + value.GroupName + " Disc (" + value.Discount + " %) : </span>Rs." + parseFloat((value.Discount / 100) * (value.TotalAmount + value.NonTaxableAmt)).toFixed(2) + "</td></tr>");
                                     }
                                 }
-                            }
-                            if (isab) {
-                                if (isAbbreviated) {
-                                    htmls += ("<tr><td colspan='4' style='text-align:right;font-size:9px;margin-right:10px;font-style'><em>(Discount has already been deducted in above mentioned item rate)</em></td></tr>");
+                            });
+                            if (costCenterDis.RoomDis > 0) {
+
+                                if (costCenterDis.isFlatDis) {
+                                    htmls += ("<td colspan='4' style='text-align:right;font-size:11px;margin-right:10px;'><span>Room Disc: </span>Rs." + parseFloat(costCenterDis.RoomDis).toFixed(2) + "</td></tr>");
+
+                                } else {
+                                    htmls += ("<td colspan='4' style='text-align:right;font-size:11px;margin-right:10px;'><span>Room Disc (" + costCenterDis.RoomDis + " %) : </span>Rs." + parseFloat((costCenterDis.RoomDis / 100) * costCenterDis.RoomCharge).toFixed(2) + "</td></tr>");
                                 }
                             }
                         }
-                        
+                        if (isab) {
+                            if (isAbbreviated) {
+                                htmls += ("<tr><td colspan='4' style='text-align:right;font-size:9px;margin-right:10px;font-style'><em>(Discount has already been deducted in above mentioned item rate)</em></td></tr>");
+                            }
+                        }
                     }
-                    htmls += ("</tr>");
+
+                }
+                htmls += ("</tr>");
             }
 
 
@@ -531,6 +533,7 @@ function getBill(salesMasterId, foodCourtOrder) {
 
 
             $.each(costCenterDis.GroupDis, function (index, value) {
+                console.log(value);
                 NonTaxableTotalAmt += value.NonTaxableAmt;
                 TaxableTotalAmt += value.TotalAmount;
                 NonTaxableDis += value.NonTaxDis;
@@ -621,8 +624,8 @@ function getBill(salesMasterId, foodCourtOrder) {
                         }
                     }
                     htmls += ("</tr>");
-                
-                    if(value.BillTerm == "NetAmount") {
+
+                    if (value.BillTerm == "NetAmount") {
                         ttlAmt = parseFloat(value.Amount).toFixed(2);
                     }
                 });

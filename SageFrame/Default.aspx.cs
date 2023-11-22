@@ -81,7 +81,7 @@ namespace SageFrame
             string licenseFilePath = HttpContext.Current.Server.MapPath("~/") + @"License.lic";
             try
             {
-                daysLeft = License.DaysLeft(licenseFilePath, companyCode);
+                daysLeft =  License.DaysLeft(licenseFilePath, companyCode);
             }
             catch (Exception ex)
             {

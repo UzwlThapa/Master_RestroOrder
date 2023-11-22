@@ -1,0 +1,34 @@
+[
+  {
+    "ItemId": 23,
+    "ItemName": "CHICKEN MO: MO",
+    "PItemId": 3,
+    "ImagePath": "",
+    "CategoriesID": 0,
+    "MenuID": 0,
+    "CategoriesName": null,
+    "PhotoPath": null,
+    "MenuName": null,
+    "IsCategory": false,
+    "SRate": 200.0000,
+    "itemList": null,
+    "IsOutOfStock": false,
+    "LanguageMenuText": "CHICKEN MO: MO"
+  },
+  {
+    "ItemId": 2037,
+    "ItemName": "Sandwich",
+    "PItemId": 3,
+    "ImagePath": "",
+    "CategoriesID": 0,
+    "MenuID": 0,
+    "CategoriesName": null,
+    "PhotoPath": null,
+    "MenuName": null,
+    "IsCategory": false,
+    "SRate": 300.0000,
+    "itemList": null,
+    "IsOutOfStock": false,
+    "LanguageMenuText": "Sandwich"
+  }
+]
