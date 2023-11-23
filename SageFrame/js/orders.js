@@ -91,7 +91,7 @@ function GetGlobalizedMenu() {
         contentType: "application/json; charset=utf-8",
         dataType: "json",
         success: function (data) {
-			
+
             var datas = JSON.parse(data.d);
             console.log(datas);
             $("#selLanguage").html('');
@@ -191,8 +191,7 @@ function GetMenuforOrder(languageid) {
                     }
                 });
                 htmls += "</div>";
-                $('#Menushow').html(htmls);
-
+                $('#Menushow').html(htmls);\
             } else {
                 htmls += "<h6>No Menu Available </h6>";
                 $('#Menushow').html(htmls);
@@ -212,7 +211,7 @@ function GetMenuforOrder(languageid) {
             }
 
             $(".menuimg").on("error", function () {
-                $(this).attr('src','/Modules/ROCompanyInfo/logo/logo.png');
+                $(this).attr('src', '/Modules/ROCompanyInfo/logo/logo.png');
             });
 
             $('.menuimg').on('click', function () {
@@ -266,13 +265,10 @@ function BindCategoriesByMenu(result, categoryName) {
     if (datas.length > 0) {
         htmls += "<div class='category menus'>";
         $.each(datas, function (index, value) {
-            //htmls += "<div><img attr-type='i' attr-iscat=" + value.IsCategory + " id='categoryimg_" + value.ItemId + "_" + value.LanguageMenuText + "_false_" + value.IsOutOfStock + "_" + value.SRate + "' class='categoryimg' src='/Modules/" + (value.ImagePath == "" ? 'ROCompanyInfo/logo/' + companyInfo.Logo : 'ROI_Item/ImageItem/' + value.ImagePath) + "' width='150px' height='120px'>";
             htmls += '<div><img attr-type="i" attr-iscat=' + value.IsCategory + ' id="categoryimg_' + value.ItemId + '_' + value.LanguageMenuText + '_false_' + value.IsOutOfStock + '_' + value.SRate + '" class="categoryimg" src="/Modules/' + (value.ImagePath == "" ? "'/Modules/ROCompanyInfo/logo/logo.png'" : "ROI_Item/ImageItem/" + value.ImagePath) + '" width="150px" height="120px">';
             if (value.SRate == '0')
-                //htmls += "<div class='itmname categoryimg' id='categoryimg_" + value.ItemId + "_" + value.LanguageMenuText + "_false_" + value.IsOutOfStock + "_" + value.SRate + "' attr-iscat=" + value.IsCategory + ">" + value.LanguageMenuText + (value.IsOutOfStock ? '(Out Of Stock)' : '') + "</div></div>";
                 htmls += '<div class="itmname categoryimg" id="categoryimg_' + value.ItemId + '_' + value.LanguageMenuText + '_false_' + value.IsOutOfStock + '_' + value.SRate + '" attr-iscat=' + value.IsCategory + '>' + value.LanguageMenuText + (value.IsOutOfStock ? "(Out Of Stock)" : '') + '</div></div>';
             else
-                //htmls += "<div class='itmname categoryimg' id='categoryimg_" + value.ItemId + "_" + value.LanguageMenuText + "_false_" + value.IsOutOfStock + "_" + value.SRate + "' attr-iscat=" + value.IsCategory + ">" + value.LanguageMenuText + (value.IsOutOfStock ? '(Out Of Stock)' : '(Rs. ' + value.SRate + ')') + "</div></div>";
                 htmls += '<div class="itmname categoryimg" id="categoryimg_' + value.ItemId + '_' + value.LanguageMenuText + '_false_' + value.IsOutOfStock + '_' + value.SRate + '" attr-iscat=' + value.IsCategory + '>' + value.LanguageMenuText + (value.IsOutOfStock ? "(Out Of Stock)" : "(Rs. " + value.SRate + ")") + '</div></div>';
         });
         htmls += "</div>";
@@ -804,7 +800,7 @@ function SaveOrderedData() {
             }
             //Takeaway or Foodcourt
             else if (TableId == 0) {
-               
+
                 //initialSetup(0, orderid, SageFrameHostURL,true,false)
                 var url = SageFrameHostURL + "/Order.aspx?OID=" + val[0];
                 window.location.href = url;
@@ -944,7 +940,7 @@ function GetDataForSalesBill(orderMasterId) {
             }
 
 
-                //AddChanges 
+            //AddChanges 
 
             if (orderdetails.length > 0) {
                 htmls += ("<div class='left-sec'><h4>Take Away / Waiter: " + orderdetails[0].Waiter + "</h4>");
@@ -953,26 +949,57 @@ function GetDataForSalesBill(orderMasterId) {
 
                 var sn = 1;
                 $.each(orderdetails, function (index, value) {
-                        htmls += ("<tr class='" + value.SeatNo + " allsplited'><td>" + sn + "</td><td class='" + value.ROI_ItemId + "+" + value.CostCenterId + "+" + value.IsCombo + "+" + value.OrderDetailsID + "+" + value.RoomBookDetailID + "'>" + value.ITName + "</td>");
-                        htmls += ("<td>" + value.Quantity + "</td>");
+                    htmls += ("<tr class='" + value.SeatNo + " allsplited'><td>" + sn + "</td><td class='" + value.ROI_ItemId + "+" + value.CostCenterId + "+" + value.IsCombo + "+" + value.OrderDetailsID + "+" + value.RoomBookDetailID + "'>" + value.ITName + "</td>");
+                    htmls += ("<td>" + value.Quantity + "</td>");
 
-                        if (!isab)
-                            htmls += ("<td class='item-rate' data-groupId='" + value.GroupId + "' data-rate='" + value.Rate + "' >" + value.Rate + "</td>");
+                    if (!isab)
+                        htmls += ("<td class='item-rate' data-groupId='" + value.GroupId + "' data-rate='" + value.Rate + "' >" + value.Rate + "</td>");
+                    else {
+                        if (isAbbreviated) {
+                            htmls += ("<td class='item-rate' data-groupId='" + value.GroupId + "' data-rate='" + value.Rate + "' >" + (value.Rate * (1 + v_rate / 100.0)).toFixed(2) + "</td>");
+
+                        }
                         else {
-                            if (isAbbreviated) {
-                                htmls += ("<td class='item-rate' data-groupId='" + value.GroupId + "' data-rate='" + value.Rate + "' >" + (value.Rate * (1 + v_rate / 100.0)).toFixed(2) + "</td>");
-
-                            }
-                            else {
-                                htmls += ("<td class='item-rate' data-groupId='" + value.GroupId + "' data-rate='" + value.Rate + "' >" + value.Rate + "</td>");
-                            }
+                            htmls += ("<td class='item-rate' data-groupId='" + value.GroupId + "' data-rate='" + value.Rate + "' >" + value.Rate + "</td>");
                         }
-                        qnty += parseFloat(value.Quantity);
-                        amt = parseFloat(value.Quantity) * parseFloat(value.Rate);
+                    }
+                    qnty += parseFloat(value.Quantity);
+                    amt = parseFloat(value.Quantity) * parseFloat(value.Rate);
 
-                        if (!isab) {
-                            totalAmount += parseFloat(amt);
-                        }
+                    if (!isab) {
+                        totalAmount += parseFloat(amt);
+                    }
+
+
+
+                    if (!isab)
+                        htmls += ("<td class='item-amount'>" + amt + "</td></tr>");
+                    else
+                        htmls += ("<td class='item-amount'>" + (amt * (1 + v_rate / 100.0)).toFixed(2) + "</td></tr>");
+
+                    const group = costCenterGroup.filter(x => x.GroupId === value.GroupId)
+                    if (group.length > 0) {
+                        const i = costCenterGroup.findIndex(x => x.GroupId === value.GroupId);
+                        costCenterGroup[i].TotalAmt += amt;
+                    }
+
+
+                    if (value.orderExtraItem != undefined && value.orderExtraItem.length > 0) {
+                        htmls += ("<tr class='allsplited' style='font-size: 10px;font-style: italic;'><td></td><td colspan=3>");
+                        qnty = 0;
+                        rate = 0.00;
+                        $.each(value.orderExtraItem, function (index, value) {
+                            htmls += (value.ExtraItem) + "(" + value.Quantity + ", Rs." + value.ExtraPrice + "); ";
+                            qnty += value.Quantity;
+                            rate += parseFloat(value.ExtraPrice * value.Quantity);
+                        });
+                        htmls += "</td>";
+                        //htmls += ("</td><td>" + qnty + "</td>");
+                        //htmls += ("<td class='item-rate'>" + (rate/qnty) + "</td>");
+                        amt = parseFloat(rate);
+
+
+                        totalAmount += parseFloat(amt);
 
 
 
@@ -988,39 +1015,8 @@ function GetDataForSalesBill(orderMasterId) {
                         }
 
 
-                        if (value.orderExtraItem != undefined && value.orderExtraItem.length > 0) {
-                            htmls += ("<tr class='allsplited' style='font-size: 10px;font-style: italic;'><td></td><td colspan=3>");
-                            qnty = 0;
-                            rate = 0.00;
-                            $.each(value.orderExtraItem, function (index, value) {
-                                htmls += (value.ExtraItem) + "(" + value.Quantity + ", Rs." + value.ExtraPrice + "); ";
-                                qnty += value.Quantity;
-                                rate += parseFloat(value.ExtraPrice * value.Quantity);
-                            });
-                            htmls += "</td>";
-                            //htmls += ("</td><td>" + qnty + "</td>");
-                            //htmls += ("<td class='item-rate'>" + (rate/qnty) + "</td>");
-                            amt = parseFloat(rate);
-
-
-                            totalAmount += parseFloat(amt);
-
-
-
-                            if (!isab)
-                                htmls += ("<td class='item-amount'>" + amt + "</td></tr>");
-                            else
-                                htmls += ("<td class='item-amount'>" + (amt * (1 + v_rate / 100.0)).toFixed(2) + "</td></tr>");
-
-                            const group = costCenterGroup.filter(x => x.GroupId === value.GroupId)
-                            if (group.length > 0) {
-                                const i = costCenterGroup.findIndex(x => x.GroupId === value.GroupId);
-                                costCenterGroup[i].TotalAmt += amt;
-                            }
-
-
-                        }
-                        sn++;
+                    }
+                    sn++;
                 });
 
                 if (isab) {
@@ -1272,63 +1268,63 @@ function GetDataForSalesBill(orderMasterId) {
                 $('.item-list-tbl tbody').html("");
                 var sn = 1;
                 $.each(orderdetails, function (index, value) {
-                        var itms = "";
+                    var itms = "";
 
-                        itms += ("<tr class='" + value.SeatNo + " allsplited'><td>" + sn + "</td><td class='" + value.ROI_ItemId + "+" + value.CostCenterId + "+" + value.IsCombo + "+" + value.OrderDetailsID + "+" + value.RoomBookDetailID + "'>" + value.ITName + "</td>");
-                        itms += ("<td>" + value.Quantity + "</td>");
+                    itms += ("<tr class='" + value.SeatNo + " allsplited'><td>" + sn + "</td><td class='" + value.ROI_ItemId + "+" + value.CostCenterId + "+" + value.IsCombo + "+" + value.OrderDetailsID + "+" + value.RoomBookDetailID + "'>" + value.ITName + "</td>");
+                    itms += ("<td>" + value.Quantity + "</td>");
 
-                        if (!isab)
-                            itms += ("<td class='item-rate' data-groupId='" + value.GroupId + "' data-rate='" + value.Rate + "' >" + value.Rate + "</td>");
+                    if (!isab)
+                        itms += ("<td class='item-rate' data-groupId='" + value.GroupId + "' data-rate='" + value.Rate + "' >" + value.Rate + "</td>");
+                    else {
+                        if (isAbbreviated) {
+                            itms += ("<td class='item-rate' data-groupId='" + value.GroupId + "' data-rate='" + value.Rate + "' >" + (value.Rate * (1 + v_rate / 100.0)).toFixed(2) + "</td>");
+
+                        }
                         else {
-                            if (isAbbreviated) {
-                                itms += ("<td class='item-rate' data-groupId='" + value.GroupId + "' data-rate='" + value.Rate + "' >" + (value.Rate * (1 + v_rate / 100.0)).toFixed(2) + "</td>");
-
-                            }
-                            else {
-                                itms += ("<td class='item-rate' data-groupId='" + value.GroupId + "' data-rate='" + value.Rate + "' >" + value.Rate + "</td>");
-                            }
+                            itms += ("<td class='item-rate' data-groupId='" + value.GroupId + "' data-rate='" + value.Rate + "' >" + value.Rate + "</td>");
                         }
-                        amt = parseFloat(value.Quantity) * parseFloat(value.Rate);
+                    }
+                    amt = parseFloat(value.Quantity) * parseFloat(value.Rate);
 
-                        //if (!isab) {
+                    //if (!isab) {
+                    totalAmount += parseFloat(amt);
+                    //}
+
+                    if (!isab)
+                        itms += ("<td class='item-amount'>" + amt + "</td></tr>");
+                    else
+                        itms += ("<td class='item-amount'>" + (amt * (1 + v_rate / 100.0)).toFixed(2) + "</td></tr>");
+
+
+
+                    if (value.orderExtraItem != undefined && value.orderExtraItem.length > 0) {
+                        itms += ("<tr class='allsplited' style='font-size: 10px;font-style: italic;'><td></td><td colspan=3>");
+                        qnty = 0;
+                        rate = 0.00;
+                        $.each(value.orderExtraItem, function (index, value) {
+                            itms += (value.ExtraItem) + "(" + value.Quantity + ", Rs." + ($("#selDiscountType").val() == "4" ? '1' : value.ExtraPrice) + "); ";
+                            qnty += value.Quantity;
+                            rate += parseFloat(value.Quantity * value.ExtraPrice);
+                        });
+                        itms += ("</td>");
+                        //itms += ("</td><td>" + qnty + "</td>");
+                        if ($("#selDiscountType").val() == "4") {
+                            //itms += ("<td class='item-rate'>" + 1 + "</td>");
+                            amt = parseFloat(qnty);
+                        } else {
+                            //itms += ("<td class='item-rate'>" + rate + "</td>");
+                            amt = parseFloat(rate);
+                        }
                         totalAmount += parseFloat(amt);
-                        //}
 
-                        if (!isab)
-                            itms += ("<td class='item-amount'>" + amt + "</td></tr>");
-                        else
-                            itms += ("<td class='item-amount'>" + (amt * (1 + v_rate / 100.0)).toFixed(2) + "</td></tr>");
+                        //console.log('totalAmount: ' + totalAmount);
+
+                        itms += ("<td class='item-amount'>" + amt + "</td></tr>");
 
 
-
-                        if (value.orderExtraItem != undefined && value.orderExtraItem.length > 0) {
-                            itms += ("<tr class='allsplited' style='font-size: 10px;font-style: italic;'><td></td><td colspan=3>");
-                            qnty = 0;
-                            rate = 0.00;
-                            $.each(value.orderExtraItem, function (index, value) {
-                                itms += (value.ExtraItem) + "(" + value.Quantity + ", Rs." + ($("#selDiscountType").val() == "4" ? '1' : value.ExtraPrice) + "); ";
-                                qnty += value.Quantity;
-                                rate += parseFloat(value.Quantity * value.ExtraPrice);
-                            });
-                            itms += ("</td>");
-                            //itms += ("</td><td>" + qnty + "</td>");
-                            if ($("#selDiscountType").val() == "4") {
-                                //itms += ("<td class='item-rate'>" + 1 + "</td>");
-                                amt = parseFloat(qnty);
-                            } else {
-                                //itms += ("<td class='item-rate'>" + rate + "</td>");
-                                amt = parseFloat(rate);
-                            }
-                            totalAmount += parseFloat(amt);
-
-                            //console.log('totalAmount: ' + totalAmount);
-
-                            itms += ("<td class='item-amount'>" + amt + "</td></tr>");
-
-
-                        }
-                        sn++;
-                        $('.item-list-tbl tbody').append(itms);
+                    }
+                    sn++;
+                    $('.item-list-tbl tbody').append(itms);
                 });
 
                 totalAmount += roomAmount;
@@ -1547,8 +1543,8 @@ function GetDataForSalesBill(orderMasterId) {
             }
 
             $("#generateBill").on('click', function () {
-              
-               
+
+
                 //alert(creditLimit);
                 if ($('.customerForCash').prop('checked') == false) {
 
@@ -1686,53 +1682,53 @@ function GetDataForSalesBill(orderMasterId) {
                 discount.CCGroup = costCenterGroup;
 
                 //if (foodCourtOrder) {
-                    var salesPaymentList = new Array();
-                    $('.pmntCheck').each(function () {
-                        if ($(this).is(':checked')) {
-                            var row = $(this).closest('tr');
-                            var spmid = $(this).attr('id').split('_')[1];
-                            var salesPayment = new Object();
-                            salesPayment.SPMID = spmid;
-                            salesPayment.ChequeNo = 000000;
-                            salesPayment.TransactionNo = 00000;
-                            salesPayment.ProviderID = 1;
-                            salesPayment.CusID = $('#txtCusID').val();
-                            salesPayment.Customer = $('#txtCashCusName').val();
-                            salesPayment.Address = $('#txtCusAddress').val();
-                            salesPayment.PAN = $('#txtPan').val();
-                            salesPayment.PayAmount = $(row).find('.txtPayAmount').val();
-                            salesPayment.TenderAmount = TotalNetAmount;
-                            salesPayment.ReturnAmount = 0;
-                            salesPayment.BillAmount = TotalNetAmount;
-                            salesPayment.Remarks = "Paid";
-                            salesPaymentList.push(salesPayment);
-                        }
-                    });
-                    //OLD System Updated Bishal
-                    //let paymentID = $('#selPayMode').val();
+                var salesPaymentList = new Array();
+                $('.pmntCheck').each(function () {
+                    if ($(this).is(':checked')) {
+                        var row = $(this).closest('tr');
+                        var spmid = $(this).attr('id').split('_')[1];
+                        var salesPayment = new Object();
+                        salesPayment.SPMID = spmid;
+                        salesPayment.ChequeNo = 000000;
+                        salesPayment.TransactionNo = 00000;
+                        salesPayment.ProviderID = 1;
+                        salesPayment.CusID = $('#txtCusID').val();
+                        salesPayment.Customer = $('#txtCashCusName').val();
+                        salesPayment.Address = $('#txtCusAddress').val();
+                        salesPayment.PAN = $('#txtPan').val();
+                        salesPayment.PayAmount = $(row).find('.txtPayAmount').val();
+                        salesPayment.TenderAmount = TotalNetAmount;
+                        salesPayment.ReturnAmount = 0;
+                        salesPayment.BillAmount = TotalNetAmount;
+                        salesPayment.Remarks = "Paid";
+                        salesPaymentList.push(salesPayment);
+                    }
+                });
+                //OLD System Updated Bishal
+                //let paymentID = $('#selPayMode').val();
 
-                    //salesPayment.SPMID = $('#selPayMode').val();
-                    //salesPayment.ChequeNo = (paymentID == 2 ? $('#txtCheqNo').val() : "");
-                    //salesPayment.TransactionNo = (paymentID == 3 || paymentID == 5 || paymentID == 6 ? $('#txtTransNo').val() : "");
-                    //salesPayment.ProviderID = ((paymentID == 3 || paymentID == 2|| paymentID == 5|| paymentID == 6) ? $('#selProv').val() : "");
-                    //salesPayment.TenderAmount = (paymentID == 1 ? parseFloat(($('#txtTenderAmount').val() == "" ? 0 : $('#txtTenderAmount').val())) : 0);
-                    //salesPayment.ReturnAmount = (paymentID == 1 ? parseFloat(($('#txtReturnAmount').val() == "" ? 0 : $('#txtReturnAmount').val())) : 0);
-                    //salesPayment.PayAmount = (paymentID == 1 ? parseFloat($('#txtTenderAmount').val() - $('#txtReturnAmount').val()) : $('#txtNetAmt').val().split(' ')[1]);
+                //salesPayment.SPMID = $('#selPayMode').val();
+                //salesPayment.ChequeNo = (paymentID == 2 ? $('#txtCheqNo').val() : "");
+                //salesPayment.TransactionNo = (paymentID == 3 || paymentID == 5 || paymentID == 6 ? $('#txtTransNo').val() : "");
+                //salesPayment.ProviderID = ((paymentID == 3 || paymentID == 2|| paymentID == 5|| paymentID == 6) ? $('#selProv').val() : "");
+                //salesPayment.TenderAmount = (paymentID == 1 ? parseFloat(($('#txtTenderAmount').val() == "" ? 0 : $('#txtTenderAmount').val())) : 0);
+                //salesPayment.ReturnAmount = (paymentID == 1 ? parseFloat(($('#txtReturnAmount').val() == "" ? 0 : $('#txtReturnAmount').val())) : 0);
+                //salesPayment.PayAmount = (paymentID == 1 ? parseFloat($('#txtTenderAmount').val() - $('#txtReturnAmount').val()) : $('#txtNetAmt').val().split(' ')[1]);
 
-                    //salesPayment.CusID = '';
-                    //salesPayment.Customer = '';
-                    //salesPayment.Address = '';
-                    //salesPayment.PAN = '';
-                    //salesPayment.Remarks = $('.txtRemarks').val();
-                    //if (foodCourtAutoBillGenerate) {
-                    //    SaveFoodCourtSalesBill(salesMaster, salesDetail, splited, billingTerm, discount, salesPayment)
-                    //} else {
-                        jConfirm('Are You Sure  ?', 'Pay', function (confirmed) {
-                            if (confirmed) {
-                                SaveFoodCourtSalesBill(salesMaster, salesDetail, splited, billingTerm, discount, salesPaymentList)
-                            }
-                        });
-                    //}
+                //salesPayment.CusID = '';
+                //salesPayment.Customer = '';
+                //salesPayment.Address = '';
+                //salesPayment.PAN = '';
+                //salesPayment.Remarks = $('.txtRemarks').val();
+                //if (foodCourtAutoBillGenerate) {
+                //    SaveFoodCourtSalesBill(salesMaster, salesDetail, splited, billingTerm, discount, salesPayment)
+                //} else {
+                jConfirm('Are You Sure  ?', 'Pay', function (confirmed) {
+                    if (confirmed) {
+                        SaveFoodCourtSalesBill(salesMaster, salesDetail, splited, billingTerm, discount, salesPaymentList)
+                    }
+                });
+                //}
                 //} else {
                 //    jConfirm('Are You Sure  ?', 'Pay', function (confirmed) {
                 //        if (confirmed) {
@@ -1853,7 +1849,7 @@ function BindBillingTerm(totalAmount, totaldis, datas) {
             totaldis = 0;
         }
     }
-                //Abb Change
+    //Abb Change
     var htmls = "";
 
     $("#divBillingTerm").html(htmls);
@@ -1953,7 +1949,7 @@ function BindBillingTerm(totalAmount, totaldis, datas) {
     htmls += ("</tr>");
     //htmls += ("</table>");
 
-    
+
     if (datas.RoomBooking.RoomBookDetailsID > 0) {
         htmls += ("<tr>");
         htmls += ("<td attr-term='Advance Payment' ><strong>Advance Payment : </strong>");
@@ -2142,7 +2138,7 @@ function SaveFoodCourtSalesBill(salesMaster, salesDetail, splited, billingTerm, 
             Print();
             $('#InvoiceType').html('INVOICE');
             $('#btnPrints').click();
-            
+
             $('#txtCustName').val('');
             $('#txtContactNo').val('');
             $('#CustomerID').text(0);
@@ -2663,7 +2659,7 @@ function initialSetup(tableId, oId, hostUrl, foodCourt, Delievery) {
         source: AutocompleteItem,
         delay: 0,
         select: function (event, ui) {
-           
+
             $.scrollTo(200);
             var name = ui.item.value;
             var languageid = $("#selLanguage").val() == null ? 1 : $("#selLanguage").val();
@@ -2718,7 +2714,7 @@ function initialSetup(tableId, oId, hostUrl, foodCourt, Delievery) {
                                 $('#Categoryshow').show();
                                 if (AddItemInMenuSearch != false) {
                                     BindItemsToOrder(NpitemID, NpitemName, IsCombo, value.IsOutOfStock, Nprate);
-                                    
+
                                 }
 
                             }
@@ -2965,7 +2961,7 @@ function GetPreviousItemByID(Id, OID) {
         }
     });
 }
-function ShowOrderPayView(){
+function ShowOrderPayView() {
     GetDataForSalesBill(OrderMasterID);
 }
 
