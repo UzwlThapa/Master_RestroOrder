@@ -284,9 +284,3 @@
     <div id='customer-bill' style='text-align:center;width:100%;'></div>
 </div>
 </div>
-<%--<script>
-    $(document).ready(function () {
-        $("tbody.bindorderlist tr:even").css("background-color", " #000000");
-    });
-</script>--%>
-

@@ -133,13 +133,6 @@ function GetItemForSearch() {
     $("#selLanguage").on('change', function () {
         var languageid = $("#selLanguage").val() == null ? 1 : $("#selLanguage").val();
         GetMenuforOrder(languageid);
-        //if (OrdermenuImageshow == false) {
-        //    $('img.menuimg').remove();
-        //    $('.restaurant-part-menu').click(function () {
-        //        $('img.categoryimg , img.itemimg').remove();
-        //    });
-        //}
-
     });
 
     $('.customerForOrder').on('change', function () {
