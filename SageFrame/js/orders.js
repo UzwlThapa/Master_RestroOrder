@@ -184,7 +184,7 @@ function GetMenuforOrder(languageid) {
                     }
                 });
                 htmls += "</div>";
-                $('#Menushow').html(htmls);\
+                $('#Menushow').html(htmls);
             } else {
                 htmls += "<h6>No Menu Available </h6>";
                 $('#Menushow').html(htmls);
