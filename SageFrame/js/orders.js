@@ -2100,7 +2100,7 @@ function SaveSalesBill(salesMaster, salesDetail, splited, billingTerm, discount)
     });
 }
 function SaveFoodCourtSalesBill(salesMaster, salesDetail, splited, billingTerm, discount, salesPayment) {
-    var customer = 1;
+
     $.ajax({
         type: "POST",
         async: false,
