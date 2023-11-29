@@ -304,10 +304,13 @@
 
                             groupTotalDr += value.Debit;
                             groupTotalCr += value.Credit;
-                            groupTotalBal += value.Balance;
                             grandTotalDr += value.Debit;
                             grandTotalCr += value.Credit;
                             grandTotalBal += value.Balance;
+
+                            if (index == groupData.length - 1) {
+                                groupTotalBal = value.Balance;
+                            }
 
                             var date = value.Date;
                             var split = date.split(" ");
@@ -327,8 +330,8 @@
                         htmls += '<tr style="text-align:left;background:#cfcfcf;font-weight:bold;">';
                         htmls += '<td></td>';
                         htmls += '<td></td>';
-                        htmls += `<td style="text-align:right;">Ledger Total: ${groupTotalDr}</td>`;
-                        htmls += `<td style="text-align:right;">${groupTotalCr}</td>`;
+                        htmls += `<td style="text-align:right;">Ledger Total: ${formatNumber(groupTotalDr)}</td>`;
+                        htmls += `<td style="text-align:right;">${formatNumber(groupTotalCr)}</td>`;
                         htmls += `<td style="text-align:right;padding-right: 8px !important;">${formatNumber((groupTotalBal >= 0 ? groupTotalBal : groupTotalBal * -1)) + (groupTotalBal >= 0 ? ' Dr' : ' Cr')}</td>`;
                         htmls += '<td></td>';
                         htmls += '</tr>';
@@ -537,6 +540,10 @@
                             grandTotalCr += value.Credit;
                             grandTotalBal += value.Balance;
 
+                            if (index == groupData.length - 1) {
+                                groupTotalBal = value.Balance;
+                            }
+
                             var date = value.Date;
                             var split = date.split(" ");
                             var dta = split[0];
@@ -555,8 +562,8 @@
                         htmls += '<tr style="text-align:left;background:#cfcfcf;font-weight:bold;">';
                         htmls += '<td></td>';
                         htmls += '<td></td>';
-                        htmls += `<td style="text-align:right;">Ledger Total: ${groupTotalDr}</td>`;
-                        htmls += `<td style="text-align:right;">${groupTotalCr}</td>`;
+                        htmls += `<td style="text-align:right;">Ledger Total: ${formatNumber(groupTotalDr)}</td>`;
+                        htmls += `<td style="text-align:right;">${formatNumber(groupTotalCr)}</td>`;
                         htmls += `<td style="text-align:right;padding-right: 8px !important;">${formatNumber((groupTotalBal >= 0 ? groupTotalBal : groupTotalBal * -1)) + (groupTotalBal >= 0 ? ' Dr' : ' Cr')}</td>`;
                         htmls += '<td></td>';
                         htmls += '</tr>';
