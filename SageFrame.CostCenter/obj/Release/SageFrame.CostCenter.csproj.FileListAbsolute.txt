@@ -401,3 +401,20 @@ Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.CostCenter\ob
 Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.CostCenter\obj\Release\SageFrame.CostCenter.csproj.CopyComplete
 Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.CostCenter\obj\Release\SageFrame.CostCenter.dll
 Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.CostCenter\obj\Release\SageFrame.CostCenter.pdb
+C:\#Utsav\Danfe Solution\Master_RestroOrder\SageFrame.CostCenter\bin\Release\SageFrame.CostCenter.dll
+C:\#Utsav\Danfe Solution\Master_RestroOrder\SageFrame.CostCenter\bin\Release\SageFrame.CostCenter.pdb
+C:\#Utsav\Danfe Solution\Master_RestroOrder\SageFrame.CostCenter\bin\Release\SageFrame.Common.dll
+C:\#Utsav\Danfe Solution\Master_RestroOrder\SageFrame.CostCenter\bin\Release\SageFrame.Core.dll
+C:\#Utsav\Danfe Solution\Master_RestroOrder\SageFrame.CostCenter\bin\Release\AjaxControlToolkit.dll
+C:\#Utsav\Danfe Solution\Master_RestroOrder\SageFrame.CostCenter\bin\Release\SageFrame.Templating.dll
+C:\#Utsav\Danfe Solution\Master_RestroOrder\SageFrame.CostCenter\bin\Release\SageFrame.CDN.dll
+C:\#Utsav\Danfe Solution\Master_RestroOrder\SageFrame.CostCenter\bin\Release\ICSharpCode.SharpZipLib.dll
+C:\#Utsav\Danfe Solution\Master_RestroOrder\SageFrame.CostCenter\bin\Release\Ionic.Zip.dll
+C:\#Utsav\Danfe Solution\Master_RestroOrder\SageFrame.CostCenter\bin\Release\SageFrame.Common.pdb
+C:\#Utsav\Danfe Solution\Master_RestroOrder\SageFrame.CostCenter\bin\Release\SageFrame.Security.pdb
+C:\#Utsav\Danfe Solution\Master_RestroOrder\SageFrame.CostCenter\obj\Release\SageFrame.CostCenter.csproj.AssemblyReference.cache
+C:\#Utsav\Danfe Solution\Master_RestroOrder\SageFrame.CostCenter\obj\Release\SageFrame.CostCenter.csproj.CoreCompileInputs.cache
+C:\#Utsav\Danfe Solution\Master_RestroOrder\SageFrame.CostCenter\obj\Release\SageFrame.CostCenter.csproj.CopyComplete
+C:\#Utsav\Danfe Solution\Master_RestroOrder\SageFrame.CostCenter\obj\Release\SageFrame.CostCenter.dll
+C:\#Utsav\Danfe Solution\Master_RestroOrder\SageFrame.CostCenter\obj\Release\SageFrame.CostCenter.pdb
+C:\#Utsav\Danfe Solution\Master_RestroOrder\SageFrame.CostCenter\bin\Release\SageFrame.Security.dll

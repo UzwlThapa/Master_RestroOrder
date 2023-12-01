@@ -23,8 +23,8 @@ public partial class Startup
         app.UseHangfireDashboard();
 
         app.UseHangfireServer();
-        RecurringJob.AddOrUpdate(() => CBMS.syncSales(), cronExpression);
-        RecurringJob.AddOrUpdate(() => CBMS.syncReturnedSales(), cronExpression);
+        //RecurringJob.AddOrUpdate(() => CBMS.syncSales(), cronExpression);
+        //RecurringJob.AddOrUpdate(() => CBMS.syncReturnedSales(), cronExpression);
 
     }
 
