@@ -182,3 +182,12 @@ Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.DailyChalan\o
 Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.DailyChalan\obj\Release\SageFrame.DailyChalan.csproj.CopyComplete
 Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.DailyChalan\obj\Release\SageFrame.DailyChalan.dll
 Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.DailyChalan\obj\Release\SageFrame.DailyChalan.pdb
+C:\#Utsav\Danfe Solution\Master_RestroOrder\SageFrame.DailyChalan\bin\Release\SageFrame.DailyChalan.dll
+C:\#Utsav\Danfe Solution\Master_RestroOrder\SageFrame.DailyChalan\bin\Release\SageFrame.DailyChalan.pdb
+C:\#Utsav\Danfe Solution\Master_RestroOrder\SageFrame.DailyChalan\bin\Release\SageFrame.Common.dll
+C:\#Utsav\Danfe Solution\Master_RestroOrder\SageFrame.DailyChalan\bin\Release\SageFrame.Common.pdb
+C:\#Utsav\Danfe Solution\Master_RestroOrder\SageFrame.DailyChalan\obj\Release\SageFrame.DailyChalan.csproj.AssemblyReference.cache
+C:\#Utsav\Danfe Solution\Master_RestroOrder\SageFrame.DailyChalan\obj\Release\SageFrame.DailyChalan.csproj.CoreCompileInputs.cache
+C:\#Utsav\Danfe Solution\Master_RestroOrder\SageFrame.DailyChalan\obj\Release\SageFrame.DailyChalan.csproj.CopyComplete
+C:\#Utsav\Danfe Solution\Master_RestroOrder\SageFrame.DailyChalan\obj\Release\SageFrame.DailyChalan.dll
+C:\#Utsav\Danfe Solution\Master_RestroOrder\SageFrame.DailyChalan\obj\Release\SageFrame.DailyChalan.pdb

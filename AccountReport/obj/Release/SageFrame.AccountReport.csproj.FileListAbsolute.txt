@@ -125,3 +125,18 @@ Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\AccountReport\obj\Relea
 Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\AccountReport\obj\Release\SageFrame.AccountReport.csproj.CopyComplete
 Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\AccountReport\obj\Release\SageFrame.AccountReport.dll
 Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\AccountReport\obj\Release\SageFrame.AccountReport.pdb
+C:\#Utsav\Danfe Solution\Master_RestroOrder\AccountReport\bin\Release\SageFrame.AccountReport.dll
+C:\#Utsav\Danfe Solution\Master_RestroOrder\AccountReport\bin\Release\SageFrame.AccountReport.pdb
+C:\#Utsav\Danfe Solution\Master_RestroOrder\AccountReport\bin\Release\SageFrame.Common.dll
+C:\#Utsav\Danfe Solution\Master_RestroOrder\AccountReport\bin\Release\SageFrame.Core.dll
+C:\#Utsav\Danfe Solution\Master_RestroOrder\AccountReport\bin\Release\AjaxControlToolkit.dll
+C:\#Utsav\Danfe Solution\Master_RestroOrder\AccountReport\bin\Release\SageFrame.Templating.dll
+C:\#Utsav\Danfe Solution\Master_RestroOrder\AccountReport\bin\Release\SageFrame.CDN.dll
+C:\#Utsav\Danfe Solution\Master_RestroOrder\AccountReport\bin\Release\ICSharpCode.SharpZipLib.dll
+C:\#Utsav\Danfe Solution\Master_RestroOrder\AccountReport\bin\Release\Ionic.Zip.dll
+C:\#Utsav\Danfe Solution\Master_RestroOrder\AccountReport\bin\Release\SageFrame.Common.pdb
+C:\#Utsav\Danfe Solution\Master_RestroOrder\AccountReport\obj\Release\SageFrame.AccountReport.csproj.AssemblyReference.cache
+C:\#Utsav\Danfe Solution\Master_RestroOrder\AccountReport\obj\Release\SageFrame.AccountReport.csproj.CoreCompileInputs.cache
+C:\#Utsav\Danfe Solution\Master_RestroOrder\AccountReport\obj\Release\SageFrame.AccountReport.csproj.CopyComplete
+C:\#Utsav\Danfe Solution\Master_RestroOrder\AccountReport\obj\Release\SageFrame.AccountReport.dll
+C:\#Utsav\Danfe Solution\Master_RestroOrder\AccountReport\obj\Release\SageFrame.AccountReport.pdb
