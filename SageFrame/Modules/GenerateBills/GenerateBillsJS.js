@@ -1806,6 +1806,16 @@ function print() {
                     totalAmount = totalAmount + tableinfo.TotalAmount;
                     DashboardFunction.BindBillingTerm(totalAmount, totaldis, datas);
                 });
+                function getValue(that) {
+                    var value = $(that).val();
+                    if (!['', null, undefined].includes(value)) {
+                        value = parseFloat(value);
+                    } else {
+                        value = 0;
+                    }
+                    return value;
+                }
+
                 $('.txt_dis').on('keyup', function () {
                     totalAmount = 0.00;
 
@@ -1818,16 +1828,16 @@ function print() {
                     var currIndex = $(this).attr('id').split('_')[1];
                     var cgGroup = costCenterGroup.find(x => x.GroupId == currGroupId);
                     if ($(this).attr('id') != 'txtRoomDiscount') {
-                        cgGroup.TotalDis = parseFloat($(this).val());
+                        cgGroup.TotalDis = parseFloat(getValue(this));
                     }
 
                     if ($("#selDiscountType").val() == "1") {
-                        if (($(this).val()) > 100 || ($(this).val()) < 0) {
+                        if ((getValue(this)) > 100 || (getValue(this)) < 0) {
                             jAlert('Invalid Discount.', "Alert!!", function () { $.alerts.dialogClass = null; });
                             $(this).val(0);
                         }
 
-                        var disRate = parseFloat($(this).val() == "" ? 0 : $(this).val());
+                        var disRate = parseFloat(getValue(this) == "" ? 0 : getValue(this));
                         var dis = 0
 
                         //Bishal Added
@@ -1882,10 +1892,10 @@ function print() {
                             $(".txt_dis").each(function () {
                                 var keyIndex = parseFloat($(this).attr('id').split('_')[1]);
                                 if (keyIndex >= 0) {
-                                    dis += (parseFloat(costCenterGroup[keyIndex].TotalAmt) * (parseFloat($(this).val() / 100)));
+                                    dis += (parseFloat(costCenterGroup[keyIndex].TotalAmt) * (parseFloat(getValue(this) / 100)));
 
                                 } else {
-                                    dis += (parseFloat(tableinfo.TotalAmount) * (parseFloat($(this).val() / 100)))
+                                    dis += (parseFloat(tableinfo.TotalAmount) * (parseFloat(getValue(this) / 100)))
                                 }
                             })
 
@@ -1901,7 +1911,7 @@ function print() {
                                     var keyIndex = parseInt(_this.attr('id').split('_')[1]);
                                     dis += (parseFloat(costCenterGroup[keyIndex].TotalAmt) * (parseFloat(_this.val() / 100)));
                                 } else {
-                                    dis += (parseFloat(tableinfo.TotalAmount) * (parseFloat($(this).val() / 100)))
+                                    dis += (parseFloat(tableinfo.TotalAmount) * (parseFloat(getValue(this) / 100)))
                                 }
 
 
@@ -1914,13 +1924,13 @@ function print() {
                     }
                     else {
                         if (currIndex >= 0) {
-                            if ($(this).val() > costCenterGroup[currIndex].TotalAmt || $(this).val() < 0) {
+                            if (getValue(this) > costCenterGroup[currIndex].TotalAmt || getValue(this) < 0) {
                                 jAlert('Invalid Discount.', "Alert!!", function () { $.alerts.dialogClass = null; });
                                 $(this).val(0);
                             }
 
                         } else {
-                            if ($(this).val() > tableinfo.TotalAmount || $(this).val() < 0) {
+                            if (getValue(this) > tableinfo.TotalAmount || getValue(this) < 0) {
                                 jAlert('Invalid Discount.', "Alert!!", function () { $.alerts.dialogClass = null; });
                                 $(this).val(0);
                             }
@@ -1932,7 +1942,7 @@ function print() {
 
                         if (isab) {
                             if (isAbbreviated) {
-                                var ttldis = parseFloat($(this).val() == "" ? 0 : $(this).val());
+                                var ttldis = parseFloat(getValue(this) == "" ? 0 : getValue(this));
                                 var ttl = 0.00;
                                 if (cgGroup != undefined) {
                                     ttl = (cgGroup.TotalAmt == "") ? 0 : cgGroup.TotalAmt;
@@ -1990,10 +2000,10 @@ function print() {
                             $(".txt_dis").each(function () {
                                 var keyIndex = parseFloat($(this).attr('id').split('_')[1]);
                                 if (keyIndex >= 0) {
-                                    dis += (parseFloat($(this).val()));
-                                    //costCenterGroup[keyIndex].TotalDis = parseFloat($(this).val());
+                                    dis += (parseFloat(getValue(this)));
+                                    //costCenterGroup[keyIndex].TotalDis = parseFloat(getValue(this));
                                 } else { //ROOM
-                                    dis += (parseFloat($(this).val()));
+                                    dis += (parseFloat(getValue(this)));
                                 }
                             })
 
@@ -2005,10 +2015,10 @@ function print() {
 
                                 var keyIndex = parseFloat($(this).attr('id').split('_')[1]);
                                 if (keyIndex >= 0) {
-                                    dis += (parseFloat($(this).val()));
-                                    //costCenterGroup[keyIndex].TotalDis = parseFloat($(this).val());
+                                    dis += (parseFloat(getValue(this)));
+                                    //costCenterGroup[keyIndex].TotalDis = parseFloat(getValue(this));
                                 } else { //ROOM
-                                    dis += (parseFloat($(this).val()));
+                                    dis += (parseFloat(getValue(this)));
                                 }
                             })
                             totaldis = dis;

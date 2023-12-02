@@ -1392,8 +1392,19 @@ function GetDataForSalesBill(orderMasterId) {
 
                 BindBillingTerm(totalAmount, totaldis, datas);
             });
-            $('.txt_dis').on('keyup', function () {
 
+            function getValue(that) {
+                var value = $(that).val();
+                if (!['', null, undefined].includes(value)) {
+                    value = parseFloat(value);
+                } else {
+                    value = 0;
+                }
+                return value;
+            }
+
+            $('.txt_dis').on('keyup', function () {
+                debugger;
                 totalAmount = 0.00;
                 $.each(costCenterGroup, (i, v) => {
                     totalAmount += v.TotalAmt;
@@ -1405,12 +1416,12 @@ function GetDataForSalesBill(orderMasterId) {
                 var cgGroup = costCenterGroup.find(x => x.GroupId == currGroupId);
 
                 if ($("#selDiscountType").val() == "1") {
-                    if (($(this).val()) > 100 || ($(this).val()) < 0) {
+                    if ((getValue(this)) > 100 || (getValue(this)) < 0) {
                         jAlert('Invalid Discount.', "Alert!!", function () { $.alerts.dialogClass = null; });
                         $(this).val(0);
                     }
 
-                    var disRate = parseFloat($(this).val() == "" ? 0 : $(this).val());
+                    var disRate = parseFloat(getValue(this) == "" ? 0 : getValue(this));
                     var dis = 0
 
 
@@ -1443,8 +1454,8 @@ function GetDataForSalesBill(orderMasterId) {
                         } //else {
                         $(".txt_dis").each(function () {
                             var keyIndex = $(this).attr('id').split('_')[1];
-                            dis += (parseFloat(costCenterGroup[keyIndex].TotalAmt) * (parseFloat($(this).val() / 100)));
-                            costCenterGroup[keyIndex].TotalDis = parseFloat($(this).val());
+                            dis += (parseFloat(costCenterGroup[keyIndex].TotalAmt) * (parseFloat(getValue(this) / 100)));
+                            costCenterGroup[keyIndex].TotalDis = parseFloat(getValue(this));
                         })
 
                         totaldis = dis;
@@ -1452,8 +1463,8 @@ function GetDataForSalesBill(orderMasterId) {
                     } else {
                         $(".txt_dis").each(function () {
                             var keyIndex = $(this).attr('id').split('_')[1];
-                            dis += (parseFloat(costCenterGroup[keyIndex].TotalAmt) * (parseFloat($(this).val() / 100)));
-                            costCenterGroup[keyIndex].TotalDis = parseFloat($(this).val());
+                            dis += (parseFloat(costCenterGroup[keyIndex].TotalAmt) * (parseFloat(getValue(this) / 100)));
+                            costCenterGroup[keyIndex].TotalDis = parseFloat(getValue(this));
                         })
 
                         totaldis = dis;
@@ -1461,8 +1472,8 @@ function GetDataForSalesBill(orderMasterId) {
 
                 }
                 else {
-
-                    if ($(this).val() > costCenterGroup[currIndex].TotalAmt || $(this).val() < 0) {
+                    debugger;
+                    if (getValue(this) > costCenterGroup[currIndex].TotalAmt || getValue(this) < 0) {
                         jAlert('Invalid Discount.', "Alert!!", function () { $.alerts.dialogClass = null; });
                         $(this).val(0);
                     }
@@ -1472,7 +1483,7 @@ function GetDataForSalesBill(orderMasterId) {
 
                     if (isab) {
                         if (isAbbreviated) {
-                            var ttldis = parseFloat($(this).val() == "" ? 0 : $(this).val());
+                            var ttldis = parseFloat(getValue(this) == "" ? 0 : getValue(this));
                             var ttl = cgGroup.TotalAmt == "" ? 0 : cgGroup.TotalAmt;
                             var disPercent = 0.00;
                             if (ttldis > 0) {
@@ -1501,7 +1512,7 @@ function GetDataForSalesBill(orderMasterId) {
 
                         $(".txt_dis").each(function () {
                             var keyIndex = $(this).attr('id').split('_')[1];
-                            dis += parseFloat($(this).val());
+                            dis += parseFloat(getValue(this));
                             costCenterGroup[keyIndex].TotalDis = dis;
                         })
 
@@ -1511,7 +1522,7 @@ function GetDataForSalesBill(orderMasterId) {
                     } else {
                         $(".txt_dis").each(function () {
                             var keyIndex = $(this).attr('id').split('_')[1];
-                            dis += parseFloat($(this).val());
+                            dis += parseFloat(getValue(this));
                             costCenterGroup[keyIndex].TotalDis = dis;
                         })
 

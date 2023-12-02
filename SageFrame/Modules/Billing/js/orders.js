@@ -1413,6 +1413,7 @@ function GetDataForSalesBill(orderMasterId) {
 
             $('.txt_dis').on('keyup', function () {
 
+                debugger;
                 totalAmount = 0.00;
                 nonTaxableAmount = 0.00
                 $.each(costCenterGroup, (i, v) => {

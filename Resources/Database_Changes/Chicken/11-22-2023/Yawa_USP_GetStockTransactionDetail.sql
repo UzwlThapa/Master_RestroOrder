@@ -65,7 +65,8 @@ AS
                        T.SalesReturnRate ,
                        T.SalesReturnAmt ,
                        ISNULL (T.OpeningQty, 0) AS OpeningQty ,
-                       ISNULL (SD.qty, ISNULL (T.PurchaseQty, 0)) AS PurchaseQty ,
+                       --ISNULL (SD.qty, ISNULL (T.PurchaseQty, 0)) AS PurchaseQty ,
+                       ISNULL (T.PurchaseQty, 0) AS PurchaseQty ,
                        ISNULL (T.AdjQty, 0) AS AdjustQty ,
                        ISNULL (T.CompQty, 0) AS ComplementQty ,
                        ISNULL (T.IssueQty, 0) AS [IssueQty] ,
@@ -74,7 +75,7 @@ AS
                             ELSE 0
                        END AS SalesReturnQty
                 FROM   [dbo].[vw_ROI_StockReportView] T
-                       LEFT JOIN dbo.RO_SalesDetail SD ON SD.salesDetailId = T.SalesDetailId
+                       --LEFT JOIN dbo.RO_SalesDetail SD ON SD.salesDetailId = T.SalesDetailId
                        LEFT JOIN dbo.RO_SalesMaster SM ON SM.salesMasterId = SD.salesMasterId
                        LEFT JOIN dbo.RO_OrderMasters OM ON OM.OrderMasterID = SM.OrderMasterId
                 WHERE  T.ITId = @ItemId
@@ -89,11 +90,14 @@ AS
                 INTO   #Temp1
                 FROM   ( SELECT T.StoreId ,
                                 T.TransactionDate ,
-                                T.ItemBalance ,
+                                ( T.ItemBalance + ISNULL ([rpst].PurchaseUnit, 0)) AS ItemBalance ,
                                 ROW_NUMBER () OVER ( PARTITION BY CAST(T.TransactionDate AS DATE)
                                                      ORDER BY T.TransactionDate DESC ) AS rownum
                          FROM   [dbo].[vw_ROI_StockReportView] T
-                                LEFT JOIN dbo.RO_SalesDetail SD ON SD.salesDetailId = T.SalesDetailId
+                                --LEFT JOIN dbo.RO_SalesDetail SD ON SD.salesDetailId = T.SalesDetailId
+                                LEFT JOIN dbo.[ROI_PurchaseStockTransaction] AS [rpst] ON  rpst.StoreId = T.StoreId
+                                                                                       AND rpst.ItemId = SD.ItemId
+                                                                                       AND CAST(rpst.TransactionDate AS DATE) = CAST(T.TransactionDate AS DATE)
                          WHERE  T.ITId = @ItemId
                          AND    T.StoreId = @StoreId
                          AND    CAST(T.TransactionDate AS DATE) BETWEEN @StartDate AND @EndDate ) AS Suv
@@ -104,7 +108,8 @@ AS
                          T.ITCode ,
                          T.Symbol ,
                          SUM (ISNULL (T.OpeningQty, 0)) AS [OpeningQty] ,
-                         SUM (ISNULL (SD.qty, ISNULL (T.PurchaseQty, 0))) AS [PurchaseQty] ,
+                         --SUM (ISNULL (SD.qty, ISNULL (T.PurchaseQty, 0))) AS [PurchaseQty] ,
+                         SUM (ISNULL (T.PurchaseQty, 0)) AS [PurchaseQty] ,
                          SUM (ISNULL (T.AdjQty, 0)) AS [AdjustQty] ,
                          SUM (ISNULL (T.CompQty, 0)) AS [ComplementQty] ,
                          SUM (ISNULL (T.IssueQty, 0)) AS [IssueQty] ,
