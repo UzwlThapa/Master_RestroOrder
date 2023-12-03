@@ -327,6 +327,7 @@ function Print() {
                 table.ReservedBy = p.Username;
                 table.Phone = $('#txtPhone').val();
                 table.NotifyBefore = $('#txtNotify').val();
+                table.Note = $('#txtNote').val();
                 var jsonText = JSON2.stringify({ table: table });
                 DashboardFunction.config.method = "saveTableReservation";
                 DashboardFunction.config.url = DashboardFunction.config.baseURL + DashboardFunction.config.method;
@@ -461,7 +462,7 @@ function Print() {
                 htmls += "<table id='tableFor' class='reportsprint' cellspacing='0' style='border:none;width:100%;border-collapse:collapse;'>"
                 htmls += "<thead>"
                 htmls += "<tr>"
-                htmls += "<th>SN</th><th>Table Name</th><th>Customer Name</th><th>Contact No.</th><th>Reservation Date</th><th>ReservationTime</th><th>No of people </th><th class='edit-heading tdcenter'>Confirm</th><th class='edit-heading tdcenter'>Cancel</th>";
+                htmls += "<th>SN</th><th>Table Name</th><th>Customer Name</th><th>Contact No.</th><th>Reservation Date</th><th>ReservationTime</th><th>No of people </th><th>Note </th><th class='edit-heading tdcenter'>Confirm</th><th class='edit-heading tdcenter'>Cancel</th>";
                 htmls += "</tr>"
                 htmls += "</thead>"
                 htmls += "<tbody>"
@@ -483,7 +484,7 @@ function Print() {
                             hours = 12;
                         }
                         var current_time = hours + ":" + minutes + " " + suffix;
-
+                        debugger;
                         htmls += "<tr>";
                         htmls += "<td>" + count + "</td>";
                         htmls += "<td>" + value.Tablename + "</td>";
@@ -492,6 +493,7 @@ function Print() {
                         htmls += "<td>" + (date.getMonth() + 1) + '/' + date.getDate() + '/' + date.getFullYear() + "</td>";
                         htmls += "<td>" + current_time + "</td>";
                         htmls += "<td>" + value.NoOfPeople + "</td>";
+                        htmls += "<td>" + value.Note + "</td>";
                   
                         if (value.IsConfirmed == true) {
                             htmls += "<td></td>";
@@ -566,7 +568,7 @@ function Print() {
                 htmls += "<table id='tableFor' class='reportsprint' cellspacing='0' style='border:none;width:100%;border-collapse:collapse;'>"
                 htmls += "<thead>"
                 htmls += "<tr>"
-                htmls += "<th>SN</th><th>Table Name</th><th>Customer Name</th><th>Contact No.</th><th>Reservation Date</th><th>ReservationTime</th><th>No of people </th>";
+                htmls += "<th>SN</th><th>Table Name</th><th>Customer Name</th><th>Contact No.</th><th>Reservation Date</th><th>ReservationTime</th><th>No of people </th><th>Note </th>";
                 htmls += "</tr>"
                 htmls += "</thead>"
                 htmls += "<tbody>"
@@ -597,6 +599,7 @@ function Print() {
                         htmls += "<td>" + (date.getMonth() + 1) + '/' + date.getDate() + '/' + date.getFullYear() + "</td>";
                         htmls += "<td>" + current_time + "</td>";
                         htmls += "<td>" + value.NoOfPeople + "</td>";
+                        htmls += "<td>" + value.Note + "</td>";
                         htmls += "</tr>"
                         count++;
                     });
@@ -611,9 +614,6 @@ function Print() {
                 htmls += "</table>";
 
                 $('#ReservationReport').html(htmls);
-
-      
-               
             },
 
             ResetAll: function () {
@@ -626,7 +626,7 @@ function Print() {
                $('#txtPeople').val('');
                $('#txtPhone').val('');
                $('#txtNotify').val('');
-
+               $('#txtNote').val('');
             },
 
 

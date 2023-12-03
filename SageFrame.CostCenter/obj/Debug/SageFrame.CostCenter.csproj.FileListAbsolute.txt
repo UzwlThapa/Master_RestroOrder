@@ -280,3 +280,20 @@ E:\Development\Restro-GIT\AdarshaGit\SageFrame.CostCenter\obj\Debug\SageFrame.Co
 E:\Development\Restro-GIT\AdarshaGit\SageFrame.CostCenter\obj\Debug\SageFrame.CostCenter.csproj.CopyComplete
 E:\Development\Restro-GIT\AdarshaGit\SageFrame.CostCenter\obj\Debug\SageFrame.CostCenter.dll
 E:\Development\Restro-GIT\AdarshaGit\SageFrame.CostCenter\obj\Debug\SageFrame.CostCenter.pdb
+Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.CostCenter\bin\Debug\SageFrame.CostCenter.dll
+Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.CostCenter\bin\Debug\SageFrame.CostCenter.pdb
+Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.CostCenter\bin\Debug\SageFrame.Common.dll
+Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.CostCenter\bin\Debug\SageFrame.Core.dll
+Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.CostCenter\bin\Debug\SageFrame.Security.dll
+Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.CostCenter\bin\Debug\AjaxControlToolkit.dll
+Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.CostCenter\bin\Debug\SageFrame.Templating.dll
+Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.CostCenter\bin\Debug\SageFrame.CDN.dll
+Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.CostCenter\bin\Debug\ICSharpCode.SharpZipLib.dll
+Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.CostCenter\bin\Debug\Ionic.Zip.dll
+Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.CostCenter\bin\Debug\SageFrame.Common.pdb
+Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.CostCenter\bin\Debug\SageFrame.Security.pdb
+Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.CostCenter\obj\Debug\SageFrame.CostCenter.csproj.AssemblyReference.cache
+Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.CostCenter\obj\Debug\SageFrame.CostCenter.csproj.CoreCompileInputs.cache
+Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.CostCenter\obj\Debug\SageFrame.CostCenter.csproj.CopyComplete
+Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.CostCenter\obj\Debug\SageFrame.CostCenter.dll
+Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.CostCenter\obj\Debug\SageFrame.CostCenter.pdb

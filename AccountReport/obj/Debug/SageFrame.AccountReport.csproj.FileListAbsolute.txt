@@ -103,13 +103,6 @@ E:\Development\Restro-GIT\AdarshaGit\AccountReport\obj\Debug\SageFrame.AccountRe
 E:\Development\Restro-GIT\AdarshaGit\AccountReport\obj\Debug\SageFrame.AccountReport.csproj.CopyComplete
 E:\Development\Restro-GIT\AdarshaGit\AccountReport\obj\Debug\SageFrame.AccountReport.dll
 E:\Development\Restro-GIT\AdarshaGit\AccountReport\obj\Debug\SageFrame.AccountReport.pdb
-Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame\bin\SageFrame.AccountReport.dll
-Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame\bin\SageFrame.AccountReport.pdb
-Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\AccountReport\obj\Debug\SageFrame.AccountReport.csproj.AssemblyReference.cache
-Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\AccountReport\obj\Debug\SageFrame.AccountReport.csproj.CoreCompileInputs.cache
-Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\AccountReport\obj\Debug\SageFrame.AccountReport.csproj.CopyComplete
-Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\AccountReport\obj\Debug\SageFrame.AccountReport.dll
-Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\AccountReport\obj\Debug\SageFrame.AccountReport.pdb
 C:\#Utsav\Danfe Solution\Master_RestroOrder\SageFrame\bin\SageFrame.AccountReport.dll
 C:\#Utsav\Danfe Solution\Master_RestroOrder\SageFrame\bin\SageFrame.AccountReport.pdb
 C:\#Utsav\Danfe Solution\Master_RestroOrder\AccountReport\obj\Debug\SageFrame.AccountReport.csproj.AssemblyReference.cache
@@ -117,3 +110,10 @@ C:\#Utsav\Danfe Solution\Master_RestroOrder\AccountReport\obj\Debug\SageFrame.Ac
 C:\#Utsav\Danfe Solution\Master_RestroOrder\AccountReport\obj\Debug\SageFrame.AccountReport.csproj.CopyComplete
 C:\#Utsav\Danfe Solution\Master_RestroOrder\AccountReport\obj\Debug\SageFrame.AccountReport.dll
 C:\#Utsav\Danfe Solution\Master_RestroOrder\AccountReport\obj\Debug\SageFrame.AccountReport.pdb
+Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame\bin\SageFrame.AccountReport.dll
+Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame\bin\SageFrame.AccountReport.pdb
+Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\AccountReport\obj\Debug\SageFrame.AccountReport.csproj.AssemblyReference.cache
+Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\AccountReport\obj\Debug\SageFrame.AccountReport.csproj.CoreCompileInputs.cache
+Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\AccountReport\obj\Debug\SageFrame.AccountReport.csproj.CopyComplete
+Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\AccountReport\obj\Debug\SageFrame.AccountReport.dll
+Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\AccountReport\obj\Debug\SageFrame.AccountReport.pdb

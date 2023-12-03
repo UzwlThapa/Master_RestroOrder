@@ -147,3 +147,12 @@ E:\Development\Restro-GIT\AdarshaGit\SageFrame.Sales\obj\Debug\SageFrame.Sales.c
 E:\Development\Restro-GIT\AdarshaGit\SageFrame.Sales\obj\Debug\SageFrame.Sales.csproj.CopyComplete
 E:\Development\Restro-GIT\AdarshaGit\SageFrame.Sales\obj\Debug\SageFrame.Sales.dll
 E:\Development\Restro-GIT\AdarshaGit\SageFrame.Sales\obj\Debug\SageFrame.Sales.pdb
+Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.Sales\bin\Debug\SageFrame.Sales.dll
+Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.Sales\bin\Debug\SageFrame.Sales.pdb
+Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.Sales\bin\Debug\SageFrame.Common.dll
+Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.Sales\bin\Debug\SageFrame.Common.pdb
+Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.Sales\obj\Debug\SageFrame.Sales.csproj.AssemblyReference.cache
+Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.Sales\obj\Debug\SageFrame.Sales.csproj.CoreCompileInputs.cache
+Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.Sales\obj\Debug\SageFrame.Sales.csproj.CopyComplete
+Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.Sales\obj\Debug\SageFrame.Sales.dll
+Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.Sales\obj\Debug\SageFrame.Sales.pdb

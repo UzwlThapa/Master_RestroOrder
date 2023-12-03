@@ -111,3 +111,12 @@ E:\Development\Restro-GIT\AdarshaGit\SageFrame.DailyChalan\obj\Debug\SageFrame.D
 E:\Development\Restro-GIT\AdarshaGit\SageFrame.DailyChalan\obj\Debug\SageFrame.DailyChalan.csproj.CopyComplete
 E:\Development\Restro-GIT\AdarshaGit\SageFrame.DailyChalan\obj\Debug\SageFrame.DailyChalan.dll
 E:\Development\Restro-GIT\AdarshaGit\SageFrame.DailyChalan\obj\Debug\SageFrame.DailyChalan.pdb
+Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.DailyChalan\bin\Debug\SageFrame.DailyChalan.dll
+Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.DailyChalan\bin\Debug\SageFrame.DailyChalan.pdb
+Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.DailyChalan\bin\Debug\SageFrame.Common.dll
+Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.DailyChalan\bin\Debug\SageFrame.Common.pdb
+Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.DailyChalan\obj\Debug\SageFrame.DailyChalan.csproj.AssemblyReference.cache
+Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.DailyChalan\obj\Debug\SageFrame.DailyChalan.csproj.CoreCompileInputs.cache
+Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.DailyChalan\obj\Debug\SageFrame.DailyChalan.csproj.CopyComplete
+Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.DailyChalan\obj\Debug\SageFrame.DailyChalan.dll
+Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.DailyChalan\obj\Debug\SageFrame.DailyChalan.pdb

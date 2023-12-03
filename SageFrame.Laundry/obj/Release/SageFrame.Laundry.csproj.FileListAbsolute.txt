@@ -178,20 +178,6 @@ E:\Development\Restro-GIT\AdarshaGit\SageFrame.Laundry\obj\Release\SageFrame.Lau
 E:\Development\Restro-GIT\AdarshaGit\SageFrame.Laundry\obj\Release\SageFrame.Laundry.csproj.CopyComplete
 E:\Development\Restro-GIT\AdarshaGit\SageFrame.Laundry\obj\Release\SageFrame.Laundry.dll
 E:\Development\Restro-GIT\AdarshaGit\SageFrame.Laundry\obj\Release\SageFrame.Laundry.pdb
-Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.Laundry\bin\Release\SageFrame.Laundry.dll
-Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.Laundry\bin\Release\SageFrame.Laundry.pdb
-Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.Laundry\bin\Release\SageFrame.Common.dll
-Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.Laundry\bin\Release\SageFrame.Core.dll
-Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.Laundry\bin\Release\AjaxControlToolkit.dll
-Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.Laundry\bin\Release\SageFrame.Templating.dll
-Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.Laundry\bin\Release\SageFrame.CDN.dll
-Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.Laundry\bin\Release\ICSharpCode.SharpZipLib.dll
-Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.Laundry\bin\Release\Ionic.Zip.dll
-Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.Laundry\obj\Release\SageFrame.Laundry.csproj.AssemblyReference.cache
-Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.Laundry\obj\Release\SageFrame.Laundry.csproj.CoreCompileInputs.cache
-Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.Laundry\obj\Release\SageFrame.Laundry.csproj.CopyComplete
-Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.Laundry\obj\Release\SageFrame.Laundry.dll
-Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.Laundry\obj\Release\SageFrame.Laundry.pdb
 C:\#Utsav\Danfe Solution\Master_RestroOrder\SageFrame.Laundry\bin\Release\SageFrame.Laundry.dll
 C:\#Utsav\Danfe Solution\Master_RestroOrder\SageFrame.Laundry\bin\Release\SageFrame.Laundry.pdb
 C:\#Utsav\Danfe Solution\Master_RestroOrder\SageFrame.Laundry\bin\Release\AjaxControlToolkit.dll
@@ -207,3 +193,18 @@ C:\#Utsav\Danfe Solution\Master_RestroOrder\SageFrame.Laundry\obj\Release\SageFr
 C:\#Utsav\Danfe Solution\Master_RestroOrder\SageFrame.Laundry\obj\Release\SageFrame.Laundry.pdb
 C:\#Utsav\Danfe Solution\Master_RestroOrder\SageFrame.Laundry\bin\Release\SageFrame.Common.dll
 C:\#Utsav\Danfe Solution\Master_RestroOrder\SageFrame.Laundry\bin\Release\SageFrame.Core.dll
+Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.Laundry\bin\Release\SageFrame.Laundry.dll
+Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.Laundry\bin\Release\SageFrame.Laundry.pdb
+Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.Laundry\bin\Release\SageFrame.Common.dll
+Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.Laundry\bin\Release\SageFrame.Core.dll
+Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.Laundry\bin\Release\AjaxControlToolkit.dll
+Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.Laundry\bin\Release\SageFrame.Templating.dll
+Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.Laundry\bin\Release\SageFrame.CDN.dll
+Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.Laundry\bin\Release\ICSharpCode.SharpZipLib.dll
+Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.Laundry\bin\Release\Ionic.Zip.dll
+Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.Laundry\bin\Release\SageFrame.Common.pdb
+Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.Laundry\obj\Release\SageFrame.Laundry.csproj.AssemblyReference.cache
+Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.Laundry\obj\Release\SageFrame.Laundry.csproj.CoreCompileInputs.cache
+Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.Laundry\obj\Release\SageFrame.Laundry.csproj.CopyComplete
+Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.Laundry\obj\Release\SageFrame.Laundry.dll
+Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.Laundry\obj\Release\SageFrame.Laundry.pdb

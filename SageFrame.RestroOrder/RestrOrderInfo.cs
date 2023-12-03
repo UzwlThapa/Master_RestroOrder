@@ -2421,6 +2421,7 @@ namespace SageFrame.RestroOrder
         public string ReservedBy { get; set; }
         public bool IsConfirmed { get; set; }
         public string ConfirmedBy { get; set; }
+        public string Note { get; set; }
         public bool IsCancelled { get; set; }
         public string CancelledBy { get; set; }
         public DateTime CancelledOn { get; set; }

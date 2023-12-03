@@ -6274,6 +6274,7 @@ namespace SageFrame.RestroOrder
             Param.Add(new KeyValuePair<string, object>("@ReservedBy", table.ReservedBy));
             Param.Add(new KeyValuePair<string, object>("@Phone", table.Phone));
             Param.Add(new KeyValuePair<string, object>("@NotifyBefore", table.NotifyBefore));
+            Param.Add(new KeyValuePair<string, object>("@Note", table.Note));
             var obj = sqlHandler.ExecuteAsScalar<int>("USP_ROI_SaveTableReservation", Param);
 
             foreach (ReservedTable tbl in table.ReservedTable)
