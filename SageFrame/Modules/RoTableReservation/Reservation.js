@@ -88,9 +88,9 @@ function Print() {
                 });
 
                 $("#btnView").on('click', function () {
+                    debugger;
                     $(".report-view").show();
                     DashboardFunction.GetReservedTableReport();
-
                 });
 
                 $('#hdnPinMatch').on('change', function () {
@@ -363,6 +363,7 @@ function Print() {
             },
 
             GetReservedTableReport: function () {
+                debugger;
                 var StartDate = $("#txtStartDate").val();
                 var EndDate = $("#txtEndDate").val();
                 var CustomerName = $('#txtCustomerName').val();
@@ -556,6 +557,7 @@ function Print() {
             },
 
             BindReservedTableReport: function (result) {
+                debugger;
                 datas = JSON.parse(result);
                 $('#ReservationReport').show();
                 $("#ReservationReport").html();
@@ -603,7 +605,6 @@ function Print() {
                         htmls += "</tr>"
                         count++;
                     });
-
                 }
                 else {
                     htmls += "<tr>";
@@ -612,7 +613,6 @@ function Print() {
                 }
                 htmls += "</tbody>";
                 htmls += "</table>";
-
                 $('#ReservationReport').html(htmls);
             },
 

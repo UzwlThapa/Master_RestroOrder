@@ -5,61 +5,55 @@
             dateFormat: 'yy-mm-dd',
             changeMonth: true,
             changeYear: true,
-            maxDate: '0',
         });
         $("#txtEndDate").datepicker({
             dateFormat: 'yy-mm-dd',
             changeMonth: true,
             changeYear: true,
-            maxDate: '0',
         });
         $("#txtStartDate,#txtEndDate").datepicker("setDate", new Date());
         $(this).companyDashboardEDIT({});
     });
 </script>
 <div class="RO_wrapper">
-<div class="restro-title clearfix">
-       </div>
+    <div class="restro-title clearfix">
+    </div>
     <div id="div1">
-        <table class="ReportTable"  style="display:block;">           
+        <table class="ReportTable" style="display: block;">
             <tr>
-                <td>Start Date : </td>
+                <td>Start Date: </td>
                 <td>
-                    <input type="text" class="sfInputbox" placeholder="Start Date" id="txtStartDate" autocomplete="off" style="width:120px;"/>
+                    <input type="text" class="sfInputbox" placeholder="Start Date" id="txtStartDate" autocomplete="off" style="width: 120px;" />
                 </td>
-                <td> End Date : </td>
+                <td>End Date: </td>
                 <td>
-                 <input type="text" class="sfInputbox" placeholder="End Date" id="txtEndDate" autocomplete="off" style="width:120px;"/>
+                    <input type="text" class="sfInputbox" placeholder="End Date" id="txtEndDate" autocomplete="off" style="width: 120px;" />
                 </td>
-                <td>
-                    Customer Name: 
-                </td>
-                <td>
-                    <input type="text" class="sfInputbox" id="txtCustomerName" style="width:120px;"/>
+                <td>Customer Name: 
                 </td>
                 <td>
-                    Table Name: 
+                    <input type="text" class="sfInputbox" id="txtCustomerName" style="width: 120px;" />
+                </td>
+                <td>Table Name: 
                 </td>
                 <td>
-                  <select class="span2 sfInputbox" id="seltable" > </select>
+                    <select class="span2 sfInputbox" id="seltable"></select>
                 </td>
-                 <td></td>
-                <td>                   
+                <td></td>
+                <td>
                     <button type="button" class="sfBtn restro-btn fa fa-eye" id="btnView">View</button>
                 </td>
             </tr>
         </table>
-                 <div class="report-view" style="display:none;">
-                        <div class="report-printt">
-                <button type="button" class="sfBtn restro-btn fa fa-print" id="btnPrint" style="margin-right:2px;">Print</button>
-                <button type="button" class="sfBtn restro-btn fa fa-file-excel-o" id="btnExport"  style="margin-right:2px;" >Excel</button>
-                <button type="button" class="sfBtn restro-btn fa fa-file-pdf-o" id="btnPdf" style="margin-right:2px;" >PDF</button>
-                    </div>
-
-                 </div>
-        <div class="sfGridwrapper" id="ReservationReport" style="border:none;">
+        <div class="report-view" style="display: none;">
+            <div class="report-printt">
+                <button type="button" class="sfBtn restro-btn fa fa-print" id="btnPrint" style="margin-right: 2px;">Print</button>
+                <button type="button" class="sfBtn restro-btn fa fa-file-excel-o" id="btnExport" style="margin-right: 2px;">Excel</button>
+                <button type="button" class="sfBtn restro-btn fa fa-file-pdf-o" id="btnPdf" style="margin-right: 2px;">PDF</button>
+            </div>
+        </div>
+        <div class="sfGridwrapper" id="ReservationReport" style="border: none;">
         </div>
     </div>
-
 </div>
 
