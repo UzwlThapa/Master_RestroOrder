@@ -69,7 +69,7 @@ namespace SageFrame.RestroOrder
         public decimal CreditCollectedInCheque { get; set; }
         public decimal AdvanceCollectedInCash { get; set; }
         public decimal AdvanceCollectedInCard { get; set; }
-        public decimal AdvanceCollectedIneSewa{ get; set; }
+        public decimal AdvanceCollectedIneSewa { get; set; }
         public decimal AdvanceCollectedInFonePay { get; set; }
         public decimal AdvanceCollectedInCheque { get; set; }
         public decimal CashInCounter { get; set; }
@@ -134,7 +134,7 @@ namespace SageFrame.RestroOrder
         public int SalesMasterId { get; set; }
         public decimal Qty { get; set; }
 
-       
+
     }
     public class BillReturnViewModel
     {
@@ -682,11 +682,7 @@ namespace SageFrame.RestroOrder
         public string UpdateBy { get; set; }
         public string DeleteBy { get; set; }
         public List<RestroRoom> roomlist { get; set; }
-
-
-
     }
-
 
     public class companyInfo
     {
@@ -861,7 +857,7 @@ namespace SageFrame.RestroOrder
     }
 
 
-        public class FiscalYear
+    public class FiscalYear
     {
         public int fyId { get; set; }
         public string fyName { get; set; }
@@ -1419,7 +1415,7 @@ namespace SageFrame.RestroOrder
     }
 
 
-   public class StockDetailItem
+    public class StockDetailItem
     {
         public int ItemId { get; set; }
         public DateTime StartDate { get; set; }
@@ -2058,7 +2054,7 @@ namespace SageFrame.RestroOrder
         public bool splitCostCenter { get; set; }
         public flatorperdiscount discount { get; set; }
         public BillInfo billInfo { get; set; }
-        public List<CostCenterGroup> costCenterGroup  { get; set; }
+        public List<CostCenterGroup> costCenterGroup { get; set; }
 
         public bool VATforBill { get; set; }
 
@@ -2513,7 +2509,10 @@ namespace SageFrame.RestroOrder
         public string PAN { get; set; }
     }
 
-
-
+    public class License
+    {
+        public string CompanyCode { get; set; }
+        public int ValidDays { get; set; }
+    }
 }
 

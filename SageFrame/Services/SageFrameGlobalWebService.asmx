@@ -1,11 +1,5 @@
 ﻿<%@ WebService Language="C#" Class="SageFrameGlobalWebService" %>
-using System;
-using System.Collections;
-using System.Linq;
-using System.Web;
 using System.Web.Services;
-using System.Web.Services.Protocols;
-using System.Xml.Linq;
 using SageFrame.Web;
 
 /// <summary>
@@ -20,9 +14,6 @@ public class SageFrameGlobalWebService : System.Web.Services.WebService
 
     public SageFrameGlobalWebService()
     {
-
-        //Uncomment the following line if using designed components 
-        //InitializeComponent(); 
     }
 
     [WebMethod]
@@ -30,9 +21,4 @@ public class SageFrameGlobalWebService : System.Web.Services.WebService
     {
         return (SageMessage.ProcessSageMessage(CultureCode, ModuleName, MessageType));
     }
-    //[WebMethod]
-    //public void ActivateDefaultTemplate(int PortalID)
-    //{
-    //    SageFrame.Templating.TemplateController.ActivateTemplate("default", PortalID);
-    //}
 }

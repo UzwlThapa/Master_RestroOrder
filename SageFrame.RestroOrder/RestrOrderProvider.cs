@@ -1257,20 +1257,16 @@ namespace SageFrame.RestroOrder
             //Param.Add(new KeyValuePair<string, object>("@DeleteBy", srt.DeleteBy));
             sqlHandler.ExecuteNonQuery("[USP_RO_ROOMTYPESAVE]", Param);
         }
+
         internal List<RoomType> getRoomType()
         {
             return sqlHandler.ExecuteAsList<RoomType>("USP_RO_GETROOMTYPE");
         }
         public List<OrderDetailClass> GetOrderDetailWithStatus(int OrderMasterID)
         {
-            //List<KeyValuePair<string, object>> Param = new List<KeyValuePair<string, object>>();
-            //Param.Add(new KeyValuePair<string, object>("@tableID", tableID));
-            //OrderMasterClass orderMasterinfo = sqlHandler.ExecuteAsObject<OrderMasterClass>("[USP_RO_GETORDERMASTER]", Param);
             List<KeyValuePair<string, object>> Param1 = new List<KeyValuePair<string, object>>();
             Param1.Add(new KeyValuePair<string, object>("@OrderMasterId", OrderMasterID));
-            //
             List<OrderDetailClass> OrderDetailList = sqlHandler.ExecuteAsList<OrderDetailClass>("[USP_RO_GETORDERDETAIL]", Param1);
-            //List<OrderDetailClass> orderDetailQuery = new List<OrderDetailClass>();
             return OrderDetailList;
         }
         internal List<RoomType> GetrestroFullDetail()
@@ -3322,7 +3318,7 @@ namespace SageFrame.RestroOrder
             try
             {
 
-                if(isWholesale != false)
+                if (isWholesale != false)
                 {
 
                 }
@@ -3361,7 +3357,7 @@ namespace SageFrame.RestroOrder
                         sqlHandler.ExecuteNonQuery("[dbo].[ROI_SAVESalesReturnItemBal]", Param4);
                     }
                 }
-               
+
             }
             catch (Exception)
             {
@@ -6607,6 +6603,15 @@ namespace SageFrame.RestroOrder
             list = sqlHandler.ExecuteAsList<ProductionDetails>("usp_GetPreviousProductionDetailsById", Param);
             return list;
         }
+
+        internal License getLicense(string companyCode)
+        {
+            List<KeyValuePair<string, object>> Param1 = new List<KeyValuePair<string, object>>();
+            Param1.Add(new KeyValuePair<string, object>("@CompanyCode", companyCode));
+            License license = sqlHandler.ExecuteAsObject<License>("SpLicenseSel", Param1);
+            return license;
+        }
+
     }
 }
 

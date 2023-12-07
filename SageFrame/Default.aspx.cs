@@ -47,6 +47,7 @@ using SageFrame.Core;
 using SageFrame.Pages;
 using System.Configuration;
 using RestroOrder.Licensing;
+using SageFrame.RestroOrder;
 
 #endregion
 
@@ -75,21 +76,21 @@ namespace SageFrame
 
         protected void Page_Load(object sender, EventArgs e)
         {
-
-            int daysLeft = 0;
+            // check license 
             string companyCode = ConfigurationManager.AppSettings["CompanyCode"].ToString();
-            string licenseFilePath = HttpContext.Current.Server.MapPath("~/") + @"License.lic";
             try
             {
-                daysLeft =  License.DaysLeft(licenseFilePath, companyCode);
+                RestrOrderController roController = new RestrOrderController();
+                RestroOrder.License license = roController.getLicense(companyCode);
+
+                if (license == null || license.ValidDays <= 0)
+                {
+                    Response.Redirect("~/License-Expired.aspx");
+                }
             }
             catch (Exception ex)
             {
                 throw ex;
-            }
-            if (daysLeft <= 0)
-            {
-                Response.Redirect("~/License-Expired.aspx");
             }
             SetPageLoadPart();
         }

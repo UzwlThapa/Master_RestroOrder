@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using SageFrame.RestoLoyalty;
 using SageFrame.FiscalYear;
 using System.Data;
@@ -63,7 +62,7 @@ namespace SageFrame.RestroOrder
 
         public void CancelSalesBook(int salesMasterId)
         {
-           restroOrderProvider.CancelSalesBook(salesMasterId);
+            restroOrderProvider.CancelSalesBook(salesMasterId);
         }
 
         public List<ReturnBillPostLog> getErrorReturnBillPostLog()
@@ -413,16 +412,8 @@ namespace SageFrame.RestroOrder
             return restroOrderProvider.getStockDetailByItem(obj);
         }
 
-        
-
         public List<RoomType> getRoomType()
         {
-            //MembershipController msc = new MembershipController();
-            //string varifySecurity = msc.varifyOriginalDll();
-            //if (varifySecurity != "genuine")
-            //{
-            //    return null;
-            //}
             return restroOrderProvider.getRoomType();
         }
         public RoomType getRoomTypeByID(int ID)
@@ -538,7 +529,7 @@ namespace SageFrame.RestroOrder
         {
             return restroOrderProvider.getdailyReport(dateTime);
         }
-        public List<dailyreports> getSalesReport(DateTime startDate, DateTime endDate, string PaymentMode, int Status, int OrdertypeID,string custName="")
+        public List<dailyreports> getSalesReport(DateTime startDate, DateTime endDate, string PaymentMode, int Status, int OrdertypeID, string custName = "")
         {
             List<dailyreports> salesReport = restroOrderProvider.getSalesReport(startDate, endDate, PaymentMode, Status, OrdertypeID, custName);
             return salesReport;//.Where(p => p.PaymentModes.ToLower().Contains(PaymentMode.ToLower()) && (p.Status == Status || Status == -1)).ToList();
@@ -555,7 +546,7 @@ namespace SageFrame.RestroOrder
             List<dailyreports> salesReport = restroOrderProvider.getAccSalesReport(startDate, endDate, PaymentMode, Status, OrdertypeID, custName);
             return salesReport;//.Where(p => p.PaymentModes.ToLower().Contains(PaymentMode.ToLower()) && (p.Status == Status || Status == -1)).ToList();
         }
-        
+
 
         public List<dailyreport> getdailyReportBySum(DateTime dateTime)
         {
@@ -795,8 +786,8 @@ namespace SageFrame.RestroOrder
         {
             return restroOrderProvider.getIssueToDDl();
         }
-        
-            public List<CostCenterGroup> GetCostCenterGroup()
+
+        public List<CostCenterGroup> GetCostCenterGroup()
         {
             return restroOrderProvider.GetCostCenterGroup();
         }
@@ -820,7 +811,7 @@ namespace SageFrame.RestroOrder
             return restroOrderProvider.getPreviousProductionDetailsById(ProductionId);
         }
 
-        
+
         public string IssueSave(issueMain IssueObject)
         {
             return restroOrderProvider.IssueSave(IssueObject);
@@ -993,9 +984,9 @@ namespace SageFrame.RestroOrder
         {
             return restroOrderProvider.GetdataforViewBill(TableId);
         }
-        public List<OrderDetailClass> GetdataforViewCakeBill(int TableId,string SalesType)
+        public List<OrderDetailClass> GetdataforViewCakeBill(int TableId, string SalesType)
         {
-            return restroOrderProvider.GetdataforViewCakeBill(TableId,SalesType);
+            return restroOrderProvider.GetdataforViewCakeBill(TableId, SalesType);
         }
         public List<CardProvider> getCusName(int IsCustomer)
         {
@@ -1013,7 +1004,7 @@ namespace SageFrame.RestroOrder
         {
             return restroOrderProvider.GetMemberReport(MembershipID);
         }
-        public string SavePrintCountDetail(int Printcount, string BillNo, string PrintedBy, string SalesType="")
+        public string SavePrintCountDetail(int Printcount, string BillNo, string PrintedBy, string SalesType = "")
         {
             return restroOrderProvider.SavePrintCountDetail(Printcount, BillNo, PrintedBy, SalesType);
         }
@@ -1310,7 +1301,7 @@ namespace SageFrame.RestroOrder
         {
             return restroOrderProvider.getSalesChart();
         }
-        public List<stockReport> stockreport(int storeID,string searchText)
+        public List<stockReport> stockreport(int storeID, string searchText)
         {
             return restroOrderProvider.stockreport(storeID, searchText);
         }
@@ -1342,9 +1333,9 @@ namespace SageFrame.RestroOrder
         {
             restroOrderProvider.deleteAfterEdit(idForDelete, MainIdForDelete);
         }
-        public string CheckPinCodeMatch(string PinCode,string username)
+        public string CheckPinCodeMatch(string PinCode, string username)
         {
-            return restroOrderProvider.CheckPinCodeMatch(PinCode,username);
+            return restroOrderProvider.CheckPinCodeMatch(PinCode, username);
         }
         public List<unitclassforitem> getOnlySmallUnit()
         {
@@ -1404,9 +1395,9 @@ namespace SageFrame.RestroOrder
             return restroOrderProvider.getbillingTermbySalesMasterID(MID);
         }
 
-        public List<customerBilling> getcakebillingTermbySalesMasterID(string MID,string SalesType="")
+        public List<customerBilling> getcakebillingTermbySalesMasterID(string MID, string SalesType = "")
         {
-            return restroOrderProvider.getcakebillingTermbySalesMasterID(MID,SalesType);
+            return restroOrderProvider.getcakebillingTermbySalesMasterID(MID, SalesType);
         }
 
         public static int ChangePIN(string UserId, string PIN)
@@ -1749,7 +1740,7 @@ namespace SageFrame.RestroOrder
             var obj = restroOrderProvider.GetSalesMasterDtll(salesMasterId);
             return obj;
         }
-        
+
         public List<StoreItemStock> getstoreitemforstock(int id)
         {
             return restroOrderProvider.getstoreitemforstock(id);
@@ -1893,7 +1884,7 @@ namespace SageFrame.RestroOrder
         {
             return restroOrderProvider.GetOrderCancelResponsible();
         }
-        public List<goodsReceiveMain> getGoodsReceiveReport(string startDate, string endDate, string PoNO, string GmNo, string itemname,int paymentID)
+        public List<goodsReceiveMain> getGoodsReceiveReport(string startDate, string endDate, string PoNO, string GmNo, string itemname, int paymentID)
         {
             return restroOrderProvider.getGoodsReceiveReport(startDate, endDate, PoNO, GmNo, itemname, paymentID);
         }
@@ -2021,7 +2012,7 @@ namespace SageFrame.RestroOrder
 
         public object GetPaymentModesAndProvidersForAdvancePayment()
         {
-            var objects = new { providers = restroOrderProvider.getCardProvider(), paymentModes = restroOrderProvider.GetPaymentModes()};
+            var objects = new { providers = restroOrderProvider.getCardProvider(), paymentModes = restroOrderProvider.GetPaymentModes() };
             return objects;
         }
 
@@ -2074,8 +2065,8 @@ namespace SageFrame.RestroOrder
             restroOrderProvider.saveTableLayout(table);
         }
 
-        public List<restroTable> getLayoutTable(int UserModuleID)       
-            {
+        public List<restroTable> getLayoutTable(int UserModuleID)
+        {
             return restroOrderProvider.getLayoutTable(UserModuleID);
         }
 
@@ -2090,7 +2081,6 @@ namespace SageFrame.RestroOrder
             return restroOrderProvider.GetOrderType();
         }
 
-        
         public void UpdateAcc()
         {
             restroOrderProvider.UpdateAcc();
@@ -2109,6 +2099,11 @@ namespace SageFrame.RestroOrder
         public DataSet GetCostCenterDiscountReport(string startDate, string endDate)
         {
             return restroOrderProvider.GetCostCenterDiscountReport(startDate, endDate);
+        }
+
+        public License getLicense(string companyCode)
+        {
+            return restroOrderProvider.getLicense(companyCode);
         }
     }
 }

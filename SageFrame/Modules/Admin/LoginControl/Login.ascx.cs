@@ -28,6 +28,7 @@ using System.Net;
 using SageFrame.Security.Controllers;
 using RestroOrder.Licensing;
 using System.Configuration;
+using SageFrame.RestroOrder;
 #endregion
 
 namespace SageFrame.Modules.Admin.LoginControl
@@ -64,11 +65,28 @@ namespace SageFrame.Modules.Admin.LoginControl
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            // check license 
+            string companyCode = ConfigurationManager.AppSettings["CompanyCode"].ToString();
+            try
+            {
+                RestrOrderController roController = new RestrOrderController();
+                RestroOrder.License license = roController.getLicense(companyCode);
+
+                if (license == null || license.ValidDays <= 0)
+                {
+                    Response.Redirect("~/License-Expired.aspx");
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
             IncludeLanguageJS();
             Extension = SageFrameSettingKeys.PageExtension;
             if (!IsPostBack)
             {
-                IncludeJs("LoginJs","/Modules/Admin/LoginControl/LoginJs.js");
+                IncludeJs("LoginJs", "/Modules/Admin/LoginControl/LoginJs.js");
                 int logHit = Convert.ToInt32(Session[SessionKeys.LoginHitCount]);
                 if (logHit >= 3)
                 {
@@ -110,6 +128,7 @@ namespace SageFrame.Modules.Admin.LoginControl
                     lblrmnt.Visible = false;
                 }
             }
+
             SecurityPolicy objSecurity = new SecurityPolicy();
             FormsAuthenticationTicket ticket = objSecurity.GetUserTicket(GetPortalID);
             if (ticket != null && ticket.Name != ApplicationKeys.anonymousUser)
@@ -184,6 +203,7 @@ namespace SageFrame.Modules.Admin.LoginControl
             }
             return true;
         }
+
         protected void LoginButton_Click(object sender, EventArgs e)
         {
             SecurityPolicy objSecurity = new SecurityPolicy();
@@ -205,8 +225,8 @@ namespace SageFrame.Modules.Admin.LoginControl
                     LoginUser();
                 }
             }
-
         }
+
         private void LoginUser()
         {
             MembershipController member = new MembershipController();
@@ -217,7 +237,6 @@ namespace SageFrame.Modules.Admin.LoginControl
             if (user.UserExists && user.IsApproved)
             {
                 if (!(string.IsNullOrEmpty(UserName.Text) && string.IsNullOrEmpty(HiddenField1.Value == "" ? Password.Text : SageFrame.Security.Crypto.Crypto.Decrypt(HiddenField1.Value))))
-                   // if (!(string.IsNullOrEmpty(UserName.Text) && string.IsNullOrEmpty(Password.Text)))
                 {
                     RoleController rle = new RoleController();
                     bool loggedIn = rle.CheckIfLoggedIn(UserName.Text);
@@ -311,6 +330,7 @@ namespace SageFrame.Modules.Admin.LoginControl
             string FullAllert = string.Empty;
             ShowMessage(SageMessageTitle.Notification.ToString(), ShortAlert, FullAllert, SageMessageType.Alert);
         }
+
         private void AlreadySuspendedIPAddress()
         {
             string ShortAlert = "Malicious activity found, your IP is in suspension mode due to false attempt in login.For instant access, request your superuser.";
@@ -321,6 +341,7 @@ namespace SageFrame.Modules.Admin.LoginControl
             string FullAllert = string.Empty;
             ShowMessage(SageMessageTitle.Notification.ToString(), ShortAlert, FullAllert, SageMessageType.Alert);
         }
+
         protected void SucessFullLogin(UserInfo user)
         {
             RoleController role = new RoleController();
@@ -330,10 +351,6 @@ namespace SageFrame.Modules.Admin.LoginControl
             if (strRoles.Length > 0)
             {
                 SetUserRoles(strRoles);
-                //SessionTracker sessionTracker = (SessionTracker)Session[SessionKeys.Tracker];
-                //sessionTracker.PortalID = GetPortalID.ToString();
-                //sessionTracker.Username = UserName.Text;
-                //Session[SessionKeys.Tracker] = sessionTracker;
                 SageFrame.Web.SessionLog SLog = new SageFrame.Web.SessionLog();
                 SLog.SessionTrackerUpdateUsername(UserName.Text, GetPortalID.ToString());
                 StringBuilder redirectURL = new StringBuilder();
@@ -363,22 +380,7 @@ namespace SageFrame.Modules.Admin.LoginControl
                 //add cookie to the browser
                 Response.Cookies.Add(cookie);
 
-                int daysLeft = 0;
-                string companyCode = ConfigurationManager.AppSettings["CompanyCode"].ToString();
-                string licenseFilePath = HttpContext.Current.Server.MapPath("~/") + @"License.lic";
-                try
-                {
-                    daysLeft = 100;// License.DaysLeft(licenseFilePath, companyCode);
-                }
-                catch (Exception ex)
-                {
-                    throw ex;
-                }
-                if (daysLeft <= 10)
-                {
-                    Response.Redirect("~/License-Expired.aspx");
-                }
-                else if (Request.QueryString["ReturnUrl"] != null)
+                if (Request.QueryString["ReturnUrl"] != null)
                 {
                     string PageNotFoundPage = PortalAPI.PageNotFoundURLWithRoot;
                     string UserRegistrationPage = PortalAPI.RegistrationURLWithRoot;
