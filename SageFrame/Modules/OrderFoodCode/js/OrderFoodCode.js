@@ -2,56 +2,19 @@
 (function ($) {
     var tabs = $("#tabs").tabs();
     var tabs = $("#OrderTab").tabs();
-     $('#OrderTab').css('display', 'block');
+    $('#OrderTab').css('display', 'block');
     $.companyOrderItemcreate = function (p) {
         p = $.extend
-             ({
-                 UserModuleID: '',
-                 ModulePath: '/Modules/OrderFoodCode/',
-                 HostUrl: '',
-                 sentdata: '',
-                 roomdata: '',
-                 OID: '',
-                 userName: '',
-                 numpin: ''
-                 //names: '',
-                 //phoneNo: '',
-                 //NoOfGuests: '',
-                 //membershipId: ''
-             }, p);
-        var v = 0;
-        var disablePin = true;
-        var autoBillGenerate = true;
-        var OrderMasterID = 0;
-        var OrderListArray = new Array();
-        var NewOrderListArray = new Array();
-        var activeorder = 0;
-        var noOfGuest = 1;
-        var extraItem = 1;
-        var selectedBillNo = 1;
-        var isSplit = 0;
-        var Note = "";
-        var NpitemID = 0;
-        var checks = [];
-        var NpitemName = '';
-        var IsCombo = '';
-        var ExtraCharge = 0.0;
-        var RoomId = 0;
-        var OID = 0;
-        var TableId = 0;
-        var IsCanceled = 0;
-        var pinMatch = false;
-        var iscancelling = false;
-        var cancelobjs = [];
-        var username = "";
-        var pinfor = "";
-        var status = "";
-        var AutocompleteItem = new Array();
-        var ExtraItems = "";
-        var sum = 0;
-        var logoName = "logo.png";
-        var subItem = false;
-        var categoryName = "";
+            ({
+                UserModuleID: '',
+                ModulePath: '/Modules/OrderFoodCode/',
+                HostUrl: '',
+                sentdata: '',
+                roomdata: '',
+                OID: '',
+                userName: '',
+                numpin: ''
+            }, p);
         var OrderItemFunction = {
             config: {
                 isPostBack: false,
@@ -70,7 +33,7 @@
             },
 
             init: function () {
-                
+
                 var loggername = SageFrameUserName;
                 GetUserName(loggername);
                 GetGlobalizedMenu();

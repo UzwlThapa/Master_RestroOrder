@@ -829,7 +829,6 @@ function GetDataForSalesBill(orderMasterId) {
         success: function (data) {
             //Bind Sales Bill
             var isab = companyInfo.IsAbbreviated;
-
             isButtonClicked = true;
             var datas = JSON.parse(data.d);
             orderdetails = datas.orderDetail;
@@ -1382,7 +1381,6 @@ function GetDataForSalesBill(orderMasterId) {
                             totalAmountN += parseFloat(_this.find('td').eq(4).text());
 
                         });
-                        // cgGroup.TotalDis = disRate;
                         $('.totle').text((totalAmountN).toFixed(2));
                     }
                 }
@@ -1404,7 +1402,6 @@ function GetDataForSalesBill(orderMasterId) {
             }
 
             $('.txt_dis').on('keyup', function () {
-                debugger;
                 totalAmount = 0.00;
                 $.each(costCenterGroup, (i, v) => {
                     totalAmount += v.TotalAmt;
@@ -1424,13 +1421,9 @@ function GetDataForSalesBill(orderMasterId) {
                     var disRate = parseFloat(getValue(this) == "" ? 0 : getValue(this));
                     var dis = 0
 
-
-
-
                     //Bishal Added
                     if (isab) {
                         if (isAbbreviated) {
-
 
                             var itemrow = $('#salesDetailsTbl').find('tr');
                             $.each(itemrow, function (index, value) {
@@ -1448,38 +1441,36 @@ function GetDataForSalesBill(orderMasterId) {
                                 totalAmountN += parseFloat(_this.find('td').eq(4).text());
 
                             });
-                            // cgGroup.TotalDis = disRate;
                             $('.totle').text((totalAmountN).toFixed(2));
+                        }
 
-                        } //else {
                         $(".txt_dis").each(function () {
                             var keyIndex = $(this).attr('id').split('_')[1];
-                            dis += (parseFloat(costCenterGroup[keyIndex].TotalAmt) * (parseFloat(getValue(this) / 100)));
-                            costCenterGroup[keyIndex].TotalDis = parseFloat(getValue(this));
-                        })
+                            var disTemp = (parseFloat(costCenterGroup[keyIndex].TotalAmt) * (parseFloat(getValue(this) / 100)));
+                            dis += disTemp;
+                            costCenterGroup[keyIndex].TotalDis = disTemp;
+                        });
 
                         totaldis = dis;
-                        //}
                     } else {
                         $(".txt_dis").each(function () {
                             var keyIndex = $(this).attr('id').split('_')[1];
-                            dis += (parseFloat(costCenterGroup[keyIndex].TotalAmt) * (parseFloat(getValue(this) / 100)));
-                            costCenterGroup[keyIndex].TotalDis = parseFloat(getValue(this));
-                        })
+                            var disTemp = (parseFloat(costCenterGroup[keyIndex].TotalAmt) * (parseFloat(getValue(this) / 100)));
+                            dis += disTemp;
+                            costCenterGroup[keyIndex].TotalDis = disTemp;
+                        });
 
                         totaldis = dis;
                     }
-
                 }
                 else {
-                    debugger;
+
                     if (getValue(this) > costCenterGroup[currIndex].TotalAmt || getValue(this) < 0) {
                         jAlert('Invalid Discount.', "Alert!!", function () { $.alerts.dialogClass = null; });
                         $(this).val(0);
                     }
 
                     var dis = 0
-
 
                     if (isab) {
                         if (isAbbreviated) {
@@ -1505,36 +1496,31 @@ function GetDataForSalesBill(orderMasterId) {
                                 totalAmountN += parseFloat(_this.find('td').eq(4).text());
 
                             });
-                            //cgGroup.TotalDis = ttldis;
                             $('.totle').text((totalAmountN).toFixed(2));
-
                         }
 
                         $(".txt_dis").each(function () {
                             var keyIndex = $(this).attr('id').split('_')[1];
-                            dis += parseFloat(getValue(this));
-                            costCenterGroup[keyIndex].TotalDis = dis;
-                        })
+                            var disTemp = parseFloat(getValue(this));
+                            dis += disTemp;
+                            costCenterGroup[keyIndex].TotalDis = disTemp;
+                        });
 
                         totaldis = dis;
-
-
                     } else {
                         $(".txt_dis").each(function () {
                             var keyIndex = $(this).attr('id').split('_')[1];
-                            dis += parseFloat(getValue(this));
-                            costCenterGroup[keyIndex].TotalDis = dis;
-                        })
+                            var disTemp = parseFloat(getValue(this));
+                            dis += disTemp;
+                            costCenterGroup[keyIndex].TotalDis = disTemp;
+                        });
 
                         totaldis = dis;
-
                     }
-
                 }
 
-
                 BindBillingTerm(totalAmount, totaldis, datas);
-            })
+            });
 
             var roles = userRole.split(',');
             if (roles.includes("Super User") || roles.includes("Billing_Discount")) {
@@ -1548,14 +1534,10 @@ function GetDataForSalesBill(orderMasterId) {
 
             $("#generateBill").on('click', function () {
 
-
-                //alert(creditLimit);
                 if ($('.customerForCash').prop('checked') == false) {
 
                     var basicAmt = parseFloat(disLimitBasicAmt);
-                    //var tempDis = $('.totalDiscount').val().split('.');
                     var ttlDis = parseFloat($('.totalDiscount').attr('attr-amount'));
-
                     var disper = parseFloat((ttlDis * 100) / basicAmt);
 
                     // Check for discount limit
@@ -1577,14 +1559,13 @@ function GetDataForSalesBill(orderMasterId) {
                         InitializePin();
                     }
                 }
-
-
             });
 
             $('#enablebtn').on('click', function () {
                 $('#hdnPinFor').val('enablebtn');
                 InitializePin();
             });
+
             $('.paynows').unbind('click').on('click', function () {
                 var billingTerm = new Array();
                 var salesMaster = new Object();
@@ -1622,7 +1603,7 @@ function GetDataForSalesBill(orderMasterId) {
                 salesMaster.sumPizza = pizzaAmount;
                 salesMaster.DeliveryCharge = 0;
                 salesMaster.DeliveredBy = "";
-
+                debugger;
                 $.each(billingterms, function (index, value) {
                     if (document.getElementById('BTerm_' + value.ID + '_' + value.IsAdd) != null) {
                         var bt = {
@@ -1644,6 +1625,7 @@ function GetDataForSalesBill(orderMasterId) {
                 }
                 billingTerm.push(bt);
 
+                debugger;
                 $.each(orderdetails, function (index, value) {
                     var extra = [];
                     if (value.orderExtraItem != undefined && value.orderExtraItem.length > 0) {
@@ -1708,38 +1690,12 @@ function GetDataForSalesBill(orderMasterId) {
                         salesPaymentList.push(salesPayment);
                     }
                 });
-                //OLD System Updated Bishal
-                //let paymentID = $('#selPayMode').val();
-
-                //salesPayment.SPMID = $('#selPayMode').val();
-                //salesPayment.ChequeNo = (paymentID == 2 ? $('#txtCheqNo').val() : "");
-                //salesPayment.TransactionNo = (paymentID == 3 || paymentID == 5 || paymentID == 6 ? $('#txtTransNo').val() : "");
-                //salesPayment.ProviderID = ((paymentID == 3 || paymentID == 2|| paymentID == 5|| paymentID == 6) ? $('#selProv').val() : "");
-                //salesPayment.TenderAmount = (paymentID == 1 ? parseFloat(($('#txtTenderAmount').val() == "" ? 0 : $('#txtTenderAmount').val())) : 0);
-                //salesPayment.ReturnAmount = (paymentID == 1 ? parseFloat(($('#txtReturnAmount').val() == "" ? 0 : $('#txtReturnAmount').val())) : 0);
-                //salesPayment.PayAmount = (paymentID == 1 ? parseFloat($('#txtTenderAmount').val() - $('#txtReturnAmount').val()) : $('#txtNetAmt').val().split(' ')[1]);
-
-                //salesPayment.CusID = '';
-                //salesPayment.Customer = '';
-                //salesPayment.Address = '';
-                //salesPayment.PAN = '';
-                //salesPayment.Remarks = $('.txtRemarks').val();
-                //if (foodCourtAutoBillGenerate) {
-                //    SaveFoodCourtSalesBill(salesMaster, salesDetail, splited, billingTerm, discount, salesPayment)
-                //} else {
+               
                 jConfirm('Are You Sure  ?', 'Pay', function (confirmed) {
                     if (confirmed) {
                         SaveFoodCourtSalesBill(salesMaster, salesDetail, splited, billingTerm, discount, salesPaymentList)
                     }
                 });
-                //}
-                //} else {
-                //    jConfirm('Are You Sure  ?', 'Pay', function (confirmed) {
-                //        if (confirmed) {
-                //            SaveSalesBill(salesMaster, salesDetail, splited, billingTerm, discount)
-                //        }
-                //    });
-                //}
             });
         },
         failure: function (response) {
@@ -1747,7 +1703,6 @@ function GetDataForSalesBill(orderMasterId) {
         }
     });
 }
-
 
 function BindPaymentModes() {
     $("#divPaymentModes").html("");
@@ -1783,10 +1738,8 @@ function BindPaymentModes() {
     htmls += '</table>';
 
     $("#divPaymentModes").html(htmls);
-
-
+    
     $('.txtPayAmount').on('change', function () {
-        //debugger;
         totalPayAmnt = 0.00;
         $('.txtPayAmount').each(function () {
             if ($(this).closest('tr').find('.pmntCheck').is(':checked')) {
@@ -1878,8 +1831,6 @@ function BindBillingTerm(totalAmount, totaldis, datas) {
     amntAfterDisc = (parseFloat(totalAmount) - parseFloat(totaldis)).toFixed(2);
     netAmount = 0.00;
     $.each(datas.billingTerm, function (index, item) {
-        //if (item.Name != "Service Charge") 
-        {
             if (item.BillTerm != "Evening Discount") {
                 if (item.BillTerm != "VAT") {
                     htmls += ("<tr>");
@@ -1892,9 +1843,9 @@ function BindBillingTerm(totalAmount, totaldis, datas) {
                     else
                         netAmount -= parseFloat((amntAfterDisc * item.Rate / 100).toFixed(2));
                 }
-            }
-        }
+            } 
     });
+
     netAmount = parseFloat((parseFloat(netAmount) + parseFloat(amntAfterDisc)).toFixed(2));
     if (datas.VATforBill) {
         if (datas.billingTerm[datas.billingTerm.length - 1].BillTerm == "VAT") {
@@ -1910,8 +1861,7 @@ function BindBillingTerm(totalAmount, totaldis, datas) {
 
                 }
             }
-
-            //htmls += ("<tr>");
+            
             htmls += ("<td attr-term='Taxable Amount' attr-percent='0' ><strong>Taxable Amount : </strong><input type=\"text\" id=\"txtTaxableAmt\" value=\"Rs. " + netAmount.toFixed(2) + "\"  class=\"sfInputbox_bill afterdiscountAmt \" disabled attr-amount='" + netAmount.toFixed(2) + "'/></td>");
             htmls += ("</tr>");
             if (!isab) {
@@ -1951,8 +1901,6 @@ function BindBillingTerm(totalAmount, totaldis, datas) {
     htmls += ("<input type=\"text\" id=\"txtNetAmt\" value=\"Rs. " + parseFloat(netAmount).toFixed(2) + "\" class=\"sfInputbox_bill\" disabled attr-amount='" + netAmount + "'/>");
     htmls += ("</td>");
     htmls += ("</tr>");
-    //htmls += ("</table>");
-
 
     if (datas.RoomBooking.RoomBookDetailsID > 0) {
         htmls += ("<tr>");
@@ -1976,6 +1924,7 @@ function BindBillingTerm(totalAmount, totaldis, datas) {
     TotalNetAmount = netAmount;
     BindPaymentModes();
 }
+
 function GetCustomeronCheck() {
     var customer = 1;
     $.ajax({
@@ -2071,6 +2020,7 @@ function GetCustomeronCheck() {
     });
 }
 function SaveSalesBill(salesMaster, salesDetail, splited, billingTerm, discount) {
+    debugger;
     var customer = 1;
     $.ajax({
         type: "POST",
@@ -2081,10 +2031,9 @@ function SaveSalesBill(salesMaster, salesDetail, splited, billingTerm, discount)
         contentType: "application/json; charset=utf-8",
         dataType: "json",
         success: function (data) {
-            //$('#DialogOrderDetail').dialog('close');
-
             $('#DialogOrderDetail').hide();
 
+            debugger;
             getBill(data.d, false);
 
             $('#BillingView').dialog({
@@ -2103,7 +2052,6 @@ function SaveSalesBill(salesMaster, salesDetail, splited, billingTerm, discount)
             Print();
             $('#InvoiceType').html('INVOICE');
             $('#btnPrints').click();
-
         },
         failure: function (response) {
             jAlert("Sorry some error occured. Contact the support team.", "Error!!");
@@ -2167,7 +2115,6 @@ function savePrintCount(printcount, billNo, printedBy) {
         contentType: "application/json; charset=utf-8",
         dataType: "json",
         success: function (data) {
-            //$('#printno').show();
             Print();
             $('#BillingView').dialog('close');
             jAlert("Bill successfully Generated", "Information!!", function () {
@@ -2236,13 +2183,9 @@ function CancelOrderedData() {
 }
 
 //Avata Change
-//function initialSetup(tableId, oId, hostUrl, foodCourt, Delievery, yoga = false, spa = false) {
 function initialSetup(tableId, oId, hostUrl, foodCourt, Delievery) {
-    debugger
-    //document.onkeydown = BillShortcutKey;
     $('#hdnPinMatch').on('change', function () {
         if ($('#hdnPinMatch').val() == "true") {
-            //$('#hdnPinMatch').unbind('change');
             var pinFor = $('#hdnPinFor').val();
             if (pinFor == 'generateBill') {
                 $('.paynows').click();
@@ -3064,6 +3007,7 @@ function BillShortcutKey(e) {
         salesMaster.DeliveryCharge = 0;
         salesMaster.DeliveredBy = "";
 
+        debugger;
         $.each(billingterms, function (index, value) {
             if (document.getElementById('BTerm_' + value.ID + '_' + value.IsAdd) != null) {
                 var bt = {
@@ -3084,6 +3028,7 @@ function BillShortcutKey(e) {
         }
         billingTerm.push(bt);
 
+        debugger;
         $.each(orderdetails, function (index, value) {
             var extra = [];
             if (value.orderExtraItem != undefined && value.orderExtraItem.length > 0) {
@@ -3146,10 +3091,10 @@ function BillShortcutKey(e) {
             var data = JSON2.stringify({ salesMaster: salesMaster, salesDetail: salesDetail, splited: splited, billingTerm: billingTerm, flatorperdiscount: discount, payment: salesPayment, isFoodCourt: foodCourtOrder });
             saveSales(data);
         }
-        //alert(JSON2.stringify({ salesMaster: salesMaster, salesDetail: salesDetail, splited: splited, billingTerm: billingTerm, flatorperdiscount: discount }));
     }
 }
 function saveSales(data, isFoodCourt) {
+    debugger;
     $.ajax({
         type: "POST",
         async: false,
@@ -3159,6 +3104,7 @@ function saveSales(data, isFoodCourt) {
         contentType: "application/json; charset=utf-8",
         dataType: "json",
         success: function (data) {
+            debugger;
             $('#DialogOrderDetail').dialog('close');
             getBill(data.d, false);
             $('#BillingView').dialog({
@@ -3169,7 +3115,6 @@ function saveSales(data, isFoodCourt) {
                 position: ['center', 'top']
             });
             Print();
-            //$('#printno').show();
             $('#InvoiceType').html('INVOICE');
             Print();
             $('#BillingView').dialog('close');
