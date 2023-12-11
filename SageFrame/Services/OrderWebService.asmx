@@ -1,4 +1,4 @@
-﻿ <%@ WebService Language="C#" Class="OrderWebService"  %>
+﻿ <%@ WebService Language="C#" Class="OrderWebService" %>
 
 using System;
 using System.Web;
@@ -59,9 +59,9 @@ public class OrderWebService : System.Web.Services.WebService
         return jsSerializer.Serialize(roController.getExtraItemforItem().Where(p => p.IsActive == true && p.IsDeleted == false).ToList());
     }
     [WebMethod]
-    public string CheckPinCodeMatch(string PinCode,string username)
+    public string CheckPinCodeMatch(string PinCode, string username)
     {
-        return jsSerializer.Serialize(roController.CheckPinCodeMatch(PinCode,username));
+        return jsSerializer.Serialize(roController.CheckPinCodeMatch(PinCode, username));
     }
     [WebMethod]
     public void SaveCanceledItems(List<OrderDetailCancel> CancelItems)
@@ -90,12 +90,8 @@ public class OrderWebService : System.Web.Services.WebService
                 else
                 {
                     itemList = rocobj.getitemwithRate(ord.ItemId);
-                    //ord.orderExtraItem = orderExtraItem.Where(p => p.ItemID == ord.ItemId).ToList();
-
-
                 }
                 BasicAmount += (Convert.ToDecimal(itemList[0].SRate) * Convert.ToDecimal(ord.Quantity));
-
             }
 
             RestroRoom room = new RestroRoom();
@@ -120,7 +116,6 @@ public class OrderWebService : System.Web.Services.WebService
                 }
             }
 
-
             FiscalYear fyear = rocobj.GetRONumberByFiscalYear();
             orderMasterInfo.BillNo = "RO" + orderMasterInfo.Date.ToString().Replace("/", "").Replace("PM", "").Replace("AM", "").Replace(":", "").Replace(" ", "");
             orderMasterInfo.BasicAmount = BasicAmount;
@@ -131,7 +126,6 @@ public class OrderWebService : System.Web.Services.WebService
             List<OrderDetailClass> lst = new List<OrderDetailClass>();
             lst = rocobj.GetOrderDetailsByMaster(orderMasterInfo.OrderMasterID);
 
-            //rocobj.DeleteOrderDetailByMaster(orderMasterInfo.OrderMasterID, orderMasterInfo.ArchivedBy);
             List<OrderDetailClass> addedOrders = new List<OrderDetailClass>();
             List<OrderDetailClass> cancelledOrders = new List<OrderDetailClass>();
             if (lst.Count > 0)
@@ -184,7 +178,6 @@ public class OrderWebService : System.Web.Services.WebService
                 addedOrders = orderMasterInfo.OrderDetailsList;
             }
 
-            //List<OrderDetailClass> orderList = rocobj.OrderMasterSaveTodatabase(orderMasterInfo, repeateditem);
             int ordermasterid = rocobj.SaveOrderIntoDataBase(orderMasterInfo, addedOrders, cancelledOrders);
 
             List<OrderExtraItem> addedExtra = CheckExtraItems(orderExtraItem, true, orderMasterInfo.OrderMasterID, ordermasterid);
@@ -270,37 +263,24 @@ public class OrderWebService : System.Web.Services.WebService
                 if (orderMasterInfo.IsCancelled == true)
                 {
                     status = "Cancelled";
-                    //printSuccessful += print.PrintOrders(orderMasterInfo.OrderDetailsList, table.restrotableTitle, orderMasterInfo.Date, orderMasterInfo.UserName, "Cancelled", ordermasterid, toke.OrderNo, toke.TokenNo, toke.CustomerName, toke.Phone);
                     printSuccessful += print.PrintOrders(orderMasterInfo.OrderDetailsList, orderMasterInfo.OrderTypeID == 4 ? "FoodDelivery" : (orderMasterInfo.OrderTypeID == 3 ? "FoodCourt" : (orderMasterInfo.OrderTypeID == 2 ? "Take Away" : table.restrotableTitle)), orderMasterInfo.Date, orderMasterInfo.UserName, "Cancelled", ordermasterid, toke.OrderNo, toke.TokenNo, toke.CustomerName, toke.Phone);
                 }
                 else
                 {
-                    //if (table.restrotableTitle == null)
-                    //{
-                    //    status = "Pick Order";
-                    //    // printSuccessful += print.PrintOrders(addedOrders, "Take Away", orderMasterInfo.Date, orderMasterInfo.UserName, "Added", ordermasterid, toke.OrderNo, toke.TokenNo, toke.CustomerName, toke.Phone);
-                    //    printSuccessful += print.PrintOrders(addedOrders, orderMasterInfo.OrderTypeID  == 4 ? "FoodDelivery" : (orderMasterInfo.OrderTypeID  == 3 ? "FoodCourt" : (orderMasterInfo.OrderTypeID == 2 ? "Take Away" : table.restrotableTitle)), orderMasterInfo.Date, orderMasterInfo.UserName, "Added", ordermasterid, toke.OrderNo, toke.TokenNo, toke.CustomerName, toke.Phone);
-                    //}
-                    //else
-                    //{
                     if (addedOrders.Count > 0)
                     {
                         status = "Added";
-                        // printSuccessful += print.PrintOrders(addedOrders, table.restrotableTitle, orderMasterInfo.Date, orderMasterInfo.UserName, "Added", ordermasterid, toke.OrderNo, toke.TokenNo, toke.CustomerName, toke.Phone);
                         printSuccessful += print.PrintOrders(addedOrders, orderMasterInfo.OrderTypeID == 4 ? "FoodDelivery" : (orderMasterInfo.OrderTypeID == 3 ? "FoodCourt" : (orderMasterInfo.OrderTypeID == 2 ? "TakeAway" : table.restrotableTitle)), orderMasterInfo.Date, orderMasterInfo.UserName, "Added", ordermasterid, toke.OrderNo, toke.TokenNo, toke.CustomerName, toke.Phone);
                     }
                     if (cancelledOrders.Count > 0)
                     {
                         status = "Cancelled";
-                        // printSuccessful += print.PrintOrders(cancelledOrders, table.restrotableTitle, orderMasterInfo.Date, orderMasterInfo.UserName, "Cancelled", ordermasterid, toke.OrderNo, toke.TokenNo, toke.CustomerName, toke.Phone);
                         printSuccessful += print.PrintOrders(cancelledOrders, orderMasterInfo.OrderTypeID == 4 ? "FoodDelivery" : (orderMasterInfo.OrderTypeID == 3 ? "FoodCourt" : (orderMasterInfo.OrderTypeID == 2 ? "Take Away" : table.restrotableTitle)), orderMasterInfo.Date, orderMasterInfo.UserName, "Cancelled", ordermasterid, toke.OrderNo, toke.TokenNo, toke.CustomerName, toke.Phone);
                     }
                     if (toppingOnly.Count > 0)
                     {
-                        // PrintExtra(toppingOnly, table.restrotableTitle, orderMasterInfo.Date, orderMasterInfo.UserName, 1, ordermasterid);
                         PrintExtra(toppingOnly, orderMasterInfo.OrderTypeID == 4 ? "FoodDelivery" : (orderMasterInfo.OrderTypeID == 3 ? "FoodCourt" : (orderMasterInfo.OrderTypeID == 2 ? "Take Away" : table.restrotableTitle)), orderMasterInfo.Date, orderMasterInfo.UserName, 1, ordermasterid);
                     }
-                    //}
                 }
             }
 
@@ -311,7 +291,6 @@ public class OrderWebService : System.Web.Services.WebService
         {
             throw ex;
         }
-
     }
 
     protected List<OrderExtraItem> CheckExtraItems(List<OrderExtraItem> extra, bool added, int ordermasterid, int newOrdermasterid)
@@ -434,7 +413,7 @@ public class OrderWebService : System.Web.Services.WebService
             throw ex;
         }
     }
-        [WebMethod]
+    [WebMethod]
     public string GetDataForPOSSalesBill(int orderMasterId)
     {
         try
@@ -621,13 +600,13 @@ public class OrderWebService : System.Web.Services.WebService
 
     }
     [WebMethod]
-    public string SaveFoodCourtSalesBillWithPayment(SalesMaster salesMaster, List<SalesDetails> salesDetail, int splited, List<customerBilling> billingTerm, flatorperdiscount flatorperdiscount,List<SalesPayment> salesPaymentList)
+    public string SaveFoodCourtSalesBillWithPayment(SalesMaster salesMaster, List<SalesDetails> salesDetail, int splited, List<customerBilling> billingTerm, flatorperdiscount flatorperdiscount, List<SalesPayment> salesPaymentList)
     {
         try
         {
             int salesMasterId = roController.saveSalesBill(salesMaster, salesDetail, splited, billingTerm, flatorperdiscount);
 
-            foreach(SalesPayment sp in salesPaymentList)
+            foreach (SalesPayment sp in salesPaymentList)
             {
                 sp.salesMasterId = salesMasterId;
             }
@@ -643,14 +622,14 @@ public class OrderWebService : System.Web.Services.WebService
             throw ex;
         }
     }
-        [WebMethod]
-    public string SaveFoodCourtSalesPOSBillWithPayment(SalesMaster salesMaster, List<SalesDetails> salesDetail, int splited, List<customerBilling> billingTerm, flatorperdiscount flatorperdiscount,List<SalesPayment> salesPaymentList)
+    [WebMethod]
+    public string SaveFoodCourtSalesPOSBillWithPayment(SalesMaster salesMaster, List<SalesDetails> salesDetail, int splited, List<customerBilling> billingTerm, flatorperdiscount flatorperdiscount, List<SalesPayment> salesPaymentList)
     {
         try
         {
             int salesMasterId = roController.savePOSSalesBill(salesMaster, salesDetail, splited, billingTerm, flatorperdiscount);
 
-            foreach(SalesPayment sp in salesPaymentList)
+            foreach (SalesPayment sp in salesPaymentList)
             {
                 sp.salesMasterId = salesMasterId;
             }
@@ -701,14 +680,13 @@ public class OrderWebService : System.Web.Services.WebService
     public string GetPaymentModesAndProviders(int salesMasterId)
     {
         return jsSerializer.Serialize(roController.GetPaymentModesAndProviders(salesMasterId));
-    }        
+    }
+
     [WebMethod]
     public void SavePayment(List<SalesPayment> salesPaymentList)
     {
         roController.UpdateSalesPayMode(salesPaymentList);
-
     }
-
 
     [WebMethod]
     public string getMemberDetailsbyinfo(string info)

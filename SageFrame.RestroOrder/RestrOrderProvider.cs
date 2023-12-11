@@ -8,9 +8,6 @@ using SageFrame.RestoLoyalty;
 using SageFrame.FiscalYear;
 using SageFrame.Security.Entities;
 using System.Data;
-using OfficeOpenXml.FormulaParsing.Excel.Functions.DateTime;
-using System.Runtime.InteropServices.ComTypes;
-using System.Globalization;
 
 namespace SageFrame.RestroOrder
 {
@@ -164,7 +161,6 @@ namespace SageFrame.RestroOrder
                 Param.Add(new KeyValuePair<string, object>("@buyer_name", billreturn.buyer_name));
                 Param.Add(new KeyValuePair<string, object>("@fiscal_year", billreturn.fiscal_year));
                 Param.Add(new KeyValuePair<string, object>("@ref_invoice_number", billreturn.ref_invoice_number));
-                // Param.Add(new KeyValuePair<string, object>("@credit_note_number", billreturn.credit_note_number));
                 Param.Add(new KeyValuePair<string, object>("@credit_note_date", billreturn.credit_note_date));
                 Param.Add(new KeyValuePair<string, object>("@reason_for_return", billreturn.reason_for_return));
                 Param.Add(new KeyValuePair<string, object>("@total_sales", billreturn.total_sales));
@@ -185,7 +181,6 @@ namespace SageFrame.RestroOrder
                 Param.Add(new KeyValuePair<string, object>("@postedDate", postedDate));
                 Param.Add(new KeyValuePair<string, object>("@salesMasterID ", salesMasterId));
                 return sqlHandler.ExecuteAsObject<ReturnBillPostLog>("[USP_cbms_SaveReturnBillPostLog]", Param);
-                //return Convert.ToInt32(returnLogId);
             }
             catch (Exception)
             {
@@ -241,35 +236,22 @@ namespace SageFrame.RestroOrder
                     menu.categoryList = catList;
                     foreach (CategoriesClass cat in catList)
                     {
-                        //if (cat.MenuID == menu.MenuID)
-                        //{
-                        //menu.categoryList.Add(cat);
-                        List<ItemsClass> itemList = RestrOrderProvider.GetItemFromDatabase(cat.CategoriesID);//.Where(p => p.CategoriesID == cat.CategoriesID).ToList();
+                        List<ItemsClass> itemList = RestrOrderProvider.GetItemFromDatabase(cat.CategoriesID);
                         cat.itemList = itemList;
                         foreach (ItemsClass item in itemList)
                         {
-                            //if (item.CategoriesID == cat.CategoriesID)
-                            //{
-                            //  cat.itemList.Add(item);
-                            List<UnitClass> unitList = RestrOrderProvider.GetUnitFromDatabase(item.UnitID);//.Where(p => p.UnitID == item.UnitID).ToList();
+                            List<UnitClass> unitList = RestrOrderProvider.GetUnitFromDatabase(item.UnitID);
                             item.unitList = unitList;
                             List<companyInfo> comp = rop.getCompanyInfo();
                             CurrencyClass currency = rop.getCurrencyByID(comp[0].CurrencyID);
                             item.PriceWithIcon = currency.CurrencyIcon + " " + item.Price;
                             CostCenterInfo costCenter = ccp.GetCostCenterById(item.CostCenterId);
                             item.CostCenterName = costCenter.CostCenterName;
-                            //item.CostCenterName = ccp.
-                            //}
                         }
-                        //}
                     }
                     getJson.MenuList = menuList;
                 }
                 itemListUpdated.Add(getJson);
-                //List<MenuClass> menuList = 
-                //foreach each menu ko lagi category tanne 
-                //foreach each categoryko lagi ItemDelete
-                //List<ROGETITEMResulttest> ItemList = sqlHandler.ExecuteAsList<ROGETITEMResulttest>("[USP_RO_GETITEMLIST]");
                 return itemListUpdated;
             }
             catch (Exception)
@@ -368,11 +350,7 @@ namespace SageFrame.RestroOrder
                     getJson.tableList = tableList;
                 }
                 roomListUpdated.Add(getJson);
-                //List<MenuClass> menuList = 
-                //foreach each menu ko lagi category tanne 
-                //foreach each categoryko lagi ItemDelete
-                //List<ROGETITEMResulttest> ItemList = sqlHandler.ExecuteAsList<ROGETITEMResulttest>("[USP_RO_GETITEMLIST]");
-                return roomList;
+                return roomListUpdated;
             }
             catch (Exception)
             {
@@ -530,8 +508,6 @@ namespace SageFrame.RestroOrder
                 Param.Add(new KeyValuePair<string, object>("@UnitID", ItemInf.UnitID));
                 Param.Add(new KeyValuePair<string, object>("@CategoriesID", ItemInf.CategoriesID));
                 Param.Add(new KeyValuePair<string, object>("@CostCenterID", ItemInf.CostCenterId));
-                //Param.Add(new KeyValuePair<string, object>("@UnitID", ItemInf.UnitID));                
-                //Param.Add(new KeyValuePair<string, object>("@MenuID", ItemInf.MenuID));
                 sqlHandler.ExecuteNonQuery("[USP_RO_ITEMSAVE]", Param);
             }
             catch (Exception)
@@ -761,11 +737,8 @@ namespace SageFrame.RestroOrder
                 Param.Add(new KeyValuePair<string, object>("@AccountName", AccountGroupInf.AccountName));
                 Param.Add(new KeyValuePair<string, object>("@Schedule", AccountGroupInf.Schedule));
                 Param.Add(new KeyValuePair<string, object>("@Type", AccountGroupInf.Type));
-                //Param.Add(new KeyValuePair<string, object>("@ItemCode", AccountGroupInf.LastUpdateBy));
                 Param.Add(new KeyValuePair<string, object>("@LastUpdateDate", DateTime.Now));
                 Param.Add(new KeyValuePair<string, object>("@CreateDate", DateTime.Now));
-                //Param.Add(new KeyValuePair<string, object>("@UnitID", ItemInf.UnitID));                
-                //Param.Add(new KeyValuePair<string, object>("@MenuID", ItemInf.MenuID));
                 sqlHandler.ExecuteNonQuery("[USP_RO_ACCOUNTGROUPSAVE]", Param);
             }
             catch (Exception)
@@ -912,8 +885,6 @@ namespace SageFrame.RestroOrder
         //
         internal void OrderMasterSaveTodatabase(OrderMasterClass OrderMasterInf)
         {
-            //using (TransactionScope ts = new TransactionScope())
-            //{
             try
             {
                 DeleteOrderDetailsByMaster(OrderMasterInf.OrderMasterID, OrderMasterInf.UserName);
@@ -963,21 +934,13 @@ namespace SageFrame.RestroOrder
                         }
                     }
                 }
-                //        ts.Complete();
             }
             catch (Exception)
             {
                 throw;
             }
-            //  } 
         }
-        //internal static List<OrderMasterClass> GetOrderMasterFromDatabase()
-        //{
-        //    List<KeyValuePair<string, object>> Param = new List<KeyValuePair<string, object>>();
-        //    
-        //    List<OrderMasterClass> OrderMasterinfo = sqlHandler.ExecuteAsList<OrderMasterClass>("[USP_RO_GETORDERMASTER]");
-        //    return OrderMasterinfo;
-        //}
+
         internal static List<OrderMasterClass> GetAllOrder()
         {
             SQLHandler sqlHandler = new SQLHandler();
@@ -1030,16 +993,6 @@ namespace SageFrame.RestroOrder
         }
         internal void CancelOrder(OrderMasterClass orderMaster)
         {
-            //List<OrderMasterClass> orderMasterList = GetAllOrder();
-            ////OrderMasterClass orderMasterInfo = new OrderMasterClass();
-            //foreach(OrderMasterClass orderMasterInf in orderMasterList)
-            //{
-            //    if(orderMasterInf.OrderMasterID == orderMaster.OrderMasterID)
-            //    {
-            //        orderMaster = orderMasterInf;
-            //        break;
-            //    }
-            //}
             List<KeyValuePair<string, object>> Param = new List<KeyValuePair<string, object>>();
             Param.Add(new KeyValuePair<string, object>("@OrderMasterID", orderMaster.OrderMasterID));
             Param.Add(new KeyValuePair<string, object>("@IsCancelled", orderMaster.IsCancelled));
@@ -1062,7 +1015,6 @@ namespace SageFrame.RestroOrder
             Param.Add(new KeyValuePair<string, object>("@OrderMasterId", orderMasterId));
             Param.Add(new KeyValuePair<string, object>("@UserName", UserName));
             sqlHandler.ExecuteNonQuery("[USP_RO_DELTEORDERDETAIL]", Param);
-            //sqlHandler.ExecuteAsList<OrderDetailClass>("/*[USP_RO_DELTEORDERDETAIL]*/", Param);
         }
         #region Table
         internal static List<RestrOrderInfo> GetTableName()
@@ -1178,9 +1130,7 @@ namespace SageFrame.RestroOrder
             Param.Add(new KeyValuePair<string, object>("@Rate", bt.Rate));
             Param.Add(new KeyValuePair<string, object>("@Description", bt.Description));
             Param.Add(new KeyValuePair<string, object>("@SequenceOrder", bt.SequenceOrder));
-            // Param.Add(new KeyValuePair<string, object>("@IsAlwaysActive", bt.IsAlwaysActive));
             return sqlHandler.ExecuteAsScalar<int>("USP_RO_SAVEBILLINGTERM", Param);
-            //List<MenuClass> Menuinfo = sqlHandler.ExecuteAsList<MenuClass>("[USP_RO_GETMENU]");
         }
         public void deleteBillTerm(int id)
         {
@@ -1254,7 +1204,6 @@ namespace SageFrame.RestroOrder
             Param.Add(new KeyValuePair<string, object>("@Description", srt.Description));
             Param.Add(new KeyValuePair<string, object>("@InsertedBy", srt.InsertedBy));
             Param.Add(new KeyValuePair<string, object>("@UpdateBy", srt.UpdateBy));
-            //Param.Add(new KeyValuePair<string, object>("@DeleteBy", srt.DeleteBy));
             sqlHandler.ExecuteNonQuery("[USP_RO_ROOMTYPESAVE]", Param);
         }
 
@@ -1780,22 +1729,7 @@ namespace SageFrame.RestroOrder
             Param.Add(new KeyValuePair<string, object>("@PITId", pitid));
             return sqlHandler.ExecuteAsList<itemsales>("[USP_RO_SummaryItemSalesReport]", Param);
         }
-        //internal List<OrderDetailClass> GettabledataByIdforMenu(int TableId)
-        //{
-        //    try
-        //    {
-        //        
-        //        List<KeyValuePair<string, object>> Param = new List<KeyValuePair<string, object>>();
-        //        Param.Add(new KeyValuePair<string, object>("@TableId", TableId));
-        //        List<OrderDetailClass> list = new List<OrderDetailClass>();
-        //        list = sqlHandler.ExecuteAsList<OrderDetailClass>("[USP_RO_GettabledataByIdforMenu]", Param);
-        //        return list;
-        //    }
-        //    catch (Exception)
-        //    {
-        //        throw;
-        //    }
-        //}
+
         public List<bestby> getdatabyBest()
         {
             List<KeyValuePair<string, object>> Param = new List<KeyValuePair<string, object>>();
@@ -1816,18 +1750,6 @@ namespace SageFrame.RestroOrder
                 List<OrderDetailClass> list = new List<OrderDetailClass>();
                 list = sqlHandler.ExecuteAsList<OrderDetailClass>("[USP_RO_GetdataforPrint]", Param);
                 return list;
-                //list = sqlHandler.ExecuteAsList<OrderDetailClass>("[usp_ro_getpickdata]", Param);
-                //return list;
-                //}
-                //else
-                //{
-                //
-                //List<KeyValuePair<string, object>> Param = new List<KeyValuePair<string, object>>();
-                //Param.Add(new KeyValuePair<string, object>("@TableId", TableId));
-                //List<OrderDetailClass> list = new List<OrderDetailClass>();
-                //list = sqlHandler.ExecuteAsList<OrderDetailClass>("[USP_RO_GetdataforPrint]", Param);
-                //return list;
-                //}
             }
             catch (Exception)
             {
@@ -1863,7 +1785,6 @@ namespace SageFrame.RestroOrder
                 {
                     sqlHandler.ExecuteNonQuery("[USP_INSERT_CUSORDER]", Param);
                 }
-                //int OrderId = sqlHandler.ExecuteNonQuery("[USP_INSERT_CUSORDER]", Param);
                 return OrderId;
             }
             catch (Exception)
@@ -1998,10 +1919,6 @@ namespace SageFrame.RestroOrder
                 Param.Add(new KeyValuePair<string, object>("@OID", orderMasterInfo.OID));
                 Param.Add(new KeyValuePair<string, object>("@OrderStatus", orderMasterInfo.OrderStatus));
                 Param.Add(new KeyValuePair<string, object>("@OrderTypeID", orderMasterInfo.OrderTypeID.ToString() == null ? 0 : orderMasterInfo.OrderTypeID));
-                //Param.Add(new KeyValuePair<string, object>("@names", orderMasterInfo.names));
-                //Param.Add(new KeyValuePair<string, object>("@phoneNo", orderMasterInfo.phoneNo));
-                //Param.Add(new KeyValuePair<string, object>("@membershipId", orderMasterInfo.membershipId));
-                var obj = sqlHandler.ExecuteAsScalar<object>("[USP_PO_SAVEPURCHASEMASTER]", Param);
                 int m = (orderMasterInfo.OrderMasterID == 0) ? Convert.ToInt32(obj) : orderMasterInfo.OrderMasterID;
                 List<OrderDetailClass> orderDetailRunning = new List<OrderDetailClass>();
                 List<OrderDetailClass> leftOrderRecord = new List<OrderDetailClass>();
@@ -2552,7 +2469,7 @@ namespace SageFrame.RestroOrder
                     Param1.Add(new KeyValuePair<string, object>("@ItemCostCentreID", info.ItemCostCentreID));
                     Param1.Add(new KeyValuePair<string, object>("@Details", info.Details));
                     sqlHandler.ExecuteNonQuery("[usp_RoiItemDetailsSave]", Param1);
-                    //for (int i = 0; i < dd.Count; i++)
+
                     for (int i = 0; i < info.extradata.Count; i++)
                     {
                         List<KeyValuePair<string, object>> Param3 = new List<KeyValuePair<string, object>>();
@@ -2561,19 +2478,15 @@ namespace SageFrame.RestroOrder
                         Param3.Add(new KeyValuePair<string, object>("@ExtraPrice", info.extradata[i].ExtraPrice));
                         sqlHandler.ExecuteNonQuery("usp_ro_extraitemsave", Param3);
                     }
-                    //if (inforate.PRate != 0 && inforate.SRate != 0)
-                    {
-                        List<KeyValuePair<string, object>> Param2 = new List<KeyValuePair<string, object>>();
-                        Param2.Add(new KeyValuePair<string, object>("@ItemRateID", 0));
-                        Param2.Add(new KeyValuePair<string, object>("@ItemID", Convert.ToInt32(obj)));
-                        Param2.Add(new KeyValuePair<string, object>("@UnitID", inforate.UnitID));
-                        Param2.Add(new KeyValuePair<string, object>("@PRate", inforate.PRate == 0 ? 0 : inforate.PRate));
-                        Param2.Add(new KeyValuePair<string, object>("@SRate", inforate.SRate == 0 ? 0 : inforate.SRate));
-                        //Param2.Add(new KeyValuePair<string, object>("@ValidFrom", inforate.ValidFrom));
-                        Param2.Add(new KeyValuePair<string, object>("@PostedBy", inforate.PostedBy));
-                        //Param2.Add(new KeyValuePair<string, object>("@PostedOn", PostedOn));
-                        sqlHandler.ExecuteNonQuery("[USP_ROI_ITEMRATESAVE]", Param2);
-                    }
+
+                    List<KeyValuePair<string, object>> Param2 = new List<KeyValuePair<string, object>>();
+                    Param2.Add(new KeyValuePair<string, object>("@ItemRateID", 0));
+                    Param2.Add(new KeyValuePair<string, object>("@ItemID", Convert.ToInt32(obj)));
+                    Param2.Add(new KeyValuePair<string, object>("@UnitID", inforate.UnitID));
+                    Param2.Add(new KeyValuePair<string, object>("@PRate", inforate.PRate == 0 ? 0 : inforate.PRate));
+                    Param2.Add(new KeyValuePair<string, object>("@SRate", inforate.SRate == 0 ? 0 : inforate.SRate));
+                    Param2.Add(new KeyValuePair<string, object>("@PostedBy", inforate.PostedBy));
+                    sqlHandler.ExecuteNonQuery("[USP_ROI_ITEMRATESAVE]", Param2);
                     ts.Complete();
                 }
             }
@@ -3241,20 +3154,12 @@ namespace SageFrame.RestroOrder
             try
             {
                 RestrOrderProvider rop = new RestrOrderProvider();
-                //CostCenterController ccp = new CostCenterController();
                 List<costCenter> list = new List<costCenter>();
                 list = rop.getcostcenter();
                 foreach (costCenter roomtype in list)
                 {
-                    //List<OrderDetailClass> lists = new List<OrderDetailClass>();
                     List<OrderDetailClass> lists = RestrOrderProvider.getitemprocessings(roomtype.CostCenterID);
                     roomtype.tableList = lists;
-                    //foreach (OrderDetailClass room in lists)
-                    //{
-                    //    List<restroTable> tableList = RestrOrderProvider.GetTableByRoomId(room.restroRoomId);
-                    //    room.tableList = tableList;
-                    //}
-                    //roomtype.roomlist = roomList;
                 }
                 return list;
             }
@@ -3336,34 +3241,32 @@ namespace SageFrame.RestroOrder
                     Param.Add(new KeyValuePair<string, object>("@salesMasterId", id));
                     Param.Add(new KeyValuePair<string, object>("@Reasons", reason));
                     Param.Add(new KeyValuePair<string, object>("@userName", userName));
-                    //List<OrderDetailClass> list = new List<OrderDetailClass>();
                     sqlHandler.ExecuteNonQuery("[USP_RO_CancelReason]", Param);
+                    // removed sales return
 
-                    List<SalesDetailClass> salesDetail = new List<SalesDetailClass>();
+                    //List<SalesDetailClass> salesDetail = new List<SalesDetailClass>();
 
-                    List<KeyValuePair<string, object>> Param3 = new List<KeyValuePair<string, object>>();
-                    Param3.Add(new KeyValuePair<string, object>("@salesMasterId", id));
-                    salesDetail = sqlHandler.ExecuteAsList<SalesDetailClass>("[USP_GetSalesDetailClass]", Param3);
+                    //List<KeyValuePair<string, object>> Param3 = new List<KeyValuePair<string, object>>();
+                    //Param3.Add(new KeyValuePair<string, object>("@salesMasterId", id));
+                    //salesDetail = sqlHandler.ExecuteAsList<SalesDetailClass>("[USP_GetSalesDetailClass]", Param3);
 
-                    foreach (var item in salesDetail)
-                    {
-                        List<KeyValuePair<string, object>> Param4 = new List<KeyValuePair<string, object>>();
-                        Param4.Add(new KeyValuePair<string, object>("@ItemID", item.ItemId));
-                        Param4.Add(new KeyValuePair<string, object>("@SalesDetailId", item.SalesDetailId));
-                        Param4.Add(new KeyValuePair<string, object>("@STId", item.StoreId));
-                        Param4.Add(new KeyValuePair<string, object>("@SalesReturnQty", item.SalesQty));
-                        Param4.Add(new KeyValuePair<string, object>("@SalesReturnUnit", item.SalesUnit));
-                        Param4.Add(new KeyValuePair<string, object>("@SalesReturnAmt", item.SalesAmt));
-                        sqlHandler.ExecuteNonQuery("[dbo].[ROI_SAVESalesReturnItemBal]", Param4);
-                    }
+                    //foreach (var item in salesDetail)
+                    //{
+                    //    List<KeyValuePair<string, object>> Param4 = new List<KeyValuePair<string, object>>();
+                    //    Param4.Add(new KeyValuePair<string, object>("@ItemID", item.ItemId));
+                    //    Param4.Add(new KeyValuePair<string, object>("@SalesDetailId", item.SalesDetailId));
+                    //    Param4.Add(new KeyValuePair<string, object>("@STId", item.StoreId));
+                    //    Param4.Add(new KeyValuePair<string, object>("@SalesReturnQty", item.SalesQty));
+                    //    Param4.Add(new KeyValuePair<string, object>("@SalesReturnUnit", item.SalesUnit));
+                    //    Param4.Add(new KeyValuePair<string, object>("@SalesReturnAmt", item.SalesAmt));
+                    //    sqlHandler.ExecuteNonQuery("[dbo].[ROI_SAVESalesReturnItemBal]", Param4);
+                    //}
                 }
-
             }
             catch (Exception)
             {
                 throw;
             }
-
         }
 
         internal void CancelBill(int id, string userName, string reason, bool restoreOrder)
@@ -4431,7 +4334,6 @@ namespace SageFrame.RestroOrder
 
         internal int saveSalesBill(SalesMaster sm, List<SalesDetails> sds, int splited, List<customerBilling> bt, flatorperdiscount flatorperdiscount)
         {
-            //var username=GetUsername;
             using (TransactionScope ts = new TransactionScope())
             {
                 try
@@ -4470,7 +4372,6 @@ namespace SageFrame.RestroOrder
                     Param.Add(new KeyValuePair<string, object>("@sumPizza", sm.sumPizza));
                     Param.Add(new KeyValuePair<string, object>("@DeliveryCharge", Convert.ToString(sm.DeliveryCharge) == null ? 0 : sm.DeliveryCharge));
                     Param.Add(new KeyValuePair<string, object>("@DeliveredBy", sm.DeliveredBy == null ? "" : sm.DeliveredBy));
-                    //Param.Add(new KeyValuePair<string, object>("@WaiterId", sm.Waiter));
                     List<OrderDetailClass> list = new List<OrderDetailClass>();
                     var a = sqlHandler.ExecuteAsScalar<object>("usp_ro_savesalesMaster", Param);
                     int salesMasterId = Convert.ToInt32(a);
@@ -4521,15 +4422,7 @@ namespace SageFrame.RestroOrder
                     Param2.Add(new KeyValuePair<string, object>("@NetAmount", sm.NetAmount));
                     Param2.Add(new KeyValuePair<string, object>("@seatNo", sm.SeatNo));
                     sqlHandler.ExecuteNonQuery("usp_ro_updateOrderMaster", Param2);
-                    //List<KeyValuePair<string, object>> Param3 = new List<KeyValuePair<string, object>>();
-                    //for (int i = 0; i < sds.Count; i++)
-                    //{
-                    //    Param3.Add(new KeyValuePair<string, object>("@orderDetailsId", sds[i].OrderDetailsID));
-                    //    Param3.Add(new KeyValuePair<string, object>("@qty", sds[i].qty));
-                    //    Param3.Add(new KeyValuePair<string, object>("@netAmount", sds[i].Amount));
-                    //    sqlHandler.ExecuteNonQuery("usp_ro_updateOrderDetails", Param3);
-                    //    Param3.Clear();
-                    //}
+
                     foreach (CostCenterGroup cg in flatorperdiscount.CCGroup)
                     {
                         List<KeyValuePair<string, object>> Param4 = new List<KeyValuePair<string, object>>();
@@ -4544,21 +4437,6 @@ namespace SageFrame.RestroOrder
                         sqlHandler.ExecuteNonQuery("[usp_ro_SaveCostCenterDiscount]", Param4);
                     }
 
-
-                    //List<KeyValuePair<string, object>> Param4 = new List<KeyValuePair<string, object>>();
-                    //Param4.Add(new KeyValuePair<string, object>("@SalesMasterId", salesMasterId));
-                    //Param4.Add(new KeyValuePair<string, object>("@kotdis", flatorperdiscount.kotdis));
-                    //Param4.Add(new KeyValuePair<string, object>("@bardis", flatorperdiscount.bardis));
-                    //Param4.Add(new KeyValuePair<string, object>("@roomdis", flatorperdiscount.roomdis));
-                    //Param4.Add(new KeyValuePair<string, object>("@isflatdis", flatorperdiscount.isflatdis));
-                    //Param4.Add(new KeyValuePair<string, object>("@isloyalty", flatorperdiscount.isLoyalty));
-                    //Param4.Add(new KeyValuePair<string, object>("@loyaltydis", flatorperdiscount.loyaltydis));
-                    //Param4.Add(new KeyValuePair<string, object>("@bakerydis", flatorperdiscount.bakerydis));
-                    //Param4.Add(new KeyValuePair<string, object>("@pizzadis", flatorperdiscount.pizzadis));
-                    ////Param.Add(new KeyValuePair<string, object>("@BasicAmount", fl.BasicAmount));
-                    ////Param.Add(new KeyValuePair<string, object>("@TermAmount", fl.TermAmount));
-                    ////Param.Add(new KeyValuePair<string, object>("@NetAmount", fl.NetAmount));
-                    //sqlHandler.ExecuteNonQuery("[usp_ro_saveflatandPerdiscount]", Param4);
                     ts.Complete();
                     return salesMasterId;
                 }
@@ -4571,7 +4449,6 @@ namespace SageFrame.RestroOrder
 
         internal int savePOSSalesBill(SalesMaster sm, List<SalesDetails> sds, int splited, List<customerBilling> bt, flatorperdiscount flatorperdiscount)
         {
-            //var username=GetUsername;
             using (TransactionScope ts = new TransactionScope())
             {
                 try
@@ -4913,7 +4790,6 @@ namespace SageFrame.RestroOrder
             {
                 try
                 {
-                    //DeleteOrderDetailsByMaster(orderMasterInfo.OrderMasterID, orderMasterInfo.UserName);
                     List<KeyValuePair<string, object>> Param = new List<KeyValuePair<string, object>>();
                     Param.Add(new KeyValuePair<string, object>("@OrderMasterID", orderMasterInfo.OrderMasterID));
                     Param.Add(new KeyValuePair<string, object>("@TableId", orderMasterInfo.TableId));
@@ -4970,22 +4846,8 @@ namespace SageFrame.RestroOrder
                         Param1.Add(new KeyValuePair<string, object>("@AddedBy", OrderDetailInf.Waiter == null ? orderMasterInfo.UserName : OrderDetailInf.Waiter));
                         var obj1 = sqlHandler.ExecuteAsScalar<object>("[USP_RO_SAVEORDERDETAIL]", Param1);
                         int ordid = Convert.ToInt32(obj1);
-                        //if (OrderDetailInf.orderExtraItem != null)
-                        //{
-                        //    foreach (OrderExtraItem ext in OrderDetailInf.orderExtraItem)
-                        //    {
-                        //        List<KeyValuePair<string, object>> ExtParam = new List<KeyValuePair<string, object>>();
-                        //        ExtParam.Add(new KeyValuePair<string, object>("@OrderMasterId", m));
-                        //        ExtParam.Add(new KeyValuePair<string, object>("@OrderDetailsID", ordid));
-                        //        ExtParam.Add(new KeyValuePair<string, object>("@ItemID", ext.ItemID));
-                        //        ExtParam.Add(new KeyValuePair<string, object>("@ExtraItemID", ext.ExtraItemID));
-                        //        ExtParam.Add(new KeyValuePair<string, object>("@ExtraItem", ext.ExtraItem));
-                        //        ExtParam.Add(new KeyValuePair<string, object>("@Quantity", ext.Quantity));
-                        //        ExtParam.Add(new KeyValuePair<string, object>("@ExtraPrice", ext.ExtraPrice));
-                        //        sqlHandler.ExecuteNonQuery("[USP_RO_SaveExtraOrderedItems]", ExtParam);
-                        //    }
-                        //}
                     }
+
                     foreach (OrderDetailClass OrderDetailInf in cancelledOrders)
                     {
                         int runningOrder = 1;

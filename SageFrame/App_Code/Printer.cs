@@ -5,6 +5,7 @@ using System.Configuration;
 using System;
 using SageFrame.CakeOrder;
 using System.Collections.Generic;
+using System.Diagnostics;
 
 /// <summary>
 /// Summary description for Printer
@@ -26,7 +27,7 @@ public class Printer
             printDocument.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(CreateKOT); //add an event handler that will do the printing
             printDocument.Print();
         }
-       
+
     }
 
     public void PrintBill(string printerName, KOT KOT, List<OrderDetailClass> orderDetailList)
@@ -68,7 +69,7 @@ public class Printer
         graphic.DrawString("    ESTIMATE ORDERS", new Font("Courier New", 14, FontStyle.Bold), new SolidBrush(Color.Black), startX, startY + 10);
         offset = offset + (int)fontHeight;
 
-        line = ("Table:" + billdetails.RoomBooking.restrotableTitle + item).Substring(0, characterLength / 2) ;
+        line = ("Table:" + billdetails.RoomBooking.restrotableTitle + item).Substring(0, characterLength / 2);
         graphic.DrawString(line, font, new SolidBrush(Color.Black), startX, startY + offset);
 
         offset = offset + (int)fontHeight;
@@ -96,7 +97,7 @@ public class Printer
         foreach (OrderDetailClass itm in billdetails.orderDetail)
         {
             string format = "";
-            var serviceRate = 100+billdetails.billingTerm[0].Rate;
+            var serviceRate = 100 + billdetails.billingTerm[0].Rate;
             decimal abbRate = 0;
             if (billdetails.VATforBill)
             {
@@ -140,7 +141,7 @@ public class Printer
 
             var newit = (IName + format).Length;
             offset = offset + (int)fontHeight + 10;
-            line = IName + format + (itm.Quantity) + " " + (decimal.Round(abbRate,1,MidpointRounding.AwayFromZero)) + " " + (decimal.Round((decimal)Amt, 1, MidpointRounding.AwayFromZero));
+            line = IName + format + (itm.Quantity) + " " + (decimal.Round(abbRate, 1, MidpointRounding.AwayFromZero)) + " " + (decimal.Round((decimal)Amt, 1, MidpointRounding.AwayFromZero));
             graphic.DrawString(line, font, new SolidBrush(Color.Black), startX, startY + offset);
 
         }
@@ -170,6 +171,7 @@ public class Printer
         int characterLength = Convert.ToInt32(ConfigurationManager.AppSettings["KOTCharacterLength"].ToString());
         Graphics graphic = e.Graphics;
         Font font = new Font("Courier New", Convert.ToInt32(ConfigurationManager.AppSettings["KOTFontSize"].ToString()), FontStyle.Bold); //must use a mono spaced font as the spaces need to line up
+        Font fontStrike = new Font("Courier New", Convert.ToInt32(ConfigurationManager.AppSettings["KOTFontSize"].ToString()), FontStyle.Strikeout);
 
         float fontHeight = font.GetHeight();
         int itemLength = characterLength - 9;
@@ -184,18 +186,17 @@ public class Printer
         {
             graphic.DrawString("    " + kot.CostCenterTitle, new Font("Courier New", 14, FontStyle.Bold), new SolidBrush(Color.Black), startX, startY);
             offset = offset + (int)fontHeight;
-            line = "    "+"(" + kot.Status+ ")";
+            line = "    " + "(" + kot.Status + ")";
             graphic.DrawString(line, new Font("Arial Rounded MT", 12, FontStyle.Bold), new SolidBrush(Color.Black), startX, startY + offset);
         }
         else
         {
-            graphic.DrawString("    " + kot.CostCenterTitle +" '"+kot.TableId+"'", new Font("Courier New", 14, FontStyle.Bold), new SolidBrush(Color.Black), startX, startY + 10);
+            graphic.DrawString("    " + kot.CostCenterTitle + " '" + kot.TableId + "'", new Font("Courier New", 14, FontStyle.Bold), new SolidBrush(Color.Black), startX, startY + 10);
 
         }
         offset = offset + (int)fontHeight;
         if (kot.TokenNo > 0)
         {
-            //line = ("Token:" + kot.TokenNo + item).Substring(0, characterLength / 4) + " Order No:" + kot.OrderNo;
             line = ("     Token:" + kot.TokenNo + item);
             graphic.DrawString(line, new Font("Courier New", 16, FontStyle.Bold), new SolidBrush(Color.Black), startX, startY + offset);
         }
@@ -204,12 +205,11 @@ public class Printer
             line = "Order No:" + (kot.OrderNo == 0 ? Convert.ToInt32(kot.OrderMasterId) : kot.OrderNo);
             graphic.DrawString(line, new Font("Courier New", 12, FontStyle.Bold), new SolidBrush(Color.Black), startX, startY + offset);
             offset = offset + (int)fontHeight;
-            //line = ("Table:" + kot.TableId + item).Substring(0, characterLength / 4) + " Order No:" + (kot.OrderNo == 0 ? Convert.ToInt32(kot.OrderMasterId) : kot.OrderNo) ;
             line = ("Table:" + kot.TableId + item);
             graphic.DrawString(line, font, new SolidBrush(Color.Black), startX, startY + offset);
         }
 
-        if(kot.CompMasterID > 0)
+        if (kot.CompMasterID > 0)
         {
             line = ("Table:" + kot.TableId + item).Substring(0, characterLength / 2) + "Order No:" + kot.CompMasterID;
             graphic.DrawString(line, font, new SolidBrush(Color.Black), startX, startY + offset);
@@ -219,13 +219,12 @@ public class Printer
         graphic.DrawString(line, font, new SolidBrush(Color.Black), startX, startY + offset);
 
         offset = offset + (int)fontHeight;
-        //line = "Waiter:" + kot.Waiter + " (" + kot.Status+")";
         line = "Waiter:" + kot.Waiter;
         graphic.DrawString(line, font, new SolidBrush(Color.Black), startX, startY + offset);
 
         if (kot.Customer.Length > 2)
         {
-            string customer = "Cust: " + kot.Customer + (kot.Contact==null? "":" (" +  kot.Contact + ")");
+            string customer = "Cust: " + kot.Customer + (kot.Contact == null ? "" : " (" + kot.Contact + ")");
             if (customer.Length > characterLength)
             {
                 offset = offset + (int)fontHeight;
@@ -269,51 +268,61 @@ public class Printer
         foreach (OrderDetailClass itm in kot.KOTItems)
         {
             itm.ItemName = itm.ItemName.Trim();
-            offset = offset + (int)fontHeight+10;
+            offset = offset + (int)fontHeight + 10;
             line = (itm.ItemName.Trim() + item).Substring(0, itemLength) + (kot.Status == "Cancelled" ? (quantity + "(" + itm.Quantity).Substring(itm.Quantity.ToString().Length, 4) + ")" : (quantity + itm.Quantity).Substring(itm.Quantity.ToString().Length, 3));
+            //graphic.DrawString(line, kot.Status == "Cancelled" ? fontStrike : font, new SolidBrush(Color.Black), startX, startY + offset);
             graphic.DrawString(line, font, new SolidBrush(Color.Black), startX, startY + offset);
-            if(itm.ItemName.Length> itemLength)
+            if (itm.ItemName.Length > itemLength)
             {
                 offset = offset + (int)fontHeight;
                 line = (itm.ItemName + item).Substring(itemLength, itemLength);
+                //graphic.DrawString(line, kot.Status == "Cancelled" ? fontStrike : font, new SolidBrush(Color.Black), startX, startY + offset);
                 graphic.DrawString(line, font, new SolidBrush(Color.Black), startX, startY + offset);
             }
-            if (itm.ItemName.Length > itemLength*2)
+            if (itm.ItemName.Length > itemLength * 2)
             {
                 offset = offset + (int)fontHeight;
-                line = (itm.ItemName + item).Substring(itemLength*2, itemLength);
+                line = (itm.ItemName + item).Substring(itemLength * 2, itemLength);
+                //graphic.DrawString(line, kot.Status == "Cancelled" ? fontStrike : font, new SolidBrush(Color.Black), startX, startY + offset);
                 graphic.DrawString(line, font, new SolidBrush(Color.Black), startX, startY + offset);
             }
-            if (itm.ItemName.Length > itemLength*3)
+            if (itm.ItemName.Length > itemLength * 3)
             {
                 offset = offset + (int)fontHeight;
-                line = (itm.ItemName + item).Substring(itemLength*3, itemLength);
+                line = (itm.ItemName + item).Substring(itemLength * 3, itemLength);
+                //graphic.DrawString(line, kot.Status == "Cancelled" ? fontStrike : font, new SolidBrush(Color.Black), startX, startY + offset);
                 graphic.DrawString(line, font, new SolidBrush(Color.Black), startX, startY + offset);
             }
-            if (itm.ItemName.Length > itemLength*4)
+
+            if (itm.ItemName.Length > itemLength * 4)
             {
                 offset = offset + (int)fontHeight;
-                line = (itm.ItemName + item).Substring(itemLength*4, itemLength);
+                line = (itm.ItemName + item).Substring(itemLength * 4, itemLength);
+                //graphic.DrawString(line, kot.Status == "Cancelled" ? fontStrike : font, new SolidBrush(Color.Black), startX, startY + offset);
                 graphic.DrawString(line, font, new SolidBrush(Color.Black), startX, startY + offset);
-            } 
-            if ( itm.Note.Trim().Length > 1)
+            }
+
+            if (itm.Note.Trim().Length > 1)
             {
                 offset = offset + (int)fontHeight;
-                line = (" --"+itm.Note + item).Substring(0, characterLength-3);
+                line = (" --" + itm.Note + item).Substring(0, characterLength - 3);
                 graphic.DrawString(line, font, new SolidBrush(Color.Black), startX, startY + offset);
-            } 
+            }
+
             if (itm.Note.Trim().Length > characterLength - 3)
             {
                 offset = offset + (int)fontHeight;
                 line = (" --" + itm.Note + item).Substring(characterLength - 3, characterLength - 3);
                 graphic.DrawString(line, font, new SolidBrush(Color.Black), startX, startY + offset);
             }
-            if (itm.Note.Trim().Length > (characterLength - 3)*2)
+
+            if (itm.Note.Trim().Length > (characterLength - 3) * 2)
             {
                 offset = offset + (int)fontHeight;
                 line = ("  --" + itm.Note + item).Substring((characterLength - 3) * 2, characterLength - 3);
                 graphic.DrawString(line, font, new SolidBrush(Color.Black), startX, startY + offset);
             }
+
             if (itm.Note.Trim().Length > (characterLength - 3) * 3)
             {
                 offset = offset + (int)fontHeight;
@@ -339,7 +348,7 @@ public class Printer
         string dashes = "--------------------------------";
         string item = "                                            ";
         string space = " ";
-        
+
         string line = string.Empty;
         graphic.DrawString("    ESTIMATE ORDERS", new Font("Courier New", 14, FontStyle.Bold), new SolidBrush(Color.Black), startX, startY + 10);
         offset = offset + (int)fontHeight;
@@ -396,8 +405,8 @@ public class Printer
             var ItemLength = 0;
             ItemLength = itm.ItemName.Trim().Length;
             var IName = "";
-            IName = ItemLength > 19 ? itm.ItemName.Trim().Substring(0, 15) +".." : itm.ItemName.Trim();
-     
+            IName = ItemLength > 19 ? itm.ItemName.Trim().Substring(0, 15) + ".." : itm.ItemName.Trim();
+
             if (ItemLength < 19)
             {
                 for (var i = ItemLength; i != 20; i++)
@@ -411,9 +420,9 @@ public class Printer
             var newit = (IName + format).Length;
 
             offset = offset + (int)fontHeight + 10;
-            line = IName + format + (kot.Status == "Cancelled" ? ("(" + itm.Quantity) + ")" : (itm.Quantity) +" "+ (itm.Rate) +" "+ (Amt));
+            line = IName + format + (kot.Status == "Cancelled" ? ("(" + itm.Quantity) + ")" : (itm.Quantity) + " " + (itm.Rate) + " " + (Amt));
             graphic.DrawString(line, font, new SolidBrush(Color.Black), startX, startY + offset);
-            
+
         }
         offset = offset + (int)fontHeight;
         graphic.DrawString(dashes, font, new SolidBrush(Color.Black), startX, startY + offset);
@@ -422,7 +431,7 @@ public class Printer
         graphic.DrawString(line, font, new SolidBrush(Color.Black), startX, startY + offset);
         offset = offset + (int)fontHeight;
         graphic.DrawString(dashes, font, new SolidBrush(Color.Black), startX, startY + offset);
-        offset = offset + (int)fontHeight+10;
+        offset = offset + (int)fontHeight + 10;
         line = "Note: This is not a valid bill.";
         graphic.DrawString(line, font, new SolidBrush(Color.Black), startX, startY + offset);
         offset = offset + (int)fontHeight;
@@ -434,7 +443,7 @@ public class Printer
         offset = offset + (int)fontHeight;
         line = "     **** ThankYou ****";
         graphic.DrawString(line, font, new SolidBrush(Color.Black), startX, startY + offset);
-        offset = offset + (int)fontHeight+15;
+        offset = offset + (int)fontHeight + 15;
         graphic.DrawString(dashes, font, new SolidBrush(Color.Black), startX, startY + offset);
         offset = offset + (int)fontHeight;
     }
@@ -589,5 +598,5 @@ public class Printer
         graphic.DrawString(dashes, font, new SolidBrush(Color.Black), startX, startY + offset);
     }
 
-    
+
 }

@@ -601,7 +601,6 @@ public class OrderItemWebservice : System.Web.Services.WebService
         try
         {
             RestrOrderController rocobj = new RestrOrderController();
-            //List<OrderDetailClass> orderList = rocobj.GetOrderDetailsByMaster(orderMasterInfo.OrderMasterID);
             List<OrderDetailClass> orderList = rocobj.GetOrderDetailsByMaster(orderMasterInfo.OrderMasterID).Where(p => p.Status == "Ordered" && p.SeatNo == orderMasterInfo.GuestNo).ToList();
             rocobj.CancelOrder(orderMasterInfo);
             restroTable table = rocobj.GetTableNoBYId(Convert.ToInt32(orderMasterInfo.TableId));

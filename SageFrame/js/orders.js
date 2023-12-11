@@ -13,7 +13,6 @@ var ExtraItemsByItem = new Array();
 var ExtraItems = new Array();
 var selectedBillNo = 1;
 var pinMatch = "";
-//var pinfor = "";
 var noOfGuest = 1;
 var iscancelling = false;
 var OrderMasterID = 0;
@@ -24,10 +23,6 @@ var RoomId = 0;
 var HostUrl = '';
 var foodCourtOrder = false;
 var OrderDelivery = false;
-
-//Avata Change
-//var yogaOrder = false;
-//var spaOrder = false;
 
 var foodCourtAutoBillGenerate = false;
 var checks = [];
@@ -665,7 +660,6 @@ function bindForCancel(result) {
                 var myStr = $(".txtreason").val();
                 var newStr = myStr.replace(/  +/g, ' ');
                 if (newStr.length <= 4) {
-                    //if ($(".txtreason").val() == null || $(".txtreason").val() == "" || $(".txtreason").val() == " ") {
                     jAlert('Please Insert Cancel Reason more than 4 words.', "Alert!!", function () { $.alerts.dialogClass = null; });
                 }
                 else {
@@ -766,7 +760,6 @@ function SaveOrderedData() {
     ordermaster.OrderTypeID = OrderDelivery == true ? 4 : (foodCourtOrder == true ? 3 : (TableId > 0 ? 1 : 2));
 
     //Avata Change
-    //ordermaster.OrderTypeID = OrderDelivery == true ? 4 : (foodCourtOrder == true ? 3 : (yogaOrder == true ? 22 : (spaOrder == true ? 23 : (TableId > 0 ? 1 : 2))));
     ordermaster.Address = $('#txtAddress').val() == null ? '' : $('#txtAddress').val();
     $.ajax({
         type: "POST",
@@ -793,8 +786,6 @@ function SaveOrderedData() {
             }
             //Takeaway or Foodcourt
             else if (TableId == 0) {
-
-                //initialSetup(0, orderid, SageFrameHostURL,true,false)
                 var url = SageFrameHostURL + "/Order.aspx?OID=" + val[0];
                 window.location.href = url;
                 if (foodCourtAutoBillGenerate) {
@@ -807,8 +798,6 @@ function SaveOrderedData() {
                 jAlert("Ordered Saved successfully", "Information!!", function () {
                     var url = SageFrameHostURL + "/Dining.aspx";
                     window.location.href = url;
-                    // window.location=location.search.split("ReturnUrl=")[1];
-                    //parent.$.colorbox.close();
                 });
             }
         },
@@ -961,9 +950,7 @@ function GetDataForSalesBill(orderMasterId) {
                     if (!isab) {
                         totalAmount += parseFloat(amt);
                     }
-
-
-
+                    
                     if (!isab)
                         htmls += ("<td class='item-amount'>" + amt + "</td></tr>");
                     else
@@ -986,15 +973,10 @@ function GetDataForSalesBill(orderMasterId) {
                             rate += parseFloat(value.ExtraPrice * value.Quantity);
                         });
                         htmls += "</td>";
-                        //htmls += ("</td><td>" + qnty + "</td>");
-                        //htmls += ("<td class='item-rate'>" + (rate/qnty) + "</td>");
                         amt = parseFloat(rate);
-
-
+                        
                         totalAmount += parseFloat(amt);
-
-
-
+                        
                         if (!isab)
                             htmls += ("<td class='item-amount'>" + amt + "</td></tr>");
                         else
@@ -1005,8 +987,6 @@ function GetDataForSalesBill(orderMasterId) {
                             const i = costCenterGroup.findIndex(x => x.GroupId === value.GroupId);
                             costCenterGroup[i].TotalAmt += amt;
                         }
-
-
                     }
                     sn++;
                 });
@@ -1069,37 +1049,7 @@ function GetDataForSalesBill(orderMasterId) {
                 htmls += '<tr><td>PAN : </td><td><input type="text" id="txtPan" class="sfInputbox"/></td></tr>';
             }
             htmls += '</tbody></table></div>';
-            //if (foodCourtOrder) {
-            //    htmls += '<div class="right-secB">';
-            //    htmls += '<table runat="server" clientidmode="static" id="payBill"><tr>';
-            //    htmls += '<td>Change Pay Mode<span style="color:red;">*</span> : </td>';
-            //    htmls += '<td><select id="selPayMode" name="Paymode" class="sfInputbox">';
-            //    htmls += '<option selected value="1">CASH</option>';
-            //    htmls += '<option value="3">SWIPE</option>';
-            //    htmls += '<option value="2">CHEQUE</option>';
-            //    htmls += '<option value="5">eSewa</option>';
-            //    htmls += '<option value="6">FonePay</option>';
-            //    //htmls += '<option value="4">CREDIT</option>';
-            //    htmls += '</select></td></tr>';
-            //    htmls += '<tr class="cashpay"><td>Total Amount :</td>';
-            //    htmls += '<td><input type="text" class="txtnum sfInputbox" disabled id="txtTotalCalc" /></td></tr>';
-            //    htmls += '<tr class="cashpay"><td>Tender Amount :</td>';
-            //    htmls += '<td><input type="text" class="txtnum sfInputbox" onkeypress="return validateFloatKeyPress(this,event)" placeholder="0" id="txtTenderAmount" /></td></tr>';
-            //    htmls += '<tr class="cashpay"><td>Return Amount :</td>';
-            //    htmls += '<td><input type="text" class="txtnum sfInputbox"  onkeypress="return validateFloatKeyPress(this,event)" placeholder="0" id="txtReturnAmount" /></td>';
-            //    htmls += '</tr><tr id="prov" clientidmode="static" style="display:none;">';
-            //    htmls += '<td>Provider : </td>';
-            //    htmls += '<td><select id="selProv"></select></td>';
-            //    htmls += '</tr><tr id="cheq" clientidmode="static" style="display:none;">';
-            //    htmls += '<td>Cheque No<span style="color:red;">*</span> : </td>';
-            //    htmls += '<td><input type="text" name="Cheque" id="txtCheqNo" class="sfInputbox" /></td>';
-            //    htmls += ' </tr><tr id="trans" clientidmode="static" style="display:none;">';
-            //    htmls += '<td>Transaction No<span style="color:red;">*</span> : </td>';
-            //    htmls += '<td><input type="text" name="Transaction" id="txtTransNo" class="sfInputbox" /></td>';
-            //    htmls += '<tr class="cashpay"><td>Remarks :</td>';
-            //    htmls += '<td><textarea class="sfInputbox txtRemarks"></textarea></td></tr>';
-            //    htmls += '</tr></table></div>';
-            //}
+          
             htmls += '<input id="generateBill" type="button"  class="sfBtn restro-btn" value="Generate Bill" style="margin-left:10px;"/>';
 
             htmls += '<div id="divPaymentModes"></div>';
@@ -1111,7 +1061,6 @@ function GetDataForSalesBill(orderMasterId) {
             $('#DialogOrderDetail').html(htmls);
             $('#DialogOrderDetail').show();
             $('#OrderMenu').hide();
-            //$('#MenuDiv').removeClass("menu-bg");
 
             BindBillingTerm(totalAmount, totaldis, datas);
 
@@ -1120,8 +1069,7 @@ function GetDataForSalesBill(orderMasterId) {
                 $('#DialogOrderDetail').hide();
                 $('#OrderMenu').show();
             });
-
-
+            
             $(".txtdiscount").on('click', function (event) {
                 InitializeNumPin(this, $(this).val());
             });
@@ -1145,43 +1093,25 @@ function GetDataForSalesBill(orderMasterId) {
                 $("#selPayMode").on('change', function () {
                     let val = $("#selPayMode").val();
                     if (val == 1) { //for cash
-                        //$("#calculator").show();
                         $(".cashpay").show();
                         $("#prov").hide();
                         $("#trans").hide();
                         $("#cheq").hide();
                     }
                     if (val == 2) {
-                        //$("#calculator").hide();
                         $(".cashpay").hide();
                         $("#prov").show();
                         $("#trans").hide();
                         $("#cheq").show();
-                        //$("#btnPay").show();
                     }
                     if (val == 3 || val == 5 || val == 6) {
-                        //$("#calculator").hide();
                         $(".cashpay").hide();
                         $("#prov").show();
                         $("#trans").show();
                         $("#cheq").hide();
-                        //$("#btnPay").show();
                     }
-                    //if ($("#selPayMode").val() == 4) {
-                    //    //$("#calculator").hide();
-                    //    $(".cashpay").hide();
-                    //    $("#prov").hide();
-                    //    $("#trans").hide();
-                    //    $("#cheq").hide();
-                    //    //$("#btnPay").show();
-                    //    membershipfor = "payment";
-                    //    if (CustID > 0)
-                    //        DashboardFunction.DeleteItem(CustID);
-                    //    else
-                    //        DashboardFunction.GetCustomeronChange();
-                    //    $("#CashPaid").hide();
-                    //}
                 });
+
                 $("#txtTenderAmount, #txtReturnAmount").on('click', function () {
                     $(this).val('');
                 });
@@ -1277,11 +1207,9 @@ function GetDataForSalesBill(orderMasterId) {
                         }
                     }
                     amt = parseFloat(value.Quantity) * parseFloat(value.Rate);
-
-                    //if (!isab) {
+                    
                     totalAmount += parseFloat(amt);
-                    //}
-
+                
                     if (!isab)
                         itms += ("<td class='item-amount'>" + amt + "</td></tr>");
                     else
@@ -1299,21 +1227,13 @@ function GetDataForSalesBill(orderMasterId) {
                             rate += parseFloat(value.Quantity * value.ExtraPrice);
                         });
                         itms += ("</td>");
-                        //itms += ("</td><td>" + qnty + "</td>");
                         if ($("#selDiscountType").val() == "4") {
-                            //itms += ("<td class='item-rate'>" + 1 + "</td>");
                             amt = parseFloat(qnty);
                         } else {
-                            //itms += ("<td class='item-rate'>" + rate + "</td>");
                             amt = parseFloat(rate);
                         }
                         totalAmount += parseFloat(amt);
-
-                        //console.log('totalAmount: ' + totalAmount);
-
                         itms += ("<td class='item-amount'>" + amt + "</td></tr>");
-
-
                     }
                     sn++;
                     $('.item-list-tbl tbody').append(itms);
@@ -1348,13 +1268,9 @@ function GetDataForSalesBill(orderMasterId) {
                     $(".loyaltydisc").show();
                 } else {
                     $(".disc").show();
-                    //if (tableinfo.RoomBookDetailsID > 0) {
-                    //    $(".roomdisc").show();
-                    //}
                     $(".loyaltydisc").hide();
                 }
-
-
+                
                 BindBillingTerm(totalAmount, totaldis, datas);
             });
             $("#txtLoyaltyDiscount").on('change', function () {
@@ -1603,7 +1519,7 @@ function GetDataForSalesBill(orderMasterId) {
                 salesMaster.sumPizza = pizzaAmount;
                 salesMaster.DeliveryCharge = 0;
                 salesMaster.DeliveredBy = "";
-                debugger;
+          
                 $.each(billingterms, function (index, value) {
                     if (document.getElementById('BTerm_' + value.ID + '_' + value.IsAdd) != null) {
                         var bt = {
@@ -1624,8 +1540,7 @@ function GetDataForSalesBill(orderMasterId) {
                     Amount: $('#txtNetAmt').val().split(' ')[1]
                 }
                 billingTerm.push(bt);
-
-                debugger;
+                
                 $.each(orderdetails, function (index, value) {
                     var extra = [];
                     if (value.orderExtraItem != undefined && value.orderExtraItem.length > 0) {
@@ -1666,8 +1581,7 @@ function GetDataForSalesBill(orderMasterId) {
                 discount.bakerydis = $('#txtBakeryDiscount').val();
                 discount.pizzadis = $('#txtPizzaDiscount').val();
                 discount.CCGroup = costCenterGroup;
-
-                //if (foodCourtOrder) {
+                
                 var salesPaymentList = new Array();
                 $('.pmntCheck').each(function () {
                     if ($(this).is(':checked')) {
@@ -1794,6 +1708,7 @@ function BindPaymentModes() {
     });
 };
 function BindBillingTerm(totalAmount, totaldis, datas) {
+    debugger;
     //Abb Change
     var isab = companyInfo.IsAbbreviated;
     let v_rate = companyInfo.VATRate;

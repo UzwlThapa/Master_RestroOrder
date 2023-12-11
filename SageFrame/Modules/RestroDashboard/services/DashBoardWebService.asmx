@@ -264,12 +264,12 @@ public class DashBoardWebService : System.Web.Services.WebService
             throw ex;
         }
     }
+
     [WebMethod]
     public void CancelOrderIntoDataBase(OrderMasterClass orderMasterInfo)
     {
         try
         {
-            //List<OrderDetailClass> orderList = rocobj.GetOrderDetailsByMaster(orderMasterInfo.OrderMasterID);
             List<OrderDetailClass> orderList = roc.GetOrderDetailsByMaster(orderMasterInfo.OrderMasterID).Where(p => p.Status == "Ordered" && p.SeatNo == orderMasterInfo.GuestNo).ToList();
             roc.CancelOrder(orderMasterInfo);
             restroTable table = roc.GetTableNoBYId(Convert.ToInt32(orderMasterInfo.TableId));
@@ -283,7 +283,6 @@ public class DashBoardWebService : System.Web.Services.WebService
             foreach (OrderDetailClass ord in orderList)
             {
                 OrderDetailCancel cancelItm = new OrderDetailCancel();
-
                 cancelItm.orderMasterID = orderMasterInfo.OrderMasterID;
                 cancelItm.Item = ord.ROI_ItemName;
                 cancelItm.Quantity = ord.Quantity;
@@ -292,7 +291,6 @@ public class DashBoardWebService : System.Web.Services.WebService
                 cancelItm.CanceledBy = orderMasterInfo.CancelBy;
                 cancelItm.OrderBy = orderMasterInfo.UserName;
                 cancelItm.tableId = table.restrotableId;
-
                 CancelItems.Add(cancelItm);
             }
             roc.SaveCanceledItems(CancelItems);
