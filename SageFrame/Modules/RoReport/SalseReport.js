@@ -85,15 +85,14 @@ function IntegerAndDecimal(evt, element) {
                 eventFunction.GetOrderType();
                 $("#DailyReport").on("click", ".btnCancelBill", function () {
                     $('#hdnPinFor').val('CancelBill');
-                    InitializePin();
                     salesId = $(this).attr('id');
+                    InitializePin();
                 });
 
                 $("#DailyReport").on("click", ".btnEditCustomer", function () {
                     $('#hdnPinFor').val('EditBill');
+                    salesId = $(this).attr('id');
                     InitializePin();
-                    salesId = $(this).attr('id').split('_')[0];
-
                 });
 
                 $("#selSalesReturn").on('click', function (){
