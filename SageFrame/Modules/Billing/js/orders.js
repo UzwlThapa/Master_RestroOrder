@@ -776,7 +776,6 @@ function SaveOrderedData() {
     ordermaster.OrderTypeID = OrderDelivery == true ? 4 : (foodCourtOrder == true ? 3 : (TableId > 0 ? 1 : 2));
 
     //Avata Change
-    //ordermaster.OrderTypeID = OrderDelivery == true ? 4 : (foodCourtOrder == true ? 3 : (yogaOrder == true ? 22 : (spaOrder == true ? 23 : (TableId > 0 ? 1 : 2))));
     ordermaster.Address = $('#txtAddress').val() == null ? '' : $('#txtAddress').val();
     $.ajax({
         type: "POST",

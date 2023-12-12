@@ -87,7 +87,6 @@ function IntegerAndDecimal(evt, element) {
                     $('#hdnPinFor').val('CancelBill');
                     InitializePin();
                     salesId = $(this).attr('id');
-
                 });
 
                 $("#DailyReport").on("click", ".btnEditCustomer", function () {
@@ -150,8 +149,8 @@ function IntegerAndDecimal(evt, element) {
                                                 eventFunction.config.ajaxCallMode = 6;
                                                 eventFunction.ajaxCall(eventFunction.config);
                                                 $(this).dialog('close');
-                                                eventFunction.GetBill(ids);
-                                                $('#btnPrints').click();
+                                                //eventFunction.GetBill(ids);
+                                                //$('#btnPrints').click();
                                             }
                                         },
                                         
@@ -767,7 +766,6 @@ function IntegerAndDecimal(evt, element) {
                         break;
                     case 7:
                         salesReport = JSON.parse(data.d);
-                        console.log(salesReport);
                         eventFunction.BindSalesDaily();
                         break;
                     case 8:
@@ -776,7 +774,6 @@ function IntegerAndDecimal(evt, element) {
                     case 9:
                         break;
                     case 10:
-                        //eventFunction.bindBillBody(data.d);
                         break;
                     case 11:
                         terms = [];
@@ -1301,8 +1298,6 @@ function IntegerAndDecimal(evt, element) {
 
                             htmls += '<td class="tdcenter">';
                             
-                            //smID = value.salesMasterId + "_" + value.SPMID + "_" + value.Status + "_" + value.SalesType;
-
                             var roles = userRole.split(',');
                             if (roles.includes("Super User") || roles.includes("Void Bill")) {
                                 if (value.EditBill && value.BillCancelled != 1 && value.IsArchived != 1) {
