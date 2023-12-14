@@ -657,6 +657,7 @@ function bindForCancel(result) {
             });
 
             $('.saveCanceledItem').unbind('click').on('click', function () {
+                debugger;
                 var myStr = $(".txtreason").val();
                 var newStr = myStr.replace(/  +/g, ' ');
                 if (newStr.length <= 4) {
@@ -2283,6 +2284,7 @@ function initialSetup(tableId, oId, hostUrl, foodCourt, Delievery) {
     $(".sfCol_13").hide();
 
     $('#SendOrder').on('click', function () {
+        debugger;
         if (OrderDelivery == true) {
             if ($("#txtCustName").val().length < 3) {
                 jAlert('Please Insert valid name', 'Alert!!');

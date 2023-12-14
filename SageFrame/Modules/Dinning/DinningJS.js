@@ -1228,6 +1228,7 @@ function IntegerAndDecimal(evt, element) {
                     });
                 });
                 $('#DialogOrderDetail').on('click', '.ordernow', function () {
+                    debugger;
                     var id = $(this).attr('id');
                     var data = id.split('_');
                     var url = p.HostUrl + "/Order.aspx?ID=" + encodeURIComponent(data[1]);

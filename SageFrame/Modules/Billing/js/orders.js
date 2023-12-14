@@ -2290,7 +2290,7 @@ function initialSetup(tableId, oId, hostUrl, foodCourt, Delievery) {
     //document.onkeydown = BillShortcutKey;
     $('#hdnPinMatch').on('change', function () {
         if ($('#hdnPinMatch').val() == "true") {
-            //$('#hdnPinMatch').unbind('change');
+            debugger;
             var pinFor = $('#hdnPinFor').val();
             if (pinFor == 'generateBill') {
                 $('.paynows').click();
