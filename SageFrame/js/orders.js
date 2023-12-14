@@ -675,7 +675,7 @@ function bindForCancel(result) {
                             Responsible: $('#tblforcancelitem tbody').find('tr:eq(' + i + ')').find('.selResponsible option:selected').text(),
                             tableId: TableId
                         }
-                        cancelobjs.push(cancelobj); 67
+                        cancelobjs.push(cancelobj);
                     }
 
                     SaveCanceledItems(cancelobjs);
