@@ -716,7 +716,7 @@ function SaveOrderedData() {
     var orderDetailsList = new Array();
     for (var i = 0; i < OrderListArray.length; i++) {
         var orderDetail = new Object();
-        orderDetail.Quantity = OrderListArray[i].Quantity,
+        orderDetail.Quantity = parseInt(OrderListArray[i].Quantity),
             orderDetail.ItemId = OrderListArray[i].ItemId,
             orderDetail.IsCombo = OrderListArray[i].IsCombo,
             orderDetail.Rate = 0.0,
@@ -950,7 +950,7 @@ function GetDataForSalesBill(orderMasterId) {
                     if (!isab) {
                         totalAmount += parseFloat(amt);
                     }
-                    
+
                     if (!isab)
                         htmls += ("<td class='item-amount'>" + amt + "</td></tr>");
                     else
@@ -974,9 +974,9 @@ function GetDataForSalesBill(orderMasterId) {
                         });
                         htmls += "</td>";
                         amt = parseFloat(rate);
-                        
+
                         totalAmount += parseFloat(amt);
-                        
+
                         if (!isab)
                             htmls += ("<td class='item-amount'>" + amt + "</td></tr>");
                         else
@@ -1049,7 +1049,7 @@ function GetDataForSalesBill(orderMasterId) {
                 htmls += '<tr><td>PAN : </td><td><input type="text" id="txtPan" class="sfInputbox"/></td></tr>';
             }
             htmls += '</tbody></table></div>';
-          
+
             htmls += '<input id="generateBill" type="button"  class="sfBtn restro-btn" value="Generate Bill" style="margin-left:10px;"/>';
 
             htmls += '<div id="divPaymentModes"></div>';
@@ -1069,7 +1069,7 @@ function GetDataForSalesBill(orderMasterId) {
                 $('#DialogOrderDetail').hide();
                 $('#OrderMenu').show();
             });
-            
+
             $(".txtdiscount").on('click', function (event) {
                 InitializeNumPin(this, $(this).val());
             });
@@ -1207,9 +1207,9 @@ function GetDataForSalesBill(orderMasterId) {
                         }
                     }
                     amt = parseFloat(value.Quantity) * parseFloat(value.Rate);
-                    
+
                     totalAmount += parseFloat(amt);
-                
+
                     if (!isab)
                         itms += ("<td class='item-amount'>" + amt + "</td></tr>");
                     else
@@ -1270,7 +1270,7 @@ function GetDataForSalesBill(orderMasterId) {
                     $(".disc").show();
                     $(".loyaltydisc").hide();
                 }
-                
+
                 BindBillingTerm(totalAmount, totaldis, datas);
             });
             $("#txtLoyaltyDiscount").on('change', function () {
@@ -1519,7 +1519,7 @@ function GetDataForSalesBill(orderMasterId) {
                 salesMaster.sumPizza = pizzaAmount;
                 salesMaster.DeliveryCharge = 0;
                 salesMaster.DeliveredBy = "";
-          
+
                 $.each(billingterms, function (index, value) {
                     if (document.getElementById('BTerm_' + value.ID + '_' + value.IsAdd) != null) {
                         var bt = {
@@ -1540,7 +1540,7 @@ function GetDataForSalesBill(orderMasterId) {
                     Amount: $('#txtNetAmt').val().split(' ')[1]
                 }
                 billingTerm.push(bt);
-                
+
                 $.each(orderdetails, function (index, value) {
                     var extra = [];
                     if (value.orderExtraItem != undefined && value.orderExtraItem.length > 0) {
@@ -1581,7 +1581,7 @@ function GetDataForSalesBill(orderMasterId) {
                 discount.bakerydis = $('#txtBakeryDiscount').val();
                 discount.pizzadis = $('#txtPizzaDiscount').val();
                 discount.CCGroup = costCenterGroup;
-                
+
                 var salesPaymentList = new Array();
                 $('.pmntCheck').each(function () {
                     if ($(this).is(':checked')) {
@@ -1604,7 +1604,7 @@ function GetDataForSalesBill(orderMasterId) {
                         salesPaymentList.push(salesPayment);
                     }
                 });
-               
+
                 jConfirm('Are You Sure  ?', 'Pay', function (confirmed) {
                     if (confirmed) {
                         SaveFoodCourtSalesBill(salesMaster, salesDetail, splited, billingTerm, discount, salesPaymentList)
@@ -1652,7 +1652,7 @@ function BindPaymentModes() {
     htmls += '</table>';
 
     $("#divPaymentModes").html(htmls);
-    
+
     $('.txtPayAmount').on('change', function () {
         totalPayAmnt = 0.00;
         $('.txtPayAmount').each(function () {
@@ -1746,19 +1746,19 @@ function BindBillingTerm(totalAmount, totaldis, datas) {
     amntAfterDisc = (parseFloat(totalAmount) - parseFloat(totaldis)).toFixed(2);
     netAmount = 0.00;
     $.each(datas.billingTerm, function (index, item) {
-            if (item.BillTerm != "Evening Discount") {
-                if (item.BillTerm != "VAT") {
-                    htmls += ("<tr>");
-                    htmls += ("<td attr-term='" + item.BillTerm + "' attr-percent='" + item.Rate + "'  ><strong>" + item.BillTerm + " " + "(" + item.Rate + "%" + ")" + " : </strong>");
-                    htmls += ("<input type=\"text\" id=\"BTerm_" + item.ID + "_" + item.IsAdd + "\" value=\"Rs. " + (amntAfterDisc * item.Rate / 100).toFixed(2) + "\" class=\"sfInputbox_bill\" disabled  attr-amount='" + (amntAfterDisc * item.Rate / 100).toFixed(2) + "'/>");
-                    htmls += ("</td>");
-                    htmls += ("</tr>");
-                    if (item.IsAdd == 1)
-                        netAmount += parseFloat((amntAfterDisc * item.Rate / 100).toFixed(2));
-                    else
-                        netAmount -= parseFloat((amntAfterDisc * item.Rate / 100).toFixed(2));
-                }
-            } 
+        if (item.BillTerm != "Evening Discount") {
+            if (item.BillTerm != "VAT") {
+                htmls += ("<tr>");
+                htmls += ("<td attr-term='" + item.BillTerm + "' attr-percent='" + item.Rate + "'  ><strong>" + item.BillTerm + " " + "(" + item.Rate + "%" + ")" + " : </strong>");
+                htmls += ("<input type=\"text\" id=\"BTerm_" + item.ID + "_" + item.IsAdd + "\" value=\"Rs. " + (amntAfterDisc * item.Rate / 100).toFixed(2) + "\" class=\"sfInputbox_bill\" disabled  attr-amount='" + (amntAfterDisc * item.Rate / 100).toFixed(2) + "'/>");
+                htmls += ("</td>");
+                htmls += ("</tr>");
+                if (item.IsAdd == 1)
+                    netAmount += parseFloat((amntAfterDisc * item.Rate / 100).toFixed(2));
+                else
+                    netAmount -= parseFloat((amntAfterDisc * item.Rate / 100).toFixed(2));
+            }
+        }
     });
 
     netAmount = parseFloat((parseFloat(netAmount) + parseFloat(amntAfterDisc)).toFixed(2));
@@ -1776,7 +1776,7 @@ function BindBillingTerm(totalAmount, totaldis, datas) {
 
                 }
             }
-            
+
             htmls += ("<td attr-term='Taxable Amount' attr-percent='0' ><strong>Taxable Amount : </strong><input type=\"text\" id=\"txtTaxableAmt\" value=\"Rs. " + netAmount.toFixed(2) + "\"  class=\"sfInputbox_bill afterdiscountAmt \" disabled attr-amount='" + netAmount.toFixed(2) + "'/></td>");
             htmls += ("</tr>");
             if (!isab) {
@@ -2114,7 +2114,7 @@ function initialSetup(tableId, oId, hostUrl, foodCourt, Delievery) {
                     $("#enablebtn").hide();
                 }
                 else {
-                    jAlert('Discount is not Allowed', "Information!!", function () {});
+                    jAlert('Discount is not Allowed', "Information!!", function () { });
                 }
             } else if (pinFor == 'SendOrder') {
                 if (($("#orderlist-table tbody tr").length) > 0) {
