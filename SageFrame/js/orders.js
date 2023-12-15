@@ -506,6 +506,7 @@ function GetExtraItemsByItem() {
         }
     });
 }
+
 function BindItemsToOrder(NpitemID, NpitemName, IsCombo, IsOutOfStock, Nprate) {
     var ispresent = 1;
     var result = 0;
@@ -515,6 +516,7 @@ function BindItemsToOrder(NpitemID, NpitemName, IsCombo, IsOutOfStock, Nprate) {
             result = 1;
         }
     });
+
     if (result == 0) {
         var order = new Object();
         order.ItemId = parseInt(NpitemID);
@@ -537,16 +539,14 @@ function BindItemsToOrder(NpitemID, NpitemName, IsCombo, IsOutOfStock, Nprate) {
         order.IsOutOfStock = IsOutOfStock;
         order.Rate = Nprate;
         OrderListArray.push(order);
-
         BindItemsToList();
     }
     else {
-        //alert('Item Already Entered Please increase the Quantity');
         $('#qty_' + NpitemID + '_' + IsCombo).val((parseInt($('#qty_' + NpitemID + '_' + IsCombo).val()) + 1));
         $('#qty_' + NpitemID + '_' + IsCombo).keyup();
-
     }
 }
+
 function BindItemsToList() {
     $(".bindorderlist").html('');
     $(".bindorderlistfoot").html('');
@@ -572,8 +572,8 @@ function BindItemsToList() {
     });
     $(".bindorderlist").html(htmls);
     CalculateTotal();
-
 }
+
 function isNumber(evt) {
     evt = (evt) ? evt : window.event;
     var charCode = (evt.which) ? evt.which : evt.keyCode;
@@ -717,7 +717,7 @@ function SaveOrderedData() {
     var orderDetailsList = new Array();
     for (var i = 0; i < OrderListArray.length; i++) {
         var orderDetail = new Object();
-        orderDetail.Quantity = OrderListArray[i].Quantity,
+        orderDetail.Quantity = parseInt(OrderListArray[i].Quantity),
             orderDetail.ItemId = OrderListArray[i].ItemId,
             orderDetail.IsCombo = OrderListArray[i].IsCombo,
             orderDetail.Rate = 0.0,
@@ -726,7 +726,6 @@ function SaveOrderedData() {
         orderDetail.Amount = 0.0
         orderDetail.Waiter = SageFrameUserName;
         orderDetailsList.push(orderDetail);
-
     }
 
     let guestNo = 1;
@@ -745,7 +744,7 @@ function SaveOrderedData() {
     ordermaster.BasicAmount = 0.0,
         ordermaster.BillNo = "",
         ordermaster.Date = Date.now,
-        ordermaster.IsCancelled = cancel,
+        ordermaster.IsCancelled = false,
         ordermaster.TermAmount = 0.0,
         ordermaster.NetAmount = 0.0,
         ordermaster.UserName = $('#hdnPinBy').val(),
@@ -771,7 +770,7 @@ function SaveOrderedData() {
         contentType: "application/json; charset=utf-8",
         dataType: "json",
         success: function (data) {
-
+            debugger;
             var val = data.d.split("_");
             var orderid = val[0];
             $.each(val, function (index, value) {
@@ -951,7 +950,7 @@ function GetDataForSalesBill(orderMasterId) {
                     if (!isab) {
                         totalAmount += parseFloat(amt);
                     }
-                    
+
                     if (!isab)
                         htmls += ("<td class='item-amount'>" + amt + "</td></tr>");
                     else
@@ -975,9 +974,9 @@ function GetDataForSalesBill(orderMasterId) {
                         });
                         htmls += "</td>";
                         amt = parseFloat(rate);
-                        
+
                         totalAmount += parseFloat(amt);
-                        
+
                         if (!isab)
                             htmls += ("<td class='item-amount'>" + amt + "</td></tr>");
                         else
@@ -1050,7 +1049,7 @@ function GetDataForSalesBill(orderMasterId) {
                 htmls += '<tr><td>PAN : </td><td><input type="text" id="txtPan" class="sfInputbox"/></td></tr>';
             }
             htmls += '</tbody></table></div>';
-          
+
             htmls += '<input id="generateBill" type="button"  class="sfBtn restro-btn" value="Generate Bill" style="margin-left:10px;"/>';
 
             htmls += '<div id="divPaymentModes"></div>';
@@ -1070,7 +1069,7 @@ function GetDataForSalesBill(orderMasterId) {
                 $('#DialogOrderDetail').hide();
                 $('#OrderMenu').show();
             });
-            
+
             $(".txtdiscount").on('click', function (event) {
                 InitializeNumPin(this, $(this).val());
             });
@@ -1208,9 +1207,9 @@ function GetDataForSalesBill(orderMasterId) {
                         }
                     }
                     amt = parseFloat(value.Quantity) * parseFloat(value.Rate);
-                    
+
                     totalAmount += parseFloat(amt);
-                
+
                     if (!isab)
                         itms += ("<td class='item-amount'>" + amt + "</td></tr>");
                     else
@@ -1271,7 +1270,7 @@ function GetDataForSalesBill(orderMasterId) {
                     $(".disc").show();
                     $(".loyaltydisc").hide();
                 }
-                
+
                 BindBillingTerm(totalAmount, totaldis, datas);
             });
             $("#txtLoyaltyDiscount").on('change', function () {
@@ -1520,7 +1519,7 @@ function GetDataForSalesBill(orderMasterId) {
                 salesMaster.sumPizza = pizzaAmount;
                 salesMaster.DeliveryCharge = 0;
                 salesMaster.DeliveredBy = "";
-          
+
                 $.each(billingterms, function (index, value) {
                     if (document.getElementById('BTerm_' + value.ID + '_' + value.IsAdd) != null) {
                         var bt = {
@@ -1541,7 +1540,7 @@ function GetDataForSalesBill(orderMasterId) {
                     Amount: $('#txtNetAmt').val().split(' ')[1]
                 }
                 billingTerm.push(bt);
-                
+
                 $.each(orderdetails, function (index, value) {
                     var extra = [];
                     if (value.orderExtraItem != undefined && value.orderExtraItem.length > 0) {
@@ -1582,7 +1581,7 @@ function GetDataForSalesBill(orderMasterId) {
                 discount.bakerydis = $('#txtBakeryDiscount').val();
                 discount.pizzadis = $('#txtPizzaDiscount').val();
                 discount.CCGroup = costCenterGroup;
-                
+
                 var salesPaymentList = new Array();
                 $('.pmntCheck').each(function () {
                     if ($(this).is(':checked')) {
@@ -1605,7 +1604,7 @@ function GetDataForSalesBill(orderMasterId) {
                         salesPaymentList.push(salesPayment);
                     }
                 });
-               
+
                 jConfirm('Are You Sure  ?', 'Pay', function (confirmed) {
                     if (confirmed) {
                         SaveFoodCourtSalesBill(salesMaster, salesDetail, splited, billingTerm, discount, salesPaymentList)
@@ -1653,7 +1652,7 @@ function BindPaymentModes() {
     htmls += '</table>';
 
     $("#divPaymentModes").html(htmls);
-    
+
     $('.txtPayAmount').on('change', function () {
         totalPayAmnt = 0.00;
         $('.txtPayAmount').each(function () {
@@ -1747,19 +1746,19 @@ function BindBillingTerm(totalAmount, totaldis, datas) {
     amntAfterDisc = (parseFloat(totalAmount) - parseFloat(totaldis)).toFixed(2);
     netAmount = 0.00;
     $.each(datas.billingTerm, function (index, item) {
-            if (item.BillTerm != "Evening Discount") {
-                if (item.BillTerm != "VAT") {
-                    htmls += ("<tr>");
-                    htmls += ("<td attr-term='" + item.BillTerm + "' attr-percent='" + item.Rate + "'  ><strong>" + item.BillTerm + " " + "(" + item.Rate + "%" + ")" + " : </strong>");
-                    htmls += ("<input type=\"text\" id=\"BTerm_" + item.ID + "_" + item.IsAdd + "\" value=\"Rs. " + (amntAfterDisc * item.Rate / 100).toFixed(2) + "\" class=\"sfInputbox_bill\" disabled  attr-amount='" + (amntAfterDisc * item.Rate / 100).toFixed(2) + "'/>");
-                    htmls += ("</td>");
-                    htmls += ("</tr>");
-                    if (item.IsAdd == 1)
-                        netAmount += parseFloat((amntAfterDisc * item.Rate / 100).toFixed(2));
-                    else
-                        netAmount -= parseFloat((amntAfterDisc * item.Rate / 100).toFixed(2));
-                }
-            } 
+        if (item.BillTerm != "Evening Discount") {
+            if (item.BillTerm != "VAT") {
+                htmls += ("<tr>");
+                htmls += ("<td attr-term='" + item.BillTerm + "' attr-percent='" + item.Rate + "'  ><strong>" + item.BillTerm + " " + "(" + item.Rate + "%" + ")" + " : </strong>");
+                htmls += ("<input type=\"text\" id=\"BTerm_" + item.ID + "_" + item.IsAdd + "\" value=\"Rs. " + (amntAfterDisc * item.Rate / 100).toFixed(2) + "\" class=\"sfInputbox_bill\" disabled  attr-amount='" + (amntAfterDisc * item.Rate / 100).toFixed(2) + "'/>");
+                htmls += ("</td>");
+                htmls += ("</tr>");
+                if (item.IsAdd == 1)
+                    netAmount += parseFloat((amntAfterDisc * item.Rate / 100).toFixed(2));
+                else
+                    netAmount -= parseFloat((amntAfterDisc * item.Rate / 100).toFixed(2));
+            }
+        }
     });
 
     netAmount = parseFloat((parseFloat(netAmount) + parseFloat(amntAfterDisc)).toFixed(2));
@@ -1777,7 +1776,7 @@ function BindBillingTerm(totalAmount, totaldis, datas) {
 
                 }
             }
-            
+
             htmls += ("<td attr-term='Taxable Amount' attr-percent='0' ><strong>Taxable Amount : </strong><input type=\"text\" id=\"txtTaxableAmt\" value=\"Rs. " + netAmount.toFixed(2) + "\"  class=\"sfInputbox_bill afterdiscountAmt \" disabled attr-amount='" + netAmount.toFixed(2) + "'/></td>");
             htmls += ("</tr>");
             if (!isab) {
@@ -2065,8 +2064,9 @@ function Print() {
         document.body.removeChild(frame1);
     }, 500);
 }
-function CancelOrderedData() {
 
+function CancelOrderedData() {
+    debugger;
     var id = OrderMasterID;
     var cancel = false;
     var ordermaster = new Object();
@@ -2078,24 +2078,25 @@ function CancelOrderedData() {
     ordermaster.CancelReason = $("#canceltextarea").val();
     ordermaster.CancelBy = $('#hdnPinBy').val();
     ordermaster.UserName = $('#hdnPinBy').val();
-    ordermaster.IsCancelled = true,
-        $.ajax({
-            type: "POST",
-            async: false,
-            cache: false,
-            url: baseUrl + "CancelOrderIntoDataBase",
-            data: JSON2.stringify({ orderMasterInfo: ordermaster }),
-            contentType: "application/json; charset=utf-8",
-            dataType: "json",
-            success: function (data) {
-                jAlert('Ordered Cancelled successfully', 'Information!!', function () {
-                    parent.$.colorbox.close();
-                });
-            },
-            failure: function (response) {
-                jAlert("Sorry some error occured. Contact the support team.", "Error!!");
-            }
-        });
+    ordermaster.IsCancelled = true;
+
+    $.ajax({
+        type: "POST",
+        async: false,
+        cache: false,
+        url: baseUrl + "CancelOrderIntoDataBase",
+        data: JSON2.stringify({ orderMasterInfo: ordermaster }),
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        success: function (data) {
+            jAlert('Ordered Cancelled successfully', 'Information!!', function () {
+                parent.$.colorbox.close();
+            });
+        },
+        failure: function (response) {
+            jAlert("Sorry some error occured. Contact the support team.", "Error!!");
+        }
+    });
 }
 
 //Avata Change
@@ -2115,7 +2116,7 @@ function initialSetup(tableId, oId, hostUrl, foodCourt, Delievery) {
                     $("#enablebtn").hide();
                 }
                 else {
-                    jAlert('Discount is not Allowed', "Information!!", function () {});
+                    jAlert('Discount is not Allowed', "Information!!", function () { });
                 }
             } else if (pinFor == 'SendOrder') {
                 if (($("#orderlist-table tbody tr").length) > 0) {
@@ -2319,16 +2320,14 @@ function initialSetup(tableId, oId, hostUrl, foodCourt, Delievery) {
     });
 
     $('#btnSumbit').unbind('click').on('click', function () {
+        debugger;
         var myStr = $("#canceltextarea").val();
         var newStr = myStr.replace(/  +/g, ' ');
         if (newStr.length <= 4) {
-            // if ($("#canceltextarea").val() == null || $("#canceltextarea").val() == "" || $("#canceltextarea").val() == " ") {
             jAlert('Please Insert Cancel Reason more than 4 words.', "Alert!!", function () { $.alerts.dialogClass = null; });
         } else {
             CancelOrderedData();
         }
-
-
     });
 
     $('#billno').change(function () {
@@ -2658,6 +2657,7 @@ function initialSetup(tableId, oId, hostUrl, foodCourt, Delievery) {
         height: winheight + 'px'
     });
 }
+
 function GetPreviousItemByID(Id, OID) {
     $.ajax({
         type: "POST",
@@ -2668,6 +2668,7 @@ function GetPreviousItemByID(Id, OID) {
         contentType: "application/json; charset=utf-8",
         dataType: "json",
         success: function (data) {
+            debugger;
             completedOrders = data.d.CompOrders;
             inprogressOrders = data.d.InPrgOrders;
             var allOrders = data.d.AllOrders;
@@ -2688,8 +2689,6 @@ function GetPreviousItemByID(Id, OID) {
             $('#txtTokenNo').val((allOrders[0].TokenNo == -1 ? "" : allOrders[0].TokenNo));
             $("#txtAddress").val(allOrders[0].Address == null ? "" : allOrders[0].Address);
             $("#txtNoOfPax").val(allOrders[0].GuestNo == null ? "" : allOrders[0].GuestNo);
-
-
 
             if (allOrders[0].CustomerID > 0) {
                 $('.customerForOrder').prop('checked', true);

@@ -22,16 +22,15 @@ public class OrderItemWebservice : System.Web.Services.WebService
 {
     public OrderItemWebservice()
     {
-
-        //Uncomment the following line if using designed components 
-        //InitializeComponent(); 
     }
+
     [WebMethod]
     public List<extraItem> GetExtraItemsByItem()
     {
         RestrOrderController roc = new RestrOrderController();
         return roc.getExtraItemforItem().Where(p => p.IsActive == true && p.IsDeleted == false).ToList();
     }
+
     [WebMethod]
     public int SaveSalesBill(SalesMaster salesMaster, List<SalesDetails> salesDetail, int splited, List<customerBilling> billingTerm, flatorperdiscount flatorperdiscount)
     {
@@ -45,6 +44,7 @@ public class OrderItemWebservice : System.Web.Services.WebService
             throw ex;
         }
     }
+
     [WebMethod]
     public SalesBill GetDataForSalesBill(int orderMasterId)
     {
@@ -78,6 +78,7 @@ public class OrderItemWebservice : System.Web.Services.WebService
             throw ex;
         }
     }
+
     [WebMethod]
     public List<MemberInfo> getsdatass(int customer)
     {
@@ -85,6 +86,7 @@ public class OrderItemWebservice : System.Web.Services.WebService
         return dfcobj.getmembershiplist(customer);
 
     }
+
     [WebMethod]
     public string savePrintCount(int Printcount, string BillNo, string PrintedBy)
     {
@@ -96,6 +98,7 @@ public class OrderItemWebservice : System.Web.Services.WebService
         return "";
 
     }
+
     [WebMethod]
     public string CheckPinCodeMatch(string PinCode, string username)
     {
@@ -103,6 +106,7 @@ public class OrderItemWebservice : System.Web.Services.WebService
         string available = controller.CheckPinCodeMatch(PinCode, username);
         return available;
     }
+
     [WebMethod]
     public List<OrderDetailCancel> getOrderDetailByOrderMasterID(int OrderMasterID)
     {
@@ -116,18 +120,21 @@ public class OrderItemWebservice : System.Web.Services.WebService
             IsCombo = g.First().IsCombo
         }).ToList();
     }
+
     [WebMethod]
     public void SaveCanceledItems(List<OrderDetailCancel> CancelItems)
     {
         RestrOrderController controller = new RestrOrderController();
         controller.SaveCanceledItems(CancelItems);
     }
+
     [WebMethod]
     public List<cumbomain> getitemforcumbo()
     {
         RestrOrderController rocobj = new RestrOrderController();
         return rocobj.getcumbolist(true);
     }
+
     [WebMethod]
     public string HelloWorld()
     {
@@ -148,8 +155,8 @@ public class OrderItemWebservice : System.Web.Services.WebService
 
             throw;
         }
-
     }
+
     [WebMethod]
     public List<CategoriesClass> GetCategoriesBymenuID(int MenuId, int languageid)
     {
@@ -157,16 +164,12 @@ public class OrderItemWebservice : System.Web.Services.WebService
         {
             RestrOrderController rocobj = new RestrOrderController();
             return rocobj.GetCategoriesBymenuID(MenuId, languageid);
-
         }
         catch (Exception)
         {
-
             throw;
         }
-
     }
-
 
     [WebMethod]
     public List<ItemsClass> GetItemByCategoryID(int CategoriesID, int LanguageID)
@@ -175,15 +178,13 @@ public class OrderItemWebservice : System.Web.Services.WebService
         {
             RestrOrderController rocobj = new RestrOrderController();
             return rocobj.GetItemByCategoryID(CategoriesID, LanguageID);
-
         }
         catch (Exception)
         {
-
             throw;
         }
-
     }
+
     public class ItemsList
     {
         public List<ItemsClass> CompOrders { get; set; }
@@ -191,6 +192,7 @@ public class OrderItemWebservice : System.Web.Services.WebService
         public List<ItemsClass> OrderedOrders { get; set; }
         public List<ItemsClass> AllOrders { get; set; }
     }
+
     [WebMethod]
     public ItemsList GetPreviousItemByID(int Id, int RId, int OID)
     {
@@ -265,8 +267,8 @@ public class OrderItemWebservice : System.Web.Services.WebService
         {
             throw;
         }
-
     }
+
     [WebMethod]
     public List<OrderExtraItem> GetOrderedExtraItemByOrderMaster(int orderMasterID)
     {
@@ -297,12 +299,8 @@ public class OrderItemWebservice : System.Web.Services.WebService
                 else
                 {
                     itemList = rocobj.getitemwithRate(ord.ItemId);
-                    //ord.orderExtraItem = orderExtraItem.Where(p => p.ItemID == ord.ItemId).ToList();
-
-
                 }
                 BasicAmount += (Convert.ToDecimal(itemList[0].SRate) * Convert.ToDecimal(ord.Quantity));
-
             }
 
             RestroRoom room = new RestroRoom();
@@ -315,7 +313,6 @@ public class OrderItemWebservice : System.Web.Services.WebService
                         if (orderMasterInfo.TableId != "0")
                         {
                             room = rocobj.GetRoomByTable(Convert.ToInt32(orderMasterInfo.TableId));
-
                         }
                         else
                         {
@@ -327,60 +324,59 @@ public class OrderItemWebservice : System.Web.Services.WebService
                 }
             }
 
-
             FiscalYear fyear = rocobj.GetRONumberByFiscalYear();
             orderMasterInfo.BillNo = "RO" + orderMasterInfo.Date.ToString().Replace("/", "").Replace("PM", "").Replace("AM", "").Replace(":", "").Replace(" ", "");
             orderMasterInfo.BasicAmount = BasicAmount;
             orderMasterInfo.Status = status;
             if (String.IsNullOrEmpty(orderMasterInfo.Remarks))
+            {
                 orderMasterInfo.Remarks = "Fine";
+            }
 
-            List<OrderDetailClass> lst = new List<OrderDetailClass>();
-            lst = rocobj.GetOrderDetailsByMaster(orderMasterInfo.OrderMasterID);
+            List<OrderDetailClass> orderInDatabase = rocobj.GetOrderDetailsByMaster(orderMasterInfo.OrderMasterID);
 
-            //rocobj.DeleteOrderDetailByMaster(orderMasterInfo.OrderMasterID, orderMasterInfo.ArchivedBy);
             List<OrderDetailClass> addedOrders = new List<OrderDetailClass>();
             List<OrderDetailClass> cancelledOrders = new List<OrderDetailClass>();
-            if (lst.Count > 0)
+            if (orderInDatabase.Count > 0)
             {
-                foreach (OrderDetailClass ord in orderMasterInfo.OrderDetailsList)
+                foreach (OrderDetailClass requestOrder in orderMasterInfo.OrderDetailsList)
                 {
-                    List<OrderDetailClass> prevOrders = lst.Where(p => p.ItemId == ord.ItemId && p.SeatNo == ord.SeatNo && p.IsCombo == ord.IsCombo && p.Status == "Ordered").ToList();
+                    List<OrderDetailClass> prevOrders = orderInDatabase.Where(p => p.ItemId == requestOrder.ItemId && p.SeatNo == requestOrder.SeatNo && p.IsCombo == requestOrder.IsCombo && p.Status == "Ordered").ToList();
                     if (prevOrders.Count > 0)
                     {
-                        if (ord.Quantity > prevOrders.Sum(p => p.Quantity))
+                        if (requestOrder.Quantity > prevOrders.Sum(p => p.Quantity))
                         {
-                            ord.Quantity = ord.Quantity - prevOrders.Sum(p => p.Quantity);
-                            ord.Note = ord.Note.Substring(ord.Note.LastIndexOf(';') + 1);
-                            ord.Status = "Ordered";
-                            addedOrders.Add(ord);
+                            requestOrder.Quantity = requestOrder.Quantity - prevOrders.Sum(p => p.Quantity);
+                            requestOrder.Note = requestOrder.Note.Substring(requestOrder.Note.LastIndexOf(';') + 1);
+                            requestOrder.Status = "Ordered";
+                            addedOrders.Add(requestOrder);
                         }
-                        else if (ord.Quantity < prevOrders.Sum(p => p.Quantity))
+                        else if (requestOrder.Quantity < prevOrders.Sum(p => p.Quantity))
                         {
-                            ord.OrderDetailsID = 0;
-                            ord.Quantity = prevOrders.Sum(p => p.Quantity) - ord.Quantity;
-
-                            ord.Status = "Ordered";
-                            cancelledOrders.Add(ord);
+                            requestOrder.OrderDetailsID = 0;
+                            requestOrder.Quantity = prevOrders.Sum(p => p.Quantity) - requestOrder.Quantity;
+                            requestOrder.Status = "Ordered";
+                            cancelledOrders.Add(requestOrder);
                         }
                     }
-                    else
+                    else // new order
                     {
-                        ord.Quantity = ord.Quantity - prevOrders.Sum(p => p.Quantity);
-                        ord.Status = "Ordered";
-
-                        addedOrders.Add(ord);
+                        //requestOrder.Quantity = requestOrder.Quantity - prevOrders.Sum(p => p.Quantity);
+                        requestOrder.Status = "Ordered";
+                        addedOrders.Add(requestOrder);
                     }
                 }
-                List<OrderDetailClass> OrdersList = lst.Where(p => p.Status == "Ordered").ToList();
-                foreach (OrderDetailClass ord in OrdersList)
-                {
-                    List<OrderDetailClass> newOrders = orderMasterInfo.OrderDetailsList.Where(p => p.ItemId == ord.ItemId && p.SeatNo == ord.SeatNo && p.IsCombo == ord.IsCombo).ToList();
-                    if (newOrders.Count < 1)
-                    {
-                        cancelledOrders.Add(ord);
-                    }
-                }
+
+                //List<OrderDetailClass> orderInDatabaseOrdered = orderInDatabase.Where(p => p.Status == "Ordered").ToList();
+                //foreach (OrderDetailClass ord in orderInDatabaseOrdered)
+                //{
+                //    List<OrderDetailClass> newOrders = orderMasterInfo.OrderDetailsList.Where(p => p.ItemId == ord.ItemId && p.SeatNo == ord.SeatNo && p.IsCombo == ord.IsCombo).ToList();
+                //    //if (newOrders.Count < 1)
+                //    if (newOrders == null || newOrders.Count == 0)
+                //    {
+                //        cancelledOrders.Add(ord);
+                //    }
+                //}
             }
             else
             {
@@ -391,13 +387,13 @@ public class OrderItemWebservice : System.Web.Services.WebService
                 addedOrders = orderMasterInfo.OrderDetailsList;
             }
 
-            //List<OrderDetailClass> orderList = rocobj.OrderMasterSaveTodatabase(orderMasterInfo, repeateditem);
             int ordermasterid = rocobj.SaveOrderIntoDataBase(orderMasterInfo, addedOrders, cancelledOrders);
 
             List<OrderExtraItem> addedExtra = CheckExtraItems(orderExtraItem, true, orderMasterInfo.OrderMasterID, ordermasterid);
             List<OrderExtraItem> removedExtra = CheckExtraItems(orderExtraItem, false, orderMasterInfo.OrderMasterID, ordermasterid);
             List<OrderDetailClass> toppingOnly = new List<OrderDetailClass>();
             rocobj.SaveExtraOrderedItem(addedExtra, removedExtra);
+
             string printSuccessful = ordermasterid.ToString();
             if (System.Configuration.ConfigurationManager.AppSettings["OrderPrinting"] == "true")
             {
@@ -409,11 +405,11 @@ public class OrderItemWebservice : System.Web.Services.WebService
                         OrderDetailClass topping = new OrderDetailClass();
                         topping.ItemName = ext.ExtraItem;
                         topping.Quantity = ext.Quantity;
-                        topping.Note = lst.Where(p => p.ItemId == ext.ItemID && p.SeatNo == ext.SeatNo && p.IsCombo == false).First().ROI_ItemName;
-
+                        topping.Note = orderInDatabase.Where(p => p.ItemId == ext.ItemID && p.SeatNo == ext.SeatNo && p.IsCombo == false).First().ROI_ItemName;
                         toppingOnly.Add(topping);
                     }
                 }
+
                 foreach (OrderExtraItem ext in removedExtra)
                 {
                     List<OrderDetailClass> ord = cancelledOrders.Where(p => p.ItemId == ext.ItemID && p.SeatNo == ext.SeatNo && p.IsCombo == false).ToList();
@@ -422,11 +418,12 @@ public class OrderItemWebservice : System.Web.Services.WebService
                         OrderDetailClass topping = new OrderDetailClass();
                         topping.ItemName = ext.ExtraItem;
                         topping.Quantity = (-ext.Quantity);
-                        topping.Note = lst.Where(p => p.ItemId == ext.ItemID && p.SeatNo == ext.SeatNo && p.IsCombo == false).First().ROI_ItemName;
+                        topping.Note = orderInDatabase.Where(p => p.ItemId == ext.ItemID && p.SeatNo == ext.SeatNo && p.IsCombo == false).First().ROI_ItemName;
 
                         toppingOnly.Add(topping);
                     }
                 }
+
                 foreach (OrderDetailClass ord in addedOrders)
                 {
                     List<OrderExtraItem> ext = addedExtra.Where(p => p.ItemID == ord.ItemId && p.SeatNo == ord.SeatNo && ord.IsCombo == false).ToList();
@@ -440,6 +437,7 @@ public class OrderItemWebservice : System.Web.Services.WebService
                         ord.Note += note;
                     }
                 }
+
                 foreach (OrderDetailClass ord in cancelledOrders)
                 {
                     List<OrderExtraItem> ext = removedExtra.Where(p => p.ItemID == ord.ItemId && p.SeatNo == ord.SeatNo && ord.IsCombo == false).ToList();
@@ -453,13 +451,14 @@ public class OrderItemWebservice : System.Web.Services.WebService
                         ord.Note += note;
                     }
                 }
+
                 Token toke = rocobj.getOrderNobyOrderMasterId(Convert.ToInt32(orderMasterInfo.OrderMasterID));
                 restroTable table = new restroTable();
                 if (orderMasterInfo.TableId != "0")
                 {
-
                     table = rocobj.GetTableNoBYId(Convert.ToInt32(orderMasterInfo.TableId));
                 }
+
                 OrderPrint print = new OrderPrint();
                 if (orderMasterInfo.IsCancelled == true)
                 {
@@ -480,11 +479,13 @@ public class OrderItemWebservice : System.Web.Services.WebService
                             status = "Added";
                             printSuccessful += print.PrintOrders(addedOrders, table.restrotableTitle, orderMasterInfo.Date, orderMasterInfo.UserName, "Added", ordermasterid, toke.OrderNo, toke.TokenNo, toke.CustomerName, toke.Phone);
                         }
+
                         if (cancelledOrders.Count > 0)
                         {
                             status = "Cancelled";
                             printSuccessful += print.PrintOrders(cancelledOrders, table.restrotableTitle, orderMasterInfo.Date, orderMasterInfo.UserName, "Cancelled", ordermasterid, toke.OrderNo, toke.TokenNo, toke.CustomerName, toke.Phone);
                         }
+
                         if (toppingOnly.Count > 0)
                         {
                             PrintExtra(toppingOnly, table.restrotableTitle, orderMasterInfo.Date, orderMasterInfo.UserName, 1, ordermasterid);
@@ -494,13 +495,11 @@ public class OrderItemWebservice : System.Web.Services.WebService
             }
 
             return printSuccessful;
-
         }
         catch (Exception ex)
         {
             throw ex;
         }
-
     }
 
     protected List<OrderExtraItem> CheckExtraItems(List<OrderExtraItem> extra, bool added, int ordermasterid, int newOrdermasterid)
@@ -580,21 +579,21 @@ public class OrderItemWebservice : System.Web.Services.WebService
             throw;
         }
     }
+
     [WebMethod]
     public List<extraItem> GetItemExtraList()
     {
         try
         {
             RestrOrderController rocobj = new RestrOrderController();
-
             return rocobj.GetExtraItemList().Where(p => p.IsActive = true).ToList();
         }
         catch (Exception)
         {
-
             throw;
         }
     }
+
     [WebMethod]
     public void CancelOrderIntoDataBase(OrderMasterClass orderMasterInfo)
     {
@@ -660,8 +659,6 @@ public class OrderItemWebservice : System.Web.Services.WebService
         }
     }
 
-
-
     [WebMethod]
     public List<CategoriesClass> txtSearchForItem(string ItemName, int languageid)
     {
@@ -676,20 +673,17 @@ public class OrderItemWebservice : System.Web.Services.WebService
         {
             RestrOrderController roc = new RestrOrderController();
             return roc.GetItemForSearch();
-
         }
         catch (Exception)
         {
-
             throw;
         }
     }
+
     [WebMethod]
     public List<companyInfo> GetCompanyInfoLogo()
     {
         RestrOrderController roc = new RestrOrderController();
         return roc.getcompanyInfo();
     }
-
-
 }

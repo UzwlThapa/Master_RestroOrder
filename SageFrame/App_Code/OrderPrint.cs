@@ -70,26 +70,15 @@ public class OrderPrint
                         {
                             print.PrintKOT(printer, kot);
                         }
-
                     }
-
                 }
                 catch (Exception)
                 {
                     printSuccessful += "_" + cc.CostCenterName;
                 }
-
             }
         }
-
-        //bool orderestimate = bool.Parse(ConfigurationManager.AppSettings["FoodCourtEstimateOrders"].ToString());
-        //if (tableId == "FoodCourt" && orderestimate)
-        //{
-        //    print.PrintBill(billingPrinter, kot, orderDetailList);
-
-        //}
         return printSuccessful;
-
     }
 
     public void PrintBill(SalesBill bill)
@@ -104,7 +93,6 @@ public class OrderPrint
         }
         catch (Exception)
         {
-
             throw;
         }
     }
@@ -142,8 +130,6 @@ public class OrderPrint
         kot.Customer = CustomerName;
         kot.Contact = Phone;
 
-
-
         foreach (costCenter cc in coc)
         {
             var DBPrint = bool.Parse(ConfigurationManager.AppSettings["DBPrinting"]);
@@ -169,10 +155,8 @@ public class OrderPrint
                 {
                     printSuccessful += "_" + cc.CostCenterName;
                 }
-
             }
         }
         return printSuccessful;
     }
-
 }
