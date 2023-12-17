@@ -1869,8 +1869,6 @@ function GetCustomeronCheck() {
                     htmls += "<td>" + value.Name + "</td>";
                     htmls += "<td>" + value.PAN + "</td>";
                     htmls += "<td>" + value.Addresss + "</td>";
-                    // htmls += "<td>" + value.Occupation + "</td>";
-                    // htmls += "<td>" + value.Company + "</td>";
                     htmls += "<td>" + value.TelMobile + "</td>";
                     htmls += "<td>" + value.discount + "</td>";
                     htmls += "<td>" + "<img src='/images/completed.png' class='selectCust' style='width:20px;height:20px;' type='button'  id='_" + value.MembershipID + "_" + value.Fname + "_" + value.Lname + "_" + value.PAN + "_" + value.Address + "_" + value.discount + "_" + value.TelMobile + "' value='Delete'  /></td>";
@@ -1882,11 +1880,7 @@ function GetCustomeronCheck() {
                 $('#membeshipformlist').html(htmls);
                 $('#customertable').DataTable(
                     {
-                        //"scrollY": false,
-                        //"scrollCollapse": false,
                         "jQueryUI": true,
-                        // "scrollX" : true,
-
                     });
 
                 $("#membeshipformlist").dialog({
@@ -1896,15 +1890,12 @@ function GetCustomeronCheck() {
                     resizable: true,
                     position: ['center', 'center']
                 });
-
-
             } else {
                 $('#membeshipformlist').html('No data');
 
             }
             $(".dataTables_scrollBody").css('height', '100%');
 
-            //  $("#membeshipformlist").on('click', '.selectCust', function (event) {
             $("#membeshipformlist").on('click', '#customertable tr', function (event) {
                 var deletedata = $(this).attr('id');
                 var ids = deletedata.split('_');
@@ -1926,7 +1917,6 @@ function GetCustomeronCheck() {
                 $("#txtLoyaltyDiscount").val(ids[6]);
                 $("#membeshipformlist").dialog('close');
                 $("#selDiscountType").change();
-
             });
         },
         failure: function (response) {
@@ -1934,6 +1924,7 @@ function GetCustomeronCheck() {
         }
     });
 }
+
 function SaveSalesBill(salesMaster, salesDetail, splited, billingTerm, discount) {
     debugger;
     var customer = 1;
@@ -1984,7 +1975,6 @@ function SaveFoodCourtSalesBill(salesMaster, salesDetail, splited, billingTerm, 
         contentType: "application/json; charset=utf-8",
         dataType: "json",
         success: function (data) {
-            //$('#DialogOrderDetail').dialog('close');
             $('#DialogOrderDetail').hide();
 
             getBill(data.d, true);
@@ -1997,6 +1987,7 @@ function SaveFoodCourtSalesBill(salesMaster, salesDetail, splited, billingTerm, 
                 position: ['center', 'center'],
                 dialogClass: 'popup-titlebg'
             });
+
             $('#btnPrints').unbind('click').on('click', function () {
                 $('#divPrintedOn').text(formatAMPM());
                 savePrintCount((parseInt($('#hdfPrntCnt').val()) + 1), parseInt($('#hdfSMID').val()), SageFrameUserName);
@@ -2013,13 +2004,13 @@ function SaveFoodCourtSalesBill(salesMaster, salesDetail, splited, billingTerm, 
             $('#txtNoOfPax').val('1');
             $("#txtAddress").val('');
             $('#loyalityDiscount').text(0);
-            //refreshIframe();
         },
         failure: function (response) {
             jAlert("Sorry some error occured. Contact the support team.", "Error!!");
         }
     });
 }
+
 function savePrintCount(printcount, billNo, printedBy) {
     $.ajax({
         type: "POST",
@@ -2144,11 +2135,6 @@ function initialSetup(tableId, oId, hostUrl, foodCourt, Delievery) {
     foodCourtOrder = foodCourt;
     OrderDelivery = Delievery;
 
-    //Avata Change
-    //yogaOrder = yoga;
-    //spaOrder = spa;
-
-
     if (!isNaN(tableId) && tableId > 0) {
         $('#tableData').show();
     } else {
@@ -2156,6 +2142,7 @@ function initialSetup(tableId, oId, hostUrl, foodCourt, Delievery) {
         $('.tabledet td').hide();
         $('.tabledet .tbldet').show();
     }
+
     if (foodCourt) {
         $.ajax({
             type: "POST",
@@ -2212,6 +2199,7 @@ function initialSetup(tableId, oId, hostUrl, foodCourt, Delievery) {
             CalculateTotal();
         }
     });
+
     $(".bindorderlist").on('keyup', '.qty', function () {
         var fieldName = $(this).attr('field');
         var index = $(this).attr('index');
@@ -2223,17 +2211,18 @@ function initialSetup(tableId, oId, hostUrl, foodCourt, Delievery) {
         var trId = $(this).closest('tr').attr('id');
         if (trId.split('_')[3] == 'true') {
             var prevQuantity = 0;
+
             $.each(PreviousOrdersList, function (i, item) {
                 if (item.ItemID == fieldName.split('_')[1] && item.IsCombo == IsCombo && item.SeatNo == selectedBillNo) {
                     prevQuantity = item.Quantity;
                     return false;
                 }
-            })
+            });
+
             if (currentVal >= prevQuantity) {
                 jAlert('Item Out Of Stock!!', 'Information!!');
                 last = prevQuantity;
                 $('#' + fieldName).val(prevQuantity);
-                //return false;
             }
         }
 
@@ -2411,19 +2400,6 @@ function initialSetup(tableId, oId, hostUrl, foodCourt, Delievery) {
             }
         });
 
-        //$('.ExtraQuantity').on('change', function () {
-        //    itemQnty = parseInt($('#qty_' + itemID + '_false').val());
-        //    qnty = 0;
-        //    $('.ExtraQuantity').each(function () {
-        //        qnty += parseInt($(this).val());
-        //        if (qnty > itemQnty) {
-        //            qnty -= parseInt($(this).val());
-        //            $(this).val(0);
-        //            jAlert('Extra Item Qunatity Cannot be greater than Item Quantity', 'Alert!!', function () { $.alerts.dialogClass = null; });
-        //        }
-        //    })
-        //});
-
         $('.ddlSpicy').val(OrderListArray[parseInt(splitindex[1])].Note);
         $('.HomeDelivs').val(OrderListArray[parseInt(splitindex[1])].ExtraCharge);
         $(".sele").css("display", "none");
@@ -2444,7 +2420,6 @@ function initialSetup(tableId, oId, hostUrl, foodCourt, Delievery) {
 
                         $('.ckbxExtraItem').each(function (i, obj) {
                             if ($(this).is(':checked')) {
-                                //$('.ddlSpicy').val($('.ddlSpicy').val() + ', ' + $(this).attr('id').split('_')[1]);
                                 var word = $(this).attr('id').split("_");
                                 var extra = new Object;
                                 extra.ItemID = parseInt(itemID);
@@ -2576,9 +2551,7 @@ function initialSetup(tableId, oId, hostUrl, foodCourt, Delievery) {
                                 $('#Categoryshow').show();
                                 if (AddItemInMenuSearch != false) {
                                     BindItemsToOrder(NpitemID, NpitemName, IsCombo, value.IsOutOfStock, Nprate);
-
                                 }
-
                             }
                         }
                     });
@@ -2600,6 +2573,7 @@ function initialSetup(tableId, oId, hostUrl, foodCourt, Delievery) {
         GetMenuforOrder();
         $("#btnSearch").hide();
     });
+
     if (orderlistviewtype) {
         $('#Itemshow2').on('click', '.orderbackB', function () {
             $('#Itemshow2').hide();
@@ -2668,7 +2642,6 @@ function GetPreviousItemByID(Id, OID) {
         contentType: "application/json; charset=utf-8",
         dataType: "json",
         success: function (data) {
-            debugger;
             completedOrders = data.d.CompOrders;
             inprogressOrders = data.d.InPrgOrders;
             var allOrders = data.d.AllOrders;
@@ -2755,11 +2728,11 @@ function GetPreviousItemByID(Id, OID) {
                         }
                     }
                 });
-
             }
             else {
                 htmls += "<td colspan='4' style='font-size:13px;'>Please click the Left Side menus list to Order Items.</td>";
             }
+
             if (noOfGuest > 1) {
 
                 var htmlss = "";
@@ -2768,6 +2741,7 @@ function GetPreviousItemByID(Id, OID) {
                 }
                 $("#billno").append(htmlss);
             }
+
             $(".bindorderlist").html(htmls);
 
             if (completedOrders.length > 0) {
@@ -2784,6 +2758,7 @@ function GetPreviousItemByID(Id, OID) {
                 });
                 $("#bindCompOrders").html(phtm);
             }
+
             if (inprogressOrders.length > 0) {
                 var phtm = "";
                 $("#bindInPrgOrders").html(phtm);
@@ -2813,6 +2788,7 @@ function GetPreviousItemByID(Id, OID) {
                     ExtraItems.push(extItm);
                 });
             }
+
             CalculateTotal();
             if (TableId <= 0 && OrderMasterID > 0) {
                 ShowOrderPayView();
@@ -2851,6 +2827,7 @@ function getProviderList() {
         }
     });
 }
+
 function Reset() {
     PreviousOrdersList = [];
     completedOrders = [];
@@ -2859,7 +2836,6 @@ function Reset() {
     ExtraItems = [];
     selectedBillNo = 1;
     pinMatch = "";
-    //pinfor = "";
     noOfGuest = 1;
     iscancelling = false;
     OrderMasterID = 0;
@@ -2867,6 +2843,7 @@ function Reset() {
     TableId = 0;
     RoomId = 0;
 }
+
 function IntegerAndDecimal(evt, element) {
     var charCode = (evt.which) ? evt.which : event.keyCode
     if ((charCode != 8) &&
@@ -2880,11 +2857,11 @@ function IntegerAndDecimal(evt, element) {
 
     return true;
 }
+
 function BillShortcutKey(e) {
     var evtobj = window.event ? event : e
     if (evtobj.keyCode == 66 && evtobj.altKey && evtobj.ctrlKey && isButtonClicked) {
         isButtonClicked = false;
-        //alert('pressed Ctrl+Alt+b');
         var billingTerm = new Array();
         var salesMaster = new Object();
         var splited = 0;
@@ -3008,6 +2985,7 @@ function BillShortcutKey(e) {
         }
     }
 }
+
 function saveSales(data, isFoodCourt) {
     debugger;
     $.ajax({
@@ -3019,7 +2997,6 @@ function saveSales(data, isFoodCourt) {
         contentType: "application/json; charset=utf-8",
         dataType: "json",
         success: function (data) {
-            debugger;
             $('#DialogOrderDetail').dialog('close');
             getBill(data.d, false);
             $('#BillingView').dialog({
@@ -3041,15 +3018,13 @@ function saveSales(data, isFoodCourt) {
                     parent.$.colorbox.close();
                 }
             });
-            //$('#btnPrints').click();
         },
         failure: function (response) {
             jAlert("Sorry some error occured. Contact the support team.", "Error!!");
         }
     });
-
-
 }
+
 function getMemberDetailsbyinfo(info) {
     $.ajax({
         type: "POST",
@@ -3078,8 +3053,6 @@ function getMemberDetailsbyinfo(info) {
                 $("#selDiscountType").val(3);
                 $("#selDiscountType").change();
             }
-            else {
-            }
         },
         failure: function (response) {
             jAlert("Sorry some error occured. Contact the support team.", "Error!!");
@@ -3103,7 +3076,6 @@ function CheckRolesFromPin(pin) {
             if (roles.includes("Super User") || roles.includes("Billing_Discount")) {
                 IsEnableDiscount = true;
             }
-
             else {
                 IsEnableDiscount = false;
             }
@@ -3140,18 +3112,19 @@ function CalculateTotal() {
     $.each(ExtraItems, function (index, value) {
         extraRate += parseFloat(value.Quantity) * parseFloat(value.ExtraPrice);
     });
+
     $("#orderlist-table>.bindorderlist>tr").each(function (index, value) {
         var qty = $(value).find(".qty").val();
         var rate = $(value).find(".rate").text();
         var result = parseFloat(qty) * parseFloat(rate);
         $(value).find('.total').text(result.toFixed(1));
     });
+
     var MyRows = $('#orderlist-table').find('.bindorderlist').find('tr');
     for (var i = 0; i < MyRows.length; i++) {
         amount += parseFloat($(MyRows[i]).find('.total').text());
     }
     var total = amount + extraRate;
     $('.totalamount').text('Total Amount: Rs. ' + total);
-
 }
 
