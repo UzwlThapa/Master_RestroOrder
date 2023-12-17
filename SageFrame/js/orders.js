@@ -506,6 +506,7 @@ function GetExtraItemsByItem() {
         }
     });
 }
+
 function BindItemsToOrder(NpitemID, NpitemName, IsCombo, IsOutOfStock, Nprate) {
     var ispresent = 1;
     var result = 0;
@@ -515,6 +516,7 @@ function BindItemsToOrder(NpitemID, NpitemName, IsCombo, IsOutOfStock, Nprate) {
             result = 1;
         }
     });
+
     if (result == 0) {
         var order = new Object();
         order.ItemId = parseInt(NpitemID);
@@ -537,16 +539,14 @@ function BindItemsToOrder(NpitemID, NpitemName, IsCombo, IsOutOfStock, Nprate) {
         order.IsOutOfStock = IsOutOfStock;
         order.Rate = Nprate;
         OrderListArray.push(order);
-
         BindItemsToList();
     }
     else {
-        //alert('Item Already Entered Please increase the Quantity');
         $('#qty_' + NpitemID + '_' + IsCombo).val((parseInt($('#qty_' + NpitemID + '_' + IsCombo).val()) + 1));
         $('#qty_' + NpitemID + '_' + IsCombo).keyup();
-
     }
 }
+
 function BindItemsToList() {
     $(".bindorderlist").html('');
     $(".bindorderlistfoot").html('');
@@ -572,8 +572,8 @@ function BindItemsToList() {
     });
     $(".bindorderlist").html(htmls);
     CalculateTotal();
-
 }
+
 function isNumber(evt) {
     evt = (evt) ? evt : window.event;
     var charCode = (evt.which) ? evt.which : evt.keyCode;
@@ -657,6 +657,7 @@ function bindForCancel(result) {
             });
 
             $('.saveCanceledItem').unbind('click').on('click', function () {
+                debugger;
                 var myStr = $(".txtreason").val();
                 var newStr = myStr.replace(/  +/g, ' ');
                 if (newStr.length <= 4) {
@@ -675,7 +676,7 @@ function bindForCancel(result) {
                             Responsible: $('#tblforcancelitem tbody').find('tr:eq(' + i + ')').find('.selResponsible option:selected').text(),
                             tableId: TableId
                         }
-                        cancelobjs.push(cancelobj);
+                        cancelobjs.push(cancelobj); 67
                     }
 
                     SaveCanceledItems(cancelobjs);
@@ -725,7 +726,6 @@ function SaveOrderedData() {
         orderDetail.Amount = 0.0
         orderDetail.Waiter = SageFrameUserName;
         orderDetailsList.push(orderDetail);
-
     }
 
     let guestNo = 1;
@@ -744,7 +744,7 @@ function SaveOrderedData() {
     ordermaster.BasicAmount = 0.0,
         ordermaster.BillNo = "",
         ordermaster.Date = Date.now,
-        ordermaster.IsCancelled = cancel,
+        ordermaster.IsCancelled = false,
         ordermaster.TermAmount = 0.0,
         ordermaster.NetAmount = 0.0,
         ordermaster.UserName = $('#hdnPinBy').val(),
@@ -770,7 +770,7 @@ function SaveOrderedData() {
         contentType: "application/json; charset=utf-8",
         dataType: "json",
         success: function (data) {
-
+            debugger;
             var val = data.d.split("_");
             var orderid = val[0];
             $.each(val, function (index, value) {
@@ -1869,8 +1869,6 @@ function GetCustomeronCheck() {
                     htmls += "<td>" + value.Name + "</td>";
                     htmls += "<td>" + value.PAN + "</td>";
                     htmls += "<td>" + value.Addresss + "</td>";
-                    // htmls += "<td>" + value.Occupation + "</td>";
-                    // htmls += "<td>" + value.Company + "</td>";
                     htmls += "<td>" + value.TelMobile + "</td>";
                     htmls += "<td>" + value.discount + "</td>";
                     htmls += "<td>" + "<img src='/images/completed.png' class='selectCust' style='width:20px;height:20px;' type='button'  id='_" + value.MembershipID + "_" + value.Fname + "_" + value.Lname + "_" + value.PAN + "_" + value.Address + "_" + value.discount + "_" + value.TelMobile + "' value='Delete'  /></td>";
@@ -1882,11 +1880,7 @@ function GetCustomeronCheck() {
                 $('#membeshipformlist').html(htmls);
                 $('#customertable').DataTable(
                     {
-                        //"scrollY": false,
-                        //"scrollCollapse": false,
                         "jQueryUI": true,
-                        // "scrollX" : true,
-
                     });
 
                 $("#membeshipformlist").dialog({
@@ -1896,15 +1890,12 @@ function GetCustomeronCheck() {
                     resizable: true,
                     position: ['center', 'center']
                 });
-
-
             } else {
                 $('#membeshipformlist').html('No data');
 
             }
             $(".dataTables_scrollBody").css('height', '100%');
 
-            //  $("#membeshipformlist").on('click', '.selectCust', function (event) {
             $("#membeshipformlist").on('click', '#customertable tr', function (event) {
                 var deletedata = $(this).attr('id');
                 var ids = deletedata.split('_');
@@ -1926,7 +1917,6 @@ function GetCustomeronCheck() {
                 $("#txtLoyaltyDiscount").val(ids[6]);
                 $("#membeshipformlist").dialog('close');
                 $("#selDiscountType").change();
-
             });
         },
         failure: function (response) {
@@ -1934,6 +1924,7 @@ function GetCustomeronCheck() {
         }
     });
 }
+
 function SaveSalesBill(salesMaster, salesDetail, splited, billingTerm, discount) {
     debugger;
     var customer = 1;
@@ -1984,7 +1975,6 @@ function SaveFoodCourtSalesBill(salesMaster, salesDetail, splited, billingTerm, 
         contentType: "application/json; charset=utf-8",
         dataType: "json",
         success: function (data) {
-            //$('#DialogOrderDetail').dialog('close');
             $('#DialogOrderDetail').hide();
 
             getBill(data.d, true);
@@ -1997,6 +1987,7 @@ function SaveFoodCourtSalesBill(salesMaster, salesDetail, splited, billingTerm, 
                 position: ['center', 'center'],
                 dialogClass: 'popup-titlebg'
             });
+
             $('#btnPrints').unbind('click').on('click', function () {
                 $('#divPrintedOn').text(formatAMPM());
                 savePrintCount((parseInt($('#hdfPrntCnt').val()) + 1), parseInt($('#hdfSMID').val()), SageFrameUserName);
@@ -2013,13 +2004,13 @@ function SaveFoodCourtSalesBill(salesMaster, salesDetail, splited, billingTerm, 
             $('#txtNoOfPax').val('1');
             $("#txtAddress").val('');
             $('#loyalityDiscount').text(0);
-            //refreshIframe();
         },
         failure: function (response) {
             jAlert("Sorry some error occured. Contact the support team.", "Error!!");
         }
     });
 }
+
 function savePrintCount(printcount, billNo, printedBy) {
     $.ajax({
         type: "POST",
@@ -2064,8 +2055,9 @@ function Print() {
         document.body.removeChild(frame1);
     }, 500);
 }
-function CancelOrderedData() {
 
+function CancelOrderedData() {
+    debugger;
     var id = OrderMasterID;
     var cancel = false;
     var ordermaster = new Object();
@@ -2077,24 +2069,25 @@ function CancelOrderedData() {
     ordermaster.CancelReason = $("#canceltextarea").val();
     ordermaster.CancelBy = $('#hdnPinBy').val();
     ordermaster.UserName = $('#hdnPinBy').val();
-    ordermaster.IsCancelled = true,
-        $.ajax({
-            type: "POST",
-            async: false,
-            cache: false,
-            url: baseUrl + "CancelOrderIntoDataBase",
-            data: JSON2.stringify({ orderMasterInfo: ordermaster }),
-            contentType: "application/json; charset=utf-8",
-            dataType: "json",
-            success: function (data) {
-                jAlert('Ordered Cancelled successfully', 'Information!!', function () {
-                    parent.$.colorbox.close();
-                });
-            },
-            failure: function (response) {
-                jAlert("Sorry some error occured. Contact the support team.", "Error!!");
-            }
-        });
+    ordermaster.IsCancelled = true;
+
+    $.ajax({
+        type: "POST",
+        async: false,
+        cache: false,
+        url: baseUrl + "CancelOrderIntoDataBase",
+        data: JSON2.stringify({ orderMasterInfo: ordermaster }),
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        success: function (data) {
+            jAlert('Ordered Cancelled successfully', 'Information!!', function () {
+                parent.$.colorbox.close();
+            });
+        },
+        failure: function (response) {
+            jAlert("Sorry some error occured. Contact the support team.", "Error!!");
+        }
+    });
 }
 
 //Avata Change
@@ -2142,11 +2135,6 @@ function initialSetup(tableId, oId, hostUrl, foodCourt, Delievery) {
     foodCourtOrder = foodCourt;
     OrderDelivery = Delievery;
 
-    //Avata Change
-    //yogaOrder = yoga;
-    //spaOrder = spa;
-
-
     if (!isNaN(tableId) && tableId > 0) {
         $('#tableData').show();
     } else {
@@ -2154,6 +2142,7 @@ function initialSetup(tableId, oId, hostUrl, foodCourt, Delievery) {
         $('.tabledet td').hide();
         $('.tabledet .tbldet').show();
     }
+
     if (foodCourt) {
         $.ajax({
             type: "POST",
@@ -2210,6 +2199,7 @@ function initialSetup(tableId, oId, hostUrl, foodCourt, Delievery) {
             CalculateTotal();
         }
     });
+
     $(".bindorderlist").on('keyup', '.qty', function () {
         var fieldName = $(this).attr('field');
         var index = $(this).attr('index');
@@ -2221,17 +2211,18 @@ function initialSetup(tableId, oId, hostUrl, foodCourt, Delievery) {
         var trId = $(this).closest('tr').attr('id');
         if (trId.split('_')[3] == 'true') {
             var prevQuantity = 0;
+
             $.each(PreviousOrdersList, function (i, item) {
                 if (item.ItemID == fieldName.split('_')[1] && item.IsCombo == IsCombo && item.SeatNo == selectedBillNo) {
                     prevQuantity = item.Quantity;
                     return false;
                 }
-            })
+            });
+
             if (currentVal >= prevQuantity) {
                 jAlert('Item Out Of Stock!!', 'Information!!');
                 last = prevQuantity;
                 $('#' + fieldName).val(prevQuantity);
-                //return false;
             }
         }
 
@@ -2283,6 +2274,7 @@ function initialSetup(tableId, oId, hostUrl, foodCourt, Delievery) {
     $(".sfCol_13").hide();
 
     $('#SendOrder').on('click', function () {
+        debugger;
         if (OrderDelivery == true) {
             if ($("#txtCustName").val().length < 3) {
                 jAlert('Please Insert valid name', 'Alert!!');
@@ -2317,16 +2309,14 @@ function initialSetup(tableId, oId, hostUrl, foodCourt, Delievery) {
     });
 
     $('#btnSumbit').unbind('click').on('click', function () {
+        debugger;
         var myStr = $("#canceltextarea").val();
         var newStr = myStr.replace(/  +/g, ' ');
         if (newStr.length <= 4) {
-            // if ($("#canceltextarea").val() == null || $("#canceltextarea").val() == "" || $("#canceltextarea").val() == " ") {
             jAlert('Please Insert Cancel Reason more than 4 words.', "Alert!!", function () { $.alerts.dialogClass = null; });
         } else {
             CancelOrderedData();
         }
-
-
     });
 
     $('#billno').change(function () {
@@ -2410,19 +2400,6 @@ function initialSetup(tableId, oId, hostUrl, foodCourt, Delievery) {
             }
         });
 
-        //$('.ExtraQuantity').on('change', function () {
-        //    itemQnty = parseInt($('#qty_' + itemID + '_false').val());
-        //    qnty = 0;
-        //    $('.ExtraQuantity').each(function () {
-        //        qnty += parseInt($(this).val());
-        //        if (qnty > itemQnty) {
-        //            qnty -= parseInt($(this).val());
-        //            $(this).val(0);
-        //            jAlert('Extra Item Qunatity Cannot be greater than Item Quantity', 'Alert!!', function () { $.alerts.dialogClass = null; });
-        //        }
-        //    })
-        //});
-
         $('.ddlSpicy').val(OrderListArray[parseInt(splitindex[1])].Note);
         $('.HomeDelivs').val(OrderListArray[parseInt(splitindex[1])].ExtraCharge);
         $(".sele").css("display", "none");
@@ -2443,7 +2420,6 @@ function initialSetup(tableId, oId, hostUrl, foodCourt, Delievery) {
 
                         $('.ckbxExtraItem').each(function (i, obj) {
                             if ($(this).is(':checked')) {
-                                //$('.ddlSpicy').val($('.ddlSpicy').val() + ', ' + $(this).attr('id').split('_')[1]);
                                 var word = $(this).attr('id').split("_");
                                 var extra = new Object;
                                 extra.ItemID = parseInt(itemID);
@@ -2575,9 +2551,7 @@ function initialSetup(tableId, oId, hostUrl, foodCourt, Delievery) {
                                 $('#Categoryshow').show();
                                 if (AddItemInMenuSearch != false) {
                                     BindItemsToOrder(NpitemID, NpitemName, IsCombo, value.IsOutOfStock, Nprate);
-
                                 }
-
                             }
                         }
                     });
@@ -2599,6 +2573,7 @@ function initialSetup(tableId, oId, hostUrl, foodCourt, Delievery) {
         GetMenuforOrder();
         $("#btnSearch").hide();
     });
+
     if (orderlistviewtype) {
         $('#Itemshow2').on('click', '.orderbackB', function () {
             $('#Itemshow2').hide();
@@ -2656,6 +2631,7 @@ function initialSetup(tableId, oId, hostUrl, foodCourt, Delievery) {
         height: winheight + 'px'
     });
 }
+
 function GetPreviousItemByID(Id, OID) {
     $.ajax({
         type: "POST",
@@ -2686,8 +2662,6 @@ function GetPreviousItemByID(Id, OID) {
             $('#txtTokenNo').val((allOrders[0].TokenNo == -1 ? "" : allOrders[0].TokenNo));
             $("#txtAddress").val(allOrders[0].Address == null ? "" : allOrders[0].Address);
             $("#txtNoOfPax").val(allOrders[0].GuestNo == null ? "" : allOrders[0].GuestNo);
-
-
 
             if (allOrders[0].CustomerID > 0) {
                 $('.customerForOrder').prop('checked', true);
@@ -2754,11 +2728,11 @@ function GetPreviousItemByID(Id, OID) {
                         }
                     }
                 });
-
             }
             else {
                 htmls += "<td colspan='4' style='font-size:13px;'>Please click the Left Side menus list to Order Items.</td>";
             }
+
             if (noOfGuest > 1) {
 
                 var htmlss = "";
@@ -2767,6 +2741,7 @@ function GetPreviousItemByID(Id, OID) {
                 }
                 $("#billno").append(htmlss);
             }
+
             $(".bindorderlist").html(htmls);
 
             if (completedOrders.length > 0) {
@@ -2783,6 +2758,7 @@ function GetPreviousItemByID(Id, OID) {
                 });
                 $("#bindCompOrders").html(phtm);
             }
+
             if (inprogressOrders.length > 0) {
                 var phtm = "";
                 $("#bindInPrgOrders").html(phtm);
@@ -2812,6 +2788,7 @@ function GetPreviousItemByID(Id, OID) {
                     ExtraItems.push(extItm);
                 });
             }
+
             CalculateTotal();
             if (TableId <= 0 && OrderMasterID > 0) {
                 ShowOrderPayView();
@@ -2850,6 +2827,7 @@ function getProviderList() {
         }
     });
 }
+
 function Reset() {
     PreviousOrdersList = [];
     completedOrders = [];
@@ -2858,7 +2836,6 @@ function Reset() {
     ExtraItems = [];
     selectedBillNo = 1;
     pinMatch = "";
-    //pinfor = "";
     noOfGuest = 1;
     iscancelling = false;
     OrderMasterID = 0;
@@ -2866,6 +2843,7 @@ function Reset() {
     TableId = 0;
     RoomId = 0;
 }
+
 function IntegerAndDecimal(evt, element) {
     var charCode = (evt.which) ? evt.which : event.keyCode
     if ((charCode != 8) &&
@@ -2879,11 +2857,11 @@ function IntegerAndDecimal(evt, element) {
 
     return true;
 }
+
 function BillShortcutKey(e) {
     var evtobj = window.event ? event : e
     if (evtobj.keyCode == 66 && evtobj.altKey && evtobj.ctrlKey && isButtonClicked) {
         isButtonClicked = false;
-        //alert('pressed Ctrl+Alt+b');
         var billingTerm = new Array();
         var salesMaster = new Object();
         var splited = 0;
@@ -3007,6 +2985,7 @@ function BillShortcutKey(e) {
         }
     }
 }
+
 function saveSales(data, isFoodCourt) {
     debugger;
     $.ajax({
@@ -3018,7 +2997,6 @@ function saveSales(data, isFoodCourt) {
         contentType: "application/json; charset=utf-8",
         dataType: "json",
         success: function (data) {
-            debugger;
             $('#DialogOrderDetail').dialog('close');
             getBill(data.d, false);
             $('#BillingView').dialog({
@@ -3040,15 +3018,13 @@ function saveSales(data, isFoodCourt) {
                     parent.$.colorbox.close();
                 }
             });
-            //$('#btnPrints').click();
         },
         failure: function (response) {
             jAlert("Sorry some error occured. Contact the support team.", "Error!!");
         }
     });
-
-
 }
+
 function getMemberDetailsbyinfo(info) {
     $.ajax({
         type: "POST",
@@ -3077,8 +3053,6 @@ function getMemberDetailsbyinfo(info) {
                 $("#selDiscountType").val(3);
                 $("#selDiscountType").change();
             }
-            else {
-            }
         },
         failure: function (response) {
             jAlert("Sorry some error occured. Contact the support team.", "Error!!");
@@ -3102,7 +3076,6 @@ function CheckRolesFromPin(pin) {
             if (roles.includes("Super User") || roles.includes("Billing_Discount")) {
                 IsEnableDiscount = true;
             }
-
             else {
                 IsEnableDiscount = false;
             }
@@ -3139,18 +3112,19 @@ function CalculateTotal() {
     $.each(ExtraItems, function (index, value) {
         extraRate += parseFloat(value.Quantity) * parseFloat(value.ExtraPrice);
     });
+
     $("#orderlist-table>.bindorderlist>tr").each(function (index, value) {
         var qty = $(value).find(".qty").val();
         var rate = $(value).find(".rate").text();
         var result = parseFloat(qty) * parseFloat(rate);
         $(value).find('.total').text(result.toFixed(1));
     });
+
     var MyRows = $('#orderlist-table').find('.bindorderlist').find('tr');
     for (var i = 0; i < MyRows.length; i++) {
         amount += parseFloat($(MyRows[i]).find('.total').text());
     }
     var total = amount + extraRate;
     $('.totalamount').text('Total Amount: Rs. ' + total);
-
 }
 
