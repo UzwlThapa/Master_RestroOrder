@@ -217,3 +217,12 @@ Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.HouseKeeping\
 Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.HouseKeeping\obj\Debug\SageFrame.HouseKeeping.csproj.CopyComplete
 Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.HouseKeeping\obj\Debug\SageFrame.HouseKeeping.dll
 Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.HouseKeeping\obj\Debug\SageFrame.HouseKeeping.pdb
+D:\bipinDanfe\Master_RestroOrder\SageFrame.HouseKeeping\bin\Debug\SageFrame.HouseKeeping.dll
+D:\bipinDanfe\Master_RestroOrder\SageFrame.HouseKeeping\bin\Debug\SageFrame.HouseKeeping.pdb
+D:\bipinDanfe\Master_RestroOrder\SageFrame.HouseKeeping\bin\Debug\SageFrame.Common.dll
+D:\bipinDanfe\Master_RestroOrder\SageFrame.HouseKeeping\bin\Debug\SageFrame.Common.pdb
+D:\bipinDanfe\Master_RestroOrder\SageFrame.HouseKeeping\obj\Debug\SageFrame.HouseKeeping.csproj.AssemblyReference.cache
+D:\bipinDanfe\Master_RestroOrder\SageFrame.HouseKeeping\obj\Debug\SageFrame.HouseKeeping.csproj.CoreCompileInputs.cache
+D:\bipinDanfe\Master_RestroOrder\SageFrame.HouseKeeping\obj\Debug\SageFrame.HouseKeeping.csproj.CopyComplete
+D:\bipinDanfe\Master_RestroOrder\SageFrame.HouseKeeping\obj\Debug\SageFrame.HouseKeeping.dll
+D:\bipinDanfe\Master_RestroOrder\SageFrame.HouseKeeping\obj\Debug\SageFrame.HouseKeeping.pdb
