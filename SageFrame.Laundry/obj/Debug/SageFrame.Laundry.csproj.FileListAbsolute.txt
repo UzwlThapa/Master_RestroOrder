@@ -165,3 +165,10 @@ Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.Laundry\obj\D
 Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.Laundry\obj\Debug\SageFrame.Laundry.csproj.CopyComplete
 Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.Laundry\obj\Debug\SageFrame.Laundry.dll
 Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.Laundry\obj\Debug\SageFrame.Laundry.pdb
+D:\restroorder\Master_RestroOrder\SageFrame\bin\SageFrame.Laundry.dll
+D:\restroorder\Master_RestroOrder\SageFrame\bin\SageFrame.Laundry.pdb
+D:\restroorder\Master_RestroOrder\SageFrame.Laundry\obj\Debug\SageFrame.Laundry.csproj.AssemblyReference.cache
+D:\restroorder\Master_RestroOrder\SageFrame.Laundry\obj\Debug\SageFrame.Laundry.csproj.CoreCompileInputs.cache
+D:\restroorder\Master_RestroOrder\SageFrame.Laundry\obj\Debug\SageFrame.Laundry.csproj.CopyComplete
+D:\restroorder\Master_RestroOrder\SageFrame.Laundry\obj\Debug\SageFrame.Laundry.dll
+D:\restroorder\Master_RestroOrder\SageFrame.Laundry\obj\Debug\SageFrame.Laundry.pdb

@@ -474,7 +474,7 @@ function Print() {
                     var row = $(this).parents('tr');
                     var name = row.find('td:eq(0)').text();
                     var Contact = row.find('td:eq(2)').text();
-                    var balance = row.find('td:eq(7)').text();
+                    var balance = row.find('td:eq(8)').text();
                     remainingbal = parseFloat(balance.split(" ")[2]);
                     var message = 'Dear, ' + name + '. Your remaining balance to pay is Rs. ' + remainingbal + '. Pay this credit on time. Thank you!';
                     if (Contact.length > 0) {

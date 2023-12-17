@@ -48,27 +48,10 @@
                 $('#lblCompanyAddress').html(companyInfo.Address);
 
                 eventFunction.SetMonth();
-                $('#txtMnthYear').nepaliDatePicker({
-                    npdMonth: true,
-                    npdYear: true,
-                    npdYearCount: 10 // Options | Number of years to show
-                });
-                $('#txtToDate').nepaliDatePicker({
-                	npdMonth: true,
-                	npdYear: true,
-                	npdYearCount: 10 // Options | Number of years to show
-                });
-
-                $('#txtMnthYear').change(function () {
-                    $('#txtEngMnthYear').val(BS2AD($('#txtMnthYear').val()));
-                });
-
-                $('#txtToDate').change(function () {
-                	$('#txtEngToDate').val(BS2AD($('#txtToDate').val()));
-                });
+               
                 $("#btnViewSales").click(function () {
                 	$('#txtMnthYear').change();
-                	$('#txtToDate').change();
+                    $('#txtEndDate').change();
                     eventFunction.GetSales();
                     $('.report-view').show();
                 });
@@ -130,11 +113,11 @@
 
             GetSales: function () {
 
-            	($('#lblMonth').html($('#txtMnthYear').val()== "" ? "Beginning" : $('#txtMnthYear').val()));
-            	($('#lblYear').html($('#txtToDate').val() == "" ? "End" : $('#txtToDate').val()));
+                ($('#lblMonth').html($('#txtStartDate').val() == "" ? "Beginning" : $('#txtStartDate').val()));
+                ($('#lblYear').html($('#txtEndDate').val() == "" ? "End" : $('#txtEndDate').val()));
                 eventFunction.config.method = "GetSalesBook";
                 eventFunction.config.url = eventFunction.config.baseURL + eventFunction.config.method;
-                eventFunction.config.data = JSON2.stringify({ fromDate: ($('#txtMnthYear').val() == "" ? "Beginning" : $('#txtMnthYear').val()), toDate: ($('#txtToDate').val() == "" ? "End" : $('#txtToDate').val()) });
+                eventFunction.config.data = JSON2.stringify({ fromDate: ($('#txtStartDate').val() == "" ? "Beginning" : $('#txtStartDate').val()), toDate: ($('#txtEndDate').val() == "" ? "End" : $('#txtEndDate').val()) });
                 eventFunction.config.ajaxCallMode = 1;
                 eventFunction.ajaxCall(eventFunction.config);
             },
