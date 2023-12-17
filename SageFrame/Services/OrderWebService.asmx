@@ -69,7 +69,7 @@ public class OrderWebService : System.Web.Services.WebService
         roController.SaveCanceledItems(CancelItems);
     }
     [WebMethod]
-    public string SaveOrderIntoDataBase(OrderMasterClass orderMasterInfo, List<OrderExtraItem> orderExtraItem, bool foodCourtOrder)
+    public string SaveOrderIntoDataBase(OrderMasterClass orderMasterInfo, List<OrderExtraItem> orderExtraItem)
     {
         try
         {
@@ -104,7 +104,6 @@ public class OrderWebService : System.Web.Services.WebService
                         if (orderMasterInfo.TableId != "0")
                         {
                             room = rocobj.GetRoomByTable(Convert.ToInt32(orderMasterInfo.TableId));
-
                         }
                         else
                         {
@@ -121,49 +120,51 @@ public class OrderWebService : System.Web.Services.WebService
             orderMasterInfo.BasicAmount = BasicAmount;
             orderMasterInfo.Status = status;
             if (String.IsNullOrEmpty(orderMasterInfo.Remarks))
+            {
                 orderMasterInfo.Remarks = "Fine";
+            }
 
-            List<OrderDetailClass> lst = new List<OrderDetailClass>();
-            lst = rocobj.GetOrderDetailsByMaster(orderMasterInfo.OrderMasterID);
+            List<OrderDetailClass> orderInDatabase = rocobj.GetOrderDetailsByMaster(orderMasterInfo.OrderMasterID);
 
             List<OrderDetailClass> addedOrders = new List<OrderDetailClass>();
             List<OrderDetailClass> cancelledOrders = new List<OrderDetailClass>();
-            if (lst.Count > 0)
+            if (orderInDatabase.Count > 0)
             {
-                foreach (OrderDetailClass ord in orderMasterInfo.OrderDetailsList)
+                foreach (OrderDetailClass requestOrder in orderMasterInfo.OrderDetailsList)
                 {
-                    List<OrderDetailClass> prevOrders = lst.Where(p => p.ItemId == ord.ItemId && p.SeatNo == ord.SeatNo && p.IsCombo == ord.IsCombo && p.Status == "Ordered").ToList();
+                    List<OrderDetailClass> prevOrders = orderInDatabase.Where(p => p.ItemId == requestOrder.ItemId && p.SeatNo == requestOrder.SeatNo && p.IsCombo == requestOrder.IsCombo && p.Status == "Ordered").ToList();
                     if (prevOrders.Count > 0)
                     {
-                        if (ord.Quantity > prevOrders.Sum(p => p.Quantity))
+                        if (requestOrder.Quantity > prevOrders.Sum(p => p.Quantity))
                         {
-                            ord.Quantity = ord.Quantity - prevOrders.Sum(p => p.Quantity);
-                            ord.Note = ord.Note.Substring(ord.Note.LastIndexOf(';') + 1);
-                            ord.Status = "Ordered";
-                            addedOrders.Add(ord);
+                            requestOrder.Quantity = requestOrder.Quantity - prevOrders.Sum(p => p.Quantity);
+                            requestOrder.Note = requestOrder.Note.Substring(requestOrder.Note.LastIndexOf(';') + 1);
+                            requestOrder.Status = "Ordered";
+                            addedOrders.Add(requestOrder);
                         }
-                        else if (ord.Quantity < prevOrders.Sum(p => p.Quantity))
+                        else if (requestOrder.Quantity < prevOrders.Sum(p => p.Quantity))
                         {
-                            ord.OrderDetailsID = 0;
-                            ord.Quantity = prevOrders.Sum(p => p.Quantity) - ord.Quantity;
-
-                            ord.Status = "Ordered";
-                            cancelledOrders.Add(ord);
+                            requestOrder.OrderDetailsID = 0;
+                            requestOrder.Quantity = prevOrders.Sum(p => p.Quantity) - requestOrder.Quantity;
+                            requestOrder.Status = "Ordered";
+                            cancelledOrders.Add(requestOrder);
                         }
                     }
-                    else
+                    else // new order
                     {
-                        ord.Quantity = ord.Quantity - prevOrders.Sum(p => p.Quantity);
-                        ord.Status = "Ordered";
-
-                        addedOrders.Add(ord);
+                        //requestOrder.Quantity = requestOrder.Quantity - prevOrders.Sum(p => p.Quantity);
+                        requestOrder.Status = "Ordered";
+                        addedOrders.Add(requestOrder);
                     }
                 }
-                List<OrderDetailClass> OrdersList = lst.Where(p => p.Status == "Ordered").ToList();
-                foreach (OrderDetailClass ord in OrdersList)
+
+                // cancel item if item in database is not in request items
+                List<OrderDetailClass> orderInDatabaseOrdered = orderInDatabase.Where(p => p.Status == "Ordered").ToList();
+                foreach (OrderDetailClass ord in orderInDatabaseOrdered)
                 {
                     List<OrderDetailClass> newOrders = orderMasterInfo.OrderDetailsList.Where(p => p.ItemId == ord.ItemId && p.SeatNo == ord.SeatNo && p.IsCombo == ord.IsCombo).ToList();
-                    if (newOrders.Count < 1)
+                    //if (newOrders.Count < 1)
+                    if (newOrders == null || newOrders.Count == 0)
                     {
                         cancelledOrders.Add(ord);
                     }
@@ -184,18 +185,9 @@ public class OrderWebService : System.Web.Services.WebService
             List<OrderExtraItem> removedExtra = CheckExtraItems(orderExtraItem, false, orderMasterInfo.OrderMasterID, ordermasterid);
             List<OrderDetailClass> toppingOnly = new List<OrderDetailClass>();
             rocobj.SaveExtraOrderedItem(addedExtra, removedExtra);
-            string printSuccessful = ordermasterid.ToString();
 
-            bool printCall;
-            if (foodCourtOrder)
-            {
-                printCall = System.Configuration.ConfigurationManager.AppSettings["FoodCourtOrderPrinting"] == "true" ? true : false;
-            }
-            else
-            {
-                printCall = System.Configuration.ConfigurationManager.AppSettings["OrderPrinting"] == "true" ? true : false;
-            }
-            if (printCall)
+            string printSuccessful = ordermasterid.ToString();
+            if (System.Configuration.ConfigurationManager.AppSettings["OrderPrinting"] == "true")
             {
                 foreach (OrderExtraItem ext in addedExtra)
                 {
@@ -205,11 +197,11 @@ public class OrderWebService : System.Web.Services.WebService
                         OrderDetailClass topping = new OrderDetailClass();
                         topping.ItemName = ext.ExtraItem;
                         topping.Quantity = ext.Quantity;
-                        topping.Note = lst.Where(p => p.ItemId == ext.ItemID && p.SeatNo == ext.SeatNo && p.IsCombo == false).First().ROI_ItemName;
-
+                        topping.Note = orderInDatabase.Where(p => p.ItemId == ext.ItemID && p.SeatNo == ext.SeatNo && p.IsCombo == false).First().ROI_ItemName;
                         toppingOnly.Add(topping);
                     }
                 }
+
                 foreach (OrderExtraItem ext in removedExtra)
                 {
                     List<OrderDetailClass> ord = cancelledOrders.Where(p => p.ItemId == ext.ItemID && p.SeatNo == ext.SeatNo && p.IsCombo == false).ToList();
@@ -218,11 +210,12 @@ public class OrderWebService : System.Web.Services.WebService
                         OrderDetailClass topping = new OrderDetailClass();
                         topping.ItemName = ext.ExtraItem;
                         topping.Quantity = (-ext.Quantity);
-                        topping.Note = lst.Where(p => p.ItemId == ext.ItemID && p.SeatNo == ext.SeatNo && p.IsCombo == false).First().ROI_ItemName;
+                        topping.Note = orderInDatabase.Where(p => p.ItemId == ext.ItemID && p.SeatNo == ext.SeatNo && p.IsCombo == false).First().ROI_ItemName;
 
                         toppingOnly.Add(topping);
                     }
                 }
+
                 foreach (OrderDetailClass ord in addedOrders)
                 {
                     List<OrderExtraItem> ext = addedExtra.Where(p => p.ItemID == ord.ItemId && p.SeatNo == ord.SeatNo && ord.IsCombo == false).ToList();
@@ -236,6 +229,7 @@ public class OrderWebService : System.Web.Services.WebService
                         ord.Note += note;
                     }
                 }
+
                 foreach (OrderDetailClass ord in cancelledOrders)
                 {
                     List<OrderExtraItem> ext = removedExtra.Where(p => p.ItemID == ord.ItemId && p.SeatNo == ord.SeatNo && ord.IsCombo == false).ToList();
@@ -249,43 +243,55 @@ public class OrderWebService : System.Web.Services.WebService
                         ord.Note += note;
                     }
                 }
+
+                Token toke = rocobj.getOrderNobyOrderMasterId(Convert.ToInt32(orderMasterInfo.OrderMasterID));
+                if (toke == null)
+                {
+                    toke = new Token() { OrderNo = 0, CustomerName = "", Phone = "" };
+                }
+
                 restroTable table = new restroTable();
                 if (orderMasterInfo.TableId != "0")
                 {
-
                     table = rocobj.GetTableNoBYId(Convert.ToInt32(orderMasterInfo.TableId));
                 }
-
-                Token toke = new Token();
-                toke = rocobj.getOrderNobyOrderMasterId(ordermasterid);
 
                 OrderPrint print = new OrderPrint();
                 if (orderMasterInfo.IsCancelled == true)
                 {
                     status = "Cancelled";
-                    printSuccessful += print.PrintOrders(orderMasterInfo.OrderDetailsList, orderMasterInfo.OrderTypeID == 4 ? "FoodDelivery" : (orderMasterInfo.OrderTypeID == 3 ? "FoodCourt" : (orderMasterInfo.OrderTypeID == 2 ? "Take Away" : table.restrotableTitle)), orderMasterInfo.Date, orderMasterInfo.UserName, "Cancelled", ordermasterid, toke.OrderNo, toke.TokenNo, toke.CustomerName, toke.Phone);
+                    printSuccessful += print.PrintOrders(orderMasterInfo.OrderDetailsList, table.restrotableTitle, orderMasterInfo.Date, orderMasterInfo.UserName, "Cancelled", ordermasterid, toke.OrderNo, toke.TokenNo, toke.CustomerName, toke.Phone);
                 }
                 else
                 {
-                    if (addedOrders.Count > 0)
+                    if (table.restrotableTitle == null)
                     {
-                        status = "Added";
-                        printSuccessful += print.PrintOrders(addedOrders, orderMasterInfo.OrderTypeID == 4 ? "FoodDelivery" : (orderMasterInfo.OrderTypeID == 3 ? "FoodCourt" : (orderMasterInfo.OrderTypeID == 2 ? "TakeAway" : table.restrotableTitle)), orderMasterInfo.Date, orderMasterInfo.UserName, "Added", ordermasterid, toke.OrderNo, toke.TokenNo, toke.CustomerName, toke.Phone);
+                        status = "Pick Order";
+                        printSuccessful += print.PrintOrders(addedOrders, "Take Away", orderMasterInfo.Date, orderMasterInfo.UserName, "Added", ordermasterid, toke.OrderNo, toke.TokenNo, toke.CustomerName, toke.Phone);
                     }
-                    if (cancelledOrders.Count > 0)
+                    else
                     {
-                        status = "Cancelled";
-                        printSuccessful += print.PrintOrders(cancelledOrders, orderMasterInfo.OrderTypeID == 4 ? "FoodDelivery" : (orderMasterInfo.OrderTypeID == 3 ? "FoodCourt" : (orderMasterInfo.OrderTypeID == 2 ? "Take Away" : table.restrotableTitle)), orderMasterInfo.Date, orderMasterInfo.UserName, "Cancelled", ordermasterid, toke.OrderNo, toke.TokenNo, toke.CustomerName, toke.Phone);
-                    }
-                    if (toppingOnly.Count > 0)
-                    {
-                        PrintExtra(toppingOnly, orderMasterInfo.OrderTypeID == 4 ? "FoodDelivery" : (orderMasterInfo.OrderTypeID == 3 ? "FoodCourt" : (orderMasterInfo.OrderTypeID == 2 ? "Take Away" : table.restrotableTitle)), orderMasterInfo.Date, orderMasterInfo.UserName, 1, ordermasterid);
+                        if (addedOrders.Count > 0)
+                        {
+                            status = "Added";
+                            printSuccessful += print.PrintOrders(addedOrders, table.restrotableTitle, orderMasterInfo.Date, orderMasterInfo.UserName, "Added", ordermasterid, toke.OrderNo, toke.TokenNo, toke.CustomerName, toke.Phone);
+                        }
+
+                        if (cancelledOrders.Count > 0)
+                        {
+                            status = "Cancelled";
+                            printSuccessful += print.PrintOrders(cancelledOrders, table.restrotableTitle, orderMasterInfo.Date, orderMasterInfo.UserName, "Cancelled", ordermasterid, toke.OrderNo, toke.TokenNo, toke.CustomerName, toke.Phone);
+                        }
+
+                        if (toppingOnly.Count > 0)
+                        {
+                            PrintExtra(toppingOnly, table.restrotableTitle, orderMasterInfo.Date, orderMasterInfo.UserName, 1, ordermasterid);
+                        }
                     }
                 }
             }
 
             return printSuccessful;
-
         }
         catch (Exception ex)
         {

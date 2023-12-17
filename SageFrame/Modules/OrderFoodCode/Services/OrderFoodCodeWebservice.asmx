@@ -410,7 +410,8 @@ public class OrderFoodCodeWebservice : System.Web.Services.WebService
                 foreach (OrderDetailClass ord in OrdersList)
                 {
                     List<OrderDetailClass> newOrders = orderMasterInfo.OrderDetailsList.Where(p => p.ItemId == ord.ItemId && p.IsCombo == ord.IsCombo).ToList();
-                    if (newOrders.Count < 1)
+                    //if (newOrders.Count < 1)
+                    if (newOrders == null || newOrders.Count == 0)
                     {
                         cancelledOrders.Add(ord);
                     }
@@ -430,6 +431,11 @@ public class OrderFoodCodeWebservice : System.Web.Services.WebService
 
             Token toke = new Token();
             toke = rocobj.getOrderNobyOrderMasterId(ordermasterid);
+            if (toke == null)
+            {
+                toke = new Token() { OrderNo = 0, CustomerName = "", Phone = "" };
+            }
+
             OrderPrint print = new OrderPrint();
             string printSuccessful = ordermasterid.ToString();
             if (System.Configuration.ConfigurationManager.AppSettings["FoodCourtOrderPrinting"] == "true")

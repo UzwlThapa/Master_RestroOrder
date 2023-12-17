@@ -9,7 +9,7 @@ using SageFrame.RestroOrder;
 /// </summary>
 public class OrderPrint
 {
-    public string PrintOrders(List<OrderDetailClass> orderDetailList, string tableId, DateTime time, string userName, string OrderStatus, int orderMasterID, int OrderNo, int TokenNo, string CustomerName, string Phone)
+    public string PrintOrders(List<OrderDetailClass> orderDetailList, string tableId, DateTime time, string userName, string OrderStatus, int orderMasterID, int OrderNo, int? TokenNo, string CustomerName, string Phone)
     {
         string printSuccessful = "";
         RestrOrderController rocobj = new RestrOrderController();
@@ -38,9 +38,9 @@ public class OrderPrint
         kot.Waiter = userName;
         kot.Status = OrderStatus;
         kot.OrderNo = OrderNo;
-        kot.TokenNo = TokenNo;
-        kot.Customer = CustomerName;
-        kot.Contact = Phone;
+        kot.TokenNo = TokenNo ?? 0;
+        kot.Customer = CustomerName ?? "";
+        kot.Contact = Phone ?? "";
 
         var billingPrinter = coc[2].DefaultPrinter;
 

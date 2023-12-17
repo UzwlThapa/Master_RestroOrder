@@ -211,7 +211,7 @@ function GetMenuforOrder(languageid) {
             }
 
             $(".menuimg").on("error", function () {
-                $(this).attr('src','/Modules/ROCompanyInfo/logo/logo.png');
+                $(this).attr('src', '/Modules/ROCompanyInfo/logo/logo.png');
             });
 
             $('.menuimg').on('click', function () {
@@ -689,7 +689,8 @@ function bindForCancel(result) {
                             CanceledBy: $('#hdnPinBy').val(),
                             Reason: $('#tblforcancelitem tbody').find('tr:eq(' + i + ')').find('.txtreason').val(),
                             Responsible: $('#tblforcancelitem tbody').find('tr:eq(' + i + ')').find('.selResponsible option:selected').text(),
-                            tableId: TableId
+                            tableId: TableId,
+                            orderMasterID: OrderMasterID,
                         }
                         cancelobjs.push(cancelobj); 67
                     }
@@ -802,10 +803,10 @@ function SaveOrderedData() {
             }
             //Takeaway or Foodcourt
             else if (TableId == 0) {
-              
+
                 var url = SageFrameHostURL + "/POS.aspx?OID=" + val[0];
                 window.location.href = url;
-               
+
             }
             // Dining 
             else {
@@ -943,7 +944,7 @@ function GetDataForSalesBill(orderMasterId) {
             }
 
 
-                //AddChanges 
+            //AddChanges 
 
             if (orderdetails.length > 0) {
                 htmls += ("<div class='left-sec'><h4>POS/ CASHIER: " + orderdetails[0].Waiter + "</h4>");
@@ -952,8 +953,8 @@ function GetDataForSalesBill(orderMasterId) {
 
                 var sn = 1;
                 $.each(orderdetails, function (index, value) {
-                        htmls += ("<tr class='" + value.SeatNo + " allsplited'><td>" + sn + "</td><td class='" + value.ROI_ItemId + "+" + value.CostCenterId + "+" + value.IsCombo + "+" + value.OrderDetailsID + "+" + value.RoomBookDetailID + "'>" + value.ITName + "</td>");
-                        htmls += ("<td>" + value.Quantity + "</td>");
+                    htmls += ("<tr class='" + value.SeatNo + " allsplited'><td>" + sn + "</td><td class='" + value.ROI_ItemId + "+" + value.CostCenterId + "+" + value.IsCombo + "+" + value.OrderDetailsID + "+" + value.RoomBookDetailID + "'>" + value.ITName + "</td>");
+                    htmls += ("<td>" + value.Quantity + "</td>");
 
                     if (!isab) {
                         htmls += ("<td class='item-rate' data-groupId='" + value.GroupId + "' data-rate='" + value.Rate + "' data-taxable='" + value.IsTaxable + "' >" + value.Rate + "</td>");
@@ -962,18 +963,52 @@ function GetDataForSalesBill(orderMasterId) {
                         if (isAbbreviated) {
                             htmls += ("<td class='item-rate' data-groupId='" + value.GroupId + "' data-rate='" + value.Rate + "' data-taxable='" + value.IsTaxable + "'>" + (value.Rate * (1 + v_rate / 100.0)).toFixed(2) + "</td>");
 
-                            }
+                        }
                         else {
                             htmls += ("<td class='item-rate' data-groupId='" + value.GroupId + "' data-rate='" + value.Rate + "' data-taxable='" + value.IsTaxable + "'>" + value.Rate + "</td>");
-                            }
                         }
-                        qnty += parseFloat(value.Quantity);
-                        amt = parseFloat(value.Quantity) * parseFloat(value.Rate);
+                    }
+                    qnty += parseFloat(value.Quantity);
+                    amt = parseFloat(value.Quantity) * parseFloat(value.Rate);
 
-                        if (!isab) {
-                            totalAmount += value.IsTaxable ? parseFloat(amt) : 0.00;
-                            nonTaxableAmount += value.IsTaxable ? 0 : parseFloat(amt);
-                        }
+                    if (!isab) {
+                        totalAmount += value.IsTaxable ? parseFloat(amt) : 0.00;
+                        nonTaxableAmount += value.IsTaxable ? 0 : parseFloat(amt);
+                    }
+
+                    if (!isab)
+                        htmls += ("<td class='item-amount'>" + amt + "</td></tr>");
+                    else
+                        htmls += ("<td class='item-amount'>" + (amt * (1 + v_rate / 100.0)).toFixed(2) + "</td></tr>");
+
+                    const group = costCenterGroup.filter(x => x.GroupId === value.GroupId)
+                    if (group.length > 0) {
+                        const i = costCenterGroup.findIndex(x => x.GroupId === value.GroupId);
+
+                        costCenterGroup[i].TotalAmt += value.IsTaxable ? parseFloat(amt) : 0.00;
+                        costCenterGroup[i].NonTaxableAmt += value.IsTaxable ? 0 : parseFloat(amt);
+                    }
+
+
+                    if (value.orderExtraItem != undefined && value.orderExtraItem.length > 0) {
+                        htmls += ("<tr class='allsplited' style='font-size: 10px;font-style: italic;'><td></td><td colspan=3>");
+                        qnty = 0;
+                        rate = 0.00;
+                        $.each(value.orderExtraItem, function (index, value) {
+                            htmls += (value.ExtraItem) + "(" + value.Quantity + ", Rs." + value.ExtraPrice + "); ";
+                            qnty += value.Quantity;
+                            rate += parseFloat(value.ExtraPrice * value.Quantity);
+                        });
+                        htmls += "</td>";
+                        //htmls += ("</td><td>" + qnty + "</td>");
+                        //htmls += ("<td class='item-rate'>" + (rate/qnty) + "</td>");
+                        amt = parseFloat(rate);
+
+
+                        totalAmount += value.IsTaxable ? parseFloat(amt) : 0.00;
+                        nonTaxableAmount += value.IsTaxable ? 0 : parseFloat(amt);
+
+
 
                         if (!isab)
                             htmls += ("<td class='item-amount'>" + amt + "</td></tr>");
@@ -983,46 +1018,12 @@ function GetDataForSalesBill(orderMasterId) {
                         const group = costCenterGroup.filter(x => x.GroupId === value.GroupId)
                         if (group.length > 0) {
                             const i = costCenterGroup.findIndex(x => x.GroupId === value.GroupId);
-
-                            costCenterGroup[i].TotalAmt += value.IsTaxable ? parseFloat(amt) : 0.00;
-                            costCenterGroup[i].NonTaxableAmt += value.IsTaxable ? 0 : parseFloat(amt);
+                            costCenterGroup[i].TotalAmt += amt;
                         }
 
 
-                        if (value.orderExtraItem != undefined && value.orderExtraItem.length > 0) {
-                            htmls += ("<tr class='allsplited' style='font-size: 10px;font-style: italic;'><td></td><td colspan=3>");
-                            qnty = 0;
-                            rate = 0.00;
-                            $.each(value.orderExtraItem, function (index, value) {
-                                htmls += (value.ExtraItem) + "(" + value.Quantity + ", Rs." + value.ExtraPrice + "); ";
-                                qnty += value.Quantity;
-                                rate += parseFloat(value.ExtraPrice * value.Quantity);
-                            });
-                            htmls += "</td>";
-                            //htmls += ("</td><td>" + qnty + "</td>");
-                            //htmls += ("<td class='item-rate'>" + (rate/qnty) + "</td>");
-                            amt = parseFloat(rate);
-
-
-                            totalAmount += value.IsTaxable ? parseFloat(amt) : 0.00;
-                            nonTaxableAmount += value.IsTaxable ? 0 : parseFloat(amt);
-
-
-
-                            if (!isab)
-                                htmls += ("<td class='item-amount'>" + amt + "</td></tr>");
-                            else
-                                htmls += ("<td class='item-amount'>" + (amt * (1 + v_rate / 100.0)).toFixed(2) + "</td></tr>");
-
-                            const group = costCenterGroup.filter(x => x.GroupId === value.GroupId)
-                            if (group.length > 0) {
-                                const i = costCenterGroup.findIndex(x => x.GroupId === value.GroupId);
-                                costCenterGroup[i].TotalAmt += amt;
-                            }
-
-
-                        }
-                        sn++;
+                    }
+                    sn++;
                 });
 
                 if (isab) {
@@ -1276,65 +1277,65 @@ function GetDataForSalesBill(orderMasterId) {
                 $('.item-list-tbl tbody').html("");
                 var sn = 1;
                 $.each(orderdetails, function (index, value) {
-                        var itms = "";
+                    var itms = "";
 
-                        itms += ("<tr class='" + value.SeatNo + " allsplited'><td>" + sn + "</td><td class='" + value.ROI_ItemId + "+" + value.CostCenterId + "+" + value.IsCombo + "+" + value.OrderDetailsID + "+" + value.RoomBookDetailID + "'>" + value.ITName + "</td>");
-                        itms += ("<td>" + value.Quantity + "</td>");
+                    itms += ("<tr class='" + value.SeatNo + " allsplited'><td>" + sn + "</td><td class='" + value.ROI_ItemId + "+" + value.CostCenterId + "+" + value.IsCombo + "+" + value.OrderDetailsID + "+" + value.RoomBookDetailID + "'>" + value.ITName + "</td>");
+                    itms += ("<td>" + value.Quantity + "</td>");
 
-                        if (!isab)
-                            itms += ("<td class='item-rate' data-groupId='" + value.GroupId + "' data-rate='" + value.Rate + "' >" + value.Rate + "</td>");
-                        else {
-                            if (isAbbreviated) {
-                                itms += ("<td class='item-rate' data-groupId='" + value.GroupId + "' data-rate='" + value.Rate + "' >" + (value.Rate * (1 + v_rate / 100.0)).toFixed(2) + "</td>");
+                    if (!isab)
+                        itms += ("<td class='item-rate' data-groupId='" + value.GroupId + "' data-rate='" + value.Rate + "' >" + value.Rate + "</td>");
+                    else {
+                        if (isAbbreviated) {
+                            itms += ("<td class='item-rate' data-groupId='" + value.GroupId + "' data-rate='" + value.Rate + "' >" + (value.Rate * (1 + v_rate / 100.0)).toFixed(2) + "</td>");
 
-                            }
-                            else {
-                                itms += ("<td class='item-rate' data-groupId='" + value.GroupId + "' data-rate='" + value.Rate + "' >" + value.Rate + "</td>");
-                            }
                         }
-                        amt = parseFloat(value.Quantity) * parseFloat(value.Rate);
+                        else {
+                            itms += ("<td class='item-rate' data-groupId='" + value.GroupId + "' data-rate='" + value.Rate + "' >" + value.Rate + "</td>");
+                        }
+                    }
+                    amt = parseFloat(value.Quantity) * parseFloat(value.Rate);
 
-                        //if (!isab) {
+                    //if (!isab) {
                     totalAmount += value.IsTaxable ? parseFloat(amt) : 0.00;
                     nonTaxableAmount += value.IsTaxable ? 0 : parseFloat(amt);
 
-                        //}
+                    //}
 
-                        if (!isab)
-                            itms += ("<td class='item-amount'>" + amt + "</td></tr>");
-                        else
-                            itms += ("<td class='item-amount'>" + (amt * (1 + v_rate / 100.0)).toFixed(2) + "</td></tr>");
-
-
-
-                        if (value.orderExtraItem != undefined && value.orderExtraItem.length > 0) {
-                            itms += ("<tr class='allsplited' style='font-size: 10px;font-style: italic;'><td></td><td colspan=3>");
-                            qnty = 0;
-                            rate = 0.00;
-                            $.each(value.orderExtraItem, function (index, value) {
-                                itms += (value.ExtraItem) + "(" + value.Quantity + ", Rs." + ($("#selDiscountType").val() == "4" ? '1' : value.ExtraPrice) + "); ";
-                                qnty += value.Quantity;
-                                rate += parseFloat(value.Quantity * value.ExtraPrice);
-                            });
-                            itms += ("</td>");
-                            //itms += ("</td><td>" + qnty + "</td>");
-                            if ($("#selDiscountType").val() == "4") {
-                                //itms += ("<td class='item-rate'>" + 1 + "</td>");
-                                amt = parseFloat(qnty);
-                            } else {
-                                //itms += ("<td class='item-rate'>" + rate + "</td>");
-                                amt = parseFloat(rate);
-                            }
-                            totalAmount += parseFloat(amt);
-
-                            //console.log('totalAmount: ' + totalAmount);
-
-                            itms += ("<td class='item-amount'>" + amt + "</td></tr>");
+                    if (!isab)
+                        itms += ("<td class='item-amount'>" + amt + "</td></tr>");
+                    else
+                        itms += ("<td class='item-amount'>" + (amt * (1 + v_rate / 100.0)).toFixed(2) + "</td></tr>");
 
 
+
+                    if (value.orderExtraItem != undefined && value.orderExtraItem.length > 0) {
+                        itms += ("<tr class='allsplited' style='font-size: 10px;font-style: italic;'><td></td><td colspan=3>");
+                        qnty = 0;
+                        rate = 0.00;
+                        $.each(value.orderExtraItem, function (index, value) {
+                            itms += (value.ExtraItem) + "(" + value.Quantity + ", Rs." + ($("#selDiscountType").val() == "4" ? '1' : value.ExtraPrice) + "); ";
+                            qnty += value.Quantity;
+                            rate += parseFloat(value.Quantity * value.ExtraPrice);
+                        });
+                        itms += ("</td>");
+                        //itms += ("</td><td>" + qnty + "</td>");
+                        if ($("#selDiscountType").val() == "4") {
+                            //itms += ("<td class='item-rate'>" + 1 + "</td>");
+                            amt = parseFloat(qnty);
+                        } else {
+                            //itms += ("<td class='item-rate'>" + rate + "</td>");
+                            amt = parseFloat(rate);
                         }
-                        sn++;
-                        $('.item-list-tbl tbody').append(itms);
+                        totalAmount += parseFloat(amt);
+
+                        //console.log('totalAmount: ' + totalAmount);
+
+                        itms += ("<td class='item-amount'>" + amt + "</td></tr>");
+
+
+                    }
+                    sn++;
+                    $('.item-list-tbl tbody').append(itms);
                 });
 
                 totalAmount += roomAmount;
@@ -1373,7 +1374,7 @@ function GetDataForSalesBill(orderMasterId) {
                 }
 
 
-                BindBillingTerm(totalAmount, nonTaxableAmount, totaldis,0,0, datas);
+                BindBillingTerm(totalAmount, nonTaxableAmount, totaldis, 0, 0, datas);
             });
             $("#txtLoyaltyDiscount").on('change', function () {
                 $('#txtKotDiscount').val(0);
@@ -1407,7 +1408,7 @@ function GetDataForSalesBill(orderMasterId) {
                 totaldis += ((totalAmount + nonTaxableAmount) * (lolDisRate) / 100);
 
 
-                BindBillingTerm(totalAmount, nonTaxableAmount, totaldis,0,0, datas);
+                BindBillingTerm(totalAmount, nonTaxableAmount, totaldis, 0, 0, datas);
             });
 
             $('.txt_dis').on('keyup', function () {
@@ -1471,7 +1472,7 @@ function GetDataForSalesBill(orderMasterId) {
                             dis += (parseFloat(costCenterGroup[keyIndex].TotalAmt) * (parseFloat($(this).val() / 100)));
                             disNonTax += (parseFloat(costCenterGroup[keyIndex].NonTaxableAmt) * (parseFloat($(this).val() / 100)));
                             costCenterGroup[keyIndex].TotalDis = parseFloat($(this).val());
-                            
+
                         })
                         totaldis = dis + disNonTax;
                     }
@@ -1546,7 +1547,7 @@ function GetDataForSalesBill(orderMasterId) {
                 }
 
                 console.log(costCenterGroup);
-                BindBillingTerm(totalAmount, nonTaxableAmount, totaldis, dis,disNonTax, datas);
+                BindBillingTerm(totalAmount, nonTaxableAmount, totaldis, dis, disNonTax, datas);
             })
 
             var roles = userRole.split(',');
@@ -1560,8 +1561,8 @@ function GetDataForSalesBill(orderMasterId) {
             }
 
             $("#generateBill").on('click', function () {
-              
-               
+
+
                 //alert(creditLimit);
                 if ($('.customerForCash').prop('checked') == false) {
 
@@ -1702,53 +1703,53 @@ function GetDataForSalesBill(orderMasterId) {
                 discount.CCGroup = costCenterGroup;
 
                 //if (foodCourtOrder) {
-                    var salesPaymentList = new Array();
-                    $('.pmntCheck').each(function () {
-                        if ($(this).is(':checked')) {
-                            var row = $(this).closest('tr');
-                            var spmid = $(this).attr('id').split('_')[1];
-                            var salesPayment = new Object();
-                            salesPayment.SPMID = spmid;
-                            salesPayment.ChequeNo = 000000;
-                            salesPayment.TransactionNo = 00000;
-                            salesPayment.ProviderID = 1;
-                            salesPayment.CusID = $('#CustomerID').val();
-                            salesPayment.Customer = $('#txtCustName').val();
-                            salesPayment.Address = $('#txtCusAddress').val();
-                            salesPayment.PAN = $('#txtPanNo').val();
-                            salesPayment.PayAmount = $(row).find('.txtPayAmount').val();
-                            salesPayment.TenderAmount = TotalNetAmount;
-                            salesPayment.ReturnAmount = 0;
-                            salesPayment.BillAmount = TotalNetAmount;
-                            salesPayment.Remarks = "Paid";
-                            salesPaymentList.push(salesPayment);
-                        }
-                    });
-                    //OLD System Updated Bishal
-                    //let paymentID = $('#selPayMode').val();
+                var salesPaymentList = new Array();
+                $('.pmntCheck').each(function () {
+                    if ($(this).is(':checked')) {
+                        var row = $(this).closest('tr');
+                        var spmid = $(this).attr('id').split('_')[1];
+                        var salesPayment = new Object();
+                        salesPayment.SPMID = spmid;
+                        salesPayment.ChequeNo = 000000;
+                        salesPayment.TransactionNo = 00000;
+                        salesPayment.ProviderID = 1;
+                        salesPayment.CusID = $('#CustomerID').val();
+                        salesPayment.Customer = $('#txtCustName').val();
+                        salesPayment.Address = $('#txtCusAddress').val();
+                        salesPayment.PAN = $('#txtPanNo').val();
+                        salesPayment.PayAmount = $(row).find('.txtPayAmount').val();
+                        salesPayment.TenderAmount = TotalNetAmount;
+                        salesPayment.ReturnAmount = 0;
+                        salesPayment.BillAmount = TotalNetAmount;
+                        salesPayment.Remarks = "Paid";
+                        salesPaymentList.push(salesPayment);
+                    }
+                });
+                //OLD System Updated Bishal
+                //let paymentID = $('#selPayMode').val();
 
-                    //salesPayment.SPMID = $('#selPayMode').val();
-                    //salesPayment.ChequeNo = (paymentID == 2 ? $('#txtCheqNo').val() : "");
-                    //salesPayment.TransactionNo = (paymentID == 3 || paymentID == 5 || paymentID == 6 ? $('#txtTransNo').val() : "");
-                    //salesPayment.ProviderID = ((paymentID == 3 || paymentID == 2|| paymentID == 5|| paymentID == 6) ? $('#selProv').val() : "");
-                    //salesPayment.TenderAmount = (paymentID == 1 ? parseFloat(($('#txtTenderAmount').val() == "" ? 0 : $('#txtTenderAmount').val())) : 0);
-                    //salesPayment.ReturnAmount = (paymentID == 1 ? parseFloat(($('#txtReturnAmount').val() == "" ? 0 : $('#txtReturnAmount').val())) : 0);
-                    //salesPayment.PayAmount = (paymentID == 1 ? parseFloat($('#txtTenderAmount').val() - $('#txtReturnAmount').val()) : $('#txtNetAmt').val().split(' ')[1]);
+                //salesPayment.SPMID = $('#selPayMode').val();
+                //salesPayment.ChequeNo = (paymentID == 2 ? $('#txtCheqNo').val() : "");
+                //salesPayment.TransactionNo = (paymentID == 3 || paymentID == 5 || paymentID == 6 ? $('#txtTransNo').val() : "");
+                //salesPayment.ProviderID = ((paymentID == 3 || paymentID == 2|| paymentID == 5|| paymentID == 6) ? $('#selProv').val() : "");
+                //salesPayment.TenderAmount = (paymentID == 1 ? parseFloat(($('#txtTenderAmount').val() == "" ? 0 : $('#txtTenderAmount').val())) : 0);
+                //salesPayment.ReturnAmount = (paymentID == 1 ? parseFloat(($('#txtReturnAmount').val() == "" ? 0 : $('#txtReturnAmount').val())) : 0);
+                //salesPayment.PayAmount = (paymentID == 1 ? parseFloat($('#txtTenderAmount').val() - $('#txtReturnAmount').val()) : $('#txtNetAmt').val().split(' ')[1]);
 
-                    //salesPayment.CusID = '';
-                    //salesPayment.Customer = '';
-                    //salesPayment.Address = '';
-                    //salesPayment.PAN = '';
-                    //salesPayment.Remarks = $('.txtRemarks').val();
-                    //if (foodCourtAutoBillGenerate) {
-                    //    SaveFoodCourtSalesBill(salesMaster, salesDetail, splited, billingTerm, discount, salesPayment)
-                    //} else {
-                        jConfirm('Are You Sure  ?', 'Pay', function (confirmed) {
-                            if (confirmed) {
-                               SaveFoodCourtSalesBill(salesMaster, salesDetail, splited, billingTerm, discount, salesPaymentList)
-                            }
-                        });
-                    //}
+                //salesPayment.CusID = '';
+                //salesPayment.Customer = '';
+                //salesPayment.Address = '';
+                //salesPayment.PAN = '';
+                //salesPayment.Remarks = $('.txtRemarks').val();
+                //if (foodCourtAutoBillGenerate) {
+                //    SaveFoodCourtSalesBill(salesMaster, salesDetail, splited, billingTerm, discount, salesPayment)
+                //} else {
+                jConfirm('Are You Sure  ?', 'Pay', function (confirmed) {
+                    if (confirmed) {
+                        SaveFoodCourtSalesBill(salesMaster, salesDetail, splited, billingTerm, discount, salesPaymentList)
+                    }
+                });
+                //}
                 //} else {
                 //    jConfirm('Are You Sure  ?', 'Pay', function (confirmed) {
                 //        if (confirmed) {
@@ -1774,7 +1775,7 @@ function InitEvents() {
         if (e.altKey && key == "b") {
             $('#generateBill').trigger('click');
         }
-        if (e.altKey && key == "n") { 
+        if (e.altKey && key == "n") {
             var url = SageFrameHostURL + "/POS.aspx";
             window.location.href = url;
         }
@@ -1872,12 +1873,12 @@ function BindPaymentModes() {
 
     });
 };
-function BindBillingTerm(totalAmount, nonTaxableAmount, totaldis, disTax, disNonTax,datas) {
+function BindBillingTerm(totalAmount, nonTaxableAmount, totaldis, disTax, disNonTax, datas) {
     //Abb Change
     var isab = companyInfo.IsAbbreviated;
     let v_rate = companyInfo.VATRate;
 
-    
+
 
     if (isab) {
         if (!isAbbreviated) {
@@ -1888,7 +1889,7 @@ function BindBillingTerm(totalAmount, nonTaxableAmount, totaldis, disTax, disNon
             totaldis = 0;
         }
     }
-                //Abb Change
+    //Abb Change
     var htmls = "";
 
     $("#divBillingTerm").html(htmls);
@@ -2006,7 +2007,7 @@ function BindBillingTerm(totalAmount, nonTaxableAmount, totaldis, disTax, disNon
     htmls += ("</tr>");
     //htmls += ("</table>");
 
-    
+
     if (datas.RoomBooking.RoomBookDetailsID > 0) {
         htmls += ("<tr>");
         htmls += ("<td attr-term='Advance Payment' ><strong>Advance Payment : </strong>");
@@ -2040,7 +2041,7 @@ function GetCustomeronCheck() {
         contentType: "application/json; charset=utf-8",
         dataType: "json",
         success: function (data) {
-            
+
             $("#membeshipformlist").show();
             $("#membeshipformlist").html('');
             var datas = JSON.parse(data.d);
@@ -2195,7 +2196,7 @@ function SaveFoodCourtSalesBill(salesMaster, salesDetail, splited, billingTerm, 
             Print();
             $('#InvoiceType').html('INVOICE');
             $('#btnPrints').click();
-            
+
             $('#txtCustName').val('');
             $('#txtContactNo').val('');
             $('#CustomerID').text(0);
@@ -2203,7 +2204,7 @@ function SaveFoodCourtSalesBill(salesMaster, salesDetail, splited, billingTerm, 
             $('#txtNoOfPax').val('1');
             $("#txtAddress").val('');
             $('#loyalityDiscount').text(0);
-            
+
         },
         failure: function (response) {
             jAlert("Sorry some error occured. Contact the support team.", "Error!!");
@@ -2309,7 +2310,7 @@ function initialSetup(tableId, oId, hostUrl, foodCourt, Delievery) {
 
             } else if (pinFor == 'SendOrder') {
                 if (($("#orderlist-table tbody tr").length) > 0) {
-                        bindForCancel(PreviousOrdersList);
+                    bindForCancel(PreviousOrdersList);
                 }
                 else {
                     jAlert('No Item Selected', 'Alert!!');
@@ -2452,9 +2453,9 @@ function initialSetup(tableId, oId, hostUrl, foodCourt, Delievery) {
     $(".sfCol_13").hide();
 
     $('#SendOrder').on('click', function () {
-            $('#hdnPinFor').val('SendOrder');
-            InitializePin();
-            $('#PINbox').focus()
+        $('#hdnPinFor').val('SendOrder');
+        InitializePin();
+        $('#PINbox').focus()
     });
 
     $('#CancelOrder').on('click', function () {
@@ -2675,7 +2676,7 @@ function initialSetup(tableId, oId, hostUrl, foodCourt, Delievery) {
         source: AutocompleteItem,
         delay: 0,
         select: function (event, ui) {
-           
+
             $.scrollTo(200);
             var name = ui.item.value;
             var languageid = $("#selLanguage").val() == null ? 1 : $("#selLanguage").val();
@@ -2732,21 +2733,21 @@ function initialSetup(tableId, oId, hostUrl, foodCourt, Delievery) {
                                 $('#Categoryshow').show();
                                 if (AddItemInMenuSearch != false) {
                                     BindItemsToOrder(NpitemID, NpitemName, IsCombo, value.IsOutOfStock, Nprate);
-                                    
+
                                 }
 
                             }
                         }
                     });
 
-                    
+
 
                 },
                 failure: function (response) {
                     jAlert("Sorry some error occured. Contact the support team.", "Error!!");
                 }
             });
-            
+
 
             $(".categoryimg").first().trigger('click');
             //var st = cls.split(' ');
@@ -2989,7 +2990,7 @@ function GetPreviousItemByID(Id, OID) {
         }
     });
 }
-function ShowOrderPayView(){
+function ShowOrderPayView() {
     GetDataForSalesBill(OrderMasterID);
 }
 

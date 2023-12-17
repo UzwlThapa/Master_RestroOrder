@@ -709,7 +709,8 @@ function bindForCancel(result) {
                             CanceledBy: $('#hdnPinBy').val(),
                             Reason: $('#tblforcancelitem tbody').find('tr:eq(' + i + ')').find('.txtreason').val(),
                             Responsible: $('#tblforcancelitem tbody').find('tr:eq(' + i + ')').find('.selResponsible option:selected').text(),
-                            tableId: TableId
+                            tableId: TableId,
+                            orderMasterID: OrderMasterID,
                         }
                         cancelobjs.push(cancelobj); 67
                     }
