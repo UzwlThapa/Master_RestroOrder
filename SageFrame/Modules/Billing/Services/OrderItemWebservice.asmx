@@ -1,4 +1,4 @@
-﻿<%@ WebService Language = "C#" Class="OrderItemWebservice" %>
+﻿<%@ WebService Language="C#" Class="OrderItemWebservice" %>
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -367,16 +367,17 @@ public class OrderItemWebservice : System.Web.Services.WebService
                     }
                 }
 
-                //List<OrderDetailClass> orderInDatabaseOrdered = orderInDatabase.Where(p => p.Status == "Ordered").ToList();
-                //foreach (OrderDetailClass ord in orderInDatabaseOrdered)
-                //{
-                //    List<OrderDetailClass> newOrders = orderMasterInfo.OrderDetailsList.Where(p => p.ItemId == ord.ItemId && p.SeatNo == ord.SeatNo && p.IsCombo == ord.IsCombo).ToList();
-                //    //if (newOrders.Count < 1)
-                //    if (newOrders == null || newOrders.Count == 0)
-                //    {
-                //        cancelledOrders.Add(ord);
-                //    }
-                //}
+                // cancel item if item in database is not in request items
+                List<OrderDetailClass> orderInDatabaseOrdered = orderInDatabase.Where(p => p.Status == "Ordered").ToList();
+                foreach (OrderDetailClass ord in orderInDatabaseOrdered)
+                {
+                    List<OrderDetailClass> newOrders = orderMasterInfo.OrderDetailsList.Where(p => p.ItemId == ord.ItemId && p.SeatNo == ord.SeatNo && p.IsCombo == ord.IsCombo).ToList();
+                    //if (newOrders.Count < 1)
+                    if (newOrders == null || newOrders.Count == 0)
+                    {
+                        cancelledOrders.Add(ord);
+                    }
+                }
             }
             else
             {
@@ -453,6 +454,11 @@ public class OrderItemWebservice : System.Web.Services.WebService
                 }
 
                 Token toke = rocobj.getOrderNobyOrderMasterId(Convert.ToInt32(orderMasterInfo.OrderMasterID));
+                if (toke == null)
+                {
+                    toke = new Token() { OrderNo = 0, CustomerName = "", Phone = "" };
+                }
+
                 restroTable table = new restroTable();
                 if (orderMasterInfo.TableId != "0")
                 {

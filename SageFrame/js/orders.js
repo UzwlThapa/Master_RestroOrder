@@ -310,13 +310,15 @@ function BindCategoriesByMenu(result, categoryName) {
         if (currentVal == undefined) {
             currentVal = 0;
         }
+
         var prevQuantity = 0;
         $.each(PreviousOrdersList, function (i, item) {
             if (item.ItemID == NpitemID && item.IsCombo == IsCombo && item.SeatNo == selectedBillNo) {
                 prevQuantity = item.Quantity;
                 return false;
             }
-        })
+        });
+
         if (currentVal >= prevQuantity && values[4] == 'true') {
             jAlert('Item Out Of Stock!!', 'Information!!');
         } else {
@@ -608,6 +610,7 @@ function getSelectionStart(o) {
         return o.value.lastIndexOf(r.text)
     } else return o.selectionStart
 }
+
 function bindForCancel(result) {
     if (result.length > 0) {
         $('.saveCanceledItem').bind('click');
@@ -631,9 +634,11 @@ function bindForCancel(result) {
                     }
                 }
             }
+
             if (!array.includes(item.ItemID + "_" + item.IsCombo + "_" + item.SeatNo)) {
                 execute = true;
             }
+
             if (execute) {
                 if ((found && qnty < item.Quantity) || !found) {
                     var htmls = "";
@@ -649,6 +654,7 @@ function bindForCancel(result) {
                 }
             }
         });
+
         if ($('#tblforcancelitem tbody tr').length > 0) {
             $('#canceledOrderItem').dialog({
                 'title': 'Canceled Items',
@@ -674,14 +680,16 @@ function bindForCancel(result) {
                             CanceledBy: $('#hdnPinBy').val(),
                             Reason: $('#tblforcancelitem tbody').find('tr:eq(' + i + ')').find('.txtreason').val(),
                             Responsible: $('#tblforcancelitem tbody').find('tr:eq(' + i + ')').find('.selResponsible option:selected').text(),
-                            tableId: TableId
+                            tableId: TableId,
+                            orderMasterID: OrderMasterID,
                         }
-                        cancelobjs.push(cancelobj); 67
+                        cancelobjs.push(cancelobj);
                     }
 
-                    SaveCanceledItems(cancelobjs);
+                    if (cancelobjs.length > 0) {
+                        SaveCanceledItems(cancelobjs);
+                    }
                 }
-
             });
         }
         else {
@@ -692,6 +700,7 @@ function bindForCancel(result) {
         SaveOrderedData();
     }
 }
+
 function SaveCanceledItems(cancelobjs) {
     $.ajax({
         type: "POST",
@@ -710,6 +719,7 @@ function SaveCanceledItems(cancelobjs) {
         }
     });
 }
+
 function SaveOrderedData() {
     var splited = false;
     var cancel = false;
@@ -2179,7 +2189,8 @@ function initialSetup(tableId, oId, hostUrl, foodCourt, Delievery) {
                         prevQuantity = item.Quantity;
                         return false;
                     }
-                })
+                });
+
                 if (currentVal >= prevQuantity) {
                     jAlert('Item Out Of Stock!!', 'Information!!');
                     return false;
@@ -2528,7 +2539,8 @@ function initialSetup(tableId, oId, hostUrl, foodCourt, Delievery) {
                                 prevQuantity = item.Quantity;
                                 return false;
                             }
-                        })
+                        });
+
                         if (currentVal >= prevQuantity && value.IsOutOfStock) {
                             jAlert('Item Out Of Stock!!', 'Information!!');
                         } else {
@@ -2600,7 +2612,8 @@ function initialSetup(tableId, oId, hostUrl, foodCourt, Delievery) {
                 prevQuantity = item.Quantity;
                 return false;
             }
-        })
+        });
+
         if (currentVal >= prevQuantity && values[5] == 'true') {
             jAlert('Item Out Of Stock!!', 'Information!!');
         } else {
@@ -2650,6 +2663,7 @@ function GetPreviousItemByID(Id, OID) {
             var htmls = "";
             var i = 1;
 
+            debugger;
             $('#OLroomname').text((allOrders[0].room == null ? "" : allOrders[0].room));
             $('#OLTablename').text((allOrders[0].restrotableTitle == null ? "" : allOrders[0].restrotableTitle));
             RoomId = allOrders[0].RoomId;

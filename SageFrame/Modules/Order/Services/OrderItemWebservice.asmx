@@ -376,7 +376,8 @@ public class OrderItemWebservice : System.Web.Services.WebService
                 foreach (OrderDetailClass ord in OrdersList)
                 {
                     List<OrderDetailClass> newOrders = orderMasterInfo.OrderDetailsList.Where(p => p.ItemId == ord.ItemId && p.SeatNo == ord.SeatNo && p.IsCombo == ord.IsCombo).ToList();
-                    if (newOrders.Count < 1)
+                    //if (newOrders.Count < 1)
+                    if (newOrders == null || newOrders.Count == 0)
                     {
                         cancelledOrders.Add(ord);
                     }
@@ -453,13 +454,17 @@ public class OrderItemWebservice : System.Web.Services.WebService
                         ord.Note += note;
                     }
                 }
-                Token toke = rocobj.getOrderNobyOrderMasterId(Convert.ToInt32(orderMasterInfo.OrderMasterID));
+                Token toke = rocobj.getOrderNobyOrderMasterId(Convert.ToInt32(orderMasterInfo.OrderMasterID)); if (toke == null)
+                {
+                    toke = new Token() { OrderNo = 0, CustomerName = "", Phone = "" };
+                }
+
                 restroTable table = new restroTable();
                 if (orderMasterInfo.TableId != "0")
                 {
-
                     table = rocobj.GetTableNoBYId(Convert.ToInt32(orderMasterInfo.TableId));
                 }
+
                 OrderPrint print = new OrderPrint();
                 if (orderMasterInfo.IsCancelled == true)
                 {

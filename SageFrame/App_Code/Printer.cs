@@ -119,6 +119,7 @@ public class Printer
                     abbRate = itm.Rate;
                 }
             }
+
             var Amt = itm.Quantity * (float)abbRate;
             TotalAmount += Amt;
             var ItemLength = 0;
@@ -129,7 +130,9 @@ public class Printer
             if (ItemLength < 17)
             {
                 for (var i = ItemLength; i != 18; i++)
+                {
                     format += space;
+                }
             }
             else
             {
@@ -140,8 +143,8 @@ public class Printer
             offset = offset + (int)fontHeight + 10;
             line = IName + format + (itm.Quantity) + " " + (decimal.Round(abbRate, 1, MidpointRounding.AwayFromZero)) + " " + (decimal.Round((decimal)Amt, 1, MidpointRounding.AwayFromZero));
             graphic.DrawString(line, font, new SolidBrush(Color.Black), startX, startY + offset);
-
         }
+
         offset = offset + (int)fontHeight;
         graphic.DrawString(dashes, font, new SolidBrush(Color.Black), startX, startY + offset);
         offset = offset + (int)fontHeight;
@@ -183,7 +186,7 @@ public class Printer
         if (kot.Status == "Cancelled")
         {
             graphic.DrawString("      " + kot.CostCenterTitle, new Font("Courier New", 14, FontStyle.Bold), new SolidBrush(Color.Black), startX, startY);
-            graphic.DrawString("\n         " + "(" + kot.Status + ")", new Font("Courier New", 12, FontStyle.Bold), new SolidBrush(Color.Black), startX, startY);
+            graphic.DrawString("\n      " + "(" + kot.Status + ")", new Font("Courier New", 12, FontStyle.Bold), new SolidBrush(Color.Black), startX, startY);
             offset = offset + (int)fontHeight;
         }
         else
@@ -453,7 +456,6 @@ public class Printer
         offset = offset + (int)fontHeight;
     }
 
-
     public void PrintKOTforCake(string printerName, KOT KOT)
     {
         kot = KOT;
@@ -461,8 +463,8 @@ public class Printer
         printDocument.PrinterSettings.PrinterName = printerName == "" ? "POS-80C" : printerName;
         printDocument.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(CreateKOTforcake); //add an event handler that will do the printing
         printDocument.Print();
-
     }
+
     private void CreateKOTforcake(object sender, System.Drawing.Printing.PrintPageEventArgs e)
     {
         int characterLength = Convert.ToInt32(ConfigurationManager.AppSettings["KOTCharacterLength"].ToString());
