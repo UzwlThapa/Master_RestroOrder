@@ -285,7 +285,7 @@
 
                     eventFunction.config.method = "getVerifiedTransactionByID";
                     eventFunction.config.url = eventFunction.config.baseURL + eventFunction.config.method;
-                    eventFunction.config.data = JSON2.stringify({ transactionID: id });
+                    eventFunction.config.data = JSON2.stringify({ transactionID: id, financialAccountId: 0 });
                     eventFunction.config.ajaxCallMode = 12;
                     eventFunction.ajaxCall(eventFunction.config);
 

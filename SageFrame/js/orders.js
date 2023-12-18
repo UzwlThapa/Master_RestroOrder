@@ -675,7 +675,7 @@ function bindForCancel(result) {
                             Responsible: $('#tblforcancelitem tbody').find('tr:eq(' + i + ')').find('.selResponsible option:selected').text(),
                             tableId: TableId
                         }
-                        cancelobjs.push(cancelobj); 67
+                        cancelobjs.push(cancelobj);
                     }
 
                     SaveCanceledItems(cancelobjs);
@@ -2100,6 +2100,7 @@ function CancelOrderedData() {
 //Avata Change
 function initialSetup(tableId, oId, hostUrl, foodCourt, Delievery) {
     $('#hdnPinMatch').on('change', function () {
+        debugger;
         if ($('#hdnPinMatch').val() == "true") {
             var pinFor = $('#hdnPinFor').val();
             if (pinFor == 'generateBill') {
@@ -2113,10 +2114,8 @@ function initialSetup(tableId, oId, hostUrl, foodCourt, Delievery) {
                     $("#enablebtn").hide();
                 }
                 else {
-                    jAlert('Discount is not Allowed', "Information!!", function () {
-                    });
+                    jAlert('Discount is not Allowed', "Information!!", function () {});
                 }
-
             } else if (pinFor == 'SendOrder') {
                 if (($("#orderlist-table tbody tr").length) > 0) {
                     if (foodCourtOrder) {

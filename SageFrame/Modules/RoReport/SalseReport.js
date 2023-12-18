@@ -85,19 +85,17 @@ function IntegerAndDecimal(evt, element) {
                 eventFunction.GetOrderType();
                 $("#DailyReport").on("click", ".btnCancelBill", function () {
                     $('#hdnPinFor').val('CancelBill');
-                    InitializePin();
                     salesId = $(this).attr('id');
-
+                    InitializePin();
                 });
 
                 $("#DailyReport").on("click", ".btnEditCustomer", function () {
                     $('#hdnPinFor').val('EditBill');
+                    salesId = $(this).attr('id');
                     InitializePin();
-                    salesId = $(this).attr('id').split('_')[0];
-
                 });
 
-                $("#selSalesReturn").on('click', function (){
+                $("#selSalesReturn").on('click', function () {
                     var c = $(this).is(':checked');
                     if (c) {
                         IncludeSalesReturn = true;
@@ -105,7 +103,7 @@ function IntegerAndDecimal(evt, element) {
                         IncludeSalesReturn = false;
                     }
                     $("#StartEndReportView").trigger('click');
-                })
+                });
 
                 $("#selBillCancel").on('click', function () {
                     var c = $(this).is(':checked');
@@ -115,10 +113,7 @@ function IntegerAndDecimal(evt, element) {
                         IncludeBillCancel = false;
                     }
                     $("#StartEndReportView").trigger('click');
-                })
-
-                
-                
+                });
 
                 $('#hdnPinMatch').on('change', function () {
                     if ($('#hdnPinMatch').val() == "true") {
@@ -154,7 +149,7 @@ function IntegerAndDecimal(evt, element) {
                                                 $('#btnPrints').click();
                                             }
                                         },
-                                        
+
                                         Cancel: function () {
                                             $(this).dialog('close');
                                         }
@@ -767,7 +762,6 @@ function IntegerAndDecimal(evt, element) {
                         break;
                     case 7:
                         salesReport = JSON.parse(data.d);
-                        console.log(salesReport);
                         eventFunction.BindSalesDaily();
                         break;
                     case 8:
@@ -776,7 +770,6 @@ function IntegerAndDecimal(evt, element) {
                     case 9:
                         break;
                     case 10:
-                        //eventFunction.bindBillBody(data.d);
                         break;
                     case 11:
                         terms = [];
@@ -941,7 +934,6 @@ function IntegerAndDecimal(evt, element) {
                     htmls += '<option value="' + value.OrderTypeID + '">' + value.OrderType + '</option>';
                 });
                 $('#selOrderType').html(htmls);
-
             },
 
             BindProviderList: function (data) {
@@ -983,7 +975,6 @@ function IntegerAndDecimal(evt, element) {
                     CustAddress = $('#hdfAddress').val();
                     CustPAN = $('#hdfPAN').val();
                     payment(parseInt($('#hdfSMID').val()));
-
                 });
             },
 
@@ -1217,7 +1208,7 @@ function IntegerAndDecimal(evt, element) {
                     dailyList = salesReport.filter(x => x.IsArchived == false);
                 } else if (!IncludeSalesReturn && !IncludeBillCancel) {
                     dailyList = salesReport.filter(x => x.IsArchived == false && x.BillCancelled == false);
-                }else {
+                } else {
                     dailyList = salesReport;
                 }
 
@@ -1300,8 +1291,6 @@ function IntegerAndDecimal(evt, element) {
                             htmls += '<td class="tdcenter"><label id="' + value.salesMasterId + "_" + value.SPMID + "_" + value.Status + "_" + value.SalesType + '" class="icon-preview btnViewBill" />';
 
                             htmls += '<td class="tdcenter">';
-                            
-                            //smID = value.salesMasterId + "_" + value.SPMID + "_" + value.Status + "_" + value.SalesType;
 
                             var roles = userRole.split(',');
                             if (roles.includes("Super User") || roles.includes("Void Bill")) {
@@ -1575,27 +1564,27 @@ function IntegerAndDecimal(evt, element) {
                                 var salesPaymentList = new Array();
 
                                 //if ($('#chkPayMentMode').is(':checked')) {
-                                    $('#divEditCustomer').find('.pmntCheck').each(function () {
-                                        if ($(this).is(':checked')) {
-                                            var row = $(this).closest('tr');
-                                            var spmid = $(this).attr('id').split('_')[1];
+                                $('#divEditCustomer').find('.pmntCheck').each(function () {
+                                    if ($(this).is(':checked')) {
+                                        var row = $(this).closest('tr');
+                                        var spmid = $(this).attr('id').split('_')[1];
 
-                                            var salesPayment = new Object();
-                                            salesPayment.salesMasterId = smID;
-                                            salesPayment.SPMID = spmid;
-                                            salesPayment.ChequeNo = (spmid == 2 ? $(row).find('.txtTransaction').val() : '');
-                                            salesPayment.TransactionNo = (spmid == 3 || spmid == 5 || spmid == 6 ? $(row).find('.txtTransaction').val() : '');
-                                            salesPayment.ProviderID = (spmid == 2 || spmid == 3 || spmid == 5 || spmid == 6 ? $(row).find('.selPaymentMode').val() : '');
-                                            salesPayment.CusID = ($.trim($('#custId').val()) == "" ? 0 : parseInt($('#custId').val()));
-                                            salesPayment.Customer = $('#txtCustomerNameP').val();
-                                            salesPayment.Address = "";
-                                            salesPayment.PAN = $('#txtPAN').val();
-                                            salesPayment.PayAmount = $(row).find('.txtPayAmount').val();
-                                            salesPayment.Remarks = $('.txtRemarks').val();
-                                            salesPayment.BillAmount = TAmount;
-                                            salesPaymentList.push(salesPayment);
-                                        }
-                                    });
+                                        var salesPayment = new Object();
+                                        salesPayment.salesMasterId = smID;
+                                        salesPayment.SPMID = spmid;
+                                        salesPayment.ChequeNo = (spmid == 2 ? $(row).find('.txtTransaction').val() : '');
+                                        salesPayment.TransactionNo = (spmid == 3 || spmid == 5 || spmid == 6 ? $(row).find('.txtTransaction').val() : '');
+                                        salesPayment.ProviderID = (spmid == 2 || spmid == 3 || spmid == 5 || spmid == 6 ? $(row).find('.selPaymentMode').val() : '');
+                                        salesPayment.CusID = ($.trim($('#custId').val()) == "" ? 0 : parseInt($('#custId').val()));
+                                        salesPayment.Customer = $('#txtCustomerNameP').val();
+                                        salesPayment.Address = "";
+                                        salesPayment.PAN = $('#txtPAN').val();
+                                        salesPayment.PayAmount = $(row).find('.txtPayAmount').val();
+                                        salesPayment.Remarks = $('.txtRemarks').val();
+                                        salesPayment.BillAmount = TAmount;
+                                        salesPaymentList.push(salesPayment);
+                                    }
+                                });
 
                                 $.ajax({
                                     type: "POST",
@@ -1607,7 +1596,7 @@ function IntegerAndDecimal(evt, element) {
                                     dataType: "json",
                                     success: function (data) {
                                         jAlert('Bill Successfully Paid.', 'Information!!', function () {
-                                            location.reload(); 
+                                            location.reload();
                                         });
                                         $(".ui-dialog-content").dialog("close");
 
@@ -1667,7 +1656,7 @@ function IntegerAndDecimal(evt, element) {
                             position: ['center', 'center']
                         });
                     } else {
-                       // alert(2);
+                        // alert(2);
                         $("#hdfCusID").val('');
                         $("#txtCustomerNameP").val('');
                         $("#txtPAN").val('');

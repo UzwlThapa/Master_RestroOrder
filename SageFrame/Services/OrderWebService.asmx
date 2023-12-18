@@ -379,6 +379,7 @@ public class OrderWebService : System.Web.Services.WebService
             return orderMasterID;
         }
     }
+
     [WebMethod]
     public string GetDataForSalesBill(int orderMasterId)
     {
@@ -397,10 +398,6 @@ public class OrderWebService : System.Web.Services.WebService
             }
             salesBill.billingTerm = roController.getActiveBILLTERM();
 
-            //if (System.Configuration.ConfigurationManager.AppSettings["ServChargeInTakeAway"] == "false")
-            //{
-            //  salesBill.billingTerm.RemoveAll(p => p.BillTerm == "Service Charge");
-            //}
             salesBill.cuscenter = roController.getdiscountfromcostcenter();
             salesBill.RoomBooking = roController.getRoomBookingInfoByOrderMasterID(orderMasterId);
             salesBill.VATforBill = (compInf.IsPan ? false : true);
