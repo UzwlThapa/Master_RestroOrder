@@ -32,7 +32,7 @@ li { list-style: none; }
 #sfOuterwrapper a.sflogo img { margin: 0px auto 10px; border: none; }
 p.sfBack { margin: 10px auto; width: 300px; text-align: center; color: #FFFFFF;}
 p.sfBack a{color:#FFFFFF;}
-.sfErrorA { color: #fff; font-size: 13px; font-weight: bold; position: absolute; top: 5px; right: 5px; width: 10px; height: 40px; line-height: 40px; text-align: center; background: #ed1c24; border-radius: 3px; -webkit-border-radius: 3px; -ms-border-radius: 3px; -o-border-radius: 3px; }
+.sfErrorA { color: #fff; font-size: 13px; font-weight: bold; position: absolute; top: 5px; right: 5px; width: 10px; height: 40px; line-height: 40px; text-align: center; border-radius: 3px; -webkit-border-radius: 3px; -ms-border-radius: 3px; -o-border-radius: 3px; }
 
 /*---Normal link---*/
 a { color: #2D4C80; text-decoration: none; font: 14px Tahoma, Geneva, sans-serif; }
@@ -41,7 +41,7 @@ a img { border: none; }
 .sfLogoholder { margin: 0 auto; width: 960px; text-align: center; }
 td.sfCatpchatd { padding: 5px 0; }
 td.sfCatpchatd input.sfCaptchadata { margin: 0 0 0 5px; width: 15px; float: left; }
-img.sfCaptcha { margin: 0; display: inline-block; }
+img.sfCaptcha { margin-left: 30px; display: inline-block; }
 p { font: bold 12px/18px Tahoma, Geneva, sans-serif; color: #545454; }
 .sfLogin { position: relative; }
 .sfInputbox { height: 50px; line-height: 50px !important; font-size: 18px; padding: 0px 15px 0px 55px; border: 1px solid #ddd; width: 100%; -webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px; background: #f2f2f2; color: #737373; -webkit-transition: all 0.3s ease-in-out; -moz-transition: all 0.3s ease-in-out; -ms-transition: all 0.3s ease-in-out; -o-transition: all 0.3s ease-in-out; transition: all 0.3s ease-in-out; box-sizing: border-box; -moz-box-sizing: border-box; -o-box-sizing: border-box; -webkit-box-sizing: border-box; -ms-box-sizing: border-box; }
@@ -72,7 +72,7 @@ h2 { font: 24px Tahoma, Geneva, sans-serif; color: #515357; margin-bottom: 20px;
 .sfErrormsg .sfMessagebox { background: url(../images/error.png) no-repeat 15px center; color: #a21d21; font: bold 13px Tahoma, Geneva, sans-serif; padding: 8px 44px; }
 .sfSuccessmsg .sfMessagebox { background: url(../images/success.png) no-repeat 10px center; padding: 8px 44px; color: #090; }
 .sfAlertmsg .sfMessagebox { background: #fcffe5 url(../images/error.png) no-repeat 10px 50%; color: #ad3435; color: #a21d21; font: bold 11px/18px Tahoma, Geneva, sans-serif; padding: 8px 44px; }
-.sfLogin p.sfError, .sfError { color: #d41f1e; font-size: 14px; }
+.sfLogin p.sfError, .sfError { color: #d41f1e; font-size: 14px; text-align:center; }
 input.sfError, input.sfError:focus { border-color: Red; }
 
 /* login page */
@@ -452,4 +452,8 @@ p.cssClasstext {
    .sfLogininside .sfCol_restro-left {
     padding: 40px;
 }
+}
+
+div#ctl16_dvCaptchaField {
+    text-align: center;
 }
