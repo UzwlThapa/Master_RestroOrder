@@ -1,12 +1,29 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeFile="Cbms_SalesBook.ascx.cs" Inherits="Modules_CBMS_Dashboard_Cbms_SalesBook" %>
 <%--<script src="https://unpkg.com/jspdf@latest/dist/jspdf.min.js"></script>--%>
 <script type="text/javascript">
-    $(function () {
-        $(this).CReports({
+    $(document).ready(function () {
+        $("#txtStartDate").datepicker({
+            changeMonth: true,
+            changeYear: true,
         });
+        $("#txtEndDate").datepicker({
+            changeMonth: true,
+            changeYear: true,
+        });
+
     });
 
 </script>
+<script type="text/javascript">
+
+        $(function () {
+
+            $(this).CReports({
+            });
+        });
+
+    // resizeIframe();
+        </script>
 <div class="RO_wrapper">
     <div class="restro-title clearfix">
         <h3>Sales Book</h3>
@@ -18,14 +35,14 @@
                     <label>From Date: </label>
                 </td>
                 <td>
-                    <input type="text" id="txtMnthYear" class="sfInputbox" autocomplete="off" style="width: 100px;" /></td>
+                    <input type="text" id="txtStartDate" class="sfInputbox DatePick" autocomplete="off" style="width: 100px;" /></td>
                 <td>
                     <input type="hidden" id="txtEngMnthYear" /></td>
                 <td>
                     <label>To Date: </label>
                 </td>
                 <td>
-                    <input type="text" id="txtToDate" class="sfInputbox" autocomplete="off" style="width: 100px;" /></td>
+                    <input type="text" id="txtEndDate" class="sfInputbox DatePick" autocomplete="off" style="width: 100px;" /></td>
                 <td>
                     <input type="hidden" id="txtEngToDate" /></td>
                 <td>

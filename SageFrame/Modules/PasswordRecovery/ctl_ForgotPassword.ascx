@@ -47,13 +47,15 @@
                             <asp:RequiredFieldValidator Display="Dynamic" ID="rfvUsername" runat="server" ControlToValidate="txtUsername"
                                 ValidationGroup="vdgForgotPassword" ErrorMessage="*" Text="*" CssClass="sfErrorA"
                                 meta:resourcekey="rfvUsernameResource1"></asp:RequiredFieldValidator>
+
+                               
                         </p>
                         <p class="sfEmail">
                             <asp:TextBox ID="txtEmail" placeholder="Email" runat="server" CssClass="sfInputbox"
                                 meta:resourcekey="txtEmailResource1"></asp:TextBox>
                             <br />
-                            <asp:RequiredFieldValidator Display="Dynamic" Text="*" ID="rfvEmail" runat="server"
-                                ControlToValidate="txtEmail" ValidationGroup="vdgForgotPassword" ErrorMessage="*"
+                            <asp:RequiredFieldValidator Display="Dynamic" Text="Failed" ID="rfvEmail" runat="server"
+                                ControlToValidate="txtEmail" ValidationGroup="vdgForgotPassword" ErrorMessage="Failed"
                                 CssClass="sfErrorA" meta:resourcekey="rfvEmailResource1"></asp:RequiredFieldValidator>
                             <asp:RegularExpressionValidator ID="revEmail" runat="server" Display="Dynamic" ControlToValidate="txtEmail"
                                 CssClass="sfErrorA" SetFocusOnError="true" ValidationGroup="vdgForgotPassword"
