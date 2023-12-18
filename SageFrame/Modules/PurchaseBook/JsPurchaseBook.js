@@ -51,6 +51,12 @@
                     npdMonth: true,
                     npdYear: true
                 });
+                $("#txtMnthYear").datepicker({
+                    onSelect: function (dateText, inst) {
+                        // Change the background color of the selected date
+                        $(this).css("background-color", "blue");
+                    }
+                });
                 $("#txtMnthYear,#txtMnthYearEnd").datepicker("setDate", new Date());
                 $("#btnViewPurchase").click(function () {
                     eventFunction.GetPurchaseBook();
@@ -189,3 +195,4 @@
         $.CReport(p);
     };
 })(jQuery);
+

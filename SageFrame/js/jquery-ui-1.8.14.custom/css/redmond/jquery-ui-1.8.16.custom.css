@@ -127,6 +127,8 @@ li.ui-state-default a, li.ui-state-default a:link, li.ui-state-default a:visited
 	text-decoration: none;
 }
 .ui-state-active, .ui-widget-content .ui-state-active, .ui-widget-header .ui-state-active {
+	background:blue;
+	color:white;
 }
 .ui-state-active a, .ui-state-active a:link, .ui-state-active a:visited {
 	color:#0B4B83;

@@ -8,8 +8,7 @@
 </script>
 <div class="RO_wrapper">
 <div class="restro-title clearfix">
-        <h3>Purchase Book</h3></div>
-        <div>
+       
 <table style="display:block;">
 <tr>
     <td><label>Start Date : </label></td>

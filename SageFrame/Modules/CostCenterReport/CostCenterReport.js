@@ -97,9 +97,10 @@ function IntegerAndDecimal(evt, element) {
                 });
 
                 $(".DatePick").datepicker({
-                    dateFormat: "yy-mm-dd"
+                    dateFormat: "yy-mm-dd",
+                    maxDate: "+0D"
                 }).datepicker("setDate", "0");
-
+                
 
 
                 $("#txtMonthlyDate").datepicker({

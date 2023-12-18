@@ -9,12 +9,12 @@ font-weight: normal; font-style: normal; }
 .sfCol_60.menu-bg {
     position: relative;
     /*padding: 15px 0px;*/
-    min-height: 95vh;
+    /*min-height: 95vh;*/
     background: url('/../images/background.jpg');
     background-size: cover;
     background-position: center center;
     z-index: 99;
-    height: 0;
+    height: 100%
 }
 
 .sfCol_60.menu-bg::before {
