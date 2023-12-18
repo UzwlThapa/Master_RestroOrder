@@ -351,7 +351,7 @@ function Print() {
                 var htmls = "<table id='Brandtable' cellspacing='0'>"
                 htmls += "<thead>"
                 htmls += "<tr>"
-                htmls += "<th> Name </th><th>Address </th><th> Contact No. </th><th> Card No. </th><th> DateOfIssue</th><th> DateOfExpire</th><th> PAN</th><th class='tdrate'> Opening Balance (Rs.)</th><th class='tdrate'> Rem Balance (Rs.)</th><th class='tdcenter'> Pay </th><th class='tdcenter'> View </th>";
+                htmls += "<th> Name </th><th>Address </th><th> Contact No. </th><th> Card No. </th><th> Date Of Issue</th><th> Date Of Expire</th><th> PAN</th><th class='tdrate'> Opening Balance (Rs.)</th><th class='tdrate'> Rem Balance (Rs.)</th><th class='tdcenter'> Pay </th><th class='tdcenter'> View </th>";
                 if (IsCus == 1) {
                     htmls += "<th class='tdcenter'> SMS </th>";
                 };

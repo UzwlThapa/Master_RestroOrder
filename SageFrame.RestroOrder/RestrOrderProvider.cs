@@ -1919,7 +1919,9 @@ namespace SageFrame.RestroOrder
                 Param.Add(new KeyValuePair<string, object>("@OID", orderMasterInfo.OID));
                 Param.Add(new KeyValuePair<string, object>("@OrderStatus", orderMasterInfo.OrderStatus));
                 Param.Add(new KeyValuePair<string, object>("@OrderTypeID", orderMasterInfo.OrderTypeID.ToString() == null ? 0 : orderMasterInfo.OrderTypeID));
+                var obj = sqlHandler.ExecuteAsScalar<object>("[USP_PO_SAVEPURCHASEMASTER]", Param);
                 int m = (orderMasterInfo.OrderMasterID == 0) ? Convert.ToInt32(obj) : orderMasterInfo.OrderMasterID;
+
                 List<OrderDetailClass> orderDetailRunning = new List<OrderDetailClass>();
                 List<OrderDetailClass> leftOrderRecord = new List<OrderDetailClass>();
                 Dictionary<string, int> dictionary = new Dictionary<string, int>();
