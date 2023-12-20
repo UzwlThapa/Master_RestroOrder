@@ -201,3 +201,12 @@ D:\restroorder\Master_RestroOrder\SageFrame.DailyChalan\obj\Release\SageFrame.Da
 D:\restroorder\Master_RestroOrder\SageFrame.DailyChalan\obj\Release\SageFrame.DailyChalan.csproj.CopyComplete
 D:\restroorder\Master_RestroOrder\SageFrame.DailyChalan\obj\Release\SageFrame.DailyChalan.dll
 D:\restroorder\Master_RestroOrder\SageFrame.DailyChalan\obj\Release\SageFrame.DailyChalan.pdb
+D:\danfe\Master_RestroOrder\SageFrame.DailyChalan\bin\Release\SageFrame.DailyChalan.dll
+D:\danfe\Master_RestroOrder\SageFrame.DailyChalan\bin\Release\SageFrame.DailyChalan.pdb
+D:\danfe\Master_RestroOrder\SageFrame.DailyChalan\bin\Release\SageFrame.Common.dll
+D:\danfe\Master_RestroOrder\SageFrame.DailyChalan\bin\Release\SageFrame.Common.pdb
+D:\danfe\Master_RestroOrder\SageFrame.DailyChalan\obj\Release\SageFrame.DailyChalan.csproj.AssemblyReference.cache
+D:\danfe\Master_RestroOrder\SageFrame.DailyChalan\obj\Release\SageFrame.DailyChalan.csproj.CoreCompileInputs.cache
+D:\danfe\Master_RestroOrder\SageFrame.DailyChalan\obj\Release\SageFrame.DailyChalan.csproj.CopyComplete
+D:\danfe\Master_RestroOrder\SageFrame.DailyChalan\obj\Release\SageFrame.DailyChalan.dll
+D:\danfe\Master_RestroOrder\SageFrame.DailyChalan\obj\Release\SageFrame.DailyChalan.pdb

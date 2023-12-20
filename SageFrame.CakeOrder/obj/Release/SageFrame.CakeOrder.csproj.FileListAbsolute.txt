@@ -149,3 +149,14 @@ D:\restroorder\Master_RestroOrder\SageFrame.CakeOrder\obj\Release\SageFrame.Cake
 D:\restroorder\Master_RestroOrder\SageFrame.CakeOrder\obj\Release\SageFrame.CakeOrder.csproj.CopyComplete
 D:\restroorder\Master_RestroOrder\SageFrame.CakeOrder\obj\Release\SageFrame.CakeOrder.dll
 D:\restroorder\Master_RestroOrder\SageFrame.CakeOrder\obj\Release\SageFrame.CakeOrder.pdb
+D:\danfe\Master_RestroOrder\SageFrame.CakeOrder\bin\Release\SageFrame.CakeOrder.dll
+D:\danfe\Master_RestroOrder\SageFrame.CakeOrder\bin\Release\SageFrame.CakeOrder.pdb
+D:\danfe\Master_RestroOrder\SageFrame.CakeOrder\bin\Release\SageFrame.Common.dll
+D:\danfe\Master_RestroOrder\SageFrame.CakeOrder\bin\Release\SageFrame.RestoLoyalty.dll
+D:\danfe\Master_RestroOrder\SageFrame.CakeOrder\bin\Release\SageFrame.RestoLoyalty.pdb
+D:\danfe\Master_RestroOrder\SageFrame.CakeOrder\bin\Release\SageFrame.Common.pdb
+D:\danfe\Master_RestroOrder\SageFrame.CakeOrder\obj\Release\SageFrame.CakeOrder.csproj.AssemblyReference.cache
+D:\danfe\Master_RestroOrder\SageFrame.CakeOrder\obj\Release\SageFrame.CakeOrder.csproj.CoreCompileInputs.cache
+D:\danfe\Master_RestroOrder\SageFrame.CakeOrder\obj\Release\SageFrame.CakeOrder.csproj.CopyComplete
+D:\danfe\Master_RestroOrder\SageFrame.CakeOrder\obj\Release\SageFrame.CakeOrder.dll
+D:\danfe\Master_RestroOrder\SageFrame.CakeOrder\obj\Release\SageFrame.CakeOrder.pdb

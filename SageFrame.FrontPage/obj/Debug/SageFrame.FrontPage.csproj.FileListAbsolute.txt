@@ -157,3 +157,10 @@ Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.FrontPage\obj
 Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.FrontPage\obj\Debug\SageFrame.FrontPage.csproj.CopyComplete
 Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.FrontPage\obj\Debug\SageFrame.FrontPage.dll
 Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.FrontPage\obj\Debug\SageFrame.FrontPage.pdb
+D:\danfe\Master_RestroOrder\SageFrame\bin\SageFrame.FrontPage.dll
+D:\danfe\Master_RestroOrder\SageFrame\bin\SageFrame.FrontPage.pdb
+D:\danfe\Master_RestroOrder\SageFrame.FrontPage\obj\Debug\SageFrame.FrontPage.csproj.AssemblyReference.cache
+D:\danfe\Master_RestroOrder\SageFrame.FrontPage\obj\Debug\SageFrame.FrontPage.csproj.CoreCompileInputs.cache
+D:\danfe\Master_RestroOrder\SageFrame.FrontPage\obj\Debug\SageFrame.FrontPage.csproj.CopyComplete
+D:\danfe\Master_RestroOrder\SageFrame.FrontPage\obj\Debug\SageFrame.FrontPage.dll
+D:\danfe\Master_RestroOrder\SageFrame.FrontPage\obj\Debug\SageFrame.FrontPage.pdb

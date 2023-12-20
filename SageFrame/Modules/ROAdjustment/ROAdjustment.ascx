@@ -38,11 +38,11 @@
                     <%--<input type="text" id="txtAMNo" class="sfInputbox required" name="AMNO" />--%>
                 </td>
 
-                <td>Store :</td>
+             <!--   <td>Store :</td>
                 <td>
                     <select id="ddlSTId" class="fsUnit required sfInputbox" name="STId" style="width: 200px;">
                     </select>
-                </td>
+                </td> !-->
 
 
                 <td>FY :</td>
@@ -69,6 +69,13 @@
         <hr style="border-color: #FFFFFF;">
         <div id="tblAddItem" class="ui-front">
         <table style="display: block;">
+            <tr>
+                 <td>Store :</td>
+                 <td>
+                     <select id="ddlSTId" class="fsUnit required sfInputbox" name="STId" style="width: 200px;">
+                     </select>
+                 </td>
+            </tr>
             <tr>
                 <td>Item :</td>
                 <td>

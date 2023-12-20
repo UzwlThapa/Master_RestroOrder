@@ -172,3 +172,10 @@ D:\bipinDanfe\Master_RestroOrder\SageFrame.Laundry\obj\Debug\SageFrame.Laundry.c
 D:\bipinDanfe\Master_RestroOrder\SageFrame.Laundry\obj\Debug\SageFrame.Laundry.csproj.CopyComplete
 D:\bipinDanfe\Master_RestroOrder\SageFrame.Laundry\obj\Debug\SageFrame.Laundry.dll
 D:\bipinDanfe\Master_RestroOrder\SageFrame.Laundry\obj\Debug\SageFrame.Laundry.pdb
+D:\danfe\Master_RestroOrder\SageFrame\bin\SageFrame.Laundry.dll
+D:\danfe\Master_RestroOrder\SageFrame\bin\SageFrame.Laundry.pdb
+D:\danfe\Master_RestroOrder\SageFrame.Laundry\obj\Debug\SageFrame.Laundry.csproj.AssemblyReference.cache
+D:\danfe\Master_RestroOrder\SageFrame.Laundry\obj\Debug\SageFrame.Laundry.csproj.CoreCompileInputs.cache
+D:\danfe\Master_RestroOrder\SageFrame.Laundry\obj\Debug\SageFrame.Laundry.csproj.CopyComplete
+D:\danfe\Master_RestroOrder\SageFrame.Laundry\obj\Debug\SageFrame.Laundry.dll
+D:\danfe\Master_RestroOrder\SageFrame.Laundry\obj\Debug\SageFrame.Laundry.pdb

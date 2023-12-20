@@ -165,3 +165,12 @@ D:\restroorder\Master_RestroOrder\SageFrame.Sales\obj\Debug\SageFrame.Sales.cspr
 D:\restroorder\Master_RestroOrder\SageFrame.Sales\obj\Debug\SageFrame.Sales.csproj.CopyComplete
 D:\restroorder\Master_RestroOrder\SageFrame.Sales\obj\Debug\SageFrame.Sales.dll
 D:\restroorder\Master_RestroOrder\SageFrame.Sales\obj\Debug\SageFrame.Sales.pdb
+D:\danfe\Master_RestroOrder\SageFrame.Sales\bin\Debug\SageFrame.Sales.dll
+D:\danfe\Master_RestroOrder\SageFrame.Sales\bin\Debug\SageFrame.Sales.pdb
+D:\danfe\Master_RestroOrder\SageFrame.Sales\bin\Debug\SageFrame.Common.dll
+D:\danfe\Master_RestroOrder\SageFrame.Sales\bin\Debug\SageFrame.Common.pdb
+D:\danfe\Master_RestroOrder\SageFrame.Sales\obj\Debug\SageFrame.Sales.csproj.AssemblyReference.cache
+D:\danfe\Master_RestroOrder\SageFrame.Sales\obj\Debug\SageFrame.Sales.csproj.CoreCompileInputs.cache
+D:\danfe\Master_RestroOrder\SageFrame.Sales\obj\Debug\SageFrame.Sales.csproj.CopyComplete
+D:\danfe\Master_RestroOrder\SageFrame.Sales\obj\Debug\SageFrame.Sales.dll
+D:\danfe\Master_RestroOrder\SageFrame.Sales\obj\Debug\SageFrame.Sales.pdb
