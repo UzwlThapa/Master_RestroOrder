@@ -190,3 +190,12 @@ Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.ChartOfAccoun
 Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.ChartOfAccount\obj\Release\SageFrame.ChartOfAccount.csproj.CopyComplete
 Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.ChartOfAccount\obj\Release\SageFrame.ChartOfAccount.dll
 Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.ChartOfAccount\obj\Release\SageFrame.ChartOfAccount.pdb
+D:\restroorder\Master_RestroOrder\SageFrame.ChartOfAccount\bin\Release\SageFrame.ChartOfAccount.dll
+D:\restroorder\Master_RestroOrder\SageFrame.ChartOfAccount\bin\Release\SageFrame.ChartOfAccount.pdb
+D:\restroorder\Master_RestroOrder\SageFrame.ChartOfAccount\bin\Release\SageFrame.Common.dll
+D:\restroorder\Master_RestroOrder\SageFrame.ChartOfAccount\bin\Release\SageFrame.Common.pdb
+D:\restroorder\Master_RestroOrder\SageFrame.ChartOfAccount\obj\Release\SageFrame.ChartOfAccount.csproj.AssemblyReference.cache
+D:\restroorder\Master_RestroOrder\SageFrame.ChartOfAccount\obj\Release\SageFrame.ChartOfAccount.csproj.CoreCompileInputs.cache
+D:\restroorder\Master_RestroOrder\SageFrame.ChartOfAccount\obj\Release\SageFrame.ChartOfAccount.csproj.CopyComplete
+D:\restroorder\Master_RestroOrder\SageFrame.ChartOfAccount\obj\Release\SageFrame.ChartOfAccount.dll
+D:\restroorder\Master_RestroOrder\SageFrame.ChartOfAccount\obj\Release\SageFrame.ChartOfAccount.pdb

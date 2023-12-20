@@ -209,3 +209,12 @@ Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.RestoLoyalty\
 Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.RestoLoyalty\obj\Debug\SageFrame.RestoLoyalty.csproj.CopyComplete
 Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.RestoLoyalty\obj\Debug\SageFrame.RestoLoyalty.dll
 Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.RestoLoyalty\obj\Debug\SageFrame.RestoLoyalty.pdb
+D:\restroorder\Master_RestroOrder\SageFrame.RestoLoyalty\bin\Debug\SageFrame.RestoLoyalty.dll
+D:\restroorder\Master_RestroOrder\SageFrame.RestoLoyalty\bin\Debug\SageFrame.RestoLoyalty.pdb
+D:\restroorder\Master_RestroOrder\SageFrame.RestoLoyalty\bin\Debug\SageFrame.Common.dll
+D:\restroorder\Master_RestroOrder\SageFrame.RestoLoyalty\bin\Debug\SageFrame.Common.pdb
+D:\restroorder\Master_RestroOrder\SageFrame.RestoLoyalty\obj\Debug\SageFrame.RestoLoyalty.csproj.AssemblyReference.cache
+D:\restroorder\Master_RestroOrder\SageFrame.RestoLoyalty\obj\Debug\SageFrame.RestoLoyalty.csproj.CoreCompileInputs.cache
+D:\restroorder\Master_RestroOrder\SageFrame.RestoLoyalty\obj\Debug\SageFrame.RestoLoyalty.csproj.CopyComplete
+D:\restroorder\Master_RestroOrder\SageFrame.RestoLoyalty\obj\Debug\SageFrame.RestoLoyalty.dll
+D:\restroorder\Master_RestroOrder\SageFrame.RestoLoyalty\obj\Debug\SageFrame.RestoLoyalty.pdb

@@ -412,14 +412,14 @@
                         htmls += "<tr>";
                         htmls += "<td>" + (index + 1) + "</td>";
                         htmls += "<td>" + value.ITName + "</td>";
-                        htmls += "<td>" + formatNumber(value.CLBal, false) + " (" + value.Symbol + ")</td>";
+                        htmls += "<td>" + formatNumber(value.CLBal, false) + " (" + value.UnitDescription + ")</td>";
                         htmls += "<td>" + formatNumber(value.TotalValue) + " (Rs)</td>";
                         if (storeid != 0) {
                             htmls += "<td><label id='" + value.ITId + "' class='btnStockDetail  view icon-preview'></label></td>";
                         }
                         htmls += "</tr>"
                         totalStockValue += parseFloat((parseInt(value.TotalValue * 100) / 100)); // proper decimal places for value like: -1.5845632502852868e+29
-                        console.log('datas value.TotalValue', value.TotalValue);
+                        console.log('datas value.TotalValue', value.CLBal);
                         console.log('datas totalStockValue', totalStockValue);
                     });
                     console.log('totalStockValue', totalStockValue);
