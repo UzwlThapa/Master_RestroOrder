@@ -157,3 +157,17 @@ Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.RestroOrder\o
 Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.RestroOrder\obj\Debug\SageFrame.RestroOrder.csproj.CopyComplete
 Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.RestroOrder\obj\Debug\SageFrame.RestroOrder.dll
 Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.RestroOrder\obj\Debug\SageFrame.RestroOrder.pdb
+D:\restroorder\Master_RestroOrder\SageFrame\bin\SageFrame.RestroOrder.dll
+D:\restroorder\Master_RestroOrder\SageFrame\bin\SageFrame.RestroOrder.pdb
+D:\restroorder\Master_RestroOrder\SageFrame.RestroOrder\obj\Debug\SageFrame.RestroOrder.csproj.AssemblyReference.cache
+D:\restroorder\Master_RestroOrder\SageFrame.RestroOrder\obj\Debug\SageFrame.RestroOrder.csproj.CoreCompileInputs.cache
+D:\restroorder\Master_RestroOrder\SageFrame.RestroOrder\obj\Debug\SageFrame.RestroOrder.csproj.CopyComplete
+D:\restroorder\Master_RestroOrder\SageFrame.RestroOrder\obj\Debug\SageFrame.RestroOrder.dll
+D:\restroorder\Master_RestroOrder\SageFrame.RestroOrder\obj\Debug\SageFrame.RestroOrder.pdb
+D:\danfe\Master_RestroOrder\SageFrame\bin\SageFrame.RestroOrder.dll
+D:\danfe\Master_RestroOrder\SageFrame\bin\SageFrame.RestroOrder.pdb
+D:\danfe\Master_RestroOrder\SageFrame.RestroOrder\obj\Debug\SageFrame.RestroOrder.csproj.AssemblyReference.cache
+D:\danfe\Master_RestroOrder\SageFrame.RestroOrder\obj\Debug\SageFrame.RestroOrder.csproj.CoreCompileInputs.cache
+D:\danfe\Master_RestroOrder\SageFrame.RestroOrder\obj\Debug\SageFrame.RestroOrder.csproj.CopyComplete
+D:\danfe\Master_RestroOrder\SageFrame.RestroOrder\obj\Debug\SageFrame.RestroOrder.dll
+D:\danfe\Master_RestroOrder\SageFrame.RestroOrder\obj\Debug\SageFrame.RestroOrder.pdb

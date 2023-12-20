@@ -522,6 +522,8 @@ namespace SageFrame.RestroOrder
                 SQLHandler sqlHandler = new SQLHandler();
                 List<KeyValuePair<string, object>> Param = new List<KeyValuePair<string, object>>();
                 List<ItemsClass> Iteminfo = sqlHandler.ExecuteAsList<ItemsClass>("[USP_RO_GETITEM]");
+               // List<ItemsClass> Iteminfo = sqlHandler.ExecuteAsList<ItemsClass>("USP_RO_GETITEM_NEW");
+                
                 return Iteminfo;
             }
             catch (Exception ex)
@@ -1919,7 +1921,9 @@ namespace SageFrame.RestroOrder
                 Param.Add(new KeyValuePair<string, object>("@OID", orderMasterInfo.OID));
                 Param.Add(new KeyValuePair<string, object>("@OrderStatus", orderMasterInfo.OrderStatus));
                 Param.Add(new KeyValuePair<string, object>("@OrderTypeID", orderMasterInfo.OrderTypeID.ToString() == null ? 0 : orderMasterInfo.OrderTypeID));
+                var obj = sqlHandler.ExecuteAsScalar<object>("[USP_PO_SAVEPURCHASEMASTER]", Param);
                 int m = (orderMasterInfo.OrderMasterID == 0) ? Convert.ToInt32(obj) : orderMasterInfo.OrderMasterID;
+
                 List<OrderDetailClass> orderDetailRunning = new List<OrderDetailClass>();
                 List<OrderDetailClass> leftOrderRecord = new List<OrderDetailClass>();
                 Dictionary<string, int> dictionary = new Dictionary<string, int>();
@@ -3870,6 +3874,7 @@ namespace SageFrame.RestroOrder
         internal List<purchaseDetails> GetItemForOpenBalance()
         {
             return sqlHandler.ExecuteAsList<purchaseDetails>("[USP_ROI_GetItemForOpenBalance]");
+            //return sqlHandler.ExecuteAsList<purchaseDetails>("[USP_RO_GETITEM_NEW]");
         }
         internal void DeleteGroupItemByID(int ids)
         {
@@ -3915,8 +3920,8 @@ namespace SageFrame.RestroOrder
             List<KeyValuePair<string, object>> Param = new List<KeyValuePair<string, object>>();
             Param.Add(new KeyValuePair<string, object>("@storeId", storeID));
             Param.Add(new KeyValuePair<string, object>("@SearchText", searchText));
-            //return sqlHandler.ExecuteAsList<stockReport>("USP_STOCKREPORTAll", Param);
-            return sqlHandler.ExecuteAsList<stockReport>("USP_ROI_GETALLSTOCKREPORT", Param);
+            return sqlHandler.ExecuteAsList<stockReport>("USP_STOCKREPORTAll", Param);
+            //return sqlHandler.ExecuteAsList<stockReport>("USP_ROI_GETALLSTOCKREPORT", Param);
         }
         internal List<dailyreport> getOrderVoidReport(DateTime startDate, DateTime endDate)
         {

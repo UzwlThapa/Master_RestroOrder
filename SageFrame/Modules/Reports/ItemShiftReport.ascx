@@ -25,7 +25,7 @@
                 <div class="form-group"><label>Item Name: </label>
                <%-- <td><select class="span2 sfInputbox" id="selItemName" > </select></td>--%>
                 <input type="text" class="span2 sfInputbox" placeholder="Item Name" id="txtItem" /></div>
-
+                
                   <div class="form-group"><label>Date From:</label>
                  <input type="text" class="span2 sfInputbox DatePick" id="txtStartDate" style="width:80px"/>
                  </div>

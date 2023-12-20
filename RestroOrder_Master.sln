@@ -9,7 +9,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Modules", "Modules", "{37BE
 EndProject
 Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "SageFrame", "SageFrame\", "{660BBDD5-CA4D-4B01-91FB-5F871EEAC0B1}"
 	ProjectSection(WebsiteProperties) = preProject
-		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.8.1"
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.8"
 		ProjectReferences = "{ad0a3c3b-5778-4acf-b6d6-6583206a3b6f}|SageFrame.RestoLoyalty.dll;{879d24b6-5e53-453a-a196-102759c92069}|SageFrame.FiscalYear.dll;{edc38182-efcc-4bd7-b123-629c6d8e0bef}|SageFrame.DailyChalan.dll;{a1b535c6-02f7-4261-8877-06da3449bf94}|SageFrame.DBBackupNRestore.dll;{00613e6e-7435-4fc8-aef8-28a99199fa36}|SageFrame.CostCenter.dll;{a9e2534c-85a7-41e7-af99-d79dc2e869f3}|SageFrame.Sales.dll;{50eceb31-7962-444b-923a-0256909d9cd3}|SageFrame.ChartOfAccount.dll;{ded45c30-88c6-48e4-b9e0-ede8c96a0109}|SageFrame.HouseKeeping.dll;{bf01a8d4-50d3-4ea5-86b7-38562f8a9b94}|SageFrame.Laundry.dll;{243193c1-1ff6-4614-8771-fed7de16fd33}|SageFrame.RestroOrder.dll;{bcaccc57-d1ec-40f5-b141-049cc3da1385}|SageFrame.CakeOrder.dll;{8773ec29-792d-4eb1-bab3-5137e34df82c}|SageFrame.Security.dll;"
 		Debug.AspNetCompiler.VirtualPath = "/SageFrame"
 		Debug.AspNetCompiler.PhysicalPath = "SageFrame\"

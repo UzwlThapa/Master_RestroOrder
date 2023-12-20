@@ -297,3 +297,20 @@ Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.CostCenter\ob
 Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.CostCenter\obj\Debug\SageFrame.CostCenter.csproj.CopyComplete
 Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.CostCenter\obj\Debug\SageFrame.CostCenter.dll
 Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.CostCenter\obj\Debug\SageFrame.CostCenter.pdb
+D:\danfe\Master_RestroOrder\SageFrame.CostCenter\bin\Debug\SageFrame.CostCenter.dll
+D:\danfe\Master_RestroOrder\SageFrame.CostCenter\bin\Debug\SageFrame.CostCenter.pdb
+D:\danfe\Master_RestroOrder\SageFrame.CostCenter\bin\Debug\SageFrame.Common.dll
+D:\danfe\Master_RestroOrder\SageFrame.CostCenter\bin\Debug\SageFrame.Core.dll
+D:\danfe\Master_RestroOrder\SageFrame.CostCenter\bin\Debug\SageFrame.Security.dll
+D:\danfe\Master_RestroOrder\SageFrame.CostCenter\bin\Debug\AjaxControlToolkit.dll
+D:\danfe\Master_RestroOrder\SageFrame.CostCenter\bin\Debug\SageFrame.Templating.dll
+D:\danfe\Master_RestroOrder\SageFrame.CostCenter\bin\Debug\SageFrame.CDN.dll
+D:\danfe\Master_RestroOrder\SageFrame.CostCenter\bin\Debug\ICSharpCode.SharpZipLib.dll
+D:\danfe\Master_RestroOrder\SageFrame.CostCenter\bin\Debug\Ionic.Zip.dll
+D:\danfe\Master_RestroOrder\SageFrame.CostCenter\bin\Debug\SageFrame.Common.pdb
+D:\danfe\Master_RestroOrder\SageFrame.CostCenter\bin\Debug\SageFrame.Security.pdb
+D:\danfe\Master_RestroOrder\SageFrame.CostCenter\obj\Debug\SageFrame.CostCenter.csproj.AssemblyReference.cache
+D:\danfe\Master_RestroOrder\SageFrame.CostCenter\obj\Debug\SageFrame.CostCenter.csproj.CoreCompileInputs.cache
+D:\danfe\Master_RestroOrder\SageFrame.CostCenter\obj\Debug\SageFrame.CostCenter.csproj.CopyComplete
+D:\danfe\Master_RestroOrder\SageFrame.CostCenter\obj\Debug\SageFrame.CostCenter.dll
+D:\danfe\Master_RestroOrder\SageFrame.CostCenter\obj\Debug\SageFrame.CostCenter.pdb

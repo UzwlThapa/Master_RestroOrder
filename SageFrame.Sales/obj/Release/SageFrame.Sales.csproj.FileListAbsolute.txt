@@ -205,3 +205,21 @@ Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.Sales\obj\Rel
 Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.Sales\obj\Release\SageFrame.Sales.csproj.CopyComplete
 Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.Sales\obj\Release\SageFrame.Sales.dll
 Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.Sales\obj\Release\SageFrame.Sales.pdb
+D:\restroorder\Master_RestroOrder\SageFrame.Sales\bin\Release\SageFrame.Sales.dll
+D:\restroorder\Master_RestroOrder\SageFrame.Sales\bin\Release\SageFrame.Sales.pdb
+D:\restroorder\Master_RestroOrder\SageFrame.Sales\bin\Release\SageFrame.Common.dll
+D:\restroorder\Master_RestroOrder\SageFrame.Sales\bin\Release\SageFrame.Common.pdb
+D:\restroorder\Master_RestroOrder\SageFrame.Sales\obj\Release\SageFrame.Sales.csproj.AssemblyReference.cache
+D:\restroorder\Master_RestroOrder\SageFrame.Sales\obj\Release\SageFrame.Sales.csproj.CoreCompileInputs.cache
+D:\restroorder\Master_RestroOrder\SageFrame.Sales\obj\Release\SageFrame.Sales.csproj.CopyComplete
+D:\restroorder\Master_RestroOrder\SageFrame.Sales\obj\Release\SageFrame.Sales.dll
+D:\restroorder\Master_RestroOrder\SageFrame.Sales\obj\Release\SageFrame.Sales.pdb
+D:\danfe\Master_RestroOrder\SageFrame.Sales\bin\Release\SageFrame.Sales.dll
+D:\danfe\Master_RestroOrder\SageFrame.Sales\bin\Release\SageFrame.Sales.pdb
+D:\danfe\Master_RestroOrder\SageFrame.Sales\bin\Release\SageFrame.Common.dll
+D:\danfe\Master_RestroOrder\SageFrame.Sales\bin\Release\SageFrame.Common.pdb
+D:\danfe\Master_RestroOrder\SageFrame.Sales\obj\Release\SageFrame.Sales.csproj.AssemblyReference.cache
+D:\danfe\Master_RestroOrder\SageFrame.Sales\obj\Release\SageFrame.Sales.csproj.CoreCompileInputs.cache
+D:\danfe\Master_RestroOrder\SageFrame.Sales\obj\Release\SageFrame.Sales.csproj.CopyComplete
+D:\danfe\Master_RestroOrder\SageFrame.Sales\obj\Release\SageFrame.Sales.dll
+D:\danfe\Master_RestroOrder\SageFrame.Sales\obj\Release\SageFrame.Sales.pdb

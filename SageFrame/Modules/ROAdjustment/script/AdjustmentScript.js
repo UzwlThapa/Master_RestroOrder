@@ -1,4 +1,5 @@
-﻿function isNumber(evt) {
+﻿var StoreId;
+function isNumber(evt) {
     evt = (evt) ? evt : window.event;
     var charCode = (evt.which) ? evt.which : evt.keyCode;
     if (charCode > 31 && (charCode < 48 || charCode > 57)) {
@@ -73,6 +74,7 @@
                     $(this).hide()
                     eventFunction.ResetAll();
                     $('#ddlSTId').val('');
+
                    // eventFunction.Reload();
                     
                 });
@@ -91,6 +93,9 @@
                     return false;
 
                 });
+
+    
+
 
 
                 $('#edittype').on('click', function () {
@@ -130,6 +135,7 @@
                         delay: 0,
                         select: function (event, ui) {
                             var ids = ui.item.id;
+                            console.log(ids)
                             $("#lblItemid").val(ids);
                             $('#lblid').text(ids);
                             eventFunction.config.method = "GetUnitOfItemByID";
@@ -740,20 +746,63 @@
 
             },
             BindDropdwonItem: function (result) {
-                datas = JSON.parse(result);
+                
+                //console.log(datas);
+                
+                    datas = JSON.parse(result);
+                $("#ddlSTId").on('change', function () {
+                    AutocompleteItem = [];
 
-                if (datas.length > 0) {
+                    StoreId = $('#ddlSTId').val();
+                    
+                    //console.log("BDI" + StoreId);
+
+
+
+                    if (datas.length > 0) {
+                    
                     $.each(datas, function (index, value) {
-                        AutocompleteItem.push({ label: value.ITName, id: value.ITId });
+
+                        console.log("it" + value.ITId)
+                        if (StoreId == value.StoreID) {
+                            console.log("Item: "+value.ITName);
+                            AutocompleteItem.push({ label: value.ITName, id: value.ITId });
+                        }
+                        
                         //AutocompleteItem.push(value.ITName);
                         //$("#ddlItem").autocomplete({
                         //    source: AutocompleteItem
                         //});
                         //htmls += "<option value='" + value.ITId + "'>" + value.ITName + "</option>";
                     });
+              
+                      //  console.log("Array = " + AutocompleteItem.length);
+
+                        updateAutocompleteUI();
 
                 }
+                
 
+                });
+
+                function updateAutocompleteUI() {
+                    // Implement your logic to update the UI with the new AutocompleteItem array
+                    // For example, you can update the autocomplete source here
+                    $("#ddlItem").autocomplete({
+                        source: AutocompleteItem,
+                        delay: 0,
+                        select: function (event, ui) {
+                            var ids = ui.item.id;
+                            $("#lblItemid").val(ids);
+                            $('#lblid').text(ids);
+                            eventFunction.config.method = "GetUnitOfItemByID";
+                            eventFunction.config.url = eventFunction.config.baseURL + eventFunction.config.method;
+                            eventFunction.config.data = JSON2.stringify({ ids: ids });
+                            eventFunction.config.ajaxCallMode = 4;
+                            eventFunction.ajaxCall(eventFunction.config);
+                        }
+                    });
+                }
             },
             //BindDropdwonUnit: function (result) {
             //    var datas = result.d;

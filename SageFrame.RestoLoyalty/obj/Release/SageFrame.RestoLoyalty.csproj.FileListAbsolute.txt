@@ -232,3 +232,21 @@ Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.RestoLoyalty\
 Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.RestoLoyalty\obj\Release\SageFrame.RestoLoyalty.csproj.CopyComplete
 Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.RestoLoyalty\obj\Release\SageFrame.RestoLoyalty.dll
 Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.RestoLoyalty\obj\Release\SageFrame.RestoLoyalty.pdb
+D:\restroorder\Master_RestroOrder\SageFrame.RestoLoyalty\bin\Release\SageFrame.RestoLoyalty.dll
+D:\restroorder\Master_RestroOrder\SageFrame.RestoLoyalty\bin\Release\SageFrame.RestoLoyalty.pdb
+D:\restroorder\Master_RestroOrder\SageFrame.RestoLoyalty\bin\Release\SageFrame.Common.dll
+D:\restroorder\Master_RestroOrder\SageFrame.RestoLoyalty\bin\Release\SageFrame.Common.pdb
+D:\restroorder\Master_RestroOrder\SageFrame.RestoLoyalty\obj\Release\SageFrame.RestoLoyalty.csproj.AssemblyReference.cache
+D:\restroorder\Master_RestroOrder\SageFrame.RestoLoyalty\obj\Release\SageFrame.RestoLoyalty.csproj.CoreCompileInputs.cache
+D:\restroorder\Master_RestroOrder\SageFrame.RestoLoyalty\obj\Release\SageFrame.RestoLoyalty.csproj.CopyComplete
+D:\restroorder\Master_RestroOrder\SageFrame.RestoLoyalty\obj\Release\SageFrame.RestoLoyalty.dll
+D:\restroorder\Master_RestroOrder\SageFrame.RestoLoyalty\obj\Release\SageFrame.RestoLoyalty.pdb
+D:\danfe\Master_RestroOrder\SageFrame.RestoLoyalty\bin\Release\SageFrame.RestoLoyalty.dll
+D:\danfe\Master_RestroOrder\SageFrame.RestoLoyalty\bin\Release\SageFrame.RestoLoyalty.pdb
+D:\danfe\Master_RestroOrder\SageFrame.RestoLoyalty\bin\Release\SageFrame.Common.dll
+D:\danfe\Master_RestroOrder\SageFrame.RestoLoyalty\bin\Release\SageFrame.Common.pdb
+D:\danfe\Master_RestroOrder\SageFrame.RestoLoyalty\obj\Release\SageFrame.RestoLoyalty.csproj.AssemblyReference.cache
+D:\danfe\Master_RestroOrder\SageFrame.RestoLoyalty\obj\Release\SageFrame.RestoLoyalty.csproj.CoreCompileInputs.cache
+D:\danfe\Master_RestroOrder\SageFrame.RestoLoyalty\obj\Release\SageFrame.RestoLoyalty.csproj.CopyComplete
+D:\danfe\Master_RestroOrder\SageFrame.RestoLoyalty\obj\Release\SageFrame.RestoLoyalty.dll
+D:\danfe\Master_RestroOrder\SageFrame.RestoLoyalty\obj\Release\SageFrame.RestoLoyalty.pdb
