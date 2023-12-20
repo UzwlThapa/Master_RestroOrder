@@ -522,6 +522,8 @@ namespace SageFrame.RestroOrder
                 SQLHandler sqlHandler = new SQLHandler();
                 List<KeyValuePair<string, object>> Param = new List<KeyValuePair<string, object>>();
                 List<ItemsClass> Iteminfo = sqlHandler.ExecuteAsList<ItemsClass>("[USP_RO_GETITEM]");
+               // List<ItemsClass> Iteminfo = sqlHandler.ExecuteAsList<ItemsClass>("USP_RO_GETITEM_NEW");
+                
                 return Iteminfo;
             }
             catch (Exception ex)
@@ -3872,6 +3874,7 @@ namespace SageFrame.RestroOrder
         internal List<purchaseDetails> GetItemForOpenBalance()
         {
             return sqlHandler.ExecuteAsList<purchaseDetails>("[USP_ROI_GetItemForOpenBalance]");
+            //return sqlHandler.ExecuteAsList<purchaseDetails>("[USP_RO_GETITEM_NEW]");
         }
         internal void DeleteGroupItemByID(int ids)
         {

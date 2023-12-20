@@ -164,3 +164,10 @@ D:\restroorder\Master_RestroOrder\SageFrame.RestroOrder\obj\Debug\SageFrame.Rest
 D:\restroorder\Master_RestroOrder\SageFrame.RestroOrder\obj\Debug\SageFrame.RestroOrder.csproj.CopyComplete
 D:\restroorder\Master_RestroOrder\SageFrame.RestroOrder\obj\Debug\SageFrame.RestroOrder.dll
 D:\restroorder\Master_RestroOrder\SageFrame.RestroOrder\obj\Debug\SageFrame.RestroOrder.pdb
+D:\danfe\Master_RestroOrder\SageFrame\bin\SageFrame.RestroOrder.dll
+D:\danfe\Master_RestroOrder\SageFrame\bin\SageFrame.RestroOrder.pdb
+D:\danfe\Master_RestroOrder\SageFrame.RestroOrder\obj\Debug\SageFrame.RestroOrder.csproj.AssemblyReference.cache
+D:\danfe\Master_RestroOrder\SageFrame.RestroOrder\obj\Debug\SageFrame.RestroOrder.csproj.CoreCompileInputs.cache
+D:\danfe\Master_RestroOrder\SageFrame.RestroOrder\obj\Debug\SageFrame.RestroOrder.csproj.CopyComplete
+D:\danfe\Master_RestroOrder\SageFrame.RestroOrder\obj\Debug\SageFrame.RestroOrder.dll
+D:\danfe\Master_RestroOrder\SageFrame.RestroOrder\obj\Debug\SageFrame.RestroOrder.pdb

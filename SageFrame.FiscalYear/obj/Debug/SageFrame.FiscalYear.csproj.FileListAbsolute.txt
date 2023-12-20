@@ -113,3 +113,10 @@ Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.FiscalYear\ob
 Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.FiscalYear\obj\Debug\SageFrame.FiscalYear.csproj.CopyComplete
 Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.FiscalYear\obj\Debug\SageFrame.FiscalYear.dll
 Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.FiscalYear\obj\Debug\SageFrame.FiscalYear.pdb
+D:\danfe\Master_RestroOrder\SageFrame\bin\SageFrame.FiscalYear.dll
+D:\danfe\Master_RestroOrder\SageFrame\bin\SageFrame.FiscalYear.pdb
+D:\danfe\Master_RestroOrder\SageFrame.FiscalYear\obj\Debug\SageFrame.FiscalYear.csproj.AssemblyReference.cache
+D:\danfe\Master_RestroOrder\SageFrame.FiscalYear\obj\Debug\SageFrame.FiscalYear.csproj.CoreCompileInputs.cache
+D:\danfe\Master_RestroOrder\SageFrame.FiscalYear\obj\Debug\SageFrame.FiscalYear.csproj.CopyComplete
+D:\danfe\Master_RestroOrder\SageFrame.FiscalYear\obj\Debug\SageFrame.FiscalYear.dll
+D:\danfe\Master_RestroOrder\SageFrame.FiscalYear\obj\Debug\SageFrame.FiscalYear.pdb

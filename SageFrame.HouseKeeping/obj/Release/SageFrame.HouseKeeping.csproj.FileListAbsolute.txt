@@ -123,3 +123,12 @@ D:\restroorder\Master_RestroOrder\SageFrame.HouseKeeping\obj\Release\SageFrame.H
 D:\restroorder\Master_RestroOrder\SageFrame.HouseKeeping\obj\Release\SageFrame.HouseKeeping.csproj.CopyComplete
 D:\restroorder\Master_RestroOrder\SageFrame.HouseKeeping\obj\Release\SageFrame.HouseKeeping.dll
 D:\restroorder\Master_RestroOrder\SageFrame.HouseKeeping\obj\Release\SageFrame.HouseKeeping.pdb
+D:\danfe\Master_RestroOrder\SageFrame.HouseKeeping\bin\Release\SageFrame.HouseKeeping.dll
+D:\danfe\Master_RestroOrder\SageFrame.HouseKeeping\bin\Release\SageFrame.HouseKeeping.pdb
+D:\danfe\Master_RestroOrder\SageFrame.HouseKeeping\bin\Release\SageFrame.Common.dll
+D:\danfe\Master_RestroOrder\SageFrame.HouseKeeping\bin\Release\SageFrame.Common.pdb
+D:\danfe\Master_RestroOrder\SageFrame.HouseKeeping\obj\Release\SageFrame.HouseKeeping.csproj.AssemblyReference.cache
+D:\danfe\Master_RestroOrder\SageFrame.HouseKeeping\obj\Release\SageFrame.HouseKeeping.csproj.CoreCompileInputs.cache
+D:\danfe\Master_RestroOrder\SageFrame.HouseKeeping\obj\Release\SageFrame.HouseKeeping.csproj.CopyComplete
+D:\danfe\Master_RestroOrder\SageFrame.HouseKeeping\obj\Release\SageFrame.HouseKeeping.dll
+D:\danfe\Master_RestroOrder\SageFrame.HouseKeeping\obj\Release\SageFrame.HouseKeeping.pdb

@@ -156,3 +156,10 @@ D:\restroorder\Master_RestroOrder\SageFrame.DBBackupNRestore\obj\Release\SageFra
 D:\restroorder\Master_RestroOrder\SageFrame.DBBackupNRestore\obj\Release\SageFrame.DBBackupNRestore.csproj.CopyComplete
 D:\restroorder\Master_RestroOrder\SageFrame.DBBackupNRestore\obj\Release\SageFrame.DBBackupNRestore.dll
 D:\restroorder\Master_RestroOrder\SageFrame.DBBackupNRestore\obj\Release\SageFrame.DBBackupNRestore.pdb
+D:\danfe\Master_RestroOrder\SageFrame\bin\SageFrame.DBBackupNRestore.dll
+D:\danfe\Master_RestroOrder\SageFrame\bin\SageFrame.DBBackupNRestore.pdb
+D:\danfe\Master_RestroOrder\SageFrame.DBBackupNRestore\obj\Release\SageFrame.DBBackupNRestore.csproj.AssemblyReference.cache
+D:\danfe\Master_RestroOrder\SageFrame.DBBackupNRestore\obj\Release\SageFrame.DBBackupNRestore.csproj.CoreCompileInputs.cache
+D:\danfe\Master_RestroOrder\SageFrame.DBBackupNRestore\obj\Release\SageFrame.DBBackupNRestore.csproj.CopyComplete
+D:\danfe\Master_RestroOrder\SageFrame.DBBackupNRestore\obj\Release\SageFrame.DBBackupNRestore.dll
+D:\danfe\Master_RestroOrder\SageFrame.DBBackupNRestore\obj\Release\SageFrame.DBBackupNRestore.pdb

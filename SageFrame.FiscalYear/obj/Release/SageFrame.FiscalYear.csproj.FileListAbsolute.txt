@@ -229,3 +229,12 @@ D:\restroorder\Master_RestroOrder\SageFrame.FiscalYear\obj\Release\SageFrame.Fis
 D:\restroorder\Master_RestroOrder\SageFrame.FiscalYear\obj\Release\SageFrame.FiscalYear.csproj.CopyComplete
 D:\restroorder\Master_RestroOrder\SageFrame.FiscalYear\obj\Release\SageFrame.FiscalYear.dll
 D:\restroorder\Master_RestroOrder\SageFrame.FiscalYear\obj\Release\SageFrame.FiscalYear.pdb
+D:\danfe\Master_RestroOrder\SageFrame.FiscalYear\bin\Release\SageFrame.FiscalYear.dll
+D:\danfe\Master_RestroOrder\SageFrame.FiscalYear\bin\Release\SageFrame.FiscalYear.pdb
+D:\danfe\Master_RestroOrder\SageFrame.FiscalYear\bin\Release\SageFrame.Common.dll
+D:\danfe\Master_RestroOrder\SageFrame.FiscalYear\bin\Release\SageFrame.Common.pdb
+D:\danfe\Master_RestroOrder\SageFrame.FiscalYear\obj\Release\SageFrame.FiscalYear.csproj.AssemblyReference.cache
+D:\danfe\Master_RestroOrder\SageFrame.FiscalYear\obj\Release\SageFrame.FiscalYear.csproj.CoreCompileInputs.cache
+D:\danfe\Master_RestroOrder\SageFrame.FiscalYear\obj\Release\SageFrame.FiscalYear.csproj.CopyComplete
+D:\danfe\Master_RestroOrder\SageFrame.FiscalYear\obj\Release\SageFrame.FiscalYear.dll
+D:\danfe\Master_RestroOrder\SageFrame.FiscalYear\obj\Release\SageFrame.FiscalYear.pdb
