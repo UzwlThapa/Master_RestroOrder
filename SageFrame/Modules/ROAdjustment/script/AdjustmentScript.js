@@ -73,6 +73,7 @@
                     $(this).hide()
                     eventFunction.ResetAll();
                     $('#ddlSTId').val('');
+
                    // eventFunction.Reload();
                     
                 });
