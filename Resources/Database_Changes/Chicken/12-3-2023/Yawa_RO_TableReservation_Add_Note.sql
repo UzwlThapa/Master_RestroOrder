@@ -1,1 +1,0 @@
-ALTER TABLE dbo.RO_TableReservation ADD Note NVARCHAR(500) NULL
