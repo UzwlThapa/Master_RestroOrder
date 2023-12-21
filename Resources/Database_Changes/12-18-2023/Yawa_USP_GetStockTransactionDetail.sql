@@ -91,7 +91,7 @@ AS
                                                                                               AND tt.ITId = SD.ItemId
                                                                                               AND tt.Symbol IN ( 'ml', 'gm' )
                 WHERE  T.ITId = @ItemId
-                AND    CAST(T.TransactionDate AS DATE) BETWEEN @StartDate AND @EndDate;
+                AND    CAST(ISNULL (SM.BillDate, T.TransactionDate) AS DATE) BETWEEN @StartDate AND @EndDate;
             END;
         ELSE
             BEGIN
@@ -101,21 +101,22 @@ AS
                        ItemBalance
                 INTO   #Temp1
                 FROM   ( SELECT T.StoreId ,
-                                T.TransactionDate ,
+                                ISNULL (SM.BillDate, T.TransactionDate) AS TransactionDate ,
                                 ( T.ItemBalance + ISNULL ([rpst].PurchaseUnit, 0)) AS ItemBalance ,
                                 ROW_NUMBER () OVER ( PARTITION BY CAST(T.TransactionDate AS DATE)
                                                      ORDER BY T.TransactionDate DESC ) AS rownum
                          FROM   [dbo].[vw_ROI_StockReportView] T
                                 LEFT JOIN dbo.RO_SalesDetail SD ON SD.salesDetailId = T.SalesDetailId
+                                LEFT JOIN dbo.RO_SalesMaster SM ON SM.salesMasterId = SD.salesMasterId
                                 LEFT JOIN dbo.[ROI_PurchaseStockTransaction] AS [rpst] ON  rpst.StoreId = T.StoreId
                                                                                        AND rpst.ItemId = SD.ItemId
                                                                                        AND CAST(rpst.TransactionDate AS DATE) = CAST(T.TransactionDate AS DATE)
                          WHERE  T.ITId = @ItemId
                          AND    T.StoreId = @StoreId
-                         AND    CAST(T.TransactionDate AS DATE) BETWEEN @StartDate AND @EndDate ) AS Suv
+                         AND    CAST(ISNULL (SM.BillDate, T.TransactionDate) AS DATE) BETWEEN CAST(@StartDate AS DATE) AND CAST(@EndDate AS DATE)) AS Suv
                 WHERE  rownum = 1;
 
-                SELECT   CAST(T.TransactionDate AS DATE) AS [TransactionDate] ,
+                SELECT   CAST(ISNULL (SM.BillDate, T.TransactionDate) AS DATE) AS [TransactionDate] ,
                          T.ITId ,
                          T.ITCode ,
                          T.Symbol ,
@@ -131,8 +132,8 @@ AS
                                    ELSE 0
                               END) AS SalesReturnQty
                 INTO     #Temp2
-                FROM     [dbo].[vw_ROI_StockReportView] T
-                         LEFT JOIN dbo.RO_SalesDetail SD ON SD.salesDetailId = T.SalesDetailId
+                FROM     dbo.RO_SalesDetail SD
+                         LEFT JOIN [dbo].[vw_ROI_StockReportView] T ON SD.salesDetailId = T.SalesDetailId
                          LEFT JOIN dbo.RO_SalesMaster SM ON SM.salesMasterId = SD.salesMasterId
                          LEFT JOIN dbo.RO_OrderMasters OM ON OM.OrderMasterID = SM.OrderMasterId
                          LEFT JOIN ( SELECT rim.ITId ,
@@ -148,12 +149,44 @@ AS
                                                                                                 AND tt.Symbol IN ( 'ml', 'gm' )
                 WHERE    T.ITId = @ItemId
                 AND      T.StoreId = @StoreId
-                AND      CAST(T.TransactionDate AS DATE) BETWEEN @StartDate AND @EndDate
-                GROUP BY CAST(TransactionDate AS DATE) ,
+                AND      CAST(ISNULL (SM.BillDate, T.TransactionDate) AS DATE) BETWEEN CAST(@StartDate AS DATE) AND CAST(@EndDate AS DATE)
+                GROUP BY CAST(ISNULL (SM.BillDate, T.TransactionDate) AS DATE) ,
                          T.ITId ,
                          T.ITCode ,
-                         T.Symbol ,
-                         T.SalesReturnQty;
+                         T.Symbol;
+
+                SELECT tt.Ingredient,SM.salesMasterId,SM.BillDate ,
+                       T.TransactionDate ,
+                       T.ITId ,
+                       T.ITCode ,
+                       tt.* ,
+                       T.Symbol ,
+                       ISNULL (T.OpeningQty, 0) AS [OpeningQty] ,
+                       ISNULL (T.PurchaseQty, 0) AS [PurchaseQty] ,
+                       ISNULL (T.AdjQty, 0) AS [AdjustQty] ,
+                       ISNULL (T.CompQty, 0) AS [ComplementQty] ,
+                       ISNULL (T.IssueQty, 0) AS [IssueQty] ,
+                       ISNULL (SD.qty, 0) AS SalesQty ,
+                       ISNULL (tt.Quantity, 0) AS Quantity ,
+                       T.SalesReturnQty
+                FROM   dbo.RO_SalesDetail SD
+                       LEFT JOIN [dbo].[vw_ROI_StockReportView] T ON SD.salesDetailId = T.SalesDetailId
+                       LEFT JOIN dbo.RO_SalesMaster SM ON SM.salesMasterId = SD.salesMasterId
+                       LEFT JOIN dbo.RO_OrderMasters OM ON OM.OrderMasterID = SM.OrderMasterId
+                       LEFT JOIN ( SELECT rim.ITId ,
+                                          rim.PITId ,
+                                          ri.Ingredient ,
+                                          ri.Quantity ,
+                                          u1.Symbol
+                                   FROM   dbo.ROI_ITEMMain AS rim
+                                          INNER JOIN dbo.Ro_Ingredient AS ri ON ri.ItemID = rim.ITId
+                                          JOIN ROI_ItemDetails id ON id.ITId = ri.Ingredient
+                                          JOIN ROI_Unit1 u1 ON u1.Unit1Id = id.SmallUnit ) tt ON  tt.Ingredient = T.ITId
+                                                                                              AND tt.ITId = SD.ItemId
+                                                                                              AND tt.Symbol IN ( 'ml', 'gm' )
+                WHERE  T.ITId = @ItemId
+                AND    T.StoreId = @StoreId
+                AND    CAST(ISNULL (SM.BillDate, T.TransactionDate) AS DATE) BETWEEN CAST(@StartDate AS DATE) AND CAST(@EndDate AS DATE);
 
 
                 SELECT   DISTINCT t1.TransactionDate ,

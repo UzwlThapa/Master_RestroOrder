@@ -49,6 +49,7 @@
                 OrderItemFunction.GetMenuforOrder();
                 //OrderItemFunction.GetRoomAndTable();
                 $('#SendOrder').on('click', function () {
+                    debugger;
                     OrderItemFunction.SaveOrderedData();
                 });
                 $('#CancelOrder').on('click', function () {
