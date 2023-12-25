@@ -44,12 +44,8 @@ AS
         AND      ( om.ArchivedBy = @cancelledby
                 OR @cancelledby = ''
                 OR @cancelledby IS NULL )
-        OR       ISNULL (om.IsArchived, 0) = 1
-        OR       ISNULL (om.BillCancelled, 0) = 1
+        AND      ISNULL (om.BillCancelled, 0) = 1
         ORDER BY BillDate DESC;
-    -- where CONVERT(date,om.BillDate)=CONVERT(DATE,getdate())
     END;
---select *  from dbo.RO_SalesMaster om left join dbo.RO_restroTable rt on rt.restrotableId = om.TableId left join RO_RestroRoom rr on rr.restroRoomId=om.RoomId
-
 GO
 

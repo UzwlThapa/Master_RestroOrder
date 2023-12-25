@@ -1030,6 +1030,7 @@ function IntegerAndDecimal(evt, element) {
                             htmls += (" <option value='" + i + "'>" + i + "</option> ");
                         }
                     }
+                    debugger;
                     htmls += "</select></div></div>";
                     htmls += ("<div class='item_list_div'><table class='item-list-tbl' style='margin-bottom:10px;'><thead><th style='width:250px'>Item</th><th>Qty</th><th>Rate</th><th>Amt</th></thead><tbody id='bindorderlist'>");
                     $.each(datas, function (index, value) {
@@ -1045,7 +1046,8 @@ function IntegerAndDecimal(evt, element) {
                             htmls += ("<td>" + value.Quantity + "</td>");
                             htmls += ("<td>" + value.SRate + "</td>");
                             qnty += parseFloat(value.Quantity);
-                            amt = parseFloat(value.Quantity) * parseFloat(value.SRate);
+                            //amt = parseFloat(value.Quantity) * parseFloat(value.Amount);
+                            amt = parseFloat(value.Amount);
                             totalAmount += parseFloat(amt);
                             htmls += ("<td>" + amt.toFixed(2) + "</td></tr>");
                         }
@@ -1053,17 +1055,10 @@ function IntegerAndDecimal(evt, element) {
                     htmls += ("<tr class='Total_Amt'><td colspan='1'  style='text-align:right;font-weight:bold;'>Total Qnty:</td><td colspan='1' style='text-align:left;font-weight:bold;'>" + qnty.toFixed(2) + "</td>");
                     htmls += ("<td colspan='1'  style='text-align:right;font-weight:bold;'>Total Amount:</td><td colspan='1' style='text-align:left;font-weight:bold;'><span class='totle'>" + totalAmount.toFixed(2) + "</span></td></tr>");
                     htmls += ("</tbody></table></div>");
-                    //htmls += ("<div class='splitMainView clearfix'>");
-                    //htmls += ("<input type='checkbox' id='splitcheckbox' />");
-                    //htmls += ("<label for='splitcheckbox' style='color:#575757;'>Split Bills</label>");
-                    //htmls += ("<div id='NoOfBill' class='sfBtn restro-btn' style='margin-left:10px;'>Change Bill No.</div>")
-                    //htmls += ("<div id='billsnumber'></div>")
-                    //htmls += ("<input id='Save_" + datas[0].restrotableId + "' type='button' class='sfBtn SaveSplitData restro-btn splithead' value='Save Split' style='margin-left:10px;margin-top:10px'/></div>");
 
                     var Roles = userRole.split(",");
 
                     if (datas[0].Note != null && datas[0].Note != "") {
-                        //////htmls += ("<div class='ordering'><input id='Merge_" + datas[0].restrotableId + "' type='button' class='sfBtn removeMerge restro-btn' value='Remove Merge' />");
                     } else {
                         if (Roles.includes("Table Shift") || Roles.includes("Super User")) {
                             htmls += ("<div class='ordering'><input id='Shift_" + datas[0].OrderMasterId + "_" + datas[0].restrotableTitle + "_" + datas[0].GuestNo + "_" + datas[0].restrotableId + "' type='button' class='sfBtn shiftTable restro-btn' value='Shift Table' />");
@@ -1073,8 +1068,6 @@ function IntegerAndDecimal(evt, element) {
                     if (Roles.includes("Item Shift") || Roles.includes("Super User")) {
                         htmls += ("<input id='shiftItems_" + datas[0].OrderMasterId + "_" + datas[0].restrotableId + "_" + datas[0].GuestNo + "' type='button' class='sfBtn shiftItems restro-btn' value='Shift Items ' style='margin-left:10px;' />");
                     }
-
-
 
                     if (Roles.includes("Cancel Order") || Roles.includes("Super User")) {
                         htmls += ("<input id='Cancel_" + datas[0].OrderMasterId + "_" + datas[0].restrotableId + "_" + datas[0].GuestNo + "' type='button' class='sfBtn cancelorder restro-btn' value='Cancel Order ' style='margin-left:10px;' />");
@@ -1103,11 +1096,6 @@ function IntegerAndDecimal(evt, element) {
                     } else {
                         htmls += ("<h4>Bill not Cleared </h4>");
                     }
-                    if (isMergedTable) {
-                        //////htmls += ("<input id='Merge_" + activeorder + "' type='button' class='sfBtn removeMerge restro-btn' value='Remove Merge' style='margin-left:10px;' />");
-                    }
-                    //htmls += ("<input id='Pay_" + activeorder + "' type='button'  class='sfBtn paynow' value='Pay Now ' /></div>");
-
                 }
                 $('#DialogOrderDetail').html(htmls);
                 if (datas.length > 0) {
