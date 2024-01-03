@@ -351,7 +351,8 @@ function Print() {
                 var htmls = "<table id='Brandtable' cellspacing='0'>"
                 htmls += "<thead>"
                 htmls += "<tr>"
-                htmls += "<th> Name </th><th>Address </th><th> Contact No. </th><th> Card No. </th><th> Date Of Issue</th><th> Date Of Expire</th><th> PAN</th><th class='tdrate'> Opening Balance (Rs.)</th><th class='tdrate'> Rem Balance (Rs.)</th><th class='tdcenter'> Pay </th><th class='tdcenter'> View </th>";
+                htmls += "<th> Name </th><th>Address </th><th> Contact No. </th><th> Card No. </th><th> Date Of Issue</th><th> Date Of Expire</th><th> PAN</th><th class='tdrate' style='display:none'> Opening Balance (Rs.)</th><th class='tdrate'> Rem Balance (Rs.)</th><th class='tdcenter'> Pay </th><th class='tdcenter'> View </th>";
+               // htmls += "<th> Name </th><th>Address </th><th> Contact No. </th><th> Card No. </th><th> Date Of Issue</th><th> Date Of Expire</th><th> PAN</th><th class='tdrate'> Rem Balance (Rs.)</th><th class='tdcenter'> Pay </th><th class='tdcenter'> View </th>";
                 if (IsCus == 1) {
                     htmls += "<th class='tdcenter'> SMS </th>";
                 };
@@ -382,8 +383,9 @@ function Print() {
                             var Expire = value.DateOfExpire.split(" ");
                             htmls += "<td>" + Expire[0] + "</td>";
                             htmls += "<td>" + value.PAN + "</td>";
-                            htmls += "<td class='tdrate'> Rs. " + value.OpeningBalance + "</td>";
-                            htmls += "<td class='tdrate'> Rs. " + (value.RemainingBalance + value.OpeningBalance) + "</td>";
+                            htmls += "<td class='tdrate' style='display:none'> Rs. " + value.OpeningBalance + "</td>";
+                          //  htmls += "<td class='tdrate'> Rs. " + (value.RemainingBalance + value.OpeningBalance) + "</td>";
+                            htmls += "<td class='tdrate'> Rs. " + value.RemainingBalance + "</td>";
                             htmls += '<td class="tdcenter"><img id="' + value.MembershipID + '" class="preview-icon PayBalance" type="button" src="/images/pay.png" style="width:20px;"></td>';
                             htmls += '<td class="tdcenter"><img src="/images/view.png" id="' + value.MembershipID + '" class="preview-icon btnViewCustomerTransaction"></label></td>';
                             if (IsCus == 1) {
@@ -697,6 +699,8 @@ function Print() {
                 $("#membeshipformlist2").html('');
 
                 var value = data.d;
+                var remaining = 0;
+                var remainingBalance = (parseFloat(value.OpeningBalance - value.RemainingBalance)).toFixed(2);
 
                 var sum = (parseFloat(value.RemainingBalance + value.OpeningBalance)).toFixed(2);
                 var htmls = '';
@@ -706,7 +710,7 @@ function Print() {
                 htmls += "<td style='font-size:17px;'>Payment Mode</td>"
                 htmls += "</tr>"
                 htmls += "<tr>"
-                htmls += "<td><input type='textbox' disable value='" + sum + " ' placeholder='Total Amt' class='sfInputbox total' id='txtCalTotalAmount' style='width:120px;' readonly='readonly'/></td>";
+                htmls += "<td><input type='textbox' disable value='" + value.RemainingBalance + " ' placeholder='Total Amt' class='sfInputbox total' id='txtCalTotalAmount' style='width:120px;' readonly='readonly'/></td>";
                 htmls += "<td><select id='selPmntMode' class='sfInputbox' style='width:120px;'><option value='1'>CASH</option><option value='2'>CHEQUE</option><option value='3'>SWAP</option><option value='5'>eSewa</option><option value='6'>FonePay</option></select></td>";
                 htmls += "</tr>"
                 htmls += "<tr>"
