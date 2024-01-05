@@ -286,7 +286,12 @@
                         htmls += '</tr>';
 
                         // Opening Balance
-                        var openingBalance = groupLedgerData.filter((item) => item.ParentAccount == value && item.AccountHead == 'Opening Balance');
+                        var runningBalance = 0;
+                        //var openingBalance = groupLedgerData.filter((item) => item.ParentAccount == value && item.AccountHead == 'Opening Balance');
+                        var openingBalance = groupLedgerData.filter(item => item.ParentAccount === value && item.AccountHead === 'Opening Balance');
+
+                        console.log(openingBalance);
+
                         if (openingBalance[0]) {
                             htmls += '<tr style="text-align:left;background:#f7ebeb;font-weight:bold;">';
                             htmls += `<td style="text-align:left;border:1px solid #575757;padding-left:4rem!important;">${openingBalance[0].AccountHead}</td>`;
@@ -296,20 +301,30 @@
                             htmls += `<td style="text-align:right;border:1px solid #575757;padding-right: 8px !important;">${formatNumber((openingBalance[0].Balance >= 0 ? openingBalance[0].Balance : openingBalance[0].Balance * -1)) + (openingBalance[0].Balance >= 0 ? ' Dr' : ' Cr')}</td>`;
                             htmls += '<td></td>';
                             htmls += '</tr>';
+                            console.log("Account Value Opening Balance : " + openingBalance[0].Balance);
+
+                            var newOpeningBalanceAVew = parseFloat(openingBalance[0].Balance);
+                            runningBalance = newOpeningBalanceAVew;
                         }
 
                         var groupData = groupLedgerData.filter((item) => item.ParentAccount == value && item.AccountHead != 'Opening Balance');
+
+
 
                         $.each(groupData, function (index, value) {
 
                             groupTotalDr += value.Debit;
                             groupTotalCr += value.Credit;
+
+                            // Calculate running balance
+                            runningBalance += value.Debit - value.Credit;
+
                             grandTotalDr += value.Debit;
                             grandTotalCr += value.Credit;
-                            grandTotalBal += value.Balance;
+                        grandTotalBal = runningBalance;
 
                             if (index == groupData.length - 1) {
-                                groupTotalBal = value.Balance;
+                                groupTotalBal = runningBalance;
                             }
 
                             var date = value.Date;
@@ -321,10 +336,12 @@
                             htmls += `<td style="text-align:left;border:1px solid #575757;">${value.Particulars}</td>`;
                             htmls += `<td style="text-align:right;border:1px solid #575757;">${formatNumber(value.Debit)}</td>`;
                             htmls += `<td style="text-align:right;border:1px solid #575757;">${formatNumber(value.Credit)}</td>`;
-                            htmls += `<td style="text-align:right;border:1px solid #575757;padding-right: 8px !important;">${formatNumber((value.Balance >= 0 ? value.Balance : value.Balance * -1)) + (value.Balance >= 0 ? ' Dr' : ' Cr')}</td>`;
+                            htmls += `<td style="text-align:right;border:1px solid #575757;padding-right: 8px !important;">${formatNumber(Math.abs(runningBalance))} ${runningBalance >= 0 ? ' Dr' : ' Cr'}</td>`;
                             htmls += `<td style="text-align:right;border:1px solid #575757;padding:2px;"><button class="icon-preview btnViewTransaction" type='button' faid="${value.FinancialAcID}" id="${value.TransactionID}"></button></td>`;
                             htmls += '</tr>';
                         });
+
+
 
                         // Group Footer
                         htmls += '<tr style="text-align:left;background:#cfcfcf;font-weight:bold;">';
@@ -517,6 +534,7 @@
                         htmls += '</tr>';
 
                         // Opening Balance
+                        var Balance = 0;
                         var openingBalance = individualLedgerData.filter((item) => item.ParentAccount == value && item.AccountHead == 'Opening Balance');
                         if (openingBalance[0]) {
                             htmls += '<tr style="text-align:left;background:#f7ebeb;font-weight:bold;">';
@@ -527,22 +545,24 @@
                             htmls += `<td style="text-align:right;border:1px solid #575757;padding-right: 8px !important;">${formatNumber((openingBalance[0].Balance >= 0 ? openingBalance[0].Balance : openingBalance[0].Balance * -1)) + (openingBalance[0].Balance >= 0 ? ' Dr' : ' Cr')}</td>`;
                             htmls += '<td></td>';
                             htmls += '</tr>';
+                            console.log("Detail View  "+openingBalance[0].Balance);
+
+                            var newOpeningBalanceDView = parseFloat(openingBalance[0].Balance);
+
+                            Balance = newOpeningBalanceDView;
                         }
 
                         var groupData = individualLedgerData.filter((item) => item.AccountHead.split(" #")[0] == value && item.AccountHead != 'Opening Balance');
+                        
 
                         $.each(groupData, function (index, value) {
 
                             groupTotalDr += value.Debit;
                             groupTotalCr += value.Credit;
-                            groupTotalBal += value.Balance;
+                            Balance      += value.Debit - value.Credit; // Updated balance calculation
+
                             grandTotalDr += value.Debit;
                             grandTotalCr += value.Credit;
-                            grandTotalBal += value.Balance;
-
-                            if (index == groupData.length - 1) {
-                                groupTotalBal = value.Balance;
-                            }
 
                             var date = value.Date;
                             var split = date.split(" ");
@@ -553,10 +573,13 @@
                             htmls += `<td style="text-align:left;border:1px solid #575757;">${value.Particulars}</td>`;
                             htmls += `<td style="text-align:right;border:1px solid #575757;">${formatNumber(value.Debit)}</td>`;
                             htmls += `<td style="text-align:right;border:1px solid #575757;">${formatNumber(value.Credit)}</td>`;
-                            htmls += `<td style="text-align:right;border:1px solid #575757;padding-right: 8px !important;">${formatNumber((value.Balance >= 0 ? value.Balance : value.Balance * -1)) + (value.Balance >= 0 ? ' Dr' : ' Cr')}</td>`;
+                            htmls += `<td style="text-align:right;border:1px solid #575757;padding-right: 8px !important;">${formatNumber(Math.abs(Balance))} ${Balance >= 0 ? ' Dr' : ' Cr'}</td>`;
                             htmls += `<td style="text-align:right;border:1px solid #575757;padding:2px;"><button class="icon-preview btnViewTransaction" type='button' faid="${value.FinancialAcID}" id="${value.TransactionID}"></button></td>`;
                             htmls += '</tr>';
                         });
+
+                        groupTotalBal = Balance;
+                        grandTotalBal += groupTotalBal;
 
                         // Group Footer
                         htmls += '<tr style="text-align:left;background:#cfcfcf;font-weight:bold;">';
