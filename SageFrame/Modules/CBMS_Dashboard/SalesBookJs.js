@@ -19,11 +19,11 @@
 (function ($) {
     $.CReport = function (p) {
         p = $.extend
-             ({
-                 UserModuleID: '',
-                 ModulePath: '/Modules/CBMS_Dashboard/',
-                 master: '0',
-             }, p);
+            ({
+                UserModuleID: '',
+                ModulePath: '/Modules/CBMS_Dashboard/',
+                master: '0',
+            }, p);
         var month = new Array();
         var companyInfo = JSON.parse(localStorage.getItem("companyInfo"));
         var eventFunction = {
@@ -48,9 +48,27 @@
                 $('#lblCompanyAddress').html(companyInfo.Address);
 
                 eventFunction.SetMonth();
-               
+                $('#txtMnthYear').nepaliDatePicker({
+                    npdMonth: true,
+                    npdYear: true,
+                    npdYearCount: 10 // Options | Number of years to show
+                });
+                $('#txtToDate').nepaliDatePicker({
+                    npdMonth: true,
+                    npdYear: true,
+                    npdYearCount: 10 // Options | Number of years to show
+                });
+
+                $('#txtMnthYear').change(function () {
+                    $('#txtEngMnthYear').val(BS2AD($('#txtMnthYear').val()));
+                });
+
+                $('#txtToDate').change(function () {
+                    $('#txtEngToDate').val(BS2AD($('#txtToDate').val()));
+                });
+
                 $("#btnViewSales").click(function () {
-                	$('#txtMnthYear').change();
+                    $('#txtToDate').change();
                     $('#txtEndDate').change();
                     eventFunction.GetSales();
                     $('.report-view').show();
@@ -78,7 +96,7 @@
                     pdf.addHTML($("#salesBookDiv"), 0, 0, options, function () {
                         pdf.save('SalesBook_From_' + $('#lblYear').html() + '_To_' + $('#lblMonth').html() + '.pdf');
                     });
-                    
+
                 });
             },
             ajaxCall: function (config) {
@@ -113,15 +131,15 @@
 
             GetSales: function () {
 
-                ($('#lblMonth').html($('#txtStartDate').val() == "" ? "Beginning" : $('#txtStartDate').val()));
-                ($('#lblYear').html($('#txtEndDate').val() == "" ? "End" : $('#txtEndDate').val()));
+                ($('#lblMonth').html($('#txtMnthYear').val() == "" ? "Beginning" : $('#txtMnthYear').val()));
+                ($('#lblYear').html($('#txtToDate').val() == "" ? "End" : $('#txtToDate').val()));
                 eventFunction.config.method = "GetSalesBook";
                 eventFunction.config.url = eventFunction.config.baseURL + eventFunction.config.method;
-                eventFunction.config.data = JSON2.stringify({ fromDate: ($('#txtStartDate').val() == "" ? "Beginning" : $('#txtStartDate').val()), toDate: ($('#txtEndDate').val() == "" ? "End" : $('#txtEndDate').val()) });
+                eventFunction.config.data = JSON2.stringify({ fromDate: ($('#txtMnthYear').val() == "" ? "Beginning" : $('#txtMnthYear').val()), toDate: ($('#txtToDate').val() == "" ? "End" : $('#txtToDate').val()) });
                 eventFunction.config.ajaxCallMode = 1;
                 eventFunction.ajaxCall(eventFunction.config);
             },
-            
+
             bindSalesData: function (result) {
                 $('#salesBookDiv').show();
                 var htmls = "";
@@ -153,7 +171,7 @@
                     htmls += "<td style='text-align:center;border:1px solid #575757;padding:2px;' class=''></td>";
                     htmls += "<td style='text-align:center;border:1px solid #575757;padding:2px;' class=''></td>";
                     htmls += "<td style='text-align:center;border:1px solid #575757;padding:2px;' class=''></td>";
-                    
+
                     htmls += "</tr>";
                     totalSales += value.total_sales;
                     nonTaxableSales += value.tax_exempted_sales;
@@ -166,7 +184,7 @@
                 $('#salesBookTbl>tbody').html(htmls);
                 fhtmls += "<tr>";
                 fhtmls += "<th colspan='5' style='text-align:center;border:1px solid #575757;padding:2px;font-weight:bold;'>Total : </th>";
-                fhtmls += '<th class="tdrate" style="text-align:center;border:1px solid #575757;padding:2px;font-weight:bold;">' + totalQty+ '</th>';
+                fhtmls += '<th class="tdrate" style="text-align:center;border:1px solid #575757;padding:2px;font-weight:bold;">' + totalQty + '</th>';
                 fhtmls += '<th class="tdrate" style="text-align:center;border:1px solid #575757;padding:2px;font-weight:bold;"></th>';
                 fhtmls += '<th class="tdrate" style="text-align:center;border:1px solid #575757;padding:2px;font-weight:bold;">' + totalSales.toFixed(2) + '</th>';
                 fhtmls += '<th class="tdrate" style="text-align:center;border:1px solid #575757;padding:2px;font-weight:bold;">' + 0 + '</th>';
@@ -176,7 +194,7 @@
                 fhtmls += '<th class="tdrate" style="text-align:center;border:1px solid #575757;padding:2px;font-weight:bold;"></th>';
                 fhtmls += '<th class="tdrate" style="text-align:center;border:1px solid #575757;padding:2px;font-weight:bold;"></th>';
                 fhtmls += '<th class="tdrate" style="text-align:center;border:1px solid #575757;padding:2px;font-weight:bold;"></th>';
-                
+
                 fhtmls += "</tr>";
                 $('#salesBookTbl>tfoot').html(fhtmls);
             },
