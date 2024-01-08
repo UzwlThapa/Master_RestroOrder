@@ -47,10 +47,26 @@
                 $('#lblCompanyPAN').html(companyInfo.PAN);
                 $('#lblCompanyAddress').html(companyInfo.Address);
                 eventFunction.SetMonth();
-               ;
+                $('#txtMnthYear').nepaliDatePicker({
+                    npdMonth: true,
+                    npdYear: true,
+                    npdYearCount: 10 // Options | Number of years to show
+                });
+
+                $('#txtToDate').nepaliDatePicker({
+                    npdMonth: true,
+                    npdYear: true,
+                    npdYearCount: 10 // Options | Number of years to show
+                });
+                $('#txtMnthYear').change(function () {
+                    $('#txtEngMnthYear').val(BS2AD($('#txtMnthYear').val()));
+                });
+                $('#txtToDate').change(function () {
+                    $('#txtEngToDate').val(BS2AD($('#txtToDate').val()));
+                });
                 $("#btnViewReturnedSales").click(function () {
-                    $('#txtStartDate').change();
-                    $('#txtEndDate').change();
+                    $('#txtMnthYear').change();
+                    $('#txtToDate').change();
                     eventFunction.GetReturnedSales();
                     $('.report-view').show();
                 });
@@ -111,11 +127,11 @@
 
             GetReturnedSales: function () {
                 //var nepaliCal = $('#txtMnthYear').val().split('-');
-                ($('#lblMonth').html($('#txtStartDate').val() == "" ? "Beginning" : $('#txtStartDate').val()));
-                ($('#lblYear').html($('#txtEndDate').val() == "" ? "End" : $('#txtEndDate').val()));
+                ($('#lblMonth').html($('#txtMnthYear').val() == "" ? "Beginning" : $('#txtMnthYear').val()));
+                ($('#lblYear').html($('#txtToDate').val() == "" ? "End" : $('#txtToDate').val()));
                 eventFunction.config.method = "GetReturnedSalesBook";
                 eventFunction.config.url = eventFunction.config.baseURL + eventFunction.config.method;
-                eventFunction.config.data = JSON2.stringify({ fromDate: ($('#txtStartDate').val() == "" ? "Beginning" : $('#txtStartDate').val()), toDate: ($('#txtEndDate').val() == "" ? "End" : $('#txtEndDate').val()) });
+                eventFunction.config.data = JSON2.stringify({ fromDate: ($('#txtMnthYear').val() == "" ? "Beginning" : $('#txtMnthYear').val()), toDate: ($('#txtToDate').val() == "" ? "End" : $('#txtToDate').val()) });
                 eventFunction.config.ajaxCallMode = 1;
                 eventFunction.ajaxCall(eventFunction.config);
             },

@@ -8,21 +8,7 @@ table {
 }
 
 </style>
-<%--<script src="https://unpkg.com/jspdf@latest/dist/jspdf.min.js"></script>--%>
-<script type="text/javascript">
-    $(document).ready(function () {
-        $("#txtStartDate").datepicker({
-            changeMonth: true,
-            changeYear: true,
-        });
-        $("#txtEndDate").datepicker({
-            changeMonth: true,
-            changeYear: true,
-        });
-
-    });
-
-</script>
+<%--<script src="https://unpkg.com/jspdf@latest/dist/jspdf.min.js"></script>--%>    
 
 <script type="text/javascript">
 
@@ -40,11 +26,11 @@ table {
 <tr>
 
     <td><label>From Date: </label></td>
-    <td><input type="text" id="txtStartDate" class="sfInputbox DatePick" autocomplete="off" style="width:100px;" /></td>
+    <td><input type="text" id="txtMnthYear" class="sfInputbox" autocomplete="off" style="width:100px;" /></td>
     <td><input type="hidden" id="txtEngMnthYear" /></td>
 
     <td><label>To Date: </label></td>
-    <td><input type="text" id="txtEndDate" class="sfInputbox DatePick" autocomplete="off" style="width:100px;" /></td>
+    <td><input type="text" id="txtToDate" class="sfInputbox" autocomplete="off" style="width:100px;" /></td>
     <td><input type="hidden" id="txtEngToDate" /></td>
     <td>
              <button type="button" class="sfBtn restro-btn fa fa-eye" id="btnViewReturnedSales">View Returns</button>
