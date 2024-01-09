@@ -115,7 +115,7 @@ function GetBillingCustomeronCheck() {
 
                 $("#txtLoyaltyDiscount").val(ids[6]);
                 $("#membeshipformlist").dialog('close');
-                $("#selDiscountType").change();
+                //$("#selDiscountType").change();
 
             });
         },
@@ -389,14 +389,14 @@ function print() {
                         $("#txtLoyaltyDiscount").val(ids[6]);
                         $("#membeshipformlist").dialog('close');
 
-                        var roles = userRole.split(',');
+                        //var roles = userRole.split(',');
 
-                        if (roles.includes("Super User") || roles.includes("Billing_Discount")) {
-                            $("#selDiscountType").val(3);
-                            $("#selDiscountType").change();
-                        }
-                        else {
-                        }
+                        //if (roles.includes("Super User") || roles.includes("Billing_Discount")) {
+                        //    $("#selDiscountType").val(3);
+                        //    $("#selDiscountType").change();
+                        //}
+                        //else {
+                        //}
 
                     } else if (membershipfor == "RoomBooking") {
                         $("#MemberID").val(ids[1]);
@@ -724,8 +724,8 @@ function print() {
                 $("#txtCashCusName").val(result[0].Fname + " " + result[0].Lname);
                 $("#txtNumber").val(result[0].TelMobile);
                 $("#txtLoyaltyDiscount").val(result[0].discount);
-                $("#selDiscountType").val(3);
-                $("#selDiscountType").change();
+                //$("#selDiscountType").val(3);
+                //$("#selDiscountType").change();
                 $("#txtLoyaltyDiscount").change();
                 $(".disc").hide();
                 $(".roomdisc").hide();
@@ -2027,8 +2027,8 @@ function print() {
                         $("#txtCusAddress").prop('disabled', false);
                         $("#txtPan").prop('disabled', false);
 
-                        $("#selDiscountType").val(1);
-                        $("#selDiscountType").change();
+                        //$("#selDiscountType").val(1);
+                        //$("#selDiscountType").change();
                         $("#txtLoyaltyDiscount").val(0);
 
                     }
@@ -2946,16 +2946,15 @@ function print() {
                 $("#txtCashCusName").prop('disabled', true);
                 $("#txtCusAddress").prop('disabled', true);
                 $("#txtLoyaltyDiscount").val(datas[0].discount);
+                 
+                //var roles = userRole.split(',');
 
-
-                var roles = userRole.split(',');
-
-                if (roles.includes("Super User") || roles.includes("Billing_Discount")) {
-                    $("#selDiscountType").val(3);
-                    $("#selDiscountType").change();
-                }
-                else {
-                }
+                //if (roles.includes("Super User") || roles.includes("Billing_Discount")) {
+                //    $("#selDiscountType").val(3);
+                //    $("#selDiscountType").change();
+                //}
+                //else {
+                //}
 
             },
             Reset: function () {

@@ -587,7 +587,7 @@ function isNumber(evt) {
 
 function calculateSurpDefct(str)  //// str->1 for Tender, str->2 for Return amt
 {
-    
+
     var surpDfct = 0;
     var returnAmt = 0;
     if (str == 1) {
@@ -749,16 +749,16 @@ function SaveOrderedData() {
     for (var i = 0; i < OrderListArray.length; i++) {
         var orderDetail = new Object();
         orderDetail.Quantity = OrderListArray[i].Quantity,
-        orderDetail.ItemId = OrderListArray[i].ItemId,
-        orderDetail.ItemName = OrderListArray[i].ItemName,
-        orderDetail.IsCombo = OrderListArray[i].IsCombo,
-        orderDetail.AddedBy = SageFrameUserName,
-        orderDetail.UpdatedBy = '',
-        orderDetail.IsArchived = false,
-        orderDetail.ArchivedBy = SageFrameUserName,
-        orderDetail.Rate = 0.0,
-        orderDetail.Note = OrderListArray[i].Note,
-        orderDetail.SeatNo = OrderListArray[i].SeatNo;
+            orderDetail.ItemId = OrderListArray[i].ItemId,
+            orderDetail.ItemName = OrderListArray[i].ItemName,
+            orderDetail.IsCombo = OrderListArray[i].IsCombo,
+            orderDetail.AddedBy = SageFrameUserName,
+            orderDetail.UpdatedBy = '',
+            orderDetail.IsArchived = false,
+            orderDetail.ArchivedBy = SageFrameUserName,
+            orderDetail.Rate = 0.0,
+            orderDetail.Note = OrderListArray[i].Note,
+            orderDetail.SeatNo = OrderListArray[i].SeatNo;
         orderDetail.Amount = 0.0
         orderDetail.Waiter = SageFrameUserName;
         cakeOrderList.push(orderDetail);
@@ -793,7 +793,7 @@ function SaveOrderedData() {
         async: false,
         cache: false,
         url: baseUrl + "SaveWholeOrderIntoDataBase",
-        data: JSON2.stringify({ cakeOrderMasterInfo: ordermaster, orderExtraItems: ExtraItems, wholesaleorder: retailorder  }),
+        data: JSON2.stringify({ cakeOrderMasterInfo: ordermaster, orderExtraItems: ExtraItems, wholesaleorder: retailorder }),
         contentType: "application/json; charset=utf-8",
         dataType: "json",
         success: function (data) {
@@ -960,7 +960,7 @@ function GetDataForSalesBill(orderMasterId) {
 
                 $("#lblSurpDefct").text(0.00);
                 $(".clsSurpDefct").css('color', 'black');
-                
+
 
                 BindBillingTerm(totalAmount, discountAmount, datas)
             }
@@ -974,13 +974,13 @@ function GetDataForSalesBill(orderMasterId) {
             });
 
             $('#DialogOrderDetail').dialog(
-           {
-               'title': 'Sales Bill',
-               width: DialogWidth,
-               modal: true,
-               dialogClass: 'CheckEnable unpaidd',
-               position: ['center', 'center']
-           });
+                {
+                    'title': 'Sales Bill',
+                    width: DialogWidth,
+                    modal: true,
+                    dialogClass: 'CheckEnable unpaidd',
+                    position: ['center', 'center']
+                });
 
             //if (tokeninfo.length > 0) {
             //    if (tokeninfo[0].CustomerID > 0) {
@@ -1091,7 +1091,7 @@ function GetDataForSalesBill(orderMasterId) {
                 }
             })
             //$("#selDiscountType").on('change', function () {
-                
+
             //    amt = 0.00;
             //    totalAmount = 0.00;
             //    totaldis = 0.00;
@@ -1248,7 +1248,7 @@ function BindBillingTerm(totalAmount, totaldis, datas) {
     htmls += (" <td attr-term='Total' ><strong>Total : </strong><input type=\"text\" value=\"Rs. " + (parseFloat(totalAmount) - parseFloat(totaldis)).toFixed(2) + "\"  class=\"sfInputbox_bill totalAfterDisc\" disabled  attr-amount='" + (parseFloat(totalAmount) - parseFloat(totaldis)).toFixed(2) + "'/></td></tr>");
     amntAfterDisc = (parseFloat(totalAmount) - parseFloat(totaldis)).toFixed(2);
     netAmount = 0.00;
-    
+
     //commented to remove service charge
     //$.each(datas.billingTerm, function (index, item) {
     //    //if (item.Name != "Service Charge") 
@@ -1336,13 +1336,13 @@ function GetCustomeronCheck() {
                 htmls += "</table>";
                 $('#membeshipformlist').html(htmls);
                 $('#customertable').DataTable(
-                     {
-                         //"scrollY": false,
-                         //"scrollCollapse": false,
-                         "jQueryUI": true,
-                         // "scrollX" : true,
+                    {
+                        //"scrollY": false,
+                        //"scrollCollapse": false,
+                        "jQueryUI": true,
+                        // "scrollX" : true,
 
-                     });
+                    });
 
                 $("#membeshipformlist").dialog({
                     'title': 'Customer',
@@ -1359,7 +1359,6 @@ function GetCustomeronCheck() {
             }
             $(".dataTables_scrollBody").css('height', '100%');
 
-            //  $("#membeshipformlist").on('click', '.selectCust', function (event) {
             $("#membeshipformlist").on('click', '#customertable tr', function (event) {
                 var deletedata = $(this).attr('id');
                 var ids = deletedata.split('_');
@@ -1380,8 +1379,7 @@ function GetCustomeronCheck() {
 
                 $("#txtLoyaltyDiscount").val(ids[6]);
                 $("#membeshipformlist").dialog('close');
-                $("#selDiscountType").change();
-
+                //$("#selDiscountType").change(); 
             });
         },
         failure: function (response) {
@@ -1423,7 +1421,7 @@ function saveCakeSalesBill(salesMaster, salesDetail, billingTerm, Payment, disco
             $('#BillingView').dialog('close');
             jAlert('Bill printed successfully', "Information!!", function () {
                 window.location.reload();
-            });            
+            });
 
         },
         failure: function (response) {
@@ -1476,7 +1474,7 @@ function SaveFoodCourtSalesBill(salesMaster, salesDetail, splited, billingTerm, 
         }
     });
 }
-function savePrintCount(printcount, billNo, printedBy,salesType) {
+function savePrintCount(printcount, billNo, printedBy, salesType) {
     $.ajax({
         type: "POST",
         async: false,
@@ -1527,34 +1525,34 @@ function CancelOrderedData() {
     var cancel = false;
     var ordermaster = new Object();
     ordermaster.TableId = TableId,
-    ordermaster.RoomId = RoomId,
-    ordermaster.OID = parseInt(OID);
+        ordermaster.RoomId = RoomId,
+        ordermaster.OID = parseInt(OID);
     ordermaster.OrderMasterID = OrderMasterID,
-    ordermaster.GuestNo = parseInt($('#splitNoCancel').text());
+        ordermaster.GuestNo = parseInt($('#splitNoCancel').text());
     ordermaster.CancelReason = $("#canceltextarea").val();
     ordermaster.CancelBy = $('#hdnPinBy').val();
     ordermaster.UserName = $('#hdnPinBy').val();
     ordermaster.IsCancelled = true,
-    $.ajax({
-        type: "POST",
-        async: false,
-        cache: false,
-        url: baseUrl + "CancelOrderIntoDataBase",
-        data: JSON2.stringify({ orderMasterInfo: ordermaster }),
-        contentType: "application/json; charset=utf-8",
-        dataType: "json",
-        success: function (data) {
-            jAlert('Ordered Cancelled successfully', 'Information!!', function () {
-                parent.$.colorbox.close();
-            });
-        },
-        failure: function (response) {
-            jAlert("Sorry some error occured. Contact the support team.", "Error!!");
-        }
-    });
+        $.ajax({
+            type: "POST",
+            async: false,
+            cache: false,
+            url: baseUrl + "CancelOrderIntoDataBase",
+            data: JSON2.stringify({ orderMasterInfo: ordermaster }),
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (data) {
+                jAlert('Ordered Cancelled successfully', 'Information!!', function () {
+                    parent.$.colorbox.close();
+                });
+            },
+            failure: function (response) {
+                jAlert("Sorry some error occured. Contact the support team.", "Error!!");
+            }
+        });
 }
 function initialSetup(tableId, oId, hostUrl, foodCourt, Delievery) {
-    
+
     if (userRole == 'Super User') {
         $(".restrologo").css("display", "none");
         $(".iframeeClose").click(function () {
@@ -1888,56 +1886,56 @@ function initialSetup(tableId, oId, hostUrl, foodCourt, Delievery) {
         $(".sele").css("display", "none");
 
         $('.extradiv').dialog(
-         {
-             'title': splitindex[4],
-             "resize": "auto",
-             width: 300,
-             buttons: {
-                 "Submit": function () {
-                     var arrlength = ExtraItems.length;
-                     for (var i = arrlength - 1; i >= 0; i--) {
-                         if (itemID == ExtraItems[i].ItemID && selectedBillNo == ExtraItems[i].SeatNo) {
-                             ExtraItems.splice(i, 1);
-                         }
-                     }
+            {
+                'title': splitindex[4],
+                "resize": "auto",
+                width: 300,
+                buttons: {
+                    "Submit": function () {
+                        var arrlength = ExtraItems.length;
+                        for (var i = arrlength - 1; i >= 0; i--) {
+                            if (itemID == ExtraItems[i].ItemID && selectedBillNo == ExtraItems[i].SeatNo) {
+                                ExtraItems.splice(i, 1);
+                            }
+                        }
 
-                     $('.ckbxExtraItem').each(function (i, obj) {
-                         if ($(this).is(':checked')) {
-                             //$('.ddlSpicy').val($('.ddlSpicy').val() + ', ' + $(this).attr('id').split('_')[1]);
-                             var word = $(this).attr('id').split("_");
-                             var extra = new Object;
-                             extra.ItemID = parseInt(itemID);
-                             extra.ExtraItemID = parseInt(word[0]);
-                             extra.ExtraItem = word[1];
-                             extra.ExtraPrice = parseFloat(word[2]);
-                             extra.Quantity = parseInt($('#Qnty_' + parseInt(word[0])).val());
-                             extra.SeatNo = parseInt(selectedBillNo);
-                             ExtraItems.push(extra);
-                         }
+                        $('.ckbxExtraItem').each(function (i, obj) {
+                            if ($(this).is(':checked')) {
+                                //$('.ddlSpicy').val($('.ddlSpicy').val() + ', ' + $(this).attr('id').split('_')[1]);
+                                var word = $(this).attr('id').split("_");
+                                var extra = new Object;
+                                extra.ItemID = parseInt(itemID);
+                                extra.ExtraItemID = parseInt(word[0]);
+                                extra.ExtraItem = word[1];
+                                extra.ExtraPrice = parseFloat(word[2]);
+                                extra.Quantity = parseInt($('#Qnty_' + parseInt(word[0])).val());
+                                extra.SeatNo = parseInt(selectedBillNo);
+                                ExtraItems.push(extra);
+                            }
 
-                     });
-                     if ($('.ChkboxHomedelivery').is(':checked')) {
-                         OrderListArray[parseInt(splitindex[1])].IsHomeDelivery = true;
-                         OrderListArray[parseInt(splitindex[1])].HomeDeliveyNumber = $('.sele').val();
-                     } else {
-                         OrderListArray[parseInt(splitindex[1])].IsHomeDelivery = false;
-                         OrderListArray[parseInt(splitindex[1])].HomeDeliveyNumber = 0;
-                     }
-                     OrderListArray[parseInt(splitindex[1])].Note = $('.ddlSpicy').val();
-                     OrderListArray[parseInt(splitindex[1])].ExtraItem = "";
-                     //OrderListArray[parseInt(splitindex[1])].ExtraCharge = parseFloat($('.HomeDelivs').val());
-                     OrderListArray[parseInt(splitindex[1])].ExtraCharge = parseFloat($('.HomeDelivs').val());
+                        });
+                        if ($('.ChkboxHomedelivery').is(':checked')) {
+                            OrderListArray[parseInt(splitindex[1])].IsHomeDelivery = true;
+                            OrderListArray[parseInt(splitindex[1])].HomeDeliveyNumber = $('.sele').val();
+                        } else {
+                            OrderListArray[parseInt(splitindex[1])].IsHomeDelivery = false;
+                            OrderListArray[parseInt(splitindex[1])].HomeDeliveyNumber = 0;
+                        }
+                        OrderListArray[parseInt(splitindex[1])].Note = $('.ddlSpicy').val();
+                        OrderListArray[parseInt(splitindex[1])].ExtraItem = "";
+                        //OrderListArray[parseInt(splitindex[1])].ExtraCharge = parseFloat($('.HomeDelivs').val());
+                        OrderListArray[parseInt(splitindex[1])].ExtraCharge = parseFloat($('.HomeDelivs').val());
 
-                     CalculateTotal();
-                     $(this).dialog('close');
-                 },
-                 Cancel: function () {
-                     $('.ddlSpicy').val('');
-                     $('.HomeDelivs').val('');
-                     $(this).dialog('close');
-                 }
-             }
-         });
+                        CalculateTotal();
+                        $(this).dialog('close');
+                    },
+                    Cancel: function () {
+                        $('.ddlSpicy').val('');
+                        $('.HomeDelivs').val('');
+                        $(this).dialog('close');
+                    }
+                }
+            });
 
         $('.ChkboxHomedelivery').on('click', function () {
             var index = $(this).attr('id');
@@ -2127,7 +2125,7 @@ function paynows() {
     salesMaster.ContactNumber = $('#txtContactNo').val();
     salesMaster.PAN = $('#txtPan').val();
     salesMaster.Address = $('#txtAddress').val() == null ? '' : $('#txtAddress').val();
-    
+
     salesMaster.BasicAmount = (parseFloat($('.totalAfterDisc').val().split(' ')[1]));
     salesMaster.TermAmount = 0.00;
     salesMaster.NetAmount = $('#txtNetAmt').val().split(' ')[1];
@@ -2181,7 +2179,7 @@ function paynows() {
     discount.IsFlatDis = ($('#selDiscountType').val() == "2" ? true : false);;
     discount.TotalDiscount = $('#txttotaldiscount').attr('attr-amount');
     discount.BasicAmount = $('#txtTaxableAmt').attr('attr-amount');
-    
+
     //if (foodCourtOrder) {
     var Payment = {};
     Payment.SPMID = $('#selPayMode').val();
@@ -2202,8 +2200,8 @@ function paynows() {
 
     jConfirm('Are You Sure  ?', 'Pay', function (confirmed) {
         if (confirmed) {
-                    saveCakeSalesBill(salesMaster, salesDetail, billingTerm, Payment, discount)
-            }
+            saveCakeSalesBill(salesMaster, salesDetail, billingTerm, Payment, discount)
+        }
     });
 
     //    if (foodCourtAutoBillGenerate) {
@@ -2218,9 +2216,9 @@ function paynows() {
     //} else {
     //    jConfirm('Are You Sure  ?', 'Pay', function (confirmed) {
     //        if (confirmed) {
-                //SaveSalesBill(salesMaster, salesDetail, splited, billingTerm, discount)
-        //    }
-        //});
+    //SaveSalesBill(salesMaster, salesDetail, splited, billingTerm, discount)
+    //    }
+    //});
     //}
 }
 function GetPreviousItemByID(Id, OID) {
@@ -2624,14 +2622,14 @@ function getMemberDetailsbyinfo(info) {
             $("#txtCusAddress").prop('disabled', true);
 
             $("#txtLoyaltyDiscount").val(datas[0].discount);
-            var roles = userRole.split(',');
+            //var roles = userRole.split(',');
 
-            if (roles.includes("Super User") || roles.includes("Billing_Discount")) {
-                $("#selDiscountType").val(3);
-                $("#selDiscountType").change();
-            }
-            else {
-            }
+            //if (roles.includes("Super User") || roles.includes("Billing_Discount")) {
+            //    $("#selDiscountType").val(3);
+            //    $("#selDiscountType").change();
+            //}
+            //else {
+            //}
         },
         failure: function (response) {
             jAlert("Sorry some error occured. Contact the support team.", "Error!!");

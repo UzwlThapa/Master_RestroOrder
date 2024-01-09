@@ -1166,9 +1166,8 @@ function GetDataForSalesBill(orderMasterId) {
                     $("#txtCusAddress").prop('disabled', false);
                     $("#txtPan").prop('disabled', false);
 
-                    $("#selDiscountType").val(1);
+                    //$("#selDiscountType").val(1);
                     $("#txtLoyaltyDiscount").val(0);
-
                 }
             })
             $("#selDiscountType").on('change', function () {
@@ -1926,7 +1925,7 @@ function GetCustomeronCheck() {
 
                 $("#txtLoyaltyDiscount").val(ids[6]);
                 $("#membeshipformlist").dialog('close');
-                $("#selDiscountType").change();
+                //$("#selDiscountType").change();
             });
         },
         failure: function (response) {
@@ -3061,12 +3060,12 @@ function getMemberDetailsbyinfo(info) {
             $("#txtCusAddress").prop('disabled', true);
 
             $("#txtLoyaltyDiscount").val(datas[0].discount);
-            var roles = userRole.split(',');
+            //var roles = userRole.split(',');
 
-            if (roles.includes("Super User") || roles.includes("Billing_Discount")) {
-                $("#selDiscountType").val(3);
-                $("#selDiscountType").change();
-            }
+            //if (roles.includes("Super User") || roles.includes("Billing_Discount")) {
+            //    $("#selDiscountType").val(3);
+            //    $("#selDiscountType").change();
+            //}
         },
         failure: function (response) {
             jAlert("Sorry some error occured. Contact the support team.", "Error!!");

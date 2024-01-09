@@ -10,16 +10,16 @@ function IntegerAndDecimal(evt, element) {
     return true;
 }
 (function ($) {
-     var tabs = $("#tabs").tabs();
-  $('#tabs').css('display', 'block');
+    var tabs = $("#tabs").tabs();
+    $('#tabs').css('display', 'block');
     $.companyDashboardcreate = function (p) {
         p = $.extend
-             ({
-                 UserModuleID: '',
-                 ModulePath: '/Modules/RestroDashboard/',
-                 HostUrl: '',
-                 TypeId: '',
-             }, p);
+            ({
+                UserModuleID: '',
+                ModulePath: '/Modules/RestroDashboard/',
+                HostUrl: '',
+                TypeId: '',
+            }, p);
         var v = 0;
         var isSplit = 0;
         var GoSplit = 0;
@@ -154,13 +154,13 @@ function IntegerAndDecimal(evt, element) {
                     e.stopPropagation();
                     DashboardFunction.GetWaiterLog();
                     $('#callwaiterDiv').dialog(
-                              {
-                                  'title': 'Online Waiters',
-                                  width: 300,
-                                  height: 'auto',
-                                  modal: true,
-                                  position: ['center', 'center']
-                              });
+                        {
+                            'title': 'Online Waiters',
+                            width: 300,
+                            height: 'auto',
+                            modal: true,
+                            position: ['center', 'center']
+                        });
 
                     var effect = 'slide';
                     var options = { direction: 'right' };
@@ -174,20 +174,20 @@ function IntegerAndDecimal(evt, element) {
                     $(".com").show();
                     $(".dine").hide();
                 });
-                
+
                 $(".imgroomtype").on('click', function () {
                     //$('#DialogOrderDetail').html("");
                     $('#CusOrder').hide();
-                     $('.hometab').hide();
+                    $('.hometab').hide();
 
                     $('#DialogOrderDetail').dialog(
-                   {
-                       'title': 'Order',
-                       "resize": "auto",
-                       width: 300,
-                       position: 'center',
-                       
-                   });
+                        {
+                            'title': 'Order',
+                            "resize": "auto",
+                            width: 300,
+                            position: 'center',
+
+                        });
                     $('#DialogOrderDetail').dialog("close");
                     var data = $(this).attr('id');
                     var id = data.split('_')[0];
@@ -277,13 +277,14 @@ function IntegerAndDecimal(evt, element) {
 
                         $("#txtLoyaltyDiscount").val(ids[6]);
                         $("#membeshipformlist").dialog('close');
-                        $("#selDiscountType").change();
+                        //$("#selDiscountType").change();
+
                     } else if (membershipfor == "RoomBooking") {
                         $("#MemberID").val(ids[1]);
                         $("#MemberName").val(ids[2] + " " + ids[3]);
                         $("#MemberEmail").val("");
                         $("#MemberPhone").val(ids[7]);
-                        $("#MemberIdCardNo").val(''); 
+                        $("#MemberIdCardNo").val('');
                         $("#membeshipformlist").dialog('close');
                     }
 
@@ -411,8 +412,6 @@ function IntegerAndDecimal(evt, element) {
                     var deletedata = $(this).attr('id');
                     var ids = deletedata.split('_');
                     DashboardFunction.UpdateCustomerName(ids[1]);
-
-
                 });
                 $('.restro-offer li#take-awayy').click(function (e) {
                     //var orderId = data.d;
@@ -685,12 +684,12 @@ function IntegerAndDecimal(evt, element) {
                         DashboardFunction.GetBookedRooms();
                         break;
                     case 60:
-                        
+
                         //if (data.d.length > 0) {
                         //    if (data.d[0].IsTable) {
-                                DashboardFunction.BindOccupiedTable(data.d);
-                            //} else {
-                            //}
+                        DashboardFunction.BindOccupiedTable(data.d);
+                        //} else {
+                        //}
                         //}
                         break;
                     case 61:
@@ -729,11 +728,11 @@ function IntegerAndDecimal(evt, element) {
             },
 
             //<<-----------------------------Post & Get Here ---------------------------------------->>
-            SaveRoomBook:function(){
+            SaveRoomBook: function () {
                 var ordermaster = new Object();
                 ordermaster.UserName = $('#hdnPinBy').val();
                 ordermaster.TableId = $('#hdfTableId').val();
-                ordermaster.RoomId = ($('#hdfRoomId').val() == "" ? 0 : $('#hdfRoomId').val() );
+                ordermaster.RoomId = ($('#hdfRoomId').val() == "" ? 0 : $('#hdfRoomId').val());
                 ordermaster.Date = Date.now;
                 ordermaster.BillPaid = 0;
                 ordermaster.BillNo = '';
@@ -778,10 +777,10 @@ function IntegerAndDecimal(evt, element) {
                 DashboardFunction.ajaxCall(DashboardFunction.config);
             },
             GetOccupiedTables: function (isTable) {
-                
+
                 DashboardFunction.config.method = "GetOccupiedTables";
                 DashboardFunction.config.url = DashboardFunction.config.baseURL + DashboardFunction.config.method;
-                DashboardFunction.config.data = JSON2.stringify({ isTable: isTable } );
+                DashboardFunction.config.data = JSON2.stringify({ isTable: isTable });
                 DashboardFunction.config.ajaxCallMode = 60;
                 DashboardFunction.ajaxCall(DashboardFunction.config);
             },
@@ -808,7 +807,7 @@ function IntegerAndDecimal(evt, element) {
                 DashboardFunction.config.ajaxCallMode = 56;
                 DashboardFunction.ajaxCall(DashboardFunction.config);
             },
-            GetBill: function(salesMasterId){
+            GetBill: function (salesMasterId) {
                 getBill(salesMasterId, false);
                 $('#BillingView').dialog({
                     'title': 'Vat Bill',
@@ -830,8 +829,8 @@ function IntegerAndDecimal(evt, element) {
                     DashboardFunction.ajaxCall(DashboardFunction.config);
                 });
             },
-            
-            
+
+
             ClearMergeList: function () {
                 DashboardFunction.config.method = "ClearMergeList";
                 DashboardFunction.config.url = DashboardFunction.config.baseURL + DashboardFunction.config.method;
@@ -935,7 +934,7 @@ function IntegerAndDecimal(evt, element) {
                 DashboardFunction.ajaxCall(DashboardFunction.config);
             },
 
-             callWaiter: function (waiterIp) {
+            callWaiter: function (waiterIp) {
                 DashboardFunction.config.method = "callWaiter";
                 DashboardFunction.config.url = DashboardFunction.config.baseURL + DashboardFunction.config.method;
                 DashboardFunction.config.data = JSON2.stringify({
@@ -964,8 +963,6 @@ function IntegerAndDecimal(evt, element) {
                 MemberInfo.MembershipID = MembersID;
                 MemberInfo.RemainingBalance = parseFloat($('#txtCalRemainingAmount').val() == "" ? 0 : $('#txtCalRemainingAmount').val());
                 MemberInfo.PayAmount = parseFloat($('#txtCalPaidAmount').val() == "" ? 0 : $('#txtCalPaidAmount').val());
-                //MemberInfo.RemainingBalance = $('#txtCalRemainingAmount').val();
-                //MemberInfo.PayAmount = $('#txtCalPaidAmount').val();
                 MemberInfo.AddedBy = SageFrameUserName;
                 DashboardFunction.config.method = "SaveCustomerAmount";
                 DashboardFunction.config.url = DashboardFunction.config.baseURL + DashboardFunction.config.method;
@@ -973,20 +970,15 @@ function IntegerAndDecimal(evt, element) {
                 //if (companyProf.config.MemberIDUpdate == 1)
                 {
                     DashboardFunction.config.ajaxCallMode = 12;
-
-                    //} else {
-                    //companyProf.config.ajaxCallMode = 1;
-
                     $("#membeshipformlist2").hide();
                 }
 
                 DashboardFunction.ajaxCall(DashboardFunction.config);
-
             },
             GetProviderList: function () {
                 DashboardFunction.config.method = "GetProviderList";
                 DashboardFunction.config.url = DashboardFunction.config.baseURL + DashboardFunction.config.method;
-                //eventFunction.config.data = JSON2.stringify({ startDate: Sdate, endDate: EDate, CustomerName: CustomerName });
+                DashboardFunction.config.url = DashboardFunction.config.baseURL + DashboardFunction.config.method;
                 DashboardFunction.config.data = DashboardFunction.config.data;
                 DashboardFunction.config.ajaxCallMode = 14;
                 DashboardFunction.ajaxCall(DashboardFunction.config);
@@ -998,7 +990,6 @@ function IntegerAndDecimal(evt, element) {
                     htmls += '<option value="' + value.ProviderID + '">' + value.ProviderName + '</option>';
                 });
                 $('#selProv').html(htmls);
-
             },
             UpdateSalesPayMode: function () {
                 //var MembershipID = id;
@@ -1053,7 +1044,7 @@ function IntegerAndDecimal(evt, element) {
                 $("#tblforunpaidbills").dataTable({
                     "pageLength": 5,
                     "lengthMenu": [5, 10, 25],
-                    "bPaginate" : $('#tblforunpaidbills tbody tr').length>7,
+                    "bPaginate": $('#tblforunpaidbills tbody tr').length > 7,
                     "iDisplayLength": 7,
                     "ordering": false,
                     "lengthMenu": [[5, 10, -1], [5, 10, "All"]]
@@ -1081,7 +1072,7 @@ function IntegerAndDecimal(evt, element) {
                 $("#selShiftTable").html(htmls);
             },
             GetRoomByRoomTypeId: function (roomtypeid) {
-                
+
                 DashboardFunction.config.method = "GetRoomByRoomTypeId";
                 DashboardFunction.config.url = DashboardFunction.config.baseURL + DashboardFunction.config.method;
                 DashboardFunction.config.data = JSON2.stringify({
@@ -1227,7 +1218,7 @@ function IntegerAndDecimal(evt, element) {
                     $.each(JSON.parse(datas), function (index, value) {
                         if (!(value.MergeTableList > 0 && value.MergeTableList != value.restrotableId)) {
                             htmls += ("<a id ='" + (value.IsTable ? "Table_" : "Room_"));
-                             if (value.BillPaid.toString() == '0' && value.IsCancelled.toString() == '0' || value.MergeTableList > 0 || value.restrotablesStatusID == 7) {
+                            if (value.BillPaid.toString() == '0' && value.IsCancelled.toString() == '0' || value.MergeTableList > 0 || value.restrotablesStatusID == 7) {
                                 if (value.MergeTableList > 0) {
                                     if (value.restrotablesStatusID == 6) {
                                         htmls += ("" + value.restrotableId + "_img_yes_notoccupied_" + value.restrotableTitle + "' class = 'imgtable'  >");
@@ -1281,7 +1272,7 @@ function IntegerAndDecimal(evt, element) {
 
                             htmls += ("</li></a>");
                         }
-                       
+
 
                     });
                     htmls += "</ul>";
@@ -1313,7 +1304,7 @@ function IntegerAndDecimal(evt, element) {
 
             },
 
-              //<<----------------------------- Bind Here ---------------------------------------->>
+            //<<----------------------------- Bind Here ---------------------------------------->>
             BindWaiterCallLog: function (result) {
                 $('#callwaiterDiv').html("");
 
@@ -1324,13 +1315,13 @@ function IntegerAndDecimal(evt, element) {
                     htmls = "<ul>";
                     $.each(datas, function (index, value) {
                         if (value.image == '') {
-                            htmls += ("<li><span id='waiter_" + value.WaiterIP + "' class='waiters'> <img src='/Modules/Admin/UserManagement/UserPic/waiter.png'><span>" + value.WaiterName + "</span><i class='fas fa-bell'></i></span></li>");               
+                            htmls += ("<li><span id='waiter_" + value.WaiterIP + "' class='waiters'> <img src='/Modules/Admin/UserManagement/UserPic/waiter.png'><span>" + value.WaiterName + "</span><i class='fas fa-bell'></i></span></li>");
                         }
                         else {
                             htmls += ("<li><span id='waiter_" + value.WaiterIP + "' class='waiters'><img src='/Modules/Admin/UserManagement/UserPic/" + value.image + "' ><span>" + value.WaiterName + "</span><i class='fas fa-bell'></i></span></li>");
                         }
                     });
-                htmls += "</ul>";
+                    htmls += "</ul>";
 
                 } else {
 
@@ -1457,9 +1448,9 @@ function IntegerAndDecimal(evt, element) {
                 if (datas.length > 0) {
                     DialogWidth = '500';
                     htmls += "<div id='dialogOrderOpen'><div class='dialogflex'>"
-                    htmls += "<h4>Details in " + (datas[0].Note != null && datas[0].Note != "" ? datas[0].Note : datas[0].restrotableTitle)  + "</h4>";
+                    htmls += "<h4>Details in " + (datas[0].Note != null && datas[0].Note != "" ? datas[0].Note : datas[0].restrotableTitle) + "</h4>";
                     htmls += "<div>Bill No: <select id='billno' class='sfInputbox' style='width:55px;'>";
-                    var noOfGuest =parseInt(datas[0].GuestNo);
+                    var noOfGuest = parseInt(datas[0].GuestNo);
                     for (i = 1; i <= noOfGuest; i++) {
                         var count = 0;
                         $.each(datas, function (index, value) {
@@ -1599,17 +1590,17 @@ function IntegerAndDecimal(evt, element) {
                     });
                 });
                 $('#DialogOrderDetail').unbind('click').on('click', '.removeMerge', function () {
-                        var tableid = $(this).attr('id').split("_")[1];
+                    var tableid = $(this).attr('id').split("_")[1];
 
-                        jConfirm('Are You Sure  ?', 'Remove Merge', function (confirmed) {
-                            if (confirmed) {
-                                DashboardFunction.config.method = "UnMergeTable";
-                                DashboardFunction.config.url = DashboardFunction.config.baseURL + DashboardFunction.config.method;
-                                DashboardFunction.config.data = JSON2.stringify({ tableId: tableid });
-                                DashboardFunction.config.ajaxCallMode = 55;
-                                DashboardFunction.ajaxCall(DashboardFunction.config);
-                            }
-                        });
+                    jConfirm('Are You Sure  ?', 'Remove Merge', function (confirmed) {
+                        if (confirmed) {
+                            DashboardFunction.config.method = "UnMergeTable";
+                            DashboardFunction.config.url = DashboardFunction.config.baseURL + DashboardFunction.config.method;
+                            DashboardFunction.config.data = JSON2.stringify({ tableId: tableid });
+                            DashboardFunction.config.ajaxCallMode = 55;
+                            DashboardFunction.ajaxCall(DashboardFunction.config);
+                        }
+                    });
                 });
                 $('#DialogOrderDetail').on('click', '.cancelorder', function () {
                     $('#DialogOrderDetail').dialog('close');
@@ -1652,7 +1643,7 @@ function IntegerAndDecimal(evt, element) {
                     DashboardFunction.GetDataForSalesBill(data[2]);
 
                 });
-                
+
             },
             // Order By Room
             SaveSplittedData: function () {
@@ -1735,14 +1726,14 @@ function IntegerAndDecimal(evt, element) {
                     var id = $(this).attr('id');
                     var data = id.split('_');
                     $('.dashboardmain').dialog(
-                    {
-                        'title': 'Room Book',
-                        width: '900px',
-                        height: 'auto',
-                        position: ['center', 'center'],
-                        dialogClass: 'roombookk',
-                        modal: true
-                    });
+                        {
+                            'title': 'Room Book',
+                            width: '900px',
+                            height: 'auto',
+                            position: ['center', 'center'],
+                            dialogClass: 'roombookk',
+                            modal: true
+                        });
                     $('#hdfRoomBookDetailId').val(0);
                     $('#Membercheckbox').attr('checked', false);
                     $('#txtRoomName').val(roominfo.restrotableTitle.toUpperCase());
@@ -1778,7 +1769,7 @@ function IntegerAndDecimal(evt, element) {
                             $('#MemberID').val(0);
                         }
                     })
-                    
+
                 });
             },
             Bindmembership: function (data) {
@@ -1809,22 +1800,18 @@ function IntegerAndDecimal(evt, element) {
                         } else {
                             htmls += "<td>" + "<img src='/images/completed.png' class='BrandDelete' style='width:30px' type='button'  id='_" + value.MembershipID + "_" + value.Fname + "_" + value.Lname + "_" + value.PAN + "_" + value.Address + "_" + value.discount + "_" + value.TelMobile + "' value='Delete'  /></td>";
                         }
-                        // htmls += "<td>" + "<img src='/images/edit.png' class='BrandEdit' type='button'  id='" + value.MembershipID + "_" + value.Fname + "_" + value.Lname + "_" + value.Address + "_" + value.City + "_" + value.Country + "_" + value.TelHome + "_" + value.TelWork + "_" + value.TelMobile + "_" + value.Email + "_" + value.Occupation + "_" + value.Company + "_" + value.Birthday + "_" + value.Anniversary + "_" + value.CardNumber + "_" + value.DateOfIssue + "_" + value.DateOfExpire + "_" + value.discount + "_" + value.PAN + "_" + value.IsCustomer + "' value='Edit'  /></td>";
                         htmls += "</tr>"
-                        //name.push(value.Brand.toLowerCase());
                         checks.push(value.CardNumber);
                     });
                     htmls += "</tbody>";
                     htmls += "</table>";
                     $('#membeshipformlist').html(htmls);
                     $('#Brandtable').DataTable(
-                         {
-                             jQueryUI: true,
-                             //"scrollY": false,
-                             //"scrollCollapse": false,
-                             ordering: false,
+                        {
+                            jQueryUI: true,
+                            ordering: false,
 
-                         });
+                        });
                     $("#membeshipformlist").dialog({
                         'title': 'Customer',
                         width: 800,
@@ -1838,9 +1825,7 @@ function IntegerAndDecimal(evt, element) {
                     $('#membeshipformlist').html('No data');
 
                 }
-                $("#membeshipformlist").on('click', '.tableItem', function (event) {
-
-
+                $("#membeshipformlist").on('click', '.tableItem', function (event) { 
                     var ids = $(this).attr('id');
                     var words = ids.split('_');
                     DashboardFunction.config.MembershipID = words[0];
@@ -1945,12 +1930,12 @@ function IntegerAndDecimal(evt, element) {
 
                     $('#membeshipformlist2').html(htmls);
                     $('#MemberTable').DataTable(
-                         {
-                             "scrollY": false,
-                             "scrollCollapse": false,
-                             "jQueryUI": true,
+                        {
+                            "scrollY": false,
+                            "scrollCollapse": false,
+                            "jQueryUI": true,
 
-                         });
+                        });
 
                 } else {
                     $('#membeshipformlist2').html('No data');
@@ -1968,15 +1953,15 @@ function IntegerAndDecimal(evt, element) {
                 var cancel = false;
                 var ordermaster = new Object();
                 ordermaster.TableId = CancelTableID,
-                ordermaster.OrderMasterID = OrderMasterID,
-                ordermaster.GuestNo = parseInt($('#splitNoCancel').val());
+                    ordermaster.OrderMasterID = OrderMasterID,
+                    ordermaster.GuestNo = parseInt($('#splitNoCancel').val());
                 ordermaster.CancelReason = $("#canceltextarea").val();
                 ordermaster.CancelBy = $('#hdnPinBy').val();
                 ordermaster.UserName = $('#hdnPinBy').val();
                 ordermaster.IsCancelled = true,
-                //ordermaster.UserName = SageFrameUserName;
-                //ordermaster.Date = OrderListArray[0].
-                DashboardFunction.config.method = "CancelOrderIntoDataBase";
+                    //ordermaster.UserName = SageFrameUserName;
+                    //ordermaster.Date = OrderListArray[0].
+                    DashboardFunction.config.method = "CancelOrderIntoDataBase";
 
                 var jsonText = JSON2.stringify({ orderMasterInfo: ordermaster });
                 DashboardFunction.config.url = DashboardFunction.config.baseURL + DashboardFunction.config.method;
@@ -2133,7 +2118,7 @@ function IntegerAndDecimal(evt, element) {
                         else {
                             containOccTab = (occupiedtable == "yes" ? true : containOccTab);
                             mergetableid = (isOcc ? data[1] : mergetableid);
-                            
+
                             document.getElementById(imgid).src = p.HostUrl + '/Modules/RestroDashboard/image/tableyellow.png';
                         }
                     }
@@ -2227,10 +2212,10 @@ function IntegerAndDecimal(evt, element) {
 
 
                 $('.TablesForShift').show();
-               
+
 
             },
-            
+
             BindSalesBill: function (result, seatNo) {
                 var datas = result.d;
                 const orderdetails = datas.orderDetail;
@@ -2386,14 +2371,14 @@ function IntegerAndDecimal(evt, element) {
                 htmls += "<input type='text' class='sfInputbox txtdiscount' style='width:100px;' onkeypress='return IntegerAndDecimal(event,this);' id='txtRoomDiscount' value='0' /></td>";
                 htmls += "</tr>";
                 htmls += "<tr class='loyaltydisc' style='display:none;'><td>Loyalty Discount : </td><td>";
-                htmls += "<input type='text' class='sfInputbox txtdiscount' style='width:100px;' onkeypress='return IntegerAndDecimal(event,this);' id='txtLoyaltyDiscount' value='"+ tableinfo.LoyaltyDiscount +"' disabled /></td>";
+                htmls += "<input type='text' class='sfInputbox txtdiscount' style='width:100px;' onkeypress='return IntegerAndDecimal(event,this);' id='txtLoyaltyDiscount' value='" + tableinfo.LoyaltyDiscount + "' disabled /></td>";
                 htmls += "</tr>";
                 htmls += ("</tbody></table></div>");
-                
+
                 htmls += '<div id="divBillingTerm"></div></div></div>';
 
                 htmls += '<div class="right-sec"><div class="right-secA"><h4>Customer Info</h4><table><tbody>';
-                htmls += '<tr><td>Is Customer : </td><td><input type="checkbox" class="customerForCash" ' + (parseInt(tableinfo.CustomerId) >0? "checked":"" )+  ' /></div></td></tr>';
+                htmls += '<tr><td>Is Customer : </td><td><input type="checkbox" class="customerForCash" ' + (parseInt(tableinfo.CustomerId) > 0 ? "checked" : "") + ' /></div></td></tr>';
                 htmls += '<tr><td>Customer : </td><td><input type="text" id="txtCashCusName" class="sfInputbox" value="' + tableinfo.CustomerName + '"/><input type="hidden" id="txtCusID" value="' + tableinfo.CustomerId + '" /></td></tr><tr><td>Address : </td><td><input type="text" id="txtCusAddress" class="sfInputbox"/></td></tr><tr><td>PAN : </td><td><input type="text" id="txtPan" class="sfInputbox"/></td></tr>';
                 htmls += '</tbody></table></div><input id="generateBill" type="button"  class="sfBtn restro-btn" value="Generate Bill" style="margin-left:10px;"/></div></div>';
 
@@ -2404,13 +2389,13 @@ function IntegerAndDecimal(evt, element) {
                 DashboardFunction.BindBillingTerm(totalAmount, totaldis, datas);
                 $('#billnoForSales').val(seatNo);
                 $('#DialogOrderDetail').dialog(
-               {
-                   'title': 'Sales Bill',
-                   width: DialogWidth,
-                   height: 'auto',
-                   modal: true,
-                   position: ['center', 'top']
-               });
+                    {
+                        'title': 'Sales Bill',
+                        width: DialogWidth,
+                        height: 'auto',
+                        modal: true,
+                        position: ['center', 'top']
+                    });
                 $('#billnoForSales').on('change', function () {
                     DashboardFunction.BindSalesBill(result, parseInt($('#billnoForSales').val()));
                     seatNo = $('#billnoForSales').val();
@@ -2661,7 +2646,7 @@ function IntegerAndDecimal(evt, element) {
                     InitializePin();
                 });
                 $('.paynows').unbind('click').on('click', function () {
-                    
+
                     jConfirm('Are You Sure  ?', 'Pay', function (confirmed) {
                         if (confirmed) {
                             //var id = $(this).attr('id').split('_');
@@ -2722,47 +2707,47 @@ function IntegerAndDecimal(evt, element) {
                             }
                             billingTerm.push(bt);
 
-                        $.each(orderdetails, function (index, value) {
-                            if (value.SeatNo == seatNo) {
-                                var extra = [];
-                                if (value.orderExtraItem != undefined && value.orderExtraItem.length > 0) {
-                                    $.each(value.orderExtraItem, function (index, item) {
-                                        var ext = {
-                                            ItemID: value.ROI_ItemId,
-                                            ExtraItemID: item.ExtraItemID,
-                                            ExtraItem: item.ExtraItem,
-                                            Quantity: item.Quantity,
-                                            Rate: ($('#selDiscountType').val() == "4" ? 1 : item.ExtraPrice),
-                                            Amount: ($('#selDiscountType').val() == "4" ? (item.Quantity * 1) : (item.Quantity * item.ExtraPrice))
-                                        }
-                                        extra.push(ext);
-                                    });
-                                };
-                                var sd = {
-                                    ItemId: value.ROI_ItemId,
-                                    qty: value.Quantity,
-                                    rate: ($('#selDiscountType').val() == "4" ? 1 : value.Rate),
-                                    Amount: ($('#selDiscountType').val() == "4" ? (value.Quantity * 1) : value.Amount),
-                                    NetAmount: value.Amount,
-                                    OrderDetailsID: value.OrderDetailsID,
-                                    CostCenterId: value.CostCenterId,
-                                    IsCombo: value.IsCombo,
-                                    extraSales: extra
+                            $.each(orderdetails, function (index, value) {
+                                if (value.SeatNo == seatNo) {
+                                    var extra = [];
+                                    if (value.orderExtraItem != undefined && value.orderExtraItem.length > 0) {
+                                        $.each(value.orderExtraItem, function (index, item) {
+                                            var ext = {
+                                                ItemID: value.ROI_ItemId,
+                                                ExtraItemID: item.ExtraItemID,
+                                                ExtraItem: item.ExtraItem,
+                                                Quantity: item.Quantity,
+                                                Rate: ($('#selDiscountType').val() == "4" ? 1 : item.ExtraPrice),
+                                                Amount: ($('#selDiscountType').val() == "4" ? (item.Quantity * 1) : (item.Quantity * item.ExtraPrice))
+                                            }
+                                            extra.push(ext);
+                                        });
+                                    };
+                                    var sd = {
+                                        ItemId: value.ROI_ItemId,
+                                        qty: value.Quantity,
+                                        rate: ($('#selDiscountType').val() == "4" ? 1 : value.Rate),
+                                        Amount: ($('#selDiscountType').val() == "4" ? (value.Quantity * 1) : value.Amount),
+                                        NetAmount: value.Amount,
+                                        OrderDetailsID: value.OrderDetailsID,
+                                        CostCenterId: value.CostCenterId,
+                                        IsCombo: value.IsCombo,
+                                        extraSales: extra
+                                    }
+                                    salesDetail.push(sd);
                                 }
-                                salesDetail.push(sd);
-                            }
-                        });
+                            });
 
-                        var discount = new Object();
-                        discount.SalesMasterId = 0;
-                        discount.kotdis = $('#txtKotDiscount').val();
-                        discount.bardis = $('#txtBarDiscount').val();
-                        discount.roomdis = $('#txtRoomDiscount').val();
-                        discount.isflatdis = ($('#selDiscountType').val() == "2" ? true : false);
-                        discount.isLoyalty = ($('#selDiscountType').val() == "3" ? true : false);
-                        discount.loyaltydis = $('#txtLoyaltyDiscount').val();
-                        discount.bakerydis = $('#txtBakeryDiscount').val();
-                        discount.pizzadis = $('#txtPizzaDiscount').val();
+                            var discount = new Object();
+                            discount.SalesMasterId = 0;
+                            discount.kotdis = $('#txtKotDiscount').val();
+                            discount.bardis = $('#txtBarDiscount').val();
+                            discount.roomdis = $('#txtRoomDiscount').val();
+                            discount.isflatdis = ($('#selDiscountType').val() == "2" ? true : false);
+                            discount.isLoyalty = ($('#selDiscountType').val() == "3" ? true : false);
+                            discount.loyaltydis = $('#txtLoyaltyDiscount').val();
+                            discount.bakerydis = $('#txtBakeryDiscount').val();
+                            discount.pizzadis = $('#txtPizzaDiscount').val();
 
                             DashboardFunction.config.method = "SaveSalesBill";
                             DashboardFunction.config.url = DashboardFunction.config.baseURL + DashboardFunction.config.method;
@@ -2793,7 +2778,7 @@ function IntegerAndDecimal(evt, element) {
                             if (item.BillTerm != "VAT") {
                                 htmls += ("<tr>");
                                 htmls += ("<td attr-term='" + item.BillTerm + "' attr-percent='" + item.Rate + "'  ><strong>" + item.BillTerm + " " + "(" + item.Rate + "%" + ")" + " : </strong>");
-                                htmls += ("<input type=\"text\" id=\"BTerm_" + item.ID + "_" + item.IsAdd + "\" value=\""+(item.IsAdd ? "" : "-")+"Rs. " + (amntAfterDisc * item.Rate / 100).toFixed(2) + "\" class=\"sfInputbox_bill\" disabled  attr-amount='" + (amntAfterDisc * item.Rate / 100).toFixed(2) + "'/>");
+                                htmls += ("<input type=\"text\" id=\"BTerm_" + item.ID + "_" + item.IsAdd + "\" value=\"" + (item.IsAdd ? "" : "-") + "Rs. " + (amntAfterDisc * item.Rate / 100).toFixed(2) + "\" class=\"sfInputbox_bill\" disabled  attr-amount='" + (amntAfterDisc * item.Rate / 100).toFixed(2) + "'/>");
                                 htmls += ("</td>");
                                 htmls += ("</tr>");
                                 if (item.IsAdd == 1)
@@ -2814,7 +2799,7 @@ function IntegerAndDecimal(evt, element) {
                         htmls += ("<td attr-term='VAT' attr-percent='13' ><strong>VAT(13%) : </strong><input type=\"text\" id=\"BTerm_" + datas.billingTerm[datas.billingTerm.length - 1].ID + "_true" + "\"  value=\"Rs. " + ((netAmount) * 13 / 100).toFixed(2) + "\"  class=\"sfInputbox_bill  \" disabled  attr-amount='" + ((netAmount) * 13 / 100).toFixed(2) + "'/></td>");
                         netAmount = parseFloat(parseFloat(netAmount * 1.13).toFixed(2));
                         htmls += ("</tr>");
-                    } 
+                    }
                 }
                 htmls += ("<tr>");
                 htmls += ("<td attr-term='Net Amount' attr-percent='0' ><strong>Net Amount : </strong>");
@@ -2837,7 +2822,7 @@ function IntegerAndDecimal(evt, element) {
 
                 $("#divBillingTerm").html(htmls);
             },
-            
+
             print: function () {
                 var contents = $('#customer-bill').html();
                 var frame1 = document.createElement('iframe');
@@ -2857,7 +2842,7 @@ function IntegerAndDecimal(evt, element) {
                 }, 500);
             },
             BindOccupiedTable: function (data) {
-                var htmls="";
+                var htmls = "";
                 $('#OccupiedTablesdiv').html('');
                 $("#OccTablesLength").text(data.length);
                 htmls += ("<div class ='Tables'><table id='OccupiedTables' class='BookedTable-list-tbl'>");
@@ -2892,12 +2877,12 @@ function IntegerAndDecimal(evt, element) {
                 $('#OccupiedTablesdiv').html(htmls);
 
                 $('#OccupiedTables').dataTable({
-                	"bPaginate" : $('#OccupiedTables tbody tr').length>16,
-   					"iDisplayLength": 16,
+                    "bPaginate": $('#OccupiedTables tbody tr').length > 16,
+                    "iDisplayLength": 16,
                     "ordering": false,
                     "bLengthChange": false,
-                     "language": { search: "" ,  searchPlaceholder: "Search..."},
-                    
+                    "language": { search: "", searchPlaceholder: "Search..." },
+
                 });
                 $('div.dataTables_filter input').addClass('sfInputbox');
                 $('#OccupiedTables').on('click', '.shiftTable', function () {
@@ -2916,17 +2901,17 @@ function IntegerAndDecimal(evt, element) {
                     });
                 });
                 $('#OccupiedTables').on('click', '.removeMerge', function () {
-                        var tableid = $(this).attr('id').split("_")[1];
+                    var tableid = $(this).attr('id').split("_")[1];
 
-                        jConfirm('Are You Sure  ?', 'Remove Merge', function (confirmed) {
-                            if (confirmed) {
-                                DashboardFunction.config.method = "UnMergeTable";
-                                DashboardFunction.config.url = DashboardFunction.config.baseURL + DashboardFunction.config.method;
-                                DashboardFunction.config.data = JSON2.stringify({ tableId: tableid });
-                                DashboardFunction.config.ajaxCallMode = 55;
-                                DashboardFunction.ajaxCall(DashboardFunction.config);
-                            }
-                        });
+                    jConfirm('Are You Sure  ?', 'Remove Merge', function (confirmed) {
+                        if (confirmed) {
+                            DashboardFunction.config.method = "UnMergeTable";
+                            DashboardFunction.config.url = DashboardFunction.config.baseURL + DashboardFunction.config.method;
+                            DashboardFunction.config.data = JSON2.stringify({ tableId: tableid });
+                            DashboardFunction.config.ajaxCallMode = 55;
+                            DashboardFunction.ajaxCall(DashboardFunction.config);
+                        }
+                    });
                 });
 
                 $('#OccupiedTables').on('click', '.cancelorder', function () {
@@ -3028,7 +3013,7 @@ function IntegerAndDecimal(evt, element) {
                 if (data.length > 0) {
                     var roomHtmls = "";
                     $("#bookRoomTab").show();
-                $("#BookRoomsLength").text(data.length);
+                    $("#BookRoomsLength").text(data.length);
                     roomHtmls += ("<div class='homebookroom'><table id='BookedRooms' class='BookedTable-list-tbl'>");
                     roomHtmls += ("<thead><th>Room</th><th>Customer</th><th>Booked On</th><th>Booked To</th><th>Action</th></thead><tbody>");
                     $.each(data, function (index, type) {
@@ -3050,10 +3035,10 @@ function IntegerAndDecimal(evt, element) {
 
                     $('#BookedRooms').dataTable({
                         "bPaginate": $('OccupiedRooms tbody tr').length > 10,
-                       "iDisplayLength": 12,
+                        "iDisplayLength": 12,
                         ordering: false,
                         "bLengthChange": false,
-                        "language": { search: "" ,  searchPlaceholder: "Search..."},
+                        "language": { search: "", searchPlaceholder: "Search..." },
                     });
                     $('#BookedRooms').on('click', '.cancelorder', function () {
                         OrderMasterID = $(this).attr('id').split("_")[1];
@@ -3110,7 +3095,7 @@ function IntegerAndDecimal(evt, element) {
                 $('#txtAmount').val(roomBooking.TotalAmount);
                 $('#BookAdvancePay').val(roomBooking.AdvancePayment);
                 $('#txtRate').val(roomBooking.Rate);
-                
+
                 $('#Membercheckbox').attr('checked', (roomBooking.CustomerId > 0 ? true : false));
                 $('#MemberID').val(roomBooking.CustomerId);
                 $('#MemberName').val(roomBooking.CustomerName);

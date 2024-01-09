@@ -1386,7 +1386,7 @@ function GetCustomeronCheck() {
 
                 $("#txtLoyaltyDiscount").val(ids[6]);
                 $("#membeshipformlist").dialog('close');
-                $("#selDiscountType").change();
+                //$("#selDiscountType").change();
 
             });
         },
@@ -2630,14 +2630,14 @@ function getMemberDetailsbyinfo(info) {
             $("#txtCusAddress").prop('disabled', true);
 
             $("#txtLoyaltyDiscount").val(datas[0].discount);
-            var roles = userRole.split(',');
+            //var roles = userRole.split(',');
 
-            if (roles.includes("Super User") || roles.includes("Billing_Discount")) {
-                $("#selDiscountType").val(3);
-                $("#selDiscountType").change();
-            }
-            else {
-            }
+            //if (roles.includes("Super User") || roles.includes("Billing_Discount")) {
+            //    $("#selDiscountType").val(3);
+            //    $("#selDiscountType").change();
+            //}
+            //else {
+            //}
         },
         failure: function (response) {
             jAlert("Sorry some error occured. Contact the support team.", "Error!!");

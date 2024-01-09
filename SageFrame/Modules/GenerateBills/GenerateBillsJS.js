@@ -1542,11 +1542,9 @@ function print() {
                         $("#txtCashCusName").prop('disabled', false);
                         $("#txtCusAddress").prop('disabled', false);
                         $("#txtPan").prop('disabled', false);
-
-                        $("#selDiscountType").val(1);
-                        $("#selDiscountType").change();
+                        //$("#selDiscountType").val(1);
+                        //$("#selDiscountType").change();
                         $("#txtLoyaltyDiscount").val(0);
-
                     }
                 })
                 $("#selDiscountType").on('change', function () {
@@ -2467,10 +2465,9 @@ function print() {
                         $("#txtCusAddress").prop('disabled', false);
                         $("#txtPan").prop('disabled', false);
 
-                        $("#selDiscountType").val(1);
-                        $("#selDiscountType").change();
+                        //$("#selDiscountType").val(1);
+                        //$("#selDiscountType").change();
                         $("#txtLoyaltyDiscount").val(0);
-
                     }
                 })
                 $("#selDiscountType").on('change', function () {
@@ -3535,14 +3532,14 @@ function print() {
                 $("#txtLoyaltyDiscount").val(datas[0].discount);
 
 
-                var roles = userRole.split(',');
+                //var roles = userRole.split(',');
 
-                if (roles.includes("Super User") || roles.includes("Billing_Discount")) {
-                    $("#selDiscountType").val(3);
-                    $("#selDiscountType").change();
-                }
-                else {
-                }
+                //if (roles.includes("Super User") || roles.includes("Billing_Discount")) {
+                //    $("#selDiscountType").val(3);
+                //    $("#selDiscountType").change();
+                //}
+                //else {
+                //}
 
             },
 

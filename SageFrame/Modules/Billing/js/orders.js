@@ -1242,9 +1242,8 @@ function GetDataForSalesBill(orderMasterId) {
                     $("#txtCusAddress").prop('disabled', false);
                     $("#txtPanNo").prop('disabled', false);
 
-                    $("#selDiscountType").val(1);
+                    /* $("#selDiscountType").val(1);*/
                     $("#txtLoyaltyDiscount").val(0);
-
                 }
             })
             $("#selDiscountType").on('change', function () {
@@ -2060,8 +2059,6 @@ function GetCustomeronCheck() {
                     htmls += "<td>" + value.Name + "</td>";
                     htmls += "<td>" + value.PAN + "</td>";
                     htmls += "<td>" + value.Addresss + "</td>";
-                    // htmls += "<td>" + value.Occupation + "</td>";
-                    // htmls += "<td>" + value.Company + "</td>";
                     htmls += "<td>" + value.TelMobile + "</td>";
                     htmls += "<td>" + value.discount + "</td>";
                     htmls += "<td>" + "<img src='/images/completed.png' class='selectCust' style='width:20px;height:20px;' type='button'  id='_" + value.MembershipID + "_" + value.Fname + "_" + value.Lname + "_" + value.PAN + "_" + value.Address + "_" + value.discount + "_" + value.TelMobile + "' value='Delete'  /></td>";
@@ -2073,11 +2070,7 @@ function GetCustomeronCheck() {
                 $('#membeshipformlist').html(htmls);
                 $('#customertable').DataTable(
                     {
-                        //"scrollY": false,
-                        //"scrollCollapse": false,
                         "jQueryUI": true,
-                        // "scrollX" : true,
-
                     });
 
                 $("#membeshipformlist").dialog({
@@ -2094,7 +2087,6 @@ function GetCustomeronCheck() {
             }
             $(".dataTables_scrollBody").css('height', '100%');
 
-            //  $("#membeshipformlist").on('click', '.selectCust', function (event) {
             $("#membeshipformlist").on('click', '#customertable tr', function (event) {
                 var deletedata = $(this).attr('id');
                 var ids = deletedata.split('_');
@@ -2115,8 +2107,7 @@ function GetCustomeronCheck() {
 
                 $("#txtLoyaltyDiscount").val(ids[6]);
                 $("#membeshipformlist").dialog('close');
-                $("#selDiscountType").change();
-
+                //$("#selDiscountType").change(); 
             });
         },
         failure: function (response) {
@@ -3237,14 +3228,14 @@ function getMemberDetailsbyinfo(info) {
             $("#txtCusAddress").prop('disabled', true);
 
             $("#txtLoyaltyDiscount").val(datas[0].discount);
-            var roles = userRole.split(',');
+            //var roles = userRole.split(',');
 
-            if (roles.includes("Super User") || roles.includes("Billing_Discount")) {
-                $("#selDiscountType").val(3);
-                $("#selDiscountType").change();
-            }
-            else {
-            }
+            //if (roles.includes("Super User") || roles.includes("Billing_Discount")) {
+            //    $("#selDiscountType").val(3);
+            //    $("#selDiscountType").change();
+            //}
+            //else {
+            //}
         },
         failure: function (response) {
             jAlert("Sorry some error occured. Contact the support team.", "Error!!");

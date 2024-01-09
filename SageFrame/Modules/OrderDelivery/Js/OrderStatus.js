@@ -764,8 +764,8 @@ function print() {
                         $("#txtCusAddress").prop('disabled', false);
                         $("#txtPan").prop('disabled', false);
 
-                        $("#selDiscountType").val(1);
-                        $("#selDiscountType").change();
+                        //$("#selDiscountType").val(1);
+                        //$("#selDiscountType").change();
                         $("#txtLoyaltyDiscount").val(0);
 
                     }
