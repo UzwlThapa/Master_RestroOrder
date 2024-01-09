@@ -3920,8 +3920,8 @@ namespace SageFrame.RestroOrder
             List<KeyValuePair<string, object>> Param = new List<KeyValuePair<string, object>>();
             Param.Add(new KeyValuePair<string, object>("@storeId", storeID));
             Param.Add(new KeyValuePair<string, object>("@SearchText", searchText));
-            return sqlHandler.ExecuteAsList<stockReport>("USP_STOCKREPORTAll", Param);
-            //return sqlHandler.ExecuteAsList<stockReport>("USP_ROI_GETALLSTOCKREPORT", Param);
+            //return sqlHandler.ExecuteAsList<stockReport>("USP_STOCKREPORTAll", Param);
+            return sqlHandler.ExecuteAsList<stockReport>("USP_ROI_GETALLSTOCKREPORT", Param);
         }
         internal List<dailyreport> getOrderVoidReport(DateTime startDate, DateTime endDate)
         {
