@@ -514,7 +514,6 @@ function getBill(salesMasterId, foodCourtOrder) {
             var TaxableDis = 0.00;
 
             $.each(costCenterDis.GroupDis, function (index, value) {
-                console.log(value);
                 NonTaxableTotalAmt += value.NonTaxableAmt;
                 TaxableTotalAmt += value.TotalAmount;
                 NonTaxableDis += value.NonTaxDis;

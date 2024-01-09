@@ -1,7 +1,6 @@
 ﻿
 var companyInfo = JSON.parse(localStorage.getItem("companyInfo"));
 
-
 function IntegerAndDecimal(evt, element) {
     var charCode = (evt.which) ? evt.which : event.keyCode
     if ((charCode != 8) &&
@@ -796,7 +795,6 @@ function IntegerAndDecimal(evt, element) {
                 });
 
                 $('#btnPrints').unbind('click').on('click', function () {
-                    //DashboardFunction.print();
                     $('#divPrintedOn').text(formatAMPM());
                     DashboardFunction.config.method = "savePrintCount";
                     DashboardFunction.config.url = DashboardFunction.config.baseURL + DashboardFunction.config.method;
@@ -807,7 +805,6 @@ function IntegerAndDecimal(evt, element) {
                     DashboardFunction.ajaxCall(DashboardFunction.config);
                 });
             },
-
 
             BindTableByRoomTypeId: function (result) {
                 var htmls = [];
@@ -836,10 +833,8 @@ function IntegerAndDecimal(evt, element) {
                         htmls += (value.BillPaid.toString() == '0' && value.IsCancelled.toString() == '0' && value.IsTable ? "NotPaid" : "Paid");
                         htmls += ("' >" + (value.MergeTableList > 0 ? value.MergeTableName : value.restrotableTitle) + "</h5>");
 
-
                         if (value.tableDate !== "") {
                             htmls += ("<h5 class='order-time'");
-
                             var dateprev = new Date(value.tableDate);
                             var datet = new Date();
                             var diff = (datet - dateprev) / 1000;
@@ -855,80 +850,15 @@ function IntegerAndDecimal(evt, element) {
                                 }
                             }
                             var dinal = secondsTimeSpanToHMS(diff)
-                            //console.log(); // 30
                             htmls += ("' >" + value.tabletime + "</h5><h5 class='order-timeA'>" + dinal + "</h5>");
                         }
 
                         htmls += ("</li></a>");
-                        //if (!(value.MergeTableList > 0 && value.MergeTableList != value.restrotableId)) {
-                        //    htmls += ("<a id ='" + (value.IsTable ? "Table_" : "Room_"));
-                        //    if (value.BillPaid.toString() == '0' && value.IsCancelled.toString() == '0' || value.MergeTableList > 0 || value.restrotablesStatusID == 7) {
-                        //        if (value.MergeTableList > 0) {
-                        //            if (value.restrotablesStatusID == 6) {
-                        //                htmls += ("" + value.restrotableId + "_img_yes_notoccupied_" + value.restrotableTitle + "' class = 'imgtable'  >");
-                        //                htmls += ("<li>");
-                        //                htmls += ("<img src='" + p.HostUrl + "/Modules/RestroDashboard/image/" + (value.IsTable ? "tablegreen.png" : "room-green.png") + "'> ");
-                        //            } else {
-                        //                htmls += ("" + value.restrotableId + "_img_yes_occupied_" + value.restrotableTitle + "' class = 'imgtable'  >");
-                        //                htmls += ("<li>");
-                        //                htmls += ("<img src='" + p.HostUrl + "/Modules/RestroDashboard/image/" + (value.IsTable ? "tablered.png" : "room-red.png") + "'> ");
-                        //            }
-                        //        }
-                        //        else if (value.IsTable == false && value.OrderMasterId < 0) {
-                        //            htmls += ("" + value.restrotableId + "_img_no_occupied_" + value.restrotableTitle + "' class = 'imgtable'  >");
-                        //            htmls += ("<li>");
-                        //            htmls += ("<img src='" + p.HostUrl + "/Modules/RestroDashboard/image/" + (value.IsTable ? "tablegreen.png" : "room-green.png") + "'> ");
-                        //        }
-                        //        else {
-                        //            htmls += ("" + value.restrotableId + "_img_no_occupied_" + value.restrotableTitle + "' class = 'imgtable'  >");
-                        //            htmls += ("<li>");
-                        //            htmls += ("<img src='" + p.HostUrl + "/Modules/RestroDashboard/image/" + (value.IsTable ? "tablered.png" : "room-red.png") + "'> ");
-                        //        }
-                        //    }
-                        //    else {
-                        //        htmls += ("" + value.restrotableId + "_img_no_notoccupied_" + value.restrotableTitle + "' class = 'imgtable'  >");
-                        //        htmls += ("<li>");
-                        //        htmls += ("<img src='" + p.HostUrl + "/Modules/RestroDashboard/image/" + (value.IsTable ? "tablegreen.png" : "room-green.png") + "'> ");
-                        //    }
-                        //    htmls += ("<h5 class='");
-                        //    htmls += (value.BillPaid.toString() == '0' && value.IsCancelled.toString() == '0' && value.IsTable ? "NotPaid" : "Paid");
-                        //    htmls += ("' >" + (value.MergeTableList > 0 ? value.MergeTableName : value.restrotableTitle) + "</h5>");
-
-
-                        //    //if (value.BillPaid.toString() == '0' && value.IsCancelled.toString() == '0') {
-                        //    if (value.tableDate !== "") {
-                        //        htmls += ("<h5 class='order-time'");
-
-                        //        var dateprev = new Date(value.tableDate);
-                        //        var datet = new Date();
-                        //        var diff = (datet - dateprev) / 1000;
-                        //        function secondsTimeSpanToHMS(s) {
-                        //            var h = Math.floor(s / 3600); //Get whole hours
-                        //            s -= h * 3600;
-                        //            var m = Math.floor(s / 60); //Get remaining minutes
-                        //            s -= m * 60;
-                        //            if (h == 0) {
-                        //                return (m < 10 ? '0' + m : m) + "M";//zero padding on minutes and seconds                           }
-                        //            } else {
-                        //                return h + ":" + (m < 10 ? '0' + m : m) + "M";//zero padding on minutes and seconds                           }
-                        //            }
-
-                        //        }
-                        //        var dinal = secondsTimeSpanToHMS(diff)
-                        //        //console.log(); // 30
-                        //        htmls += ("' >" + value.tabletime + "</h5><h5 class='order-timeA'>" + dinal + "</h5>");
-
-                        //    }
-
-                        //    htmls += ("</li></a>");
-                        //} 
                     });
                     htmls += "</ul>";
                     $('.TablesInRooms').html(htmls);
 
                 } else {
-                    //DashboardFunction.GetroomdataById(RoomId);
-                    //activeorder = id[1];
                     jAlert('No Tables Available in selected Room..', "Alert!!", function () { $.alerts.dialogClass = null; });
                 }
 
@@ -2121,7 +2051,6 @@ function IntegerAndDecimal(evt, element) {
 
                 htmls += '<div class="right-sec"><div class="right-secA"><h4>Customer Info</h4><table><tbody>';
                 if (tokeninfo.length > 0) {
-                    //if (tokeninfo[0].CustomerID < 0) {                  
                     htmls += '<tr><td>Is Customer : </td><td><input type="checkbox" class="customerForCash" ' + (parseInt(tableinfo.CustomerId) > 0 ? "checked" : "") + ' /></div></td></tr>';
                     htmls += '<tr><td>Card No. : </td><td><input type="text" id="txtCardNumber" class="txtnum sfInputbox"/></td></tr>';
                     htmls += '<tr><td>Customer : </td><td><input type="text" id="txtCashCusName"  value="' + tokeninfo[0].CustomerName + '" class="sfInputbox" value=""/><input type="hidden" id="txtCusID" value="" /></td></tr>';
@@ -2130,7 +2059,6 @@ function IntegerAndDecimal(evt, element) {
                     htmls += '<tr><td>PAN : </td><td><input type="text" id="txtPan" class="sfInputbox"/></td></tr>';
                 } else {
                     htmls += '<tr><td>Is Customer : </td><td><input type="checkbox" class="customerForCash" ' + (parseInt(tableinfo.CustomerId) > 0 ? "checked" : "") + ' /></div></td></tr>';
-                    //htmls += '<tr><td>Customer : </td><td><input type="text" id="txtCashCusName" class="sfInputbox" value="' + tableinfo.CustomerName + '"/><input type="hidden" id="txtCusID" value="' + tableinfo.CustomerId + '" /></td></tr><tr><td>Address : </td><td><input type="text" id="txtCusAddress" class="sfInputbox"/></td></tr><tr><td>PAN : </td><td><input type="text" id="txtPan" class="sfInputbox"/></td></tr>';
                     htmls += '<tr><td>Card No. : </td><td><input type="text" id="txtCardNumber" class="txtnum sfInputbox"/></td></tr>';
                     htmls += '<tr><td>Customer : </td><td><input type="text" id="txtCashCusName" class="sfInputbox" value=""/><input type="hidden" id="txtCusID" value="" /></td></tr>';
                     htmls += '<tr><td>Phone No. : </td><td><input type="text" id="txtNumber" class="txtnum sfInputbox"/></tr>';
