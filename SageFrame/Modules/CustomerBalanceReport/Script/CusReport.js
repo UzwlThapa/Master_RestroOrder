@@ -352,7 +352,7 @@ function Print() {
                 htmls += "<thead>"
                 htmls += "<tr>"
                 htmls += "<th> Name </th><th>Address </th><th> Contact No. </th><th> Card No. </th><th> Date Of Issue</th><th> Date Of Expire</th><th> PAN</th><th class='tdrate' style='display:none'> Opening Balance (Rs.)</th><th class='tdrate'> Rem Balance (Rs.)</th><th class='tdcenter'> Pay </th><th class='tdcenter'> View </th>";
-               // htmls += "<th> Name </th><th>Address </th><th> Contact No. </th><th> Card No. </th><th> Date Of Issue</th><th> Date Of Expire</th><th> PAN</th><th class='tdrate'> Rem Balance (Rs.)</th><th class='tdcenter'> Pay </th><th class='tdcenter'> View </th>";
+                // htmls += "<th> Name </th><th>Address </th><th> Contact No. </th><th> Card No. </th><th> Date Of Issue</th><th> Date Of Expire</th><th> PAN</th><th class='tdrate'> Rem Balance (Rs.)</th><th class='tdcenter'> Pay </th><th class='tdcenter'> View </th>";
                 if (IsCus == 1) {
                     htmls += "<th class='tdcenter'> SMS </th>";
                 };
@@ -384,7 +384,7 @@ function Print() {
                             htmls += "<td>" + Expire[0] + "</td>";
                             htmls += "<td>" + value.PAN + "</td>";
                             htmls += "<td class='tdrate' style='display:none'> Rs. " + value.OpeningBalance + "</td>";
-                          //  htmls += "<td class='tdrate'> Rs. " + (value.RemainingBalance + value.OpeningBalance) + "</td>";
+                            //  htmls += "<td class='tdrate'> Rs. " + (value.RemainingBalance + value.OpeningBalance) + "</td>";
                             htmls += "<td class='tdrate'> Rs. " + value.RemainingBalance + "</td>";
                             htmls += '<td class="tdcenter"><img id="' + value.MembershipID + '" class="preview-icon PayBalance" type="button" src="/images/pay.png" style="width:20px;"></td>';
                             htmls += '<td class="tdcenter"><img src="/images/view.png" id="' + value.MembershipID + '" class="preview-icon btnViewCustomerTransaction"></label></td>';
@@ -515,13 +515,11 @@ function Print() {
                 var data = result.d;
                 htmls = "";
                 var sn = 1;
-                // var totalBalance = 0;
                 var totalCredit = 0.0, totalPaid = 0.0, totalSettlement = 0.0;
                 var currentBal = parseFloat(remainingbal);
                 currentBal = 0;
                 htmls = '<table id=tblForCustomerTransaction class="reportsprint" cellspacing="0" style="border:none;width:100%;border-collapse:collapse;"><thead>';
                 htmls += '<tr><th style="text-align:center;border:1px solid #575757;padding:2px;">S.N.</th><th style="text-align:center;border:1px solid #575757;padding:2px;">Date</th><th style="width:200px;text-align:center;border:1px solid #575757;padding:2px;">Remarks</th><th style="text-align:center;border:1px solid #575757;padding:2px;">Status</th><th style="text-align:left;border:1px solid #575757;padding:2px;">Received By</th><th class="tdrate" style="text-align:right;border:1px solid #575757;padding:2px;">Credited Amnt</th><th class="tdrate" style="text-align:right;border:1px solid #575757;padding:2px;">Paid Amnt</th><th class="tdrate" style="text-align:right;border:1px solid #575757;padding:2px;">Settlement Amnt</th><th class="tdrate" style="text-align:right;border:1px solid #575757;padding:2px;">Current Balance</th></tr></thead><tbody>';
-
 
                 let increment = 1;
                 if (openingBalance > 0) {
@@ -540,6 +538,7 @@ function Print() {
                                 <td style="text-align:right;border:1px solid #575757;padding:2px;" class="tdrate">${parseFloat(currentBal).toFixed(2)}</td>
                                 </tr>`;
                 }
+
                 $.each(data, function (index, value) {
 
                     htmls += '<tr><td style="text-align:center;border:1px solid #575757;padding:2px;">' + (index + increment) + '</td>';
@@ -550,9 +549,8 @@ function Print() {
                             htmls += "<td></td>";
                         }
                         else {
-                            htmls += "<td style='text-align:left;border:1px solid #575757;padding:2px;'>" + value.AddedOn + " <a target='_blank' id='" + value.salesMasterId+"_"+value.SalesType+ "' class='billView' >(" + value.billNo + ")</a></td>";
+                            htmls += "<td style='text-align:left;border:1px solid #575757;padding:2px;'>" + value.AddedOn + " <a target='_blank' id='" + value.salesMasterId + "_" + value.SalesType + "' class='billView' >(" + value.billNo + ")</a></td>";
                             htmls += "<td style='text-align:center;border:1px solid #575757;padding:2px;'>" + value.Remarks + "</td>";
-                            //<a target="_blank" href="http://your_url_here.html">Link</a>
                         }
                     }
                     else {
@@ -607,21 +605,17 @@ function Print() {
                 htmls += '</table>';
                 $("#ViewDetailsReport").append(htmls);
 
-
-
                 $('#tblForCustomerTransaction').on('click', '.billView', function () {
-
 
                     var ids = $(this).attr('id').split("_");
 
-                    if (ids[1] != "") {
+                    if (!["", "null", null, undefined].includes(ids[1])) {
                         getSalesReport_CakeBill(ids[0], ids[1])
                     }
                     else {
                         var salesmasterid = ids[0];
                         getBill(salesmasterid, false);
                     }
-                    
 
                     $("#BillingView").dialog({
                         'title': 'Vat Bill',
@@ -631,7 +625,6 @@ function Print() {
                         position: ['center', 'top'],
                         dialogClass: 'popup-titlebg',
                     });
-
 
                     $('#btnPrintsBill').unbind('click').on('click', function () {
                         $('#divPrintedOn').text(formatAMPM());
