@@ -124,3 +124,10 @@ D:\danfe\Master_RestroOrder\AccountReport\obj\Debug\SageFrame.AccountReport.cspr
 D:\danfe\Master_RestroOrder\AccountReport\obj\Debug\SageFrame.AccountReport.csproj.CopyComplete
 D:\danfe\Master_RestroOrder\AccountReport\obj\Debug\SageFrame.AccountReport.dll
 D:\danfe\Master_RestroOrder\AccountReport\obj\Debug\SageFrame.AccountReport.pdb
+G:\Danfe-Git\Master_RestroOrder\SageFrame\bin\SageFrame.AccountReport.dll
+G:\Danfe-Git\Master_RestroOrder\SageFrame\bin\SageFrame.AccountReport.pdb
+G:\Danfe-Git\Master_RestroOrder\AccountReport\obj\Debug\SageFrame.AccountReport.csproj.AssemblyReference.cache
+G:\Danfe-Git\Master_RestroOrder\AccountReport\obj\Debug\SageFrame.AccountReport.csproj.CoreCompileInputs.cache
+G:\Danfe-Git\Master_RestroOrder\AccountReport\obj\Debug\SageFrame.AccountReport.csproj.CopyComplete
+G:\Danfe-Git\Master_RestroOrder\AccountReport\obj\Debug\SageFrame.AccountReport.dll
+G:\Danfe-Git\Master_RestroOrder\AccountReport\obj\Debug\SageFrame.AccountReport.pdb

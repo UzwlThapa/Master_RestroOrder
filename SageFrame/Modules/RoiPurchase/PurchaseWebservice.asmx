@@ -214,6 +214,7 @@ public class PurchaseWebservice : System.Web.Services.WebService
         try
         {
             RestrOrderController roc = new RestrOrderController();
+            GoodReived.BillDate = GoodReived.InvoiceDate;
             return roc.GoodsReceivedss(GoodReived, memberInfo, purchasePayment);
 
         }

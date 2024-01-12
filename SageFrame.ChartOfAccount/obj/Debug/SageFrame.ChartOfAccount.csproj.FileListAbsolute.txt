@@ -114,3 +114,10 @@ D:\danfe\Master_RestroOrder\SageFrame.ChartOfAccount\obj\Debug\SageFrame.ChartOf
 D:\danfe\Master_RestroOrder\SageFrame.ChartOfAccount\obj\Debug\SageFrame.ChartOfAccount.csproj.CopyComplete
 D:\danfe\Master_RestroOrder\SageFrame.ChartOfAccount\obj\Debug\SageFrame.ChartOfAccount.dll
 D:\danfe\Master_RestroOrder\SageFrame.ChartOfAccount\obj\Debug\SageFrame.ChartOfAccount.pdb
+G:\Danfe-Git\Master_RestroOrder\SageFrame\bin\SageFrame.ChartOfAccount.dll
+G:\Danfe-Git\Master_RestroOrder\SageFrame\bin\SageFrame.ChartOfAccount.pdb
+G:\Danfe-Git\Master_RestroOrder\SageFrame.ChartOfAccount\obj\Debug\SageFrame.ChartOfAccount.csproj.AssemblyReference.cache
+G:\Danfe-Git\Master_RestroOrder\SageFrame.ChartOfAccount\obj\Debug\SageFrame.ChartOfAccount.csproj.CoreCompileInputs.cache
+G:\Danfe-Git\Master_RestroOrder\SageFrame.ChartOfAccount\obj\Debug\SageFrame.ChartOfAccount.csproj.CopyComplete
+G:\Danfe-Git\Master_RestroOrder\SageFrame.ChartOfAccount\obj\Debug\SageFrame.ChartOfAccount.dll
+G:\Danfe-Git\Master_RestroOrder\SageFrame.ChartOfAccount\obj\Debug\SageFrame.ChartOfAccount.pdb

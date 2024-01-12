@@ -273,3 +273,14 @@ D:\danfe\Master_RestroOrder\SageFrame.CakeOrder\obj\Debug\SageFrame.CakeOrder.cs
 D:\danfe\Master_RestroOrder\SageFrame.CakeOrder\obj\Debug\SageFrame.CakeOrder.csproj.CopyComplete
 D:\danfe\Master_RestroOrder\SageFrame.CakeOrder\obj\Debug\SageFrame.CakeOrder.dll
 D:\danfe\Master_RestroOrder\SageFrame.CakeOrder\obj\Debug\SageFrame.CakeOrder.pdb
+G:\Danfe-Git\Master_RestroOrder\SageFrame.CakeOrder\bin\Debug\SageFrame.CakeOrder.dll
+G:\Danfe-Git\Master_RestroOrder\SageFrame.CakeOrder\bin\Debug\SageFrame.CakeOrder.pdb
+G:\Danfe-Git\Master_RestroOrder\SageFrame.CakeOrder\bin\Debug\SageFrame.Common.dll
+G:\Danfe-Git\Master_RestroOrder\SageFrame.CakeOrder\bin\Debug\SageFrame.RestoLoyalty.dll
+G:\Danfe-Git\Master_RestroOrder\SageFrame.CakeOrder\bin\Debug\SageFrame.RestoLoyalty.pdb
+G:\Danfe-Git\Master_RestroOrder\SageFrame.CakeOrder\bin\Debug\SageFrame.Common.pdb
+G:\Danfe-Git\Master_RestroOrder\SageFrame.CakeOrder\obj\Debug\SageFrame.CakeOrder.csproj.AssemblyReference.cache
+G:\Danfe-Git\Master_RestroOrder\SageFrame.CakeOrder\obj\Debug\SageFrame.CakeOrder.csproj.CoreCompileInputs.cache
+G:\Danfe-Git\Master_RestroOrder\SageFrame.CakeOrder\obj\Debug\SageFrame.CakeOrder.csproj.CopyComplete
+G:\Danfe-Git\Master_RestroOrder\SageFrame.CakeOrder\obj\Debug\SageFrame.CakeOrder.dll
+G:\Danfe-Git\Master_RestroOrder\SageFrame.CakeOrder\obj\Debug\SageFrame.CakeOrder.pdb
