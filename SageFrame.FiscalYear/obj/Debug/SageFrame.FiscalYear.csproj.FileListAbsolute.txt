@@ -120,3 +120,10 @@ D:\danfe\Master_RestroOrder\SageFrame.FiscalYear\obj\Debug\SageFrame.FiscalYear.
 D:\danfe\Master_RestroOrder\SageFrame.FiscalYear\obj\Debug\SageFrame.FiscalYear.csproj.CopyComplete
 D:\danfe\Master_RestroOrder\SageFrame.FiscalYear\obj\Debug\SageFrame.FiscalYear.dll
 D:\danfe\Master_RestroOrder\SageFrame.FiscalYear\obj\Debug\SageFrame.FiscalYear.pdb
+G:\Danfe-Git\Master_RestroOrder\SageFrame\bin\SageFrame.FiscalYear.dll
+G:\Danfe-Git\Master_RestroOrder\SageFrame\bin\SageFrame.FiscalYear.pdb
+G:\Danfe-Git\Master_RestroOrder\SageFrame.FiscalYear\obj\Debug\SageFrame.FiscalYear.csproj.AssemblyReference.cache
+G:\Danfe-Git\Master_RestroOrder\SageFrame.FiscalYear\obj\Debug\SageFrame.FiscalYear.csproj.CoreCompileInputs.cache
+G:\Danfe-Git\Master_RestroOrder\SageFrame.FiscalYear\obj\Debug\SageFrame.FiscalYear.csproj.CopyComplete
+G:\Danfe-Git\Master_RestroOrder\SageFrame.FiscalYear\obj\Debug\SageFrame.FiscalYear.dll
+G:\Danfe-Git\Master_RestroOrder\SageFrame.FiscalYear\obj\Debug\SageFrame.FiscalYear.pdb

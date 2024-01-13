@@ -227,3 +227,12 @@ D:\danfe\Master_RestroOrder\SageFrame.RestoLoyalty\obj\Debug\SageFrame.RestoLoya
 D:\danfe\Master_RestroOrder\SageFrame.RestoLoyalty\obj\Debug\SageFrame.RestoLoyalty.csproj.CopyComplete
 D:\danfe\Master_RestroOrder\SageFrame.RestoLoyalty\obj\Debug\SageFrame.RestoLoyalty.dll
 D:\danfe\Master_RestroOrder\SageFrame.RestoLoyalty\obj\Debug\SageFrame.RestoLoyalty.pdb
+G:\Danfe-Git\Master_RestroOrder\SageFrame.RestoLoyalty\bin\Debug\SageFrame.RestoLoyalty.dll
+G:\Danfe-Git\Master_RestroOrder\SageFrame.RestoLoyalty\bin\Debug\SageFrame.RestoLoyalty.pdb
+G:\Danfe-Git\Master_RestroOrder\SageFrame.RestoLoyalty\bin\Debug\SageFrame.Common.dll
+G:\Danfe-Git\Master_RestroOrder\SageFrame.RestoLoyalty\bin\Debug\SageFrame.Common.pdb
+G:\Danfe-Git\Master_RestroOrder\SageFrame.RestoLoyalty\obj\Debug\SageFrame.RestoLoyalty.csproj.AssemblyReference.cache
+G:\Danfe-Git\Master_RestroOrder\SageFrame.RestoLoyalty\obj\Debug\SageFrame.RestoLoyalty.csproj.CoreCompileInputs.cache
+G:\Danfe-Git\Master_RestroOrder\SageFrame.RestoLoyalty\obj\Debug\SageFrame.RestoLoyalty.csproj.CopyComplete
+G:\Danfe-Git\Master_RestroOrder\SageFrame.RestoLoyalty\obj\Debug\SageFrame.RestoLoyalty.dll
+G:\Danfe-Git\Master_RestroOrder\SageFrame.RestoLoyalty\obj\Debug\SageFrame.RestoLoyalty.pdb

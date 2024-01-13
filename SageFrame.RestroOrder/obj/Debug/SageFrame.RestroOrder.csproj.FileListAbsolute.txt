@@ -171,3 +171,10 @@ D:\danfe\Master_RestroOrder\SageFrame.RestroOrder\obj\Debug\SageFrame.RestroOrde
 D:\danfe\Master_RestroOrder\SageFrame.RestroOrder\obj\Debug\SageFrame.RestroOrder.csproj.CopyComplete
 D:\danfe\Master_RestroOrder\SageFrame.RestroOrder\obj\Debug\SageFrame.RestroOrder.dll
 D:\danfe\Master_RestroOrder\SageFrame.RestroOrder\obj\Debug\SageFrame.RestroOrder.pdb
+G:\Danfe-Git\Master_RestroOrder\SageFrame\bin\SageFrame.RestroOrder.dll
+G:\Danfe-Git\Master_RestroOrder\SageFrame\bin\SageFrame.RestroOrder.pdb
+G:\Danfe-Git\Master_RestroOrder\SageFrame.RestroOrder\obj\Debug\SageFrame.RestroOrder.csproj.AssemblyReference.cache
+G:\Danfe-Git\Master_RestroOrder\SageFrame.RestroOrder\obj\Debug\SageFrame.RestroOrder.csproj.CoreCompileInputs.cache
+G:\Danfe-Git\Master_RestroOrder\SageFrame.RestroOrder\obj\Debug\SageFrame.RestroOrder.csproj.CopyComplete
+G:\Danfe-Git\Master_RestroOrder\SageFrame.RestroOrder\obj\Debug\SageFrame.RestroOrder.dll
+G:\Danfe-Git\Master_RestroOrder\SageFrame.RestroOrder\obj\Debug\SageFrame.RestroOrder.pdb

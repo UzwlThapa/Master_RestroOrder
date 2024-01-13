@@ -208,3 +208,12 @@ D:\danfe\Master_RestroOrder\SageFrame.ChartOfAccount\obj\Release\SageFrame.Chart
 D:\danfe\Master_RestroOrder\SageFrame.ChartOfAccount\obj\Release\SageFrame.ChartOfAccount.csproj.CopyComplete
 D:\danfe\Master_RestroOrder\SageFrame.ChartOfAccount\obj\Release\SageFrame.ChartOfAccount.dll
 D:\danfe\Master_RestroOrder\SageFrame.ChartOfAccount\obj\Release\SageFrame.ChartOfAccount.pdb
+G:\Danfe-Git\Master_RestroOrder\SageFrame.ChartOfAccount\bin\Release\SageFrame.ChartOfAccount.dll
+G:\Danfe-Git\Master_RestroOrder\SageFrame.ChartOfAccount\bin\Release\SageFrame.ChartOfAccount.pdb
+G:\Danfe-Git\Master_RestroOrder\SageFrame.ChartOfAccount\bin\Release\SageFrame.Common.dll
+G:\Danfe-Git\Master_RestroOrder\SageFrame.ChartOfAccount\bin\Release\SageFrame.Common.pdb
+G:\Danfe-Git\Master_RestroOrder\SageFrame.ChartOfAccount\obj\Release\SageFrame.ChartOfAccount.csproj.AssemblyReference.cache
+G:\Danfe-Git\Master_RestroOrder\SageFrame.ChartOfAccount\obj\Release\SageFrame.ChartOfAccount.csproj.CoreCompileInputs.cache
+G:\Danfe-Git\Master_RestroOrder\SageFrame.ChartOfAccount\obj\Release\SageFrame.ChartOfAccount.csproj.CopyComplete
+G:\Danfe-Git\Master_RestroOrder\SageFrame.ChartOfAccount\obj\Release\SageFrame.ChartOfAccount.dll
+G:\Danfe-Git\Master_RestroOrder\SageFrame.ChartOfAccount\obj\Release\SageFrame.ChartOfAccount.pdb

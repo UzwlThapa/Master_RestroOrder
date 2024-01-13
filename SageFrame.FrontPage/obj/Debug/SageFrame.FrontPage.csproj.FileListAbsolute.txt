@@ -164,3 +164,10 @@ D:\danfe\Master_RestroOrder\SageFrame.FrontPage\obj\Debug\SageFrame.FrontPage.cs
 D:\danfe\Master_RestroOrder\SageFrame.FrontPage\obj\Debug\SageFrame.FrontPage.csproj.CopyComplete
 D:\danfe\Master_RestroOrder\SageFrame.FrontPage\obj\Debug\SageFrame.FrontPage.dll
 D:\danfe\Master_RestroOrder\SageFrame.FrontPage\obj\Debug\SageFrame.FrontPage.pdb
+G:\Danfe-Git\Master_RestroOrder\SageFrame\bin\SageFrame.FrontPage.dll
+G:\Danfe-Git\Master_RestroOrder\SageFrame\bin\SageFrame.FrontPage.pdb
+G:\Danfe-Git\Master_RestroOrder\SageFrame.FrontPage\obj\Debug\SageFrame.FrontPage.csproj.AssemblyReference.cache
+G:\Danfe-Git\Master_RestroOrder\SageFrame.FrontPage\obj\Debug\SageFrame.FrontPage.csproj.CoreCompileInputs.cache
+G:\Danfe-Git\Master_RestroOrder\SageFrame.FrontPage\obj\Debug\SageFrame.FrontPage.csproj.CopyComplete
+G:\Danfe-Git\Master_RestroOrder\SageFrame.FrontPage\obj\Debug\SageFrame.FrontPage.dll
+G:\Danfe-Git\Master_RestroOrder\SageFrame.FrontPage\obj\Debug\SageFrame.FrontPage.pdb

@@ -129,3 +129,12 @@ D:\danfe\Master_RestroOrder\SageFrame.DailyChalan\obj\Debug\SageFrame.DailyChala
 D:\danfe\Master_RestroOrder\SageFrame.DailyChalan\obj\Debug\SageFrame.DailyChalan.csproj.CopyComplete
 D:\danfe\Master_RestroOrder\SageFrame.DailyChalan\obj\Debug\SageFrame.DailyChalan.dll
 D:\danfe\Master_RestroOrder\SageFrame.DailyChalan\obj\Debug\SageFrame.DailyChalan.pdb
+G:\Danfe-Git\Master_RestroOrder\SageFrame.DailyChalan\bin\Debug\SageFrame.DailyChalan.dll
+G:\Danfe-Git\Master_RestroOrder\SageFrame.DailyChalan\bin\Debug\SageFrame.DailyChalan.pdb
+G:\Danfe-Git\Master_RestroOrder\SageFrame.DailyChalan\bin\Debug\SageFrame.Common.dll
+G:\Danfe-Git\Master_RestroOrder\SageFrame.DailyChalan\bin\Debug\SageFrame.Common.pdb
+G:\Danfe-Git\Master_RestroOrder\SageFrame.DailyChalan\obj\Debug\SageFrame.DailyChalan.csproj.AssemblyReference.cache
+G:\Danfe-Git\Master_RestroOrder\SageFrame.DailyChalan\obj\Debug\SageFrame.DailyChalan.csproj.CoreCompileInputs.cache
+G:\Danfe-Git\Master_RestroOrder\SageFrame.DailyChalan\obj\Debug\SageFrame.DailyChalan.csproj.CopyComplete
+G:\Danfe-Git\Master_RestroOrder\SageFrame.DailyChalan\obj\Debug\SageFrame.DailyChalan.dll
+G:\Danfe-Git\Master_RestroOrder\SageFrame.DailyChalan\obj\Debug\SageFrame.DailyChalan.pdb

@@ -174,3 +174,12 @@ D:\danfe\Master_RestroOrder\SageFrame.Sales\obj\Debug\SageFrame.Sales.csproj.Cor
 D:\danfe\Master_RestroOrder\SageFrame.Sales\obj\Debug\SageFrame.Sales.csproj.CopyComplete
 D:\danfe\Master_RestroOrder\SageFrame.Sales\obj\Debug\SageFrame.Sales.dll
 D:\danfe\Master_RestroOrder\SageFrame.Sales\obj\Debug\SageFrame.Sales.pdb
+G:\Danfe-Git\Master_RestroOrder\SageFrame.Sales\bin\Debug\SageFrame.Sales.dll
+G:\Danfe-Git\Master_RestroOrder\SageFrame.Sales\bin\Debug\SageFrame.Sales.pdb
+G:\Danfe-Git\Master_RestroOrder\SageFrame.Sales\bin\Debug\SageFrame.Common.dll
+G:\Danfe-Git\Master_RestroOrder\SageFrame.Sales\bin\Debug\SageFrame.Common.pdb
+G:\Danfe-Git\Master_RestroOrder\SageFrame.Sales\obj\Debug\SageFrame.Sales.csproj.AssemblyReference.cache
+G:\Danfe-Git\Master_RestroOrder\SageFrame.Sales\obj\Debug\SageFrame.Sales.csproj.CoreCompileInputs.cache
+G:\Danfe-Git\Master_RestroOrder\SageFrame.Sales\obj\Debug\SageFrame.Sales.csproj.CopyComplete
+G:\Danfe-Git\Master_RestroOrder\SageFrame.Sales\obj\Debug\SageFrame.Sales.dll
+G:\Danfe-Git\Master_RestroOrder\SageFrame.Sales\obj\Debug\SageFrame.Sales.pdb

@@ -163,3 +163,10 @@ D:\danfe\Master_RestroOrder\SageFrame.DBBackupNRestore\obj\Release\SageFrame.DBB
 D:\danfe\Master_RestroOrder\SageFrame.DBBackupNRestore\obj\Release\SageFrame.DBBackupNRestore.csproj.CopyComplete
 D:\danfe\Master_RestroOrder\SageFrame.DBBackupNRestore\obj\Release\SageFrame.DBBackupNRestore.dll
 D:\danfe\Master_RestroOrder\SageFrame.DBBackupNRestore\obj\Release\SageFrame.DBBackupNRestore.pdb
+G:\Danfe-Git\Master_RestroOrder\SageFrame\bin\SageFrame.DBBackupNRestore.dll
+G:\Danfe-Git\Master_RestroOrder\SageFrame\bin\SageFrame.DBBackupNRestore.pdb
+G:\Danfe-Git\Master_RestroOrder\SageFrame.DBBackupNRestore\obj\Release\SageFrame.DBBackupNRestore.csproj.AssemblyReference.cache
+G:\Danfe-Git\Master_RestroOrder\SageFrame.DBBackupNRestore\obj\Release\SageFrame.DBBackupNRestore.csproj.CoreCompileInputs.cache
+G:\Danfe-Git\Master_RestroOrder\SageFrame.DBBackupNRestore\obj\Release\SageFrame.DBBackupNRestore.csproj.CopyComplete
+G:\Danfe-Git\Master_RestroOrder\SageFrame.DBBackupNRestore\obj\Release\SageFrame.DBBackupNRestore.dll
+G:\Danfe-Git\Master_RestroOrder\SageFrame.DBBackupNRestore\obj\Release\SageFrame.DBBackupNRestore.pdb
