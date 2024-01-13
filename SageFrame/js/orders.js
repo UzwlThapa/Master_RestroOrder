@@ -269,21 +269,13 @@ function BindCategoriesByMenu(result, categoryName) {
         $(this).attr('src', '/Modules/ROCompanyInfo/logo/logo.png');
     });
     if (orderlistviewtype) {
-        $('.orderbackA').on('click', function () {
-            //menuID = 0;
+        $('.orderbackA').on('click', function () { 
             $('#Categoryshow').hide();
             $('#Itemshow , #Itemshow2 ').hide();
-            $('#Menushow').show();
-            // if (IsCat) {
-            //        $('#Categoryshow').show();
-            //    } else {
-            //        $('#Categoryshow').hide();
-            //    }
-
+            $('#Menushow').show(); 
         });
     } else {
-        $('.category').owlCarousel({
-
+        $('.category').owlCarousel({ 
             navigation: true,
             addClassActive: true
         });
