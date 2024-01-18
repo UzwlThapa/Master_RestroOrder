@@ -1,4 +1,5 @@
-﻿(function ($) {
+﻿var isGroup = "";
+(function ($) {
 
     var tabs = $("#tabs").tabs();
     $.companyProfcreate = function (p) {
@@ -178,9 +179,10 @@
             bindFinancialAcName: function (result) {
                 data = JSON.parse(result);
                 var AutocompleteFinancialAc = [];
+
                 if (data.length > 0) {
                     $.each(data, function (index, value) {
-                        AutocompleteFinancialAc.push({ label: value.items, id: value.FinancialAcID });
+                        AutocompleteFinancialAc.push({ label: value.items, id: value.FinancialAcID, IsGroup: value.isGroup });
                     });
                 }
 
@@ -190,12 +192,14 @@
 
                 function extractLast(term) {
                     return split(term).pop();
+
                 }
 
                 // clear input on textbox clear
                 $("#voucherDropDownList").keyup(function () {
                     if (!this.value || !this.value.includes(',')) {
                         $('#hdnFinancialID').val('');
+                        isGroup = "";
                     }
                 });
 
@@ -219,27 +223,55 @@
                         focus: function () {
                             return false;
                         },
+
                         select: function (event, ui) {
 
-                            var terms = split(this.value);
-                            // remove the current input value
-                            terms.pop();
-                            // add the selected item
                             var label = ui.item.label.replace(/[^a-zA-Z0-9]/g, '');
-                            if (terms.includes(label)) {
-                                jAlert("Finanacial account already selected!", 'Information!!', function () { $.alerts.dialogClass = null; });
-                            } else {
-                                terms.push(label);
-                                // add placeholder to get the comma-and-space at the end
-                                terms.push("");
-                                this.value = terms.join(", ");
 
-                                let a = $('#hdnFinancialID').val().split(",");
-                                a.push(ui.item.id);
-                                $('#hdnFinancialID').val(a.filter(x => x).join(", "));
+                            var terms = split(this.value);
+                            terms.pop();
+
+                            var selectedGroup = ui.item.IsGroup ? "1" : "0";
+
+                            if (isGroup == "") {
+                                isGroup = selectedGroup;
+                                if (terms.includes(label)) {
+                                    jAlert("Financial account already selected!", 'Information!!', function () {
+                                        $.alerts.dialogClass = null;
+                                    });
+                                } else {
+                                    terms.push(label, "");
+                                    this.value = terms.join(", ");
+                                    var hdnFinancialID = $('#hdnFinancialID');
+                                    var financialIDValues = hdnFinancialID.val().split(",");
+                                    financialIDValues.push(ui.item.id);
+                                    hdnFinancialID.val(financialIDValues.filter(Boolean).join(", "));
+                                }
+
+                            } else if (isGroup == selectedGroup) {
+                                if (terms.includes(label)) {
+                                    jAlert("Financial account already selected!", 'Information!!', function () {
+                                        $.alerts.dialogClass = null;
+                                    })
+                                } else {
+                                    terms.push(label, "");
+                                    this.value = terms.join(", ");
+                                    var hdnFinancialID = $('#hdnFinancialID');
+                                    var financialIDValues = hdnFinancialID.val().split(",");
+                                    financialIDValues.push(ui.item.id);
+                                    hdnFinancialID.val(financialIDValues.filter(Boolean).join(", "));
+                                }
+                            } else {
+                                if (isGroup != selectedGroup) {
+                                    jAlert("Select same account group!", 'Information!!', function () {
+                                        $.alerts.dialogClass = null;
+                                    });
+                                }
                             }
+
                             return false;
                         }
+
                     });
             },
 
@@ -301,15 +333,13 @@
                             htmls += `<td style="text-align:right;border:1px solid #575757;padding-right: 8px !important;">${formatNumber((openingBalance[0].Balance >= 0 ? openingBalance[0].Balance : openingBalance[0].Balance * -1)) + (openingBalance[0].Balance >= 0 ? ' Dr' : ' Cr')}</td>`;
                             htmls += '<td></td>';
                             htmls += '</tr>';
-                            console.log("Account Value Opening Balance : " + openingBalance[0].Balance);
+                            console.log("Account View Opening Balance : " + openingBalance[0].Balance);
 
                             var newOpeningBalanceAVew = parseFloat(openingBalance[0].Balance);
                             runningBalance = newOpeningBalanceAVew;
                         }
 
                         var groupData = groupLedgerData.filter((item) => item.ParentAccount == value && item.AccountHead != 'Opening Balance');
-
-
 
                         $.each(groupData, function (index, value) {
 
@@ -321,7 +351,7 @@
 
                             grandTotalDr += value.Debit;
                             grandTotalCr += value.Credit;
-                        grandTotalBal = runningBalance;
+                            grandTotalBal = runningBalance;
 
                             if (index == groupData.length - 1) {
                                 groupTotalBal = runningBalance;
@@ -488,6 +518,7 @@
                 });
             },
             BindIndividualLedgerDetail: function (data) {
+                debugger;
                 $("#DailyReport").html('');
                 var individualLedgerData = JSON.parse(data);
                 var htmls = "";
@@ -502,6 +533,7 @@
                 htmls += "</tr>";
                 htmls += "</thead>";
                 htmls += "<tbody>";
+
 
                 if (individualLedgerData.length > 0) {
 
@@ -523,6 +555,8 @@
                     var grandTotalBal = 0;
 
                     $.each(groupNameList, function (index, value) {
+                        debugger;
+
                         // Group Header
                         htmls += '<tr style="text-align:left;background:#e1dfdf;font-weight:bold;">';
                         htmls += `<td style="text-align:center;border:1px solid #575757;text-align:left;padding-left:2rem!important;">Ledger: ${value}</td>`;
@@ -535,31 +569,32 @@
 
                         // Opening Balance
                         var Balance = 0;
-                        var openingBalance = individualLedgerData.filter((item) => item.ParentAccount == value && item.AccountHead == 'Opening Balance');
+                        var openingBalance = individualLedgerData.filter((item) => item.AccountHead.split(" #")[0] == value && item.OpeningBalance == 'Opening Balance');
+
                         if (openingBalance[0]) {
                             htmls += '<tr style="text-align:left;background:#f7ebeb;font-weight:bold;">';
-                            htmls += `<td style="text-align:left;border:1px solid #575757;padding-left:4rem!important;">${openingBalance[0].AccountHead}</td>`;
+                            htmls += `<td style="text-align:left;border:1px solid #575757;padding-left:4rem!important;">${openingBalance[0].OpeningBalance}</td>`;
                             htmls += `<td style="text-align:left;border:1px solid #575757;"></td>`;
                             htmls += `<td style="text-align:right;border:1px solid #575757;">${formatNumber(openingBalance[0].Debit)}</td>`;
                             htmls += `<td style="text-align:right;border:1px solid #575757;">${formatNumber(openingBalance[0].Credit)}</td>`;
                             htmls += `<td style="text-align:right;border:1px solid #575757;padding-right: 8px !important;">${formatNumber((openingBalance[0].Balance >= 0 ? openingBalance[0].Balance : openingBalance[0].Balance * -1)) + (openingBalance[0].Balance >= 0 ? ' Dr' : ' Cr')}</td>`;
                             htmls += '<td></td>';
                             htmls += '</tr>';
-                            console.log("Detail View  "+openingBalance[0].Balance);
+                            console.log("Detail View  " + openingBalance[0].Balance);
 
                             var newOpeningBalanceDView = parseFloat(openingBalance[0].Balance);
 
                             Balance = newOpeningBalanceDView;
                         }
 
-                        var groupData = individualLedgerData.filter((item) => item.AccountHead.split(" #")[0] == value && item.AccountHead != 'Opening Balance');
-                        
+                        var groupData = individualLedgerData.filter((item) => item.AccountHead.split(" #")[0] == value && item.OpeningBalance != 'Opening Balance');
+
 
                         $.each(groupData, function (index, value) {
 
                             groupTotalDr += value.Debit;
                             groupTotalCr += value.Credit;
-                            Balance      += value.Debit - value.Credit; // Updated balance calculation
+                            Balance += value.Debit - value.Credit; // Updated balance calculation
 
                             grandTotalDr += value.Debit;
                             grandTotalCr += value.Credit;
