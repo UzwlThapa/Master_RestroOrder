@@ -12,6 +12,8 @@
         public string CompanyName { get; set; }
         public string Date { get; set; }
         public string ParentAccount { get; set; }
+        public string OpeningBalance { get; set; }
+
         public string AccountHead { get; set; }
         public string Particulars { get; set; }
         public float Balance { get; set; }
