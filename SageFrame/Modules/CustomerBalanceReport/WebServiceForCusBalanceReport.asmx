@@ -216,4 +216,11 @@ public class WebServiceForCusBalanceReport : System.Web.Services.WebService
         return JsonConvert.SerializeObject(payment);
     }
 
+    [WebMethod]
+    public void CreditCancelWithReason(int id, int memberId,string userName, string reason, string date, bool restoreOrder)
+    {
+        RestrOrderController rc = new RestrOrderController();
+        rc.CreditCancelWithReason(id, memberId, userName, reason, date, restoreOrder);
+    }
+
 }

@@ -82,8 +82,21 @@
             <td> <input id="btnSend" type="button" value="Send" class="sfBtn restro-btn" />
         <input id="btnCancel" type="button" value="Cancel" class="sfBtn restro-btn" /></td>
         </table>
-       
     </div>
+
+    <div class="cancelCreditAmount" style="display: none;">
+    <table style="display: block; margin-bottom: 0;">
+        <tr>
+            <td>
+                <label>Reason:</label>
+            </td>
+            <td>
+                <textarea id="txtCancelWithReason" placeholder="Type the Reason.." class="sfInputbox"></textarea></td>
+        </tr>
+    </table>
+    <%--<input type="text" id="txtCancelWithReason" placeholder="Type the Reason.." />--%>
+</div>
+
 </div>
 <input type="hidden" id="hdIsCustomer" runat="server" clientIDMode="static"/>
 
