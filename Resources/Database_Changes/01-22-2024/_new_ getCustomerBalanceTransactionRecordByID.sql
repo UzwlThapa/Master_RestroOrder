@@ -42,11 +42,11 @@ BEGIN
   AND mp.[PayAmount] != 0.00
 
 
- 
+
  UNION
 
  SELECT spm.salesPaymentID
-  ,sm.[CusID]
+  ,spm.[CusID]
   --,case  
 		--when sm.AdvancePayment >= sm.NetAmount then sm.NetAmount 
 		--when sm.AdvancePayment < sm.NetAmount  then sm.AdvancePayment + sum(spm.PayAmount)
@@ -81,7 +81,7 @@ BEGIN
   AND(spm.PaymentModeID = 4 OR sm.AdvancePayment>0)
   --and spm.PayAmount <> 0 
     group by sm.[salesMasterId]
-  ,sm.[CusID]
+  ,spm.[CusID]
   ,sm.AdvancePayment,
    sm.NetAmount  ,sm.[AddedOn]
   ,sm.[AddedBy]
@@ -249,6 +249,5 @@ BEGIN
  ORDER BY AddedOn ASC
 
  
-
 
  END
