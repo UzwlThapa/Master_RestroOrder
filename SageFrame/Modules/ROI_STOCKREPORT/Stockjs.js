@@ -225,6 +225,7 @@
 
                 var salesQuantity = 0.0;
                 var salesReturnQuantity = 0.0;
+                var purchaseReturnQuantity = 0.0;
                 var purchaseQuantity = 0.0;
                 var openingQty = 0.0;
                 var complimentryQty = 0.0;
@@ -235,7 +236,7 @@
                 var htmls = "<table id='Brandtable' class='reportsprint' style='width: 100%' cellspacing='0'>"
                 htmls += "<thead>"
                 htmls += "<tr>"
-                htmls += "<th>Date</th><th>Item Name</th><th>Opening Qty </th><th> Purchase Qty </th><th> Sales Qty </th><th> Return Qty </th><th> Adjust Qty </th><th> Complementry Qty </th><th> Issue Qty </th><th> Balance</th><th> Unit Description</th>";
+                htmls += "<th>Date</th><th>Item Name</th><th>Opening Qty </th><th> Purchase Qty </th><th> Sales Qty </th><th> Purchase Reurn Qty </th><th> Sales Return Qty </th><th> Adjust Qty </th><th> Complementry Qty </th><th> Issue Qty </th><th> Balance</th><th> Unit Description</th>";
                 htmls += "</tr>"
                 htmls += "</thead>"
                 htmls += "<tbody>"
@@ -250,7 +251,7 @@
                         issueQty += (value.IssueQty == null ? 0 : value.IssueQty);
                         adjustmentQuantity += (value.AdjustQty == null ? 0 : value.AdjustQty);
                         salesReturnQuantity += (value.SalesReturnQty == null ? 0 : value.SalesReturnQty);
-
+                        purchaseReturnQuantity += (value.PurchaseReturnQty == null ? 0 : value.PurchaseReturnQty);
                         htmls += "<tr>";
                         htmls += "<td>" + value.TransactionDate.split('T')[0] + "</td>";
                         htmls += "<td>" + value.ITCode + "</td>";
@@ -268,6 +269,11 @@
                             htmls += "<td>-</td>";
                         } else {
                             htmls += "<td>(" + formatNumber(value.SalesQty) + ")</td>";
+                        }
+                        if (value.PurchaseReturnQty == null) {
+                            htmls += "<td>-</td>";
+                        } else {
+                            htmls += "<td>(" + formatNumber(value.PurchaseReturnQty) + ")</td>";
                         }
                         if (value.SalesReturnQty == null) {
                             htmls += "<td>-</td>";
@@ -301,10 +307,12 @@
                     });
                     htmls += "</tbody>";
                     htmls += `<tr style='font-weight: bold' ><td></td><td>Total</td><td>${formatNumber(openingQty, false)}</td>
-                    <td>${formatNumber(purchaseQuantity, false)}</td><td>${formatNumber(salesQuantity, false)}</td>
+                    <td>${formatNumber(purchaseQuantity, false)}</td><td>(${formatNumber(salesQuantity, false)})</td>
+                    <td>(${formatNumber(purchaseReturnQuantity, false)})</td>
                     <td>${formatNumber(salesReturnQuantity, false)}</td><td>${formatNumber(adjustmentQuantity, false)}</td>
-                                <td>${formatNumber(complimentryQty, false)}</td><td>${formatNumber(issueQty, false)}</td><td></td>
+                                <td>(${formatNumber(complimentryQty, false)})</td><td>${formatNumber(issueQty, false)}</td><td></td>
                                 <td></td></tr>`;
+                    console.log("PRQTOTAL=" + purchaseReturnQuantity);
                 }
                 else {
                     $('#divItemledger').html('No data');

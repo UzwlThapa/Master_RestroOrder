@@ -1443,6 +1443,7 @@ namespace SageFrame.RestroOrder
         public decimal? AvailableQty { get; set; }
         public decimal? PurchaseAmt { get; set; }
         public decimal? SalesQty { get; set; }
+        public decimal? PurchaseReturnQty { get; set; }
         public decimal? SalesReturnQty { get; set; }
         public decimal? SalesAmt { get; set; }
         public decimal ItemBalance { get; set; }
