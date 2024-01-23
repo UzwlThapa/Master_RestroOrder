@@ -298,6 +298,11 @@ function Print() {
                             jAlert('No data found', 'Information!!', function () { $.alerts.dialogClass = null; });
                         }
                         break;
+                    case 16:
+                        jAlert('Saved Reason successfully.', 'Information!!', function () { $.alerts.dialogClass = null; });
+                        //$("#StartEndReportView").click();
+                        //location.reload();
+                        break;
                 }
             },
             ajaxFailure: function () {
@@ -342,6 +347,7 @@ function Print() {
             //<<-----------------------------------BindTable Herere ------------------------------------->>>
 
             Bindmembership: function () {
+                debugger;
                 $("#membeshipformlist").show();
                 $("#membeshipformlist").html('');
                 var IsCus = parseInt($("#hdIsCustomer").val());
@@ -435,6 +441,59 @@ function Print() {
 
                 });
 
+                
+                $("#BalanceTransactionlist").on('click', '.btnCancelCredit', function (event) {
+
+                    var Username = SageFrameUserName;
+
+                    var nepaliDate = formatDate();
+
+                    var id = $(this).attr('id');
+                    var idValues = id.split(',');
+
+                    var id = parseInt(idValues[0]);
+                    var MemberID = parseInt(idValues[1]);
+
+
+                    //eventFunction.GetCustomerBalance(id);
+                    var row = $(this).parents('tr');
+                   // var name = row.find('td:eq(0)').text();
+
+                    $('.cancelCreditAmount').dialog(
+                        {
+                            'title': 'Give Reasons',
+                            'dialogClass': 'giveReason',
+                            "resize": "auto",
+                            width: 350,
+                            modal: true,
+                            buttons: {
+                                "Credit Cancel": function () {
+                                    var myStr = $("#txtCancelWithReason").val();
+                                    var newStr = myStr.replace(/  +/g, ' ');
+                                    if (newStr.length <= 4) {
+                                        jAlert('Please Insert Valid Cancel Reason.', "Alert!!", function () { $.alerts.dialogClass = null; });
+                                    }
+                                    else {
+                                        var reason = $("#txtCancelWithReason").val();
+                                        eventFunction.config.method = "CreditCancelWithReason";
+                                        eventFunction.config.url = eventFunction.config.baseURL + eventFunction.config.method;
+                                        eventFunction.config.data = JSON2.stringify({ id: id, memberId: MemberID, userName: Username, reason: reason, date: nepaliDate, restoreOrder: false });
+                                        eventFunction.config.data = eventFunction.config.data;
+                                        eventFunction.config.ajaxCallMode = 16;
+                                        eventFunction.ajaxCall(eventFunction.config);
+                                        $(this).dialog('close');
+
+                                    }
+                                },
+                                Cancel: function () {
+                                    $(this).dialog('close');
+                                }
+                            }
+                        }
+                    )
+                });
+
+
                 $("#Brandtable").on('click', '.btnViewCustomerTransaction', function (event) {
 
                     var id = parseInt($(this).attr('id'));
@@ -511,6 +570,7 @@ function Print() {
             },
 
             bindCustomerTransactionbyID: function (result) {
+                debugger;
 
                 var data = result.d;
                 htmls = "";
@@ -519,7 +579,7 @@ function Print() {
                 var currentBal = parseFloat(remainingbal);
                 currentBal = 0;
                 htmls = '<table id=tblForCustomerTransaction class="reportsprint" cellspacing="0" style="border:none;width:100%;border-collapse:collapse;"><thead>';
-                htmls += '<tr><th style="text-align:center;border:1px solid #575757;padding:2px;">S.N.</th><th style="text-align:center;border:1px solid #575757;padding:2px;">Date</th><th style="width:200px;text-align:center;border:1px solid #575757;padding:2px;">Remarks</th><th style="text-align:center;border:1px solid #575757;padding:2px;">Status</th><th style="text-align:left;border:1px solid #575757;padding:2px;">Received By</th><th class="tdrate" style="text-align:right;border:1px solid #575757;padding:2px;">Credited Amnt</th><th class="tdrate" style="text-align:right;border:1px solid #575757;padding:2px;">Paid Amnt</th><th class="tdrate" style="text-align:right;border:1px solid #575757;padding:2px;">Settlement Amnt</th><th class="tdrate" style="text-align:right;border:1px solid #575757;padding:2px;">Current Balance</th></tr></thead><tbody>';
+                htmls += '<tr><th style="text-align:center;border:1px solid #575757;padding:2px;">S.N.</th><th style="text-align:center;border:1px solid #575757;padding:2px;">Date</th><th style="width:200px;text-align:center;border:1px solid #575757;padding:2px;">Remarks</th><th style="text-align:center;border:1px solid #575757;padding:2px;">Status</th><th style="text-align:left;border:1px solid #575757;padding:2px;">Received By</th><th class="tdrate" style="text-align:right;border:1px solid #575757;padding:2px;">Credited Amnt</th><th class="tdrate" style="text-align:right;border:1px solid #575757;padding:2px;">Paid Amnt</th><th class="tdrate" style="text-align:right;border:1px solid #575757;padding:2px;">Settlement Amnt</th><th class="tdrate" style="text-align:right;border:1px solid #575757;padding:2px;">Is Cancelled</th><th class="tdrate" style="text-align:right;border:1px solid #575757;padding:2px;">Current Balance</th><th class="tdrate" style="text-align:right;border:1px solid #575757;padding:2px;">Action</th></tr></thead><tbody>';
 
                 let increment = 1;
                 if (openingBalance > 0) {
@@ -535,12 +595,28 @@ function Print() {
                                 <td style="text-align:right;border:1px solid #575757;padding:2px;" class="tdrate"> Rs.${openingBalance.toFixed(2)} </td>
                                 <td style="text-align:right;border:1px solid #575757;padding:2px;" class="tdrate">-</td>
                                 <td style="text-align:right;border:1px solid #575757;padding:2px;" class="tdrate">-</td>
+                                <td style="text-align:right;border:1px solid #575757;padding:2px;" class="tdrate">-</td>
                                 <td style="text-align:right;border:1px solid #575757;padding:2px;" class="tdrate">${parseFloat(currentBal).toFixed(2)}</td>
+                                <td style="text-align:right;border:1px solid #575757;padding:2px;" class="tdrate">-</td>
+
                                 </tr>`;
                 }
 
+                var billnoCount = {};
+
+                $.each(data, function (index, value) {
+                    var billno = value.billNo;
+
+                    if (billnoCount[billno] === undefined) {
+                        billnoCount[billno] = { count: 1, billNo: billno };
+                    } else {
+                        billnoCount[billno].count++;
+                    }
+                });
+
                 $.each(data, function (index, value) {
 
+                    //debugger;
                     htmls += '<tr><td style="text-align:center;border:1px solid #575757;padding:2px;">' + (index + increment) + '</td>';
                     if (value.billNo != "") {
                         var ids = value.MemberPayID;
@@ -566,12 +642,15 @@ function Print() {
 
 
                     if (value.CreditAmount == 0) {
+                        //debugger;
                         htmls += '<td style="text-align:center;border:1px solid #575757;padding:2px;"> Paid </td>';
                         currentBal -= (parseFloat(value.PayAmount) + parseFloat(value.SettlementAmount));
                         htmls += '<td style="text-align:left;border:1px solid #575757;padding:2px;">' + value.AddedBy + '</td>';
                         htmls += '<td style="text-align:right;border:1px solid #575757;padding:2px;" class="tdrate">-</td>';
                         htmls += '<td style="text-align:right;border:1px solid #575757;padding:2px;" class="tdrate"> Rs. ' + value.PayAmount + '</td>';
                         htmls += '<td style="text-align:right;border:1px solid #575757;padding:2px;" class="tdrate"> Rs. ' + value.SettlementAmount + '</td>';
+                        htmls += '<td style="text-align:right;border:1px solid #575757;padding:2px;" class="tdrate">-</td>';
+
                     } else {
                         htmls += '<td style="text-align:center;border:1px solid #575757;padding:2px;color:red;">Credit</td>';
                         currentBal += parseFloat(value.CreditAmount);
@@ -579,8 +658,25 @@ function Print() {
                         htmls += '<td style="text-align:right;border:1px solid #575757;padding:2px;" class="tdrate"> Rs. ' + value.CreditAmount + '</td>';
                         htmls += '<td style="text-align:right;border:1px solid #575757;padding:2px;" class="tdrate">-</td>';
                         htmls += '<td style="text-align:right;border:1px solid #575757;padding:2px;" class="tdrate">-</td>';
+                        if (value.IsCancelled == true) {
+                            htmls += '<td style="text-align:right;border:1px solid #575757;padding:2px;" class="tdrate">' + value.IsCancelled + '</td>';
+                        }   else{
+                         htmls += '<td style="text-align:right;border:1px solid #575757;padding:2px;" class="tdrate"> -</td>';
+
+                        }
                     }
+
+
                     htmls += '<td style="text-align:right;border:1px solid #575757;padding:2px;"class="tdrate">' + parseFloat(currentBal).toFixed(2) + '</td>';
+                    if (value.CreditAmount > 0 && value.IsCancelled != true && billnoCount[value.billNo].count <= 1) {
+                        // Check if the bill count is 1
+                            htmls += '<td class="tdcenter"><label id="' + value.MemberPayID + "," + value.MemberID + '" class="icon-close btnCancelCredit"></label></td>';
+              
+                    } else {
+
+                        htmls += '<td style="text-align:right;border:1px solid #575757;padding:2px;" class="tdrate">-</td>';
+                       // htmls += '<td class="tdcenter">-</td>';
+                    }
                     htmls += '</tr>';
                     // totalBalance += value.PayAmount;
                     sn++;
@@ -599,7 +695,10 @@ function Print() {
                                     <td style="text-align:right;border:1px solid #575757;padding:2px;">Rs. ${totalCredit.toFixed(2)}</td>
                                     <td style="text-align:right;border:1px solid #575757;padding:2px;">Rs. ${totalPaid.toFixed(2)}</td>
                                     <td style="text-align:right;border:1px solid #575757;padding:2px;">Rs. ${totalSettlement.toFixed(2)}</td>
+                                    <td style="text-align:left;border:1px solid #575757;padding:2px;">-</td>
                                     <td style="text-align:right;border:1px solid #575757;padding:2px;">Rs. ${(totalCredit - totalPaid - totalSettlement).toFixed(2)}</td>
+                                    <td style="text-align:left;border:1px solid #575757;padding:2px;">-</td>
+
                                 </tr>
                             </tfoot>`;
                 htmls += '</table>';
@@ -780,9 +879,6 @@ function Print() {
 
                 eventFunction.ajaxCall(eventFunction.config);
             },
-
-
-
 
 
             PrintReceipt: function (result) {

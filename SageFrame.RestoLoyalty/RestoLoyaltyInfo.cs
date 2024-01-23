@@ -30,6 +30,7 @@ namespace SageFrame.RestoLoyalty
         public string AddedOn { get; set; }
         public string AddedBy { get; set; }
         public bool IsActive { get; set; }
+        public bool IsCancelled { get; set; }
         public int status { get; set; }
         public string billNo { get; set; }
         public int iscustomer { get; set; }

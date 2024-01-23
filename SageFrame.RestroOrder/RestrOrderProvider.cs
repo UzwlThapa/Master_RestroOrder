@@ -3890,6 +3890,26 @@ namespace SageFrame.RestroOrder
             Param.Add(new KeyValuePair<string, object>("@CustomerName", CustomerName));
             return sqlHandler.ExecuteAsList<dailyreport>("[usp_getCustomerBalanceReport]", Param);
         }
+
+        internal void CreditCancelWithReason(int id, int memberId, string userName, string reason, string date)
+        {
+            try
+            {
+
+                    List<KeyValuePair<string, object>> Param = new List<KeyValuePair<string, object>>();
+                    Param.Add(new KeyValuePair<string, object>("@salesMasterId", id));
+                    Param.Add(new KeyValuePair<string, object>("@MembershipID", memberId));
+                    Param.Add(new KeyValuePair<string, object>("@Reasons", reason));
+                    Param.Add(new KeyValuePair<string, object>("@userName", userName));
+                    Param.Add(new KeyValuePair<string, object>("@cancelledDate", date));
+                    sqlHandler.ExecuteNonQuery("[USP_RO_Credit_CancelReason]", Param);
+                    
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
         internal List<itemsales> getiemsalesreport(DateTime Start, DateTime EndDate)
         {
             List<KeyValuePair<string, object>> Param = new List<KeyValuePair<string, object>>();

@@ -4,6 +4,7 @@ using SageFrame.RestoLoyalty;
 using SageFrame.FiscalYear;
 using System.Data;
 using SageFrame.Security.Entities;
+using OfficeOpenXml.FormulaParsing.Excel.Functions.DateTime;
 namespace SageFrame.RestroOrder
 {
     public class RestrOrderController
@@ -1281,6 +1282,12 @@ namespace SageFrame.RestroOrder
         {
             return restroOrderProvider.getCustomerBalanceReport(startDate, endDate, CustomerName);
         }
+
+        public void CreditCancelWithReason(int id, int memberId,string userName, string reason, string date, bool restoreOrder)
+        {
+            restroOrderProvider.CreditCancelWithReason(id, memberId, userName, reason, date, restoreOrder);
+        }
+
         public List<itemsales> getiemsalesreport(DateTime Start, DateTime EndDate)
         {
             return restroOrderProvider.getiemsalesreport(Start, EndDate);
