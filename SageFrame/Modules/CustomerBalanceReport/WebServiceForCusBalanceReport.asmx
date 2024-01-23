@@ -217,10 +217,10 @@ public class WebServiceForCusBalanceReport : System.Web.Services.WebService
     }
 
     [WebMethod]
-    public void CreditCancelWithReason(int id, int memberId,string userName, string reason, string date, bool restoreOrder)
+    public void CreditCancelWithReason(int id, int memberId,string userName, string reason, string date)
     {
         RestrOrderController rc = new RestrOrderController();
-        rc.CreditCancelWithReason(id, memberId, userName, reason, date, restoreOrder);
+        rc.CreditCancelWithReason(id, memberId, userName, reason, date);
     }
 
 }

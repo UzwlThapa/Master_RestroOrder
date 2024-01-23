@@ -1283,9 +1283,9 @@ namespace SageFrame.RestroOrder
             return restroOrderProvider.getCustomerBalanceReport(startDate, endDate, CustomerName);
         }
 
-        public void CreditCancelWithReason(int id, int memberId,string userName, string reason, string date, bool restoreOrder)
+        public void CreditCancelWithReason(int id, int memberId,string userName, string reason, string date)
         {
-            restroOrderProvider.CreditCancelWithReason(id, memberId, userName, reason, date, restoreOrder);
+            restroOrderProvider.CreditCancelWithReason(id, memberId, userName, reason, date);
         }
 
         public List<itemsales> getiemsalesreport(DateTime Start, DateTime EndDate)
