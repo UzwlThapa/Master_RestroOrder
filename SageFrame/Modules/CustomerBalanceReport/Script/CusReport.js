@@ -354,6 +354,7 @@ function Print() {
                 var datas = receivedlist;
                 var total = 0.0;
                 var opening = 0.0;
+                var openingBalance = 0.0;
                 var htmls = "<table id='Brandtable' cellspacing='0'>"
                 htmls += "<thead>"
                 htmls += "<tr>"
@@ -390,8 +391,8 @@ function Print() {
                             htmls += "<td>" + Expire[0] + "</td>";
                             htmls += "<td>" + value.PAN + "</td>";
                             htmls += "<td class='tdrate' style='display:none'> Rs. " + value.OpeningBalance + "</td>";
-                            //  htmls += "<td class='tdrate'> Rs. " + (value.RemainingBalance + value.OpeningBalance) + "</td>";
-                            htmls += "<td class='tdrate'> Rs. " + value.RemainingBalance + "</td>";
+                            htmls += "<td class='tdrate'> Rs. " + (value.RemainingBalance + value.OpeningBalance) + "</td>";
+                            //htmls += "<td class='tdrate'> Rs. " + value.RemainingBalance + "</td>";
                             htmls += '<td class="tdcenter"><img id="' + value.MembershipID + '" class="preview-icon PayBalance" type="button" src="/images/pay.png" style="width:20px;"></td>';
                             htmls += '<td class="tdcenter"><img src="/images/view.png" id="' + value.MembershipID + '" class="preview-icon btnViewCustomerTransaction"></label></td>';
                             if (IsCus == 1) {
@@ -441,7 +442,7 @@ function Print() {
 
                 });
 
-                
+
                 $("#BalanceTransactionlist").on('click', '.btnCancelCredit', function (event) {
 
                     var Username = SageFrameUserName;
@@ -457,7 +458,7 @@ function Print() {
 
                     //eventFunction.GetCustomerBalance(id);
                     var row = $(this).parents('tr');
-                   // var name = row.find('td:eq(0)').text();
+                    // var name = row.find('td:eq(0)').text();
 
                     $('.cancelCreditAmount').dialog(
                         {
@@ -660,8 +661,8 @@ function Print() {
                         htmls += '<td style="text-align:right;border:1px solid #575757;padding:2px;" class="tdrate">-</td>';
                         if (value.IsCancelled == true) {
                             htmls += '<td style="text-align:right;border:1px solid #575757;padding:2px;" class="tdrate">' + value.IsCancelled + '</td>';
-                        }   else{
-                         htmls += '<td style="text-align:right;border:1px solid #575757;padding:2px;" class="tdrate"> -</td>';
+                        } else {
+                            htmls += '<td style="text-align:right;border:1px solid #575757;padding:2px;" class="tdrate"> -</td>';
 
                         }
                     }
@@ -670,12 +671,12 @@ function Print() {
                     htmls += '<td style="text-align:right;border:1px solid #575757;padding:2px;"class="tdrate">' + parseFloat(currentBal).toFixed(2) + '</td>';
                     if (value.CreditAmount > 0 && value.IsCancelled != true && billnoCount[value.billNo].count <= 1) {
                         // Check if the bill count is 1
-                            htmls += '<td class="tdcenter"><label id="' + value.MemberPayID + "," + value.MemberID + '" class="icon-close btnCancelCredit"></label></td>';
-              
+                        htmls += '<td class="tdcenter"><label id="' + value.MemberPayID + "," + value.MemberID + '" class="icon-close btnCancelCredit"></label></td>';
+
                     } else {
 
                         htmls += '<td style="text-align:right;border:1px solid #575757;padding:2px;" class="tdrate">-</td>';
-                       // htmls += '<td class="tdcenter">-</td>';
+                        // htmls += '<td class="tdcenter">-</td>';
                     }
                     htmls += '</tr>';
                     // totalBalance += value.PayAmount;
@@ -802,7 +803,7 @@ function Print() {
                 htmls += "<td style='font-size:17px;'>Payment Mode</td>"
                 htmls += "</tr>"
                 htmls += "<tr>"
-                htmls += "<td><input type='textbox' disable value='" + value.RemainingBalance + " ' placeholder='Total Amt' class='sfInputbox total' id='txtCalTotalAmount' style='width:120px;' readonly='readonly'/></td>";
+                htmls += "<td><input type='textbox' disable value='" + (value.RemainingBalance + value.OpeningBalance) + " ' placeholder='Total Amt' class='sfInputbox total' id='txtCalTotalAmount' style='width:120px;' readonly='readonly'/></td>";
                 htmls += "<td><select id='selPmntMode' class='sfInputbox' style='width:120px;'><option value='1'>CASH</option><option value='2'>CHEQUE</option><option value='3'>SWAP</option><option value='5'>eSewa</option><option value='6'>FonePay</option></select></td>";
                 htmls += "</tr>"
                 htmls += "<tr>"
