@@ -522,8 +522,8 @@ namespace SageFrame.RestroOrder
                 SQLHandler sqlHandler = new SQLHandler();
                 List<KeyValuePair<string, object>> Param = new List<KeyValuePair<string, object>>();
                 List<ItemsClass> Iteminfo = sqlHandler.ExecuteAsList<ItemsClass>("[USP_RO_GETITEM]");
-               // List<ItemsClass> Iteminfo = sqlHandler.ExecuteAsList<ItemsClass>("USP_RO_GETITEM_NEW");
-                
+                // List<ItemsClass> Iteminfo = sqlHandler.ExecuteAsList<ItemsClass>("USP_RO_GETITEM_NEW");
+
                 return Iteminfo;
             }
             catch (Exception ex)
@@ -3896,14 +3896,14 @@ namespace SageFrame.RestroOrder
             try
             {
 
-                    List<KeyValuePair<string, object>> Param = new List<KeyValuePair<string, object>>();
-                    Param.Add(new KeyValuePair<string, object>("@salesMasterId", id));
-                    Param.Add(new KeyValuePair<string, object>("@MembershipID", memberId));
-                    Param.Add(new KeyValuePair<string, object>("@Reasons", reason));
-                    Param.Add(new KeyValuePair<string, object>("@userName", userName));
-                    Param.Add(new KeyValuePair<string, object>("@cancelledDate", date));
-                    sqlHandler.ExecuteNonQuery("[USP_RO_Credit_CancelReason]", Param);
-                    
+                List<KeyValuePair<string, object>> Param = new List<KeyValuePair<string, object>>();
+                Param.Add(new KeyValuePair<string, object>("@salesMasterId", id));
+                Param.Add(new KeyValuePair<string, object>("@MembershipID", memberId));
+                Param.Add(new KeyValuePair<string, object>("@Reasons", reason));
+                Param.Add(new KeyValuePair<string, object>("@userName", userName));
+                Param.Add(new KeyValuePair<string, object>("@cancelledDate", date));
+                sqlHandler.ExecuteNonQuery("[USP_RO_Credit_CancelReason]", Param);
+
             }
             catch (Exception)
             {
@@ -4411,6 +4411,7 @@ namespace SageFrame.RestroOrder
                         ParamBill2.Add(new KeyValuePair<string, object>("@rate", term.Rate));
                         var billTermList = sqlHandler.ExecuteAsList<customerBilling>("USP_RO_SaveBILLTERM_WITHID", ParamBill2);
                     }
+
                     foreach (SalesDetails sd in sds)
                     {
                         List<KeyValuePair<string, object>> Param1 = new List<KeyValuePair<string, object>>();
@@ -4441,6 +4442,7 @@ namespace SageFrame.RestroOrder
                             }
                         }
                     }
+
                     List<KeyValuePair<string, object>> Param2 = new List<KeyValuePair<string, object>>();
                     Param2.Add(new KeyValuePair<string, object>("@OrderMasterId", sm.OrderMasterId));
                     Param2.Add(new KeyValuePair<string, object>("@termAmount", sm.TermAmount));

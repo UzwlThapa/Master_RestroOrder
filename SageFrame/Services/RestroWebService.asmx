@@ -1,13 +1,9 @@
 ﻿<%@ WebService Language="C#" Class="RestroWebService" %>
 
 using System;
-using System.Web;
 using System.Web.Services;
-using System.Web.Services.Protocols;
 using System.Web.Script.Serialization;
-using System.Linq;
 using System.Collections.Generic;
-using SageFrame.CostCenter;
 using SageFrame.RestroOrder;
 using Newtonsoft.Json;
 
@@ -15,7 +11,8 @@ using Newtonsoft.Json;
 [WebServiceBinding(ConformsTo = WsiProfiles.BasicProfile1_1)]
 // To allow this Web Service to be called from script, using ASP.NET AJAX, uncomment the following line. 
 [System.Web.Script.Services.ScriptService]
-public class RestroWebService  : System.Web.Services.WebService {
+public class RestroWebService : System.Web.Services.WebService
+{
 
     RestrOrderController roController = new RestrOrderController();
     JavaScriptSerializer serializer = new JavaScriptSerializer();
@@ -35,9 +32,9 @@ public class RestroWebService  : System.Web.Services.WebService {
     }
 
     [WebMethod]
-    public string CheckPinCodeMatch(string PinCode,string username)
+    public string CheckPinCodeMatch(string PinCode, string username)
     {
-        string available = roController.CheckPinCodeMatch(PinCode,username);
+        string available = roController.CheckPinCodeMatch(PinCode, username);
         return JsonConvert.SerializeObject(available);
     }
 
@@ -54,13 +51,15 @@ public class RestroWebService  : System.Web.Services.WebService {
         }
         catch (Exception ex)
         {
-            Context.Response.Write("{statusCode:100, message:\""+ex.Message+"\"}");
+            Context.Response.Write("{statusCode:100, message:\"" + ex.Message + "\"}");
         }
     }
     [WebMethod]
     public void shiftItemsWeb(ShiftItems shiftItems)
     {
         roController.shiftItems(shiftItems);
+        // Send Kot Print for shift items
+
     }
     [WebMethod]
     public string getDataForShift(int orderMasterId)
@@ -101,5 +100,5 @@ public class RestroWebService  : System.Web.Services.WebService {
         return result.ToString();
     }
 
-    
+
 }

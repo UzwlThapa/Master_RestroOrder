@@ -2,10 +2,10 @@
 (function ($) {
     $.companyProfcreate = function (p) {
         p = $.extend
-             ({
-                 UserModuleID: '',
-                 ModulePath: '/Modules/ChartOfAccount/FinancialAccount/webService/'
-             }, p);
+            ({
+                UserModuleID: '',
+                ModulePath: '/Modules/ChartOfAccount/FinancialAccount/webService/'
+            }, p);
         var eventFunction = {
             config: {
                 isPostBack: false,
@@ -28,11 +28,11 @@
                 eventFunction.getAllFinancialAcForGrid();
                 eventFunction.getFinancialSysName();
                 eventFunction.getFinancialAcName();
-                
+
             },
             init: function () {
                 eventFunction.InitialSetup();
-                $("#btnSave").on('click',function () {
+                $("#btnSave").on('click', function () {
                     var checkValid = eventFunction.ValidationForm();
                     if (checkValid)
                         eventFunction.saveFinancialAc();
@@ -52,7 +52,7 @@
                         eventFunction.config.data = JSON2.stringify({ obj: obj });
                         eventFunction.config.ajaxCallMode = 12;
                         eventFunction.ajaxCall(eventFunction.config);
-                    }else{
+                    } else {
                         jAlert("Cannot merge same Accounts !!", 'Error!!', function () { $.alerts.dialogClass = null; });
                     }
                 });
@@ -77,7 +77,7 @@
                         eventFunction.config.ajaxCallMode = 13;
                         eventFunction.ajaxCall(eventFunction.config);
                     }
-                        
+
                 });
 
                 $("#btnOpeningUpdate").on('click', function () {
@@ -142,10 +142,10 @@
                     $("#btnOpeningSave").hide();
                     $("#btnOpeningUpdate").hide();
                     $("#OpeningBalance").dialog('close');
-                    
+
                 });
 
-                
+
 
                 $("#selFinancialSys").on("change", function () {
                     // alert($("#selFinancialSys").find(':selected').attr('data'));
@@ -217,11 +217,11 @@
                         $("#txtFyid").html(html);
                         break;
                     case 9:
-                            var html = "";
-                            $.each(data.d, function (index, value) {
-                                html += "<option value='" + value.fyId + "'>" + value.fyName + "</option>"
-                            });
-                            $("#txtFyid").html(html);
+                        var html = "";
+                        $.each(data.d, function (index, value) {
+                            html += "<option value='" + value.fyId + "'>" + value.fyName + "</option>"
+                        });
+                        $("#txtFyid").html(html);
                         break;
                     case 10:
                         eventFunction.bindFinancialAcName(data.d);
@@ -294,7 +294,7 @@
                     $.each(data, function (index, value) {
                         if (!value.SystemGenerated || !value.isGroup) {
 
-                        AutocompleteFinancialAc.push({ label: value.items, id: value.FinancialAcID });
+                            AutocompleteFinancialAc.push({ label: value.items, id: value.FinancialAcID });
                         }
                     });
                 }
@@ -320,7 +320,7 @@
                     }
                 });
 
-                
+
 
             },
 
@@ -376,7 +376,7 @@
                     eventFunction.config.data = JSON2.stringify({ id: id });
                     eventFunction.config.ajaxCallMode = 15;
                     eventFunction.ajaxCall(eventFunction.config);
-                   
+
                 })
             },
 
@@ -396,7 +396,7 @@
                             htmls += "- - - - - -"
                         }
                         htmls += value.FinancialAcName + '</td>';
-                       // htmls += '<td>' + value.items + '</td>';
+                        // htmls += '<td>' + value.items + '</td>';
                         htmls += '<td>' + value.PFinancialAcName + '</td>';
                         htmls += '<td>' + value.FinancialSysName + '</td>';
                         //if (value.isGroup == false)
@@ -406,18 +406,16 @@
                         var dates = value.AddedOn.split(" ");
                         htmls += '<td>' + dates[0] + '</td>';
                         htmls += '<td>' + value.AddedBy + '</td>';
-                        if (!value.SystemGenerated) {
+                        if (!value.IsGroup) {
                             htmls += '<td><label value="Edit" class="edit icon-edit" id="' + value.FinancialAcID + '+' + value.PFinancialAcID + '+' + value.FinancialSysID + '+' + value.OpeningBalance + '+' + value.isGroup + '+' + value.FinancialAcName + '"></label></td>';
                         } else {
                             htmls += '<td><label value="Edit" class="edit icon-edit" hidden id="' + value.FinancialAcID + '+' + value.PFinancialAcID + '+' + value.FinancialSysID + '+' + value.OpeningBalance + '+' + value.isGroup + '+' + value.FinancialAcName + '"></label></td>';
-
                         }
-                        
-                        if (!value.SystemGenerated) {
-                        htmls += '<td><label value="Delete" class="delete icon-delete" id="' + value.FinancialAcID + '"></label></td></tr>';
-                        }else{
-                            htmls += '<td><label value="Delete" class="delete icon-delete" id="' + value.FinancialAcID + '" hidden></label></td></tr>';
 
+                        if (!value.IsGroup) {
+                            htmls += '<td><label value="Delete" class="delete icon-delete" id="' + value.FinancialAcID + '"></label></td></tr>';
+                        } else {
+                            htmls += '<td><label value="Delete" class="delete icon-delete" id="' + value.FinancialAcID + '" hidden></label></td></tr>';
                         }
                     });
                     htmls += '</tbody></table>';
@@ -426,7 +424,7 @@
                     $("#divForFinancialAc").html(htmls);
                 }
                 $("#tblOfFinancialAc").dataTable({
-                    jQueryUI : true,
+                    jQueryUI: true,
                     sort: false,
                     paging: false,
                     //info: false,
@@ -543,7 +541,7 @@
             },
 
             saveFinancialAc: function () {
-                
+
                 var info = {};
                 info.FinancialAcID = eventFunction.config.FinancialAcID;
                 info.FinancialAcName = $("#txtName").val();
@@ -553,7 +551,7 @@
                 info.AccountEntryType = $('#selFinancialType').val();
                 if (parseInt($("#selPName").val()) == 0) {
 
-                   info.IsDebit = $('input:radio[name="DrCrCol"]:checked').val();/* == "true" ? true : false;*/
+                    info.IsDebit = $('input:radio[name="DrCrCol"]:checked').val();/* == "true" ? true : false;*/
                 }
 
                 info.AddedBy = SageFrameUserName;
@@ -649,7 +647,7 @@
                 $("#txtName").val("");
                 $("#selPName").val("0");
                 $("#selFinancialSys").val("0");
-                
+
                 $("#btnSave").text("Save");
                 $(".AccountForm").hide();
                 $("#divForFinancialAc").show();
