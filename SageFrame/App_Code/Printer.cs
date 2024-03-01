@@ -383,7 +383,7 @@ public class Printer
         graphic.DrawString(line, font, new SolidBrush(Color.Black), startX, startY + offset);
 
         offset = offset + (int)fontHeight;
-        line = "Waiter:" + kot.Waiter;
+        line = "Order By:" + kot.Waiter;
         graphic.DrawString(line, font, new SolidBrush(Color.Black), startX, startY + offset);
 
         if (kot.Customer.Length > 2)
@@ -541,7 +541,7 @@ public class Printer
         graphic.DrawString(line, font, new SolidBrush(Color.Black), startX, startY + offset);
 
         offset = offset + (int)fontHeight;
-        line = "Waiter:" + kot.Waiter;
+        line = "Order By:" + kot.Waiter;
         graphic.DrawString(line, font, new SolidBrush(Color.Black), startX, startY + offset);
 
         if (kot.Customer.Length > 2)
@@ -664,7 +664,7 @@ public class Printer
         graphic.DrawString(line, font, new SolidBrush(Color.Black), startX, startY + offset);
 
         offset = offset + (int)fontHeight;
-        line = "Waiter:" + kot.Waiter + " (" + kot.Status + ")";
+        line = "Order By:" + kot.Waiter + " (" + kot.Status + ")";
         graphic.DrawString(line, font, new SolidBrush(Color.Black), startX, startY + offset);
 
         if (kot.Customer.Length > 2)
