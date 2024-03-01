@@ -61,6 +61,7 @@ function IntegerAndDecimal(evt, element) {
         var Paymode = [];
         var RemainingAmount = 0;
         var fromtableId = 0;
+        var fromOrderNo = 0;
         var DashboardFunction = {
             config: {
                 isPostBack: false,
@@ -721,14 +722,28 @@ function IntegerAndDecimal(evt, element) {
             },
 
             ShiftTable: function () {
+                debugger;
                 var totableID = tabletoshift;
                 var fromordermasterid = DashboardFunction.config.ShiftOrderMasterID;
                 var fromSeatNo = $('#shiftingTableSeatNo').val();
                 var toSeatNo = $('#shiftToTableSeatNo').val();
                 var shiftedby = $('#hdnPinBy').val();
+
+                var fromTableTitle = $('#shiftingTableName').text();
+                var toTableTitle = $('#shiftToTableName').text();
+
                 DashboardFunction.config.method = "shiftTable";
                 DashboardFunction.config.url = DashboardFunction.config.baseURL + DashboardFunction.config.method;
-                DashboardFunction.config.data = JSON2.stringify({ fromordermasterid: fromordermasterid, totableID: totableID, fromSeatNo: fromSeatNo, toSeatNo: toSeatNo, shiftedby: shiftedby });
+                DashboardFunction.config.data = JSON2.stringify({
+                    fromordermasterid: fromordermasterid,
+                    totableID: totableID,
+                    fromSeatNo: fromSeatNo,
+                    toSeatNo: toSeatNo,
+                    shiftedby: shiftedby,
+                    fromTableTitle: fromTableTitle,
+                    toTableTitle: toTableTitle,
+                    OrderNo: fromOrderNo
+                });
                 DashboardFunction.config.ajaxCallMode = 8;
                 DashboardFunction.ajaxCall(DashboardFunction.config);
             },
@@ -959,7 +974,7 @@ function IntegerAndDecimal(evt, element) {
                             htmls += (" <option value='" + i + "'>" + i + "</option> ");
                         }
                     }
-                    debugger;
+
                     htmls += "</select></div></div>";
                     htmls += ("<div class='item_list_div'><table class='item-list-tbl' style='margin-bottom:10px;'><thead><th style='width:250px'>Item</th><th>Qty</th><th>Rate</th><th>Amt</th></thead><tbody id='bindorderlist'>");
                     $.each(datas, function (index, value) {
@@ -987,15 +1002,16 @@ function IntegerAndDecimal(evt, element) {
 
                     var Roles = userRole.split(",");
 
+                    debugger;
                     if (datas[0].Note != null && datas[0].Note != "") {
                     } else {
                         if (Roles.includes("Table Shift") || Roles.includes("Super User")) {
-                            htmls += ("<div class='ordering'><input id='Shift_" + datas[0].OrderMasterId + "_" + datas[0].restrotableTitle + "_" + datas[0].GuestNo + "_" + datas[0].restrotableId + "' type='button' class='sfBtn shiftTable restro-btn' value='Shift Table' />");
+                            htmls += ("<div class='ordering'><input id='Shift_" + datas[0].OrderMasterId + "_" + datas[0].restrotableTitle + "_" + datas[0].GuestNo + "_" + datas[0].restrotableId + "_" + datas[0].OrderNo + "' type='button' class='sfBtn shiftTable restro-btn' value='Shift Table' />");
                         }
                     }
                     htmls += ("<input id='Order_" + datas[0].restrotableId + "' type='button' class='sfBtn ordernow restro-btn' value='Order Now ' style='margin-left:10px;' />");
                     if (Roles.includes("Item Shift") || Roles.includes("Super User")) {
-                        htmls += ("<input id='shiftItems_" + datas[0].OrderMasterId + "_" + datas[0].restrotableId + "_" + datas[0].GuestNo + "' type='button' class='sfBtn shiftItems restro-btn' value='Shift Items ' style='margin-left:10px;' />");
+                        htmls += ("<input id='shiftItems_" + datas[0].OrderMasterId + "_" + datas[0].restrotableId + "_" + datas[0].GuestNo + "_" + datas[0].OrderNo + "' type='button' class='sfBtn shiftItems restro-btn' value='Shift Items ' style='margin-left:10px;' />");
                     }
 
                     if (Roles.includes("Cancel Order") || Roles.includes("Super User")) {
@@ -1026,6 +1042,7 @@ function IntegerAndDecimal(evt, element) {
                         htmls += ("<h4>Bill not Cleared </h4>");
                     }
                 }
+
                 $('#DialogOrderDetail').html(htmls);
                 if (datas.length > 0) {
                     $('.shiftItems').on('click', function () {
@@ -1033,11 +1050,12 @@ function IntegerAndDecimal(evt, element) {
                         var ordermasterid = $(this).attr('id').split('_')[1];
                         tableId = $(this).attr('id').split('_')[2];
                         fromOrderMasterId = $(this).attr('id').split('_')[1];
-                        getDataForShift(ordermasterid);
+                        var orderNo = $(this).attr('id').split('_')[3];
+                        getDataForShift(ordermasterid, orderNo);
                         $('#btnShiftItem').bind('click');
                     });
-
                 }
+
                 $(".splithead").hide();
                 $("#DDsplited").on('change', function () {
                     var valu = $("#DDsplited").val();
@@ -1051,7 +1069,6 @@ function IntegerAndDecimal(evt, element) {
                         $('.totle').html(amountarray[valu]);
                         GoSplit = 1;
                     }
-
                 });
 
                 if (!(!IsOccuoied && !isMergedTable)) {
@@ -1064,6 +1081,7 @@ function IntegerAndDecimal(evt, element) {
                             position: ['center', 'center']
                         });
                 }
+
                 $('.neworder').on('click', function () {
 
                     var id = $(this).attr('id');
@@ -1092,6 +1110,7 @@ function IntegerAndDecimal(evt, element) {
 
                     $("#bindorderlist").html(htmls);
                 });
+
                 $('#DialogOrderDetail').unbind('click').on('click', '.removeMerge', function () {
                     var tableid = $(this).attr('id').split("_")[1];
 
@@ -1105,12 +1124,13 @@ function IntegerAndDecimal(evt, element) {
                         }
                     });
                 });
+
                 $('#DialogOrderDetail').on('click', '.cancelorder', function () {
                     $('#DialogOrderDetail').dialog('close');
                     OrderMasterID = $(this).attr('id').split("_")[1];
                     CancelTableID = $(this).attr('id').split("_")[2];
                     fromtableId = $(this).attr('id').split('_')[2];
-                    var noOfSeat = parseInt($(this).attr('id').split("_")[3]);
+                    var noOfSeat = parseInt($(this).attr('id').split("_")[4]);
                     var htmls = "";
                     $('#splitNoCancel').html('');
                     for (i = 1; i <= noOfSeat; i++) {
@@ -1119,15 +1139,18 @@ function IntegerAndDecimal(evt, element) {
                     $('#splitNoCancel').html(htmls);
                     $('#hdnPinFor').val('CancelOrder');
                     InitializePin();
-
                 });
+
                 $('#DialogOrderDetail').on('click', '.shiftTable', function () {
+                    debugger;
                     $('#DialogOrderDetail').dialog('close');
                     DashboardFunction.config.ShiftOrderMasterID = $(this).attr('id').split("_")[1];
                     $('#shiftingTableName').html($(this).attr('id').split("_")[2]);
                     var seatNo = $(this).attr('id').split("_")[3];
                     fromtableId = $(this).attr('id').split('_')[4];
-                    //$('#shiftingTableSeatNo').html('');
+                    fromOrderNo = $(this).attr('id').split('_')[5];
+                    fromOrderMasterId = DashboardFunction.config.ShiftOrderMasterID;
+
                     $('#shiftingTableSeatNo').html('<option value="0">ALL</option>');
                     for (var i = 1; i <= seatNo; i++) {
                         $('#shiftingTableSeatNo').append('<option value="' + i + '">' + i + '</option>');
@@ -1136,7 +1159,6 @@ function IntegerAndDecimal(evt, element) {
                     $(".imgRoomForShift").val("");
                     $(".TablesForShift").hide();
 
-                    //$(".RoomsForShift").hide();
                     $('#divForRoomTableShift').dialog({
                         'title': 'Shift Table',
                         width: 700,
@@ -2922,15 +2944,6 @@ function IntegerAndDecimal(evt, element) {
             Reset: function () {
                 $(".ui-dialog-content").dialog("close");
                 $('#TablesInRooms').hide();
-                //$('#sample').dialog('close');
-                //$('#membeshipformlist').dialog('close');
-                //$('#membeshipformlist2').dialog('close');
-                //$('#PINcode').dialog('close');
-                //$('#DisplayCancel').dialog('close');
-                //$('#divForRoomTableMerge').dialog('close');
-                //$('#divForRoomTableShift').dialog('close');
-                //$('#DisplayCancel').dialog('close');
-                //$('#CusOrder').dialog('close');
             },
         };
         DashboardFunction.init();

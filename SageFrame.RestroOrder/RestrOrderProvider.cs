@@ -1428,13 +1428,7 @@ namespace SageFrame.RestroOrder
             Param.Add(new KeyValuePair<string, object>("@amount", val));
             return sqlHandler.ExecuteAsList<customerBilling>("[USP_RO_BILLTERM]", Param);
         }
-        //internal List<dailyreport> getdailyReport(DateTime dateTime)
-        //{
-        //    
-        //    List<KeyValuePair<string, object>> Param = new List<KeyValuePair<string, object>>();
-        //    Param.Add(new KeyValuePair<string, object>("@Todaydate", dateTime));
-        //    return sqlHandler.ExecuteAsList<dailyreport>("[USP_SALSEREPORTBtoday]", Param);
-        //}
+
         internal List<OrderDetailClass> GettabledataByIdforMenu(int TableId)
         {
             try

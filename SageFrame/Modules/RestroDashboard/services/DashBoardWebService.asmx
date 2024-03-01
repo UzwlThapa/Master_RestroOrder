@@ -153,10 +153,10 @@ public class DashBoardWebService : System.Web.Services.WebService
             salesBill.orderDetail = roc.getOrderDetailByOrderMasterId(orderMasterId).Where(p => p.IsCancelled == false).ToList();
 
             List<OrderExtraItem> extra = roc.GetAllExtraItemByOrderMaster(orderMasterId);
-            
+
             foreach (OrderDetailClass ord in salesBill.orderDetail)
             {
-                
+
 
                 if (!ord.IsCombo)
                 {
@@ -341,21 +341,25 @@ public class DashBoardWebService : System.Web.Services.WebService
     {
         roc.SaveMergeTable(mergeTableList, occupiedTableIds);
     }
+
     [WebMethod]
     public string GetMergedTables(int tableId)
     {
         return JsonConvert.SerializeObject(roc.GetMergedTables(tableId));
     }
+
     [WebMethod]
     public void ClearMergeList(int tableId)
     {
         roc.ClearMergeList(tableId);
     }
+
     [WebMethod]
     public string GetProviderList()
     {
         return JsonConvert.SerializeObject(roc.getCardProvider());
     }
+
     [WebMethod]
     public void UpdateSalesPayMode(SalesPayment salesPayment)
     {
@@ -369,8 +373,8 @@ public class DashBoardWebService : System.Web.Services.WebService
 
             throw;
         }
-
     }
+
     [WebMethod]
     public void SaveTotalCashPaid(MemberInfo MemberInfo)
     {
@@ -384,18 +388,20 @@ public class DashBoardWebService : System.Web.Services.WebService
 
             throw;
         }
-
     }
+
     [WebMethod]
     public string HelloWorld()
     {
         return "Hello World";
     }
+
     [WebMethod]
     public string GetUnpaidBills()
     {
         return JsonConvert.SerializeObject(roc.GetUnpaidBills().Where(p => p.OrderTypeID != 4).ToList());
     }
+
     [WebMethod]
     public string Gettabledataforshift()
     {
@@ -403,8 +409,15 @@ public class DashBoardWebService : System.Web.Services.WebService
     }
 
     [WebMethod]
-    public void shiftTable(int fromordermasterid, int totableID, int fromSeatNo, int toSeatNo, string shiftedby)
+    public void shiftTable(int fromordermasterid, int totableID, int fromSeatNo, int toSeatNo, string shiftedby, string fromTableTitle, string toTableTitle, int OrderNo)
     {
+        List<OrderDetailClass> orderList = roc.GetOrderDetailsByMaster(fromordermasterid);
+        // Send Kot Print for shift items
+        if (System.Configuration.ConfigurationManager.AppSettings["PrintOrderShiftBill"] == "true")
+        {
+            OrderPrint print = new OrderPrint();
+            print.PrintShiftBill(orderList, "", DateTime.Now, fromTableTitle, toTableTitle, shiftedby, "Ordered", fromordermasterid, OrderNo, 0, "", "");
+        }
         roc.shiftTable(fromordermasterid, totableID, fromSeatNo, toSeatNo, shiftedby);
     }
 
@@ -415,7 +428,7 @@ public class DashBoardWebService : System.Web.Services.WebService
     }
 
     [WebMethod]
-    public void SaveSplittedData(List<OrderDetailClass> ItemsArray )
+    public void SaveSplittedData(List<OrderDetailClass> ItemsArray)
     {
         roc.SaveSplittedData(ItemsArray);
     }
@@ -483,7 +496,7 @@ public class DashBoardWebService : System.Web.Services.WebService
     }
 
     [WebMethod]
-    public string CheckLoyaltyForDiscount(string MembershipID,string TelMobile)
+    public string CheckLoyaltyForDiscount(string MembershipID, string TelMobile)
     {
         try
         {
@@ -596,7 +609,7 @@ public class DashBoardWebService : System.Web.Services.WebService
     [WebMethod]
     public string checkOrder(int orderMasterId, int seatNo, int tableId)
     {
-        List<CheckBill> Checkbill = roc.checkOrder(orderMasterId,seatNo,tableId);
+        List<CheckBill> Checkbill = roc.checkOrder(orderMasterId, seatNo, tableId);
         return JsonConvert.SerializeObject(Checkbill);
     }
 

@@ -474,6 +474,7 @@ namespace SageFrame.RestroOrder
         public decimal AdvancePayment { get; set; }
         public bool IsTable { get; set; }
         public decimal coDiscount { get; set; }
+        public int OrderNo { get; set; }
         public int CCDiscount { get; set; }
         public int MembershipID { get; set; }
         public bool IsEveningDiscount { get; set; }
@@ -2203,9 +2204,13 @@ namespace SageFrame.RestroOrder
     {
         public string shiftType { get; set; }
         public int fromTable { get; set; }
+        public string fromTableTitle { get; set; }
         public int fromSplitNo { get; set; }
         public int toTable { get; set; }
+        public string toTableTitle { get; set; }
         public int toSplitNo { get; set; }
+        public int OrderMasterID { get; set; }
+        public int OrderNo { get; set; }
         public string shiftedBy { get; set; }
         public List<ShiftItemList> itemList { get; set; }
     }

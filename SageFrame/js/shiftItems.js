@@ -1,6 +1,7 @@
 ﻿var ordersList = [];
 var tableId = 0;
 var fromOrderMasterId = 0;
+var fromOrderNo = 0;
 var shiftItemList = [];
 var tablesList = [];
 var userRoles = JSON.parse(localStorage.getItem("userRoles"));
@@ -36,11 +37,13 @@ function shiftItemsInitialize() {
 
     $('#btnShiftItem').unbind('click').on('click', function () {
         Checkbillgenerated();
-        
+
     });
 }
 
-function getDataForShift(orderMasterId) {
+function getDataForShift(orderMasterId, orderNo) {
+    fromOrderMasterId = orderMasterId;
+    fromOrderNo = orderNo;
     $.ajax({
         type: "POST",
         async: false,
@@ -79,7 +82,7 @@ function getDataForShift(orderMasterId) {
             } else {
                 jAlert("No Item to shift.", "Alert!!");
             }
-        
+
             bindOrderList();
         },
         failure: function (response) {
@@ -108,7 +111,7 @@ function bindOrderList() {
     $('#shiftAllItems').on('click', function () {
         shiftItemList = [];
         for (var i = 0; i < ordersList.length; i++) {
-            if (ordersList[i].SeatNo == seatNo ) {
+            if (ordersList[i].SeatNo == seatNo) {
                 var item = new Object();
                 item.ItemId = ordersList[i].ROI_ItemId;
                 item.IsCombo = ordersList[i].IsCombo;
@@ -158,6 +161,7 @@ function bindOrderList() {
         bindShiftingItemsList();
     });
 }
+
 function bindShiftingItemsList() {
     var htmls = '';
     var i = 1;
@@ -217,7 +221,7 @@ function getRooms() {
         success: function (data) {
             var roomsList = JSON.parse(data.d);
             var htmls = '';
-           // $('#toRooms').html(htmls)
+            // $('#toRooms').html(htmls)
             htmls += '<option selected disabled>-- Select --</option>';
             $.each(roomsList, function (index, room) {
                 htmls += '<option value="' + room.restroRoomId + '">' + room.restroRoom + '</option>';
@@ -244,7 +248,7 @@ function bindTables(roomID) {
     });
     $('#toTables').html(htmls)
     $('#toTables').on('change', function () {
-       
+
         var guestNo = $('option:selected', this).attr('attr-GN');
         var gn = '';
         gn += '<option value="1">1' + (guestNo == 0 ? ' (New)' : '') + '</option>'
@@ -266,7 +270,7 @@ function getTables() {
         success: function (data) {
             tablesList = [];
             tablesList = JSON.parse(data.d);
-            
+
         },
         failure: function (response) {
             jAlert("Sorry some error occured. Contact the support team.", "Error!!");
@@ -274,11 +278,24 @@ function getTables() {
     });
 }
 function shiftItems() {
+    debugger;
     var shift = new Object();
     shift.shiftType = $('#selShiftType').val();
+    shift.OrderMasterID = fromOrderMasterId;
+    shift.OrderNo = fromOrderNo;
     shift.fromTable = tableId;
-    shift.fromSplitNo = $('#fromSplitNo').val();
+
+    var tableF = tablesList.filter((val) => val.restrotableId == tableId);
+    if (tableF != null) {
+        shift.fromTableTitle = tableF[0].restrotableTitle;
+    } 
+
     shift.toTable = $('#toTables').val() == null ? tableId : $('#toTables').val();
+    var tableT = tablesList.filter((val) => val.restrotableId == shift.toTable);
+    if (tableT != null) {
+        shift.toTableTitle = tableT[0].restrotableTitle;
+    }
+    shift.fromSplitNo = $('#fromSplitNo').val();
     shift.toSplitNo = $('#toSplitNo').val();
     shift.shiftedBy = $('#hdnPinBy').val();
     shift.itemList = shiftItemList;
@@ -294,7 +311,7 @@ function shiftItems() {
             $('#shiftItems').dialog('close');
             jAlert('Item Successfully Shifted', 'Information!!', function () {
                 $(".ui-dialog-content").dialog("close");
-               // $('.imgRoom').click();              
+                // $('.imgRoom').click();              
                 parent.$.colorbox.close();
             });
             $('#hdnPinFor').val("");
@@ -320,8 +337,7 @@ function Checkbillgenerated() {
             var result = JSON.parse(data.d);
             if (result[0].ErrorNumber == 200) {
                 if (shiftItemList.length > 0) {
-                    if ($('#selShiftType').val() == "Regular")
-                    {
+                    if ($('#selShiftType').val() == "Regular") {
                         if ($('#toRooms').val() == null) {
                             jAlert('Please select Room', 'Alert!!');
                         }
@@ -332,7 +348,7 @@ function Checkbillgenerated() {
                             jConfirm('Are you sure to shift table in <b>' + $('#toTables :selected').text() + '</b>', 'Confirmation!!', function (confirm) {
                                 if (confirm) {
                                     $('#hdnPinFor').val('ShiftItem');
-                                    InitializePin(); 
+                                    InitializePin();
                                 }
                             });
                         }

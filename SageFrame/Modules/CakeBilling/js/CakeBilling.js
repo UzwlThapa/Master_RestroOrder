@@ -2483,7 +2483,6 @@ function print() {
                         }
 
                         var search = $('#txtSearch').val().toLowerCase();
-                        //if (type.restroRoom.toLowerCase().includes(search) || type.restrotableTitle.toLowerCase().includes(search) || type.MergeTableName.toLowerCase().includes(search) || search == '') {
                         htmls += ("<tr><td>");
                         htmls += type.CustomerName;
                         htmls += ("</td><td>" + type.Address + "</td><td>" + type.Phone + "</td><td>" + time + "</td><td>Rs. " + type.AdvanceAmount + "</td><td>Rs. " + type.TotalAmount + "</td><td style='width:315px;'><div class='ordering'>");
@@ -2496,16 +2495,6 @@ function print() {
                         if (Roles.includes("Cancel Order") || Roles.includes("Super User")) {
                             htmls += ("<input id='Cancel_" + type.OrderMasterID + "_" + sn + "' type='button' class='sfBtn cancelorder restro-btn' value='Cancel' style='padding:1px 4px; margin-left:10px;' />");
                         }
-                        //htmls += ("<input id='shiftItems_" + type.OrderMasterId + "_" + type.restrotableId + "_" + type.GuestNo + "' type='button' class='sfBtn shiftItems restro-btn' value='Shift Items' style='padding:1px 4px; margin-left:10px;' />");
-                        //if (type.MergeTableList > 0) {
-                        //    htmls += ("<input id='Merge_" + type.restrotableId + "' type='button' class='sfBtn removeMerge restro-btn' value='UnMerge' style='padding:1px 4px; margin-left:10px;' />");
-                        //}
-                        //else {
-                        //    htmls += ("<input id='Shift_" + type.OrderMasterId + "_" + type.restrotableTitle + "_" + type.GuestNo + "_" + type.restrotableId + "' type='button' class='sfBtn shiftTable restro-btn' value='Shift' style='padding:1px 4px; margin-left:10px;' />");
-                        //}
-                        //htmls += ("</div></td></tr>");
-                        //}
-
                     });
                 }
 
@@ -2517,15 +2506,7 @@ function print() {
                 sn++;
                 htmls += ("</tbody></table></div>");
                 $('#OccupiedTablesdiv').html(htmls);
-
-                //$('#OccupiedTables').dataTable({
-                //	"bPaginate" : $('#OccupiedTables tbody tr').length>16,
-                //	"iDisplayLength": 16,
-                //    "ordering": false,
-                //    "bLengthChange": false,
-                //     "language": { search: "" ,  searchPlaceholder: "Search..."},
-
-                //});
+                
                 $('div.dataTables_filter input').addClass('sfInputbox');
                 $('#OccupiedTables').on('click', '.shiftTable', function () {
                     //$('#DialogOrderDetail').dialog('close');
@@ -2667,13 +2648,8 @@ function print() {
                                     roomHtmls += ("<input id='Order_" + type.OrderMasterId + "' type='button' class='sfBtn ordernow restro-btn' value='Order ' style='padding:1px 4px; margin-left:10px;' />");
                                     roomHtmls += ("<input id='Booking_" + type.OrderMasterId + "' type='button' class='sfBtn editBooking restro-btn' value='Edit' style='padding:1px 4px; margin-left:10px;' />");
                                 }
-                                //roomHtmls += ("<input id='shiftItems_" + type.OrderMasterId + "_" + type.TableId + "_" + type.GuestNo + "' type='button' class='sfBtn shiftItems restro-btn' value='Shift Items' style='padding:1px 4px; margin-left:10px;' />");
-                                //roomHtmls += ("<input id='Shift_" + type.OrderMasterId + "_" + type.restrotableTitle + "_" + type.GuestNo + "' type='button' class='sfBtn shiftTable restro-btn' value='Shift' style='padding:1px 4px; margin-left:10px;' />");
-                                roomHtmls += ("<input id='Pay_" + type.TableId + "_" + type.OrderMasterId + "' type='button'  class='sfBtn paynow restro-btn' value='Pay' style='padding:1px 4px; margin-left:10px;'/>");
-                                //var Roles = userRole.split(",");                
-                                //if (Roles.includes("Cancel Order") || Roles.includes("Super User")) {
+                                 roomHtmls += ("<input id='Pay_" + type.TableId + "_" + type.OrderMasterId + "' type='button'  class='sfBtn paynow restro-btn' value='Pay' style='padding:1px 4px; margin-left:10px;'/>");
                                 roomHtmls += ("<input id='Cancel_" + type.OrderMasterId + "_" + type.TableId + "_" + type.GuestNo + "' type='button' class='sfBtn cancelorder restro-btn' value='Cancel' style='padding:1px 4px; margin-left:10px;' />");
-                                // }
                                 roomHtmls += ("</div></td></tr>");
                             }
                         }
@@ -2681,17 +2657,10 @@ function print() {
                     roomHtmls += ("</tbody></table></div>");
 
                     $('#OccupiedRoomsdiv').html(roomHtmls);
-
-                    //$('#OccupiedRooms').dataTable({
-                    //    "bPaginate": $('OccupiedRooms tbody tr').length > 12,
-                    //    "iDisplayLength": 12,
-                    //    ordering: false,
-                    //    "bLengthChange": false,
-                    //    "language": { search: "", searchPlaceholder: "Search..." },
-                    //});
+                    
                     $('div.dataTables_filter input').addClass('sfInputbox');
                     $('#OccupiedRooms').on('click', '.shiftTable', function () {
-                        //$('#DialogOrderDetail').dialog('close');
+                        
                         DashboardFunction.config.ShiftOrderMasterID = $(this).attr('id').split("_")[1];
                         $('#shiftingTableName').html($(this).attr('id').split("_")[2]);
                         var seatNo = $(this).attr('id').split("_")[3];
