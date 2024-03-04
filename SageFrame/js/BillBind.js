@@ -173,7 +173,7 @@ function getBill(salesMasterId, foodCourtOrder) {
                 htmls += "<tr>";
             }
 
-            htmls += "<td colspan='1' style='text-align:left;font-size:11px;'>Customer : " + (billBody[0].CusName == "" ? "CASH" : billBody[0].CusName);
+            htmls += "<td colspan='1' style='text-align:left;font-size:11px;'>Customer : " + (billBody[0].CusName == "" ? "" : billBody[0].CusName);
             htmls += ("</td>");
 
             htmls += "<td colspan='6' style='text-align:right;font-size:11px;margin-right:10px;'>PAN : " + billBody[0].PAN + "</td></tr>";
@@ -708,7 +708,7 @@ function getSalesReport_CakeBill(SalesMasterID, SalesType) {
             var logoInfo = comphtmls;
             var htmls = "";
             htmls += "<tr style='border-top:1px dotted;'>";
-            htmls += "<td colspan='1' style='text-align:left;font-size:11px;'>Customer : " + (billBody[0].CusName == "" ? "CASH" : billBody[0].CusName);
+            htmls += "<td colspan='1' style='text-align:left;font-size:11px;'>Customer : " + (billBody[0].CusName == "" ? "" : billBody[0].CusName);
             htmls += ("</td>");
 
             htmls += "<td colspan='6' style='text-align:right;font-size:11px;margin-right:10px;'>PAN : " + billBody[0].PAN + "</td></tr>";

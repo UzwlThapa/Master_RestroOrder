@@ -1488,7 +1488,7 @@ function GetDataForSalesBill(orderMasterId) {
                 var salesMaster = new Object();
                 var splited = 0;
                 var salesDetail = new Array();
-
+                debugger;
                 salesMaster.billNo = orderdetails[0].BillNo;
                 salesMaster.BillDate = new Intl.DateTimeFormat('en-US').format(new Date());
                 salesMaster.NepaliInvoiceDate = formatDate();
@@ -1500,6 +1500,7 @@ function GetDataForSalesBill(orderMasterId) {
                 salesMaster.TermAmount = 0.00;
                 salesMaster.NetAmount = $('#txtNetAmt').val().split(' ')[1];
                 salesMaster.CusName = $('#txtCashCusName').val();
+                salesMaster.PhoneNumber = $('#txtNumber').val();
                 salesMaster.Address = $('#txtCusAddress').val();
                 salesMaster.PAN = $('#txtPan').val();
                 salesMaster.ChequeNo = "";
@@ -3040,6 +3041,7 @@ function getMemberDetailsbyinfo(info) {
         contentType: "application/json; charset=utf-8",
         dataType: "json",
         success: function (data) {
+            debugger;
             var datas = JSON.parse(data.d);
             $("#txtCusID").val(datas[0].MembershipID);
             $("#txtCashCusName").val(datas[0].Name);

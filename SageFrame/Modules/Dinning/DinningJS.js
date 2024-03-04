@@ -186,6 +186,8 @@ function IntegerAndDecimal(evt, element) {
                         $("#txtCusAddress").val(ids[5]);
                         $("#txtPan").val(ids[4]);
                         $("#txtLoyaltyDiscount").val(ids[6]);
+                        $("#txtNumber").val(ids[7]);
+                        $("#txtCardNumber").val(ids[9]);
                         $("#membeshipformlist").dialog('close');
                         //$("#selDiscountType").change();
                     } else if (membershipfor == "RoomBooking") {
@@ -1327,7 +1329,7 @@ function IntegerAndDecimal(evt, element) {
 
                     $.each(datas, function (index, value) {
 
-                        htmls += "<tr class='tableItem' id='_" + value.MembershipID + "_" + value.Fname + "_" + value.Lname + "_" + value.PAN + "_" + value.Address + "_" + value.discount + "_" + value.TelMobile + "_" + value.RemainingBalance + "'>";
+                        htmls += "<tr class='tableItem' id='_" + value.MembershipID + "_" + value.Fname + "_" + value.Lname + "_" + value.PAN + "_" + value.Address + "_" + value.discount + "_" + value.TelMobile + "_" + value.RemainingBalance + "_" + value.CardNumber + "'>";
                         htmls += "<td>" + value.Name + "</td>";
                         htmls += "<td>" + value.PAN + "</td>";
                         htmls += "<td>" + value.Addresss + "</td>";
@@ -2532,7 +2534,6 @@ function IntegerAndDecimal(evt, element) {
                 }
 
                 $('.paynows').unbind('click').on('click', function () {
-
                     jConfirm('Are You Sure  ?', 'Pay', function (confirmed) {
                         if (confirmed) {
                             var billingTerm = new Array();
@@ -2551,6 +2552,7 @@ function IntegerAndDecimal(evt, element) {
                             salesMaster.NetAmount = $('#txtNetAmt').val().split(' ')[1]; //Net Amount
                             salesMaster.CusName = $('#txtCashCusName').val();
                             salesMaster.Address = $('#txtCusAddress').val();
+                            salesMaster.PhoneNumber = $('#txtNumber').val();
                             salesMaster.PAN = $('#txtPan').val();
                             salesMaster.ChequeNo = "";
                             salesMaster.TransactionNo = "";
