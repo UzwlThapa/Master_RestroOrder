@@ -411,10 +411,10 @@ public class DashBoardWebService : System.Web.Services.WebService
     [WebMethod]
     public void shiftTable(int fromordermasterid, int totableID, int fromSeatNo, int toSeatNo, string shiftedby, string fromTableTitle, string toTableTitle, int OrderNo)
     {
-        List<OrderDetailClass> orderList = roc.GetOrderDetailsByMaster(fromordermasterid);
         // Send Kot Print for shift items
         if (System.Configuration.ConfigurationManager.AppSettings["PrintOrderShiftBill"] == "true")
         {
+            List<OrderDetailClass> orderList = roc.GetOrderDetailsByMaster(fromordermasterid);
             OrderPrint print = new OrderPrint();
             print.PrintShiftBill(orderList, "", DateTime.Now, fromTableTitle, toTableTitle, shiftedby, "Ordered", fromordermasterid, OrderNo, 0, "", "");
         }

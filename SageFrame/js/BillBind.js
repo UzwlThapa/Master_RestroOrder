@@ -636,7 +636,7 @@ function getBill(salesMasterId, foodCourtOrder) {
 
             htmls += "<input type='hidden' value='" + ((!((kotAmount + bevAmount + bakeryAmount + pizzaAmount) > 0)) ? "true" : "false") + "' id='hdfHide' />";
             htmls += "<div id='divqrcode' style='display:none;'></div><div class='QRCode' style='text-align:center;'><img src='' id='codeimg' style='margin-top:10px; height:100px;display:none;'></div>";
-            var string = "{Company:\"" + companyInfo[0].Name + "\", Bill No:" + billBody[0].BillNo + ", Date: " + billBody[0].NepaliInvoiceDate.split('.').join('/') + ", Time: " + time + ", Amount: " + ttlAmt.toFixed(2) + "}";
+            var string = "{Company:\"" + companyInfo[0].Name + "\", Bill No:" + billBody[0].BillNo + ", Date: " + billBody[0].NepaliInvoiceDate.split('.').join('/') + ", Time: " + time + ", Amount: " + parseFloat(ttlAmt).toFixed(2) + "}";
             body = htmls;
             $('#customer-bill').html(logoInfo + body);
             if (CodeQR == true) {

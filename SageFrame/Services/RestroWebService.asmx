@@ -52,7 +52,7 @@ public class RestroWebService : System.Web.Services.WebService
             //    OrderPrint print = new OrderPrint();
             //    print.PrintShiftBill(orderList, "", DateTime.Now, shiftItems.fromTableTitle, shiftItems.toTableTitle, shiftItems.shiftedBy, "Ordered", shiftItems.OrderMasterID, shiftItems.OrderNo, 0, "", "");
             //}
-            
+
             roController.shiftItems(shiftItems);
             Context.Response.Write("{statusCode:200, message: \"Success\"}");
         }
@@ -65,12 +65,20 @@ public class RestroWebService : System.Web.Services.WebService
     [WebMethod]
     public void shiftItemsWeb(ShiftItems shiftItems)
     {
-        List<OrderDetailClass> orderList = roController.GetOrderDetailsByMaster(shiftItems.OrderMasterID);
         // Send Kot Print for shift items
         if (System.Configuration.ConfigurationManager.AppSettings["PrintOrderShiftBill"] == "true")
         {
+            List<OrderDetailClass> orderList = roController.GetOrderDetailsByMaster(shiftItems.OrderMasterID);
+            List<OrderDetailClass> shiftOrderList = new List<OrderDetailClass>();
+            shiftItems.itemList.ForEach((sitem) =>
+            {
+                var item = orderList.Find((itm) => itm.ItemId == sitem.ItemId);
+                item.Quantity = sitem.Quantity;
+                shiftOrderList.Add(item);
+            });
+
             OrderPrint print = new OrderPrint();
-            print.PrintShiftBill(orderList, "", DateTime.Now, shiftItems.fromTableTitle, shiftItems.toTableTitle, shiftItems.shiftedBy, "Ordered", shiftItems.OrderMasterID, shiftItems.OrderNo, 0, "", "");
+            print.PrintShiftBill(shiftOrderList, "", DateTime.Now, shiftItems.fromTableTitle, shiftItems.toTableTitle, shiftItems.shiftedBy, "Ordered", shiftItems.OrderMasterID, shiftItems.OrderNo, 0, "", "");
         }
         roController.shiftItems(shiftItems);
     }

@@ -299,6 +299,7 @@ function shiftItems() {
     shift.toSplitNo = $('#toSplitNo').val();
     shift.shiftedBy = $('#hdnPinBy').val();
     shift.itemList = shiftItemList;
+    debugger;
     $.ajax({
         type: "POST",
         async: false,
