@@ -14,8 +14,8 @@ function getBill(salesMasterId, foodCourtOrder) {
         contentType: "application/json; charset=utf-8",
         dataType: "json",
         success: function (data) {
-            var data = data.d;
             debugger;
+            var data = data.d;
             var splitCostCenter = data.splitCostCenter;
             var companyInfo = data.companyInfo;
             var billInfo = data.billInfo;
