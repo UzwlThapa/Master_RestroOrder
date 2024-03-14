@@ -757,7 +757,6 @@ Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.RestroOrder\b
 Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.RestroOrder\bin\Release\SageFrame.Security.pdb
 Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.RestroOrder\obj\Release\SageFrame.RestroOrder.csproj.AssemblyReference.cache
 Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.RestroOrder\obj\Release\SageFrame.RestroOrder.csproj.CoreCompileInputs.cache
-Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.RestroOrder\obj\Release\SageFrame.RestroOrder.csproj.CopyComplete
 Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.RestroOrder\obj\Release\SageFrame.RestroOrder.dll
 Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.RestroOrder\obj\Release\SageFrame.RestroOrder.pdb
 D:\restroorder\Master_RestroOrder\SageFrame.RestroOrder\bin\Release\SageFrame.RestroOrder.dll
@@ -841,3 +840,4 @@ G:\Danfe-Git\Master_RestroOrder\SageFrame.RestroOrder\obj\Release\SageFrame.Rest
 G:\Danfe-Git\Master_RestroOrder\SageFrame.RestroOrder\obj\Release\SageFrame.RestroOrder.csproj.CopyComplete
 G:\Danfe-Git\Master_RestroOrder\SageFrame.RestroOrder\obj\Release\SageFrame.RestroOrder.dll
 G:\Danfe-Git\Master_RestroOrder\SageFrame.RestroOrder\obj\Release\SageFrame.RestroOrder.pdb
+Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.RestroOrder\obj\Release\SageFram.6530C07E.Up2Date

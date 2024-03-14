@@ -206,7 +206,6 @@ Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.RestoLoyalty\
 Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.RestoLoyalty\bin\Debug\SageFrame.Common.pdb
 Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.RestoLoyalty\obj\Debug\SageFrame.RestoLoyalty.csproj.AssemblyReference.cache
 Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.RestoLoyalty\obj\Debug\SageFrame.RestoLoyalty.csproj.CoreCompileInputs.cache
-Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.RestoLoyalty\obj\Debug\SageFrame.RestoLoyalty.csproj.CopyComplete
 Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.RestoLoyalty\obj\Debug\SageFrame.RestoLoyalty.dll
 Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.RestoLoyalty\obj\Debug\SageFrame.RestoLoyalty.pdb
 D:\restroorder\Master_RestroOrder\SageFrame.RestoLoyalty\bin\Debug\SageFrame.RestoLoyalty.dll
@@ -236,3 +235,4 @@ G:\Danfe-Git\Master_RestroOrder\SageFrame.RestoLoyalty\obj\Debug\SageFrame.Resto
 G:\Danfe-Git\Master_RestroOrder\SageFrame.RestoLoyalty\obj\Debug\SageFrame.RestoLoyalty.csproj.CopyComplete
 G:\Danfe-Git\Master_RestroOrder\SageFrame.RestoLoyalty\obj\Debug\SageFrame.RestoLoyalty.dll
 G:\Danfe-Git\Master_RestroOrder\SageFrame.RestoLoyalty\obj\Debug\SageFrame.RestoLoyalty.pdb
+Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.RestoLoyalty\obj\Debug\SageFram.F3CAEF83.Up2Date

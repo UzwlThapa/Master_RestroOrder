@@ -15,7 +15,7 @@ using Newtonsoft.Json;
 [WebServiceBinding(ConformsTo = WsiProfiles.BasicProfile1_1)]
 // To allow this Web Service to be called from script, using ASP.NET AJAX, uncomment the following line. 
 [System.Web.Script.Services.ScriptService]
-public class ComplementaryWebService  : System.Web.Services.WebService
+public class ComplementaryWebService : System.Web.Services.WebService
 {
 
     public ComplementaryWebService()
@@ -94,10 +94,10 @@ public class ComplementaryWebService  : System.Web.Services.WebService
 
     }
     [WebMethod]
-    public string CheckPinCodeMatch(string PinCode,string username)
+    public string CheckPinCodeMatch(string PinCode, string username)
     {
         RestrOrderController controller = new RestrOrderController();
-        return JsonConvert.SerializeObject(controller.CheckPinCodeMatch(PinCode,username));
+        return JsonConvert.SerializeObject(controller.CheckPinCodeMatch(PinCode, username));
 
     }
 
@@ -324,7 +324,6 @@ public class ComplementaryWebService  : System.Web.Services.WebService
                 }
             }
 
-
             FiscalYear fyear = rocobj.GetRONumberByFiscalYear();
             orderMasterInfo.BillNo = "RO" + orderMasterInfo.Date.ToString().Replace("/", "").Replace("PM", "").Replace("AM", "").Replace(":", "").Replace(" ", "");
             orderMasterInfo.BasicAmount = BasicAmount;
@@ -363,7 +362,6 @@ public class ComplementaryWebService  : System.Web.Services.WebService
                     {
                         ord.Quantity = ord.Quantity - prevOrders.Sum(p => p.Quantity);
                         ord.Status = "Ordered";
-
                         addedOrders.Add(ord);
                     }
                 }
@@ -385,6 +383,7 @@ public class ComplementaryWebService  : System.Web.Services.WebService
                 }
                 addedOrders = orderMasterInfo.OrderDetailsList;
             }
+
             int CompId = rocobj.CompMasterSaveTodatabase(orderMasterInfo, addedOrders, cancelledOrders);
 
             List<OrderExtraItem> addedExtra = CheckExtraItems(orderExtraItem, true, orderMasterInfo.CompMasterID, CompId);
@@ -488,13 +487,11 @@ public class ComplementaryWebService  : System.Web.Services.WebService
                 }
             }
             return CompId;
-
         }
         catch (Exception ex)
         {
             throw ex;
         }
-
     }
 
     protected List<OrderExtraItem> CheckExtraItems(List<OrderExtraItem> extra, bool added, int CompMasterID, int newCompMasterID)
@@ -732,7 +729,7 @@ public class ComplementaryWebService  : System.Web.Services.WebService
     }
 
     [WebMethod]
-    public List<purchaseDetails> GetItemForSearch()
+    public List<MvPurchaseDetails> GetItemForSearch()
     {
         try
         {
@@ -799,7 +796,7 @@ public class ComplementaryWebService  : System.Web.Services.WebService
     public string getRestroTableByRoomID(int restroRoomId)
     {
         RestrOrderController roc = new RestrOrderController();
-        List<restroTable>  restroTable = roc.getRestroTableByRoomID(restroRoomId);
+        List<restroTable> restroTable = roc.getRestroTableByRoomID(restroRoomId);
         return JsonConvert.SerializeObject(restroTable);
     }
 
@@ -820,7 +817,7 @@ public class ComplementaryWebService  : System.Web.Services.WebService
         return JsonConvert.SerializeObject(list);
     }
 
-           [WebMethod]
+    [WebMethod]
     public string getGlobalizedMenu(int languageid)
     {
         RestrOrderController roc = new RestrOrderController();

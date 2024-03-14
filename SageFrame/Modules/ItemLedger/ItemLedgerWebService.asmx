@@ -25,7 +25,7 @@ public class ItemLedgerWebService  : System.Web.Services.WebService {
         try
         {
             RestrOrderController roc = new RestrOrderController();
-            List<purchaseDetails> item = roc.GetItemForOpenBalance();
+            List<MvPurchaseDetails> item = roc.GetItemForOpenBalance();
             return JsonConvert.SerializeObject(item);
 
         }

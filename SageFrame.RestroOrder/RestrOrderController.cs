@@ -180,6 +180,10 @@ namespace SageFrame.RestroOrder
         public OrderMasterClass GetOrderDetailsFromDatabase(string tableId)
         {
             return RestrOrderProvider.GetOrderDetailsFromDatabase(tableId);
+        } 
+        public void TempPurchaseDetailTsk(MvTempPurchaseDetail item)
+        {
+            RestrOrderProvider.TempPurchaseDetailTsk(item);
         }
         public List<OrderMasterClass> GetAllOrder()
         {
@@ -648,7 +652,7 @@ namespace SageFrame.RestroOrder
         {
             restroOrderProvider.UnitDelete2(UnitID2);
         }
-        public int RestroPurchaseOrder(purchaseMain PurchaseObject)
+        public int RestroPurchaseOrder(MvPurchaseMain PurchaseObject)
         {
             return restroOrderProvider.RestroPurchaseOrder(PurchaseObject);
         }
@@ -817,11 +821,11 @@ namespace SageFrame.RestroOrder
         {
             return restroOrderProvider.IssueSave(IssueObject);
         }
-        public List<purchaseMain> getAutoNumber()
+        public List<MvPurchaseMain> getAutoNumber()
         {
             return restroOrderProvider.getAutoNumber();
         }
-        public List<purchaseDetails> getPurchaseDetails()
+        public List<MvPurchaseDetails> getPurchaseDetails()
         {
             return restroOrderProvider.getPurchaseDetails();
         }
@@ -830,10 +834,11 @@ namespace SageFrame.RestroOrder
         //    
         //     restroOrderProvider.GoodsReceived(GoodReived);
         //}
-        public int GoodsReceivedss(goodsReceiveMain GoodReived, MemberInfo memberInfo, List<PurchasePayment> purchasePayment)
+        public int GoodsReceivedss(goodsReceiveMain GoodReived, MemberInfo memberInfo, List<PurchasePayment> purchasePayment = null)
         {
             return restroOrderProvider.GoodsReceivedss(GoodReived, memberInfo, purchasePayment);
         }
+
         public List<goodsReceiveMain> GoodReceiveAutoNumber()
         {
             return restroOrderProvider.GoodReceiveAutoNumber();
@@ -874,7 +879,7 @@ namespace SageFrame.RestroOrder
         {
             return restroOrderProvider.issueautonumber();
         }
-        public List<purchaseDetails> getitemidbyname(string itemname)
+        public List<MvPurchaseDetails> getitemidbyname(string itemname)
         {
             return restroOrderProvider.getitemidbyname(itemname);
         }
@@ -890,7 +895,7 @@ namespace SageFrame.RestroOrder
         {
             return restroOrderProvider.getVender();
         }
-        public List<purchaseDetails> GETITEMIDPOIDBYNAME(string ItemName)
+        public List<MvPurchaseDetails> GETITEMIDPOIDBYNAME(string ItemName)
         {
             return restroOrderProvider.GETITEMIDPOIDBYNAME(ItemName);
         }
@@ -946,7 +951,7 @@ namespace SageFrame.RestroOrder
         {
             return restroOrderProvider.stockreportRange(StartDate, EndDate);
         }
-        public List<purchaseDetails> getgoodreceiveforissue()
+        public List<MvPurchaseDetails> getgoodreceiveforissue()
         {
             return restroOrderProvider.getgoodreceiveforissue();
         }
@@ -958,11 +963,11 @@ namespace SageFrame.RestroOrder
         {
             return restroOrderProvider.txtSearchForItem(ItemName, languageid);
         }
-        public List<purchaseDetails> GetItemForSearch()
+        public List<MvPurchaseDetails> GetItemForSearch()
         {
             return restroOrderProvider.GetItemForSearch();
         }
-        public List<purchaseDetails> GetItemForWholeSaleSearch(string LookUpName)
+        public List<MvPurchaseDetails> GetItemForWholeSaleSearch(string LookUpName)
         {
             return restroOrderProvider.GetItemForWholeSaleSearch(LookUpName);
         }
@@ -1266,11 +1271,11 @@ namespace SageFrame.RestroOrder
         {
             return restroOrderProvider.StatementReportView(startdate);
         }
-        public List<purchaseDetails> GetUnitOfItemByID(int ids)
+        public List<MvPurchaseDetails> GetUnitOfItemByID(int ids)
         {
             return restroOrderProvider.GetUnitOfItemByID(ids);
         }
-        public List<purchaseDetails> GetItemForOpenBalance()
+        public List<MvPurchaseDetails> GetItemForOpenBalance()
         {
             return restroOrderProvider.GetItemForOpenBalance();
         }
@@ -1283,7 +1288,7 @@ namespace SageFrame.RestroOrder
             return restroOrderProvider.getCustomerBalanceReport(startDate, endDate, CustomerName);
         }
 
-        public void CreditCancelWithReason(int id, int memberId,string userName, string reason, string date)
+        public void CreditCancelWithReason(int id, int memberId, string userName, string reason, string date)
         {
             restroOrderProvider.CreditCancelWithReason(id, memberId, userName, reason, date);
         }
@@ -1328,7 +1333,7 @@ namespace SageFrame.RestroOrder
         {
             return restroOrderProvider.getPurchaseDetailsbyID(mainId);
         }
-        public List<purchaseDetails> GetInventoryItemWithSmallUnit()
+        public List<MvPurchaseDetails> GetInventoryItemWithSmallUnit()
         {
             return restroOrderProvider.GetInventoryItemWithSmallUnit();
         }
@@ -1471,12 +1476,12 @@ namespace SageFrame.RestroOrder
             restroOrderProvider.deleteDependentRoomsAndTables(id, type);
         }
         //Inventory Pranesh
-        //public List<purchaseDetails> getUnitsWithConvertion(int ids)
+        //public List<MvPurchaseDetails> getUnitsWithConvertion(int ids)
         //{
         //    
         //    return restroOrderProvider.getUnitsWithConvertion(ids);
         //}
-        //public List<purchaseDetails> GetUnitOfItemByName(string ids)
+        //public List<MvPurchaseDetails> GetUnitOfItemByName(string ids)
         //{
         //    
         //    return restroOrderProvider.GetUnitOfItemByName(ids);
@@ -1485,7 +1490,7 @@ namespace SageFrame.RestroOrder
         {
             restroOrderProvider.DeleteIngredientItemByID(IngredientID, ItemID);
         }
-        public List<purchaseDetails> getUnitsWithConvertion(int ids)
+        public List<MvPurchaseDetails> getUnitsWithConvertion(int ids)
         {
             return restroOrderProvider.getUnitsWithConvertion(ids);
         }
@@ -1819,7 +1824,7 @@ namespace SageFrame.RestroOrder
         {
             return restroOrderProvider.getPurchaseReport(startDate, endDate, vendorId, puNo);
         }
-        public List<purchaseDetails> getPurchaseNoForReport()
+        public List<MvPurchaseDetails> getPurchaseNoForReport()
         {
             return restroOrderProvider.getPurchaseNoForReport();
         }

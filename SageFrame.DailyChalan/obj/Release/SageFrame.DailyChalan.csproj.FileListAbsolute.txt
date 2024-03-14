@@ -189,7 +189,6 @@ Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.DailyChalan\b
 Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.DailyChalan\bin\Release\SageFrame.Common.pdb
 Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.DailyChalan\obj\Release\SageFrame.DailyChalan.csproj.AssemblyReference.cache
 Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.DailyChalan\obj\Release\SageFrame.DailyChalan.csproj.CoreCompileInputs.cache
-Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.DailyChalan\obj\Release\SageFrame.DailyChalan.csproj.CopyComplete
 Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.DailyChalan\obj\Release\SageFrame.DailyChalan.dll
 Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.DailyChalan\obj\Release\SageFrame.DailyChalan.pdb
 D:\restroorder\Master_RestroOrder\SageFrame.DailyChalan\bin\Release\SageFrame.DailyChalan.dll
@@ -219,3 +218,4 @@ G:\Danfe-Git\Master_RestroOrder\SageFrame.DailyChalan\obj\Release\SageFrame.Dail
 G:\Danfe-Git\Master_RestroOrder\SageFrame.DailyChalan\obj\Release\SageFrame.DailyChalan.csproj.CopyComplete
 G:\Danfe-Git\Master_RestroOrder\SageFrame.DailyChalan\obj\Release\SageFrame.DailyChalan.dll
 G:\Danfe-Git\Master_RestroOrder\SageFrame.DailyChalan\obj\Release\SageFrame.DailyChalan.pdb
+Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.DailyChalan\obj\Release\SageFram.FAE39708.Up2Date

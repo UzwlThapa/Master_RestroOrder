@@ -71,7 +71,7 @@ public class OrderWebService : System.Web.Services.WebService
     [WebMethod]
     public string SaveOrderIntoDataBase(OrderMasterClass orderMasterInfo, List<OrderExtraItem> orderExtraItem)
     {
-       
+
         try
         {
             RestrOrderController rocobj = new RestrOrderController();
@@ -93,6 +93,7 @@ public class OrderWebService : System.Web.Services.WebService
                     itemList = rocobj.getitemwithRate(ord.ItemId);
                 }
                 BasicAmount += (Convert.ToDecimal(itemList[0].SRate) * Convert.ToDecimal(ord.Quantity));
+                ord.Rate = Convert.ToDecimal(itemList[0].SRate);
             }
 
             RestroRoom room = new RestroRoom();
@@ -181,6 +182,24 @@ public class OrderWebService : System.Web.Services.WebService
             }
 
             int ordermasterid = rocobj.SaveOrderIntoDataBase(orderMasterInfo, addedOrders, cancelledOrders);
+
+            // adjust stock is negative sales
+            #region Adjust Stock
+            if (System.Configuration.ConfigurationManager.AppSettings["IsAutoPurchase"] == "true")
+            {
+                foreach (var item in addedOrders)
+                {
+                    MvTempPurchaseDetail tempItem = new MvTempPurchaseDetail { ItemID = item.ItemId, Quantity = Convert.ToDecimal(item.Quantity) };
+                    rocobj.TempPurchaseDetailTsk(tempItem);
+                }
+                foreach (var item in cancelledOrders)
+                {
+                    MvTempPurchaseDetail tempItem = new MvTempPurchaseDetail { ItemID = item.ItemId, Quantity = Convert.ToDecimal(item.Quantity) * -1 };
+                    rocobj.TempPurchaseDetailTsk(tempItem);
+                }
+            }
+            #endregion Adjust Stock
+
 
             List<OrderExtraItem> addedExtra = CheckExtraItems(orderExtraItem, true, orderMasterInfo.OrderMasterID, ordermasterid);
             List<OrderExtraItem> removedExtra = CheckExtraItems(orderExtraItem, false, orderMasterInfo.OrderMasterID, ordermasterid);

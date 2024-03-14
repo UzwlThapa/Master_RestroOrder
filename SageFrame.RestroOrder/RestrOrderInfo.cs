@@ -1168,7 +1168,7 @@ namespace SageFrame.RestroOrder
         public string Message { get; set; }
 
     }
-    public class purchaseDetails
+    public class MvPurchaseDetails
     {
         public string PuNo { get; set; }
         public int StoreID { get; set; }
@@ -1258,7 +1258,7 @@ namespace SageFrame.RestroOrder
         public decimal Discount { get; set; }
     }
 
-    public class purchaseMain
+    public class MvPurchaseMain
     {
 
         public int PurchaseMainID { get; set; }
@@ -1274,7 +1274,7 @@ namespace SageFrame.RestroOrder
         public int SPMID { get; set; }
 
         public decimal Discount { get; set; }
-        public List<purchaseDetails> PurchaseObjectDetails { get; set; }
+        public List<MvPurchaseDetails> PurchaseObjectDetails { get; set; }
         public List<purchaselot> PurchaseObjectDetailsLot { get; set; }
         public List<itemBal> PurchaseObjItemBal { get; set; }
 
@@ -2012,6 +2012,13 @@ namespace SageFrame.RestroOrder
         public string Qnty { get; set; }
         public string Symbol { get; set; }
     }
+     
+    public class MvTempPurchaseDetail
+    {
+        public int ItemID { get; set; }
+        public decimal Quantity { get; set; }
+    }
+
     public class UserInfos
     {
         public string userName { get; set; }

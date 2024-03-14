@@ -25,8 +25,6 @@
                 transactionID: 0,
             },
             InitialSetup: function () {
-                // eventFunction.getTempTransactionList();
-                // eventFunction.getVerifiedTransactionList();
                 eventFunction.getVoucharTypeForDropDown();
                 eventFunction.getFinancialAcName();
             },
@@ -46,33 +44,51 @@
                 });
 
                 $('#btnverify').on('click', function () {
+
                     var voucherId = new Array;
                     if ($('.checkbox:checked').length > 0) {
                         $(".checkbox:checked").each(function () {
-
                             var Transaction = new Object;
                             Transaction.TransactionID = $(this).parents('tr').attr("val");
                             voucherId.push(Transaction);
-
                         });
 
-                        jConfirm('Do you want to verify all selected Voucher?', 'Confirm!', function (confirm) {
-                            if (confirm) {
-                                eventFunction.config.method = "SaveVerifiedTransactionByID";
-                                eventFunction.config.url = eventFunction.config.baseURL + eventFunction.config.method;
-                                eventFunction.config.data = JSON2.stringify({ Transaction: voucherId });
-                                eventFunction.config.ajaxCallMode = 2;
-                                eventFunction.ajaxCall(eventFunction.config);
-                            }
-                        })
+                        // check if autopurchase transaction is verified
+                        $.ajax({
+                            type: "POST",
+                            url: eventFunction.config.baseURL + "TempPurchaseDetailExists",
+                            contentType: "application/json; charset=utf-8",
+                            dataType: "json",
+                            success: function (response) {
+
+                                var response = JSON.parse(response.d ?? '{}');
+                                if (response['PuNo'] != '') {
+                                    jAlert(`Please settle Purchase Voucher: ${response['PuNo']} to proceed!`, 'Information!!', function () { $.alerts.dialogClass = null; });
+                                } else {
+                                    jConfirm('Do you want to verify all selected Voucher?', 'Confirm!', function (confirm) {
+                                        if (confirm) {
+                                            eventFunction.config.method = "SaveVerifiedTransactionByID";
+                                            eventFunction.config.url = eventFunction.config.baseURL + eventFunction.config.method;
+                                            eventFunction.config.data = JSON2.stringify({ Transaction: voucherId });
+                                            eventFunction.config.ajaxCallMode = 2;
+                                            eventFunction.ajaxCall(eventFunction.config);
+                                        }
+                                    });
+                                }
+
+                            },
+                            error: function (msg) { FileManager.errorFn(); }
+                        });
+                        eventFunction.config.method = "TempPurchaseDetailExists";
+                        eventFunction.config.url = eventFunction.config.baseURL + eventFunction.config.method;
+                        eventFunction.config.data = null;
+                        eventFunction.config.ajaxCallMode = 13;
+                        eventFunction.ajaxCall(eventFunction.config);
                     }
                     else {
                         jAlert('Please Select Voucher first.', 'ALERT!!');
                     }
                 });
-                //$(".tblForFinancialAc").on("change", ".selFinancialAc", function () {
-                //    $(".hdnFinancialAcID").val($(this).val());
-                //});
 
                 $(".AccountForm").on("click", ".addNewRow", function () {
                     $(".addNewRow").unbind('click');
@@ -95,7 +111,6 @@
                             htmls += '<tr><td>' + $(".selFinancialAc").val() + '</td>';
                             htmls += '<td>' + $(".hdnFinancialAcID").val() + '</td>';
                             htmls += '<td>' + $(".txtAcDescription").val() + '</td>';
-                            //var debi = parseFloat($(".txtDebit").val()).toFixed(2);
                             htmls += '<td>' + parseFloat($(".txtDebit").val()).toFixed(2) + '</td>';
                             htmls += '<td>' + parseFloat($(".txtCredit").val()).toFixed(2) + '</td>';
                             htmls += '<td>' + $(".txtChequeNo").val() + '</td>';
@@ -103,7 +118,6 @@
                                 htmls += '<td></td>';
                             } else
                                 htmls += '<td>' + $(".txtChequeDate").val() + '</td>';
-                            //htmls += '<td><label id="" class="edit icon-edit" value="Edit"></label><label id="" class="delete icon-delete" value="Delete"></label></td></tr>';
                             htmls += '<td><label class="delete icon-delete" value="Delete"></label></td></tr>';
                             $(".tblForTempFinancialAc tbody").append(htmls);
                             var rowCount = $('.tblForTempFinancialAc tbody tr').length;
@@ -120,7 +134,6 @@
                             $("#lblCreditTotal").text(sumCredit.toFixed(2));
 
                             $(".selFinancialAc").val('');
-                            //$(".selFinancialAc").val("");
                             $(".hdnFinancialAcID").val("");
                             $(".txtAcDescription").val("");
                             $(".txtDebit").val("");
@@ -135,24 +148,11 @@
 
                 $(".tblForTempFinancialAc").on("click", ".edit", function () {
                     jAlert('You clicked row ' + ($(this).index() + 1), 'Information!!', function () { $.alerts.dialogClass = null; });
-                    //alert(ev.target.parentElement.rowIndex);
                     jAlert(this.rowIndex, 'Information!!', function () { $.alerts.dialogClass = null; });
                     jAlert($('tr').index(this), 'Information!!', function () { $.alerts.dialogClass = null; });
-                    //if (confirm("Edit! Are You Sure?")) {
-                    //    $(".selFinancialAc").val($(this).find('tr:eq(' + i + ')').find('td:eq(1)').text());
-                    //    $(".hdnFinancialAcID").val("");
-                    //    $(".txtAcDescription").val("");
-                    //    $(".txtDebit").val("");
-                    //    $(".txtCredit").val("");
-                    //    $(".bank").hide();
-                    //    $(".txtChequeNo").val("");
-                    //    $(".txtChequeDate").val("");
-                    //}
                 });
                 $(".tblForTempFinancialAc").on("click", ".delete", function () {
                     var row = $(this).closest('tr');
-                    //$(row).find('td:eq(3)').text();
-                    //$(row).find('td:eq(4)').text();
                     jConfirm('Are You Sure  ?', 'Delete', function (confirmed) {
                         if (confirmed) {
                             $("#lblDebitTotal").text(parseFloat(parseFloat($("#lblDebitTotal").text()) - parseFloat($(row).find('td:eq(3)').text())).toFixed(2));
@@ -170,24 +170,6 @@
                     $(".txtDebit").val(0);
                 });
 
-                //$(".tblForFinancialAc").on("change", ".txtDebit", function () {
-                //$(".txtDebit").change(function () {
-                //    var sum = 0;
-                //    $('.txtDebit').each(function (x, y) {
-                //      
-                //        sum += parseFloat($(this).val());
-                //    });
-                //    $("#lblDebitTotal").text(sum);
-                //});
-                ////$(".tblForFinancialAc").on("change", ".txtCredit", function () {
-                //$(".txtCredit").change(function () {
-                //    var sum = 0;
-                //    $('.txtCredit').each(function (x, y) {
-                //        
-                //        sum += parseFloat($(this).val());
-                //    });
-                //    $("#lblCreditTotal").text(sum);
-                //});
                 $("#selVoucharType").change(function () {
                     $(".Title").html($('#selVoucharType :selected').text());
                     $("#divForFinancialAc").hide();
@@ -232,8 +214,7 @@
                     $("#divFinancialView").html(htmls);
 
                     var companyInfo = JSON.parse(localStorage.getItem("companyInfo"));
-                    htmls += `<label class="icon-print sfBtn restro-btn" id="btnPrintVerifiedTransaction">
-                Print</label>
+                    htmls += `<label class="icon-print sfBtn restro-btn" id="btnPrintVerifiedTransaction">Print</label>
                         <style>
                            .popup-tblTop, #tableTransactionByIDInDialog {
                                 border: 1px solid;
@@ -259,7 +240,7 @@
                             }
                                                     </style>
                             `;
-                    //htmls += "<div class='' style='text-align:center; width: 100%'>";
+
                     htmls += `<table align="center" >
                                 <tr>
                                     <td colspan="2" style="text-align: center; padding: 0px;">
@@ -291,7 +272,7 @@
 
                     let footerHtml = '';
                     footerHtml += `<table  style='margin-top:25px; float:right'>
-<tr><td colspan="7"><div style="width:225px;text-align:center;border-top:1px solid;float:right;">Verified By</div></td></tr>
+                                        <tr><td colspan="7"><div style="width:225px;text-align:center;border-top:1px solid;float:right;">Verified By</div></td></tr>
                                     </table>`;
                     $("#divFinancialView").append(footerHtml);
 
@@ -463,9 +444,6 @@
                         jAlert("Error!" + console.log(error), 'Information!!', function () { $.alerts.dialogClass = null; });
                 }
             },
-
-
-
             //<<-----------------------------Post & Get Here ---------------------------------------->>
             getTransactionByIDInDialog: function (datas) {
                 //var datas = result.d;
@@ -546,7 +524,7 @@
                 }
             },
 
-            getTempTransactionList: function () {
+            getTempTransactionList: function (isPurchase) {
                 var startDate = $('#txtStartDate').val();
                 var endDate = $('#txtEndDate').val();
 
@@ -875,24 +853,6 @@
                         $('.hdnFinancialAcID').val(ui.item.id);
                     }
                 });
-                //data = JSON.parse(result);
-                //var htmls = "";
-                //htmls += '<option disabled selected> -Select- </option>';
-                //if (data.length > 0) {
-                //    var pid = 0;
-                //    $.each(data, function (index, value) {
-                //        if (value.isGroup == 0) {
-                //            htmls += '<option value="' + value.FinancialAcID + '">' + value.items + '</option>';
-                //        }
-                //        else {
-                //            htmls += '<optgroup label="' + value.items + '" value="' + value.FinancialAcID + '"></optgroup>';
-                //            pid = value.FinancialAcID;
-                //        }
-                //    });
-                //    $(".selFinancialAc").html(htmls);
-                //} else {
-                //    $(".selFinancialAc").html("No Data");
-                //}
             },
 
             getFinancialSysName: function () {
@@ -930,12 +890,7 @@
                 $("#btnAdd").show();
                 $(".AccountForm").hide();
                 $(".MainForm").hide();
-                // $("#divForListingTempTransaction").show();
-                //$("li:first-child").attr('selected','selected');
                 $("#tabss").show();
-                //$(".tabsForlist").show();
-                //eventFunction.getTempTransactionList();
-                //eventFunction.getVerifiedTransactionList();
                 eventFunction.config.transactionID = 0;
             },
 

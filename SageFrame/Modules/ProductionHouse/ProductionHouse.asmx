@@ -34,7 +34,7 @@ public class ProductionHouse  : System.Web.Services.WebService {
         try
         {
             RestrOrderController roc = new RestrOrderController();
-            List<purchaseDetails> invwithUnit =  roc.GetInventoryItemWithSmallUnit();
+            List<MvPurchaseDetails> invwithUnit =  roc.GetInventoryItemWithSmallUnit();
             return JsonConvert.SerializeObject(invwithUnit);
         }
         catch (Exception)

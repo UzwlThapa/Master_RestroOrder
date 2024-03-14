@@ -111,7 +111,6 @@ Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.HouseKeeping\
 Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.HouseKeeping\bin\Release\SageFrame.Common.pdb
 Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.HouseKeeping\obj\Release\SageFrame.HouseKeeping.csproj.AssemblyReference.cache
 Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.HouseKeeping\obj\Release\SageFrame.HouseKeeping.csproj.CoreCompileInputs.cache
-Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.HouseKeeping\obj\Release\SageFrame.HouseKeeping.csproj.CopyComplete
 Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.HouseKeeping\obj\Release\SageFrame.HouseKeeping.dll
 Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.HouseKeeping\obj\Release\SageFrame.HouseKeeping.pdb
 D:\restroorder\Master_RestroOrder\SageFrame.HouseKeeping\bin\Release\SageFrame.HouseKeeping.dll
@@ -141,3 +140,4 @@ G:\Danfe-Git\Master_RestroOrder\SageFrame.HouseKeeping\obj\Release\SageFrame.Hou
 G:\Danfe-Git\Master_RestroOrder\SageFrame.HouseKeeping\obj\Release\SageFrame.HouseKeeping.csproj.CopyComplete
 G:\Danfe-Git\Master_RestroOrder\SageFrame.HouseKeeping\obj\Release\SageFrame.HouseKeeping.dll
 G:\Danfe-Git\Master_RestroOrder\SageFrame.HouseKeeping\obj\Release\SageFrame.HouseKeeping.pdb
+Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.HouseKeeping\obj\Release\SageFram.50AB6378.Up2Date

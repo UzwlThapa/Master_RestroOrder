@@ -2252,7 +2252,7 @@ function CancelOrderedData() {
         ordermaster.RoomId = RoomId,
         ordermaster.OID = parseInt(OID);
     ordermaster.OrderMasterID = OrderMasterID,
-        ordermaster.GuestNo = parseInt($('#splitNoCancel').text());
+        ordermaster.GuestNo = parseInt($('#splitNoCancel').text() == '' ? '1' : $('#splitNoCancel').text());
     ordermaster.CancelReason = $("#canceltextarea").val();
     ordermaster.CancelBy = $('#hdnPinBy').val();
     ordermaster.UserName = $('#hdnPinBy').val();

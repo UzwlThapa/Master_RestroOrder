@@ -57,7 +57,7 @@ public class RecquistionService  : System.Web.Services.WebService {
         con.DeleteRecquistion(recquistion);
     }
     [WebMethod]
-    public List<purchaseDetails> getitemfromdatabase()
+    public List<MvPurchaseDetails> getitemfromdatabase()
     {
         try
         {
@@ -73,7 +73,7 @@ public class RecquistionService  : System.Web.Services.WebService {
 
     }
     [WebMethod]
-    public List<purchaseDetails> GetUnitOfItemByID(int ids)
+    public List<MvPurchaseDetails> GetUnitOfItemByID(int ids)
     //public List<UnitClass> getunitbyItem(string itemID)
     {
         try

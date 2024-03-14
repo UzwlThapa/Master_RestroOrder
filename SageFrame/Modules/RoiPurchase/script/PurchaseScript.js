@@ -152,8 +152,6 @@ function prints() {
 
                 });
 
-
-
                 $('#txtSearch').on('keyup', function () {
                     eventFunction.bindPurchaseList();
                 });
@@ -313,59 +311,71 @@ function prints() {
                     }
                 });
 
-
                 $('#purchaseTempTablefoot').on('keyup', '.txtdiscount', function () {
 
                     eventFunction.CalculateTotal();
                 });
 
-
-
-
                 $("#btnPurchaseAdd").on('click', function () {
+                    debugger;
+                    var isEdit = $('#btnPurchaseAdd').attr('isEdit');
                     var item = $("#DdlItemid").val();
                     var unit = $("#DdUnitFortextbx").val();
+                    var unitTxt = $('#DdUnitFortextbx option[value="' + $("#DdUnitFortextbx").val() + '"]').text();
+                    var conversion = $('#DdUnitFortextbx option[value="' + $("#DdUnitFortextbx").val() + '"]').attr('attr-conversion');
                     var qts = $("#txtQuentity").val();
                     var qtstext = $("#txtQuentityText").val();
                     var txtRate = $("#txtRate").val();
                     var txtID = $("#txtID").val();
                     var txtTotal = $("#txtTotal").val();
 
+                    if (isEdit) {
+                        numbers = 200;
+                    }
+
                     if (item == "") {
                         jAlert("Please Fill The Item Name", 'Alert!!', function () { $.alerts.dialogClass = null; });
                     } else if (unit == null) {
                         jAlert("Please Fill The Unit", 'Alert!!', function () { $.alerts.dialogClass = null; });
-
                     } else if (qts == "") {
                         jAlert("Please Fill The Quantity", 'Alert!!', function () { $.alerts.dialogClass = null; });
                     } else if (qtstext == "") {
                         jAlert("Please Fill The Quantity in Text", 'Alert!!', function () { $.alerts.dialogClass = null; });
-
                     }
                     else if (txtRate == "") {
                         jAlert("Please Fill The Rate", 'Alert!!', function () { $.alerts.dialogClass = null; });
-
                     }
                     else {
-                        if (numbers != 100 || txtID == 0) {
+
+                        var MyRows = $("#AddTempTable tbody").find("tr");
+
+                        if (numbers == 200) { // edit item
+
+                            $(MyRows[selectedIndex - 1]).find('td:eq(2)')[0].innerHTML = unitTxt;
+                            $(MyRows[selectedIndex - 1]).find('td:eq(3)')[0].innerHTML = unit;
+                            $(MyRows[selectedIndex - 1]).find('td:eq(4)')[0].getElementsByClassName('Quenity')[0].value = qts;
+                            $(MyRows[selectedIndex - 1]).find('td:eq(5)')[0].getElementsByClassName('UnitRate')[0].value = txtRate;
+                            $(MyRows[selectedIndex - 1]).find('td:eq(6)')[0].getElementsByClassName('Total')[0].value = txtTotal;
+                            $(MyRows[selectedIndex - 1]).find('td:eq(12)')[0].innerHTML = unit;
+                            $(MyRows[selectedIndex - 1]).find('td:eq(13)')[0].innerHTML = conversion;
+                            eventFunction.CalculateTotal();
+                            $('#btnPurchaseAdd').removeAttr('isEdit');
+                            $('#btnPurchaseAdd').val('Add');
+                            $("#tblAddItem").dialog("close");
+                        }
+                        else if (numbers != 100 || txtID == 0) {
                             eventFunction.AddPurchase();
                             $('#DdlItemid').val('');
                             $('#DdlItemid').html('');
-
                             $('#textUnit').val('');
                             $('#DdUnit').html('');
-
                             $('#txtQuentity').val('');
                             $('#txtQuentityText').val('');
                             $('#txtRate').val('0');
                             $('#txtTotal').val('');
                             $('#DdUnitFortextbx').val('');
-
-                            numbers = 0
                         }
                         else {
-
-                            var MyRows = $("#AddTempTable tbody").find("tr");
                             $(MyRows[selectedIndex - 1]).find('td:eq(0)').html($("#DdlItemid").val());
                             $(MyRows[selectedIndex - 1]).find('td:eq(1)').html($("#lblItemid").val());
                             $(MyRows[selectedIndex - 1]).find('td:eq(2)').html($("#DdUnitFortextbx").val());
@@ -377,10 +387,10 @@ function prints() {
                             //$(MyRows[selectedIndex - 1]).find('td:eq(8)').html($("#txtExpDate").val());
                             $(MyRows[selectedIndex - 1]).find('td:eq(6)').html($("#txtTotal").val());
                             $(MyRows[selectedIndex - 1]).find('td:eq(6)').html($("#txtTotal").attr('attr-conversion'));
-
                         }
-                    }
 
+                        numbers = 0
+                    }
                 });
 
                 $("#btnAddItems").on('click', function () {
@@ -393,15 +403,27 @@ function prints() {
                         resizable: true,
                         dialogClass: 'popup-titlebg'
                     });
+                    $('#DdlItemid').val('');
+                    $('#DdlItemid').removeAttr('disabled');
+                    $('#DdlItemid').html('');
+                    $('#textUnit').val('');
+                    $('#DdUnit').html('');
+                    $('#txtQuentity').val('');
+                    $('#txtQuentityText').val('');
+                    $('#txtRate').val('0');
+                    $('#txtTotal').val('');
+                    $('#DdUnitFortextbx').val('');
                 });
 
                 $("#btnPurchaseClose").on('click', function () {
+                    $('#btnPurchaseAdd').removeAttr('isEdit');
+                    $('#btnPurchaseAdd').val('Add');
                     $("#tblAddItem").dialog("close");
                 });
 
                 $("#btnPurchaseSave").unbind('click').on('click', function () {
                     var checkValid = $('.itemname').text();
-
+                    debugger;
                     var quantity = $('.Quenity').filter(function () {
                         return $(this).val() == '0';
                     });
@@ -419,15 +441,7 @@ function prints() {
                     else if (value.length > 0) {
                         jAlert("Please! Insert Rate.", 'Alert!!');
                     }
-                    else if ($("#CheckBoxGoodReceived").is(":checked")) {
-                        //$("#payOption").dialog({
-                        //    'title': 'Choose Pay Option',
-                        //    width: 300,
-                        //    modal: true,
-                        //    dialogClass: 'headingbg',
-                        //    resizable: true,
-                        //    dialogClass: 'popup-titlebg'
-                        //});
+                    else if ($("#CheckBoxGoodReceived").is(":checked")) { 
                         var Stid = $("#ddlStore").val();
                         var inv = $("#txtIvNo").val();
                         var value = $('.UnitRate').filter(function () {
@@ -443,7 +457,6 @@ function prints() {
                         else {
                             eventFunction.BindPaymentModesAndProviders();
                         }
-
                     } else {
                         jConfirm('Do You want to save the purchase?', 'Confirmation!!', function (confirm) {
                             if (confirm) {
@@ -454,34 +467,24 @@ function prints() {
                             }
                         });
                     }
-
-
                 });
-
 
                 $("#btnPurchaseCancel").on('click', function () {
                     location.reload();
                     $('#btnPurchaseCancel').hide();
-
 
                     $(".po").hide();
                     $("#btnPurchaseSave").hide();
                     $(".unclick_show").hide();
 
                     $("#divForPurchaseList").show();
-
                     eventFunction.ResetAll();
-
-
                 });
 
                 $("#txtRate").keyup(function () {
-
                     var qty = $('#txtQuentity').val();
                     var rate = $('#txtRate').val();
-
                     $('#txtTotal').val((qty * rate).toFixed(2));
-
                 });
 
                 $("#txtQuentity").keyup(function () {
@@ -489,9 +492,6 @@ function prints() {
                     var rate = $('#txtRate').val();
                     var total = $('#txtTotal').val();
                     $('#txtTotal').val((qty * rate).toFixed(2));
-
-
-
                 });
 
                 $("#chkVendorBox").change(function () {
@@ -526,8 +526,8 @@ function prints() {
                 });
             },
 
-
             CalculateTotal: function () {
+                debugger;
                 var totaldiscount = 0.00;
                 var temp = 0.00;
                 var DisAmt = 0.00;
@@ -545,11 +545,12 @@ function prints() {
                 var MyRows = $('#purchaseTempTable').find('tbody').find('tr');
                 for (var i = 0; i < MyRows.length; i++) {
                     var allchecked = $(MyRows[i]).find('.chkISVAT').is(":checked");
+                    var total = $(MyRows[i]).find(".Total").val() || 0;
                     if (allchecked == true) {
-                        vatamount += parseFloat($(MyRows[i]).find(".Total").val() == "" ? 0 : $(MyRows[i]).find(".Total").val());
+                        vatamount += parseFloat(total);
                     }
                     else {
-                        nonamount += parseFloat($(MyRows[i]).find(".Total").val());
+                        nonamount += parseFloat(total);
                     }
                 }
 
@@ -564,25 +565,16 @@ function prints() {
                 //Getting Tax Amount
 
                 $('.vat').each(function () {
-
                     var vt = parseFloat($(this).text())
                     var DisAmt = Math.trunc(((vt * revDisPer) / 100) * 100) / 100;
                     temp += (isNaN(DisAmt) ? 0 : DisAmt)
                 });
-                //if (temp > 0) {
-                //    temp = temp - totaldiscount;
-                //}
 
                 $('#txttaxAmt').text((temp).toFixed(2));
                 var total = (vatamount + nonamount + temp) - (totaldiscount + parseFloat($("#txtdiscount").val() == "" ? 0 : $("#txtdiscount").val()));
 
                 $('#txttotalAmt').text(Math.trunc(total * 100) / 100);
-
-
-
             },
-
-
 
             UpdateCustomerName: function (id) {
                 var MembershipID = id;
@@ -595,8 +587,6 @@ function prints() {
                 var Stid = checkGoods ? $("#ddlStore").val() : 0;
                 eventFunction.SavePurchase(checkGoods, Stid, MemberInfo);
             },
-
-
 
             getTodayFiscalYr: function () {
                 eventFunction.config.method = "getTodayFiscalYr";
@@ -653,13 +643,9 @@ function prints() {
                 });
                 htmls += "</tbody></table>";
                 $("#divForPurchaseList").html(htmls);
-                //$("#tableForPurchaseList").DataTable({
-                //    "jQueryUI": true,
-                //    columnDefs: [{ orderable: false, targets: [3, 4] }]
-                //});
-
-
+               
                 $('#tableForPurchaseList').on('click', '.PurchaseEdit', function () {
+                    debugger;
                     $("#tblCheckGoods").hide();
                     $('.report-filter').hide();
                     $("#btnAdd").hide();
@@ -684,9 +670,6 @@ function prints() {
                         $('#txtVendorName').hide();
                     }
 
-
-
-
                     eventFunction.config.ItemID = word[0];
                     var ids = word[0];
                     eventFunction.config.method = "getPurchaseDetailsFor";
@@ -695,9 +678,6 @@ function prints() {
 
                     eventFunction.config.ajaxCallMode = 17;
                     eventFunction.ajaxCall(eventFunction.config);
-
-
-
                 });
                 $("#tableForPurchaseList").on('click', '.PurchaseDelete', function () {
                     var ids = $(this).attr('id');
@@ -1120,7 +1100,7 @@ function prints() {
                 var vat = 0;
                 var Discount = 0;
                 var datas = JSON.parse(result);
-
+                debugger;
                 if (datas.length > 0) {
                     var htmls = '';
                     var count = 1;
@@ -1150,6 +1130,7 @@ function prints() {
                         }
 
                         htmls += "<td class='vat' style='display:none;' >" + vat + "</td>";
+                        htmls += "<td class='tdcenter'><img src='/images/edit.png' class='PurchaseEditItem'  id='PurchaseEditItem_" + count + "' value='Edit'/></td>";
                         htmls += "<td class='tdcenter'><img src='/images/delete.png' class='PurchaseDelete'  id='PurchaseDelete_" + count + "' value='Delete'/></td>";
                         htmls += "<td class='ddunit' style='display:none;'>" + value.UnitID + "</td>";
                         htmls += "<td class='conversion' style='display:none;'>" + value.Conversion + "</td>";
@@ -1185,6 +1166,63 @@ function prints() {
                     eventFunction.CalculateTotal();
                 }
 
+                // yawa
+                $(".PurchaseEditItem").unbind('click').on('click', function () {
+                    debugger;
+                    var data = $(this).attr('id');
+                    var splicedata = data.split('_');
+                    var table = $("#purchaseTempTable");
+                    var rows = table.find("tr.tableItem");
+                    var index = parseInt(splicedata[1]);
+                    selectedIndex = parseInt(index);
+                    var row = $(this).closest('tr');
+                    var itemID = '';
+                    var itemname = '';
+                    var itemIDClass = '';
+                    var qty = '';
+                    var UnitRate = '';
+                    var Total = '';
+                    if (row[0]) {
+                        itemID = row[0].getElementsByClassName('itemID')[0].innerText ?? '';
+                        itemname = row[0].getElementsByClassName('itemname')[0].innerText ?? '';
+                        itemIDClass = row[0].getElementsByClassName('itemIDClass')[0].innerText ?? '';
+                        qty = row[0].getElementsByClassName('Quenity')[0].value ?? 0;
+                        UnitRate = row[0].getElementsByClassName('UnitRate')[0].value ?? 0;
+                        Total = row[0].getElementsByClassName('Total')[0].value ?? 0;
+                    }
+
+                    // get unit of editd item
+                    eventFunction.config.method = "GetUnitOfItemByID";
+                    eventFunction.config.url = eventFunction.config.baseURL + eventFunction.config.method;
+                    eventFunction.config.data = JSON2.stringify({ ids: itemname });
+                    eventFunction.config.ajaxCallMode = 3;
+                    eventFunction.ajaxCall(eventFunction.config);
+
+                    eventFunction.GetItem();
+                    $("#tblAddItem").dialog({
+                        'title': 'Edit Items',
+                        width: 600,
+                        modal: true,
+                        dialogClass: 'headingbg',
+                        resizable: true,
+                        dialogClass: 'popup-titlebg'
+                    });
+
+                    setTimeout(() => {
+                        $('#btnPurchaseAdd').val('Edit');
+                        $('#btnPurchaseAdd').attr('isedit', true);
+                        $('#DdlItemid').val(itemID);
+                        $('#DdlItemid').prop('disabled', true);
+                        $('#lblItemid').val(itemname);
+                        $('#lblItemid').prop('disabled', true);
+                        $('#DdUnitFortextbx').val(itemIDClass);
+                        $('#txtQuentity').val(qty);
+                        $('#txtQuentity').val(qty);
+                        $('#txtRate').val(UnitRate);
+                        $('#txtRate').val(UnitRate);
+                        $('#txtTotal').val(Total);
+                    }, 100);
+                });
 
                 $(".PurchaseDelete").unbind('click').on('click', function () {
                     var data = $(this).attr('id');
@@ -1346,6 +1384,9 @@ function prints() {
             },
 
             SavePurchase: function (checkGoods, Stid, MemberInfo) {
+                debugger;
+
+                var errorMessage = '';
                 var vendorSplit = $('#txtVendorNameID').val();
                 var SuperMainlist = new Array();
                 var PurchaseObjectDetails = new Array();
@@ -1360,11 +1401,25 @@ function prints() {
                 for (var i = 0; i < MyRows.length; i++) {
                     var PurchaseObjectItem = new Object();
                     PurchaseObjectItem.ItemID = parseInt($(MyRows[i]).find('td:eq(1)').html());
-                    PurchaseObjectItem.Quentity = parseFloat($(MyRows[i]).find('.Quenity').val());
+                    PurchaseObjectItem.Quentity = parseFloat($(MyRows[i]).find('.Quenity').val() || '0');
+                    if (PurchaseObjectItem.Quentity <= 0) {
+                        errorMessage = 'Invalid Quantity!';
+                        break;
+                    }
                     PurchaseObjectItem.QuentityText = "";
-                    PurchaseObjectItem.Rate = parseFloat($(MyRows[i]).find('.UnitRate').val());
-                    PurchaseObjectItem.Total = parseFloat($(MyRows[i]).find('.Total').val());
+                    PurchaseObjectItem.Rate = parseFloat($(MyRows[i]).find('.UnitRate').val() || '0');
+                    if (PurchaseObjectItem.Rate <= 0) {
+                        errorMessage = 'Invalid Rate!';
+                        break;
+                    }
+                    PurchaseObjectItem.Total = parseFloat($(MyRows[i]).find('.Total').val() || '0');
                     PurchaseObjectItem.UnitID = parseInt($(MyRows[i]).find('.ddunit').text());
+
+                    if (PurchaseObjectItem.UnitID == null || PurchaseObjectItem.UnitID <= 0) {
+                        errorMessage = 'Please edit the item to select Unit!';
+                        break;
+                    }
+
                     PurchaseObjectItem.Conversion = parseFloat($(MyRows[i]).find(".conversion").text());
                     PurchaseObjectItem.RecqDetailId = parseFloat($(MyRows[i]).find(".Recq").text());
                     PurchaseObjectItem.VendorPurchaseId = parseInt(splicedata[0]);
@@ -1418,16 +1473,21 @@ function prints() {
                 var extradiscount = $("#txtdiscount").val() == "" ? 0 : $("#txtdiscount").val();
                 var Puno = $('#txtPuno').val();
 
-                var jsonText = JSON2.stringify({ PurchaseObject: superss, goodReceived: checkGoods, PoNO: Puno, StID: Stid, memberInfo: MemberInfo, extradiscount: extradiscount, purchasePayment: PurchasePaymentList });
-                eventFunction.config.method = "RestroPurchaseOrder";
-                eventFunction.config.url = eventFunction.config.baseURL + eventFunction.config.method;
-                eventFunction.config.data = jsonText;
-                if (eventFunction.config.PurchaseUpdate == 1)
-                    eventFunction.config.ajaxCallMode = 18;
-                else
-                    eventFunction.config.ajaxCallMode = 1;
-                eventFunction.ajaxCall(eventFunction.config);
-                eventFunction.config.PurchaseUpdate = 0;
+                if (errorMessage == '') {
+                    var jsonText = JSON2.stringify({ PurchaseObject: superss, goodReceived: checkGoods, PoNO: Puno, StID: Stid, memberInfo: MemberInfo, extradiscount: extradiscount, purchasePayment: PurchasePaymentList });
+                    eventFunction.config.method = "RestroPurchaseOrder";
+                    eventFunction.config.url = eventFunction.config.baseURL + eventFunction.config.method;
+                    eventFunction.config.data = jsonText;
+                    if (eventFunction.config.PurchaseUpdate == 1)
+                        eventFunction.config.ajaxCallMode = 18;
+                    else
+                        eventFunction.config.ajaxCallMode = 1;
+                    eventFunction.ajaxCall(eventFunction.config);
+                    eventFunction.config.PurchaseUpdate = 0;
+                } else {
+                    jAlert(errorMessage, 'Alert!!');
+                    errorMessage == '';
+                }
             },
 
             AddPurchase: function () {
@@ -1440,7 +1500,6 @@ function prints() {
                 var splicedata = vendorSplit.split('_');
                 IsVat = splicedata[1];
 
-
                 for (var i = 0; i < rows.length; i++) {
                     var item = $(rows[i]);
                     PurchaseArray.push({
@@ -1449,7 +1508,7 @@ function prints() {
                         "QuentityText": parseFloat(item.find(".QuentityText").text()),
                         "Rate": parseInt(item.find(".UnitRate").val()),
                         "Total": parseFloat(item.find(".Total").val()).toFixed(2)
-                    })
+                    });
                 };
 
                 var recq = 0;
@@ -1469,6 +1528,8 @@ function prints() {
                 $('.discountValue').remove();
                 $("#AddTempTable").show();
                 $("#btnPurchaseSave").show();
+
+                // yawa
                 number += 1;
                 htmls += "<tr class='tableItem'>";
                 htmls += "<td class='itemID' style='text-align:left;'>" + $('#DdlItemid').val() + "</td>";
@@ -1481,6 +1542,7 @@ function prints() {
                 htmls += "<td class='divDis' style='display: none;'><input type='text' class='sfInputbox discount' onkeypress='return IntegerAndDecimal(event,this);' style='width: 100px;background:transparent;' value='" + Discount + "'></td>";
                 htmls += "<td><input type='checkbox' class='chkISVAT' /></td>";
                 htmls += "<td class='vat' style='display:none;' >" + vat + "</td>";
+                htmls += "<td style='text-align:center;'><img src='/images/edit.png' class='PurchaseEditItem'  id='PurchaseEditItem_" + number + "' value='Edit'/></td>";
                 htmls += "<td style='text-align:center;'><img src='/images/delete.png' class='PurchaseDelete'  id='PurchaseDelete_" + number + "' value='Delete'/></td>";
                 htmls += "<td class='ddunit' style='display:none;'>" + $('#DdUnitFortextbx :selected').val() + "</td>";
                 htmls += "<td class='conversion' style='display:none;'>" + $('#DdUnitFortextbx :selected').attr('attr-conversion') + "</td>";
@@ -1489,7 +1551,6 @@ function prints() {
                 htmls += "</tr>"
                 $("#purchaseTempTable tbody").append(htmls);
                 eventFunction.CalculateTotal();
-
 
                 $(".PurchaseEdit").on('click', function () {
                     $("#tblAddItem").dialog({
@@ -1519,14 +1580,71 @@ function prints() {
                     $('#txtExpDate').val($(this).closest('tr').find(".ExpDate").html());
                     $('#txtTotal').val($(this).closest('tr').find(".Total").val());
 
-
                     var value = ($(this).closest('tr').find(".LotNo").html());
                     if (value != "") {
                         $("#expirable").prop("checked", true);
                         $(".unclick_show").css("display", "block");
                     }
-
                 });
+
+                // yawa
+                $(".PurchaseEditItem").unbind('click').on('click', function () {
+                    debugger;
+                    var data = $(this).attr('id');
+                    var splicedata = data.split('_');
+                    var table = $("#purchaseTempTable");
+                    var rows = table.find("tr.tableItem");
+                    var index = parseInt(splicedata[1]);
+                    selectedIndex = parseInt(index);
+                    var row = $(this).closest('tr');
+                    var itemID = '';
+                    var itemname = '';
+                    var itemIDClass = '';
+                    var qty = '';
+                    var UnitRate = '';
+                    var Total = '';
+                    if (row[0]) {
+                        itemID = row[0].getElementsByClassName('itemID')[0].innerText ?? '';
+                        itemname = row[0].getElementsByClassName('itemname')[0].innerText ?? '';
+                        itemIDClass = row[0].getElementsByClassName('itemIDClass')[0].innerText ?? '';
+                        qty = row[0].getElementsByClassName('Quenity')[0].value ?? 0;
+                        UnitRate = row[0].getElementsByClassName('UnitRate')[0].value ?? 0;
+                        Total = row[0].getElementsByClassName('Total')[0].value ?? 0;
+                    }
+
+                    // get unit of editd item
+                    eventFunction.config.method = "GetUnitOfItemByID";
+                    eventFunction.config.url = eventFunction.config.baseURL + eventFunction.config.method;
+                    eventFunction.config.data = JSON2.stringify({ ids: itemname });
+                    eventFunction.config.ajaxCallMode = 3;
+                    eventFunction.ajaxCall(eventFunction.config);
+
+                    eventFunction.GetItem();
+                    $("#tblAddItem").dialog({
+                        'title': 'Edit Items',
+                        width: 600,
+                        modal: true,
+                        dialogClass: 'headingbg',
+                        resizable: true,
+                        dialogClass: 'popup-titlebg'
+                    });
+
+                    setTimeout(() => {
+                        $('#btnPurchaseAdd').val('Edit');
+                        $('#btnPurchaseAdd').attr('isedit', true);
+                        $('#DdlItemid').val(itemID);
+                        $('#DdlItemid').prop('disabled', true);
+                        $('#lblItemid').val(itemname);
+                        $('#lblItemid').prop('disabled', true);
+                        $('#DdUnitFortextbx').val(itemIDClass);
+                        $('#txtQuentity').val(qty);
+                        $('#txtQuentity').val(qty);
+                        $('#txtRate').val(UnitRate);
+                        $('#txtRate').val(UnitRate);
+                        $('#txtTotal').val(Total);
+                    }, 100);
+                });
+
                 $(".PurchaseDelete").unbind('click').on('click', function () {
                     var data = $(this).attr('id');
                     var row = $(this).closest('tr');
@@ -1558,10 +1676,7 @@ function prints() {
                             eventFunction.CalculateTotal();
                         }
                     });
-
                 });
-
-
             },
 
 

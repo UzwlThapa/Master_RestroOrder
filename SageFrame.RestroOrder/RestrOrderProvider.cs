@@ -2165,7 +2165,7 @@ namespace SageFrame.RestroOrder
                 throw;
             }
         }
-        internal int RestroPurchaseOrder(purchaseMain PurchaseObject)
+        internal int RestroPurchaseOrder(MvPurchaseMain PurchaseObject)
         {
             using (TransactionScope ts = new TransactionScope())
             {
@@ -2665,18 +2665,18 @@ namespace SageFrame.RestroOrder
                 throw;
             }
         }
-        internal List<purchaseMain> getAutoNumber()
+        internal List<MvPurchaseMain> getAutoNumber()
         {
-            List<purchaseMain> Unitinfo = sqlHandler.ExecuteAsList<purchaseMain>("[USP_ROI_PURCHASEAUTONUMBER]");
+            List<MvPurchaseMain> Unitinfo = sqlHandler.ExecuteAsList<MvPurchaseMain>("[USP_ROI_PURCHASEAUTONUMBER]");
             return Unitinfo;
         }
-        internal List<purchaseDetails> getPurchaseDetails()
+        internal List<MvPurchaseDetails> getPurchaseDetails()
         {
             //A
-            List<purchaseDetails> Unitinfo = sqlHandler.ExecuteAsList<purchaseDetails>("[USP_ROI_GETPRUCHASEDETAILS]");
+            List<MvPurchaseDetails> Unitinfo = sqlHandler.ExecuteAsList<MvPurchaseDetails>("[USP_ROI_GETPRUCHASEDETAILS]");
             return Unitinfo;
         }
-        internal int GoodsReceivedss(goodsReceiveMain GoodReived, MemberInfo memberInfo, List<PurchasePayment> purchasePayment)
+        internal int GoodsReceivedss(goodsReceiveMain GoodReived, MemberInfo memberInfo, List<PurchasePayment> purchasePayment = null)
         {
             using (TransactionScope ts = new TransactionScope())
             {
@@ -2706,6 +2706,7 @@ namespace SageFrame.RestroOrder
                         var b = sqlHandler.ExecuteAsScalar<object>("[ROI_SAVEPURCHASEitembal]", Param1);
                         //ItemBal
                     }
+
                     for (int i = 0; i < GoodReived.PurchaseObjItemBal.Count; i++)
                     {
                         List<KeyValuePair<string, object>> Param1 = new List<KeyValuePair<string, object>>();
@@ -2720,6 +2721,7 @@ namespace SageFrame.RestroOrder
                         sqlHandler.ExecuteNonQuery("[USP_ROI_GoodReceivedDetailsSave]", Param1);
                         //GoodsReceive
                     }
+
                     for (int i = 0; i < GoodReived.RecquistionObjectDetails.Count; i++)
                     {
                         List<KeyValuePair<string, object>> Param2 = new List<KeyValuePair<string, object>>();
@@ -2864,11 +2866,11 @@ namespace SageFrame.RestroOrder
             List<issueMain> storeList = sqlHandler.ExecuteAsList<issueMain>("[USP_ROI_IssueAUTONUMBER]");
             return storeList;
         }
-        internal List<purchaseDetails> getitemidbyname(string itemname)
+        internal List<MvPurchaseDetails> getitemidbyname(string itemname)
         {
             List<KeyValuePair<string, object>> Param = new List<KeyValuePair<string, object>>();
             Param.Add(new KeyValuePair<string, object>("@ITName", itemname));
-            List<purchaseDetails> storeList = sqlHandler.ExecuteAsList<purchaseDetails>("[USP_ROI_Getpurchaseitemidbyname]", Param);
+            List<MvPurchaseDetails> storeList = sqlHandler.ExecuteAsList<MvPurchaseDetails>("[USP_ROI_Getpurchaseitemidbyname]", Param);
             return storeList;
         }
         internal List<goodsReceiveMain> getGoodsReceive(string PoNO)
@@ -2889,11 +2891,11 @@ namespace SageFrame.RestroOrder
             List<MemberInfo> vander = sqlHandler.ExecuteAsList<MemberInfo>("[dbo].[usp_venderForDropDown]");
             return vander;
         }
-        internal List<purchaseDetails> GETITEMIDPOIDBYNAME(string ItemName)
+        internal List<MvPurchaseDetails> GETITEMIDPOIDBYNAME(string ItemName)
         {
             List<KeyValuePair<string, object>> Param = new List<KeyValuePair<string, object>>();
             Param.Add(new KeyValuePair<string, object>("@ItemName", ItemName));
-            List<purchaseDetails> storeList = sqlHandler.ExecuteAsList<purchaseDetails>("[USP_ROI_GETITEMIDPOIDBYNAME]", Param);
+            List<MvPurchaseDetails> storeList = sqlHandler.ExecuteAsList<MvPurchaseDetails>("[USP_ROI_GETITEMIDPOIDBYNAME]", Param);
             return storeList;
         }
         internal void SaveAdjsment(adjustmentMain AdjustMain)
@@ -3007,10 +3009,10 @@ namespace SageFrame.RestroOrder
             Param.Add(new KeyValuePair<string, object>("@EndDate", EndDate));
             return sqlHandler.ExecuteAsList<stockReport>("USP_STOCKREPORTRANGE", Param);
         }
-        internal List<purchaseDetails> getgoodreceiveforissue()
+        internal List<MvPurchaseDetails> getgoodreceiveforissue()
         {
             //A
-            List<purchaseDetails> Unitinfo = sqlHandler.ExecuteAsList<purchaseDetails>("[USP_ROI_GETITEMFORGOODS]");
+            List<MvPurchaseDetails> Unitinfo = sqlHandler.ExecuteAsList<MvPurchaseDetails>("[USP_ROI_GETITEMFORGOODS]");
             return Unitinfo;
         }
         internal int GetItemRateIdByItemId(int empid)
@@ -3028,15 +3030,15 @@ namespace SageFrame.RestroOrder
             List<CategoriesClass> storeList = sqlHandler.ExecuteAsList<CategoriesClass>("[USP_ROI_txtSearchForItem]", Param);
             return storeList;
         }
-        internal List<purchaseDetails> GetItemForSearch()
+        internal List<MvPurchaseDetails> GetItemForSearch()
         {
-            return sqlHandler.ExecuteAsList<purchaseDetails>("[USP_ROI_GetItemForSearch]");
+            return sqlHandler.ExecuteAsList<MvPurchaseDetails>("[USP_ROI_GetItemForSearch]");
         }
-        internal List<purchaseDetails> GetItemForWholeSaleSearch(string LookUpName)
+        internal List<MvPurchaseDetails> GetItemForWholeSaleSearch(string LookUpName)
         {
             List<KeyValuePair<string, object>> Param = new List<KeyValuePair<string, object>>();
             Param.Add(new KeyValuePair<string, object>("@LookUpName", LookUpName));
-            List<purchaseDetails> list = sqlHandler.ExecuteAsList<purchaseDetails>("[USP_ROI_GetItemForWholeSaleSearch]", Param);
+            List<MvPurchaseDetails> list = sqlHandler.ExecuteAsList<MvPurchaseDetails>("[USP_ROI_GetItemForWholeSaleSearch]", Param);
             return list;
         }
         internal List<extraItem> GetItemExtraListByItemID(int ItemId)
@@ -3859,16 +3861,16 @@ namespace SageFrame.RestroOrder
             Param.Add(new KeyValuePair<string, object>("@DATE", startdate));
             return sqlHandler.ExecuteAsList<StatementInfo>("[usp_RO_SalesStatement]", Param);
         }
-        internal List<purchaseDetails> GetUnitOfItemByID(int ids)
+        internal List<MvPurchaseDetails> GetUnitOfItemByID(int ids)
         {
             List<KeyValuePair<string, object>> Param = new List<KeyValuePair<string, object>>();
             Param.Add(new KeyValuePair<string, object>("@ids", ids));
-            return sqlHandler.ExecuteAsList<purchaseDetails>("[usp_GetUnitOfItemByID]", Param);
+            return sqlHandler.ExecuteAsList<MvPurchaseDetails>("[usp_GetUnitOfItemByID]", Param);
         }
-        internal List<purchaseDetails> GetItemForOpenBalance()
+        internal List<MvPurchaseDetails> GetItemForOpenBalance()
         {
-            return sqlHandler.ExecuteAsList<purchaseDetails>("[USP_ROI_GetItemForOpenBalance]");
-            //return sqlHandler.ExecuteAsList<purchaseDetails>("[USP_RO_GETITEM_NEW]");
+            return sqlHandler.ExecuteAsList<MvPurchaseDetails>("[USP_ROI_GetItemForOpenBalance]");
+            //return sqlHandler.ExecuteAsList<MvPurchaseDetails>("[USP_RO_GETITEM_NEW]");
         }
         internal void DeleteGroupItemByID(int ids)
         {
@@ -3979,9 +3981,9 @@ namespace SageFrame.RestroOrder
             Param.Add(new KeyValuePair<string, object>("@Username", username));
             return sqlHandler.ExecuteAsScalar<string>("USP_RO_CheckPinCodeMatch", Param);
         }
-        internal List<purchaseDetails> GetInventoryItemWithSmallUnit()
+        internal List<MvPurchaseDetails> GetInventoryItemWithSmallUnit()
         {
-            return sqlHandler.ExecuteAsList<purchaseDetails>("[dbo].[USP_ROI_GetInventoryItemWithSmallUnit]");
+            return sqlHandler.ExecuteAsList<MvPurchaseDetails>("[dbo].[USP_ROI_GetInventoryItemWithSmallUnit]");
         }
         internal List<IngredientItems> getIngredientByID(int id)
         {
@@ -4314,11 +4316,11 @@ namespace SageFrame.RestroOrder
             Param.Add(new KeyValuePair<string, object>("@ItemID", ItemID));
             sqlHandler.ExecuteNonQuery("[dbo].[usp_ro_DeleteIngredientItemByID]", Param);
         }
-        internal List<purchaseDetails> getUnitsWithConvertion(int ids)
+        internal List<MvPurchaseDetails> getUnitsWithConvertion(int ids)
         {
             List<KeyValuePair<string, object>> Param = new List<KeyValuePair<string, object>>();
             Param.Add(new KeyValuePair<string, object>("@itemId", ids));
-            return sqlHandler.ExecuteAsList<purchaseDetails>("[getUnitsWithConvertion]", Param);
+            return sqlHandler.ExecuteAsList<MvPurchaseDetails>("[getUnitsWithConvertion]", Param);
         }
         internal List<OrderDetailClass> getOrderDetailByOrderMasterId(int orderMasterId)
         {
@@ -4799,6 +4801,16 @@ namespace SageFrame.RestroOrder
             OrderMasterClass orderMasterinfo = sqlHandler.ExecuteAsObject<OrderMasterClass>("[USP_RO_GETORDERMASTERForRoom]", Param);
             return orderMasterinfo;
         }
+
+        internal static void TempPurchaseDetailTsk(MvTempPurchaseDetail item)
+        {
+            SQLHandler sqlHandler = new SQLHandler();
+            List<KeyValuePair<string, object>> Param = new List<KeyValuePair<string, object>>();
+            Param.Add(new KeyValuePair<string, object>("@ItemID", item.ItemID));
+            Param.Add(new KeyValuePair<string, object>("@Quantity", item.Quantity));
+            sqlHandler.ExecuteNonQuery("[SpTempPurchaseDetailTsk]", Param);
+        }
+
         internal List<UserInfos> getUNameNpwdByPIN(string PinCode)
         {
             List<KeyValuePair<string, object>> Param = new List<KeyValuePair<string, object>>();
@@ -5685,9 +5697,9 @@ namespace SageFrame.RestroOrder
             List<dailyreport> obj = sqlHandler.ExecuteAsList<dailyreport>("Usp_getPurchaseReport", Param);
             return obj;
         }
-        internal List<purchaseDetails> getPurchaseNoForReport()
+        internal List<MvPurchaseDetails> getPurchaseNoForReport()
         {
-            List<purchaseDetails> Unitinfo = sqlHandler.ExecuteAsList<purchaseDetails>("USP_ROI_GETPRUCHASENOFORREPORT");
+            List<MvPurchaseDetails> Unitinfo = sqlHandler.ExecuteAsList<MvPurchaseDetails>("USP_ROI_GETPRUCHASENOFORREPORT");
             return Unitinfo;
         }
         internal void saveBevearge(List<ROInvItem> itemlist, List<extraItem> extraItemList)

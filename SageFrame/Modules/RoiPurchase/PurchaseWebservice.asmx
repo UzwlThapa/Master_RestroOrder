@@ -34,7 +34,7 @@ public class PurchaseWebservice : System.Web.Services.WebService
         return "Hello World";
     }
     [WebMethod]
-    public int RestroPurchaseOrder(purchaseMain PurchaseObject, bool goodReceived, string PoNO, int StID, MemberInfo memberInfo, decimal extradiscount, List<PurchasePayment> purchasePayment)
+    public int RestroPurchaseOrder(MvPurchaseMain PurchaseObject, bool goodReceived, string PoNO, int StID, MemberInfo memberInfo, decimal extradiscount, List<PurchasePayment> purchasePayment)
     {
         try
         {
@@ -102,7 +102,7 @@ public class PurchaseWebservice : System.Web.Services.WebService
         try
         {
             RestrOrderController roc = new RestrOrderController();
-            List<purchaseDetails> itemfromdb = roc.GetItemForOpenBalance();
+            List<MvPurchaseDetails> itemfromdb = roc.GetItemForOpenBalance();
             return JsonConvert.SerializeObject(itemfromdb);
 
         }
@@ -119,7 +119,7 @@ public class PurchaseWebservice : System.Web.Services.WebService
         try
         {
             RestrOrderController roc = new RestrOrderController();
-            List<purchaseDetails> unitbyId = roc.getUnitsWithConvertion(ids);
+            List<MvPurchaseDetails> unitbyId = roc.getUnitsWithConvertion(ids);
             return JsonConvert.SerializeObject(unitbyId);
         }
         catch (Exception)
@@ -179,7 +179,7 @@ public class PurchaseWebservice : System.Web.Services.WebService
 
     }
     [WebMethod]
-    public List<purchaseDetails> getPurchaseDetails()
+    public List<MvPurchaseDetails> getPurchaseDetails()
     {
         try
         {
@@ -194,7 +194,7 @@ public class PurchaseWebservice : System.Web.Services.WebService
         }
     }
     [WebMethod]
-    public List<purchaseDetails> getgoodreceiveforissue()
+    public List<MvPurchaseDetails> getgoodreceiveforissue()
     {
         try
         {
@@ -231,7 +231,7 @@ public class PurchaseWebservice : System.Web.Services.WebService
         return nte.changeCurrencyToWords(numb);
     }
     [WebMethod]
-    public List<purchaseDetails> getitemidbyname(string itemname)
+    public List<MvPurchaseDetails> getitemidbyname(string itemname)
     {
         RestrOrderController roc = new RestrOrderController();
         return roc.getitemidbyname(itemname);
@@ -254,7 +254,7 @@ public class PurchaseWebservice : System.Web.Services.WebService
     }
 
     [WebMethod]
-    public List<purchaseDetails> GETITEMIDPOIDBYNAME(string ItemName)
+    public List<MvPurchaseDetails> GETITEMIDPOIDBYNAME(string ItemName)
     {
         RestrOrderController roc = new RestrOrderController();
         return roc.GETITEMIDPOIDBYNAME(ItemName);
@@ -347,11 +347,6 @@ public class PurchaseWebservice : System.Web.Services.WebService
     [WebMethod]
     public void DeleteAdjustmentType(int id, string Username)
     {
-        //int empId = 0;
-        //if (!int.TryParse(id, out empId))
-        //{
-        //    empId = -1;// or some invalid Id which won't appear in DB
-        //}
         RestrOrderController roc = new RestrOrderController();
         roc.DeleteAdjustmentType(id, Username);
 
@@ -485,7 +480,7 @@ public class PurchaseWebservice : System.Web.Services.WebService
 
 
     [WebMethod]
-    public List<purchaseMain> getAutoNumber()
+    public List<MvPurchaseMain> getAutoNumber()
     {
         RestrOrderController roc = new RestrOrderController();
         return roc.getAutoNumber();

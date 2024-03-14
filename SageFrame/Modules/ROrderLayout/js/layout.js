@@ -275,8 +275,8 @@
                 var cancel = false;
                 var ordermaster = new Object();
                 ordermaster.TableId = CancelTableID,
-                ordermaster.OrderMasterID = OrderMasterID,
-                ordermaster.GuestNo = parseInt($('.splitNoCancel').val());
+                    ordermaster.OrderMasterID = OrderMasterID,
+                    ordermaster.GuestNo = parseInt($('#splitNoCancel').text() == '' ? '1' : $('#splitNoCancel').text());
                 ordermaster.CancelReason = $(".canceltextarea").val();
                 ordermaster.CancelBy = $('#hdnPinBy').val();
                 ordermaster.UserName = $('#hdnPinBy').val();

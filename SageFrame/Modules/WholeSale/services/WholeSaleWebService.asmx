@@ -33,7 +33,7 @@ public class WholeSaleWebService : System.Web.Services.WebService
     [WebMethod]
     public string GetItemForWholeSaleSearch(string LookUpName)
     {
-        List<purchaseDetails> list = roController.GetItemForWholeSaleSearch(LookUpName);
+        List<MvPurchaseDetails> list = roController.GetItemForWholeSaleSearch(LookUpName);
         return jsSerializer.Serialize(list);
     }
     [WebMethod]

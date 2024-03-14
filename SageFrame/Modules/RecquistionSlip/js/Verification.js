@@ -264,6 +264,7 @@
                 }
 
                 $(".btnVerify").on('click', function () {
+                    debugger;
                     var Username = SageFrameUserName;
                     var reciever = $("#ddlRecievedBy :selected").text();
                     if (reciever == Username) {

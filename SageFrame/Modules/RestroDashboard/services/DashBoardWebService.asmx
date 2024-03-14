@@ -294,6 +294,18 @@ public class DashBoardWebService : System.Web.Services.WebService
                 CancelItems.Add(cancelItm);
             }
             roc.SaveCanceledItems(CancelItems);
+
+            // adjust stock is negative sales
+            #region Adjust Stock
+            if (System.Configuration.ConfigurationManager.AppSettings["IsAutoPurchase"] == "true")
+            {
+                foreach (var item in orderList)
+                {
+                    MvTempPurchaseDetail tempItem = new MvTempPurchaseDetail { ItemID = item.ItemId, Quantity = Convert.ToDecimal(item.Quantity) * -1 };
+                    roc.TempPurchaseDetailTsk(tempItem);
+                }
+            }
+            #endregion Adjust Stock
         }
         catch (Exception)
         {

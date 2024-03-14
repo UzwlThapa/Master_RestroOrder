@@ -217,7 +217,6 @@ Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.FiscalYear\bi
 Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.FiscalYear\bin\Release\SageFrame.Common.pdb
 Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.FiscalYear\obj\Release\SageFrame.FiscalYear.csproj.AssemblyReference.cache
 Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.FiscalYear\obj\Release\SageFrame.FiscalYear.csproj.CoreCompileInputs.cache
-Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.FiscalYear\obj\Release\SageFrame.FiscalYear.csproj.CopyComplete
 Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.FiscalYear\obj\Release\SageFrame.FiscalYear.dll
 Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.FiscalYear\obj\Release\SageFrame.FiscalYear.pdb
 D:\restroorder\Master_RestroOrder\SageFrame.FiscalYear\bin\Release\SageFrame.FiscalYear.dll
@@ -247,3 +246,4 @@ G:\Danfe-Git\Master_RestroOrder\SageFrame.FiscalYear\obj\Release\SageFrame.Fisca
 G:\Danfe-Git\Master_RestroOrder\SageFrame.FiscalYear\obj\Release\SageFrame.FiscalYear.csproj.CopyComplete
 G:\Danfe-Git\Master_RestroOrder\SageFrame.FiscalYear\obj\Release\SageFrame.FiscalYear.dll
 G:\Danfe-Git\Master_RestroOrder\SageFrame.FiscalYear\obj\Release\SageFrame.FiscalYear.pdb
+Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.FiscalYear\obj\Release\SageFram.7A5E9D10.Up2Date

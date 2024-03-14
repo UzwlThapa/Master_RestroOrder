@@ -16,7 +16,7 @@ using Newtonsoft.Json;
 public class wsInventoryReport  : System.Web.Services.WebService {
 
     [WebMethod]
-    public List<purchaseDetails> getPurchaseDetails()
+    public List<MvPurchaseDetails> getPurchaseDetails()
     {
         try
         {
@@ -104,7 +104,7 @@ public class wsInventoryReport  : System.Web.Services.WebService {
         try
         {
             RestrOrderController roc = new RestrOrderController();
-            List<purchaseDetails> purchase = roc.getPurchaseNoForReport();
+            List<MvPurchaseDetails> purchase = roc.getPurchaseNoForReport();
             return JsonConvert.SerializeObject(purchase);
         }
         catch (Exception)

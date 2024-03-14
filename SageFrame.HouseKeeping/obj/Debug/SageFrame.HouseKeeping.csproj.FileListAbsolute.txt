@@ -214,7 +214,6 @@ Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.HouseKeeping\
 Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.HouseKeeping\bin\Debug\SageFrame.Common.pdb
 Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.HouseKeeping\obj\Debug\SageFrame.HouseKeeping.csproj.AssemblyReference.cache
 Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.HouseKeeping\obj\Debug\SageFrame.HouseKeeping.csproj.CoreCompileInputs.cache
-Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.HouseKeeping\obj\Debug\SageFrame.HouseKeeping.csproj.CopyComplete
 Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.HouseKeeping\obj\Debug\SageFrame.HouseKeeping.dll
 Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.HouseKeeping\obj\Debug\SageFrame.HouseKeeping.pdb
 D:\bipinDanfe\Master_RestroOrder\SageFrame.HouseKeeping\bin\Debug\SageFrame.HouseKeeping.dll
@@ -244,3 +243,4 @@ G:\Danfe-Git\Master_RestroOrder\SageFrame.HouseKeeping\obj\Debug\SageFrame.House
 G:\Danfe-Git\Master_RestroOrder\SageFrame.HouseKeeping\obj\Debug\SageFrame.HouseKeeping.csproj.CopyComplete
 G:\Danfe-Git\Master_RestroOrder\SageFrame.HouseKeeping\obj\Debug\SageFrame.HouseKeeping.dll
 G:\Danfe-Git\Master_RestroOrder\SageFrame.HouseKeeping\obj\Debug\SageFrame.HouseKeeping.pdb
+Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.HouseKeeping\obj\Debug\SageFram.50AB6378.Up2Date

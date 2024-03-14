@@ -23,7 +23,7 @@ public class WebServiceForItemBalance : System.Web.Services.WebService {
     }
 
     [WebMethod]
-    public List<purchaseDetails> GetUnitOfItemByID(int ids)
+    public List<MvPurchaseDetails> GetUnitOfItemByID(int ids)
     {
         try
         {
@@ -38,7 +38,7 @@ public class WebServiceForItemBalance : System.Web.Services.WebService {
         }
     }
     [WebMethod]
-    public List<purchaseDetails> GetItemForSearch()
+    public List<MvPurchaseDetails> GetItemForSearch()
     {
         try
         {

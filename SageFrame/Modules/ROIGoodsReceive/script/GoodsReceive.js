@@ -721,7 +721,7 @@ function print() {
                 var RecquistionObjectDetails = new Array();
                 var GoodReived = new Object();
 
-                var MyRows = $('table#goodsRecevetable').find('tbody').find('tr');
+                var MyRows = $('#goodsReceiveList > table#goodsRecevetable').find('tbody').find('tr');
                 for (var i = 0; i < MyRows.length; i++) {
                     var PurchaseObjItemBalObj = new Object();
                     PurchaseObjItemBalObj.ITId = parseInt($(MyRows[i]).find('td:eq(1)').html());
@@ -1109,7 +1109,7 @@ function print() {
                 });
                 $('#totaldiscount').text((totaldiscount).toFixed(2));
 
-                var MyRows = $('table#goodsRecevetable').find('tbody').find('tr');
+                var MyRows = $('#goodsReceiveList > table#goodsRecevetable').find('tbody').find('tr');
                 for (var i = 0; i < MyRows.length; i++) {
                     var allchecked = $(MyRows[i]).find('.chkISVAT').is(":checked");
                     if (allchecked == true) {

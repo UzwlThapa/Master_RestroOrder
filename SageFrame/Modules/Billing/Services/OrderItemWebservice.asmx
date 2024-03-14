@@ -673,7 +673,7 @@ public class OrderItemWebservice : System.Web.Services.WebService
     }
 
     [WebMethod]
-    public List<purchaseDetails> GetItemForSearch()
+    public List<MvPurchaseDetails> GetItemForSearch()
     {
         try
         {

@@ -197,6 +197,12 @@ namespace SageFrame.ChartOfAccount
             prov.SaveVerifiedTransactionByID(Transaction);
         }
 
+        public string TempPurchaseDetailExists()
+        {
+            AccountProvider prov = new AccountProvider();
+            return prov.TempPurchaseDetailExists();
+        }
+
         public List<PaymentModes> getPaymentMethods()
         {
             AccountProvider prov = new AccountProvider();

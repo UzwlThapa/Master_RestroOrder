@@ -138,7 +138,6 @@ Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\AccountReport\bin\Relea
 Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\AccountReport\bin\Release\SageFrame.Common.pdb
 Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\AccountReport\obj\Release\SageFrame.AccountReport.csproj.AssemblyReference.cache
 Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\AccountReport\obj\Release\SageFrame.AccountReport.csproj.CoreCompileInputs.cache
-Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\AccountReport\obj\Release\SageFrame.AccountReport.csproj.CopyComplete
 Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\AccountReport\obj\Release\SageFrame.AccountReport.dll
 Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\AccountReport\obj\Release\SageFrame.AccountReport.pdb
 D:\restroorder\Master_RestroOrder\AccountReport\bin\Release\SageFrame.AccountReport.dll
@@ -186,3 +185,4 @@ G:\Danfe-Git\Master_RestroOrder\AccountReport\obj\Release\SageFrame.AccountRepor
 G:\Danfe-Git\Master_RestroOrder\AccountReport\obj\Release\SageFrame.AccountReport.csproj.CopyComplete
 G:\Danfe-Git\Master_RestroOrder\AccountReport\obj\Release\SageFrame.AccountReport.dll
 G:\Danfe-Git\Master_RestroOrder\AccountReport\obj\Release\SageFrame.AccountReport.pdb
+Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\AccountReport\obj\Release\SageFram.53A44CF7.Up2Date

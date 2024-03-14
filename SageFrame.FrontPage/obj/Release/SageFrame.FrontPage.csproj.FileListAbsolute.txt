@@ -138,7 +138,6 @@ Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.FrontPage\bin
 Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.FrontPage\bin\Release\SageFrame.Common.pdb
 Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.FrontPage\obj\Release\SageFrame.FrontPage.csproj.AssemblyReference.cache
 Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.FrontPage\obj\Release\SageFrame.FrontPage.csproj.CoreCompileInputs.cache
-Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.FrontPage\obj\Release\SageFrame.FrontPage.csproj.CopyComplete
 Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.FrontPage\obj\Release\SageFrame.FrontPage.dll
 Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.FrontPage\obj\Release\SageFrame.FrontPage.pdb
 D:\restroorder\Master_RestroOrder\SageFrame.FrontPage\bin\Release\SageFrame.FrontPage.dll
@@ -186,3 +185,4 @@ G:\Danfe-Git\Master_RestroOrder\SageFrame.FrontPage\obj\Release\SageFrame.FrontP
 G:\Danfe-Git\Master_RestroOrder\SageFrame.FrontPage\obj\Release\SageFrame.FrontPage.csproj.CopyComplete
 G:\Danfe-Git\Master_RestroOrder\SageFrame.FrontPage\obj\Release\SageFrame.FrontPage.dll
 G:\Danfe-Git\Master_RestroOrder\SageFrame.FrontPage\obj\Release\SageFrame.FrontPage.pdb
+Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.FrontPage\obj\Release\SageFram.3E268F37.Up2Date

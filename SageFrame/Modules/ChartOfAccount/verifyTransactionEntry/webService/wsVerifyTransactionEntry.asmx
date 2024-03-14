@@ -117,5 +117,11 @@ public class wsFinancialAc : System.Web.Services.WebService
         con.SaveVerifiedTransactionByID(Transaction);
     }
 
-
+    [WebMethod]
+    public string TempPurchaseDetailExists()
+    {
+        AccountController con = new AccountController();
+        string PuNo = con.TempPurchaseDetailExists();
+        return JsonConvert.SerializeObject(new { PuNo = PuNo });
+    }
 }

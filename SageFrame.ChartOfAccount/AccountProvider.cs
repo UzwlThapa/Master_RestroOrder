@@ -78,7 +78,7 @@ namespace SageFrame.ChartOfAccount
                 throw;
             }
 
-           
+
         }
 
         internal List<Voucher> getVoucharType()
@@ -238,7 +238,7 @@ namespace SageFrame.ChartOfAccount
             return sql.ExecuteAsList<AccountInfo>("USP_AC_getFinancialAc");
         }
 
-        
+
         internal void MergeFinancialAcc(MergerAccDetails obj)
         {
             List<KeyValuePair<string, object>> param = new List<KeyValuePair<string, object>>();
@@ -285,7 +285,7 @@ namespace SageFrame.ChartOfAccount
 
         internal List<OpeningBalDetails> getOpeningBalanceDetails()
         {
-            SQLHandler sql = new SQLHandler();;
+            SQLHandler sql = new SQLHandler(); ;
             return sql.ExecuteAsList<OpeningBalDetails>("USP_Ac_GetAcOpeningBalance");
         }
 
@@ -337,7 +337,7 @@ namespace SageFrame.ChartOfAccount
             SQLHandler sql = new SQLHandler();
             return sql.ExecuteAsList<TransactionDetails>("usp_ac_getVerifiedTransactionByID", param1);
         }
-         
+
         internal void SaveVerifiedTransactionByID(List<Transaction> Transaction)
         {
             SQLHandler sqlhan = new SQLHandler();
@@ -348,7 +348,12 @@ namespace SageFrame.ChartOfAccount
                 sqlhan.ExecuteNonQuery("Usp_saveTransctionByID", Param);
             }
         }
-
+        internal string TempPurchaseDetailExists()
+        {
+            SQLHandler sqlhan = new SQLHandler();
+            List<KeyValuePair<string, object>> Param = new List<KeyValuePair<string, object>>();
+            return sqlhan.ExecuteAsScalar<string>("SpTempPurchaseDetailExists", Param);
+        }
 
         internal List<PaymentModes> getPaymentMethods()
         {
@@ -373,10 +378,5 @@ namespace SageFrame.ChartOfAccount
             Param.Add(new KeyValuePair<string, object>("@CreatedBy", obj.UserName));
             sqlhan.ExecuteNonQuery("USP_Save_PaymentReceiveVoucher", Param);
         }
-
-        
-
-
-
     }
 }

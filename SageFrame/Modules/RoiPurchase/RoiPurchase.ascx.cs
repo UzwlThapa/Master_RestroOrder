@@ -26,9 +26,9 @@ public partial class Modules_RoiPurchase_RoiPurchase : BaseUserControl
     private void ReceiptNo()
     {
         RestrOrderController roc = new RestrOrderController();
-        List<purchaseMain> data = roc.getAutoNumber();
+        List<MvPurchaseMain> data = roc.getAutoNumber();
 
-        foreach (purchaseMain item in data)
+        foreach (MvPurchaseMain item in data)
         {
             txtPuno.Text = item.PuNo;
         }

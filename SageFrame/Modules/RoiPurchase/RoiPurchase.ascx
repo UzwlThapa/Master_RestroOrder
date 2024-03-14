@@ -193,15 +193,11 @@
                         <th>Unit</th>
                         <th class="acc">UnitID</th>
                         <th>Qty</th>
-                        <th>Rate</th>
-                        <%-- <th>LotNo</th>
-                            <th>BatchNo</th>
-                            <th>ExpDate</th>--%>
+                        <th>Rate</th> 
                         <th>Total</th>
                         <th class="divDis" style="display: none;">Discount</th>
                         <th>IsVat</th>
-
-                        <th style='text-align: center;'>Delete</th>
+                        <th style='text-align: center;'>Action</th>
                         <th class="acc">UnitID</th>
                         <th class="acc">Conversion</th>
                     </tr>

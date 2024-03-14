@@ -130,7 +130,7 @@ public class RoiItem : System.Web.Services.WebService
         try
         {
             RestrOrderController roc = new RestrOrderController();
-            List<purchaseDetails> searchList = roc.GetItemForSearch();
+            List<MvPurchaseDetails> searchList = roc.GetItemForSearch();
             return JsonConvert.SerializeObject(searchList);
 
         }
@@ -401,7 +401,7 @@ public class RoiItem : System.Web.Services.WebService
         try
         {
             RestrOrderController roc = new RestrOrderController();
-            List<purchaseDetails> invwithUnit = roc.GetInventoryItemWithSmallUnit();
+            List<MvPurchaseDetails> invwithUnit = roc.GetInventoryItemWithSmallUnit();
             return JsonConvert.SerializeObject(invwithUnit);
         }
         catch (Exception)
@@ -446,7 +446,7 @@ public class RoiItem : System.Web.Services.WebService
         try
         {
             RestrOrderController roc = new RestrOrderController();
-            List<purchaseDetails> getbyId = roc.getUnitsWithConvertion(ids);
+            List<MvPurchaseDetails> getbyId = roc.getUnitsWithConvertion(ids);
             return JsonConvert.SerializeObject(getbyId);
         }
         catch (Exception)
