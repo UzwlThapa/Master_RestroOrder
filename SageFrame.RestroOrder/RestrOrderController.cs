@@ -767,9 +767,9 @@ namespace SageFrame.RestroOrder
         {
             restroOrderProvider.SaveRoiItem(info, inforate); ;
         }
-        public List<unitclassforitem> GetPareintItem()
+        public List<unitclassforitem> GetPareintItem(bool IsMenu = true)
         {
-            return restroOrderProvider.GetPareintItem(); ;
+            return restroOrderProvider.GetPareintItem(IsMenu); ;
         }
         public List<ROInvItem> GetRoiItemfromDatabase()
         {

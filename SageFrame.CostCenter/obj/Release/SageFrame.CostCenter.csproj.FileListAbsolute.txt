@@ -470,3 +470,20 @@ G:\Danfe-Git\Master_RestroOrder\SageFrame.CostCenter\obj\Release\SageFrame.CostC
 G:\Danfe-Git\Master_RestroOrder\SageFrame.CostCenter\obj\Release\SageFrame.CostCenter.dll
 G:\Danfe-Git\Master_RestroOrder\SageFrame.CostCenter\obj\Release\SageFrame.CostCenter.pdb
 Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.CostCenter\obj\Release\SageFram.B4D3DA7B.Up2Date
+Z:\Work\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.CostCenter\bin\Release\SageFrame.CostCenter.dll
+Z:\Work\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.CostCenter\bin\Release\SageFrame.CostCenter.pdb
+Z:\Work\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.CostCenter\bin\Release\SageFrame.Common.dll
+Z:\Work\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.CostCenter\bin\Release\SageFrame.Core.dll
+Z:\Work\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.CostCenter\bin\Release\SageFrame.Security.dll
+Z:\Work\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.CostCenter\bin\Release\AjaxControlToolkit.dll
+Z:\Work\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.CostCenter\bin\Release\SageFrame.Templating.dll
+Z:\Work\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.CostCenter\bin\Release\SageFrame.CDN.dll
+Z:\Work\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.CostCenter\bin\Release\ICSharpCode.SharpZipLib.dll
+Z:\Work\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.CostCenter\bin\Release\Ionic.Zip.dll
+Z:\Work\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.CostCenter\bin\Release\SageFrame.Common.pdb
+Z:\Work\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.CostCenter\bin\Release\SageFrame.Security.pdb
+Z:\Work\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.CostCenter\obj\Release\SageFrame.CostCenter.csproj.AssemblyReference.cache
+Z:\Work\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.CostCenter\obj\Release\SageFrame.CostCenter.csproj.CoreCompileInputs.cache
+Z:\Work\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.CostCenter\obj\Release\SageFram.B4D3DA7B.Up2Date
+Z:\Work\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.CostCenter\obj\Release\SageFrame.CostCenter.dll
+Z:\Work\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.CostCenter\obj\Release\SageFrame.CostCenter.pdb

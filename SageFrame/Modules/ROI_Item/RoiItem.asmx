@@ -274,10 +274,10 @@ public class RoiItem : System.Web.Services.WebService
     }
 
     [WebMethod]
-    public string GetCategoryName()
+    public string GetCategoryName(bool IsMenu = true)
     {
         RestrOrderController roc = new RestrOrderController();
-        List<unitclassforitem> parent = roc.GetPareintItem();
+        List<unitclassforitem> parent = roc.GetPareintItem(IsMenu);
         return JsonConvert.SerializeObject(parent);
     }
 

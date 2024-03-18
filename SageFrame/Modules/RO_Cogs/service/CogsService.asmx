@@ -39,10 +39,10 @@ public class CogsService  : System.Web.Services.WebService {
         return items.Where(p => (p.COGS > minCogs && p.COGS <= maxCogs || minCogs == maxCogs)).ToList();
     }
     [WebMethod]
-    public string GetCategoryName()
+    public string GetCategoryName(bool IsMenu = true)
     {
         RestrOrderController roc = new RestrOrderController();
-        List<unitclassforitem> parent = roc.GetPareintItem();
+        List<unitclassforitem> parent = roc.GetPareintItem(IsMenu);
         return JsonConvert.SerializeObject(parent);
     }
 

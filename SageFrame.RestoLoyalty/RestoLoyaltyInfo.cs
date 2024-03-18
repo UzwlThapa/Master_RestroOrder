@@ -223,6 +223,7 @@ namespace SageFrame.RestoLoyalty
         public string VoucherNo { get; set; }
         public int TransactionId { get; set; }
         public string ProviderName { get; set; }
+        public string PaymentMode { get; set; }
         public decimal SettlementAmount { get; set; }
         public string AddedOn { get; set; }
         public string CustomerName { get; set; }

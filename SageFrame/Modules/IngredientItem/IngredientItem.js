@@ -258,7 +258,7 @@
             GetCategoryName: function () {
                 eventFunction.config.method = "GetCategoryName";
                 eventFunction.config.url = eventFunction.config.baseURL + eventFunction.config.method;
-                eventFunction.config.data = eventFunction.config.data;
+                eventFunction.config.data = JSON.stringify({ IsMenu: false });
                 eventFunction.config.ajaxCallMode = 1;
                 eventFunction.ajaxCall(eventFunction.config);
             },

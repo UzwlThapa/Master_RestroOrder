@@ -302,7 +302,7 @@
             //---------------------------------------------BindData----------------------------------------------------------------------
 
             Bindmember: function (data) {
-               
+                debugger;
                 $("#membeshipformlist").show();
                 $("#membeshipformlist").html('');
 

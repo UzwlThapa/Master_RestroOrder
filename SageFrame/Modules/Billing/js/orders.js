@@ -1784,37 +1784,39 @@ function InitEvents() {
 function BindPaymentModes() {
     $("#divPaymentModes").html("");
     var htmls = "";
+     
+    $.ajax({
+        type: "POST",
+        url: "/Modules/AdvanceReport/AdvanceReportService.asmx/GetPaymentModes",
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        success: function (response) {
 
-    htmls += '<div class="unpaidbill_ttl" style="display:flex;justify-content:space-between;"><h6>Total Amount : Rs. ' + TotalNetAmount + '</h6>';
-    htmls += '<h6 id="surplusDeficit" style="text-align:right;">Surplus/Deficit : Rs. <span id="txtsurplus">0</span></h6></div>';
-    htmls += '<table id="tblPayment" style="background:#F3F3F3;border-radius: 3px 3px 0px 0px;padding: 10px;">';
-    htmls += '<tr>';
-    htmls += '<td><input type="checkbox" class="pmntCheck" id="chkBox_1" checked /><label for="chkBox_1" style="margin:0;margin-left:5px;font-weight:bold;cursor:pointer;">' + 'Cash' + ' : </label></td>';
-    htmls += '<td>Pay Amount <input type="text" class="pmt sfInputbox txtPayAmount" value="' + TotalNetAmount + '" /></td>';
-    htmls += '</tr>';
-    htmls += '<tr>';
-    htmls += '<td><input type="checkbox" class="pmntCheck" id="chkBox_3" /><label for="chkBox_3" style="margin:0;margin-left:5px;font-weight:bold;cursor:pointer;">' + 'Cheque' + ' : </label></td>';
-    htmls += '<td>Pay Amount <input type="text" class="pmt sfInputbox txtPayAmount" value="0" /></td>';
-    htmls += '</tr>';
-    htmls += '<tr>';
-    htmls += '<td><input type="checkbox" class="pmntCheck" id="chkBox_2" /><label for="chkBox_2" style="margin:0;margin-left:5px;font-weight:bold;cursor:pointer;">' + 'Card' + ' : </label></td>';
-    htmls += '<td>Pay Amount <input type="text" class="pmt sfInputbox txtPayAmount" value="0" /></td>';
-    htmls += '</tr>';
-    htmls += '<tr>';
-    htmls += '<td><input type="checkbox" class="pmntCheck" id="chkBox_4" /><label for="chkBox_4" style="margin:0;margin-left:5px;font-weight:bold;cursor:pointer;">' + 'Credit' + ' : </label></td>';
-    htmls += '<td>Pay Amount <input type="text" class="pmt sfInputbox txtPayAmount" value="0" /></td>';
-    htmls += '</tr>';
-    htmls += '<tr>';
-    htmls += '<td><input type="checkbox" class="pmntCheck" id="chkBox_5" /><label for="chkBox_5" style="margin:0;margin-left:5px;font-weight:bold;cursor:pointer;">' + 'E-Sewa' + ' : </label></td>';
-    htmls += '<td>Pay Amount <input type="text" class="pmt sfInputbox txtPayAmount" value="0" /></td>';
-    htmls += '</tr>';
-    htmls += '<tr>';
-    htmls += '<td><input type="checkbox" class="pmntCheck" id="chkBox_6" /><label for="chkBox_6" style="margin:0;margin-left:5px;font-weight:bold;cursor:pointer;">' + 'Fonepay' + ' : </label></td>';
-    htmls += '<td>Pay Amount <input type="text" class="pmt sfInputbox txtPayAmount" value="0" /></td>';
-    htmls += '</tr>';
-    htmls += '</table>';
+            debugger;
+            htmls += '<div class="unpaidbill_ttl" style="display:flex;justify-content:space-between;"><h6>Total Amount : Rs. ' + TotalNetAmount + '</h6>';
+            htmls += '<h6 id="surplusDeficit" style="text-align:right;">Surplus/Deficit : Rs. <span id="txtsurplus">0</span></h6></div>';
+            htmls += '<table id="tblPayment" style="background:#F3F3F3;border-radius: 3px 3px 0px 0px;padding: 10px;">';
+            htmls += '<tr>';
+            htmls += '<td><input type="checkbox" class="pmntCheck" id="chkBox_1" checked /><label for="chkBox_1" style="margin:0;margin-left:5px;font-weight:bold;cursor:pointer;">' + 'Cash' + ' : </label></td>';
+            htmls += '<td>Pay Amount <input type="text" class="pmt sfInputbox txtPayAmount" value="' + TotalNetAmount + '" /></td>';
+            htmls += '</tr>';
 
-    $("#divPaymentModes").html(htmls);
+            var response = JSON.parse(response.d ?? '{}');
+            if (response != null && response.length > 0) {
+
+                $.each(response, function (index, item) {
+                    htmls += '<tr>';
+                    htmls += '<td><input type="checkbox" class="pmntCheck" id="chkBox_' + item.PaymentModeID + '" /><label for="chkBox_' + item.PaymentModeID + '" style="margin:0;margin-left:5px;font-weight:bold;cursor:pointer;">' + item.PaymentMode + ' : </label></td>';
+                    htmls += '<td>Pay Amount <input type="text" class="pmt sfInputbox txtPayAmount" value="0" /></td>';
+                    htmls += '</tr>';
+                });
+
+                htmls += '</table>'; 
+                $("#divPaymentModes").html(htmls); 
+            }
+        },
+        error: function (msg) { FileManager.errorFn(); }
+    });
 
 
     $('.txtPayAmount').on('change', function () {

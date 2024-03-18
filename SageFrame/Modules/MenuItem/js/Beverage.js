@@ -679,7 +679,7 @@ function isNumber(evt) {
             GetCategoryName: function () {
                 eventFunction.config.method = "GetCategoryName";
                 eventFunction.config.url = eventFunction.config.baseURL + eventFunction.config.method;
-                eventFunction.config.data = eventFunction.config.data;
+                eventFunction.config.data = JSON.stringify({ IsMenu: true });;
                 eventFunction.config.ajaxCallMode = 2;
                 eventFunction.ajaxCall(eventFunction.config);
             },

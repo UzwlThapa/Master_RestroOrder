@@ -457,7 +457,8 @@ function Print() {
 
 
             Bindmember: function () {
-               
+
+                debugger;
                 $("#membeshipformlist").show();
                 $("#membeshipformlist").html('');
                 var Roles = userRole.split(",");

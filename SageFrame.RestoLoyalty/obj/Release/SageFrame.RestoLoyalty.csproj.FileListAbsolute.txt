@@ -259,3 +259,12 @@ G:\Danfe-Git\Master_RestroOrder\SageFrame.RestoLoyalty\obj\Release\SageFrame.Res
 G:\Danfe-Git\Master_RestroOrder\SageFrame.RestoLoyalty\obj\Release\SageFrame.RestoLoyalty.dll
 G:\Danfe-Git\Master_RestroOrder\SageFrame.RestoLoyalty\obj\Release\SageFrame.RestoLoyalty.pdb
 Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.RestoLoyalty\obj\Release\SageFram.F3CAEF83.Up2Date
+Z:\Work\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.RestoLoyalty\bin\Release\SageFrame.RestoLoyalty.dll
+Z:\Work\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.RestoLoyalty\bin\Release\SageFrame.RestoLoyalty.pdb
+Z:\Work\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.RestoLoyalty\bin\Release\SageFrame.Common.dll
+Z:\Work\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.RestoLoyalty\bin\Release\SageFrame.Common.pdb
+Z:\Work\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.RestoLoyalty\obj\Release\SageFrame.RestoLoyalty.csproj.AssemblyReference.cache
+Z:\Work\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.RestoLoyalty\obj\Release\SageFrame.RestoLoyalty.csproj.CoreCompileInputs.cache
+Z:\Work\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.RestoLoyalty\obj\Release\SageFram.F3CAEF83.Up2Date
+Z:\Work\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.RestoLoyalty\obj\Release\SageFrame.RestoLoyalty.dll
+Z:\Work\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.RestoLoyalty\obj\Release\SageFrame.RestoLoyalty.pdb

@@ -391,7 +391,7 @@ function Print() {
                             htmls += "<td>" + Expire[0] + "</td>";
                             htmls += "<td>" + value.PAN + "</td>";
                             htmls += "<td class='tdrate' style='display:none'> Rs. " + value.OpeningBalance + "</td>";
-                            htmls += "<td class='tdrate'> Rs. " + (value.RemainingBalance + value.OpeningBalance) + "</td>";
+                            htmls += "<td class='tdrate'> Rs. " + value.RemainingBalance + "</td>";
                             //htmls += "<td class='tdrate'> Rs. " + value.RemainingBalance + "</td>";
                             htmls += '<td class="tdcenter"><img id="' + value.MembershipID + '" class="preview-icon PayBalance" type="button" src="/images/pay.png" style="width:20px;"></td>';
                             htmls += '<td class="tdcenter"><img src="/images/view.png" id="' + value.MembershipID + '" class="preview-icon btnViewCustomerTransaction"></label></td>';
@@ -400,14 +400,10 @@ function Print() {
                             };
                             htmls += "</tr>"
 
-                            total += value.RemainingBalance + value.OpeningBalance;
+                            total += value.RemainingBalance;
                             openingBalance += value.OpeningBalance;
                         }
-
-
                     });
-
-
                 } else {
 
                     htmls += "<tr>";
@@ -425,8 +421,8 @@ function Print() {
                             <th></th>
                             <th></th>
                             <th>Total: </th>
-                            <th class="tdrate"> Rs. ${openingBalance.toFixed(2)}</th>
                             <th class="tdrate"> Rs. ${total.toFixed(2)}</th>
+                            <th class="tdrate"></th>
                             <th class="tdcenter"></th>
                             <th class="tdcenter"></th>
                             <th class="tdcenter"></th>
@@ -792,52 +788,70 @@ function Print() {
                 $("#membeshipformlist2").html('');
 
                 var value = data.d;
-                var remaining = 0;
-                var remainingBalance = (parseFloat(value.OpeningBalance - value.RemainingBalance)).toFixed(2);
-
-                var sum = (parseFloat(value.RemainingBalance + value.OpeningBalance)).toFixed(2);
+                debugger;
                 var htmls = '';
-                htmls += "<table style='display:block;'>"
-                htmls += "<tr>"
-                htmls += "<td style='font-size:17px;'>Balance (Rs.)</td>"
-                htmls += "<td style='font-size:17px;'>Payment Mode</td>"
-                htmls += "</tr>"
-                htmls += "<tr>"
-                htmls += "<td><input type='textbox' disable value='" + (value.RemainingBalance + value.OpeningBalance) + " ' placeholder='Total Amt' class='sfInputbox total' id='txtCalTotalAmount' style='width:120px;' readonly='readonly'/></td>";
-                htmls += "<td><select id='selPmntMode' class='sfInputbox' style='width:120px;'><option value='1'>CASH</option><option value='2'>CHEQUE</option><option value='3'>SWAP</option><option value='5'>eSewa</option><option value='6'>FonePay</option></select></td>";
-                htmls += "</tr>"
-                htmls += "<tr>"
-                htmls += "<td><input type='textbox' placeholder='Paid Amt' class='sfInputbox total' id='txtCalPaidAmount' name='PaidAmount'  style='width:120px;'/></td>";
-                htmls += "<td class='pmntTransaction' style='text-align:left;display:none;'><select id='selProvider' class='sfInputbox' style='width:auto;'>";
-                $.each(providers, function (index, item) {
-                    htmls += "<option value='" + item.ProviderID + "'>" + item.ProviderName + "</option>";
-                });
-                htmls += "</select></td>";
-                htmls += "</tr>"
-                htmls += "<tr>"
-                htmls += "<td><input type='textbox' placeholder='Settlement Amt' class='sfInputbox total' id='txtSettlementAmnt' style='width:120px;'/></td>";
-                htmls += "<td class='pmntTransaction' style='text-align:left;display:none;'><input type='textbox' placeholder='Transac./Cheque No' class='sfInputbox' id='txtTransNo' style='width:auto;'/></td>";
-                htmls += "</tr>"
-                htmls += "<tr>"
-                htmls += "<td><input type='textbox' placeholder='RMNG Amt' class='sfInputbox total' id='txtCalRemainingAmount' style='width:120px;' readonly='readonly'/></td>";
-                htmls += "<td></td>";
-                htmls += "</tr>"
+                $.ajax({
+                    type: "POST",
+                    url: "/Modules/AdvanceReport/AdvanceReportService.asmx/GetPaymentModes",
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    success: function (response) {
 
-                htmls += "<tr>"
+                        debugger;
+                        htmls += "<table style='display:block;'>"
+                        htmls += "<tr>"
+                        htmls += "<td style='font-size:17px;'>Balance (Rs.)</td>"
+                        htmls += "<td style='font-size:17px;'>Payment Mode</td>"
+                        htmls += "</tr>"
+                        htmls += "<tr>"
+                        htmls += "<td><input type='textbox' disable value='" + value.RemainingBalance + " ' placeholder='Total Amt' class='sfInputbox total' id='txtCalTotalAmount' style='width:120px;' readonly='readonly'/></td>";
+                        htmls += "<td><select id='selPmntMode' class='sfInputbox' style='width:120px;'>";
 
-                htmls += "<td>" + "<input class='sfBtn restro-btn updatemember' type='button'  id=_" + value.MembershipID + " value='Pay the Bill'  /></td>";
-                htmls += "</tr>"
-                htmls += "</table>"
+                        var response = JSON.parse(response.d ?? '{}');
+                        if (response != null && response.length > 0) {
+                            $.each(response, function (index, item) {
+                                htmls += "<option value='" + item.PaymentModeID + "'>" + item.PaymentMode + "</option>FonePay</option>";
+                            });
+                        }
+
+                        htmls += "</select></td>";
+                        htmls += "</tr>"
+                        htmls += "<tr>"
+                        htmls += "<td><input type='textbox' placeholder='Paid Amt' class='sfInputbox total' id='txtCalPaidAmount' name='PaidAmount'  style='width:120px;'/></td>";
+                        htmls += "<td class='pmntTransaction' style='text-align:left;display:none;'><select id='selProvider' class='sfInputbox' style='width:auto;'>";
+                        $.each(providers, function (index, item) {
+                            htmls += "<option value='" + item.ProviderID + "'>" + item.ProviderName + "</option>";
+                        });
+                        htmls += "</select></td>";
+                        htmls += "</tr>"
+                        htmls += "<tr>"
+                        htmls += "<td><input type='textbox' placeholder='Settlement Amt' class='sfInputbox total' id='txtSettlementAmnt' style='width:120px;'/></td>";
+                        htmls += "<td class='pmntTransaction' style='text-align:left;display:none;'><input type='textbox' placeholder='Transac./Cheque No' class='sfInputbox' id='txtTransNo' style='width:auto;'/></td>";
+                        htmls += "</tr>"
+                        htmls += "<tr>"
+                        htmls += "<td><input type='textbox' placeholder='RMNG Amt' class='sfInputbox total' id='txtCalRemainingAmount' style='width:120px;' readonly='readonly'/></td>";
+                        htmls += "<td></td>";
+                        htmls += "</tr>"
+
+                        htmls += "<tr>"
+
+                        htmls += "<td>" + "<input class='sfBtn restro-btn updatemember' type='button'  id=_" + value.MembershipID + " value='Pay the Bill'  /></td>";
+                        htmls += "</tr>"
+                        htmls += "</table>"
 
 
-                $('#membeshipformlist2').html(htmls);
+                        $('#membeshipformlist2').html(htmls);
 
-                $("#membeshipformlist2").dialog({
-                    'title': (value.IsCustomer ? 'Customer Pay : ' : 'Vendor Pay : ') + value.Name,
-                    width: 400,
-                    modal: true,
-                    resizable: true,
-                    dialogClass: 'popup-titlebg',
+                        $("#membeshipformlist2").dialog({
+                            'title': (value.IsCustomer ? 'Customer Pay : ' : 'Vendor Pay : ') + value.Name,
+                            width: 400,
+                            modal: true,
+                            resizable: true,
+                            dialogClass: 'popup-titlebg',
+                        });
+
+                    },
+                    error: function (msg) { FileManager.errorFn(); }
                 });
 
                 $('#selPmntMode').on('change', function () {
@@ -853,6 +867,7 @@ function Print() {
             },
 
             UpdateCustomerName: function (id) {
+                debugger;
                 var MembershipID = id;
                 var MemberInfo = {};
                 var payment = {};
@@ -864,16 +879,15 @@ function Print() {
                 MemberInfo.AddedBy = SageFrameUserName;
 
                 payment.PaymentModeID = $('#selPmntMode').val();
+                payment.PaymentMode = $('#selPmntMode option:selected').text();
                 payment.MemberID = MembershipID;
-                payment.ProviderID = 0;//($('#selPmntMode').val() == 1 ? 0 : $('#selProvider').val());
+                payment.ProviderID = ($('#selPmntMode').val() == 1 ? 0 : $('#selProvider').val());
                 payment.TransactionNo = ($('#selPmntMode').val() == 1 ? '' : $('#txtTransNo').val());
                 eventFunction.config.method = "SaveCustomerAmount";
                 eventFunction.config.url = eventFunction.config.baseURL + eventFunction.config.method;
                 eventFunction.config.data = JSON2.stringify({ MemberInfo: MemberInfo, payment: payment });
-                //if (companyProf.config.MemberIDUpdate == 1){
 
                 eventFunction.config.ajaxCallMode = 10;
-
                 {
                     $("#membeshipformlist2").hide();
                 }
@@ -883,6 +897,7 @@ function Print() {
 
 
             PrintReceipt: function (result) {
+                debugger;
                 var data = JSON.parse(result);
                 var companyInfo = data.company;
                 var memberInfo = data.member;
@@ -893,7 +908,7 @@ function Print() {
                 comphtmls += ("<tr><td colspan='2' style='font-size:18px;text-align:center;font-weight:bold;'>" + companyInfo.Name + "</td></tr>");
                 comphtmls += ("<tr><td colspan='2' style='font-size:14px;text-align:center;'>" + companyInfo.Address + "</td></tr>");
                 comphtmls += ("<tr><td colspan='2' style='font-size:14px;text-align:center;'>" + companyInfo.PhoneNo + "</td></tr>");
-                comphtmls += ("<tr><td colspan='2' style='font-size:16px;text-align:center;'><b id='InvoiceType'>Abbreviated Receipt</b></td></tr>");
+                comphtmls += ("<tr><td colspan='2' style='font-size:16px;text-align:center;'><b id='InvoiceType'>Credit Payment Receipt</b></td></tr>");
                 var date = formatAMPM().split(' ');
                 comphtmls += ("<tr><td style='font-size:16px;text-align:left;border-bottom:1px dotted;'>Date:" + date[0] + "</td>")
                 comphtmls += ("<td style='font-size:16px;text-align:right;border-bottom:1px dotted;'>Time:" + date[3] + ' ' + date[4] + "</td></tr>");
@@ -906,7 +921,7 @@ function Print() {
                 if (paymentInfo.PaymentModeID == 1) {
                     comphtmls += "CASH</span></td></tr>"
                 } else {
-                    comphtmls += (paymentInfo.PaymentModeID == 2 ? 'CHEQUE ' : 'CARD ');
+                    comphtmls += paymentInfo.PaymentMode;
                     comphtmls += '# ' + paymentInfo.TransactionNo + '</span> </td></tr>';
                     comphtmls += ("<tr><td colspan='2' style='font-size:16px;text-align:left;'><span style='font-weight: bold;'>Provided By : </span><span style='font-style:italic;'>");
                     $.each(providers, function (index, item) {
@@ -1000,7 +1015,7 @@ function Print() {
             },
 
             PrintCreditReceipt: function (result) {
-
+                debugger;
                 var companyInfo = JSON.parse(localStorage.getItem("companyInfo"));
                 var paymentInfo = JSON.parse(result);
                 $('#getReceiptbill').html('');
@@ -1012,7 +1027,7 @@ function Print() {
                 comphtmls += ("<tr><td colspan='2' style='font-size:18px;text-align:center;font-weight:bold;padding-top:15px;'>" + companyInfo.Name + "</td></tr>");
                 comphtmls += ("<tr><td colspan='2' style='font-size:14px;text-align:center;'>" + companyInfo.Address + "</td></tr>");
                 comphtmls += ("<tr><td colspan='2' style='font-size:14px;text-align:center;'>" + companyInfo.PhoneNo + "</td></tr>");
-                comphtmls += ("<tr><td colspan='2' style='font-size:16px;text-align:center;'><b id='InvoiceType'>Abbreviated Receipt</b></td></tr>");
+                comphtmls += ("<tr><td colspan='2' style='font-size:16px;text-align:center;'><b id='InvoiceType'>Credit Payment Receipt</b></td></tr>");
                 var date = paymentInfo[0].AddedOn.split(' ');
                 comphtmls += ("<tr><td style='font-size:16px;text-align:left;border-bottom:1px dotted;'>Date:" + date[0] + "</td>")
                 comphtmls += ("<td style='font-size:16px;text-align:right;border-bottom:1px dotted;'>Time:" + date[1] + "</td></tr>");
@@ -1047,7 +1062,7 @@ function Print() {
                 $('#getReceiptbill').html(comphtmls);
 
                 $('#getReceiptbill').dialog({
-                    'title': 'Abbreviated Receipt',
+                    'title': 'Credit Payment Receipt',
                     width: '350',
                     height: 'auto',
                     modal: true,

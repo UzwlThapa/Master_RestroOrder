@@ -217,3 +217,12 @@ G:\Danfe-Git\Master_RestroOrder\SageFrame.ChartOfAccount\obj\Release\SageFrame.C
 G:\Danfe-Git\Master_RestroOrder\SageFrame.ChartOfAccount\obj\Release\SageFrame.ChartOfAccount.dll
 G:\Danfe-Git\Master_RestroOrder\SageFrame.ChartOfAccount\obj\Release\SageFrame.ChartOfAccount.pdb
 Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.ChartOfAccount\obj\Release\SageFram.9B72149E.Up2Date
+Z:\Work\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.ChartOfAccount\bin\Release\SageFrame.ChartOfAccount.dll
+Z:\Work\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.ChartOfAccount\bin\Release\SageFrame.ChartOfAccount.pdb
+Z:\Work\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.ChartOfAccount\bin\Release\SageFrame.Common.dll
+Z:\Work\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.ChartOfAccount\bin\Release\SageFrame.Common.pdb
+Z:\Work\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.ChartOfAccount\obj\Release\SageFrame.ChartOfAccount.csproj.AssemblyReference.cache
+Z:\Work\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.ChartOfAccount\obj\Release\SageFrame.ChartOfAccount.csproj.CoreCompileInputs.cache
+Z:\Work\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.ChartOfAccount\obj\Release\SageFram.9B72149E.Up2Date
+Z:\Work\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.ChartOfAccount\obj\Release\SageFrame.ChartOfAccount.dll
+Z:\Work\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.ChartOfAccount\obj\Release\SageFrame.ChartOfAccount.pdb

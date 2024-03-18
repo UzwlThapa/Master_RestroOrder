@@ -216,6 +216,7 @@
                 $("#membeshipformlist").show();
                 $("#membeshipformlist").html('');
 
+                debugger;
                 datas = JSON.parse(data);
                 var htmls = "";
                 htmls += '<div class="Report_header"><h4 style="text-align:center;margin:0;">' + companyInfo.Name + '</h4>';

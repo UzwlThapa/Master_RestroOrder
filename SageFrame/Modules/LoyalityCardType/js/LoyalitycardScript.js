@@ -149,6 +149,7 @@
             //---------------------------------------------BindData----------------------------------------------------------------------
 
             BindCardLoyalityType: function (data) {
+                debugger;
                 $("#divLoyalityCardType").html('');
                 var  datas = JSON.parse(data);
                 var htmls = '';

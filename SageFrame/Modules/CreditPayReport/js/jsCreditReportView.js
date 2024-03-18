@@ -557,6 +557,7 @@
 
 
             PrintReceipt: function (result) {
+                debugger;
                 var companyInfo = JSON.parse(localStorage.getItem("companyInfo"));
                 var paymentInfo = JSON.parse(result);
                 $('#getReceiptbill').html('');
@@ -567,7 +568,7 @@
                 comphtmls += ("<tr><td colspan='2' style='font-size:18px;text-align:center;font-weight:bold;padding-top:15px;'>" + companyInfo.Name + "</td></tr>");
                 comphtmls += ("<tr><td colspan='2' style='font-size:14px;text-align:center;'>" + companyInfo.Address + "</td></tr>");
                 comphtmls += ("<tr><td colspan='2' style='font-size:14px;text-align:center;'>" + companyInfo.PhoneNo + "</td></tr>");
-                comphtmls += ("<tr><td colspan='2' style='font-size:16px;text-align:center;'><b id='InvoiceType'>Abbreviated Receipt</b></td></tr>");
+                comphtmls += ("<tr><td colspan='2' style='font-size:16px;text-align:center;'><b id='InvoiceType'>Credit Payment Receipt</b></td></tr>");
                 var date = paymentInfo[0].AddedOn.split(' ');
                 comphtmls += ("<tr><td style='font-size:16px;text-align:left;border-bottom:1px dotted;'>Date:" + date[0] + "</td>")
                 comphtmls += ("<td style='font-size:16px;text-align:right;border-bottom:1px dotted;'>Time:" + date[1] + "</td></tr>");
@@ -601,7 +602,7 @@
                 $('#getReceiptbill').html(comphtmls);
 
                 $('#getReceiptbill').dialog({
-                    'title': 'Abbreviated Receipt',
+                    'title': 'Credit Payment Receipt',
                     width: '350',
                     height: 'auto',
                     modal: true,

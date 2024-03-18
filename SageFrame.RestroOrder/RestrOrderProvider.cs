@@ -2520,12 +2520,13 @@ namespace SageFrame.RestroOrder
                 }
             }
         }
-        internal List<unitclassforitem> GetPareintItem()
+        internal List<unitclassforitem> GetPareintItem(bool IsMenu = true)
         {
             try
             {
                 List<KeyValuePair<string, object>> Param = new List<KeyValuePair<string, object>>();
-                List<unitclassforitem> Iteminfo = sqlHandler.ExecuteAsList<unitclassforitem>("[usp_GetROIItemParint]");
+                Param.Add(new KeyValuePair<string, object>("@IsMenu", IsMenu));
+                List<unitclassforitem> Iteminfo = sqlHandler.ExecuteAsList<unitclassforitem>("[usp_GetROIItemParint]", Param);
                 return Iteminfo;
             }
             catch (Exception)
