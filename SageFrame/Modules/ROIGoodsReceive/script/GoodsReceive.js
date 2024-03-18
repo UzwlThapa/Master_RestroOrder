@@ -420,7 +420,7 @@ function print() {
                 var companyInfo = datas.companyInfo;
                 var purchaseMain = datas.goodsMain;
                 var htmls = '';
-                var date = purchaseMain[0].InvoiceDate.split("T");
+                var date = purchaseMain[0] ? purchaseMain[0].InvoiceDate.split("T") : '';
                 htmls += '<button type="button" class="sfBtn restro-btn fa fa-print" id="btnPrints" style="margin-right:2px;">Print</button>';
 
                 htmls += '<div id="ViewReport" style="margin-top:10px;">';
