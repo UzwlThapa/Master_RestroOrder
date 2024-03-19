@@ -1724,38 +1724,12 @@ function GetDataForSalesBill(orderMasterId) {
                         salesPaymentList.push(salesPayment);
                     }
                 });
-                //OLD System Updated Bishal
-                //let paymentID = $('#selPayMode').val();
 
-                //salesPayment.SPMID = $('#selPayMode').val();
-                //salesPayment.ChequeNo = (paymentID == 2 ? $('#txtCheqNo').val() : "");
-                //salesPayment.TransactionNo = (paymentID == 3 || paymentID == 5 || paymentID == 6 ? $('#txtTransNo').val() : "");
-                //salesPayment.ProviderID = ((paymentID == 3 || paymentID == 2|| paymentID == 5|| paymentID == 6) ? $('#selProv').val() : "");
-                //salesPayment.TenderAmount = (paymentID == 1 ? parseFloat(($('#txtTenderAmount').val() == "" ? 0 : $('#txtTenderAmount').val())) : 0);
-                //salesPayment.ReturnAmount = (paymentID == 1 ? parseFloat(($('#txtReturnAmount').val() == "" ? 0 : $('#txtReturnAmount').val())) : 0);
-                //salesPayment.PayAmount = (paymentID == 1 ? parseFloat($('#txtTenderAmount').val() - $('#txtReturnAmount').val()) : $('#txtNetAmt').val().split(' ')[1]);
-
-                //salesPayment.CusID = '';
-                //salesPayment.Customer = '';
-                //salesPayment.Address = '';
-                //salesPayment.PAN = '';
-                //salesPayment.Remarks = $('.txtRemarks').val();
-                //if (foodCourtAutoBillGenerate) {
-                //    SaveFoodCourtSalesBill(salesMaster, salesDetail, splited, billingTerm, discount, salesPayment)
-                //} else {
                 jConfirm('Are You Sure  ?', 'Pay', function (confirmed) {
                     if (confirmed) {
                         SaveFoodCourtSalesBill(salesMaster, salesDetail, splited, billingTerm, discount, salesPaymentList)
                     }
                 });
-                //}
-                //} else {
-                //    jConfirm('Are You Sure  ?', 'Pay', function (confirmed) {
-                //        if (confirmed) {
-                //            SaveSalesBill(salesMaster, salesDetail, splited, billingTerm, discount)
-                //        }
-                //    });
-                //}
             });
         },
         failure: function (response) {
