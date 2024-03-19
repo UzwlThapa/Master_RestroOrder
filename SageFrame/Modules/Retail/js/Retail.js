@@ -270,7 +270,7 @@ function BindCategoriesByMenu(result, categoryName) {
         $('#Categoryshow').html(htmls);
     }
     $(".categoryimg").on("error", function () {
-        $(this).attr('src', '/Modules/ROCompanyInfo/logo/' + companyInfo.Logo);
+        $(this).attr('src', '/Modules/ROCompanyInfo/logo/logo.png');
     });
     if (orderlistviewtype) {
         $('.orderbackA').on('click', function () {

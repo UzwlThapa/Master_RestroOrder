@@ -351,7 +351,7 @@ function BindCategoriesByMenu(result, categoryName) {
         $('#Categoryshow').html(htmls);
     }
     $(".categoryimg").on("error", function () {
-        $(this).attr('src', '/Modules/ROCompanyInfo/logo/' + companyInfo.Logo);
+        $(this).attr('src', '/Modules/ROCompanyInfo/logo/logo.png');
     });
     if (orderlistviewtype) {
         $('.orderbackA').on('click', function () {
@@ -484,7 +484,7 @@ function GetItemByCategoryID(categoryId, subItem, categoryName) {
         }
     });
     $(".itemimg").on("error", function () {
-        $(this).attr('src', '/Modules/ROCompanyInfo/logo/' + companyInfo.Logo);
+        $(this).attr('src', '/Modules/ROCompanyInfo/logo/logo.png');
     });
     if (orderlistviewtype) {
         $('#Itemshow').on('click', '.orderbackB', function () {
@@ -546,7 +546,7 @@ function getcomboformenu() {
             }
 
             $(".menuimg").on("error", function () {
-                $(this).attr('src', '/Modules/ROCompanyInfo/logo/' + companyInfo.Logo);
+                $(this).attr('src', '/Modules/ROCompanyInfo/logo/logo.png');
             });
             $('.menuimgg').on('click', function () {
                 if (!orderlistviewtype) {
@@ -811,53 +811,53 @@ function SaveOrderedData() {
         var second = '00'; // yields seconds
         time = month + "/" + day + "/" + year + " " + hour + ':' + minute + ':' + second;
     }
-    
 
-    
+
+
 
     for (var i = 0; i < OrderListArray.length; i++) {
         var orderDetail = new Object();
         orderDetail.Quantity = OrderListArray[i].Quantity,
-        orderDetail.ItemId = OrderListArray[i].ItemId,
-        orderDetail.Rate = 0.0,
-        orderDetail.Amount = 0.0,
-        orderDetail.AddedBy = SageFrameUserName,
-        orderDetail.SalesType = 'cake',
-        orderDetail.ItemName = '',
-        orderDetail.ArchivedOn = Date.now,
-        orderDetail.ArchivedBy = SageFrameUserName,
-        orderDetail.IsArchived = false,
-        orderDetail.UpdatedBy = '',
-        orderDetail.IsUpdated = false,
-        orderDetail.OrderMasterID = 0;
+            orderDetail.ItemId = OrderListArray[i].ItemId,
+            orderDetail.Rate = 0.0,
+            orderDetail.Amount = 0.0,
+            orderDetail.AddedBy = SageFrameUserName,
+            orderDetail.SalesType = 'cake',
+            orderDetail.ItemName = '',
+            orderDetail.ArchivedOn = Date.now,
+            orderDetail.ArchivedBy = SageFrameUserName,
+            orderDetail.IsArchived = false,
+            orderDetail.UpdatedBy = '',
+            orderDetail.IsUpdated = false,
+            orderDetail.OrderMasterID = 0;
         orderDetail.Note = OrderListArray[i].Note,
-        cakeOrderList.push(orderDetail);
+            cakeOrderList.push(orderDetail);
 
     }
     var cakeOrderMasterInf = new Object();
     cakeOrderMasterInf.CakeOrderList = cakeOrderList,
-    cakeOrderMasterInf.OrderMasterID = $('#txtOrderMasterId').val() == "" ? 0 :parseInt($('#txtOrderMasterId').val()),
-    cakeOrderMasterInf.PAN = '0',
-    cakeOrderMasterInf.CancelReason='',
-    cakeOrderMasterInf.BasicAmount = 0.0,
-    cakeOrderMasterInf.BillNo = "",
-    cakeOrderMasterInf.Date = Date.now,
-    cakeOrderMasterInf.IsCancelled = cancel,
-    cakeOrderMasterInf.TermAmount = 0.0,
-    cakeOrderMasterInf.NetAmount = 0.0,
-    cakeOrderMasterInf.UpdatedOn = Date.now,
-    cakeOrderMasterInf.AddedOn=Date.now,
-    cakeOrderMasterInf.AddedBy = $('#hdnPinBy').val(),
-    cakeOrderMasterInf.UpdatedBy=' ',
-    cakeOrderMasterInf.SalesType="cake",
-    cakeOrderMasterInf.Remarks = " ",
-    cakeOrderMasterInf.BillPaid = 0,
-    cakeOrderMasterInf.CustomerName = $('#txtCustName').val(),
-    cakeOrderMasterInf.Phone = $('#txtContactNo').val() == null ? ' ' : $('#txtContactNo').val(),
-    cakeOrderMasterInf.Address = $('#txtAddress').val() == null ? ' ' : $('#txtAddress').val(),
-    cakeOrderMasterInf.AdvanceAmount = $('#txtAdvanceAmount').val() == null ? 0 : $('#txtAdvanceAmount').val(),
-    cakeOrderMasterInf.DeliveryTime =time ,
-    cakeOrderMasterInf.OrderTypeID = cakeorder == true ? 6 : (foodCourtOrder == true ? 3 : (TableId > 0 ? 1 : 2));
+        cakeOrderMasterInf.OrderMasterID = $('#txtOrderMasterId').val() == "" ? 0 : parseInt($('#txtOrderMasterId').val()),
+        cakeOrderMasterInf.PAN = '0',
+        cakeOrderMasterInf.CancelReason = '',
+        cakeOrderMasterInf.BasicAmount = 0.0,
+        cakeOrderMasterInf.BillNo = "",
+        cakeOrderMasterInf.Date = Date.now,
+        cakeOrderMasterInf.IsCancelled = cancel,
+        cakeOrderMasterInf.TermAmount = 0.0,
+        cakeOrderMasterInf.NetAmount = 0.0,
+        cakeOrderMasterInf.UpdatedOn = Date.now,
+        cakeOrderMasterInf.AddedOn = Date.now,
+        cakeOrderMasterInf.AddedBy = $('#hdnPinBy').val(),
+        cakeOrderMasterInf.UpdatedBy = ' ',
+        cakeOrderMasterInf.SalesType = "cake",
+        cakeOrderMasterInf.Remarks = " ",
+        cakeOrderMasterInf.BillPaid = 0,
+        cakeOrderMasterInf.CustomerName = $('#txtCustName').val(),
+        cakeOrderMasterInf.Phone = $('#txtContactNo').val() == null ? ' ' : $('#txtContactNo').val(),
+        cakeOrderMasterInf.Address = $('#txtAddress').val() == null ? ' ' : $('#txtAddress').val(),
+        cakeOrderMasterInf.AdvanceAmount = $('#txtAdvanceAmount').val() == null ? 0 : $('#txtAdvanceAmount').val(),
+        cakeOrderMasterInf.DeliveryTime = time,
+        cakeOrderMasterInf.OrderTypeID = cakeorder == true ? 6 : (foodCourtOrder == true ? 3 : (TableId > 0 ? 1 : 2));
     cakeOrderMasterInf.DeliveryService = $('#txtDeliveryService option:selected').text();
 
     //exclusively for cake
@@ -866,7 +866,7 @@ function SaveOrderedData() {
         async: false,
         cache: false,
         url: baseUrl + "SaveCakeOrderIntoDataBase",
-        data: JSON2.stringify({ cakeOrderMasterInfo: cakeOrderMasterInf, orderExtraItems: ExtraItems, cakeorder: cakeorder  }),
+        data: JSON2.stringify({ cakeOrderMasterInfo: cakeOrderMasterInf, orderExtraItems: ExtraItems, cakeorder: cakeorder }),
         contentType: "application/json; charset=utf-8",
         dataType: "json",
         success: function (data) {
@@ -1098,13 +1098,13 @@ function GetDataForSalesBill(orderMasterId) {
             });
 
             $('#DialogOrderDetail').dialog(
-           {
-               'title': 'Sales Bill',
-               width: DialogWidth,
-               modal: true,
-               dialogClass: 'CheckEnable unpaidd',
-               position: ['center', 'center']
-           });
+                {
+                    'title': 'Sales Bill',
+                    width: DialogWidth,
+                    modal: true,
+                    dialogClass: 'CheckEnable unpaidd',
+                    position: ['center', 'center']
+                });
 
             if (tokeninfo.length > 0) {
                 if (tokeninfo[0].CustomerID > 0) {
@@ -1535,7 +1535,7 @@ function GetDataForSalesBill(orderMasterId) {
                     salesPayment.Customer = ($('#txtCashCusName').val() == "" ? "" : $('#txtCashCusName').val());
                     salesPayment.Address = '';
                     salesPayment.PAN = '';
-                    salesPayment.Remarks = $('.txtRemarks').val();                    
+                    salesPayment.Remarks = $('.txtRemarks').val();
                     if (foodCourtAutoBillGenerate) {
                         SaveFoodCourtSalesBill(salesMaster, salesDetail, splited, billingTerm, discount, salesPayment)
                     } else {
@@ -1657,13 +1657,13 @@ function GetCustomeronCheck() {
                 htmls += "</table>";
                 $('#membeshipformlist').html(htmls);
                 $('#customertable').DataTable(
-                     {
-                         //"scrollY": false,
-                         //"scrollCollapse": false,
-                         "jQueryUI": true,
-                         // "scrollX" : true,
+                    {
+                        //"scrollY": false,
+                        //"scrollCollapse": false,
+                        "jQueryUI": true,
+                        // "scrollX" : true,
 
-                     });
+                    });
 
                 $("#membeshipformlist").dialog({
                     'title': 'Customer',
@@ -1722,7 +1722,7 @@ function SaveSalesBill(salesMaster, salesDetail, splited, billingTerm, discount)
         dataType: "json",
         success: function (data) {
             $('#DialogOrderDetail').dialog('close');
-            
+
             getBill(data.d, false);
 
             $('#BillingView').dialog({
@@ -1763,7 +1763,7 @@ function SaveFoodCourtSalesBill(salesMaster, salesDetail, splited, billingTerm, 
             $('#DialogOrderDetail').dialog('close');
 
             getBill(data.d, true);
-            
+
             $('#BillingView').dialog({
                 'title': 'Vat Bill',
                 width: '900',
@@ -1844,34 +1844,34 @@ function CancelOrderedData() {
     var cancel = false;
     var ordermaster = new Object();
     ordermaster.TableId = TableId,
-    ordermaster.RoomId = RoomId,
-    ordermaster.OID = parseInt(OID);
+        ordermaster.RoomId = RoomId,
+        ordermaster.OID = parseInt(OID);
     ordermaster.OrderMasterID = OrderMasterID,
-    ordermaster.GuestNo = parseInt($('#splitNoCancel').text());
+        ordermaster.GuestNo = parseInt($('#splitNoCancel').text());
     ordermaster.CancelReason = $("#canceltextarea").val();
     ordermaster.CancelBy = $('#hdnPinBy').val();
     ordermaster.UserName = $('#hdnPinBy').val();
     ordermaster.IsCancelled = true,
-    $.ajax({
-        type: "POST",
-        async: false,
-        cache: false,
-        url: baseUrl + "CancelOrderIntoDataBase",
-        data: JSON2.stringify({ orderMasterInfo: ordermaster }),
-        contentType: "application/json; charset=utf-8",
-        dataType: "json",
-        success: function (data) {
-            jAlert('Ordered Cancelled successfully', 'Information!!', function () {
-                parent.$.colorbox.close();
-            });
-        },
-        failure: function (response) {
-            jAlert("Sorry some error occured. Contact the support team.", "Error!!");
-        }
-    });
+        $.ajax({
+            type: "POST",
+            async: false,
+            cache: false,
+            url: baseUrl + "CancelOrderIntoDataBase",
+            data: JSON2.stringify({ orderMasterInfo: ordermaster }),
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (data) {
+                jAlert('Ordered Cancelled successfully', 'Information!!', function () {
+                    parent.$.colorbox.close();
+                });
+            },
+            failure: function (response) {
+                jAlert("Sorry some error occured. Contact the support team.", "Error!!");
+            }
+        });
 }
 function initialSetup(tableId, oId, hostUrl, foodCourt, Delievery) {
-    
+
     foodCourt = false;
     //document.onkeydown = BillShortcutKey;
     $('#hdnPinMatch').on('change', function () {
@@ -2053,8 +2053,8 @@ function initialSetup(tableId, oId, hostUrl, foodCourt, Delievery) {
     $(".sfCol_13").hide();
 
     $('#SendOrder').on('click', function () {
-        
-        if ($('#txtDeliveryService option:selected').val() == 'delivery') {           
+
+        if ($('#txtDeliveryService option:selected').val() == 'delivery') {
 
             if ($("#txtCustName").val() == '') {
                 $("#txtCustName").css("border", "1px red solid");
@@ -2075,7 +2075,7 @@ function initialSetup(tableId, oId, hostUrl, foodCourt, Delievery) {
                 $("#txtAddress").css("border", "0px red solid");
             }
             if ($("#txtDeliveryDateTime").val() == undefined || $("#txtDeliveryDateTime").val() == '') {
-                $("#txtDeliveryDateTime").css("border-color", "red")               
+                $("#txtDeliveryDateTime").css("border-color", "red")
                 return false;
             } else {
                 $("#txtDeliveryDateTime").css("border", "0px red solid");
@@ -2084,10 +2084,10 @@ function initialSetup(tableId, oId, hostUrl, foodCourt, Delievery) {
             $("#txtCustName").css("border", "0px red solid");
             $("#txtContactNo").css("border", "0px red solid");
             $("#txtAddress").css("border", "0px red solid");
-            $("#txtDeliveryDateTime").css("border", "0px red solid");           
+            $("#txtDeliveryDateTime").css("border", "0px red solid");
         }
 
-        
+
         if (OrderDelivery == true) {
             if ($("#txtCustName").val().length < 3) {
                 jAlert('Please Insert valid name', 'Alert!!');
@@ -2233,56 +2233,56 @@ function initialSetup(tableId, oId, hostUrl, foodCourt, Delievery) {
         $(".sele").css("display", "none");
 
         $('.extradiv').dialog(
-         {
-             'title': splitindex[4],
-             "resize": "auto",
-             width: 300,
-             buttons: {
-                 "Submit": function () {
-                     var arrlength = ExtraItems.length;
-                     for (var i = arrlength - 1; i >= 0; i--) {
-                         if (itemID == ExtraItems[i].ItemID && selectedBillNo == ExtraItems[i].SeatNo) {
-                             ExtraItems.splice(i, 1);
-                         }
-                     }
+            {
+                'title': splitindex[4],
+                "resize": "auto",
+                width: 300,
+                buttons: {
+                    "Submit": function () {
+                        var arrlength = ExtraItems.length;
+                        for (var i = arrlength - 1; i >= 0; i--) {
+                            if (itemID == ExtraItems[i].ItemID && selectedBillNo == ExtraItems[i].SeatNo) {
+                                ExtraItems.splice(i, 1);
+                            }
+                        }
 
-                     $('.ckbxExtraItem').each(function (i, obj) {
-                         if ($(this).is(':checked')) {
-                             //$('.ddlSpicy').val($('.ddlSpicy').val() + ', ' + $(this).attr('id').split('_')[1]);
-                             var word = $(this).attr('id').split("_");
-                             var extra = new Object;
-                             extra.ItemID = parseInt(itemID);
-                             extra.ExtraItemID = parseInt(word[0]);
-                             extra.ExtraItem = word[1];
-                             extra.ExtraPrice = parseFloat(word[2]);
-                             extra.Quantity = parseInt($('#Qnty_' + parseInt(word[0])).val());
-                             extra.SeatNo = parseInt(selectedBillNo);
-                             ExtraItems.push(extra);
-                         }
+                        $('.ckbxExtraItem').each(function (i, obj) {
+                            if ($(this).is(':checked')) {
+                                //$('.ddlSpicy').val($('.ddlSpicy').val() + ', ' + $(this).attr('id').split('_')[1]);
+                                var word = $(this).attr('id').split("_");
+                                var extra = new Object;
+                                extra.ItemID = parseInt(itemID);
+                                extra.ExtraItemID = parseInt(word[0]);
+                                extra.ExtraItem = word[1];
+                                extra.ExtraPrice = parseFloat(word[2]);
+                                extra.Quantity = parseInt($('#Qnty_' + parseInt(word[0])).val());
+                                extra.SeatNo = parseInt(selectedBillNo);
+                                ExtraItems.push(extra);
+                            }
 
-                     });
-                     if ($('.ChkboxHomedelivery').is(':checked')) {
-                         OrderListArray[parseInt(splitindex[1])].IsHomeDelivery = true;
-                         OrderListArray[parseInt(splitindex[1])].HomeDeliveyNumber = $('.sele').val();
-                     } else {
-                         OrderListArray[parseInt(splitindex[1])].IsHomeDelivery = false;
-                         OrderListArray[parseInt(splitindex[1])].HomeDeliveyNumber = 0;
-                     }
-                     OrderListArray[parseInt(splitindex[1])].Note = $('.ddlSpicy').val();
-                     OrderListArray[parseInt(splitindex[1])].ExtraItem = "";
-                     //OrderListArray[parseInt(splitindex[1])].ExtraCharge = parseFloat($('.HomeDelivs').val());
-                     OrderListArray[parseInt(splitindex[1])].ExtraCharge = parseFloat($('.HomeDelivs').val());
+                        });
+                        if ($('.ChkboxHomedelivery').is(':checked')) {
+                            OrderListArray[parseInt(splitindex[1])].IsHomeDelivery = true;
+                            OrderListArray[parseInt(splitindex[1])].HomeDeliveyNumber = $('.sele').val();
+                        } else {
+                            OrderListArray[parseInt(splitindex[1])].IsHomeDelivery = false;
+                            OrderListArray[parseInt(splitindex[1])].HomeDeliveyNumber = 0;
+                        }
+                        OrderListArray[parseInt(splitindex[1])].Note = $('.ddlSpicy').val();
+                        OrderListArray[parseInt(splitindex[1])].ExtraItem = "";
+                        //OrderListArray[parseInt(splitindex[1])].ExtraCharge = parseFloat($('.HomeDelivs').val());
+                        OrderListArray[parseInt(splitindex[1])].ExtraCharge = parseFloat($('.HomeDelivs').val());
 
-                     CalculateTotal();
-                     $(this).dialog('close');
-                 },
-                 Cancel: function () {
-                     $('.ddlSpicy').val('');
-                     $('.HomeDelivs').val('');
-                     $(this).dialog('close');
-                 }
-             }
-         });
+                        CalculateTotal();
+                        $(this).dialog('close');
+                    },
+                    Cancel: function () {
+                        $('.ddlSpicy').val('');
+                        $('.HomeDelivs').val('');
+                        $(this).dialog('close');
+                    }
+                }
+            });
 
         $('.ChkboxHomedelivery').on('click', function () {
             var index = $(this).attr('id');
@@ -2454,9 +2454,9 @@ function initialSetup(tableId, oId, hostUrl, foodCourt, Delievery) {
     parent.$.colorbox.resize({
         height: winheight + 'px'
     });
-    
-    if(tableId!=0)
-    GetPreviousItemByID(tableId, oId);
+
+    if (tableId != 0)
+        GetPreviousItemByID(tableId, oId);
 }
 function GetPreviousItemByID(Id, OID) {
     $.ajax({
@@ -2476,7 +2476,7 @@ function GetPreviousItemByID(Id, OID) {
             var datas = data.d;
             var htmls = "";
             var i = 1;
-            {                
+            {
                 OrderMasterID = data.d[0].OrderMasterID;
                 $('#txtOrderMasterId').val((data.d[0].OrderMasterID == null ? "0" : String(data.d[0].OrderMasterID)))
                 $('#txtCustName').val((data.d[0].CustomerName == null ? "" : data.d[0].CustomerName));
@@ -2486,9 +2486,9 @@ function GetPreviousItemByID(Id, OID) {
                 $("#txtAddress").val(data.d[0].Address == null ? "" : data.d[0].Address);
                 $("#txtAdvanceAmount").val(data.d[0].AdvanceAmount == null ? "" : data.d[0].AdvanceAmount);
 
-                var date =parseInt(data.d[0].DeliveryTime.split('(')[1].split(')')[0]);
+                var date = parseInt(data.d[0].DeliveryTime.split('(')[1].split(')')[0]);
                 $("#txtDeliveryDateTime").val(new Date(date).format('yyyy-MM-ddThh:mm'));
-                if(data.d[0].DeliveryService=="Self")
+                if (data.d[0].DeliveryService == "Self")
                     $("#txtDeliveryService")[0].selectedIndex = 0;
                 else
                     $("#txtDeliveryService")[0].selectedIndex = 1;
@@ -2497,58 +2497,58 @@ function GetPreviousItemByID(Id, OID) {
             if (datas.length > 0) {
                 var itmlst = new Array();
                 $.each(datas, function (index, item) {
-                   
-                            //var order = new Object();
-                            //order.ItemId = item.ItemID
-                            //order.ItemName = item.ItemName;
-                            //order.Quantity = item.Quantity;
-                            //order.Note = item.Note;
-                            //order.ExtraCharge = parseFloat(item.ExtraCharge);
-                            //order.IsHomeDelivery = item.IsHomeDelivery;
-                            //order.HomeDeliveyNumber = item.HomeDeliveyNumber;
-                            //order.SeatNo = item.SeatNo;
-                            //order.GuestNo = item.GuestNo;
-                            //order.IsSplit = item.IsSplit;
-                            //order.RoomId = item.RoomId;
-                            //order.TableID = item.TableId;
-                            //order.Remarks = item.Remarks;
-                            //order.IsCancelled = item.IsCancelled;
-                            //order.Status = item.ItemStatus;
-                            //order.IsCombo = item.IsCombo;
-                            //order.OrderDetailsID = item.OrderDetailsID;
-                            //order.IsOutOfStock = item.IsOutOfStock;
-                            //order.Rate = item.SRate;
-                            //OrderListArray.push(order);
-                            //itmlst.push(order.ItemId);
-                            //if ($('#billno').val() != 0) {
-                            //    selectedBillNo = $('#billno').val();
-                            //}
-                            //else {
-                            //    selectedBillNo = 1;
-                            //}
-                            //Note = "";
-                            //ExtraCharge = 0.0;
-                            //IsCanceled = 0;
-                            //status = "";
 
-                            $(".bindorderlist").html('');
-                            //if (item.SeatNo == $("#billno").val()) {
-                                htmls += "<tr attr-type='i' catr='c' id='tr_" + item.ItemId+"'>" ;
-                                htmls += "<td>" + i + "</td>";
-                                htmls += "<td>" + item.ItemName + "</td>";
-                                htmls += "<td><input type='button' value='-' id='minus_" + index   + "' class='qtyminus' field='qty_" + item.ItemId  + "' />";
+                    //var order = new Object();
+                    //order.ItemId = item.ItemID
+                    //order.ItemName = item.ItemName;
+                    //order.Quantity = item.Quantity;
+                    //order.Note = item.Note;
+                    //order.ExtraCharge = parseFloat(item.ExtraCharge);
+                    //order.IsHomeDelivery = item.IsHomeDelivery;
+                    //order.HomeDeliveyNumber = item.HomeDeliveyNumber;
+                    //order.SeatNo = item.SeatNo;
+                    //order.GuestNo = item.GuestNo;
+                    //order.IsSplit = item.IsSplit;
+                    //order.RoomId = item.RoomId;
+                    //order.TableID = item.TableId;
+                    //order.Remarks = item.Remarks;
+                    //order.IsCancelled = item.IsCancelled;
+                    //order.Status = item.ItemStatus;
+                    //order.IsCombo = item.IsCombo;
+                    //order.OrderDetailsID = item.OrderDetailsID;
+                    //order.IsOutOfStock = item.IsOutOfStock;
+                    //order.Rate = item.SRate;
+                    //OrderListArray.push(order);
+                    //itmlst.push(order.ItemId);
+                    //if ($('#billno').val() != 0) {
+                    //    selectedBillNo = $('#billno').val();
+                    //}
+                    //else {
+                    //    selectedBillNo = 1;
+                    //}
+                    //Note = "";
+                    //ExtraCharge = 0.0;
+                    //IsCanceled = 0;
+                    //status = "";
 
-                                htmls += "<input type='text' onkeypress='return validateFloatKeyPress(this,event)' id='qty_" + item.ItemId  + "' value='" + item.Quantity + "' class='qty' index='" + index  + "' width='20px' field='qty_" + item.ItemId  + "'/>";
-                                htmls += "<input type='button' value='+' id='plus_" + index + "' class='qtyplus' field='qty_" + item.ItemId + "' /></td>";
-                                htmls += "<td class='rate'>" + item.Rate + "</td>";
-                                htmls += "<td class='total' style='display:none;'></td>";
-                                htmls += "<td><img id='extra_" + index + "_" + item.ItemId + "_" + item.ItemName + "' src='/images/extra.png' class='extra' width='30px' height='30px' /></td>";
-                                htmls += "</tr>";
+                    $(".bindorderlist").html('');
+                    //if (item.SeatNo == $("#billno").val()) {
+                    htmls += "<tr attr-type='i' catr='c' id='tr_" + item.ItemId + "'>";
+                    htmls += "<td>" + i + "</td>";
+                    htmls += "<td>" + item.ItemName + "</td>";
+                    htmls += "<td><input type='button' value='-' id='minus_" + index + "' class='qtyminus' field='qty_" + item.ItemId + "' />";
 
-                                i = i + 1;
-                            //}
-                        
-                    
+                    htmls += "<input type='text' onkeypress='return validateFloatKeyPress(this,event)' id='qty_" + item.ItemId + "' value='" + item.Quantity + "' class='qty' index='" + index + "' width='20px' field='qty_" + item.ItemId + "'/>";
+                    htmls += "<input type='button' value='+' id='plus_" + index + "' class='qtyplus' field='qty_" + item.ItemId + "' /></td>";
+                    htmls += "<td class='rate'>" + item.Rate + "</td>";
+                    htmls += "<td class='total' style='display:none;'></td>";
+                    htmls += "<td><img id='extra_" + index + "_" + item.ItemId + "_" + item.ItemName + "' src='/images/extra.png' class='extra' width='30px' height='30px' /></td>";
+                    htmls += "</tr>";
+
+                    i = i + 1;
+                    //}
+
+
 
                 });
 
@@ -2806,7 +2806,7 @@ function saveSales(data, isFoodCourt) {
         dataType: "json",
         success: function (data) {
             $('#DialogOrderDetail').dialog('close');
-            getBill(data.d, false);            
+            getBill(data.d, false);
             $('#BillingView').dialog({
                 'title': 'Vat Bill',
                 width: '350',

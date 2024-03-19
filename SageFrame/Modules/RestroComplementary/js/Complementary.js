@@ -1533,7 +1533,7 @@ function getSelectionStart(o) {
                         }
                         else
                            // htmls += "<div><img attr-type='i' attr-iscat=" + value.IsCategory + " id='categoryimg_" + value.ItemId + "_" + value.LanguageMenuText + "_false_" + value.SRate + "' class='categoryimg'  src='/Modules/ROI_Item/ImageItem/" + value.ImagePath + "' width='150px' height='120px'>";
-                        htmls += '<div><img attr-type="i" attr-iscat=' + value.IsCategory + ' id="categoryimg_' + value.ItemId + '_' + value.LanguageMenuText + '_false_' + value.SRate + '" class="categoryimg"  src="/Modules/ROI_Item/ImageItem/' + value.ImagePath + '" width="150px" height="120px">';
+                            htmls += '<div><img attr-type="i" attr-iscat=' + value.IsCategory + ' id="categoryimg_' + value.ItemId + '_' + value.LanguageMenuText + '_false_' + value.SRate + '" class="categoryimg"  src="/Modules/ROI_Item/ImageItem/' + logoName + '" width="150px" height="120px">';
                         if (value.SRate == '0')
                            // htmls += "<div class='itmname categoryimg' id='categoryimg_" + value.ItemId + "_" + value.LanguageMenuText + "_false_" + value.SRate + "' attr-iscat=" + value.IsCategory + ">" + value.LanguageMenuText + "</div></div>";
                             htmls += '<div class="itmname categoryimg" id="categoryimg_' + value.ItemId + '_' + value.LanguageMenuText + '_false_' + value.SRate + '" attr-iscat=' + value.IsCategory + '>' + value.LanguageMenuText + '</div></div>';
@@ -1551,7 +1551,7 @@ function getSelectionStart(o) {
                 }
 
                 $(".categoryimg").on("error", function () {
-                    $(this).attr('src', '/Modules/ROCompanyInfo/logo/' + companyInfo.Logo);
+                    $(this).attr('src', '/Modules/ROCompanyInfo/logo/logo.png');
                 });
 
                 if (p.OrdermenuImageshow == "false") {

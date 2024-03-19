@@ -112,8 +112,7 @@
                 
             },
 
-            BindCompanyInfo: function () {
-            
+            BindCompanyInfo: function () { 
                 ImageUrl = "/Modules/ROCompanyInfo/logo/" + companyInfo.Logo; 
                 $("#logo").attr("src", ImageUrl);
                 $("#logo").on("error", function () {

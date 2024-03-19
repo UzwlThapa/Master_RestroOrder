@@ -475,7 +475,7 @@ function getcomboformenu() {
             }
 
             $(".menuimg").on("error", function () {
-                $(this).attr('src', '/Modules/ROCompanyInfo/logo/' + companyInfo.Logo);
+                $(this).attr('src', '/Modules/ROCompanyInfo/logo/logo.png');
             });
             $('.menuimgg').on('click', function () {
                 if (!orderlistviewtype) {
@@ -1784,7 +1784,7 @@ function InitEvents() {
 function BindPaymentModes() {
     $("#divPaymentModes").html("");
     var htmls = "";
-     
+
     $.ajax({
         type: "POST",
         url: "/Modules/AdvanceReport/AdvanceReportService.asmx/GetPaymentModes",
@@ -1811,8 +1811,8 @@ function BindPaymentModes() {
                     htmls += '</tr>';
                 });
 
-                htmls += '</table>'; 
-                $("#divPaymentModes").html(htmls); 
+                htmls += '</table>';
+                $("#divPaymentModes").html(htmls);
             }
         },
         error: function (msg) { FileManager.errorFn(); }

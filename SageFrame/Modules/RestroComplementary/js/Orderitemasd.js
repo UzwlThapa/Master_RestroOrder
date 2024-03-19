@@ -633,7 +633,7 @@
                     htmls += "<div class='category'>";
                     $.each(datas, function (index, value) {
 
-                        htmls += "<div><img id='categoryimg_" + value.CategoriesID + "' class='categoryimg'  src='/Modules/ROCategory/images/" + value.PhotoPath + "' width='150px' height='120px'>";
+                        htmls += "<div><img id='categoryimg_" + value.CategoriesID + "' class='categoryimg'  src='/Modules/ROCompanyInfo/logo/logo.png' width='150px' height='120px'>";
                         htmls += "<label class='itmname'>" + value.CategoriesName + "</label></div>";
 
                     });
