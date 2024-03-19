@@ -72,6 +72,7 @@ function Print() {
         var openingBalance = 0;
         var providers = [];
         var Custlist = [];
+        var openingBalance = 0.0;
         var eventFunction = {
             config: {
                 isPostBack: false,
@@ -155,7 +156,7 @@ function Print() {
                     if ($('#txtCalPaidAmount').val() == "" || parseFloat($('#txtCalPaidAmount').val()) == 0) {
                         jAlert('Please Enter Amount To Pay.', 'ALERT!!');
                     } else {
-                        if ($('#selPmntMode').val() == 2 || $('#selPmntMode').val() == 3) {
+                        if ($('#selPmntMode option:selected').text() == 'Cheque' || $('#selPmntMode option:selected').text() == 'Card' || $('#selPmntMode option:selected').text() == 'Swap') {
                             if ($('#txtTransNo').val() == "") {
                                 jAlert('Please Enter Transaction/Cheque No.', 'ALERT!!');
                             } else {
@@ -353,16 +354,13 @@ function Print() {
                 var IsCus = parseInt($("#hdIsCustomer").val());
                 var datas = receivedlist;
                 var total = 0.0;
-                var opening = 0.0;
-                var openingBalance = 0.0;
                 var htmls = "<table id='Brandtable' cellspacing='0'>"
                 htmls += "<thead>"
                 htmls += "<tr>"
                 htmls += "<th> Name </th><th>Address </th><th> Contact No. </th><th> Card No. </th><th> Date Of Issue</th><th> Date Of Expire</th><th> PAN</th><th class='tdrate' style='display:none'> Opening Balance (Rs.)</th><th class='tdrate'> Rem Balance (Rs.)</th><th class='tdcenter'> Pay </th><th class='tdcenter'> View </th>";
-                // htmls += "<th> Name </th><th>Address </th><th> Contact No. </th><th> Card No. </th><th> Date Of Issue</th><th> Date Of Expire</th><th> PAN</th><th class='tdrate'> Rem Balance (Rs.)</th><th class='tdcenter'> Pay </th><th class='tdcenter'> View </th>";
                 if (IsCus == 1) {
                     htmls += "<th class='tdcenter'> SMS </th>";
-                };
+                }
                 htmls += "</tr>"
                 htmls += "</thead>"
                 htmls += "<tbody>"
@@ -392,7 +390,6 @@ function Print() {
                             htmls += "<td>" + value.PAN + "</td>";
                             htmls += "<td class='tdrate' style='display:none'> Rs. " + value.OpeningBalance + "</td>";
                             htmls += "<td class='tdrate'> Rs. " + value.RemainingBalance + "</td>";
-                            //htmls += "<td class='tdrate'> Rs. " + value.RemainingBalance + "</td>";
                             htmls += '<td class="tdcenter"><img id="' + value.MembershipID + '" class="preview-icon PayBalance" type="button" src="/images/pay.png" style="width:20px;"></td>';
                             htmls += '<td class="tdcenter"><img src="/images/view.png" id="' + value.MembershipID + '" class="preview-icon btnViewCustomerTransaction"></label></td>';
                             if (IsCus == 1) {
@@ -492,7 +489,7 @@ function Print() {
 
 
                 $("#Brandtable").on('click', '.btnViewCustomerTransaction', function (event) {
-
+                    debugger;
                     var id = parseInt($(this).attr('id'));
                     var row = $(this).parents('tr');
                     var name = row.find('td:eq(0)').text();
@@ -511,9 +508,9 @@ function Print() {
                     htmls += '<div id="ViewDetailsReport" style="margin-top:10px;">';
                     htmls += '<table class="popupprint"><tr colspan="2"><th>Name:</th><td>' + name + '</td>';
                     htmls += '<tr><th>Address:</th><td>' + address + '</td><th>Contact:</th><td>' + Contact + '</td></tr>';
-                    htmls += '<tr><th>IssueDate:</th><td>' + issue + '</td><th>ExpireDate:</th><td>' + expire + '</td></tr>';
+                    htmls += '<tr><th>Issue Date:</th><td>' + issue + '</td><th>Expire Date:</th><td>' + expire + '</td></tr>';
                     htmls += '<tr><th>PAN:</th><td>' + pan + '</td></tr>';
-                    htmls += '<tr><th>Opening Balance:</th><td>' + opening + '</td><th>RemainingBalance:</th><td>' + balance + '</td></tr>';
+                    htmls += '<tr><th>Opening Balance:</th><td>' + opening + '</td><th>Remaining Balance:</th><td>' + balance + '</td></tr>';
                     htmls += '</table>';
                     htmls += "</div>";
                     $("#BalanceTransactionlist").html(htmls);
@@ -850,20 +847,19 @@ function Print() {
                             dialogClass: 'popup-titlebg',
                         });
 
+                        setTimeout(() => {
+                            $('#selPmntMode').unbind('change').on('change', function () {
+                                debugger;
+                                if ($('#selPmntMode option:selected').text() == 'Cheque' || $('#selPmntMode option:selected').text() == 'Card' || $('#selPmntMode option:selected').text() == 'Swap') {
+                                    $('.pmntTransaction').show();
+                                } else {
+                                    $('.pmntTransaction').hide();
+                                }
+                            });
+                        }, 100);
                     },
                     error: function (msg) { FileManager.errorFn(); }
                 });
-
-                $('#selPmntMode').on('change', function () {
-
-                    if ($(this).val() == 1 || $(this).val() == 5 || $(this).val() == 6) {
-                        $('.pmntTransaction').hide();
-                    } else {
-                        $('.pmntTransaction').show();
-                    }
-
-                });
-
             },
 
             UpdateCustomerName: function (id) {
