@@ -27,9 +27,6 @@
             userName: '<%=userName%>',
         });
          
-
-
-
         $("#chkbxIsExtra").click(function () {
             if ($("#chkbxIsExtra").is(':checked') == true) {
                 $(".ForExtra").show();
@@ -37,13 +34,9 @@
                 $(".ForExtra").hide();
             }
         });
-
-        
+         
         $(".Vitemrate").datepicker({ minDate: 0 }).datepicker("setDate", new Date());
-
-
-
-       
+         
         $("#btnInventoryAdd").click(function () {
             $("#btnInventoryAdd").hide();
             $("#DivGetInventoryList").hide();
@@ -73,8 +66,7 @@
                 jAlert('You cannot remove all the row of table!', 'Alert!!', function () { $.alerts.dialogClass = null; });
         });
 
-        $("#btnForNewRow").click(function () {
-            //$("#btnForNewRow").remove();
+        $("#btnForNewRow").click(function () { 
             $("#tableForExtra").each(function () {
                 var tds = '<tr>';
                 jQuery.each($('tr:last td', this), function () {
@@ -87,16 +79,11 @@
                     $(this).append(tds);
                 }
             });
+
             $('input[type=radio]').removeAttr("checked");
-            $('input[type=radio]').attr('checked', 'checked');
-            // $("input[name=rdoDefaultPurchaseUnit]:checked").val()
-            //$('input[type=radio]', this).get(0).checked = true;
+            $('input[type=radio]').attr('checked', 'checked'); 
             $('.Vitemrate').removeClass('hasDatepicker');
-            $('.Vitemrate').each(function () {
-                $(this).datepicker();
-            });
-            //$(this).append('<input type="button" id="btnForNewRow" value="Add" />');
-            // $(".Vitemrate").datepicker({ dateFormat: 'yy/mm/dd' });
+            $('.Vitemrate').datepicker({ defaultDate: new Date() }); 
         });
 
         $("#tableForSubtable").on('click', "#btnForRemoveRow", function () {
@@ -257,7 +244,7 @@
                             <label></label>
                         </td>
                         <td>
-                            <input type="text" class="Vitemrate sfInputbox" style="width: 100px;" name="Vitemrate" readonly="readonly" />
+                            <input type="text" class="Vitemrate sfInputbox" style="width: 100px;" name="Vitemrate" />
                         </td>
                       
                     </tr>

@@ -1339,14 +1339,14 @@ namespace SageFrame.RestroOrder
     }
     public class extraItem
     {
-        public int ItemID { get; set; }
-        public int ExtraItemID { get; set; }
+        public int? ItemID { get; set; }
+        public int? ExtraItemID { get; set; }
         public string ExtraItem { get; set; }
-        public decimal ExtraPrice { get; set; }
-        public bool IsActive { get; set; }
+        public decimal? ExtraPrice { get; set; }
+        public bool? IsActive { get; set; }
         public string AddedBy { get; set; }
-        public bool IsExtra { get; set; }
-        public bool IsDeleted { get; set; }
+        public bool? IsExtra { get; set; }
+        public bool? IsDeleted { get; set; }
 
         public List<IngredientItems> Ingredientdata { get; set; }
     }
@@ -1851,12 +1851,12 @@ namespace SageFrame.RestroOrder
     }
     public class IngredientItems
     {
-        public int IngredientID { get; set; }
-        public int ItemId { get; set; }
-        public int Ingredient { get; set; }
-        public decimal Quantity { get; set; }
+        public int? IngredientID { get; set; }
+        public int? ItemId { get; set; }
+        public int? Ingredient { get; set; }
+        public decimal? Quantity { get; set; }
         public string ITName { get; set; }
-        public decimal Amount { get; set; }
+        public decimal? Amount { get; set; }
     }
     public class OrderDetailCancel
     {

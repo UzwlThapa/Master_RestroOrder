@@ -12,11 +12,11 @@
     $('#tabs').css('display', 'block');
     $.companyProfcreate = function (p) {
         p = $.extend
-             ({
-                 UserModuleID: '',
-                 ModulePath: '/Modules/ROI_Item/',
-                 userName: ''
-             }, p);
+            ({
+                UserModuleID: '',
+                ModulePath: '/Modules/ROI_Item/',
+                userName: ''
+            }, p);
         var v = 0;
         var i = 2;
         var AutocompleteIngredient = [];
@@ -59,7 +59,7 @@
                 $("#btnAdd").click(function () {
                     $("#btnAdd, #btnExcel").hide();
                     $("#DivForItemlist").hide();
-                    $("#roiitemtable").show();                                    
+                    $("#roiitemtable").show();
                 });
 
                 $("#SelCategoryName").on('change', function () {
@@ -68,7 +68,7 @@
                     }
                 });
 
-                $("#txtItemName").on('change',function () {
+                $("#txtItemName").on('change', function () {
                     var item = $("#txtItemName").val();
                     var category = $("#SelCategoryName").val();
                     eventFunction.config.method = "CheckItemExistence";
@@ -92,7 +92,7 @@
                     if (checkValid) {
                         eventFunction.uploadImage();
                         eventFunction.saveItems();
-                    }          
+                    }
                 });
                 $("#CancelItems").click(function () {
                     eventFunction.ResetAll();
@@ -148,7 +148,7 @@
                         var items = JSON.parse(itemlist);
                         var htmls = '';
                         htmls += "<table><thead><tr><th>Item</th><th>Category</th><th>Rate</th><th>Unit</th><th>UnitSymbol</th><th>CostCenter</th></tr></thead><tbody>";
-                        for (var i = 0; i < items.length;i++){
+                        for (var i = 0; i < items.length; i++) {
                             if (items[i].IsMenu == true) {
                                 htmls += '<tr>';
                                 htmls += '<td>' + items[i].ITName + '</td>';
@@ -197,7 +197,7 @@
                     case 1:
                         eventFunction.BindViewItemByID(data.d);
                         break;
-                    case 2:                
+                    case 2:
                         jAlert('Deleted Successfully!', 'Information!!');
                         eventFunction.GetItemList();
                         break;
@@ -323,7 +323,7 @@
                         if (index == 0) {
                             $('#tableForIngredient tbody tr:eq(0)').find('td:eq(0) input[type=text]').val(value.ITName);
                             $('#tableForIngredient tbody tr:eq(0)').find('td:eq(0) input[type=hidden]').val(value.Ingredient);
-                          
+
                             $('#tableForIngredient tbody tr:eq(0)').find('td:eq(1) input[type=text]').val(value.Quantity);
                             $('#tableForIngredient tbody tr:eq(0)').find('td:eq(1) input[type=hidden]').val(value.ItemId);
                         }
@@ -380,7 +380,7 @@
                     htmls = "<option value='' disabled selected>-Select-</option>";
                     $.each(datas, function (index, value) {
                         htmls += "<option value='" + value.ITId + "' costCenter='" + value.ItemCostCentreID + "'>" + value.ITName + "</option>";
-                    });                
+                    });
                     $("#SelCategoryName").html(htmls);
                 }
 
@@ -399,7 +399,7 @@
                             htmls += "<option value='" + value.CostCenterID + "'>" + value.CostCenterName + "</option>";
                     });
                     $("#SelCostCenter").html(htmls);
-                   
+
                 }
             },
 
@@ -411,7 +411,7 @@
                     htmls = "<option value='' disabled selected>-Select-</option>";
                     $.each(datas, function (index, value) {
                         htmls += "<option value='" + value.UnitId + "'>" + value.Particulars + "</option>";
-                    });                
+                    });
                     $("#SelInvSmallunit").html(htmls);
                 }
 
@@ -436,7 +436,7 @@
                 $("#DivForItemlist").html('');
                 var htmls = '';
                 htmls += "<table id='tableForItemList' class='sfGridwrapper display' cellspacing='0'><thead><tr><th style='width:40px;'>S.N.</th><th>Item Name</th><th>Item Code</th><th>Cost Center</th><th style='display:none;'>Is Menu</th><th>Is Expirable</th><th>Rate</th><th style='display:none;'>Is Inventory</th><th class='edit-heading tdcenter'>View</th><th class='edit-heading tdcenter'>Edit</th><th class='delete-heading tdcenter'>Delete</th></tr></thead><tbody>";
-                if (datas.length > 0) {                   
+                if (datas.length > 0) {
                     var a = 0;
                     $.each(datas, function (index, value) {
                         if (value.IsMenu == true) {
@@ -446,14 +446,14 @@
                             // htmls += '<td>' + value.ParentItem + '</td>';                       
                             htmls += '<td>' + value.ITCode + '</td>';
                             htmls += '<td>' + value.CostCenterName + '</td>';
-                            if (value.IsCategory == false) {                          
-                            htmls += '<td style="display:none;">' + value.IsMenu + '</td>';
-                            htmls += '<td>' + value.IsExpirable + '</td>';
-                            htmls += '<td>' + value.SRate + '</td>';
-                            htmls += '<td style="display:none;">' + value.IsProdMaterial + '</td>';
+                            if (value.IsCategory == false) {
+                                htmls += '<td style="display:none;">' + value.IsMenu + '</td>';
+                                htmls += '<td>' + value.IsExpirable + '</td>';
+                                htmls += '<td>' + value.SRate + '</td>';
+                                htmls += '<td style="display:none;">' + value.IsProdMaterial + '</td>';
                                 htmls += '<td class="tdcenter"><label id="' + value.ITId + '" class="view icon-preview"/></td>';
                                 htmls += '<td class="tdcenter"><label id="' + value.ITId + '+' + value.ITCode + '+' + value.ImagePath + '+' + value.IsMenu + '+' + value.IsExpirable + '+' + value.IsProdMaterial + '+' + value.IsUnitWiseRate + '+' + value.ItemCostCentreID + '+' + value.IsActive + '+' + value.SmallUnit + '+' + value.PITId + '+' + value.LargeUnit + '+' + value.Conversion + '+' + value.IsDefaultPurchaseUnit + '+' + value.IsDefaultSalesUnit + '+' + value.SRate + '+' + value.ValidFrom + '+' + value.Details + '+' + value.IsExtra + '+' + value.ITName + '+' + value.CostCenterName + '+' + value.IsTaxable + '" class="edit icon-edit" value="Edit"/></td>';
-                            htmls += '<td class="tdcenter"><label id="' + value.ITId + '" class="delete icon-delete"  value="Delete"/></td>';
+                                htmls += '<td class="tdcenter"><label id="' + value.ITId + '" class="delete icon-delete"  value="Delete"/></td>';
                             }
                             else {
                                 htmls += '<td></td>';
@@ -472,15 +472,15 @@
                     $('#DivForItemlist').html('No Data Available');
 
                 }
-                    htmls += "</tbody></table>";
-                    $("#DivForItemlist").html(htmls);
-                    $("#tableForItemList").dataTable({
-                        "bJQueryUI": true,
-                        "lengthMenu": [[20, 50, 100, -1], [20, 50, 100, "All"]],
-                        "pageLength": 20,
-                        columnDefs: [{ orderable: false, targets: [1, 3, 4, 5, 6, 7, 8, 9, 10] }]
-                    });
-               
+                htmls += "</tbody></table>";
+                $("#DivForItemlist").html(htmls);
+                $("#tableForItemList").dataTable({
+                    "bJQueryUI": true,
+                    "lengthMenu": [[20, 50, 100, -1], [20, 50, 100, "All"]],
+                    "pageLength": 20,
+                    columnDefs: [{ orderable: false, targets: [1, 3, 4, 5, 6, 7, 8, 9, 10] }]
+                });
+
 
                 $("#tableForItemList").on('click', '.view', function () {
                     var ids = $(this).attr('id');
@@ -494,7 +494,7 @@
                     htmls += "</p><p style='border-bottom:1px solid gainsboro;margin:0;'>Cost Center :</b> " + row.find('td:eq(4)').text();
                     htmls += "</p>"
                     $("#DivForViewItemByID").css('margin-top', '0');
-                    $("#DivForViewItemByID").html(htmls);           
+                    $("#DivForViewItemByID").html(htmls);
                     eventFunction.config.method = "ViewItemByID";
                     eventFunction.config.url = eventFunction.config.baseURL + eventFunction.config.method;
                     eventFunction.config.data = JSON2.stringify({ ids: ids });
@@ -525,7 +525,7 @@
                     $("#DivForItemlist").hide();
                     eventFunction.config.ItemIDUpdate = 1;
                     var row = $(this).parents('tr');
-                   // $('#SelCostCenter').val(row.find('td:eq(3)').text().split(' ')[0]);
+                    // $('#SelCostCenter').val(row.find('td:eq(3)').text().split(' ')[0]);
                     var ids = $(this).attr('id');
                     var word = ids.split("+");
                     $('#SelCostCenter').val(word[20].split(' ')[0]);
@@ -560,7 +560,7 @@
 
                     eventFunction.config.ItemID = word[0];
                     var ids = word[0];
-           
+
                     eventFunction.config.method = "getIngredientByID";
                     eventFunction.config.url = eventFunction.config.baseURL + eventFunction.config.method;
                     eventFunction.config.data = JSON2.stringify({ id: ids });
@@ -574,7 +574,7 @@
                     eventFunction.ajaxCall(eventFunction.config);
 
                     $('#roiitemtable').show();
-            
+
                 });
             },
 
@@ -610,8 +610,8 @@
                 var itemArray = new Array;
                 var itemObject = new Object;
                 var costcenter = $("#SelCategoryName").find(':selected').attr('costCenter');
-                itemObject.ITId = eventFunction.config.ItemID;
-                itemObject.PITId = $("#SelCategoryName").val() == null ? 0 : $("#SelCategoryName").val();
+                itemObject.ITId = parseInt(eventFunction.config.ItemID);
+                itemObject.PITId = $("#SelCategoryName").val() == null ? 0 : parseInt($("#SelCategoryName").val());
                 itemObject.ITName = $("#txtItemName").val();
                 itemObject.ITCode = $("#txtItemCode").val() == "" ? $("#txtItemName").val() : $("#txtItemCode").val();
                 itemObject.ImagePath = $("#txtImage").val();
@@ -623,19 +623,24 @@
                 itemObject.Details = CKEDITOR.instances['txtDetails'].getData();
                 itemObject.IsActive = $("#chkbxIsActive").is(':checked');
                 itemObject.IsTaxable = $("#chkbxIsTaxable").is(':checked');
-                itemObject.SmallUnit = $("#SelInvSmallunit").val();
+                itemObject.SmallUnit = parseInt($("#SelInvSmallunit").val());
                 itemObject.AddedBy = SageFrameUserName;
                 itemObject.IsExtra = $("#chkbxIsExtra").is(':checked');
                 var unitArray = new Array;
                 var unitObject = new Object;
                 $("#tableForSubtable tbody tr").each(function (x, y) {
-                 
                     unitObject.SalesRate = parseFloat($(this).find(".sritemrate").val() == "" ? 0 : $(this).find(".sritemrate").val());
-                    unitObject.ValidFrom = $(this).find(".Vitemrate").val();
+                    var validFrom = $(this).find(".Vitemrate").val();
+                    if (validFrom != null && validFrom != '' && validFrom != undefined) {
+                        unitObject.ValidFrom = validFrom;
+                    }
+                    else {
+                        unitObject.ValidFrom = new Date().toISOString();
+                    }
                     unitObject.AddedBy = SageFrameUserName;
-
                     unitArray.push(unitObject);
                 });
+
                 var extra = $("#chkbxIsExtra").is(':checked');
                 if ($("#chkbxIsExtra").is(':checked') == true) {
                     var extraArray = new Array;
@@ -655,7 +660,7 @@
                 $('.ckbxExtraItem').each(function (i, obj) {
                     if ($(this).is(':checked')) {
                         var extra = new Object;
-                        extra.ExtraItemID = $(this).attr('id').split('_')[0];
+                        extra.ExtraItemID = parseInt($(this).attr('id').split('_')[0]);
                         extraItems.push(extra);
                     }
                 });
@@ -666,9 +671,8 @@
                 $("#tableForIngredient tbody tr").each(function (x, y) {
                     if ($(this).find(".hdnIngredientID").val() != "") {
                         var IngredientObject = new Object;
-                        IngredientObject.Ingredient = $(this).find(".hdnIngredientID").val();
-                        IngredientObject.Quantity = $(this).find(".txtIngredientQuantity").val();
-                    
+                        IngredientObject.Ingredient = parseInt($(this).find(".hdnIngredientID").val());
+                        IngredientObject.Quantity = parseInt($(this).find(".txtIngredientQuantity").val());
                         IngredientArray.push(IngredientObject);
                     }
                 });
@@ -686,7 +690,7 @@
                 eventFunction.ajaxCall(eventFunction.config);
                 eventFunction.config.ItemIDUpdate = 0;
                 eventFunction.config.ItemID = 0;
-               
+
 
             },
 
@@ -720,12 +724,12 @@
                     error: function (err) {
                         jAlert(err.statusText, 'Alert!!', function () { $.alerts.dialogClass = null; });
                     }
-                });      
+                });
             },
 
             //<<-----------------------------------Reset & Validation ------------------------------------->>>
             ResetAll: function () {
-               
+
                 eventFunction.config.ItemID = 0;
                 eventFunction.config.ItemIDUpdate = 0;
                 $("#SelCategoryName").val("");
@@ -734,7 +738,7 @@
                 $("#txtImage").val("");
                 $("#fileImage").val("");
                 $("#ImgPrvs").removeAttr('src');
-             
+
                 $(".ajax-file-upload").show();
                 $(".ajax-file-upload-statusbar").hide();
                 CKEDITOR.instances['txtDetails'].setData("");
@@ -768,9 +772,9 @@
                             required: true,
                         },
                         SelCostCenter:
-                            {
-                                required: true,
-                            },
+                        {
+                            required: true,
+                        },
 
                         SelSmallunit: {
                             required: true,

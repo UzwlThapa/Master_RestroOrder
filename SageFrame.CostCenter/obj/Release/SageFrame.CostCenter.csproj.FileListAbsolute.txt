@@ -452,23 +452,6 @@ D:\danfe\Master_RestroOrder\SageFrame.CostCenter\obj\Release\SageFrame.CostCente
 D:\danfe\Master_RestroOrder\SageFrame.CostCenter\obj\Release\SageFrame.CostCenter.csproj.CopyComplete
 D:\danfe\Master_RestroOrder\SageFrame.CostCenter\obj\Release\SageFrame.CostCenter.dll
 D:\danfe\Master_RestroOrder\SageFrame.CostCenter\obj\Release\SageFrame.CostCenter.pdb
-G:\Danfe-Git\Master_RestroOrder\SageFrame.CostCenter\bin\Release\SageFrame.CostCenter.dll
-G:\Danfe-Git\Master_RestroOrder\SageFrame.CostCenter\bin\Release\SageFrame.CostCenter.pdb
-G:\Danfe-Git\Master_RestroOrder\SageFrame.CostCenter\bin\Release\SageFrame.Common.dll
-G:\Danfe-Git\Master_RestroOrder\SageFrame.CostCenter\bin\Release\SageFrame.Core.dll
-G:\Danfe-Git\Master_RestroOrder\SageFrame.CostCenter\bin\Release\SageFrame.Security.dll
-G:\Danfe-Git\Master_RestroOrder\SageFrame.CostCenter\bin\Release\AjaxControlToolkit.dll
-G:\Danfe-Git\Master_RestroOrder\SageFrame.CostCenter\bin\Release\SageFrame.Templating.dll
-G:\Danfe-Git\Master_RestroOrder\SageFrame.CostCenter\bin\Release\SageFrame.CDN.dll
-G:\Danfe-Git\Master_RestroOrder\SageFrame.CostCenter\bin\Release\ICSharpCode.SharpZipLib.dll
-G:\Danfe-Git\Master_RestroOrder\SageFrame.CostCenter\bin\Release\Ionic.Zip.dll
-G:\Danfe-Git\Master_RestroOrder\SageFrame.CostCenter\bin\Release\SageFrame.Common.pdb
-G:\Danfe-Git\Master_RestroOrder\SageFrame.CostCenter\bin\Release\SageFrame.Security.pdb
-G:\Danfe-Git\Master_RestroOrder\SageFrame.CostCenter\obj\Release\SageFrame.CostCenter.csproj.AssemblyReference.cache
-G:\Danfe-Git\Master_RestroOrder\SageFrame.CostCenter\obj\Release\SageFrame.CostCenter.csproj.CoreCompileInputs.cache
-G:\Danfe-Git\Master_RestroOrder\SageFrame.CostCenter\obj\Release\SageFrame.CostCenter.csproj.CopyComplete
-G:\Danfe-Git\Master_RestroOrder\SageFrame.CostCenter\obj\Release\SageFrame.CostCenter.dll
-G:\Danfe-Git\Master_RestroOrder\SageFrame.CostCenter\obj\Release\SageFrame.CostCenter.pdb
 Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.CostCenter\obj\Release\SageFram.B4D3DA7B.Up2Date
 Z:\Work\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.CostCenter\bin\Release\SageFrame.CostCenter.dll
 Z:\Work\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.CostCenter\bin\Release\SageFrame.CostCenter.pdb
@@ -487,3 +470,20 @@ Z:\Work\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.CostCenter\obj\Rele
 Z:\Work\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.CostCenter\obj\Release\SageFram.B4D3DA7B.Up2Date
 Z:\Work\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.CostCenter\obj\Release\SageFrame.CostCenter.dll
 Z:\Work\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.CostCenter\obj\Release\SageFrame.CostCenter.pdb
+G:\Danfe-Git\Master_RestroOrder\SageFrame.CostCenter\bin\Release\SageFrame.CostCenter.dll
+G:\Danfe-Git\Master_RestroOrder\SageFrame.CostCenter\bin\Release\SageFrame.CostCenter.pdb
+G:\Danfe-Git\Master_RestroOrder\SageFrame.CostCenter\bin\Release\SageFrame.Common.dll
+G:\Danfe-Git\Master_RestroOrder\SageFrame.CostCenter\bin\Release\SageFrame.Core.dll
+G:\Danfe-Git\Master_RestroOrder\SageFrame.CostCenter\bin\Release\SageFrame.Security.dll
+G:\Danfe-Git\Master_RestroOrder\SageFrame.CostCenter\bin\Release\AjaxControlToolkit.dll
+G:\Danfe-Git\Master_RestroOrder\SageFrame.CostCenter\bin\Release\SageFrame.Templating.dll
+G:\Danfe-Git\Master_RestroOrder\SageFrame.CostCenter\bin\Release\SageFrame.CDN.dll
+G:\Danfe-Git\Master_RestroOrder\SageFrame.CostCenter\bin\Release\ICSharpCode.SharpZipLib.dll
+G:\Danfe-Git\Master_RestroOrder\SageFrame.CostCenter\bin\Release\Ionic.Zip.dll
+G:\Danfe-Git\Master_RestroOrder\SageFrame.CostCenter\bin\Release\SageFrame.Common.pdb
+G:\Danfe-Git\Master_RestroOrder\SageFrame.CostCenter\bin\Release\SageFrame.Security.pdb
+G:\Danfe-Git\Master_RestroOrder\SageFrame.CostCenter\obj\Release\SageFrame.CostCenter.csproj.AssemblyReference.cache
+G:\Danfe-Git\Master_RestroOrder\SageFrame.CostCenter\obj\Release\SageFrame.CostCenter.csproj.CoreCompileInputs.cache
+G:\Danfe-Git\Master_RestroOrder\SageFrame.CostCenter\obj\Release\SageFrame.CostCenter.csproj.CopyComplete
+G:\Danfe-Git\Master_RestroOrder\SageFrame.CostCenter\obj\Release\SageFrame.CostCenter.dll
+G:\Danfe-Git\Master_RestroOrder\SageFrame.CostCenter\obj\Release\SageFrame.CostCenter.pdb
