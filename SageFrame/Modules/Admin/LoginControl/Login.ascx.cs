@@ -152,7 +152,6 @@ namespace SageFrame.Modules.Admin.LoginControl
                 {
                     MultiView1.ActiveViewIndex = 0;
                 }
-
             }
             else
             {
@@ -247,7 +246,6 @@ namespace SageFrame.Modules.Admin.LoginControl
                     else if (PasswordHelper.ValidateUser(user.PasswordFormat, HiddenField1.Value == "" ? Password.Text : SageFrame.Security.Crypto.Crypto.Decrypt(HiddenField1.Value), user.Password, user.PasswordSalt))
                     {
                         SucessFullLogin(user);
-
                     }
                     else
                     {

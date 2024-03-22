@@ -313,6 +313,7 @@ D:\danfe\Master_RestroOrder\SageFrame.CostCenter\obj\Debug\SageFrame.CostCenter.
 D:\danfe\Master_RestroOrder\SageFrame.CostCenter\obj\Debug\SageFrame.CostCenter.csproj.CopyComplete
 D:\danfe\Master_RestroOrder\SageFrame.CostCenter\obj\Debug\SageFrame.CostCenter.dll
 D:\danfe\Master_RestroOrder\SageFrame.CostCenter\obj\Debug\SageFrame.CostCenter.pdb
+Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.CostCenter\obj\Debug\SageFram.B4D3DA7B.Up2Date
 G:\Danfe-Git\Master_RestroOrder\SageFrame.CostCenter\bin\Debug\SageFrame.CostCenter.dll
 G:\Danfe-Git\Master_RestroOrder\SageFrame.CostCenter\bin\Debug\SageFrame.CostCenter.pdb
 G:\Danfe-Git\Master_RestroOrder\SageFrame.CostCenter\bin\Debug\SageFrame.Common.dll
@@ -330,4 +331,3 @@ G:\Danfe-Git\Master_RestroOrder\SageFrame.CostCenter\obj\Debug\SageFrame.CostCen
 G:\Danfe-Git\Master_RestroOrder\SageFrame.CostCenter\obj\Debug\SageFrame.CostCenter.csproj.CopyComplete
 G:\Danfe-Git\Master_RestroOrder\SageFrame.CostCenter\obj\Debug\SageFrame.CostCenter.dll
 G:\Danfe-Git\Master_RestroOrder\SageFrame.CostCenter\obj\Debug\SageFrame.CostCenter.pdb
-Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.CostCenter\obj\Debug\SageFram.B4D3DA7B.Up2Date

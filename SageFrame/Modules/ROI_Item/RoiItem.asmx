@@ -226,7 +226,7 @@ public class RoiItem : System.Web.Services.WebService
 
 
     [WebMethod]
-    public int saveItems(ROInvItem itemObject, List<extraItem>? extraItemList)
+    public int saveItems(ROInvItem itemObject, List<extraItem> extraItemList)
     {
         try
         {

@@ -65,8 +65,8 @@
                         <div class="liscening-detail">
                             <h2>Your software license has Expired!</h2>
                             <h4>You may no longer use the software.</h4>
-                            <h4>Please contact to Restro Order Support 01-4422345 (or dial 9841134945) to renew your Subscription</h4>
-                            <p>If you would like to continue Restro Order software please contact Restro Order Support 01-4422345 to renew your Subscription.</p>
+                            <h4>Please contact to Restro Order Support 01-4522345 (or dial 9802068068) to renew your Subscription</h4>
+                            <p>If you would like to continue Restro Order software please contact Restro Order Support 01-4522345 to renew your Subscription.</p>
                             <input type="button" value="Continue" class="restro-btn" onclick="javascript: window.location='/'" />
                         </div>
                     </div>

@@ -66,19 +66,15 @@ namespace SageFrame
             catch
             {
             }
-
         }
 
         protected void Session_Start(object sender, EventArgs e)
         {
             try
             {
-                //HttpContext.Current.Session[SessionKeys.ModuleCss] = new List<CssScriptInfo>();
-                //HttpContext.Current.Session[SessionKeys.ModuleJs] = new List<CssScriptInfo>();
                 ApplicationController objAppController = new ApplicationController();
                 if (objAppController.IsInstalled())
                 {
-
                     HttpContext.Current.Session[SessionKeys.SageFrame_PortalID] = null;
                     Session[SessionKeys.SageFrame_PortalID] = null;
                     Session[SessionKeys.SageFrame_PortalSEOName] = null;
@@ -91,12 +87,9 @@ namespace SageFrame
                     if (sessionTracker != null && EnableSessionTracker)
                     {
                         string sessionID = HttpContext.Current.Session.SessionID;
-                        //SessionLog sLog = new SessionLog();
-                        //sLog.SessionLogStart(sessionTracker, sessionID);
                         Thread newThread = new Thread(() => UpdateSessionTracker(sessionTracker, sessionID));
                         newThread.Start();
                     }
-                    // HttpContext.Current.Session[SessionKeys.Tracker] = sessionTracker;
                 }
             }
             catch
@@ -112,7 +105,6 @@ namespace SageFrame
 
         protected void Application_BeginRequest(object sender, EventArgs e)
         {
-
 
         }
 
@@ -140,15 +132,7 @@ namespace SageFrame
         {
             try
             {
-                // SessionTracker sessionTracker = (SessionTracker)Session[SessionKeys.Tracker];
                 FormsAuthentication.SignOut();
-                //if ((sessionTracker == null))
-                //{
-                //    return;
-                //}
-                //else
-                //{
-
                 SageFrameConfig SageConfig = new SageFrameConfig();
                 SageFrameSettingKeys.PageExtension = SageConfig.GetSettingsByKey(SageFrameSettingKeys.SettingPageExtension);
                 bool EnableSessionTracker = bool.Parse(SageConfig.GetSettingValueByIndividualKey(SageFrameSettingKeys.EnableSessionTracker));
@@ -158,8 +142,6 @@ namespace SageFrame
                     int PortalID = int.Parse(HttpContext.Current.Session[SessionKeys.SageFrame_PortalID].ToString());
                     sLog.SessionLogEnd(PortalID);
                 }
-                //}
-
             }
             catch
             {
@@ -169,7 +151,6 @@ namespace SageFrame
                 if (null != HttpContext.Current.Session)
                     HttpContext.Current.Session.Abandon();
             }
-
         }
 
         protected void Application_End(object sender, EventArgs e)
@@ -232,13 +213,13 @@ namespace SageFrame
             #endregion
 
 
-             #region "Restro Routing"
+            #region "Restro Routing"
             // Accounting
             routes.Add("sfAcc1", new System.Web.Routing.Route("Admin/Accounting/{PagePath}" + ext, new SageFrameRouteHandler("~/Sagin/Default.aspx")));
             routes.Add("sfAcc2", new System.Web.Routing.Route("admin/Accounting/{PagePath}" + ext + "/{*Param}", new SageFrameRouteHandler("~/Sagin/Default.aspx")));
             routes.Add("sfAcc3", new System.Web.Routing.Route("Admin/Admin/Accounting/{PagePath}" + ext, new SageFrameRouteHandler("~/Sagin/Default.aspx")));
             routes.Add("sfAcc4", new System.Web.Routing.Route("admin/admin/Accounting/{PagePath}" + ext + "/{*Param}", new SageFrameRouteHandler("~/Sagin/Default.aspx")));
-           // Restaurant-Setting
+            // Restaurant-Setting
             routes.Add("sfRs1", new System.Web.Routing.Route("Admin/Setting/{PagePath}" + ext, new SageFrameRouteHandler("~/Sagin/Default.aspx")));
             routes.Add("sfRs2", new System.Web.Routing.Route("admin/Setting/{PagePath}" + ext + "/{*Param}", new SageFrameRouteHandler("~/Sagin/Default.aspx")));
             routes.Add("sfRs3", new System.Web.Routing.Route("Admin/Admin/Setting/{PagePath}" + ext, new SageFrameRouteHandler("~/Sagin/Default.aspx")));
@@ -248,7 +229,7 @@ namespace SageFrame
             routes.Add("sfIn2", new System.Web.Routing.Route("admin/Inventory/{PagePath}" + ext + "/{*Param}", new SageFrameRouteHandler("~/Sagin/Default.aspx")));
             routes.Add("sfIn3", new System.Web.Routing.Route("Admin/Admin/Inventory/{PagePath}" + ext, new SageFrameRouteHandler("~/Sagin/Default.aspx")));
             routes.Add("sfIn4", new System.Web.Routing.Route("admin/admin/Inventory/{PagePath}" + ext + "/{*Param}", new SageFrameRouteHandler("~/Sagin/Default.aspx")));
-          
+
             //Report
             routes.Add("sfRp1", new System.Web.Routing.Route("Admin/Report/{PagePath}" + ext, new SageFrameRouteHandler("~/Sagin/Default.aspx")));
             routes.Add("sfRp2", new System.Web.Routing.Route("admin/Report/{PagePath}" + ext + "/{*Param}", new SageFrameRouteHandler("~/Sagin/Default.aspx")));
@@ -272,8 +253,8 @@ namespace SageFrame
             routes.Add("sfHk2", new System.Web.Routing.Route("admin/House-Keeping/{PagePath}" + ext + "/{*Param}", new SageFrameRouteHandler("~/Sagin/Default.aspx")));
             routes.Add("sfHk3", new System.Web.Routing.Route("Admin/Admin/House-Keeping/{PagePath}" + ext, new SageFrameRouteHandler("~/Sagin/Default.aspx")));
             routes.Add("sfHk4", new System.Web.Routing.Route("admin/admin/House-Keeping/{PagePath}" + ext + "/{*Param}", new SageFrameRouteHandler("~/Sagin/Default.aspx")));
-           
-           routes.Add("sfAspx5", new System.Web.Routing.Route("Admin/AspxCommerce/{parentname}/{PagePath}" + ext, new SageFrameRouteHandler("~/Sagin/Default.aspx")));
+
+            routes.Add("sfAspx5", new System.Web.Routing.Route("Admin/AspxCommerce/{parentname}/{PagePath}" + ext, new SageFrameRouteHandler("~/Sagin/Default.aspx")));
             routes.Add("sfAspx6", new System.Web.Routing.Route("admin/AspxCommerce/{parentname}/{pagepath}" + ext + "/{*Param}", new SageFrameRouteHandler("~/Sagin/Default.aspx")));
             routes.Add("sfAspx7", new System.Web.Routing.Route("Admin/AspxCommerce/{parentname}/{subparent}/{PagePath}" + ext, new SageFrameRouteHandler("~/Sagin/Default.aspx")));
             routes.Add("sfAspx8", new System.Web.Routing.Route("admin/AspxCommerce/{parentname}/{subparent}/{PagePath}" + ext + "/{*Param}", new SageFrameRouteHandler("~/Sagin/Default.aspx")));
