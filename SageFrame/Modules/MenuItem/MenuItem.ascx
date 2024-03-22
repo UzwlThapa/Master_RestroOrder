@@ -35,8 +35,6 @@
             }
         });
 
-        $('.Vitemrate').datepicker({ minDate: 0, defaultDate: new Date(), dateFormat: "yy-mm-dd" });
-
         $("#btnInventoryAdd").click(function () {
             $("#btnInventoryAdd").hide();
             $("#DivGetInventoryList").hide();
@@ -82,8 +80,6 @@
 
             $('input[type=radio]').removeAttr("checked");
             $('input[type=radio]').attr('checked', 'checked');
-            $('.Vitemrate').removeClass('hasDatepicker');
-            $('.Vitemrate').datepicker({ defaultDate: new Date(), dateFormat: "yy-mm-dd" });
         });
 
         $("#tableForSubtable").on('click', "#btnForRemoveRow", function () {
@@ -122,9 +118,7 @@
                 }
             });
         });
-    });
-
-
+    }); 
 </script>
 <script src="/Modules/MenuItem/js/ckeditor/ckeditor.js"></script>
 
@@ -164,9 +158,7 @@
                         <img id="ImgPrvs" class="userlogo" style="height: 90px; width: auto;" />
                         <input type="file" id="fileImage" />
                         <input type="hidden" id="txtImage" />
-
                     </div>
-
                 </td>
             </tr>
 
@@ -191,7 +183,6 @@
                 <td>
                     <select id="SelCostCenter" name="SelCostCenter" class="sfInputbox" style="width: 150px;"></select>
                 </td>
-
             </tr>
             <tr>
                 <td>IsActive :
@@ -220,8 +211,6 @@
                 <td>Procedures :
                 </td>
                 <td colspan="4">
-                    <%--   <textarea id="txtDetails" name="txtDetails" class="sfInputbox" style="width:90%;height:100px"></textarea>--%>
-                    <%-- <CKEditor:CKEditorControl ID="txtDetails" class="txtDetails" runat="server"></CKEditor:CKEditorControl>--%>
                     <textarea cols="80" id="txtDetails" name="txtDetails" rows="10"></textarea>
                 </td>
             </tr>
@@ -231,10 +220,8 @@
         <table id="tableForSubtable" class="sfGridwrapper display dataTable no-footer" style="border-collapse: collapse; border: none; display: block;">
             <thead>
                 <tr>
-
                     <th>Sales Rate(*Excluded Tax)</th>
                     <th>Valid From</th>
-
                 </tr>
             </thead>
             <tbody>
@@ -245,8 +232,7 @@
                     </td>
                     <td>
                         <input type="text" class="Vitemrate sfInputbox" style="width: 100px;" name="Vitemrate" autocomplete="off" />
-                    </td>
-
+                    </td> 
                 </tr>
             </tbody>
         </table>
@@ -294,7 +280,6 @@
             <tr class="ForExtra" style="">
                 <td>
                     <label id="btnForNewRowExtra" class="sfLocale icon-addnew sfBtn">Add</label>
-                    <!--  <label id="btnForCancelExtra" class="sfLocale icon-close sfBtn">Cancel</label> -->
                 </td>
             </tr>
         </table>
