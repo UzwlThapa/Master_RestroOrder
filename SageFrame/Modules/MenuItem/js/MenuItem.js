@@ -632,7 +632,8 @@
                     unitObject.SalesRate = parseFloat($(this).find(".sritemrate").val() == "" ? 0 : $(this).find(".sritemrate").val());
                     var validFrom = $(this).find(".Vitemrate").val();
                     if (validFrom != null && validFrom != '' && validFrom != undefined) {
-                        unitObject.ValidFrom = validFrom;
+                        var datePart = validFrom.split("/");
+                        unitObject.ValidFrom = `${datePart[2]}-${datePart[1]}-${datePart[0]}`;
                     }
                     else {
                         unitObject.ValidFrom = new Date().toISOString();
