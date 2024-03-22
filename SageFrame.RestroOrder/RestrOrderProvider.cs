@@ -3613,6 +3613,7 @@ namespace SageFrame.RestroOrder
             Param.Add(new KeyValuePair<string, object>("@IsTaxable", itemObject.IsTaxable));
             Param.Add(new KeyValuePair<string, object>("@AddedBy", itemObject.AddedBy));
             int ids = sqlHandler.ExecuteAsScalar<int>("[usp_roi_SaveItemsOfRestro]", Param);
+
             List<KeyValuePair<string, object>> Param4 = new List<KeyValuePair<string, object>>();
             Param4.Add(new KeyValuePair<string, object>("@ITId", ids));
             Param4.Add(new KeyValuePair<string, object>("@ITCode", itemObject.ITCode));
@@ -3626,30 +3627,37 @@ namespace SageFrame.RestroOrder
             Param4.Add(new KeyValuePair<string, object>("@AddedBy", itemObject.AddedBy));
             Param4.Add(new KeyValuePair<string, object>("@IsExtra", itemObject.IsExtra));
             sqlHandler.ExecuteNonQuery("[usp_roi_SaveItemsDetailsOfRestro]", Param4);
-            foreach (itemWithUnit info in itemObject.ItemWithUnit)
+
+            if (itemObject.ItemWithUnit != null && itemObject.ItemWithUnit.Count > 0)
             {
-                List<KeyValuePair<string, object>> Param2 = new List<KeyValuePair<string, object>>();
-                Param2.Add(new KeyValuePair<string, object>("@ItemID", ids));
-                //Param2.Add(new KeyValuePair<string, object>("@LargeUnit", info.LargeUnit));
-                //Param2.Add(new KeyValuePair<string, object>("@Conversion", info.Conversion));
-                //Param2.Add(new KeyValuePair<string, object>("@IsDefaultPurchaseUnit", info.IsDefaultPurchaseUnit));
-                //Param2.Add(new KeyValuePair<string, object>("@IsDefaultSalesUnit", info.IsDefaultSalesUnit));
-                Param2.Add(new KeyValuePair<string, object>("@SalesRate", info.SalesRate));
-                Param2.Add(new KeyValuePair<string, object>("@ValidFrom", info.ValidFrom));
-                Param2.Add(new KeyValuePair<string, object>("@AddedBy", info.AddedBy));
-                sqlHandler.ExecuteNonQuery("[usp_SaveItemWithUnit]", Param2);
+                foreach (itemWithUnit info in itemObject.ItemWithUnit)
+                {
+                    List<KeyValuePair<string, object>> Param2 = new List<KeyValuePair<string, object>>();
+                    Param2.Add(new KeyValuePair<string, object>("@ItemID", ids));
+                    Param2.Add(new KeyValuePair<string, object>("@SalesRate", info.SalesRate));
+                    Param2.Add(new KeyValuePair<string, object>("@ValidFrom", info.ValidFrom));
+                    Param2.Add(new KeyValuePair<string, object>("@AddedBy", info.AddedBy));
+                    sqlHandler.ExecuteNonQuery("[usp_SaveItemWithUnit]", Param2);
+                }
             }
+
             List<KeyValuePair<string, object>> Para = new List<KeyValuePair<string, object>>();
             Para.Add(new KeyValuePair<string, object>("@ItemID", ids));
             sqlHandler.ExecuteNonQuery("[usp_ro_removeextraitemsforitem]", Para);
-            foreach (extraItem info2 in extraItemList)
+
+
+            if (extraItemList != null && extraItemList.Count > 0)
             {
-                List<KeyValuePair<string, object>> Param3 = new List<KeyValuePair<string, object>>();
-                Param3.Add(new KeyValuePair<string, object>("@ItemID", ids));
-                Param3.Add(new KeyValuePair<string, object>("@ExtraItemID", info2.ExtraItemID));
-                sqlHandler.ExecuteNonQuery("[usp_ro_extraitemforitemsave]", Param3);
+                foreach (extraItem info2 in extraItemList)
+                {
+                    List<KeyValuePair<string, object>> Param3 = new List<KeyValuePair<string, object>>();
+                    Param3.Add(new KeyValuePair<string, object>("@ItemID", ids));
+                    Param3.Add(new KeyValuePair<string, object>("@ExtraItemID", info2.ExtraItemID));
+                    sqlHandler.ExecuteNonQuery("[usp_ro_extraitemforitemsave]", Param3);
+                }
             }
-            // if (itemObject.Ingredientdata)
+
+            if (itemObject.Ingredientdata != null && itemObject.Ingredientdata.Count > 0)
             {
                 foreach (IngredientItems info in itemObject.Ingredientdata)
                 {
@@ -3662,6 +3670,7 @@ namespace SageFrame.RestroOrder
             }
             return ids;
         }
+
         internal int saveInventoryItems(ROInvItem itemObject, List<extraItem> extraItemList)
         {
             List<KeyValuePair<string, object>> Param = new List<KeyValuePair<string, object>>();

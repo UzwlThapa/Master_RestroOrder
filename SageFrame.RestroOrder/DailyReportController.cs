@@ -605,11 +605,8 @@ namespace SageFrame.RestroOrder
         {
             List<companyInfo> companies = new List<companyInfo>();
             companies = restroOrderProvider.getCompanyInfo();
-
-
-
-            MailMessage mail = new MailMessage();
-
+             
+            MailMessage mail = new MailMessage(); 
             var MailKey = dailyReportProvider.Mailkey("MailKey");
             var MailVal = dailyReportProvider.MailValue("MailValue");
             MailKey = Decrypt(MailKey);
@@ -623,12 +620,12 @@ namespace SageFrame.RestroOrder
                 UseDefaultCredentials = false,
                 Credentials = new NetworkCredential(MailVal, MailKey)
             };
-       
-           // SmtpClient smtp = new SmtpClient();
+        
             try
             {
-                mail.From = new MailAddress(MailVal.ToString());//new MailAddress(System.Configuration.ConfigurationManager.AppSettings["MailFrom"].ToString());
+                mail.From = new MailAddress(MailVal.ToString()); 
                 AddEmails(mail, System.Configuration.ConfigurationManager.AppSettings["MailTo"].ToString(), "TO");
+
                 if (System.Configuration.ConfigurationManager.AppSettings["MailCC"].ToString() != "" && System.Configuration.ConfigurationManager.AppSettings["MailCC"].ToString().Length > 5)
                 {
                     AddEmails(mail, System.Configuration.ConfigurationManager.AppSettings["MailCC"].ToString(), "CC");
@@ -643,13 +640,7 @@ namespace SageFrame.RestroOrder
                     GenerateXlsxFile(date, templateBasePath);
                 }
                 mail.Attachments.Add(new Attachment(attachmentPath));
-               
                 
-                //string smtpHost = System.Configuration.ConfigurationManager.AppSettings["SMTPHost"].ToString();
-                //int smtpPort = Convert.ToInt32(System.Configuration.ConfigurationManager.AppSettings["SMTPPort"]);
-                //smtp.Host = smtpHost;
-                //smtp.Port = smtpPort;
-
                 smtp.Send(mail);
             }
             catch (Exception ex)
