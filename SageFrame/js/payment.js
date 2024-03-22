@@ -2,7 +2,7 @@
 var phoneNumber = '';
 var discount = 0;
 function payment(salesMasterid) {
-    
+
     getSalesMasterDtls(salesMasterid);
     $.ajax({
         type: "POST",
@@ -203,18 +203,22 @@ function payment(salesMasterid) {
                         alert('Please enter Name and phone number');
                         if ($('#txtCustName').val() == '') {
                             $('#txtCustName').focus();
-                            return 
-                        }                           
+                            return
+                        }
                         if ($('#txtPhoneNumber').val() == '') {
                             $('#txtPhoneNumber').focus();
                             return
-                        }                           
-                        
+                        }
+
                     }
                 }
                 if (parseFloat(billInfo.TotalAmount) > 0) {
                     if ($("#tblPayment input:checkbox:checked").length > 0) {
                         var valid = validPayForm();
+                        if (valid == 'transaction') {
+                            valid = 'true';
+                        }
+
                         if (valid == 'true') {
                             if (parseFloat($('#txtsurplus').html()) != 0) {
                                 if (parseFloat($('#txtsurplus').html()) > 250 || parseFloat($('#txtsurplus').html()) < -250) {
@@ -239,9 +243,10 @@ function payment(salesMasterid) {
                         } else {
                             if (valid == 'payamount') {
                                 jAlert('PayAmount must be greater than 0 for checked payment mode.', 'Alert!!');
-                            } else {
-                                jAlert('Transactions No is mandatory for checked payment mode.', 'Alert!!');
                             }
+                            //else {
+                            //    jAlert('Transactions No is mandatory for checked payment mode.', 'Alert!!');
+                            //}
                             $('#paymentBtn').bind('click');
                         }
                     } else {
@@ -299,8 +304,8 @@ function payment(salesMasterid) {
     });
 
     if (discount <= 0) {
-        $('#divNamePhone').css('display','none')
-    } 
+        $('#divNamePhone').css('display', 'none')
+    }
 }
 function validPayForm() {
     var valid = 'true';
@@ -317,7 +322,6 @@ function validPayForm() {
                         valid = 'transaction';
                     } else {
                         valid = 'true';
-
                     }
                 } else {
                     valid = 'payamount';
@@ -340,7 +344,7 @@ function SavePayment(salesMasterid, totalAmount) {
             salesPayment.SPMID = spmid;
             salesPayment.ChequeNo = (spmid == 2 ? $(row).find('.txtTransaction').val() : '');
             salesPayment.TransactionNo = (spmid == 3 || spmid == 5 || spmid == 6 ? $(row).find('.txtTransaction').val() : '');
-            salesPayment.ProviderID = (spmid == 2 || spmid == 3|| spmid == 5|| spmid == 6 ? $(row).find('.selPaymentMode').val() : '');
+            salesPayment.ProviderID = (spmid == 2 || spmid == 3 || spmid == 5 || spmid == 6 ? $(row).find('.selPaymentMode').val() : '');
             salesPayment.CusID = $('#hdfCusID').val();
             salesPayment.Customer = $('#txtCustomerName').val();
             salesPayment.Address = $('#hdfAddress').val();
@@ -444,11 +448,11 @@ function GetCustomeronChange(customerID, pmntMode) {
                     htmls += "</table>";
                     $('#memberList').html(htmls);
                     $('#membertable').DataTable(
-                         {
+                        {
 
-                             "jQueryUI": true,
+                            "jQueryUI": true,
 
-                         });
+                        });
                     $("#memberList").dialog({
                         'title': 'Customer',
                         width: 800,
@@ -497,7 +501,7 @@ function getSalesMasterDtls(salesMasterid) {
             var result = JSON.parse(data.d);
             custName = result.CusName;
             phoneNumber = result.PhoneNumber;
-            discount = result.totaldiscount;            
+            discount = result.totaldiscount;
             //console.log(custName + ' - ' + phoneNumber + ' - ' + discount);
         }
     });

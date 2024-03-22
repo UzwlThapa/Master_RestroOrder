@@ -36,42 +36,8 @@
     <script type="text/javascript" src="/Modules/ROMenu/js/jquery.colorbox.js"></script>
     <script type="text/javascript" src="/js/main.js"></script>
     <link href="/css/nepali.datepicker.v2.2.min.css" rel="stylesheet" type="text/css" />
-
-    <style>
-        .license-expire-wrapper {
-            display: flex !important;
-            height: 2rem;
-            background: #c5b8b1;
-            justify-content: center !important;
-            align-items: center !important;
-            width: 100%;
-            font-weight: bold;
-            font-size: 12pt;
-            color: #e32525;
-        }
-    </style>
-    <script type="text/javascript">
-        //<![CDATA[
-        $(document).ready(() => {
-            var licenceExpiryDays = parseInt(localStorage.getItem('LicenceExpiryDays') || '0');
-            if (licenceExpiryDays <= 10) {
-                $('#licenceExpiryWrapper').attr('style', 'display:block');
-                $('#licenceExpiryDays').html(licenceExpiryDays);
-                $('.sfLoggedTopBar').attr('style', 'margin-top:2rem');
-            } else {
-                $('#licenceExpiryWrapper').attr('style', 'display:none');
-                $('#licenceExpiryDays').html('');
-            }
-        });
-        //]]>	
-    </script>
 </head>
 <body>
-    <div id="licenceExpiryWrapper" class="license-expire-wrapper" style="display: none">
-        Your software license will expire in&nbsp;<span id="licenceExpiryDays"></span>&nbsp;days!
-        &nbsp;&nbsp;<span>Please contact Restro Order Support at <b>01-4522345</b> or  <b>(dial 9802068068)</b> to renew your Subscription.</span>
-    </div>
-
     <form id="form1" runat="server" enctype="multipart/form-data">
         <!--  <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager> -->
         <asp:UpdateProgress ID="UpdateProgress1" runat="server" DisplayAfter="0">

@@ -1904,6 +1904,10 @@ function prints() {
                     if (parseFloat($('#txttotalAmt').text()) > 0) {
                         if ($("#tblPayment input:checkbox:checked").length > 0) {
                             var valid = validPayForm();
+                            if (valid == 'transaction') {
+                                valid = 'true';
+                            }
+
                             if (valid == 'true') {
                                 if (parseFloat($('#txtsurplus').html()) != 0) {
                                     if (parseFloat($('#txtsurplus').html()) > 250 || parseFloat($('#txtsurplus').html()) < -250) {
@@ -1930,9 +1934,10 @@ function prints() {
                             } else {
                                 if (valid == 'payamount') {
                                     jAlert('PayAmount must be greater than 0 for checked payment mode.', 'Alert!!');
-                                } else {
-                                    jAlert('Transactions No is mandatory for checked payment mode.', 'Alert!!');
                                 }
+                                //else {
+                                //    jAlert('Transactions No is mandatory for checked payment mode.', 'Alert!!');
+                                //}
                                 $('#paymentBtn').bind('click');
                             }
                         } else {
@@ -1941,9 +1946,7 @@ function prints() {
                         }
                     } else {
                     }
-                });
-
-
+                }); 
             },
 
             BindVendorforpayment: function (vendorId, pmntMode) {

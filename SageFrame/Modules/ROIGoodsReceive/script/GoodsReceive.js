@@ -31,11 +31,11 @@ function print() {
     var tabs = $("#tabs").tabs();
     $.companyProfcreate = function (p) {
         p = $.extend
-             ({
-                 UserModuleID: '',
-                 Username: '',
-                 ModulePath: '/Modules/RoiPurchase/'
-             }, p);
+            ({
+                UserModuleID: '',
+                Username: '',
+                ModulePath: '/Modules/RoiPurchase/'
+            }, p);
         var v = 0;
         var count = 0;
         var numbers = 0;
@@ -46,10 +46,10 @@ function print() {
         var ArrayData = [];
         var arraycount = 0;
         var AutoPoNoo = [];
-        var receivedlist = [];      
+        var receivedlist = [];
         var Amount = 0;
         var VAT = 0;
-        var VATAmount = 0;       
+        var VATAmount = 0;
         var Discount = 0;
         var IsVat = 0;
         var VatItemTotal = 0;
@@ -229,9 +229,9 @@ function print() {
                             eventFunction.config.ajaxCallMode = 16;
                             eventFunction.ajaxCall(eventFunction.config);
                         }
-                           
-                      
-                        
+
+
+
                         //$('#rdoPayOptionCash').prop('checked', true);
                         //$('#rdoPayOptionCredit').show();
                         //$('#lblPayOptionCredit').show();
@@ -301,7 +301,7 @@ function print() {
                     case 1:
                         jAlert('Successfully Inserted!', 'Information!!', function () { $.alerts.dialogClass = null; });
                         //  window.open('/Modules/ROIGoodsReceive/Goods-Recieved.aspx?ID=' + eval(data.d), '_blank');
-                        var gmid = eval(data.d);                       
+                        var gmid = eval(data.d);
                         eventFunction.GetPurchaseDetailsbygmID(parseInt(gmid));
                         $('#GoodsViewReport').dialog({
                             'title': 'Purchase order',
@@ -435,10 +435,10 @@ function print() {
                 htmls += "<td style='font-size:11px;text-align:right;'> Purchase No : " + purchaseMain[0].PuNo + "</td></tr>";
                 htmls += "<tr><td style='font-size:11px;text-align:left;'>" + (companyInfo[0].IsPan ? "PAN" : "VAT") + " No. : " + companyInfo[0].PAN + "</td>";
                 htmls += "<td style='font-size:11px;text-align:right;'> Date : " + date[0] + "</td></tr>";
-                 htmls += "<tr><td style='font-size:11px;text-align:left;'> Seller's Name. : " + purchaseMain[0].Fname + "</td>";
+                htmls += "<tr><td style='font-size:11px;text-align:left;'> Seller's Name. : " + purchaseMain[0].Fname + "</td>";
                 htmls += "<td style='font-size:11px;text-align:right;'> Payment Mode : " + purchaseMain[0].PayMode + "</td></tr>";
                 htmls += "<tr><td colspan='2' style='font-size:11px;text-align:left;'> Address. : " + purchaseMain[0].Address + "</td>";
-               htmls += "</tr></table>";
+                htmls += "</tr></table>";
 
                 htmls += "<table id='tableForPurchaseDetailsReport' class='sfGridwrapper display' cellspacing='0' style='width:100%;text-align:left;border:1px solid;border-top:none;'>"
                 htmls += "<thead>"
@@ -456,10 +456,9 @@ function print() {
                     htmls += "<td style='font-size:11px;padding-bottom:5px;border-right:1px solid;width:10%;'>" + value.UnitRate + "</td>";
                     htmls += "<td style='font-size:11px;padding-bottom:5px;border-right:1px solid;width:20%;'>" + value.Total + "</td>";
                     htmls += "<td style='font-size:11px;padding-bottom:5px;width:10%;'>" + value.Discount + "</td>";
-                   // htmls += "<td style='padding-bottom:5px;text-align:right;width:5%;'>" + (value.IsVat ? 'T' : 'N') + "</td>";
+                    // htmls += "<td style='padding-bottom:5px;text-align:right;width:5%;'>" + (value.IsVat ? 'T' : 'N') + "</td>";
 
-                    if (value.IsVat == true)
-                    {
+                    if (value.IsVat == true) {
                         VatItemTotal += parseFloat(value.Total);
                         VAT = VatItemTotal - parseFloat(value.Discount);
                     } else {
@@ -470,7 +469,7 @@ function print() {
                     count++;
                 });
                 ExtraDiscount = parseFloat(purchaseMain[0].ExtraDiscount);
-          
+
                 TaxAmount = VAT * 0.13;
                 TotalAmount = (VatItemTotal + NonVatItemTotal + TaxAmount) - (TotalDiscount + ExtraDiscount);
                 htmls += "</tbody>";
@@ -483,7 +482,7 @@ function print() {
                 htmls += "<tr><td colspan='2' style='font-size:12px;text-align: right;border-right:1px solid;border-top:1px solid;'>Total Discount </td><td colspan='2'style='font-size:12px;text-align: right;border-top:1px solid;' class='tot-rig'>Rs. " + TotalDiscount.toFixed(2) + "</td></tr>";
                 htmls += "<tr><td colspan='2' style='font-size:12px;text-align: right;border-right:1px solid;border-top:1px solid;'>Extra Discount </td><td colspan='2'style='font-size:12px;text-align: right;border-top:1px solid;' class='tot-rig'>Rs. " + ExtraDiscount.toFixed(2) + "</td></tr>";
                 htmls += "<tr><td colspan='2' style='font-size:12px;text-align: right;border-right:1px solid;border-top:1px solid;'>13 % VAT</td><td colspan='2'style='font-size:12px;text-align: right;border-top:1px solid;' class='tot-rig'>Rs. " + TaxAmount.toFixed(2) + "</td></tr>";
-               // htmls += "<tr><td colspan='2' style='text-align: right;border-right:1px solid;border-top:1px solid;'>13 % VAT </td><td colspan='2'style='text-align: right;border-top:1px solid;' class='tot-rig'>Rs. " + VAT.toFixed(2) + "</td></tr>";
+                // htmls += "<tr><td colspan='2' style='text-align: right;border-right:1px solid;border-top:1px solid;'>13 % VAT </td><td colspan='2'style='text-align: right;border-top:1px solid;' class='tot-rig'>Rs. " + VAT.toFixed(2) + "</td></tr>";
                 htmls += "<tr><td colspan='2' style='font-size:12px;text-align: right;border-right:1px solid;border-top:1px solid;'>Net Amount</td><td colspan='2'style='font-size:12px;text-align: right;border-top:1px solid;' class='tot-rig'>Rs. " + TotalAmount.toFixed(2) + "</td></tr>";
                 htmls += "<tr><td colspan='7' style='font-size:12px;border-top:1px solid;text-align:left;padding-top:5px;'>Note:- (*) Sign Before Product Name is Non Taxable Items.</td></tr>"
                 htmls += "</tr><tr><td colspan='7' ><div style='width:100px;text-align:center;border-top:1px solid;float:right;'>Signature</div></td></tr>"
@@ -1125,7 +1124,7 @@ function print() {
                         }
                     }
 
-         
+
                 }
 
                 $('#txtvatAmt').text((vatamount).toFixed(2));
@@ -1450,6 +1449,10 @@ function print() {
                     if (parseFloat($('#txttotalAmt').text()) > 0) {
                         if ($("#tblPayment input:checkbox:checked").length > 0) {
                             var valid = validPayForm();
+                            if (valid == 'transaction') {
+                                valid = 'true';
+                            }
+
                             if (valid == 'true') {
                                 if (parseFloat($('#txtsurplus').html()) != 0) {
                                     if (parseFloat($('#txtsurplus').html()) > 250 || parseFloat($('#txtsurplus').html()) < -250) {
@@ -1474,9 +1477,10 @@ function print() {
                             } else {
                                 if (valid == 'payamount') {
                                     jAlert('PayAmount must be greater than 0 for checked payment mode.', 'Alert!!');
-                                } else {
-                                    jAlert('Transactions No is mandatory for checked payment mode.', 'Alert!!');
                                 }
+                                //else {
+                                //    jAlert('Transactions No is mandatory for checked payment mode.', 'Alert!!');
+                                //}
                                 $('#paymentBtn').bind('click');
                             }
                         } else {
@@ -1519,11 +1523,11 @@ function print() {
                 htmls += "</table>";
                 $('#VendorBox').html(htmls);
                 $('#VendorBoxtable').dataTable(
-                 {
-                     "scrollY": false,
-                     "scrollCollapse": false,
-                     "jQueryUI": true,
-                 });
+                    {
+                        "scrollY": false,
+                        "scrollCollapse": false,
+                        "jQueryUI": true,
+                    });
 
                 $("#VendorBox").dialog({
                     'title': 'Vendor List',
@@ -1559,7 +1563,7 @@ function print() {
                     $("#hdfCusID").val(datas[0].MembershipID);
                     $("#txtName").val(datas[0].Name);
                     $("#txtPAN").val(datas[0].PAN);
-                } 
+                }
             },
 
             validPayForm: function () {
