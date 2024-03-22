@@ -14,6 +14,7 @@
         window.localStorage.setItem("AddItemInMenuSearch", JSON.stringify(<%= AddItemInMenuSearch%>));
         window.localStorage.setItem("numpin", JSON.stringify(<%= numpin%>));
         window.localStorage.setItem("QRCode", JSON.stringify(<%= QRCode%>));
+        window.localStorage.setItem("LicenceExpiryDays", JSON.stringify(<%= LicenceExpiryDays%>));
         $.ajax({
             type: "POST",
             async: true,

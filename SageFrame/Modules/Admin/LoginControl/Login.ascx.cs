@@ -48,6 +48,7 @@ namespace SageFrame.Modules.Admin.LoginControl
         public string AddItemInMenuSearch = ConfigurationManager.AppSettings["AddItemInMenuSearch"].ToString();
         public string numpin = ConfigurationManager.AppSettings["NumPinPad"].ToString();
         public string QRCode = ConfigurationManager.AppSettings["QRCode"].ToString();
+        public int LicenceExpiryDays = 0;
         private Random random = new Random();
         protected void Page_Init(object sender, EventArgs e)
         {
@@ -71,6 +72,7 @@ namespace SageFrame.Modules.Admin.LoginControl
             {
                 RestrOrderController roController = new RestrOrderController();
                 RestroOrder.License license = roController.getLicense(companyCode);
+                LicenceExpiryDays = license.ValidDays;
 
                 if (license == null || license.ValidDays <= 0)
                 {
