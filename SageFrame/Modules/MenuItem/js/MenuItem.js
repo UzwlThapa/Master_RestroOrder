@@ -443,7 +443,6 @@
                             a++;
                             htmls += '<tr><td>' + a + '</td>';
                             htmls += '<td>' + value.ItemName + '</td>';
-                            // htmls += '<td>' + value.ParentItem + '</td>';                       
                             htmls += '<td>' + value.ITCode + '</td>';
                             htmls += '<td>' + value.CostCenterName + '</td>';
                             if (value.IsCategory == false) {
@@ -481,7 +480,6 @@
                     columnDefs: [{ orderable: false, targets: [1, 3, 4, 5, 6, 7, 8, 9, 10] }]
                 });
 
-
                 $("#tableForItemList").on('click', '.view', function () {
                     var ids = $(this).attr('id');
                     var row = $(this).parents('tr');
@@ -510,7 +508,6 @@
                         });
                 });
 
-
                 $("#tableForItemList").on('click', '.delete', function () {
                     var ids = $(this).attr('id');
                     jConfirm('Are You Sure  ?', 'Delete', function (confirmed) {
@@ -521,11 +518,11 @@
                 });
 
                 $("#tableForItemList").on('click', '.edit', function () {
+                    debugger;
                     $("#btnAdd ,#btnExcel").hide();
                     $("#DivForItemlist").hide();
                     eventFunction.config.ItemIDUpdate = 1;
                     var row = $(this).parents('tr');
-                    // $('#SelCostCenter').val(row.find('td:eq(3)').text().split(' ')[0]);
                     var ids = $(this).attr('id');
                     var word = ids.split("+");
                     $('#SelCostCenter').val(word[20].split(' ')[0]);
@@ -552,6 +549,7 @@
                     //$('#txtDetails').val(word[17]);
                     CKEDITOR.instances['txtDetails'].setData(word[17]);
                     $("#chkbxIsExtra").prop('checked', word[18] == "true" ? true : false);
+                    $('.Vitemrate').datepicker({ minDate: 0, defaultDate: new Date(word[16]), dateFormat: "yy-mm-dd" });
                     if (word[18] == "true") {
                         $(".ForExtra").show();
                     } else {
@@ -574,7 +572,6 @@
                     eventFunction.ajaxCall(eventFunction.config);
 
                     $('#roiitemtable').show();
-
                 });
             },
 
@@ -664,8 +661,6 @@
                         extraItems.push(extra);
                     }
                 });
-
-
 
                 var IngredientArray = new Array;
                 $("#tableForIngredient tbody tr").each(function (x, y) {
