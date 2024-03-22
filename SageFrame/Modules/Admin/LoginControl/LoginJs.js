@@ -40,15 +40,11 @@
                     $('p.login-userr, p.login-pass, .forget-pass, .cssClassPin, .sfButtonwrapper').css('display','none');
                     $('.cssClasstext').css('display','block');
                 });
-
-              
+                
                 $("#HyperLink2").on("click", function () {
-
                     $('p.login-userr, p.login-pass, .forget-pass, .cssClassPin, .sfButtonwrapper').css('display','block');
                     $('#PINcode').css('display','none');
                     $('.cssClasstext').css('display','none');
-
-
                 });
                 $('#pinpad').on('click', '.PINbutton', function () {
                     var v = $("#PINbox").val();
@@ -59,7 +55,6 @@
                         if (pinMatch) {
                             //alert("Hello world!");
                             $('#PINcode').css('display','none');
-                            
                             $("#LoginButton").click();
                         }
                         else {

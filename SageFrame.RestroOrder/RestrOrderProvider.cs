@@ -3613,6 +3613,7 @@ namespace SageFrame.RestroOrder
             Param.Add(new KeyValuePair<string, object>("@IsTaxable", itemObject.IsTaxable));
             Param.Add(new KeyValuePair<string, object>("@AddedBy", itemObject.AddedBy));
             int ids = sqlHandler.ExecuteAsScalar<int>("[usp_roi_SaveItemsOfRestro]", Param);
+
             List<KeyValuePair<string, object>> Param4 = new List<KeyValuePair<string, object>>();
             Param4.Add(new KeyValuePair<string, object>("@ITId", ids));
             Param4.Add(new KeyValuePair<string, object>("@ITCode", itemObject.ITCode));
@@ -3629,16 +3630,13 @@ namespace SageFrame.RestroOrder
             foreach (itemWithUnit info in itemObject.ItemWithUnit)
             {
                 List<KeyValuePair<string, object>> Param2 = new List<KeyValuePair<string, object>>();
-                Param2.Add(new KeyValuePair<string, object>(" @ItemID", ids));
-                //Param2.Add(new KeyValuePair<string, object>("@LargeUnit", info.LargeUnit));
-                //Param2.Add(new KeyValuePair<string, object>("@Conversion", info.Conversion));
-                //Param2.Add(new KeyValuePair<string, object>("@IsDefaultPurchaseUnit", info.IsDefaultPurchaseUnit));
-                //Param2.Add(new KeyValuePair<string, object>("@IsDefaultSalesUnit", info.IsDefaultSalesUnit));
+                Param2.Add(new KeyValuePair<string, object>("@ItemID", ids));
                 Param2.Add(new KeyValuePair<string, object>("@SalesRate", info.SalesRate));
                 Param2.Add(new KeyValuePair<string, object>("@ValidFrom", info.ValidFrom));
                 Param2.Add(new KeyValuePair<string, object>("@AddedBy", info.AddedBy));
                 sqlHandler.ExecuteNonQuery("[usp_SaveItemWithUnit]", Param2);
             }
+
             List<KeyValuePair<string, object>> Para = new List<KeyValuePair<string, object>>();
             Para.Add(new KeyValuePair<string, object>("@ItemID", ids));
             sqlHandler.ExecuteNonQuery("[usp_ro_removeextraitemsforitem]", Para);
@@ -3649,16 +3647,14 @@ namespace SageFrame.RestroOrder
                 Param3.Add(new KeyValuePair<string, object>("@ExtraItemID", info2.ExtraItemID));
                 sqlHandler.ExecuteNonQuery("[usp_ro_extraitemforitemsave]", Param3);
             }
-            // if (itemObject.Ingredientdata)
+
+            foreach (IngredientItems info in itemObject.Ingredientdata)
             {
-                foreach (IngredientItems info in itemObject.Ingredientdata)
-                {
-                    List<KeyValuePair<string, object>> Param5 = new List<KeyValuePair<string, object>>();
-                    Param5.Add(new KeyValuePair<string, object>("@ItemID", ids));
-                    Param5.Add(new KeyValuePair<string, object>("@Ingredient", info.Ingredient));
-                    Param5.Add(new KeyValuePair<string, object>("@Quantity", info.Quantity));
-                    sqlHandler.ExecuteNonQuery("[usp_SaveIngredientWithQuantity]", Param5);
-                }
+                List<KeyValuePair<string, object>> Param5 = new List<KeyValuePair<string, object>>();
+                Param5.Add(new KeyValuePair<string, object>("@ItemID", ids));
+                Param5.Add(new KeyValuePair<string, object>("@Ingredient", info.Ingredient));
+                Param5.Add(new KeyValuePair<string, object>("@Quantity", info.Quantity));
+                sqlHandler.ExecuteNonQuery("[usp_SaveIngredientWithQuantity]", Param5);
             }
             return ids;
         }
