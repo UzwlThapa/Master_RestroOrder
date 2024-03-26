@@ -87,6 +87,7 @@ function print() {
         var OrderMasterID = 0;
         var CancelTableID = 0;
         var fromtableId = 0;
+        var fromOrderNo = 0;
         var CustName = "";
         var membershipfor = "";
         var CustAddress = "";
@@ -757,8 +758,7 @@ function print() {
                     position: ['center', 'center']
                 });
 
-                $('#btnPrints').unbind('click').on('click', function () {
-                    //DashboardFunction.print();
+                $('#btnPrints').unbind('click').on('click', function () { 
                     $('#divPrintedOn').text(formatAMPM());
                     DashboardFunction.config.method = "savePrintCount";
                     DashboardFunction.config.url = DashboardFunction.config.baseURL + DashboardFunction.config.method;
@@ -814,7 +814,8 @@ function print() {
                     toSeatNo: toSeatNo,
                     fromTableTitle: fromTableTitle,
                     toTableTitle: toTableTitle,
-                    shiftedby: shiftedby
+                    shiftedby: shiftedby,
+                    OrderNo: fromOrderNo
                 });
                 DashboardFunction.config.ajaxCallMode = 8;
                 DashboardFunction.ajaxCall(DashboardFunction.config);
@@ -3092,11 +3093,8 @@ function print() {
                                     htmls += ("<input id='Merge_" + type.restrotableId + "' type='button' class='sfBtn removeMerge restro-btn' value='UnMerge' style='padding:1px 4px; margin-left:10px;' />");
                                 }
                                 else {
-                                    htmls += ("<input id='Shift_" + type.OrderMasterId + "_" + type.restrotableTitle + "_" + type.GuestNo + "_" + type.restrotableId + "' type='button' class='sfBtn shiftTable restro-btn' value='Shift' style='padding:1px 4px; margin-left:10px;' />");
-                                }
-                                //if (Roles.includes("Advance Bill") || Roles.includes("Super User")) {
-                                //    htmls += ("<input id='Print_" + type.OrderMasterId + "_" + type.restrotableTitle + "' type='button' class='sfBtn print restro-btn' value='Print' style='padding:1px 4px; margin-left:10px;' />");
-                                //}
+                                    htmls += ("<input id='Shift_" + type.OrderMasterId + "_" + type.restrotableTitle + "_" + type.GuestNo + "_" + type.restrotableId + "_" + type.OrderNo + "' type='button' class='sfBtn shiftTable restro-btn' value='Shift' style='padding:1px 4px; margin-left:10px;' />");
+                                } 
                                 htmls += ("</div></td></tr>");
                             }
                         }
@@ -3111,19 +3109,11 @@ function print() {
                 sn++;
                 htmls += ("</tbody></table></div>");
                 $('#OccupiedTablesdiv').html(htmls);
-
-                //$('#OccupiedTables').dataTable({
-                //	"bPaginate" : $('#OccupiedTables tbody tr').length>16,
-                //	"iDisplayLength": 16,
-                //    "ordering": false,
-                //    "bLengthChange": false,
-                //     "language": { search: "" ,  searchPlaceholder: "Search..."},
-
-                //});
+                 
                 $('div.dataTables_filter input').addClass('sfInputbox');
-                $('#OccupiedTables').on('click', '.shiftTable', function () {
-                    //$('#DialogOrderDetail').dialog('close');
+                $('#OccupiedTables').on('click', '.shiftTable', function () { 
                     DashboardFunction.config.ShiftOrderMasterID = $(this).attr('id').split("_")[1];
+                    fromOrderNo = $(this).attr('id').split("_")[5];
                     $('#shiftingTableName').html($(this).attr('id').split("_")[2]);
                     var seatNo = $(this).attr('id').split("_")[3];
                     fromtableId = $(this).attr('id').split('_')[4];
@@ -3133,8 +3123,7 @@ function print() {
                     }
                     $(".imgroomtypeforshift").val("");
                     $(".imgRoomForShift").val("");
-                    $(".TablesForShift").hide();
-                    //$(".RoomsForShift").hide();
+                    $(".TablesForShift").hide(); 
                     $('#divForRoomTableShift').dialog({
                         'title': 'Shift Table',
                         width: 675,
@@ -3188,8 +3177,7 @@ function print() {
                     var id = $(this).attr('id');
                     var data = id.split('_');
                     DashboardFunction.GetDataForPrint(data[1]);
-                });
-
+                }); 
             },
 
             BindComplimentaryOccupiedTables: function (data) {
@@ -3216,10 +3204,7 @@ function print() {
                                 }
 
                                 complimentaryHtmls += ("</td><td>" + type.tableDate + "</td><td> Rs. " + type.Amount + "</td><td style='width:315px;'><div class='ordering'>");
-                                //if (window.location.href != billAction) {
-                                //    complimentaryHtmls += ("<input id='Order_" + type.restrotableId + "_" + sn + "' type='button' class='sfBtn ordernow restro-btn' value='Order ' style='padding:1px 4px;' />");
-
-                                //}
+                                
                                 complimentaryHtmls += ("<input id='Print_" + type.restrotableId + "_" + type.OrderMasterId + "' type='button'  class='sfBtn printrcpt restro-btn' value='Print Recpt' style='padding:1px 4px; margin-left:10px;'/>");
 
                                 complimentaryHtmls += ("</div></td></tr>");
@@ -3240,8 +3225,7 @@ function print() {
 
                 $('#ComplimentaryOrdersdiv').on('click', '.printrcpt', function () {
                     var id = $(this).attr('id');
-                    var data = id.split('_');
-                    //DashboardFunction.GetDataForSalesBill(data[2]);
+                    var data = id.split('_'); 
                     DashboardFunction.GetComplimentaryOrders(data[2]);
                 });
             },
@@ -3295,8 +3279,7 @@ function print() {
                     });
                     $('#takeAwayTbl').on('click', '.paynow', function () {
                         var id = $(this).attr('id');
-                        var data = id.split('_');
-                        // DashboardFunction.GetDataForSalesBill(data[1]);
+                        var data = id.split('_'); 
                         DashboardFunction.GetDataForTakeAwaySalesBill(data[1]);
                     });
                 }
@@ -3323,13 +3306,9 @@ function print() {
                                     roomHtmls += ("<input id='Order_" + type.OrderMasterId + "' type='button' class='sfBtn ordernow restro-btn' value='Order ' style='padding:1px 4px; margin-left:10px;' />");
                                     roomHtmls += ("<input id='Booking_" + type.OrderMasterId + "' type='button' class='sfBtn editBooking restro-btn' value='Edit' style='padding:1px 4px; margin-left:10px;' />");
                                 }
-                                //roomHtmls += ("<input id='shiftItems_" + type.OrderMasterId + "_" + type.TableId + "_" + type.GuestNo + "' type='button' class='sfBtn shiftItems restro-btn' value='Shift Items' style='padding:1px 4px; margin-left:10px;' />");
-                                //roomHtmls += ("<input id='Shift_" + type.OrderMasterId + "_" + type.restrotableTitle + "_" + type.GuestNo + "' type='button' class='sfBtn shiftTable restro-btn' value='Shift' style='padding:1px 4px; margin-left:10px;' />");
                                 roomHtmls += ("<input id='Pay_" + type.TableId + "_" + type.OrderMasterId + "' type='button'  class='sfBtn paynow restro-btn' value='Pay' style='padding:1px 4px; margin-left:10px;'/>");
-                                //var Roles = userRole.split(",");                
-                                //if (Roles.includes("Cancel Order") || Roles.includes("Super User")) {
                                 roomHtmls += ("<input id='Cancel_" + type.OrderMasterId + "_" + type.TableId + "_" + type.GuestNo + "' type='button' class='sfBtn cancelorder restro-btn' value='Cancel' style='padding:1px 4px; margin-left:10px;' />");
-                                // }
+
                                 roomHtmls += ("</div></td></tr>");
                             }
                         }
@@ -3337,17 +3316,9 @@ function print() {
                     roomHtmls += ("</tbody></table></div>");
 
                     $('#OccupiedRoomsdiv').html(roomHtmls);
-
-                    //$('#OccupiedRooms').dataTable({
-                    //    "bPaginate": $('OccupiedRooms tbody tr').length > 12,
-                    //    "iDisplayLength": 12,
-                    //    ordering: false,
-                    //    "bLengthChange": false,
-                    //    "language": { search: "", searchPlaceholder: "Search..." },
-                    //});
+                     
                     $('div.dataTables_filter input').addClass('sfInputbox');
-                    $('#OccupiedRooms').on('click', '.shiftTable', function () {
-                        //$('#DialogOrderDetail').dialog('close');
+                    $('#OccupiedRooms').on('click', '.shiftTable', function () { 
                         DashboardFunction.config.ShiftOrderMasterID = $(this).attr('id').split("_")[1];
                         $('#shiftingTableName').html($(this).attr('id').split("_")[2]);
                         var seatNo = $(this).attr('id').split("_")[3];
@@ -3358,8 +3329,7 @@ function print() {
                         fromtableId = $(this).attr('id').split('_')[4];
                         $(".imgroomtypeforshift").val("");
                         $(".imgRoomForShift").val("");
-                        $(".TablesForShift").hide();
-                        //$(".RoomsForShift").hide();
+                        $(".TablesForShift").hide(); 
                         pinfor = "shift";
                         $('#divForRoomTableShift').dialog({
                             'title': 'Shift Table',
@@ -3436,14 +3406,7 @@ function print() {
                     roomHtmls += ("</tbody></table></div>");
 
                     $('#BookedRoomsdiv').html(roomHtmls);
-
-                    //$('#BookedRooms').dataTable({
-                    //    "bPaginate": $('OccupiedRooms tbody tr').length > 10,
-                    //   "iDisplayLength": 12,
-                    //    ordering: false,
-                    //    "bLengthChange": false,
-                    //    "language": { search: "" ,  searchPlaceholder: "Search..."},
-                    //});
+                     
                     $('#BookedRooms').on('click', '.cancelorder', function () {
                         OrderMasterID = $(this).attr('id').split("_")[1];
                         CancelTableID = $(this).attr('id').split("_")[2];
@@ -3541,17 +3504,7 @@ function print() {
                 $("#txtCashCusName").prop('disabled', true);
                 $("#txtCusAddress").prop('disabled', true);
                 $("#txtLoyaltyDiscount").val(datas[0].discount);
-
-
-                //var roles = userRole.split(',');
-
-                //if (roles.includes("Super User") || roles.includes("Billing_Discount")) {
-                //    $("#selDiscountType").val(3);
-                //    $("#selDiscountType").change();
-                //}
-                //else {
-                //}
-
+                 
             },
 
             Reset: function () {

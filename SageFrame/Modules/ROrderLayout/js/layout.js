@@ -31,6 +31,7 @@
         var CancelTableID = 0;
         var IsEnableDiscount = false;
         var cancelreason = '';
+        var fromOrderNo = 0;
         var DashboardFunction = {
             config: {
                 isPostBack: false,
@@ -350,7 +351,8 @@
                     fromSeatNo: fromSeatNo,
                     fromTableTitle: fromTableTitle,
                     toTableTitle: toTableTitle,
-                    toSeatNo: toSeatNo
+                    toSeatNo: toSeatNo,
+                    OrderNo: fromOrderNo
                 });
                 DashboardFunction.config.ajaxCallMode = 7;
                 DashboardFunction.ajaxCall(DashboardFunction.config);
@@ -614,7 +616,7 @@
                     if (datas[0].Note != null && datas[0].Note != "") {
                         htmls += ("<div class='ordering'><input id='Merge_" + datas[0].restrotableId + "' type='button' class='sfBtn removeMerge restro-btn' value='Remove Merge' />");
                     } else {
-                        htmls += ("<div class='ordering'><input id='Shift_" + datas[0].OrderMasterId + "_" + datas[0].restrotableTitle + "_" + datas[0].GuestNo + "' type='button' class='sfBtn shiftTable restro-btn' value='Shift Table' />");
+                        htmls += ("<div class='ordering'><input id='Shift_" + datas[0].OrderMasterId + "_" + datas[0].restrotableTitle + "_" + datas[0].GuestNo + "_" + type.OrderNo + "' type='button' class='sfBtn shiftTable restro-btn' value='Shift Table' />");
                     }
                     htmls += ("<input id='Order_" + datas[0].restrotableId + "' type='button' class='sfBtn ordernow restro-btn' value='Order Now ' style='margin-left:10px;' />");
                     htmls += ("<input id='shiftItems_" + datas[0].OrderMasterId + "_" + datas[0].restrotableId + "_" + datas[0].GuestNo + "' type='button' class='sfBtn shiftItems restro-btn' value='Shift Items ' style='margin-left:10px;' />");
@@ -645,11 +647,8 @@
                     } else {
                         htmls += ("<h4>Bill not Cleared </h4>");
                     }
-                    if (isMergedTable) {
-                        //////htmls += ("<input id='Merge_" + activeorder + "' type='button' class='sfBtn removeMerge restro-btn' value='Remove Merge' style='margin-left:10px;' />");
-                    }
-                    //htmls += ("<input id='Pay_" + activeorder + "' type='button'  class='sfBtn paynow' value='Pay Now ' /></div>");
-
+                    if (isMergedTable) { 
+                    } 
                 }
                 $('#DialogOrderDetail').html(htmls);
                 if (datas.length > 0) {
@@ -690,8 +689,7 @@
 	                        position: ['center', 'center']
 	                    });
                 }
-
-
+ 
                 $('.neworder').on('click', function () {
                     var id = $(this).attr('id');
                     var data = id.split('_');
@@ -748,11 +746,11 @@
                     $('#hdnPinFor').val('CancelOrder');
                     InitializePin();
 
-                });
-                // $('#DialogOrderDetail').on('click', '.shiftTable', function () {
+                }); 
                 $('.ordering').on('click', '.shiftTable', function () {
                     $(this).offsetParent().dialog('close');
                     DashboardFunction.config.ShiftOrderMasterID = $(this).attr('id').split("_")[1];
+                    fromOrderNo = $(this).attr('id').split("_")[5];
                     $('.shiftingTableName').html($(this).attr('id').split("_")[2]);
                     var seatNo = $(this).attr('id').split("_")[3];
                     $('.shiftingTableSeatNo').html('<option value="0">ALL</option>');
@@ -761,8 +759,7 @@
                     }
                     $(".imgroomtypeforshift").val("");
                     $(".imgRoomForShift").val("");
-                    $(".TablesForShift").hide();
-                    //$(".RoomsForShift").hide();
+                    $(".TablesForShift").hide(); 
                     $('#divForRoomTableShift').dialog({
                         'title': 'Shift Table',
                         width: 700,
@@ -770,16 +767,14 @@
                         modal: true,
                     });
                 });
-
-                //$('#DialogOrderDetail').on('click', '.ordernow', function () {
+                 
                 $('.ordering').on('click', '.ordernow', function () {
                     var id = $(this).attr('id');
                     var data = id.split('_');
                     var url = p.HostUrl + "/Order.aspx?ID=" + encodeURIComponent(data[1]);
                     window.location.href = url;
                 });
-
-               // $('#DialogOrderDetail').on('click', '.viewnow', function () {
+                 
                 $('.ordering').on('click', '.viewnow', function () {
                     $(this).offsetParent().dialog('close');
                     var id = $(this).attr('id');
@@ -788,16 +783,14 @@
                     DashboardFunction.GetDataForSalesBill(data[2]);
                     
                 });
-
-             //   $('#DialogOrderDetail').on('click', '.paynow', function () {
+                 
                 $('.ordering').on('click', '.paynow', function () {
                     $(this).offsetParent().dialog('close');
                     var id = $(this).attr('id');
                     var data = id.split('_');
                     DashboardFunction.GetDataForSalesBillFromPay(data[2]);
 
-                });
-
+                }); 
             },
 
             BindSalesBill: function (result, seatNo) {
@@ -855,8 +848,7 @@
                             htmls += ("<td>" + value.Quantity + "</td>");
                             htmls += ("<td class='item-rate tdrate'>" + value.Rate + "</td>");
                             amt = parseFloat(value.Quantity) * parseFloat(value.Rate);
-                            totalAmount += parseFloat(amt);
-                            //console.log('totalAmount: ' + totalAmount);
+                            totalAmount += parseFloat(amt); 
                             htmls += ("<td class='item-amount tdrate'>" + amt + "</td></tr>");
                             if (value.CostCenterId == 2) {
                                 barAmount += amt;
@@ -879,12 +871,9 @@
                                     qnty += value.Quantity;
                                     rate += parseFloat(value.ExtraPrice * value.Quantity);
                                 });
-                                htmls += "</td>";
-                                //htmls += ("</td><td>" + qnty + "</td>");
-                                //htmls += ("<td class='item-rate'>" + (rate/qnty) + "</td>");
+                                htmls += "</td>"; 
                                 amt = parseFloat(rate);
-                                totalAmount += parseFloat(amt);
-                                //console.log('totalAmount: ' + totalAmount);
+                                totalAmount += parseFloat(amt); 
                                 htmls += ("<td class='item-amount'>" + amt + "</td></tr>");
 
                                 if (value.CostCenterId == 2) {
@@ -898,8 +887,7 @@
                                 }
                                 else {
                                     kotAmount += amt;
-                                }
-
+                                } 
                             }
                             sn++;
                         }
@@ -909,6 +897,7 @@
                 } else {
                     htmls += ("<div class='left-sec' style='width:100%;margin-right:0;'><h4>Room : " + "  / Table : " + tableinfo.restrotableTitle + " </h4><h4> Waiter: " + "</h4>");
                 }
+
                 if (tableinfo.RoomBookDetailsID > 0) {
                     htmls += ("<h5>Room Charge Details : </h5>");
                     htmls += ("<table class='room-details-tbl'><thead><th>Room Name</th><th style='width:250px'>Rate</th><th>Days</th><th class='tdrate'>Amt (Rs.)</th></thead><tbody>");
@@ -969,8 +958,7 @@
                 amntAfterDisc = (parseFloat(totalAmount) - parseFloat(totaldis)).toFixed(2);
                 netAmount = 0.00;
                 $.each(datas.billingTerm, function (index, item) {
-                    //if (item.Name != "Service Charge") 
-                    {
+                   
                         if (item.BillTerm != "Evening Discount") {
                             if (item.BillTerm != "VAT") {
                                 htmls += ("<tr>");
@@ -983,9 +971,9 @@
                                 else
                                     netAmount -= parseFloat((amntAfterDisc * item.Rate / 100).toFixed(2));
                             }
-                        }
-                    }
+                        } 
                 });
+
                 netAmount = parseFloat((parseFloat(netAmount) + parseFloat(amntAfterDisc)).toFixed(2));
                 if (datas.VATforBill) {
                     if (datas.billingTerm[datas.billingTerm.length - 1].BillTerm == "VAT") {
@@ -1046,11 +1034,9 @@
                     
                 });
                 $('.RoomsForShift').show();
-                $('.TablesForShift').hide();
-
+                $('.TablesForShift').hide(); 
             },
-
-
+             
             BindGetRoomType: function (result) {
                 $('.imgroomtypeforshift').html("");
                 var datas = JSON.parse(result);
@@ -1076,8 +1062,7 @@
                 if (datas.length > 0) {
                     htmls += "<h4>Tables in " + datas[0].restroRoom + "</h4><hr><ul>";
                     $.each(datas, function (index, value) {
-                        if (!value.MergeTableList > 0 && (value.IsTable || value.OrderMasterId > 0)) {
-                            //if (!value.MergetableList > 0 && value.restrotablesStatusID == 6 && value.IsTable && (value.BillPaid != 0 || value.IsCancelled != 0)) {
+                        if (!value.MergeTableList > 0 && (value.IsTable || value.OrderMasterId > 0)) { 
                             htmls += ("<li>");
                             htmls += ("<a id ='");
                             htmls += ("Table_" + value.restrotableId + "_img_" + value.IsTable + "_" + value.restrotableTitle + "_" + value.GuestNo + "' class = 'imgtableshift' ><img src='" + p.HostUrl + "/Modules/RestroDashboard/image/" + ((value.BillPaid != 0 || value.IsCancelled != 0) ? 'tablegreen' : 'tablered') + ".png'></a> ");
@@ -1108,12 +1093,8 @@
                         $('.shiftToTableSeatNo').append('<option value="' + i + '">' + i + '</option>');
                     }
                 });
-
-
-
-                $('.TablesForShift').show();
-
-
+                 
+                $('.TablesForShift').show(); 
             },
             BindSalesBillForPay: function (result, seatNo) {
                 var d = result.d;
@@ -1172,8 +1153,7 @@
                             htmls += ("<td>" + value.Quantity + "</td>");
                             htmls += ("<td class='item-rate'>" + value.Rate + "</td>");
                             amt = parseFloat(value.Quantity) * parseFloat(value.Rate);
-                            totalAmount += parseFloat(amt);
-                            //console.log('totalAmount: ' + totalAmount);
+                            totalAmount += parseFloat(amt); 
                             htmls += ("<td class='item-amount'>" + amt + "</td></tr>");
                             if (value.CostCenterId == 2) {
                                 barAmount += amt;
@@ -1196,12 +1176,9 @@
                                     qnty += value.Quantity;
                                     rate += parseFloat(value.ExtraPrice * value.Quantity);
                                 });
-                                htmls += "</td>";
-                                //htmls += ("</td><td>" + qnty + "</td>");
-                                //htmls += ("<td class='item-rate'>" + (rate/qnty) + "</td>");
+                                htmls += "</td>"; 
                                 amt = parseFloat(rate);
-                                totalAmount += parseFloat(amt);
-                                //console.log('totalAmount: ' + totalAmount);
+                                totalAmount += parseFloat(amt); 
                                 htmls += ("<td class='item-amount'>" + amt + "</td></tr>");
 
                                 if (value.CostCenterId == 2) {
@@ -1215,8 +1192,7 @@
                                 }
                                 else {
                                     kotAmount += amt;
-                                }
-
+                                } 
                             }
                             sn++;
                         }
@@ -1281,8 +1257,7 @@
 
                 htmls += '<div class="right-sec"><div class="right-secA"><h4>Customer Info</h4><table><tbody>';
                 if (tokeninfo.length > 0) {
-                    //if (tokeninfo[0].CustomerID < 0) {                  
-                    htmls += '<tr><td>Is Customer : </td><td><input type="checkbox" class="customerForCash" ' + (parseInt(tableinfo.CustomerId) > 0 ? "checked" : "") + ' /></div></td></tr>';
+                     htmls += '<tr><td>Is Customer : </td><td><input type="checkbox" class="customerForCash" ' + (parseInt(tableinfo.CustomerId) > 0 ? "checked" : "") + ' /></div></td></tr>';
                     htmls += '<tr><td>Card No. : </td><td><input type="text" id="txtCardNumber" class="txtnum sfInputbox"/></td></tr>';
                     htmls += '<tr><td>Customer : </td><td><input type="text" id="txtCashCusName"  value="' + tokeninfo[0].CustomerName + '" class="sfInputbox" value=""/><input type="hidden" id="txtCusID" value="" /></td></tr>';
                     htmls += '<tr><td>Phone No. : </td><td><input type="text" id="txtNumber"  value="' + tokeninfo[0].Phone + '" class="txtnum sfInputbox"/></tr>';
@@ -1290,8 +1265,7 @@
                     htmls += '<tr><td>PAN : </td><td><input type="text" id="txtPan" class="sfInputbox"/></td></tr>';
                 } else {
                     htmls += '<tr><td>Is Customer : </td><td><input type="checkbox" class="customerForCash" ' + (parseInt(tableinfo.CustomerId) > 0 ? "checked" : "") + ' /></div></td></tr>';
-                    //htmls += '<tr><td>Customer : </td><td><input type="text" id="txtCashCusName" class="sfInputbox" value="' + tableinfo.CustomerName + '"/><input type="hidden" id="txtCusID" value="' + tableinfo.CustomerId + '" /></td></tr><tr><td>Address : </td><td><input type="text" id="txtCusAddress" class="sfInputbox"/></td></tr><tr><td>PAN : </td><td><input type="text" id="txtPan" class="sfInputbox"/></td></tr>';
-                    htmls += '<tr><td>Card No. : </td><td><input type="text" id="txtCardNumber" class="txtnum sfInputbox"/></td></tr>';
+                     htmls += '<tr><td>Card No. : </td><td><input type="text" id="txtCardNumber" class="txtnum sfInputbox"/></td></tr>';
                     htmls += '<tr><td>Customer : </td><td><input type="text" id="txtCashCusName" class="sfInputbox" value=""/><input type="hidden" id="txtCusID" value="" /></td></tr>';
                     htmls += '<tr><td>Phone No. : </td><td><input type="text" id="txtNumber" class="txtnum sfInputbox"/></tr>';
                     htmls += '<tr><td>Address : </td><td><input type="text" id="txtCusAddress" class="sfInputbox"/></td></tr>';
@@ -1321,11 +1295,7 @@
                 if (tokeninfo.length > 0) {
                     if (tokeninfo[0].CustomerID > 0) {
                         DashboardFunction.getmembershiplistbyId(tokeninfo[0].CustomerID);
-                    }
-                    // else {
-                    //$("#txtCashCusName").val(tokeninfo[0].CustomerName);
-                    //$("#txtNumber").val(tokeninfo[0].Phone);
-                    //}
+                    } 
                 }
                 
                 $('#billnoForSales').on('change', function () {
@@ -1339,6 +1309,7 @@
                     seatNo = $('#billnoForSales').val();
 
                 });
+
                 $("#txtCardNumber").on('change', function () {
                     var info = $("#txtCardNumber").val();
                     if (info != "") {
@@ -1433,8 +1404,7 @@
                                 itms += ("<td class='item-rate'>" + value.Rate + "</td>");
                                 amt = parseFloat(value.Quantity) * parseFloat(value.Rate);
                             }
-                            totalAmount += parseFloat(amt);
-                            //console.log('totalAmount: ' + totalAmount);
+                            totalAmount += parseFloat(amt); 
                             itms += ("<td class='item-amount'>" + amt.toFixed(2) + "</td></tr>");
                             if (value.CostCenterId == 2) {
                                 barAmount += amt;
@@ -1457,17 +1427,13 @@
                                     qnty += value.Quantity;
                                     rate += parseFloat(value.Quantity * value.ExtraPrice);
                                 });
-                                itms += ("</td>");
-                                //itms += ("</td><td>" + qnty + "</td>");
-                                if ($("#selDiscountType").val() == "4") {
-                                    //itms += ("<td class='item-rate'>" + 1 + "</td>");
+                                itms += ("</td>"); 
+                                if ($("#selDiscountType").val() == "4") { 
                                     amt = parseFloat(qnty);
-                                } else {
-                                    //itms += ("<td class='item-rate'>" + rate + "</td>");
+                                } else { 
                                     amt = parseFloat(rate);
                                 }
-                                totalAmount += parseFloat(amt);
-                                //console.log('totalAmount: ' + totalAmount);
+                                totalAmount += parseFloat(amt); 
                                 itms += ("<td class='item-amount'>" + amt + "</td></tr>");
 
                                 if (value.CostCenterId == 2) {
