@@ -1538,7 +1538,9 @@ function IntegerAndDecimal(evt, element) {
                 });
 
                 $('#divEditCustomer').on('click', '#updateBill', function () {
-                    var smID = $(this).data('smid');
+                    debugger;
+                    var smIDd = $(this).data('smid').split('_');
+                    var smID = smIDd[0];
 
                     var _rMar = $('#divEditCustomer').find('.txtRemarks');
                     if (_rMar == '' || _rMar.val().length < 5) {
