@@ -340,9 +340,18 @@
                 var ordermasterid = DashboardFunction.config.ShiftOrderMasterID;
                 var fromSeatNo = $('.shiftingTableSeatNo').val();
                 var toSeatNo = $('.shiftToTableSeatNo').val();
+                var fromTableTitle = $('#shiftingTableName').text();
+                var toTableTitle = $('#shiftToTableName').text();
                 DashboardFunction.config.method = "shiftTable";
                 DashboardFunction.config.url = DashboardFunction.config.baseURL + DashboardFunction.config.method;
-                DashboardFunction.config.data = JSON2.stringify({ ordermasterid: ordermasterid, tableID: tableID, fromSeatNo: fromSeatNo, toSeatNo: toSeatNo });
+                DashboardFunction.config.data = JSON2.stringify({
+                    ordermasterid: ordermasterid,
+                    tableID: tableID,
+                    fromSeatNo: fromSeatNo,
+                    fromTableTitle: fromTableTitle,
+                    toTableTitle: toTableTitle,
+                    toSeatNo: toSeatNo
+                });
                 DashboardFunction.config.ajaxCallMode = 7;
                 DashboardFunction.ajaxCall(DashboardFunction.config);
             },

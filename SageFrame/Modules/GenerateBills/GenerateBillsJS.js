@@ -802,9 +802,20 @@ function print() {
                 var fromSeatNo = $('#shiftingTableSeatNo').val();
                 var toSeatNo = $('#shiftToTableSeatNo').val();
                 var shiftedby = $('#hdnPinBy').val();
+                var fromTableTitle = $('#shiftingTableName').text();
+                var toTableTitle = $('#shiftToTableName').text();
+
                 DashboardFunction.config.method = "shiftTable";
                 DashboardFunction.config.url = DashboardFunction.config.baseURL + DashboardFunction.config.method;
-                DashboardFunction.config.data = JSON2.stringify({ fromordermasterid: fromordermasterid, totableID: totableID, fromSeatNo: fromSeatNo, toSeatNo: toSeatNo, shiftedby: shiftedby });
+                DashboardFunction.config.data = JSON2.stringify({
+                    fromordermasterid: fromordermasterid,
+                    totableID: totableID,
+                    fromSeatNo: fromSeatNo,
+                    toSeatNo: toSeatNo,
+                    fromTableTitle: fromTableTitle,
+                    toTableTitle: toTableTitle,
+                    shiftedby: shiftedby
+                });
                 DashboardFunction.config.ajaxCallMode = 8;
                 DashboardFunction.ajaxCall(DashboardFunction.config);
             },
