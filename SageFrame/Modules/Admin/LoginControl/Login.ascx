@@ -8,6 +8,7 @@
         $(".sfLocale").SystemLocalize();
     });
     $(document).ready(function () {
+        debugger;
         window.localStorage.setItem("ordermenulisttype", JSON.stringify(<%= ordermenulisttype%>));
         window.localStorage.setItem("OrdermenuImageshow", JSON.stringify(<%= OrdermenuImageshow%>));
         window.localStorage.setItem("paymentAfterGenerateBill", JSON.stringify(<%= paymentAfterGenerateBill%>));
