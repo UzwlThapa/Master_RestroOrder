@@ -35,12 +35,7 @@
         }
 
         if (getUrlVars()["ID"] != null) {
-            sentdata = queryString["ID"];
-            //
-            //name = getUrlVars()["Name"];
-            //phoneNo = getUrlVars()["phoneNo"];
-            //NoOfGuest = getUrlVars()["NoOfGuest"];
-            //membershipId = getUrlVars()["MembershipId"];
+            sentdata = queryString["ID"]; 
         }
         if (getUrlVars()["RID"] != null) {
             roomdata = queryString["RID"]

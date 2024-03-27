@@ -2,6 +2,7 @@
 using SageFrame.Web;
 using System.Configuration;
 using System;
+using SageFrame.Security;
 
 public partial class Modules_Order_OrderView : BaseUserControl
 {
@@ -11,14 +12,18 @@ public partial class Modules_Order_OrderView : BaseUserControl
     public string OrdermenuImageshow = ConfigurationManager.AppSettings["OrderMenuImageshow"].ToString();
     public int userModuleID = 0; public int RowTotal = 0;
     RestrOrderController roc = new RestrOrderController();
+    RoleController objRole = new RoleController();
     public string userName = string.Empty;
     public string numpin = string.Empty;
+    public int creditLimit;
     protected void Page_Load(object sender, EventArgs e)
-    {
-
+    { 
+        string role = objRole.GetRoleNames(GetUsername, GetPortalID);
+        var topRole = role.Split(',')[0].ToLower();
         numpin = ConfigurationManager.AppSettings["NumPinPad"].ToString();
         modulePath = ResolveUrl(this.AppRelativeTemplateSourceDirectory);
         userModuleID = int.Parse(SageUserModuleID);
+        creditLimit = objRole.getLoginUserCreditLimit(topRole);
         IncludeJs("", "/js/QRCode/jquery.qrcode.js");
         IncludeJs("", "/js/QRCode/qrcode.js");
         IncludeJs("", "/js/BillBind.js");

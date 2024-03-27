@@ -60,6 +60,7 @@
                     $("#btnAdd, #btnExcel").hide();
                     $("#DivForItemlist").hide();
                     $("#roiitemtable").show();
+                    $(".Vitemrate").datepicker({ minDate: 0 }).datepicker("setDate", new Date());
                 });
 
                 $("#SelCategoryName").on('change', function () {
@@ -157,10 +158,6 @@
                                 htmls += '<td>' + items[i].dsunitparticular + '</td>';
                                 htmls += '<td>' + items[i].MunitParticulars + '</td>';
                                 htmls += '<td>' + items[i].CostCenterName + '</td>';
-                                //htmls += '<td style="display:none;">' + value.IsProdMaterial + '</td>';
-                                //htmls += '<td class="tdcenter"><label id="' + value.ITId + '" class="view icon-preview"/></td>';
-                                //htmls += '<td class="tdcenter"><label id="' + value.ITId + '+' + value.ITCode + '+' + value.ImagePath + '+' + value.IsMenu + '+' + value.IsExpirable + '+' + value.IsProdMaterial + '+' + value.IsUnitWiseRate + '+' + value.ItemCostCentreID + '+' + value.IsActive + '+' + value.SmallUnit + '+' + value.PITId + '+' + value.LargeUnit + '+' + value.Conversion + '+' + value.IsDefaultPurchaseUnit + '+' + value.IsDefaultSalesUnit + '+' + value.SRate + '+' + value.ValidFrom + '+' + value.Details + '+' + value.IsExtra + '"   class="edit icon-edit" value="Edit"/></td>';
-                                //htmls += '<td class="tdcenter"><label id="' + value.ITId + '" class="delete icon-delete"  value="Delete"/></td>';
                                 htmls += '</tr>';
                             }
 
@@ -383,7 +380,6 @@
                     });
                     $("#SelCategoryName").html(htmls);
                 }
-
             },
 
             BindCostCenter: function (result) {
@@ -399,7 +395,6 @@
                             htmls += "<option value='" + value.CostCenterID + "'>" + value.CostCenterName + "</option>";
                     });
                     $("#SelCostCenter").html(htmls);
-
                 }
             },
 
@@ -414,10 +409,10 @@
                     });
                     $("#SelInvSmallunit").html(htmls);
                 }
-
             },
 
             BindCheckItemExistence: function (result) {
+                debugger;
                 datas = JSON.parse(result);
                 var htmls = '';
                 if (datas.length > 0) {

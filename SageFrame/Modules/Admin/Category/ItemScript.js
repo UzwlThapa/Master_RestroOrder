@@ -30,10 +30,7 @@
             InitialSetup: function () {
             },
             init: function () {
-
-                //alert("inisde");
-
-                //eventFunction.InitialSetup();
+                 
                 $("#itemName").change(function () {
                     var item = $("#itemName").val();
                     eventFunction.config.method = "CheckItemExistenceForCategory";
@@ -42,9 +39,7 @@
                     eventFunction.config.ajaxCallMode = 0;
                     eventFunction.ajaxCall(eventFunction.config);
                 });
-
-             
-
+                 
                 $("#fileImage").change(function () {
                     var path = $('input[type=file]').val();
                     var filename = path.replace(/^.*\\/, "");
@@ -110,18 +105,14 @@
                         break;
                 }
             },
-            ajaxFailure: function () {
-                //switch (parseInt(eventFunction.config.ajaxCallMode)) {
-                //    case 7:
-                //        alert("Delete fail ! Your data is being used: remove dependencies", "fail");
-                //        break;
-                //}
+            ajaxFailure: function () { 
             },
 
             //<<-----------------------------Post & Get Here ---------------------------------------->>
             
 
             BindCheckItemExistence: function (result) {
+                debugger;
                 datas = JSON.parse(result);
                 var htmls = '';
                 if (datas.length > 0) {

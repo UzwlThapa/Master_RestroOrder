@@ -3602,7 +3602,7 @@ namespace SageFrame.RestroOrder
                 throw;
             }
         }
-        internal int saveItems(ROInvItem itemObject, List<extraItem> extraItemList)
+        internal int saveItems(ROInvItem itemObject, List<extraItem> extraItemList = null)
         {
             List<KeyValuePair<string, object>> Param = new List<KeyValuePair<string, object>>();
             Param.Add(new KeyValuePair<string, object>("@ITId", itemObject.ITId));

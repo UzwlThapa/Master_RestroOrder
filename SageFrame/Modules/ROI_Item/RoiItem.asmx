@@ -215,7 +215,7 @@ public class RoiItem : System.Web.Services.WebService
         return JsonConvert.SerializeObject(invItem);
     }
 
-        [WebMethod]
+    [WebMethod]
     public string CheckItemExistenceForInventory(string item)
     {
         RestrOrderController roc = new RestrOrderController();
@@ -226,7 +226,7 @@ public class RoiItem : System.Web.Services.WebService
 
 
     [WebMethod]
-    public int saveItems(ROInvItem itemObject, List<extraItem> extraItemList)
+    public int saveItems(ROInvItem itemObject, List<extraItem> extraItemList = null)
     {
         try
         {
@@ -318,7 +318,7 @@ public class RoiItem : System.Web.Services.WebService
         }
         catch (Exception ex)
         {
-            Context.Response.Write("{statusCode:100, message:\""+ex.Message+"\"}");
+            Context.Response.Write("{statusCode:100, message:\"" + ex.Message + "\"}");
         }
 
     }
@@ -472,7 +472,7 @@ public class RoiItem : System.Web.Services.WebService
         }
         catch (Exception ex)
         {
-            Context.Response.Write("{statusCode:100, message:\""+ex.Message+"\"}");
+            Context.Response.Write("{statusCode:100, message:\"" + ex.Message + "\"}");
         }
     }
 

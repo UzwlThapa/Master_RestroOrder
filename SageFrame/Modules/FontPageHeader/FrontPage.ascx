@@ -30,16 +30,16 @@
         debugger;
         var licenceExpiryDays = parseInt(localStorage.getItem('LicenceExpiryDays') || '0');
         if (licenceExpiryDays <= 10) {
-            $('#licenceExpiryWrapper').attr('style', 'display:block !important');
+            $('#licenceExpiryWrapper').attr('style', 'visibility:visible !important');
             $('#licenceExpiryDays').html(licenceExpiryDays);
         } else {
-            $('#licenceExpiryWrapper').attr('style', 'display:none !important');
+            $('#licenceExpiryWrapper').attr('style', 'visibility:hidden !important');
             $('#licenceExpiryDays').html('');
         }
     });
     //]]>	
 </script>
-<div id="licenceExpiryWrapper" class="license-expire-wrapper" style="display: none !important">
+<div id="licenceExpiryWrapper" class="license-expire-wrapper" style="visibility: hidden !important">
     Your software license will expire in&nbsp;<span id="licenceExpiryDays"></span>&nbsp;days!
     &nbsp;&nbsp;<span>Please contact Restro Order Support at <b>01-4522345</b> or  <b>(dial 9802068068)</b> to renew your Subscription.</span>
 </div>

@@ -1046,7 +1046,6 @@ function GetDataForSalesBill(orderMasterId) {
 
             htmls += ("<h4>Discount Method</h4><div class='dialogflex' style='border-top:1px solid gainsboro;border-bottom:none;'><div id='discountDiv'><table id='tblDiscount' style='display:block;'><tbody>");
 
-
             //Change For Dis Limit
             disLimitBasicAmt = totalAmount + nonTaxableAmount;
             totaldis = 0;
@@ -1058,8 +1057,7 @@ function GetDataForSalesBill(orderMasterId) {
             $.each(costCenterGroup, function (index, item) {
                 htmls += "<tr class='disc' style='" + ((orderdetails.length > 0) ? "" : "display:none") + "'><td>" + item.GroupName + " ( Rs. " + (item.TotalAmt + item.NonTaxableAmt).toFixed(2) + " ) </td><td>";
                 htmls += "<input type='text' class='sfInputbox txtdiscount txt_dis' data-groupId='" + item.GroupId + "' style='width:100px;' onkeypress='return IntegerAndDecimal(event,this);' id='index_" + index + "' value='" + 0 + "' /></td>";
-
-            })
+            });
             htmls += "<tr class='loyaltydisc' style='display:none;'><td>Loyalty Discount : </td><td>";
             htmls += "<input type='text' class='sfInputbox txtdiscount' style='width:100px;' onkeypress='return IntegerAndDecimal(event,this);' id='txtLoyaltyDiscount' value='" + 0 + "' disabled /></td>";
             htmls += "</tr>";
@@ -1068,54 +1066,8 @@ function GetDataForSalesBill(orderMasterId) {
             htmls += '<div id="divBillingTerm"></div></div></div>';
 
             htmls += '<div class="right-sec"><div class="right-secA"><h4>Customer Info</h4><table><tbody>';
-            //if (tokeninfo.length > 0) {
-            //    htmls += '<tr><td>Is Customer : </td><td><input type="checkbox" class="customerForCash" id="chkcustomerForCash" /></div></td></tr>';
-            //    htmls += '<tr><td>Card No. : </td><td><input type="text" id="txtCardNumber" class="txtnum sfInputbox"/></td></tr>';
-            //    htmls += '<tr><td>Customer : </td><td><input type="text" id="txtCashCusName" class="sfInputbox" value="' + tokeninfo[0].CustomerName + '"/><input type="hidden" id="txtCusID" value="" /></td></tr>';
-            //    htmls += '<tr><td>Phone No. : </td><td><input type="text" id="txtNumber" class="txtnum sfInputbox" value="' + tokeninfo[0].Phone + '" /></tr>';
-            //    htmls += '<tr><td>Address : </td><td><input type="text" id="txtCusAddress" class="sfInputbox"/></td></tr>';
-            //    htmls += '<tr><td>PAN : </td><td><input type="text" id="txtPan" class="sfInputbox"/></td></tr>';
-            //} else {
-            //    htmls += '<tr><td>Is Customer : </td><td><input type="checkbox" class="customerForCash" id="chkcustomerForCash"/></div></td></tr>';
-            //    htmls += '<tr><td>Card No. : </td><td><input type="text" id="txtCardNumber" class="txtnum sfInputbox"/></td></tr>';
-            //    htmls += '<tr><td>Customer : </td><td><input type="text" id="txtCashCusName" class="sfInputbox" value=""/><input type="hidden" id="txtCusID" value="" /></td></tr>';
-            //    htmls += '<tr><td>Phone No. : </td><td><input type="text" id="txtNumber" class="txtnum sfInputbox"/></tr>';
-            //    htmls += '<tr><td>Address : </td><td><input type="text" id="txtCusAddress" class="sfInputbox"/></td></tr>';
-            //    htmls += '<tr><td>PAN : </td><td><input type="text" id="txtPan" class="sfInputbox"/></td></tr>';
-            //}
             htmls += '<div id="divPaymentModes"></div>';
             htmls += '</tbody></table></div>';
-            //if (foodCourtOrder) {
-            //    htmls += '<div class="right-secB">';
-            //    htmls += '<table runat="server" clientidmode="static" id="payBill"><tr>';
-            //    htmls += '<td>Change Pay Mode<span style="color:red;">*</span> : </td>';
-            //    htmls += '<td><select id="selPayMode" name="Paymode" class="sfInputbox">';
-            //    htmls += '<option selected value="1">CASH</option>';
-            //    htmls += '<option value="3">SWIPE</option>';
-            //    htmls += '<option value="2">CHEQUE</option>';
-            //    htmls += '<option value="5">eSewa</option>';
-            //    htmls += '<option value="6">FonePay</option>';
-            //    //htmls += '<option value="4">CREDIT</option>';
-            //    htmls += '</select></td></tr>';
-            //    htmls += '<tr class="cashpay"><td>Total Amount :</td>';
-            //    htmls += '<td><input type="text" class="txtnum sfInputbox" disabled id="txtTotalCalc" /></td></tr>';
-            //    htmls += '<tr class="cashpay"><td>Tender Amount :</td>';
-            //    htmls += '<td><input type="text" class="txtnum sfInputbox" onkeypress="return validateFloatKeyPress(this,event)" placeholder="0" id="txtTenderAmount" /></td></tr>';
-            //    htmls += '<tr class="cashpay"><td>Return Amount :</td>';
-            //    htmls += '<td><input type="text" class="txtnum sfInputbox"  onkeypress="return validateFloatKeyPress(this,event)" placeholder="0" id="txtReturnAmount" /></td>';
-            //    htmls += '</tr><tr id="prov" clientidmode="static" style="display:none;">';
-            //    htmls += '<td>Provider : </td>';
-            //    htmls += '<td><select id="selProv"></select></td>';
-            //    htmls += '</tr><tr id="cheq" clientidmode="static" style="display:none;">';
-            //    htmls += '<td>Cheque No<span style="color:red;">*</span> : </td>';
-            //    htmls += '<td><input type="text" name="Cheque" id="txtCheqNo" class="sfInputbox" /></td>';
-            //    htmls += ' </tr><tr id="trans" clientidmode="static" style="display:none;">';
-            //    htmls += '<td>Transaction No<span style="color:red;">*</span> : </td>';
-            //    htmls += '<td><input type="text" name="Transaction" id="txtTransNo" class="sfInputbox" /></td>';
-            //    htmls += '<tr class="cashpay"><td>Remarks :</td>';
-            //    htmls += '<td><textarea class="sfInputbox txtRemarks"></textarea></td></tr>';
-            //    htmls += '</tr></table></div>';
-            //}
             htmls += '<input id="generateBill" type="button"  class="sfBtn restro-btn" value="Generate Bill" style="margin-left:10px;"/>';
 
             htmls += '<div id="divPaymentModes"></div>';
@@ -1127,7 +1079,6 @@ function GetDataForSalesBill(orderMasterId) {
             $('#DialogOrderDetail').html(htmls);
             $('#DialogOrderDetail').show();
             $('#OrderMenu').hide();
-            //$('#MenuDiv').removeClass("menu-bg");
 
             BindBillingTerm(totalAmount, nonTaxableAmount, totaldis, 0, 0, datas);
 
@@ -1766,22 +1717,25 @@ function BindPaymentModes() {
         dataType: "json",
         success: function (response) {
 
-            debugger;
             htmls += '<div class="unpaidbill_ttl" style="display:flex;justify-content:space-between;"><h6>Total Amount : Rs. ' + TotalNetAmount + '</h6>';
             htmls += '<h6 id="surplusDeficit" style="text-align:right;">Surplus/Deficit : Rs. <span id="txtsurplus">0</span></h6></div>';
             htmls += '<table id="tblPayment" style="background:#F3F3F3;border-radius: 3px 3px 0px 0px;padding: 10px;">';
-            htmls += '<tr>';
-            htmls += '<td><input type="checkbox" class="pmntCheck" id="chkBox_1" checked /><label for="chkBox_1" style="margin:0;margin-left:5px;font-weight:bold;cursor:pointer;">' + 'Cash' + ' : </label></td>';
-            htmls += '<td>Pay Amount <input type="text" class="pmt sfInputbox txtPayAmount" value="' + TotalNetAmount + '" /></td>';
-            htmls += '</tr>';
 
             var response = JSON.parse(response.d ?? '{}');
             if (response != null && response.length > 0) {
-
                 $.each(response, function (index, item) {
                     htmls += '<tr>';
-                    htmls += '<td><input type="checkbox" class="pmntCheck" id="chkBox_' + item.PaymentModeID + '" /><label for="chkBox_' + item.PaymentModeID + '" style="margin:0;margin-left:5px;font-weight:bold;cursor:pointer;">' + item.PaymentMode + ' : </label></td>';
-                    htmls += '<td>Pay Amount <input type="text" class="pmt sfInputbox txtPayAmount" value="0" /></td>';
+                    if (index == 0) {
+                        htmls += '<td><input type="checkbox" checked="checked"  class="pmntCheck" id="chkBox_' + item.PaymentModeID + '" /><label for="chkBox_' + item.PaymentModeID + '" style="margin:0;margin-left:5px;font-weight:bold;cursor:pointer;">' + item.PaymentMode + ' : </label></td>';
+
+                    } else {
+                        htmls += '<td><input type="checkbox"  class="pmntCheck" id="chkBox_' + item.PaymentModeID + '" /><label for="chkBox_' + item.PaymentModeID + '" style="margin:0;margin-left:5px;font-weight:bold;cursor:pointer;">' + item.PaymentMode + ' : </label></td>';
+                    }
+                    if (index == 0) {
+                        htmls += '<td>Pay Amount <input type="text" class="pmt sfInputbox txtPayAmount" value="' + TotalNetAmount + '" /></td>';
+                    } else {
+                        htmls += '<td>Pay Amount <input type="text" class="pmt sfInputbox txtPayAmount" value="0" /></td>';
+                    }
                     htmls += '</tr>';
                 });
 

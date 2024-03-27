@@ -466,7 +466,7 @@ function getBill(salesMasterId, foodCourtOrder) {
                                         htmls += ("<td colspan='4' style='text-align:right;font-size:11px;margin-right:10px;'><span>" + value.GroupName + " Disc: </span>Rs." + parseFloat(value.Discount).toFixed(2) + "</td></tr>");
 
                                     } else {
-                                        htmls += ("<td colspan='4' style='text-align:right;font-size:11px;margin-right:10px;'><span>" + value.GroupName + " Disc (" + value.Discount.toFixed(2) + " %) : </span>Rs." + parseFloat((value.Discount / 100) * (value.TotalAmount + value.NonTaxableAmt)).toFixed(2) + "</td></tr>");
+                                        htmls += ("<td colspan='4' style='text-align:right;font-size:11px;margin-right:10px;'><span>" + value.GroupName + " Disc (" + parseFloat((value.Discount * 100) / value.NonTaxableAmt).toFixed(2) + " %) : </span>Rs." + parseFloat(value.Discount).toFixed(2) + "</td></tr>");
                                     }
                                 }
                             });
@@ -476,7 +476,7 @@ function getBill(salesMasterId, foodCourtOrder) {
                                     htmls += ("<td colspan='4' style='text-align:right;font-size:11px;margin-right:10px;'><span>Room Disc: </span>Rs." + parseFloat(costCenterDis.RoomDis).toFixed(2) + "</td></tr>");
 
                                 } else {
-                                    htmls += ("<td colspan='4' style='text-align:right;font-size:11px;margin-right:10px;'><span>Room Disc (" + costCenterDis.RoomDis.toFixed(2) + " %) : </span>Rs." + parseFloat((costCenterDis.RoomDis / 100) * costCenterDis.RoomCharge).toFixed(2) + "</td></tr>");
+                                    htmls += ("<td colspan='4' style='text-align:right;font-size:11px;margin-right:10px;'><span>Room Disc (" + parseFloat((costCenterDis.RoomDis * 100) / costCenterDis.NonTaxableAmt).toFixed(2) + " %) : </span>Rs." + parseFloat(costCenterDis.RoomDis).toFixed(2) + "</td></tr>");
                                 }
                             }
                         }

@@ -369,7 +369,8 @@ function isNumber(evt) {
 
 
             BindCheckItemExistence: function (result) {
-               
+
+                debugger;
                 datas = JSON.parse(result);
                 var htmls = '';
                 if (datas.length > 0) {

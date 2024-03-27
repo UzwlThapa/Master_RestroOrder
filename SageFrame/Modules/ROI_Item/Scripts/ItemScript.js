@@ -455,10 +455,7 @@
                         eventFunction.ResetAll();
                         jAlert('Updated Successfully!', 'Information!!', function () { $.alerts.dialogClass = null; });
                         eventFunction.ReloadMenu();
-                        break;
-
-
-
+                        break; 
                 }
             },
             ajaxFailure: function () {
@@ -517,16 +514,14 @@
                     $.each(datas, function (index, value) {
                         if (index == 0) {
                             $('#tableForIngredient tbody tr:eq(0)').find('td:eq(0) input[type=text]').val(value.ITName);
-                            $('#tableForIngredient tbody tr:eq(0)').find('td:eq(0) input[type=hidden]').val(value.Ingredient);
-                            //eventFunction.GetUnitOfItemByID(value.Ingredient);
+                            $('#tableForIngredient tbody tr:eq(0)').find('td:eq(0) input[type=hidden]').val(value.Ingredient); 
                             $('#tableForIngredient tbody tr:eq(0)').find('td:eq(1) input[type=text]').val(value.Quantity);
                             $('#tableForIngredient tbody tr:eq(0)').find('td:eq(1) input[type=hidden]').val(value.ItemId);
                         }
                         else {
                             $("#roiitemtable .addTextboxIngredient").click();
                             $('#tableForIngredient tbody tr:eq(' + index + ')').find('td:eq(0) input[type=text]').val(value.ITName);
-                            $('#tableForIngredient tbody tr:eq(' + index + ')').find('td:eq(0) input[type=hidden]').val(value.Ingredient);
-                            //eventFunction.GetUnitOfItemByID(value.Ingredient);
+                            $('#tableForIngredient tbody tr:eq(' + index + ')').find('td:eq(0) input[type=hidden]').val(value.Ingredient); 
                             $('#tableForIngredient tbody tr:eq(' + index + ')').find('td:eq(1) input[type=text]').val(value.Quantity);
                             $('#tableForIngredient tbody tr:eq(' + index + ')').find('td:eq(1) input[type=hidden]').val(value.ItemId);
                         }
@@ -544,9 +539,7 @@
                 datas = JSON.parse(result);
                 if (datas.length > 0) {
                     $.each(datas, function (index, value) {
-                        AutocompleteIngredient.push({ label: value.ITName + ", " + value.Symbol, id: value.ITId });
-                        //AutocompleteIngredient.push({ label: value.ITName, id: value.ITId });
-                        //alert(value.Symbol);
+                        AutocompleteIngredient.push({ label: value.ITName + ", " + value.Symbol, id: value.ITId }); 
                     });
                 }
             },
@@ -566,8 +559,7 @@
                         htmls += '<tr><td>' + i + '</td>';
                         htmls += '<td>' + value.GroupName + '</td>';
                         htmls += '<td>' + value.GroupCode + '</td>';
-                        htmls += '<td><label class="edit icon-edit" id=' + value.GroupID + '/></td>';
-                        //htmls += '<td><label class="edit icon-edit" id=' + value.GroupID + '_' + value.GroupName + '_' + value.GroupCode + '/></td>';
+                        htmls += '<td><label class="edit icon-edit" id=' + value.GroupID + '/></td>'; 
                         htmls += '<td><label class="delete icon-delete" id=' + value.GroupID + '/></td></tr>';
                         i++;
                     });
@@ -582,20 +574,19 @@
                 }
 
                 $("#tableForGroupListing").on("click", ".edit", function () {
+                    debugger;
                     eventFunction.ResetGroup();
                     eventFunction.config.updateGroup = 1;
                     var row = $(this).parents('tr');
                     $('#txtGroupName').val(row.find('td:eq(1)').text());
                     $('#txtGroupCode').val(row.find('td:eq(2)').text());
                     var ids = $(this).attr('id');
-                    eventFunction.config.groupID = ids;
-                    //var word = ids.split("_");ids.split("+");
+                    eventFunction.config.groupID = ids; 
                     eventFunction.config.method = "getGroupByID";
                     eventFunction.config.url = eventFunction.config.baseURL + eventFunction.config.method;
                     eventFunction.config.data = JSON2.stringify({ ids: ids });
                     eventFunction.config.ajaxCallMode = 16;
-                    eventFunction.ajaxCall(eventFunction.config);
-
+                    eventFunction.ajaxCall(eventFunction.config); 
                 });
                 $("#tableForGroupListing").on("click", ".delete", function () {
                     var ids = $(this).attr('id');
@@ -608,9 +599,7 @@
                             eventFunction.ajaxCall(eventFunction.config);
                         }
                     });
-                });
-
-
+                }); 
             },
 
             BindGroupListByID: function (result) {
@@ -618,6 +607,7 @@
                 var datas = result.d;
                 var i = 1;
                 var len = datas.length - 1;
+                debugger;
                 $(datas).each(function (index, value) {
                     if (datas.length == 1) {
                         $(".removeTextbox").removeClass('icon-close removeTextbox').addClass('icon-addnew addTextbox');
@@ -626,8 +616,7 @@
                     } else {
 
                         var ind = index;
-                        if (index == 0) {
-                            //$(".removeTextbox").removeClass('icon-close removeTextbox').addClass('icon-addnew addTextbox');
+                        if (index == 0) { 
                             $('#divForAdd tr:eq(0)').find('td:eq(0) input.txtItem').val(value.ITName);
                             $('#divForAdd tr:eq(0)').find('td:eq(0) input.hdnItemID').val(value.ItemID);
                         } else {
@@ -813,8 +802,7 @@
                     var ids = $(this).attr('id');
                     var word = ids.split("+");
 
-                    $("#txtItemCode").val(word[1]);
-                    //$("#txtImage").val(word[2]);
+                    $("#txtItemCode").val(word[1]); 
                     $("#ImgPrvs").attr("src", "/Modules/ROI_Item/ImageItem/" + word[2]);
                     $("#txtImage").val(word[2]);
                     $(".ajax-file-upload").show();
@@ -828,8 +816,7 @@
                     $("#SelCostCenter").val(word[7]);
                     $("#chkbxIsActive").prop('checked', word[8] == "true" ? true : false);
                     $("#SelInvSmallunit").val(word[9]);
-                    eventFunction.GetLargeUNIT(word[9]);
-                    //eventFunction.GetCategoryName();
+                    eventFunction.GetLargeUNIT(word[9]); 
                     $("#SelCategoryName").val(parseInt(word[10]));
              
                     $('#tableForSubtable tbody tr:eq(0)').find('td:eq(0) input').val(word[15]);
@@ -863,8 +850,7 @@
                     eventFunction.config.ajaxCallMode = 24;
                     eventFunction.ajaxCall(eventFunction.config);
 
-                    $('#roiitemtable').show();
-                    //eventFunction.EditItem(ids);
+                    $('#roiitemtable').show(); 
                 });
             },
 
@@ -1699,17 +1685,10 @@
                 $("#txtMinStkQnty").val("")
                 $("#SeltMinStkQnty").val("")
                 $(".ajax-file-upload").show();
-                $(".ajax-file-upload-statusbar").hide();
-                //$("#txtImage").val("");
-                //$("#ImgPrvs").attr("src", "");
-                //$("#chkbxIsMenu").attr("checked", true);
-                $('.ckbxExtraItem').prop("checked", false);
-                //if (!$("#chkbxIsMenu").is(":checked"))
-                //    $("#divForIngredient").hide();
+                $(".ajax-file-upload-statusbar").hide(); 
+                $('.ckbxExtraItem').prop("checked", false); 
 
-                $("#chkbxIsExpirable").attr("checked", false);
-                //$("#chkbxIsProductMaterial").attr('checked', false);
-                //$("#chkbxIsUnitWiseRate").attr('checked', false);
+                $("#chkbxIsExpirable").attr("checked", false); 
                 $("#SelCostCenter").val("");
                 $("#txtDetails").val("");
                 $("#chkbxIsActive").attr('checked', true);
@@ -1721,13 +1700,7 @@
                 $('.CbxDefaultPurchaseUnit').prop('checked', true);
                 $('.CbxDefaultSaleUnit').prop('checked', true);
                 $(".sritemrate").val("");
-
-                // $("#purchaseTempTable tbody").html('');
-
-
-
-
-                // $(".Vitemrate").val("");
+                debugger;
                 $(".Vitemrate").datepicker({ minDate: 0 }).datepicker("setDate", new Date());
                 $(".txtExtraItemName").val("");
                 $(".txtExtraIPrice").val("");
@@ -1751,8 +1724,7 @@
                     select: function (event, ui) {
                         $('.hdnIngredientID').val(ui.item.id);
                     }
-                });
-
+                }); 
             },
             ResetGroup: function () {
                 eventFunction.config.updateGroup = 0;

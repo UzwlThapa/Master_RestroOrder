@@ -1624,39 +1624,44 @@ function BindPaymentModes() {
 
     $("#divPaymentModes").html("");
     var htmls = "";
-     
+
     $.ajax({
         type: "POST",
-        url:  "/Modules/AdvanceReport/AdvanceReportService.asmx/GetPaymentModes",
+        url: "/Modules/AdvanceReport/AdvanceReportService.asmx/GetPaymentModes",
         contentType: "application/json; charset=utf-8",
         dataType: "json",
         success: function (response) {
 
-            debugger;
             htmls += '<div class="unpaidbill_ttl" style="display:flex;justify-content:space-between;"><h6>Total Amount : Rs. ' + TotalNetAmount + '</h6>';
             htmls += '<h6 id="surplusDeficit" style="text-align:right;">Surplus/Deficit : Rs. <span id="txtsurplus">0</span></h6></div>';
             htmls += '<table id="tblPayment" style="background:#F3F3F3;border-radius: 3px 3px 0px 0px;padding: 10px;">';
-            htmls += '<tr>';
-            htmls += '<td><input type="checkbox" class="pmntCheck" id="chkBox_1" checked /><label for="chkBox_1" style="margin:0;margin-left:5px;font-weight:bold;cursor:pointer;">' + 'Cash' + ' : </label></td>';
-            htmls += '<td>Pay Amount <input type="text" class="pmt sfInputbox txtPayAmount" value="' + TotalNetAmount + '" /></td>';
-            htmls += '</tr>';
 
             var response = JSON.parse(response.d ?? '{}');
             if (response != null && response.length > 0) {
                 $.each(response, function (index, item) {
+                    debugger;
                     htmls += '<tr>';
-                    htmls += '<td><input type="checkbox" class="pmntCheck" id="chkBox_' + item.PaymentModeID + '" /><label for="chkBox_' + item.PaymentModeID + '" style="margin:0;margin-left:5px;font-weight:bold;cursor:pointer;">' + item.PaymentMode + ' : </label></td>';
-                    htmls += '<td>Pay Amount <input type="text" class="pmt sfInputbox txtPayAmount" value="0" /></td>';
+                    if (index == 0) {
+                        htmls += '<td><input type="checkbox" checked="checked"  class="pmntCheck" id="chkBox_' + item.PaymentModeID + '" /><label for="chkBox_' + item.PaymentModeID + '" style="margin:0;margin-left:5px;font-weight:bold;cursor:pointer;">' + item.PaymentMode + ' : </label></td>';
+
+                    } else {
+                        htmls += '<td><input type="checkbox"  class="pmntCheck" id="chkBox_' + item.PaymentModeID + '" /><label for="chkBox_' + item.PaymentModeID + '" style="margin:0;margin-left:5px;font-weight:bold;cursor:pointer;">' + item.PaymentMode + ' : </label></td>';
+                    }
+                    if (index == 0) {
+                        htmls += '<td>Pay Amount <input type="text" class="pmt sfInputbox txtPayAmount" value="' + TotalNetAmount + '" /></td>';
+                    } else {
+                        htmls += '<td>Pay Amount <input type="text" class="pmt sfInputbox txtPayAmount" value="0" /></td>';
+                    }
                     htmls += '</tr>';
-                }); 
-                
-                htmls += '</table>'; 
-                $("#divPaymentModes").html(htmls); 
-            } 
+                });
+
+                htmls += '</table>';
+                $("#divPaymentModes").html(htmls);
+            }
         },
         error: function (msg) { FileManager.errorFn(); }
     });
-     
+
     $('.txtPayAmount').on('change', function () {
         totalPayAmnt = 0.00;
         $('.txtPayAmount').each(function () {
