@@ -2,8 +2,7 @@
 
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+using System.Linq; 
 using System.Web.Services;
 using SageFrame.RestroOrder;
 using SageFrame.CostCenter;
@@ -576,7 +575,7 @@ public class ComplementaryWebService : System.Web.Services.WebService
         {
             RestrOrderController rocobj = new RestrOrderController();
 
-            return rocobj.GetExtraItemList().Where(p => p.IsActive = true).ToList();
+            return rocobj.GetExtraItemList().Where(p => p.IsActive  == true).ToList();
         }
         catch (Exception)
         {

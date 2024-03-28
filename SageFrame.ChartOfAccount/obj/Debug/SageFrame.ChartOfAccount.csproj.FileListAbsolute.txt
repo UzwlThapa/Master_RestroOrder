@@ -121,3 +121,10 @@ G:\Danfe-Git\Master_RestroOrder\SageFrame.ChartOfAccount\obj\Debug\SageFrame.Cha
 G:\Danfe-Git\Master_RestroOrder\SageFrame.ChartOfAccount\obj\Debug\SageFrame.ChartOfAccount.csproj.CopyComplete
 G:\Danfe-Git\Master_RestroOrder\SageFrame.ChartOfAccount\obj\Debug\SageFrame.ChartOfAccount.dll
 G:\Danfe-Git\Master_RestroOrder\SageFrame.ChartOfAccount\obj\Debug\SageFrame.ChartOfAccount.pdb
+Z:\Work\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame\bin\SageFrame.ChartOfAccount.dll
+Z:\Work\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame\bin\SageFrame.ChartOfAccount.pdb
+Z:\Work\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.ChartOfAccount\obj\Debug\SageFrame.ChartOfAccount.csproj.AssemblyReference.cache
+Z:\Work\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.ChartOfAccount\obj\Debug\SageFrame.ChartOfAccount.csproj.CoreCompileInputs.cache
+Z:\Work\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.ChartOfAccount\obj\Debug\SageFram.9B72149E.Up2Date
+Z:\Work\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.ChartOfAccount\obj\Debug\SageFrame.ChartOfAccount.dll
+Z:\Work\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.ChartOfAccount\obj\Debug\SageFrame.ChartOfAccount.pdb

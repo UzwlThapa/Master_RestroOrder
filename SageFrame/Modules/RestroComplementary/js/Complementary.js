@@ -98,7 +98,7 @@ function getSelectionStart(o) {
                 contentType: "application/json; charset=utf-8",
                 data: {},
                 dataType: 'json',
-                baseURL: p.ModulePath + "services/ComplementaryWebService.asmx/",
+                baseURL: p.ModulePath + "Services/ComplementaryWebService.asmx/",
                 method: "",
                 url: "",
                 ajaxCallMode: 0,

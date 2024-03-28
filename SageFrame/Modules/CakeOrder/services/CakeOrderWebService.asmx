@@ -1,9 +1,7 @@
 ﻿<%@ WebService Language="C#" Class="CakeOrderWebService" %>
 
-using System;
-using System.Web;
-using System.Web.Services;
-using System.Web.Services.Protocols;
+using System; 
+using System.Web.Services; 
 using SageFrame.CakeOrder;
 using SageFrame.RestroOrder;
 using System.Web.Script.Serialization;
@@ -398,12 +396,13 @@ public class CakeOrderWebService : System.Web.Services.WebService
             throw ex;
         }
     }
+
     [WebMethod]
     public string GetCustomerDatas(int customer)
     {
         return jsSerializer.Serialize(rlController.getmembershiplist(customer));
-
     }
+
     [WebMethod]
     public int SaveSalesBill(SalesMaster salesMaster, List<SalesDetails> salesDetail, int splited, List<customerBilling> billingTerm, flatorperdiscount flatorperdiscount)
     {
@@ -413,6 +412,7 @@ public class CakeOrderWebService : System.Web.Services.WebService
         cbms.sendSales(salesMasterId);
         return salesMasterId;
     }
+
     [WebMethod]
     public string savePrintCount(int Printcount, string BillNo, string PrintedBy)
     {
@@ -421,8 +421,8 @@ public class CakeOrderWebService : System.Web.Services.WebService
             return roController.SavePrintCountDetail(Printcount, BillNo, PrintedBy);
         }
         return "";
-
     }
+
     [WebMethod]
     public void CancelOrderIntoDataBase(OrderMasterClass orderMasterInfo)
     {
@@ -460,13 +460,14 @@ public class CakeOrderWebService : System.Web.Services.WebService
         {
             throw;
         }
-
     }
+
     [WebMethod]
     public string txtSearchForItem(string ItemName, int languageid)
     {
         return jsSerializer.Serialize(roController.txtSearchForItem(ItemName, languageid));
     }
+
     public class ItemsList
     {
         public List<ItemsClass> CompOrders { get; set; }
@@ -475,77 +476,19 @@ public class CakeOrderWebService : System.Web.Services.WebService
         public List<ItemsClass> AllOrders { get; set; }
         public List<OrderExtraItem> orderedExtraItems { get; set; }
     }
+
     [WebMethod]
     public List<CakeOrderItems> GetPreviousItemByID(int Id, int OID)
     {
         try
         {
             CakeOrderController coc = new CakeOrderController();
-            List<CakeOrderItems> itemList = new List<CakeOrderItems>();
-            // ItemsList itemlists = new ItemsList();
-            //List<ItemsClass> itemList = new List<ItemsClass>();
-
-            //restroTable table = new restroTable();
-            //RoomBookingsInfo info = new RoomBookingsInfo();
-            //RestroRoom room = new RestroRoom();
+            List<CakeOrderItems> itemList = new List<CakeOrderItems>(); 
             if (Id != 0)
             {
-                itemList = coc.GetPreviousCakeOrderById(Id);
-                //table = roController.GetTableNoBYId(Id);
+                itemList = coc.GetPreviousCakeOrderById(Id); 
             }
-            return itemList;
-            //else if (OID > 0)
-            //{
-            //    itemList = roController.GetPreviousItemByOrderMasterId(OID);
-            //    info = roController.getRoomBookingInfoByOrderMasterID(OID);
-            //    table = roController.GetTableNoBYId(info.TableId);
-            //}
-            //if (itemList.Count > 0)
-            //{
-            //    foreach (ItemsClass item in itemList)
-            //    {
-            //        item.restrotableTitle = (table != null ? table.restrotableTitle : "Take Away");
-
-            //        if (room != null)
-            //        {
-            //            if (String.IsNullOrEmpty(room.restroRoom))
-            //            {
-            //                room = roController.GetRoomByTable(item.TableId);
-            //            }
-            //        }
-            //        item.room = (room != null ? room.restroRoom : "");
-            //    }
-            //}
-            //else
-            //{
-            //    ItemsClass item = new ItemsClass();
-            //    item.restrotableTitle = (table != null ? table.restrotableTitle : "Take Away");
-            //    item.TableId = (Id > 0 ? Id : 0);
-            //    item.TableId = (OID > 0 ? (info != null ? info.TableId : 0) : item.TableId);
-
-            //    if (String.IsNullOrEmpty(room.restroRoom))
-            //    {
-            //        if (Id > 0)
-            //        {
-            //            room = roController.GetRoomByTable(Id);
-            //        }
-            //        if (OID > 0)
-            //        {
-            //            room = roController.GetRoomByTable((info != null ? info.TableId : 0));
-            //            item.OrderMasterId = OID;
-            //        }
-            //    }
-            //    item.room = (room != null ? room.restroRoom : "");
-            //    itemList.Add(item);
-            //}
-            //itemlists.AllOrders = itemList;
-            //itemlists.CompOrders = itemList.Where(p => p.ItemStatus == "Complete").ToList();
-            //itemlists.InPrgOrders = itemList.Where(p => p.ItemStatus == "InProgress").ToList();
-            //itemlists.OrderedOrders = itemList.Where(p => p.ItemStatus == "Ordered").ToList();
-            ////itemlists.orderedExtraItems = new List<OrderExtraItem>();
-            //List<OrderExtraItem> extraList = roController.GetOrderedExtraItemByOrderMaster(itemList[0].OrderMasterId).Where(p => p.ItemStatus == "Ordered").ToList();
-            //itemlists.orderedExtraItems = extraList;
-            //return itemlists;
+            return itemList; 
         }
         catch (Exception)
         {
@@ -553,6 +496,7 @@ public class CakeOrderWebService : System.Web.Services.WebService
         }
 
     }
+
     [WebMethod]
     public int SaveFoodCourtSalesBill(SalesMaster salesMaster, List<SalesDetails> salesDetail, int splited, List<customerBilling> billingTerm, flatorperdiscount flatorperdiscount, SalesPayment payment)
     {
@@ -573,35 +517,38 @@ public class CakeOrderWebService : System.Web.Services.WebService
             throw ex;
         }
     }
+
     [WebMethod]
     public string GetProviderList()
     {
         return jsSerializer.Serialize(roController.getCardProvider());
     }
+
     [WebMethod]
     public string IsFoodCourtAutoBilling()
     {
         return roController.IsFoodCourtAutoBilling();
     }
+
     [WebMethod]
     public string GetPaymentModesAndProviders(int salesMasterId)
     {
         return jsSerializer.Serialize(roController.GetPaymentModesAndProviders(salesMasterId));
     }
+
     [WebMethod]
     public void SavePayment(List<SalesPayment> salesPaymentList)
     {
         roController.UpdateSalesPayMode(salesPaymentList);
-
     }
-
-
+         
     [WebMethod]
     public string getMemberDetailsbyinfo(string info)
     {
         return jsSerializer.Serialize(rlController.getMemberDetailsbyinfo(info));
 
     }
+
     [WebMethod]
     public string getLanguage()
     {
