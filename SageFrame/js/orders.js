@@ -1319,6 +1319,7 @@ function GetDataForSalesBill(orderMasterId) {
             }
 
             $('.txt_dis').on('keyup', function () {
+                debugger;
                 totalAmount = 0.00;
                 $.each(costCenterGroup, (i, v) => {
                     totalAmount += v.TotalAmt;
@@ -1365,7 +1366,7 @@ function GetDataForSalesBill(orderMasterId) {
                             var keyIndex = $(this).attr('id').split('_')[1];
                             var disTemp = (parseFloat(costCenterGroup[keyIndex].TotalAmt) * (parseFloat(getValue(this) / 100)));
                             dis += disTemp;
-                            costCenterGroup[keyIndex].TotalDis = disTemp;
+                            costCenterGroup[keyIndex].TotalDis = parseFloat($(this).val());
                         });
 
                         totaldis = dis;
@@ -1374,7 +1375,7 @@ function GetDataForSalesBill(orderMasterId) {
                             var keyIndex = $(this).attr('id').split('_')[1];
                             var disTemp = (parseFloat(costCenterGroup[keyIndex].TotalAmt) * (parseFloat(getValue(this) / 100)));
                             dis += disTemp;
-                            costCenterGroup[keyIndex].TotalDis = disTemp;
+                            costCenterGroup[keyIndex].TotalDis = parseFloat($(this).val());
                         });
 
                         totaldis = dis;
@@ -1420,7 +1421,7 @@ function GetDataForSalesBill(orderMasterId) {
                             var keyIndex = $(this).attr('id').split('_')[1];
                             var disTemp = parseFloat(getValue(this));
                             dis += disTemp;
-                            costCenterGroup[keyIndex].TotalDis = disTemp;
+                            costCenterGroup[keyIndex].TotalDis = parseFloat($(this).val());
                         });
 
                         totaldis = dis;
@@ -1429,7 +1430,7 @@ function GetDataForSalesBill(orderMasterId) {
                             var keyIndex = $(this).attr('id').split('_')[1];
                             var disTemp = parseFloat(getValue(this));
                             dis += disTemp;
-                            costCenterGroup[keyIndex].TotalDis = disTemp;
+                            costCenterGroup[keyIndex].TotalDis = parseFloat($(this).val());
                         });
 
                         totaldis = dis;

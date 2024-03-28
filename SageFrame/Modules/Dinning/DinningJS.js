@@ -1904,12 +1904,9 @@ function IntegerAndDecimal(evt, element) {
                     totalAmount = 0;
 
                 }
-
-
+                 
                 //AddChanges
-
-
-
+                  
                 if (orderdetails.length > 0) {
                     noOfGuest = parseInt(orderdetails[0].GuestNo);
                     htmls += ("<div class='left-sec'><div class='dialogflex'><h4>Room : " + orderdetails[0].restroRoom + "  / Table : " + (orderdetails[0].MergeTableName != "" && orderdetails[0].MergeTableName != null ? orderdetails[0].MergeTableName : orderdetails[0].restrotableTitle) + " </h4><h4> Waiter: " + orderdetails[0].Waiter + "</h4></div>");
@@ -1936,9 +1933,7 @@ function IntegerAndDecimal(evt, element) {
                     htmls += ("<table class='item-list-tbl' style='margin-bottom:10px;'><thead><th>S.N.</th><th style='width:250px'>Item</th><th>Qty</th><th>Rate (Rs.)</th><th>Amt (Rs.)</th></thead><tbody id='salesDetailsTbl'>");
 
                     var sn = 1;
-
-
-
+                     
                     $.each(orderdetails, function (index, value) {
                         if (value.SeatNo == seatNo) {
                             htmls += ("<tr class='" + value.SeatNo + " allsplited'><td>" + sn + "</td><td class='" + value.ROI_ItemId + "+" + value.CostCenterId + "+" + value.IsCombo + "+" + value.OrderDetailsID + "+" + value.RoomBookDetailID + "'>" + value.ITName + "</td>");
@@ -1960,10 +1955,7 @@ function IntegerAndDecimal(evt, element) {
 
 
                             totalAmount += parseFloat(amt);
-
-
-
-
+                             
                             if (!isab)
                                 htmls += ("<td class='item-amount'>" + amt + "</td></tr>");
                             else
@@ -1985,16 +1977,11 @@ function IntegerAndDecimal(evt, element) {
                                     qnty += value.Quantity;
                                     rate += parseFloat(value.ExtraPrice * value.Quantity);
                                 });
-                                htmls += "</td>";
-                                //htmls += ("</td><td>" + qnty + "</td>");
-                                //htmls += ("<td class='item-rate'>" + (rate/qnty) + "</td>");
+                                htmls += "</td>"; 
                                 amt = parseFloat(rate);
-
-
+                                 
                                 totalAmount += parseFloat(amt);
-
-
-
+                                 
                                 if (!isab)
                                     htmls += ("<td class='item-amount'>" + amt + "</td></tr>");
                                 else
@@ -2004,9 +1991,7 @@ function IntegerAndDecimal(evt, element) {
                                 if (group.length > 0) {
                                     const i = costCenterGroup.findIndex(x => x.GroupId === value.GroupId);
                                     costCenterGroup[i].TotalAmt += amt;
-                                }
-
-
+                                }  
                             }
                             sn++;
                         }
@@ -2030,8 +2015,7 @@ function IntegerAndDecimal(evt, element) {
                 } else {
                     htmls += ("<div class='left-sec'><h4>Room : " + "  / Table : " + tableinfo.restrotableTitle + " </h4><h4> Waiter: " + "</h4>");
                 }
-
-
+                 
                 if (tableinfo.RoomBookDetailsID > 0) {
                     htmls += ("<h5>Room Charge Details : </h5>");
                     htmls += ("<table class='room-details-tbl'><thead><th>Room Name</th><th style='width:250px'>Rate</th><th>Days</th><th>Amt (Rs.)</th></thead><tbody>");
@@ -2044,9 +2028,7 @@ function IntegerAndDecimal(evt, element) {
                     htmls += ("</tbody><tfoot><tr class='Total_Amt'><td colspan='3'  style='text-align:right;'>Amount:</td><td colspan='1' style='text-align:left;'><span class='roomtotle'>Rs. " + roomAmount.toFixed(2) + "</span></td></tr>");
                     htmls += ("</tfoot></table>");
                 }
-
-
-
+                 
                 htmls += ("<h4>Discount Method</h4>");
                 htmls += ("<div class='dialogflex' style = 'border-top:1px solid gainsboro;border-bottom:none;' > <div id='discountDiv'><table id='tblDiscount' style='display:block;'><tbody>");
 
@@ -2059,8 +2041,7 @@ function IntegerAndDecimal(evt, element) {
                 $.each(costCenterGroup, function (index, item) {
                     htmls += "<tr class='disc' style='" + ((orderdetails.length > 0) ? "" : "display:none") + "'><td>" + item.GroupName + " ( Rs. " + item.TotalAmt.toFixed(2) + " ) </td><td>";
                     htmls += "<input type='text' class='sfInputbox txtdiscount txt_dis' data-groupId='" + item.GroupId + "' style='width:100px;' onkeypress='return IntegerAndDecimal(event,this);' id='index_" + index + "' value='" + 0 + "' /></td>";
-
-                })
+                });
 
                 htmls += "<tr class='roomdisc' style='" + ((tableinfo.RoomBookDetailsID > 0) ? "" : "display:none") + "'><td>Room ( Rs. " + roomAmount + " ) </td><td>";
                 htmls += "<input type='text' class='sfInputbox txtdiscount' style='width:100px;' onkeypress='return IntegerAndDecimal(event,this);' id='txtRoomDiscount' value='0' /></td>";
@@ -2111,12 +2092,7 @@ function IntegerAndDecimal(evt, element) {
                 if (tokeninfo.length > 0) {
                     if (tokeninfo[0].CustomerID > 0) {
                         DashboardFunction.getmembershiplistbyId(tokeninfo[0].CustomerID);
-                    }
-                    // else {
-                    //$("#txtCashCusName").val(tokeninfo[0].CustomerName);
-                    //$("#txtNumber").val(tokeninfo[0].Phone);
-                    //}
-
+                    } 
                 }
                 $('#billnoForSales').on('change', function () {
                     var Roles = userRole.split(",");
@@ -2402,15 +2378,11 @@ function IntegerAndDecimal(evt, element) {
 
                         var disRate = parseFloat(getValue(this) == "" ? 0 : getValue(this));
                         var dis = 0
-
-
-
-
+                         
                         //Bishal Added
                         if (isab) {
                             if (isAbbreviated) {
-
-
+                                 
                                 var itemrow = $('#salesDetailsTbl').find('tr');
                                 $.each(itemrow, function (index, value) {
                                     _this = $(this);
@@ -2434,8 +2406,7 @@ function IntegerAndDecimal(evt, element) {
                             $(".txt_dis").each(function () {
                                 var keyIndex = $(this).attr('id').split('_')[1];
                                 dis += (parseFloat(costCenterGroup[keyIndex].TotalAmt) * (parseFloat(getValue(this) / 100)));
-
-                            })
+                            });
 
                             totaldis = dis;
 
@@ -2443,16 +2414,10 @@ function IntegerAndDecimal(evt, element) {
                             $(".txt_dis").each(function () {
                                 var keyIndex = $(this).attr('id').split('_')[1];
                                 dis += (parseFloat(costCenterGroup[keyIndex].TotalAmt) * (parseFloat(getValue(this) / 100)));
-
-                            })
+                            });
 
                             totaldis = dis;
                         }
-
-
-
-
-                        //totaldis = (parseFloat(kotAmount) * (parseFloat($('#txtKotDiscount').val() / 100))) + (parseFloat(barAmount) * ($('#txtBarDiscount').val() / 100)) + (parseFloat(roomAmount) * ($('#txtRoomDiscount').val() / 100)) + (parseFloat(bakeryAmount) * (parseFloat($('#txtBakeryDiscount').val() / 100))) + (parseFloat(pizzaAmount) * (parseFloat($('#txtPizzaDiscount').val() / 100)));
                     }
                     else {
 
@@ -2624,7 +2589,7 @@ function IntegerAndDecimal(evt, element) {
                                     salesDetail.push(sd);
                                 }
                             });
-
+                            debugger;
                             var discount = new Object();
                             discount.SalesMasterId = 0;
                             discount.kotdis = $('#txtKotDiscount').val();

@@ -1412,7 +1412,7 @@ function GetDataForSalesBill(orderMasterId) {
                             var keyIndex = $(this).attr('id').split('_')[1];
                             dis += (parseFloat(costCenterGroup[keyIndex].TotalAmt) * (parseFloat($(this).val() / 100)));
                             costCenterGroup[keyIndex].TotalDis = parseFloat($(this).val());
-                        })
+                        });
 
                         totaldis = dis;
                         //}
@@ -1422,8 +1422,7 @@ function GetDataForSalesBill(orderMasterId) {
                             dis += (parseFloat(costCenterGroup[keyIndex].TotalAmt) * (parseFloat($(this).val() / 100)));
                             disNonTax += (parseFloat(costCenterGroup[keyIndex].NonTaxableAmt) * (parseFloat($(this).val() / 100)));
                             costCenterGroup[keyIndex].TotalDis = parseFloat($(this).val());
-
-                        })
+                        });
                         totaldis = dis + disNonTax;
                     }
 
@@ -1471,11 +1470,10 @@ function GetDataForSalesBill(orderMasterId) {
                             var keyIndex = $(this).attr('id').split('_')[1];
                             dis += parseFloat($(this).val());
                             costCenterGroup[keyIndex].TotalDis = dis;
-                        })
+                        });
 
                         totaldis = dis;
-
-
+                         
                     } else {
                         $(".txt_dis").each(function () {
                             var _this = $(this);
@@ -1489,11 +1487,9 @@ function GetDataForSalesBill(orderMasterId) {
 
                             }
                             costCenterGroup[keyIndex].TotalDis = parseFloat(_this.val());
-                        })
-                        totaldis = dis + disNonTax;
-
-                    }
-
+                        });
+                        totaldis = dis + disNonTax; 
+                    } 
                 }
 
                 console.log(costCenterGroup);
