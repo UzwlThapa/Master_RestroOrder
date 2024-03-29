@@ -65,21 +65,24 @@ public class RestroWebService : System.Web.Services.WebService
     [WebMethod]
     public void shiftItemsWeb(ShiftItems shiftItems)
     {
+        List<OrderDetailClass> orderList = roController.GetOrderDetailsByMaster(shiftItems.OrderMasterID);
+        List<OrderDetailClass> shiftOrderList = new List<OrderDetailClass>();
+        decimal basicAmount = 0;
+        shiftItems.itemList.ForEach((sitem) =>
+        {
+            var item = orderList.Find((itm) => itm.ItemId == sitem.ItemId);
+            item.Quantity = sitem.Quantity;
+            shiftOrderList.Add(item);
+            basicAmount += (decimal)sitem.Quantity * item.Rate;
+        });
+
         // Send Kot Print for shift items
         if (System.Configuration.ConfigurationManager.AppSettings["PrintOrderShiftBill"] == "true")
-        {
-            List<OrderDetailClass> orderList = roController.GetOrderDetailsByMaster(shiftItems.OrderMasterID);
-            List<OrderDetailClass> shiftOrderList = new List<OrderDetailClass>();
-            shiftItems.itemList.ForEach((sitem) =>
-            {
-                var item = orderList.Find((itm) => itm.ItemId == sitem.ItemId);
-                item.Quantity = sitem.Quantity;
-                shiftOrderList.Add(item);
-            });
-
+        { 
             OrderPrint print = new OrderPrint();
             print.PrintShiftBill(shiftOrderList, "", DateTime.Now, shiftItems.fromTableTitle, shiftItems.toTableTitle, shiftItems.shiftedBy, "Ordered", shiftItems.OrderMasterID, shiftItems.OrderNo, 0, "", "");
         }
+        shiftItems.BasicAmount = basicAmount;
         roController.shiftItems(shiftItems);
     }
 

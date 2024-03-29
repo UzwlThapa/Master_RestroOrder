@@ -17,14 +17,16 @@ function shiftItemsInitialize() {
             }
             break;
         }
-    };
-    $('#selShiftType').on('change', function () {
-        if ($(this).val() == 'Complementary') {
-            $('.shiftTo').hide();
-        } else {
-            $('.shiftTo').show();
-        }
-    });
+    }
+
+    //$('#selShiftType').on('change', function () {
+    //    if ($(this).val() == 'Complementary') {
+    //        $('.shiftTo').hide();
+    //    } else {
+    //        $('.shiftTo').show();
+    //    }
+    //});
+
     $('#toRooms').change();
     $('#hdnPinMatch').on('change', function () {
         if ($('#hdnPinMatch').val() == "true") {
@@ -37,7 +39,6 @@ function shiftItemsInitialize() {
 
     $('#btnShiftItem').unbind('click').on('click', function () {
         Checkbillgenerated();
-
     });
 }
 
@@ -111,11 +112,13 @@ function bindOrderList() {
     $('#shiftAllItems').on('click', function () {
         shiftItemList = [];
         for (var i = 0; i < ordersList.length; i++) {
+            debugger;
             if (ordersList[i].SeatNo == seatNo) {
                 var item = new Object();
                 item.ItemId = ordersList[i].ROI_ItemId;
                 item.IsCombo = ordersList[i].IsCombo;
                 item.ItemName = ordersList[i].ITName;
+                item.Rate = ordersList[i].Rate;
                 item.Quantity = ordersList[i].Quantity;
                 shiftItemList.push(item);
             }
@@ -244,7 +247,6 @@ function bindTables(roomID) {
         if ((table.restroRoomId == roomID && table.IsTable == 0 && table.restrotablesStatusID != 6) || (table.restroRoomId == roomID && table.IsTable == 1)) {
             htmls += '<option value="' + table.restrotableId + '" attr-GN="' + table.GuestNo + '">' + table.restrotableTitle + '</option>';
         }
-
     });
     $('#toTables').html(htmls)
     $('#toTables').on('change', function () {

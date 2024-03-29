@@ -2218,6 +2218,7 @@ namespace SageFrame.RestroOrder
         public int toSplitNo { get; set; }
         public int OrderMasterID { get; set; }
         public int OrderNo { get; set; }
+        public decimal? BasicAmount { get; set; }
         public string shiftedBy { get; set; }
         public List<ShiftItemList> itemList { get; set; }
     }

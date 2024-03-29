@@ -5596,7 +5596,7 @@ namespace SageFrame.RestroOrder
                     List<KeyValuePair<string, object>> Param = new List<KeyValuePair<string, object>>();
                     Param.Add(new KeyValuePair<string, object>("@CompMasterID", 0));
                     Param.Add(new KeyValuePair<string, object>("@TableId", shift.fromTable.ToString()));
-                    Param.Add(new KeyValuePair<string, object>("@BasicAmount", 0));
+                    Param.Add(new KeyValuePair<string, object>("@BasicAmount", shift.BasicAmount));
                     Param.Add(new KeyValuePair<string, object>("@BillNo", ""));
                     Param.Add(new KeyValuePair<string, object>("@Date", DateTime.Now));
                     Param.Add(new KeyValuePair<string, object>("@IsCancelled", false));
