@@ -1337,6 +1337,7 @@ namespace SageFrame.RestroOrder
         public int ItemCostCentreID { get; set; }
         public string LanguageMenuText { get; set; }
     }
+
     public class extraItem
     {
         public int? ItemID { get; set; }
@@ -1347,12 +1348,11 @@ namespace SageFrame.RestroOrder
         public string AddedBy { get; set; }
         public bool? IsExtra { get; set; }
         public bool? IsDeleted { get; set; }
-
         public List<IngredientItems> Ingredientdata { get; set; }
     }
+
     public class ROInvItem
     {
-        //
         public float SRate { get; set; }
         public float LastPurchaseRate { get; set; }
         public int ItemDetailsID { get; set; }
@@ -2012,7 +2012,7 @@ namespace SageFrame.RestroOrder
         public string Qnty { get; set; }
         public string Symbol { get; set; }
     }
-     
+
     public class MvTempPurchaseDetail
     {
         public int ItemID { get; set; }

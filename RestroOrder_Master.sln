@@ -8,9 +8,13 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Modules", "Modules", "{37BE685B-7789-4CFD-9F9C-4633C3A5778E}"
 EndProject
 Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "SageFrame", "SageFrame\", "{660BBDD5-CA4D-4B01-91FB-5F871EEAC0B1}"
+	ProjectSection(ProjectDependencies) = postProject
+		{340B012D-6317-43C2-B8A2-1F8FA5860F54} = {340B012D-6317-43C2-B8A2-1F8FA5860F54}
+		{859254D9-A214-4BD0-BFBE-CE452F4283F0} = {859254D9-A214-4BD0-BFBE-CE452F4283F0}
+	EndProjectSection
 	ProjectSection(WebsiteProperties) = preProject
 		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.8"
-		ProjectReferences = "{ad0a3c3b-5778-4acf-b6d6-6583206a3b6f}|SageFrame.RestoLoyalty.dll;{879d24b6-5e53-453a-a196-102759c92069}|SageFrame.FiscalYear.dll;{edc38182-efcc-4bd7-b123-629c6d8e0bef}|SageFrame.DailyChalan.dll;{a1b535c6-02f7-4261-8877-06da3449bf94}|SageFrame.DBBackupNRestore.dll;{00613e6e-7435-4fc8-aef8-28a99199fa36}|SageFrame.CostCenter.dll;{a9e2534c-85a7-41e7-af99-d79dc2e869f3}|SageFrame.Sales.dll;{50eceb31-7962-444b-923a-0256909d9cd3}|SageFrame.ChartOfAccount.dll;{ded45c30-88c6-48e4-b9e0-ede8c96a0109}|SageFrame.HouseKeeping.dll;{bf01a8d4-50d3-4ea5-86b7-38562f8a9b94}|SageFrame.Laundry.dll;{243193c1-1ff6-4614-8771-fed7de16fd33}|SageFrame.RestroOrder.dll;{bcaccc57-d1ec-40f5-b141-049cc3da1385}|SageFrame.CakeOrder.dll;{8773ec29-792d-4eb1-bab3-5137e34df82c}|SageFrame.Security.dll;"
+		ProjectReferences = "{ad0a3c3b-5778-4acf-b6d6-6583206a3b6f}|SageFrame.RestoLoyalty.dll;{879d24b6-5e53-453a-a196-102759c92069}|SageFrame.FiscalYear.dll;{edc38182-efcc-4bd7-b123-629c6d8e0bef}|SageFrame.DailyChalan.dll;{a1b535c6-02f7-4261-8877-06da3449bf94}|SageFrame.DBBackupNRestore.dll;{00613e6e-7435-4fc8-aef8-28a99199fa36}|SageFrame.CostCenter.dll;{a9e2534c-85a7-41e7-af99-d79dc2e869f3}|SageFrame.Sales.dll;{50eceb31-7962-444b-923a-0256909d9cd3}|SageFrame.ChartOfAccount.dll;{ded45c30-88c6-48e4-b9e0-ede8c96a0109}|SageFrame.HouseKeeping.dll;{bf01a8d4-50d3-4ea5-86b7-38562f8a9b94}|SageFrame.Laundry.dll;{243193c1-1ff6-4614-8771-fed7de16fd33}|SageFrame.RestroOrder.dll;{bcaccc57-d1ec-40f5-b141-049cc3da1385}|SageFrame.CakeOrder.dll;"
 		Debug.AspNetCompiler.VirtualPath = "/SageFrame"
 		Debug.AspNetCompiler.PhysicalPath = "SageFrame\"
 		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\SageFrame\"
@@ -55,8 +59,6 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SageFrame.FrontPage", "SageFrame.FrontPage\SageFrame.FrontPage.csproj", "{340B012D-6317-43C2-B8A2-1F8FA5860F54}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SageFrame.CakeOrder", "SageFrame.CakeOrder\SageFrame.CakeOrder.csproj", "{BCACCC57-D1EC-40F5-B141-049CC3DA1385}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SageFrame.Security", "E:\Development-Shree\RestroOrderSource-2023-05-29\restro_master\SageFrame.Security\SageFrame.Security.csproj", "{8773EC29-792D-4EB1-BAB3-5137E34DF82C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -159,14 +161,6 @@ Global
 		{BCACCC57-D1EC-40F5-B141-049CC3DA1385}.Release|Any CPU.Build.0 = Release|Any CPU
 		{BCACCC57-D1EC-40F5-B141-049CC3DA1385}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{BCACCC57-D1EC-40F5-B141-049CC3DA1385}.Release|Mixed Platforms.Build.0 = Release|Any CPU
-		{8773EC29-792D-4EB1-BAB3-5137E34DF82C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8773EC29-792D-4EB1-BAB3-5137E34DF82C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8773EC29-792D-4EB1-BAB3-5137E34DF82C}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{8773EC29-792D-4EB1-BAB3-5137E34DF82C}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
-		{8773EC29-792D-4EB1-BAB3-5137E34DF82C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8773EC29-792D-4EB1-BAB3-5137E34DF82C}.Release|Any CPU.Build.0 = Release|Any CPU
-		{8773EC29-792D-4EB1-BAB3-5137E34DF82C}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
-		{8773EC29-792D-4EB1-BAB3-5137E34DF82C}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -186,7 +180,6 @@ Global
 		{BF01A8D4-50D3-4EA5-86B7-38562F8A9B94} = {37BE685B-7789-4CFD-9F9C-4633C3A5778E}
 		{340B012D-6317-43C2-B8A2-1F8FA5860F54} = {37BE685B-7789-4CFD-9F9C-4633C3A5778E}
 		{BCACCC57-D1EC-40F5-B141-049CC3DA1385} = {37BE685B-7789-4CFD-9F9C-4633C3A5778E}
-		{8773EC29-792D-4EB1-BAB3-5137E34DF82C} = {37BE685B-7789-4CFD-9F9C-4633C3A5778E}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {20362D15-085D-432A-9476-651FD525A16A}

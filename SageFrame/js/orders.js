@@ -2804,8 +2804,14 @@ function GetPreviousItemByID(Id, OID) {
             }
 
             CalculateTotal();
-            if (TableId <= 0 && OrderMasterID > 0) {
-                ShowOrderPayView();
+
+            var orderType = localStorage.getItem('orderType');
+            if (orderType == null || orderType != 'Delivery') {
+                if (TableId <= 0 && OrderMasterID > 0) {
+                    ShowOrderPayView();
+                }
+            } else { 
+                localStorage.setItem('orderType', null);
             }
         },
         failure: function (response) {
@@ -2813,6 +2819,7 @@ function GetPreviousItemByID(Id, OID) {
         }
     });
 }
+
 function ShowOrderPayView() {
     GetDataForSalesBill(OrderMasterID);
 }

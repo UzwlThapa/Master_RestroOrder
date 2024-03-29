@@ -160,17 +160,6 @@ D:\danfe\Master_RestroOrder\SageFrame.CakeOrder\obj\Release\SageFrame.CakeOrder.
 D:\danfe\Master_RestroOrder\SageFrame.CakeOrder\obj\Release\SageFrame.CakeOrder.dll
 D:\danfe\Master_RestroOrder\SageFrame.CakeOrder\obj\Release\SageFrame.CakeOrder.pdb
 Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.CakeOrder\obj\Release\SageFram.2F1FC954.Up2Date
-Z:\Work\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.CakeOrder\bin\Release\SageFrame.CakeOrder.dll
-Z:\Work\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.CakeOrder\bin\Release\SageFrame.CakeOrder.pdb
-Z:\Work\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.CakeOrder\bin\Release\SageFrame.Common.dll
-Z:\Work\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.CakeOrder\bin\Release\SageFrame.RestoLoyalty.dll
-Z:\Work\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.CakeOrder\bin\Release\SageFrame.RestoLoyalty.pdb
-Z:\Work\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.CakeOrder\bin\Release\SageFrame.Common.pdb
-Z:\Work\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.CakeOrder\obj\Release\SageFrame.CakeOrder.csproj.AssemblyReference.cache
-Z:\Work\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.CakeOrder\obj\Release\SageFrame.CakeOrder.csproj.CoreCompileInputs.cache
-Z:\Work\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.CakeOrder\obj\Release\SageFram.2F1FC954.Up2Date
-Z:\Work\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.CakeOrder\obj\Release\SageFrame.CakeOrder.dll
-Z:\Work\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.CakeOrder\obj\Release\SageFrame.CakeOrder.pdb
 G:\Danfe-Git\Master_RestroOrder\SageFrame.CakeOrder\bin\Release\SageFrame.CakeOrder.dll
 G:\Danfe-Git\Master_RestroOrder\SageFrame.CakeOrder\bin\Release\SageFrame.CakeOrder.pdb
 G:\Danfe-Git\Master_RestroOrder\SageFrame.CakeOrder\bin\Release\SageFrame.Common.dll
@@ -182,3 +171,14 @@ G:\Danfe-Git\Master_RestroOrder\SageFrame.CakeOrder\obj\Release\SageFrame.CakeOr
 G:\Danfe-Git\Master_RestroOrder\SageFrame.CakeOrder\obj\Release\SageFrame.CakeOrder.csproj.CopyComplete
 G:\Danfe-Git\Master_RestroOrder\SageFrame.CakeOrder\obj\Release\SageFrame.CakeOrder.dll
 G:\Danfe-Git\Master_RestroOrder\SageFrame.CakeOrder\obj\Release\SageFrame.CakeOrder.pdb
+Z:\Work\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.CakeOrder\bin\Release\SageFrame.CakeOrder.dll
+Z:\Work\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.CakeOrder\bin\Release\SageFrame.CakeOrder.pdb
+Z:\Work\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.CakeOrder\bin\Release\SageFrame.Common.dll
+Z:\Work\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.CakeOrder\bin\Release\SageFrame.RestoLoyalty.dll
+Z:\Work\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.CakeOrder\bin\Release\SageFrame.RestoLoyalty.pdb
+Z:\Work\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.CakeOrder\bin\Release\SageFrame.Common.pdb
+Z:\Work\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.CakeOrder\obj\Release\SageFrame.CakeOrder.csproj.AssemblyReference.cache
+Z:\Work\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.CakeOrder\obj\Release\SageFrame.CakeOrder.csproj.CoreCompileInputs.cache
+Z:\Work\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.CakeOrder\obj\Release\SageFram.2F1FC954.Up2Date
+Z:\Work\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.CakeOrder\obj\Release\SageFrame.CakeOrder.dll
+Z:\Work\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.CakeOrder\obj\Release\SageFrame.CakeOrder.pdb

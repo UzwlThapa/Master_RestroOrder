@@ -391,6 +391,7 @@ function print() {
                 $('#OrderDelieverydiv').on('click', '.ordernow', function () {
                     var id = $(this).attr('id');
                     var data = id.split('_');
+                    localStorage.setItem('orderType', 'Delivery');
                     var url = p.HostUrl + "/Food-Delivery.aspx?OID=" + encodeURIComponent(data[1]);
                     window.location.href = url;
                 });

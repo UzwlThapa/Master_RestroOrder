@@ -814,33 +814,6 @@ D:\danfe\Master_RestroOrder\SageFrame.RestroOrder\obj\Release\SageFrame.RestroOr
 D:\danfe\Master_RestroOrder\SageFrame.RestroOrder\obj\Release\SageFrame.RestroOrder.dll
 D:\danfe\Master_RestroOrder\SageFrame.RestroOrder\obj\Release\SageFrame.RestroOrder.pdb
 Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.RestroOrder\obj\Release\SageFram.6530C07E.Up2Date
-Z:\Work\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.RestroOrder\obj\Release\SageFrame.RestroOrder.csproj.AssemblyReference.cache
-Z:\Work\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.RestroOrder\obj\Release\SageFrame.RestroOrder.csproj.CoreCompileInputs.cache
-Z:\Work\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.RestroOrder\obj\Release\SageFrame.RestroOrder.dll
-Z:\Work\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.RestroOrder\obj\Release\SageFrame.RestroOrder.pdb
-Z:\Work\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.RestroOrder\bin\Release\SageFrame.RestroOrder.dll
-Z:\Work\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.RestroOrder\bin\Release\SageFrame.RestroOrder.pdb
-Z:\Work\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.RestroOrder\bin\Release\EPPlus.dll
-Z:\Work\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.RestroOrder\bin\Release\Newtonsoft.Json.dll
-Z:\Work\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.RestroOrder\bin\Release\SageFrame.Common.dll
-Z:\Work\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.RestroOrder\bin\Release\SageFrame.Core.dll
-Z:\Work\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.RestroOrder\bin\Release\SageFrame.CostCenter.dll
-Z:\Work\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.RestroOrder\bin\Release\SageFrame.FiscalYear.dll
-Z:\Work\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.RestroOrder\bin\Release\SageFrame.RestoLoyalty.dll
-Z:\Work\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.RestroOrder\bin\Release\SageFrame.Security.dll
-Z:\Work\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.RestroOrder\bin\Release\AjaxControlToolkit.dll
-Z:\Work\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.RestroOrder\bin\Release\SageFrame.Templating.dll
-Z:\Work\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.RestroOrder\bin\Release\SageFrame.CDN.dll
-Z:\Work\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.RestroOrder\bin\Release\ICSharpCode.SharpZipLib.dll
-Z:\Work\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.RestroOrder\bin\Release\Ionic.Zip.dll
-Z:\Work\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.RestroOrder\bin\Release\SageFrame.CostCenter.pdb
-Z:\Work\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.RestroOrder\bin\Release\SageFrame.FiscalYear.pdb
-Z:\Work\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.RestroOrder\bin\Release\SageFrame.RestoLoyalty.pdb
-Z:\Work\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.RestroOrder\bin\Release\EPPlus.xml
-Z:\Work\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.RestroOrder\bin\Release\Newtonsoft.Json.xml
-Z:\Work\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.RestroOrder\bin\Release\SageFrame.Common.pdb
-Z:\Work\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.RestroOrder\bin\Release\SageFrame.Security.pdb
-Z:\Work\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.RestroOrder\obj\Release\SageFram.6530C07E.Up2Date
 G:\Danfe-Git\Master_RestroOrder\SageFrame.RestroOrder\bin\Release\SageFrame.RestroOrder.dll
 G:\Danfe-Git\Master_RestroOrder\SageFrame.RestroOrder\bin\Release\SageFrame.RestroOrder.pdb
 G:\Danfe-Git\Master_RestroOrder\SageFrame.RestroOrder\bin\Release\EPPlus.dll
@@ -868,3 +841,30 @@ G:\Danfe-Git\Master_RestroOrder\SageFrame.RestroOrder\obj\Release\SageFrame.Rest
 G:\Danfe-Git\Master_RestroOrder\SageFrame.RestroOrder\obj\Release\SageFrame.RestroOrder.csproj.CopyComplete
 G:\Danfe-Git\Master_RestroOrder\SageFrame.RestroOrder\obj\Release\SageFrame.RestroOrder.dll
 G:\Danfe-Git\Master_RestroOrder\SageFrame.RestroOrder\obj\Release\SageFrame.RestroOrder.pdb
+Z:\Work\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.RestroOrder\bin\Release\SageFrame.RestroOrder.dll
+Z:\Work\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.RestroOrder\bin\Release\SageFrame.RestroOrder.pdb
+Z:\Work\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.RestroOrder\bin\Release\EPPlus.dll
+Z:\Work\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.RestroOrder\bin\Release\Newtonsoft.Json.dll
+Z:\Work\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.RestroOrder\bin\Release\SageFrame.Common.dll
+Z:\Work\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.RestroOrder\bin\Release\SageFrame.Core.dll
+Z:\Work\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.RestroOrder\bin\Release\SageFrame.CostCenter.dll
+Z:\Work\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.RestroOrder\bin\Release\SageFrame.FiscalYear.dll
+Z:\Work\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.RestroOrder\bin\Release\SageFrame.RestoLoyalty.dll
+Z:\Work\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.RestroOrder\bin\Release\SageFrame.Security.dll
+Z:\Work\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.RestroOrder\bin\Release\AjaxControlToolkit.dll
+Z:\Work\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.RestroOrder\bin\Release\SageFrame.Templating.dll
+Z:\Work\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.RestroOrder\bin\Release\SageFrame.CDN.dll
+Z:\Work\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.RestroOrder\bin\Release\ICSharpCode.SharpZipLib.dll
+Z:\Work\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.RestroOrder\bin\Release\Ionic.Zip.dll
+Z:\Work\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.RestroOrder\bin\Release\SageFrame.CostCenter.pdb
+Z:\Work\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.RestroOrder\bin\Release\SageFrame.FiscalYear.pdb
+Z:\Work\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.RestroOrder\bin\Release\SageFrame.RestoLoyalty.pdb
+Z:\Work\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.RestroOrder\bin\Release\EPPlus.xml
+Z:\Work\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.RestroOrder\bin\Release\Newtonsoft.Json.xml
+Z:\Work\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.RestroOrder\bin\Release\SageFrame.Common.pdb
+Z:\Work\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.RestroOrder\bin\Release\SageFrame.Security.pdb
+Z:\Work\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.RestroOrder\obj\Release\SageFrame.RestroOrder.csproj.AssemblyReference.cache
+Z:\Work\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.RestroOrder\obj\Release\SageFrame.RestroOrder.csproj.CoreCompileInputs.cache
+Z:\Work\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.RestroOrder\obj\Release\SageFram.6530C07E.Up2Date
+Z:\Work\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.RestroOrder\obj\Release\SageFrame.RestroOrder.dll
+Z:\Work\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.RestroOrder\obj\Release\SageFrame.RestroOrder.pdb

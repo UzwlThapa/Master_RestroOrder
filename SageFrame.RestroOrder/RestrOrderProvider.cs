@@ -3545,8 +3545,8 @@ namespace SageFrame.RestroOrder
             {
                 throw;
             }
-            //int m = (OrderMasterInf.OrderMasterID == 0) ? Convert.ToInt32(obj) : OrderMasterInf.OrderMasterID;
         }
+
         internal List<cumbomain> getcumbolist(bool activeOnly)
         {
             List<KeyValuePair<string, object>> Param = new List<KeyValuePair<string, object>>();
@@ -3554,14 +3554,15 @@ namespace SageFrame.RestroOrder
             List<cumbomain> list = sqlHandler.ExecuteAsList<cumbomain>("[USP_RO_GETCUMBO]", Param);
             return list;
         }
+
         internal void DELETECOMBO(int comboid, string UserName)
         {
             List<KeyValuePair<string, object>> Param = new List<KeyValuePair<string, object>>();
             Param.Add(new KeyValuePair<string, object>("@ComboID", comboid));
             Param.Add(new KeyValuePair<string, object>("@UserName", UserName));
-            //List<OrderDetailClass> list = new List<OrderDetailClass>();
             sqlHandler.ExecuteNonQuery("[USP_RO_DELETECOMBO]", Param);
         }
+
         internal List<unitclassforitem> GetAllUnitforItem(int unit)
         {
             try
@@ -3576,6 +3577,7 @@ namespace SageFrame.RestroOrder
                 throw;
             }
         }
+
         internal List<ROInvItem> GetRoiItemForCategory()
         {
             try
@@ -3589,6 +3591,7 @@ namespace SageFrame.RestroOrder
                 throw;
             }
         }
+
         internal List<ROInvItem> GetRoiItemForCategoryHirerchy()
         {
             try
@@ -3602,125 +3605,184 @@ namespace SageFrame.RestroOrder
                 throw;
             }
         }
+
         internal int saveItems(ROInvItem itemObject, List<extraItem> extraItemList = null)
         {
-            List<KeyValuePair<string, object>> Param = new List<KeyValuePair<string, object>>();
-            Param.Add(new KeyValuePair<string, object>("@ITId", itemObject.ITId));
-            Param.Add(new KeyValuePair<string, object>("@PITId", itemObject.PITId));
-            Param.Add(new KeyValuePair<string, object>("@ITName", itemObject.ITName));
-            Param.Add(new KeyValuePair<string, object>("@IsMenu", itemObject.IsMenu));
-            Param.Add(new KeyValuePair<string, object>("@IsActive", itemObject.IsActive));
-            Param.Add(new KeyValuePair<string, object>("@IsTaxable", itemObject.IsTaxable));
-            Param.Add(new KeyValuePair<string, object>("@AddedBy", itemObject.AddedBy));
-            int ids = sqlHandler.ExecuteAsScalar<int>("[usp_roi_SaveItemsOfRestro]", Param);
-
-            List<KeyValuePair<string, object>> Param4 = new List<KeyValuePair<string, object>>();
-            Param4.Add(new KeyValuePair<string, object>("@ITId", ids));
-            Param4.Add(new KeyValuePair<string, object>("@ITCode", itemObject.ITCode));
-            Param4.Add(new KeyValuePair<string, object>("@ImagePath", itemObject.ImagePath));
-            Param4.Add(new KeyValuePair<string, object>("@IsExpirable", itemObject.IsExpirable));
-            Param4.Add(new KeyValuePair<string, object>("@IsProdMaterial", itemObject.IsProdMaterial));
-            Param4.Add(new KeyValuePair<string, object>("@IsUnitWiseRate", itemObject.IsUnitWiseRate));
-            Param4.Add(new KeyValuePair<string, object>("@ItemCostCentreID", itemObject.ItemCostCentreID));
-            Param4.Add(new KeyValuePair<string, object>("@Details", itemObject.Details));
-            Param4.Add(new KeyValuePair<string, object>("@SmallUnit", itemObject.SmallUnit));
-            Param4.Add(new KeyValuePair<string, object>("@AddedBy", itemObject.AddedBy));
-            Param4.Add(new KeyValuePair<string, object>("@IsExtra", itemObject.IsExtra));
-            sqlHandler.ExecuteNonQuery("[usp_roi_SaveItemsDetailsOfRestro]", Param4);
-            foreach (itemWithUnit info in itemObject.ItemWithUnit)
+            try
             {
-                List<KeyValuePair<string, object>> Param2 = new List<KeyValuePair<string, object>>();
-                Param2.Add(new KeyValuePair<string, object>("@ItemID", ids));
-                Param2.Add(new KeyValuePair<string, object>("@SalesRate", info.SalesRate));
-                Param2.Add(new KeyValuePair<string, object>("@ValidFrom", info.ValidFrom));
-                Param2.Add(new KeyValuePair<string, object>("@AddedBy", info.AddedBy));
-                sqlHandler.ExecuteNonQuery("[usp_SaveItemWithUnit]", Param2);
-            }
-
-            List<KeyValuePair<string, object>> Para = new List<KeyValuePair<string, object>>();
-            Para.Add(new KeyValuePair<string, object>("@ItemID", ids));
-            sqlHandler.ExecuteNonQuery("[usp_ro_removeextraitemsforitem]", Para);
-            foreach (extraItem info2 in extraItemList)
+                List<KeyValuePair<string, object>> Param = new List<KeyValuePair<string, object>>
             {
-                List<KeyValuePair<string, object>> Param3 = new List<KeyValuePair<string, object>>();
-                Param3.Add(new KeyValuePair<string, object>("@ItemID", ids));
-                Param3.Add(new KeyValuePair<string, object>("@ExtraItemID", info2.ExtraItemID));
-                sqlHandler.ExecuteNonQuery("[usp_ro_extraitemforitemsave]", Param3);
-            }
+                new KeyValuePair<string, object>("@ITId", itemObject.ITId),
+                new KeyValuePair<string, object>("@PITId", itemObject.PITId),
+                new KeyValuePair<string, object>("@ITName", itemObject.ITName),
+                new KeyValuePair<string, object>("@IsMenu", itemObject.IsMenu),
+                new KeyValuePair<string, object>("@IsActive", itemObject.IsActive),
+                new KeyValuePair<string, object>("@IsTaxable", itemObject.IsTaxable),
+                new KeyValuePair<string, object>("@AddedBy", itemObject.AddedBy)
+            };
+                int ids = sqlHandler.ExecuteAsScalar<int>("[usp_roi_SaveItemsOfRestro]", Param);
 
-            foreach (IngredientItems info in itemObject.Ingredientdata)
+                List<KeyValuePair<string, object>> Param4 = new List<KeyValuePair<string, object>>
             {
-                List<KeyValuePair<string, object>> Param5 = new List<KeyValuePair<string, object>>();
-                Param5.Add(new KeyValuePair<string, object>("@ItemID", ids));
-                Param5.Add(new KeyValuePair<string, object>("@Ingredient", info.Ingredient));
-                Param5.Add(new KeyValuePair<string, object>("@Quantity", info.Quantity));
-                sqlHandler.ExecuteNonQuery("[usp_SaveIngredientWithQuantity]", Param5);
+                new KeyValuePair<string, object>("@ITId", ids),
+                new KeyValuePair<string, object>("@ITCode", itemObject.ITCode),
+                new KeyValuePair<string, object>("@ImagePath", itemObject.ImagePath),
+                new KeyValuePair<string, object>("@IsExpirable", itemObject.IsExpirable),
+                new KeyValuePair<string, object>("@IsProdMaterial", itemObject.IsProdMaterial),
+                new KeyValuePair<string, object>("@IsUnitWiseRate", itemObject.IsUnitWiseRate),
+                new KeyValuePair<string, object>("@ItemCostCentreID", itemObject.ItemCostCentreID),
+                new KeyValuePair<string, object>("@Details", itemObject.Details),
+                new KeyValuePair<string, object>("@SmallUnit", itemObject.SmallUnit),
+                new KeyValuePair<string, object>("@AddedBy", itemObject.AddedBy),
+                new KeyValuePair<string, object>("@IsExtra", itemObject.IsExtra)
+            };
+                sqlHandler.ExecuteNonQuery("[usp_roi_SaveItemsDetailsOfRestro]", Param4);
+
+                if (itemObject.ItemWithUnit != null && itemObject.ItemWithUnit.Count > 0)
+                {
+                    foreach (itemWithUnit info in itemObject.ItemWithUnit)
+                    {
+                        List<KeyValuePair<string, object>> Param2 = new List<KeyValuePair<string, object>>
+                    {
+                        new KeyValuePair<string, object>("@ItemID", ids),
+                        new KeyValuePair<string, object>("@SalesRate", info.SalesRate),
+                        new KeyValuePair<string, object>("@ValidFrom", info.ValidFrom),
+                        new KeyValuePair<string, object>("@AddedBy", info.AddedBy)
+                    };
+                        sqlHandler.ExecuteNonQuery("[usp_SaveItemWithUnit]", Param2);
+                    }
+                }
+
+                List<KeyValuePair<string, object>> Para = new List<KeyValuePair<string, object>>();
+                Para.Add(new KeyValuePair<string, object>("@ItemID", ids));
+                sqlHandler.ExecuteNonQuery("[usp_ro_removeextraitemsforitem]", Para);
+
+                if (extraItemList != null && extraItemList.Count > 0)
+                {
+                    foreach (extraItem info2 in extraItemList)
+                    {
+                        List<KeyValuePair<string, object>> Param3 = new List<KeyValuePair<string, object>>
+                    {
+                        new KeyValuePair<string, object>("@ItemID", ids),
+                        new KeyValuePair<string, object>("@ExtraItemID", info2.ExtraItemID)
+                    };
+                        sqlHandler.ExecuteNonQuery("[usp_ro_extraitemforitemsave]", Param3);
+                    }
+                }
+
+                if (itemObject.Ingredientdata != null && itemObject.Ingredientdata.Count > 0)
+                {
+                    foreach (IngredientItems info in itemObject.Ingredientdata)
+                    {
+                        List<KeyValuePair<string, object>> Param5 = new List<KeyValuePair<string, object>>
+                    {
+                        new KeyValuePair<string, object>("@ItemID", ids),
+                        new KeyValuePair<string, object>("@Ingredient", info.Ingredient),
+                        new KeyValuePair<string, object>("@Quantity", info.Quantity)
+                    };
+                        sqlHandler.ExecuteNonQuery("[usp_SaveIngredientWithQuantity]", Param5);
+                    }
+                }
+
+                return ids;
             }
-            return ids;
+            catch (Exception e)
+            {
+                throw;
+            }
         }
-        internal int saveInventoryItems(ROInvItem itemObject, List<extraItem> extraItemList)
+
+        internal int saveInventoryItems(ROInvItem itemObject, List<extraItem> extraItemList = null)
         {
-            List<KeyValuePair<string, object>> Param = new List<KeyValuePair<string, object>>();
-            Param.Add(new KeyValuePair<string, object>("@ITId", itemObject.ITId));
-            Param.Add(new KeyValuePair<string, object>("@PITId", itemObject.PITId));
-            Param.Add(new KeyValuePair<string, object>("@ITName", itemObject.ITName));
-            Param.Add(new KeyValuePair<string, object>("@IsMenu", itemObject.IsMenu));
-            Param.Add(new KeyValuePair<string, object>("@IsActive", itemObject.IsActive));
-            Param.Add(new KeyValuePair<string, object>("@AddedBy", itemObject.AddedBy));
-            Param.Add(new KeyValuePair<string, object>("@IsTaxable", itemObject.IsTaxable));
+            List<KeyValuePair<string, object>> Param = new List<KeyValuePair<string, object>>
+            {
+                new KeyValuePair<string, object>("@ITId", itemObject.ITId),
+                new KeyValuePair<string, object>("@PITId", itemObject.PITId),
+                new KeyValuePair<string, object>("@ITName", itemObject.ITName),
+                new KeyValuePair<string, object>("@IsMenu", itemObject.IsMenu),
+                new KeyValuePair<string, object>("@IsActive", itemObject.IsActive),
+                new KeyValuePair<string, object>("@AddedBy", itemObject.AddedBy),
+                new KeyValuePair<string, object>("@IsTaxable", itemObject.IsTaxable)
+            };
             int ids = sqlHandler.ExecuteAsScalar<int>("[usp_roi_SaveItemsOfRestro]", Param);
-            List<KeyValuePair<string, object>> Param4 = new List<KeyValuePair<string, object>>();
-            Param4.Add(new KeyValuePair<string, object>("@ITId", ids));
-            Param4.Add(new KeyValuePair<string, object>("@ITCode", itemObject.ITCode));
-            Param4.Add(new KeyValuePair<string, object>("@ImagePath", itemObject.ImagePath));
-            Param4.Add(new KeyValuePair<string, object>("@IsExpirable", itemObject.IsExpirable));
-            Param4.Add(new KeyValuePair<string, object>("@IsProdMaterial", itemObject.IsProdMaterial));
-            Param4.Add(new KeyValuePair<string, object>("@IsUnitWiseRate", itemObject.IsUnitWiseRate));
-            Param4.Add(new KeyValuePair<string, object>("@ItemCostCentreID", itemObject.ItemCostCentreID));
-            Param4.Add(new KeyValuePair<string, object>("@Details", itemObject.Details));
-            Param4.Add(new KeyValuePair<string, object>("@SmallUnit", itemObject.SmallUnit));
-            Param4.Add(new KeyValuePair<string, object>("@AddedBy", itemObject.AddedBy));
-            Param4.Add(new KeyValuePair<string, object>("@IsExtra", itemObject.IsExtra));
+
+            List<KeyValuePair<string, object>> Param4 = new List<KeyValuePair<string, object>>
+            {
+                new KeyValuePair<string, object>("@ITId", ids),
+                new KeyValuePair<string, object>("@ITCode", itemObject.ITCode),
+                new KeyValuePair<string, object>("@ImagePath", itemObject.ImagePath),
+                new KeyValuePair<string, object>("@IsExpirable", itemObject.IsExpirable),
+                new KeyValuePair<string, object>("@IsProdMaterial", itemObject.IsProdMaterial),
+                new KeyValuePair<string, object>("@IsUnitWiseRate", itemObject.IsUnitWiseRate),
+                new KeyValuePair<string, object>("@ItemCostCentreID", itemObject.ItemCostCentreID),
+                new KeyValuePair<string, object>("@Details", itemObject.Details),
+                new KeyValuePair<string, object>("@SmallUnit", itemObject.SmallUnit),
+                new KeyValuePair<string, object>("@AddedBy", itemObject.AddedBy),
+                new KeyValuePair<string, object>("@IsExtra", itemObject.IsExtra)
+            };
             sqlHandler.ExecuteNonQuery("[usp_roi_SaveItemsDetailsOfRestro]", Param4);
+
             List<KeyValuePair<string, object>> Param7 = new List<KeyValuePair<string, object>>();
             Param7.Add(new KeyValuePair<string, object>("@ItemId", ids));
             sqlHandler.ExecuteNonQuery("USP_DeleteMinimumSTock", Param7);
-            foreach (StoreItemStock info3 in itemObject.storeitemstock)
+
+            if (itemObject.storeitemstock != null && itemObject.storeitemstock.Count > 0)
             {
-                List<KeyValuePair<string, object>> Param6 = new List<KeyValuePair<string, object>>();
-                Param6.Add(new KeyValuePair<string, object>("@ItemId", ids));
-                Param6.Add(new KeyValuePair<string, object>("@StoreId", info3.StoreId));
-                Param6.Add(new KeyValuePair<string, object>("@Unit", info3.Unit));
-                Param6.Add(new KeyValuePair<string, object>("@Value", info3.Value));
-                sqlHandler.ExecuteNonQuery("USP_CreateSToreMinimumStock", Param6);
+                foreach (StoreItemStock info3 in itemObject.storeitemstock)
+                {
+                    List<KeyValuePair<string, object>> Param6 = new List<KeyValuePair<string, object>>
+                    {
+                        new KeyValuePair<string, object>("@ItemId", ids),
+                        new KeyValuePair<string, object>("@StoreId", info3.StoreId),
+                        new KeyValuePair<string, object>("@Unit", info3.Unit),
+                        new KeyValuePair<string, object>("@Value", info3.Value)
+                    };
+                    sqlHandler.ExecuteNonQuery("USP_CreateSToreMinimumStock", Param6);
+                }
             }
-            foreach (itemWithUnit info in itemObject.ItemWithUnit)
+
+            if (itemObject.ItemWithUnit != null && itemObject.ItemWithUnit.Count > 0)
             {
-                List<KeyValuePair<string, object>> Param2 = new List<KeyValuePair<string, object>>();
-                Param2.Add(new KeyValuePair<string, object>("@ItemID", ids));
-                Param2.Add(new KeyValuePair<string, object>("@SalesRate", info.SalesRate));
-                Param2.Add(new KeyValuePair<string, object>("@ValidFrom", info.ValidFrom));
-                Param2.Add(new KeyValuePair<string, object>("@AddedBy", info.AddedBy));
-                sqlHandler.ExecuteNonQuery("[usp_SaveItemWithUnit]", Param2);
+                foreach (itemWithUnit info in itemObject.ItemWithUnit)
+                {
+                    List<KeyValuePair<string, object>> Param2 = new List<KeyValuePair<string, object>>
+                    {
+                        new KeyValuePair<string, object>("@ItemID", ids),
+                        new KeyValuePair<string, object>("@SalesRate", info.SalesRate),
+                        new KeyValuePair<string, object>("@ValidFrom", info.ValidFrom),
+                        new KeyValuePair<string, object>("@AddedBy", info.AddedBy)
+                    };
+                    sqlHandler.ExecuteNonQuery("[usp_SaveItemWithUnit]", Param2);
+                }
             }
+
             List<KeyValuePair<string, object>> Para = new List<KeyValuePair<string, object>>();
             Para.Add(new KeyValuePair<string, object>("@ItemID", ids));
             sqlHandler.ExecuteNonQuery("[usp_ro_removeextraitemsforitem]", Para);
-            foreach (extraItem info2 in extraItemList)
+
+            if (extraItemList != null && extraItemList.Count > 0)
             {
-                List<KeyValuePair<string, object>> Param3 = new List<KeyValuePair<string, object>>();
-                Param3.Add(new KeyValuePair<string, object>("@ItemID", ids));
-                Param3.Add(new KeyValuePair<string, object>("@ExtraItemID", info2.ExtraItemID));
-                sqlHandler.ExecuteNonQuery("[usp_ro_extraitemforitemsave]", Param3);
+                foreach (extraItem info2 in extraItemList)
+                {
+                    List<KeyValuePair<string, object>> Param3 = new List<KeyValuePair<string, object>>
+                    {
+                        new KeyValuePair<string, object>("@ItemID", ids),
+                        new KeyValuePair<string, object>("@ExtraItemID", info2.ExtraItemID)
+                    };
+                    sqlHandler.ExecuteNonQuery("[usp_ro_extraitemforitemsave]", Param3);
+                }
             }
-            // if (itemObject.Ingredientdata)
+
+            if (itemObject.Ingredientdata != null && itemObject.Ingredientdata.Count > 0)
             {
                 foreach (IngredientItems info in itemObject.Ingredientdata)
                 {
-                    List<KeyValuePair<string, object>> Param5 = new List<KeyValuePair<string, object>>();
-                    Param5.Add(new KeyValuePair<string, object>("@ItemID", ids));
-                    Param5.Add(new KeyValuePair<string, object>("@Ingredient", info.Ingredient));
-                    Param5.Add(new KeyValuePair<string, object>("@Quantity", info.Quantity));
+                    List<KeyValuePair<string, object>> Param5 = new List<KeyValuePair<string, object>>
+                    {
+                        new KeyValuePair<string, object>("@ItemID", ids),
+                        new KeyValuePair<string, object>("@Ingredient", info.Ingredient),
+                        new KeyValuePair<string, object>("@Quantity", info.Quantity)
+                    };
                     sqlHandler.ExecuteNonQuery("[usp_SaveIngredientWithQuantity]", Param5);
                 }
             }
@@ -5699,7 +5761,7 @@ namespace SageFrame.RestroOrder
             List<MvPurchaseDetails> Unitinfo = sqlHandler.ExecuteAsList<MvPurchaseDetails>("USP_ROI_GETPRUCHASENOFORREPORT");
             return Unitinfo;
         }
-        internal void saveBevearge(List<ROInvItem> itemlist, List<extraItem> extraItemList)
+        internal void saveBevearge(List<ROInvItem> itemlist, List<extraItem> extraItemList = null)
         {
             int i = 0;
             foreach (ROInvItem inv in itemlist)
@@ -5713,6 +5775,7 @@ namespace SageFrame.RestroOrder
                 Param.Add(new KeyValuePair<string, object>("@AddedBy", inv.AddedBy));
                 Param.Add(new KeyValuePair<string, object>("@IsTaxable", inv.IsTaxable));
                 int ids = sqlHandler.ExecuteAsScalar<int>("[usp_roi_SaveItemsOfRestro]", Param);
+
                 List<KeyValuePair<string, object>> Param4 = new List<KeyValuePair<string, object>>();
                 Param4.Add(new KeyValuePair<string, object>("@ITId", ids));
                 Param4.Add(new KeyValuePair<string, object>("@ITCode", inv.ITCode));
@@ -5726,26 +5789,33 @@ namespace SageFrame.RestroOrder
                 Param4.Add(new KeyValuePair<string, object>("@AddedBy", inv.AddedBy));
                 Param4.Add(new KeyValuePair<string, object>("@IsExtra", inv.IsExtra));
                 sqlHandler.ExecuteNonQuery("[usp_roi_SaveItemsDetailsOfRestro]", Param4);
+
                 List<KeyValuePair<string, object>> Param2 = new List<KeyValuePair<string, object>>();
                 Param2.Add(new KeyValuePair<string, object>("@ItemID", ids));
                 Param2.Add(new KeyValuePair<string, object>("@SalesRate", inv.SRate));
                 Param2.Add(new KeyValuePair<string, object>("@ValidFrom", DateTime.Now));
                 Param2.Add(new KeyValuePair<string, object>("@AddedBy", inv.AddedBy));
                 sqlHandler.ExecuteNonQuery("[usp_SaveItemWithUnit]", Param2);
+
                 List<KeyValuePair<string, object>> Param5 = new List<KeyValuePair<string, object>>();
                 Param5.Add(new KeyValuePair<string, object>("@ItemID", ids));
                 Param5.Add(new KeyValuePair<string, object>("@Ingredient", inv.Ingredient));
                 Param5.Add(new KeyValuePair<string, object>("@Quantity", inv.Quantity));
                 sqlHandler.ExecuteNonQuery("usp_SaveIngredientWithQuantity", Param5);
+
                 List<KeyValuePair<string, object>> Para = new List<KeyValuePair<string, object>>();
                 Para.Add(new KeyValuePair<string, object>("@ItemID", ids));
                 sqlHandler.ExecuteNonQuery("[usp_ro_removeextraitemsforitem]", Para);
-                foreach (extraItem info2 in extraItemList)
+
+                if (extraItemList != null && extraItemList.Count > 0)
                 {
-                    List<KeyValuePair<string, object>> Param3 = new List<KeyValuePair<string, object>>();
-                    Param3.Add(new KeyValuePair<string, object>("@ItemID", ids));
-                    Param3.Add(new KeyValuePair<string, object>("@ExtraItemID", info2.ExtraItemID));
-                    sqlHandler.ExecuteNonQuery("[usp_ro_extraitemforitemsave]", Param3);
+                    foreach (extraItem info2 in extraItemList)
+                    {
+                        List<KeyValuePair<string, object>> Param3 = new List<KeyValuePair<string, object>>();
+                        Param3.Add(new KeyValuePair<string, object>("@ItemID", ids));
+                        Param3.Add(new KeyValuePair<string, object>("@ExtraItemID", info2.ExtraItemID));
+                        sqlHandler.ExecuteNonQuery("[usp_ro_extraitemforitemsave]", Param3);
+                    }
                 }
             }
             i = i + 1;

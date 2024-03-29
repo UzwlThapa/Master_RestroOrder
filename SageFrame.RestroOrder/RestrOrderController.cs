@@ -1171,7 +1171,7 @@ namespace SageFrame.RestroOrder
         {
             return restroOrderProvider.saveItems(itemObject, extraItemList);
         }
-        public int saveInventoryItems(ROInvItem itemObject, List<extraItem> extraItemList)
+        public int saveInventoryItems(ROInvItem itemObject, List<extraItem> extraItemList = null)
         {
             return restroOrderProvider.saveInventoryItems(itemObject, extraItemList);
         }
@@ -1828,7 +1828,7 @@ namespace SageFrame.RestroOrder
         {
             return restroOrderProvider.getPurchaseNoForReport();
         }
-        public void saveBevearge(List<ROInvItem> itemlist, List<extraItem> extraItemList)
+        public void saveBevearge(List<ROInvItem> itemlist, List<extraItem> extraItemList= null)
         {
             restroOrderProvider.saveBevearge(itemlist, extraItemList);
         }

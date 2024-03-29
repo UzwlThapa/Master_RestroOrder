@@ -2,7 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Services;
 using SageFrame.RestroOrder;
 using System.Web.Script.Serialization;
@@ -24,7 +23,6 @@ public class RoiItem : System.Web.Services.WebService
         try
         {
             RestrOrderController rocobj = new RestrOrderController();
-
             List<extraItem> extralist = rocobj.GetExtraItemList().Where(p => p.IsDeleted == false).ToList();
             return JsonConvert.SerializeObject(extralist);
         }
@@ -40,21 +38,21 @@ public class RoiItem : System.Web.Services.WebService
         try
         {
             RestrOrderController rocobj = new RestrOrderController();
-
             return rocobj.getExtraItemforItem().Where(p => p.ItemID == id && p.IsDeleted == false).ToList();
         }
         catch (Exception)
         {
-
             throw;
         }
     }
+
     [WebMethod]
     public void DeleteGroupItemByID(int ids)
     {
         RestrOrderController roc = new RestrOrderController();
         roc.DeleteGroupItemByID(ids);
     }
+
     [WebMethod]
     public string ViewItemByID(int ids)
     {
@@ -70,11 +68,9 @@ public class RoiItem : System.Web.Services.WebService
         {
             RestrOrderController roc = new RestrOrderController();
             return roc.getGroupByID(ids);
-
         }
         catch (Exception ex)
         {
-
             throw ex;
         }
     }
@@ -90,7 +86,6 @@ public class RoiItem : System.Web.Services.WebService
         }
         catch (Exception ex)
         {
-
             throw ex;
         }
     }
@@ -132,25 +127,20 @@ public class RoiItem : System.Web.Services.WebService
             RestrOrderController roc = new RestrOrderController();
             List<MvPurchaseDetails> searchList = roc.GetItemForSearch();
             return JsonConvert.SerializeObject(searchList);
-
         }
         catch (Exception)
         {
-
             throw;
         }
     }
+
     [WebMethod]
     public string CheckItemExistence(string item, string categoryid)
     {
         RestrOrderController roc = new RestrOrderController();
         List<ROInvItem> lst = roc.GetItemList().Where(x => x.ITName == item && x.IsCategory == false && x.PITId == (Convert.ToInt32(categoryid) > 0 ? Convert.ToInt32(categoryid) : 0)).ToList();
-        //return roc.CheckItemExistence(item);
         return JsonConvert.SerializeObject(lst);
     }
-
-
-
 
     [WebMethod]
     public string CheckItemExistenceForCategory(string item)
@@ -158,10 +148,7 @@ public class RoiItem : System.Web.Services.WebService
         RestrOrderController roc = new RestrOrderController();
         List<ROInvItem> lst = roc.GetRoiItemForCategoryHirerchy().Where(x => x.ITName == item).ToList();
         return JsonConvert.SerializeObject(lst);
-        // return roc.CheckItemExistenceForCategory(item);
     }
-
-
 
     [WebMethod]
     public void DeleteItem(int Itemid, string userName)
@@ -196,8 +183,6 @@ public class RoiItem : System.Web.Services.WebService
         return obj;
     }
 
-
-
     [WebMethod]
     public string GetItemList()
     {
@@ -205,7 +190,6 @@ public class RoiItem : System.Web.Services.WebService
         List<ROInvItem> invItem = roc.GetItemList();
         return JsonConvert.SerializeObject(invItem);
     }
-
 
     [WebMethod]
     public string GetInventoryItemList()
@@ -221,38 +205,44 @@ public class RoiItem : System.Web.Services.WebService
         RestrOrderController roc = new RestrOrderController();
         List<ROInvItem> lst = roc.GetInventoryItemList().Where(x => x.ITName == item).ToList();
         return JsonConvert.SerializeObject(lst);
-        // return roc.CheckItemExistenceForCategory(item);
     }
 
-
     [WebMethod]
-    public int saveItems(ROInvItem itemObject, List<extraItem> extraItemList = null)
+    public int saveItems(ROInvItem itemObject, string extraItemList)
     {
         try
         {
-            RestrOrderController roc = new RestrOrderController();
-            return roc.saveItems(itemObject, extraItemList);
+            List<extraItem> extraItemListNew = new List<extraItem>();
+            if (extraItemList != null && extraItemList != "" && extraItemList != "[]")
+            {
+                extraItemListNew = JsonConvert.DeserializeObject<List<extraItem>>(extraItemList);
+            }
 
+            RestrOrderController roc = new RestrOrderController();
+            return roc.saveItems(itemObject, extraItemListNew);
         }
         catch (Exception ex)
         {
-
             throw ex;
         }
     }
 
     [WebMethod]
-    public int saveInventoryItems(ROInvItem itemObject, List<extraItem> extraItemList)
+    public int saveInventoryItems(ROInvItem itemObject, string extraItemList)
     {
         try
         {
-            RestrOrderController roc = new RestrOrderController();
-            return roc.saveInventoryItems(itemObject, extraItemList);
+            List<extraItem> extraItemListNew = new List<extraItem>();
+            if (extraItemList != null && extraItemList != "" && extraItemList != "[]")
+            {
+                extraItemListNew = JsonConvert.DeserializeObject<List<extraItem>>(extraItemList);
+            }
 
+            RestrOrderController roc = new RestrOrderController();
+            return roc.saveInventoryItems(itemObject, extraItemListNew);
         }
         catch (Exception ex)
         {
-
             throw ex;
         }
     }
@@ -289,7 +279,6 @@ public class RoiItem : System.Web.Services.WebService
         return JsonConvert.SerializeObject(costcenter);
     }
 
-
     [WebMethod]
     public void GetAllUnitforItem()
     {
@@ -297,7 +286,7 @@ public class RoiItem : System.Web.Services.WebService
         {
             RestrOrderController roc = new RestrOrderController();
             List<ROInvItemForApi> itemList = new List<ROInvItemForApi>();
-            itemList = roc.getItemListForApi();//.Where(p=>(p.SRate != null || p.SRate >= 0)).ToList();
+            itemList = roc.getItemListForApi();
             foreach (var item in itemList)
             {
                 if (item.IsCombo == false)
@@ -313,87 +302,13 @@ public class RoiItem : System.Web.Services.WebService
             var jsonFormatted = JsonConvert.SerializeObject(parsedJson, Formatting.Indented);
             Context.Response.Clear();
             Context.Response.ContentType = "application/json";
-            //Context.Response.Write(jsonFormatted);
             Context.Response.Write("{statusCode:200, message:\"Success\", data:" + jsonFormatted + "}");
         }
         catch (Exception ex)
         {
             Context.Response.Write("{statusCode:100, message:\"" + ex.Message + "\"}");
         }
-
     }
-
-    //[WebMethod]
-    //public void ChangeItemFromOldtoNew()
-    //{
-    //    RestrOrderController roc = new RestrOrderController();
-    //    List<MenuClass> menuList = roc.GetMenuFromDatabase();
-    //    //List<ItemsClass> itemList = roc.GetItemFromDatabase();
-    //    List<ROInvItem> invItemList = new List<ROInvItem>();
-    //    foreach (var item in menuList)
-    //    {
-    //        ROInvItem newItem = new ROInvItem();
-    //        newItem.ITName = "All-Item";
-    //        newItem.ImagePath = "Sample.png";
-    //        newItem.PITId = 0;
-    //        newItem.CostCenterID = 1;
-
-    //        newItem.ITId = 14; // roc.SaveRoiItem1(newItem);
-    //        List<CategoriesClass> catList = roc.GetCategoriesBymenuID(23);
-    //        foreach(var cat in catList)
-    //        {
-    //            ROInvItem newItem1 = new ROInvItem();
-    //            newItem1.ITName = cat.CategoriesName;
-    //            newItem1.ImagePath = cat.PhotoPath;
-    //            newItem1.PITId = newItem.ITId;
-    //            newItem1.ROrderLevel = 2;
-    //            List<ItemsClass> itemList = roc.GetItemByCategoryID(cat.CategoriesID);
-    //            newItem1.CostCenterID = itemList.FirstOrDefault().CostCenterId;
-    //            newItem1.ITId = roc.SaveRoiItem1(newItem1);
-
-    //            foreach(var it in itemList)
-    //            {
-    //                ROInvItem newItem2 = new ROInvItem();
-    //                newItem2.ITName = it.ItemName;
-    //                newItem2.ImagePath = it.PhotoPath;
-    //                newItem2.PITId = newItem1.ITId;
-    //                newItem2.ROrderLevel = 3;
-    //                //newItem1.CostCenterID = it.CostCenterId;
-    //                newItem2.CostCenterID = it.CostCenterId;
-    //                //newItem.CostCenterID = it.CostCenterId;
-
-    //                roc.SaveRoiItem1(newItem2);
-    //            }
-    //        }
-
-    //        invItemList.Add(newItem);
-    //    }
-    //    JavaScriptSerializer jss = new JavaScriptSerializer();
-    //    string jsonString = jss.Serialize(invItemList);
-
-    //    dynamic parsedJson = JsonConvert.DeserializeObject(jsonString);
-    //    var jsonFormatted = JsonConvert.SerializeObject(parsedJson, Formatting.Indented);
-
-
-    //    string path = "/Modules/RestroWebservices/RestroFullDetail.Json";
-    //    string fullPath = Server.MapPath(path);
-    //    using (var file = new System.IO.StreamWriter(fullPath, false))
-    //    {
-    //        file.Flush();
-    //        file.Write(jsonString);
-    //        file.Close();
-    //        file.Dispose();
-    //    }
-
-
-    //    Context.Response.Clear();
-    //    Context.Response.ContentType = "application/json";
-    //    Context.Response.Write(jsonFormatted);
-    //    //List<CategoriesClass> catList = roc.GetCategoriesFromDatabase();
-
-    //}
-
-
 
     [WebMethod]
     public string GetInventoryItemWithSmallUnit()
@@ -408,7 +323,6 @@ public class RoiItem : System.Web.Services.WebService
         {
             throw;
         }
-
     }
 
     [WebMethod]
@@ -476,9 +390,6 @@ public class RoiItem : System.Web.Services.WebService
         }
     }
 
-
-
-
     [WebMethod]
     public string getIssueToDDlHirerchy()
     {
@@ -501,24 +412,23 @@ public class RoiItem : System.Web.Services.WebService
         return roc.getstoreitemforstock(id);
     }
 
-
     [WebMethod]
-    public void saveBevearge(List<ROInvItem> itemlist, List<extraItem> extraItemList)
+    public void saveBevearge(List<ROInvItem> itemlist, string extraItemList)
     {
         try
         {
+            List<extraItem> extraItemListNew = new List<extraItem>();
+            if (extraItemList != null && extraItemList != "" && extraItemList != "[]")
+            {
+                extraItemListNew = JsonConvert.DeserializeObject<List<extraItem>>(extraItemList);
+            }
+
             RestrOrderController roc = new RestrOrderController();
-            roc.saveBevearge(itemlist, extraItemList);
+            roc.saveBevearge(itemlist, extraItemListNew);
         }
         catch (Exception ex)
         {
-
             throw ex;
         }
     }
-
-
-
-
-
 }

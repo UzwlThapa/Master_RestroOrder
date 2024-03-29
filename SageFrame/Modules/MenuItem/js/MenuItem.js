@@ -666,13 +666,14 @@
                         IngredientArray.push(IngredientObject);
                     }
                 });
+
                 itemObject.Ingredientdata = IngredientArray;
 
                 itemObject.ItemWithUnit = unitArray;
 
                 eventFunction.config.method = "saveItems";
                 eventFunction.config.url = eventFunction.config.baseURL + eventFunction.config.method;
-                eventFunction.config.data = JSON2.stringify({ itemObject: itemObject, extraItemList: extraItems });
+                eventFunction.config.data = JSON2.stringify({ itemObject: itemObject, extraItemList: JSON.stringify(extraItems) });
                 if (eventFunction.config.ItemIDUpdate == 1)
                     eventFunction.config.ajaxCallMode = 12;
                 else

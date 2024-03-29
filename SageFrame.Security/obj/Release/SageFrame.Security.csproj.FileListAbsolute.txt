@@ -1,0 +1,2 @@
+Z:\Work\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.Security\obj\Release\SageFrame.Security.csproj.AssemblyReference.cache
+Z:\Work\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.Security\obj\Release\SageFrame.Security.csproj.CoreCompileInputs.cache
