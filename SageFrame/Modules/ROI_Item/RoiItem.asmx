@@ -138,7 +138,7 @@ public class RoiItem : System.Web.Services.WebService
     public string CheckItemExistence(string item, string categoryid)
     {
         RestrOrderController roc = new RestrOrderController();
-        List<ROInvItem> lst = roc.GetItemList().Where(x => x.ITName == item && x.IsCategory == false && x.PITId == (Convert.ToInt32(categoryid) > 0 ? Convert.ToInt32(categoryid) : 0)).ToList();
+        List<ROInvItem> lst = roc.CheckItemExistence(item);
         return JsonConvert.SerializeObject(lst);
     }
 
@@ -146,7 +146,7 @@ public class RoiItem : System.Web.Services.WebService
     public string CheckItemExistenceForCategory(string item)
     {
         RestrOrderController roc = new RestrOrderController();
-        List<ROInvItem> lst = roc.GetRoiItemForCategoryHirerchy().Where(x => x.ITName == item).ToList();
+        List<ROInvItem> lst = roc.CheckItemExistenceForCategory(item);
         return JsonConvert.SerializeObject(lst);
     }
 
@@ -179,7 +179,6 @@ public class RoiItem : System.Web.Services.WebService
         obj.extra = roc.extraItemData(id);
         obj.units = roc.ItemWithUnitList(id);
         obj.storeitemstock = roc.getstoreitemforstock(id);
-
         return obj;
     }
 
@@ -203,23 +202,17 @@ public class RoiItem : System.Web.Services.WebService
     public string CheckItemExistenceForInventory(string item)
     {
         RestrOrderController roc = new RestrOrderController();
-        List<ROInvItem> lst = roc.GetInventoryItemList().Where(x => x.ITName == item).ToList();
+        List<ROInvItem> lst = roc.CheckItemExistence(item);
         return JsonConvert.SerializeObject(lst);
     }
 
     [WebMethod]
-    public int saveItems(ROInvItem itemObject, string extraItemList)
+    public int saveItems(ROInvItem itemObject, List<extraItem> extraItemList)
     {
         try
         {
-            List<extraItem> extraItemListNew = new List<extraItem>();
-            if (extraItemList != null && extraItemList != "" && extraItemList != "[]")
-            {
-                extraItemListNew = JsonConvert.DeserializeObject<List<extraItem>>(extraItemList);
-            }
-
             RestrOrderController roc = new RestrOrderController();
-            return roc.saveItems(itemObject, extraItemListNew);
+            return roc.saveItems(itemObject, extraItemList);
         }
         catch (Exception ex)
         {
@@ -228,18 +221,12 @@ public class RoiItem : System.Web.Services.WebService
     }
 
     [WebMethod]
-    public int saveInventoryItems(ROInvItem itemObject, string extraItemList)
+    public int saveInventoryItems(ROInvItem itemObject, List<extraItem> extraItemList)
     {
         try
         {
-            List<extraItem> extraItemListNew = new List<extraItem>();
-            if (extraItemList != null && extraItemList != "" && extraItemList != "[]")
-            {
-                extraItemListNew = JsonConvert.DeserializeObject<List<extraItem>>(extraItemList);
-            }
-
             RestrOrderController roc = new RestrOrderController();
-            return roc.saveInventoryItems(itemObject, extraItemListNew);
+            return roc.saveInventoryItems(itemObject, extraItemList);
         }
         catch (Exception ex)
         {

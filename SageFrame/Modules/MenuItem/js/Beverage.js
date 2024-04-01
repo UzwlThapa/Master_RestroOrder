@@ -602,7 +602,7 @@ function isNumber(evt) {
                 eventFunction.config.method = "saveBevearge";
                 eventFunction.config.url = eventFunction.config.baseURL + eventFunction.config.method;
               
-                eventFunction.config.data = JSON2.stringify({ itemlist: itemlist, extraItemList: JSON.stringify(extraItems) });
+                eventFunction.config.data = JSON2.stringify({ itemlist: itemlist, extraItemList: extraItems });
                 if (eventFunction.config.ItemIDUpdate == 1)
                     eventFunction.config.ajaxCallMode = 11;
                 else

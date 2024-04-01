@@ -1236,7 +1236,7 @@
                 //console.log(itemObject);
                 eventFunction.config.method = "saveItems";
                 eventFunction.config.url = eventFunction.config.baseURL + eventFunction.config.method;
-                eventFunction.config.data = JSON2.stringify({ itemObject: itemObject, extraItemList: JSON.stringify(extraItems) });
+                eventFunction.config.data = JSON2.stringify({ itemObject: itemObject, extraItemList: extraItems });
                 if (eventFunction.config.ItemIDUpdate == 1)
                     eventFunction.config.ajaxCallMode = 32;
                 else
@@ -1348,7 +1348,7 @@
 
                 eventFunction.config.method = "saveInventoryItems";
                 eventFunction.config.url = eventFunction.config.baseURL + eventFunction.config.method;
-                eventFunction.config.data = JSON2.stringify({ itemObject: itemObject, extraItemList: JSON.stringify(extraItems) });
+                eventFunction.config.data = JSON2.stringify({ itemObject: itemObject, extraItemList: extraItems });
                 if (eventFunction.config.ItemIDUpdate == 1)
                     eventFunction.config.ajaxCallMode = 11;
                 else
