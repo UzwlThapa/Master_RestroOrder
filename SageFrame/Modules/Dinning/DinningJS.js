@@ -832,17 +832,24 @@ function IntegerAndDecimal(evt, element) {
                     htmls += "<h4>Tables in " + datas[0].restroRoom + "</h4><hr><ul>";
 
                     $.each(datas, function (index, value) {
-
+                        debugger;
                         // new added for table bill not cleared issue majheri
                         htmls += ("<a id ='" + (value.IsTable ? "Table_" : "Room_"));
-                        if (value.tableDate == "") {
-                            htmls += ("" + value.restrotableId + "_img_yes_notoccupied_" + value.restrotableTitle + "' class = 'imgtable'  >");
+                        if (value.BillPaid.toString() == '1') {
+                            htmls += ("" + value.restrotableId + "_clearBill' class='imgtable'>");
                             htmls += ("<li>");
-                            htmls += ("<img src='" + p.HostUrl + "/Modules/RestroDashboard/image/" + (value.IsTable ? "tablegreen.png" : "room-green.png") + "'> ");
-                        } else {
-                            htmls += ("" + value.restrotableId + "_img_yes_occupied_" + value.restrotableTitle + "' class = 'imgtable'  >");
-                            htmls += ("<li>");
-                            htmls += ("<img src='" + p.HostUrl + "/Modules/RestroDashboard/image/" + (value.IsTable ? "tablered.png" : "room-red.png") + "'> ");
+                            htmls += ("<img src='" + p.HostUrl + "/Modules/RestroDashboard/image/" + (value.IsTable ? "tableyellow.png" : "room-red.png") + "'> ");
+                        }
+                        else {
+                            if (value.tableDate == "") {
+                                htmls += ("" + value.restrotableId + "_img_yes_notoccupied_" + value.restrotableTitle + "' class = 'imgtable'  >");
+                                htmls += ("<li>");
+                                htmls += ("<img src='" + p.HostUrl + "/Modules/RestroDashboard/image/" + (value.IsTable ? "tablegreen.png" : "room-green.png") + "'> ");
+                            } else {
+                                htmls += ("" + value.restrotableId + "_img_yes_occupied_" + value.restrotableTitle + "' class = 'imgtable'  >");
+                                htmls += ("<li>");
+                                htmls += ("<img src='" + p.HostUrl + "/Modules/RestroDashboard/image/" + (value.IsTable ? "tablered.png" : "room-red.png") + "'> ");
+                            }
                         }
 
                         htmls += ("<h5 class='");
@@ -878,23 +885,26 @@ function IntegerAndDecimal(evt, element) {
                     jAlert('No Tables Available in selected Room..', "Alert!!", function () { $.alerts.dialogClass = null; });
                 }
 
-
                 $(".imgtable").on('click', function () {
                     var data = $(this).attr('id');
                     var id = data.split('_');
-                    activeorder = id[1];
-                    isMergedTable = (id[3] == "yes" ? true : false);
-                    IsOccuoied = (id[4] == "occupied" ? true : false);
-                    if (id[0] == "Table") {
-                        DashboardFunction.GettabledataById(id[1]);
+
+                    if (id[2] == 'clearBill') {
+                        jAlert("Please clear pending bill first!", 'Alert!!');
                     }
-                    if (id[0] == "Room") {
-                        DashboardFunction.GetroomdataById(id[1]);
+                    else {
+                        activeorder = id[1];
+                        isMergedTable = (id[3] == "yes" ? true : false);
+                        IsOccuoied = (id[4] == "occupied" ? true : false);
+                        if (id[0] == "Table") {
+                            DashboardFunction.GettabledataById(id[1]);
+                        }
+                        if (id[0] == "Room") {
+                            DashboardFunction.GetroomdataById(id[1]);
+                        }
                     }
                 });
                 $('.TablesInRooms').show();
-
-
             },
 
             BindRoomByRoomTypeId: function (result) {
@@ -909,7 +919,6 @@ function IntegerAndDecimal(evt, element) {
                         htmls += ("<li>");
                         htmls += ("<img src='" + p.HostUrl + "/Modules/RestroDashboard/image/room.png'> ");
                         htmls += ("<h5 class='NotPaid'>" + value.restroRoom + "</h5></li></a>");
-
                     });
                     htmls += "</ul>";
 
@@ -923,10 +932,8 @@ function IntegerAndDecimal(evt, element) {
                     $('.TablesInRooms').hide();
                 }
                 $('.imgroomtype').on('click', function () {
-
                     $(this).closest('li').siblings('li').removeClass('active');
                     $(this).closest('li').addClass('active');
-
                 });
 
                 $(".imgRoom").on('click', function () {
@@ -1091,6 +1098,7 @@ function IntegerAndDecimal(evt, element) {
                     var url = p.HostUrl + "/Order.aspx?ID=" + encodeURIComponent(data[1]);
                     window.location.href = url;
                 });
+
                 $('#billno').change(function () {
                     var selectedBillNo = parseInt($('#billno').val());
                     $("#bindorderlist").html('');
@@ -1168,6 +1176,7 @@ function IntegerAndDecimal(evt, element) {
                         modal: true,
                     });
                 });
+
                 $('#DialogOrderDetail').on('click', '.ordernow', function () {
                     debugger;
                     var id = $(this).attr('id');
@@ -1189,9 +1198,7 @@ function IntegerAndDecimal(evt, element) {
                     var id = $(this).attr('id');
                     var data = id.split('_');
                     DashboardFunction.GetDataForSalesBillFromPay(data[2]);
-
                 });
-
             },
 
             BindRoomdataById: function (result) {
@@ -1233,12 +1240,14 @@ function IntegerAndDecimal(evt, element) {
                     "resize": "auto",
                     width: DialogWidth,
                 });
+
                 $('.booking-list-tbl').on('click', '.roompaynow', function () {
                     $('#DialogOrderDetail').dialog('close');
                     var id = $(this).attr('id');
                     var data = id.split('_');
                     DashboardFunction.GetDataForSalesBill(data[1]);
                 });
+
                 $('.booking-list-tbl').on('click', '.cancelorder', function () {
                     $('#DialogOrderDetail').dialog('close');
                     OrderMasterID = $(this).attr('id').split("_")[1];
@@ -1254,6 +1263,7 @@ function IntegerAndDecimal(evt, element) {
                     $('#hdnPinFor').val('CancelOrder');
                     InitializePin();
                 });
+
                 $('.booking-list-tbl').on('click', '.ordernow', function () {
                     var id = $(this).attr('id');
                     var data = id.split('_');
@@ -1904,9 +1914,9 @@ function IntegerAndDecimal(evt, element) {
                     totalAmount = 0;
 
                 }
-                 
+
                 //AddChanges
-                  
+
                 if (orderdetails.length > 0) {
                     noOfGuest = parseInt(orderdetails[0].GuestNo);
                     htmls += ("<div class='left-sec'><div class='dialogflex'><h4>Room : " + orderdetails[0].restroRoom + "  / Table : " + (orderdetails[0].MergeTableName != "" && orderdetails[0].MergeTableName != null ? orderdetails[0].MergeTableName : orderdetails[0].restrotableTitle) + " </h4><h4> Waiter: " + orderdetails[0].Waiter + "</h4></div>");
@@ -1933,7 +1943,7 @@ function IntegerAndDecimal(evt, element) {
                     htmls += ("<table class='item-list-tbl' style='margin-bottom:10px;'><thead><th>S.N.</th><th style='width:250px'>Item</th><th>Qty</th><th>Rate (Rs.)</th><th>Amt (Rs.)</th></thead><tbody id='salesDetailsTbl'>");
 
                     var sn = 1;
-                     
+
                     $.each(orderdetails, function (index, value) {
                         if (value.SeatNo == seatNo) {
                             htmls += ("<tr class='" + value.SeatNo + " allsplited'><td>" + sn + "</td><td class='" + value.ROI_ItemId + "+" + value.CostCenterId + "+" + value.IsCombo + "+" + value.OrderDetailsID + "+" + value.RoomBookDetailID + "'>" + value.ITName + "</td>");
@@ -1955,7 +1965,7 @@ function IntegerAndDecimal(evt, element) {
 
 
                             totalAmount += parseFloat(amt);
-                             
+
                             if (!isab)
                                 htmls += ("<td class='item-amount'>" + amt + "</td></tr>");
                             else
@@ -1977,11 +1987,11 @@ function IntegerAndDecimal(evt, element) {
                                     qnty += value.Quantity;
                                     rate += parseFloat(value.ExtraPrice * value.Quantity);
                                 });
-                                htmls += "</td>"; 
+                                htmls += "</td>";
                                 amt = parseFloat(rate);
-                                 
+
                                 totalAmount += parseFloat(amt);
-                                 
+
                                 if (!isab)
                                     htmls += ("<td class='item-amount'>" + amt + "</td></tr>");
                                 else
@@ -1991,7 +2001,7 @@ function IntegerAndDecimal(evt, element) {
                                 if (group.length > 0) {
                                     const i = costCenterGroup.findIndex(x => x.GroupId === value.GroupId);
                                     costCenterGroup[i].TotalAmt += amt;
-                                }  
+                                }
                             }
                             sn++;
                         }
@@ -2015,7 +2025,7 @@ function IntegerAndDecimal(evt, element) {
                 } else {
                     htmls += ("<div class='left-sec'><h4>Room : " + "  / Table : " + tableinfo.restrotableTitle + " </h4><h4> Waiter: " + "</h4>");
                 }
-                 
+
                 if (tableinfo.RoomBookDetailsID > 0) {
                     htmls += ("<h5>Room Charge Details : </h5>");
                     htmls += ("<table class='room-details-tbl'><thead><th>Room Name</th><th style='width:250px'>Rate</th><th>Days</th><th>Amt (Rs.)</th></thead><tbody>");
@@ -2028,7 +2038,7 @@ function IntegerAndDecimal(evt, element) {
                     htmls += ("</tbody><tfoot><tr class='Total_Amt'><td colspan='3'  style='text-align:right;'>Amount:</td><td colspan='1' style='text-align:left;'><span class='roomtotle'>Rs. " + roomAmount.toFixed(2) + "</span></td></tr>");
                     htmls += ("</tfoot></table>");
                 }
-                 
+
                 htmls += ("<h4>Discount Method</h4>");
                 htmls += ("<div class='dialogflex' style = 'border-top:1px solid gainsboro;border-bottom:none;' > <div id='discountDiv'><table id='tblDiscount' style='display:block;'><tbody>");
 
@@ -2092,7 +2102,7 @@ function IntegerAndDecimal(evt, element) {
                 if (tokeninfo.length > 0) {
                     if (tokeninfo[0].CustomerID > 0) {
                         DashboardFunction.getmembershiplistbyId(tokeninfo[0].CustomerID);
-                    } 
+                    }
                 }
                 $('#billnoForSales').on('change', function () {
                     var Roles = userRole.split(",");
@@ -2378,11 +2388,11 @@ function IntegerAndDecimal(evt, element) {
 
                         var disRate = parseFloat(getValue(this) == "" ? 0 : getValue(this));
                         var dis = 0
-                         
+
                         //Bishal Added
                         if (isab) {
                             if (isAbbreviated) {
-                                 
+
                                 var itemrow = $('#salesDetailsTbl').find('tr');
                                 $.each(itemrow, function (index, value) {
                                     _this = $(this);
