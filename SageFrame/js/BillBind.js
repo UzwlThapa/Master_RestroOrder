@@ -31,7 +31,6 @@ function getBill(salesMasterId, foodCourtOrder) {
             var isAbbreviated = false;
             var billAmount = 0;
 
-
             //Check Abbrevieted Bill
             if (isab) {
                 var v_rate = companyInfo[0].VATRate;
@@ -48,7 +47,6 @@ function getBill(salesMasterId, foodCourtOrder) {
                         billAmount = parseFloat(value.Amount).toFixed(2);
                     }
                 });
-
             }
 
             $.each(billBody, function (index, item) {
@@ -458,23 +456,31 @@ function getBill(salesMasterId, foodCourtOrder) {
                         if (costCenterDis.isLoyalty) {
                             htmls += ("<td colspan='4' style='text-align:right;font-size:11px;margin-right:10px;'><span>Loyality Disc (" + costCenterDis.LoaylityDis + "%): </span>Rs." + parseFloat(billBody[0].totaldiscount).toFixed(2) + "</td></tr>");
                         } else {
-                            $.each(costCenterDis.GroupDis, function (index, value) {
-                                if (value.Discount > 0) {
+                            debugger;
+                            var showTotalDiscount = localStorage.getItem('ShowTotalDiscount') ?? 'false';
+                            if (showTotalDiscount == 'true') {
+                                var totalDiscount = parseFloat(discount.bardis ?? '0') + parseFloat(discount.bakerydis ?? '0') + parseFloat(discount.kotdis ?? '0') + parseFloat(discount.pizzadis ?? '0') + parseFloat(discount.roomdis ?? '0') + parseFloat(discount.roomdis ?? '0');
+                                htmls += ("<td colspan='4' style='text-align:right;font-size:11px;margin-right:10px;'><span>Total Disc: </span>Rs." + parseFloat(totalDiscount).toFixed(2) + "</td></tr>");
+                            }
+                            else {
+                                $.each(costCenterDis.GroupDis, function (index, value) {
+                                    if (value.Discount > 0) {
+                                        if (costCenterDis.isFlatDis) {
+                                            htmls += ("<td colspan='4' style='text-align:right;font-size:11px;margin-right:10px;'><span>" + value.GroupName + " Disc: </span>Rs." + parseFloat(value.Discount).toFixed(2) + "</td></tr>");
+
+                                        } else {
+                                            htmls += ("<td colspan='4' style='text-align:right;font-size:11px;margin-right:10px;'><span>" + value.GroupName + " Disc (" + value.Discount + " %) : </span>Rs." + parseFloat((value.Discount / 100) * (value.TotalAmount + value.NonTaxableAmt)).toFixed(2) + "</td></tr>");
+                                        }
+                                    }
+                                });
+                                if (costCenterDis.RoomDis > 0) {
+
                                     if (costCenterDis.isFlatDis) {
-                                        htmls += ("<td colspan='4' style='text-align:right;font-size:11px;margin-right:10px;'><span>" + value.GroupName + " Disc: </span>Rs." + parseFloat(value.Discount).toFixed(2) + "</td></tr>");
+                                        htmls += ("<td colspan='4' style='text-align:right;font-size:11px;margin-right:10px;'><span>Room Disc: </span>Rs." + parseFloat(costCenterDis.RoomDis).toFixed(2) + "</td></tr>");
 
                                     } else {
-                                        htmls += ("<td colspan='4' style='text-align:right;font-size:11px;margin-right:10px;'><span>" + value.GroupName + " Disc (" + value.Discount + " %) : </span>Rs." + parseFloat((value.Discount / 100) * (value.TotalAmount + value.NonTaxableAmt)).toFixed(2) + "</td></tr>");
-                                   }
-                                }
-                            });
-                            if (costCenterDis.RoomDis > 0) {
-
-                                if (costCenterDis.isFlatDis) {
-                                    htmls += ("<td colspan='4' style='text-align:right;font-size:11px;margin-right:10px;'><span>Room Disc: </span>Rs." + parseFloat(costCenterDis.RoomDis).toFixed(2) + "</td></tr>");
-
-                                } else {
-                                    htmls += ("<td colspan='4' style='text-align:right;font-size:11px;margin-right:10px;'><span>Room Disc (" + costCenterDis.RoomDis + " %) : </span>Rs." + parseFloat((costCenterDis.RoomDis / 100) * costCenterDis.RoomCharge).toFixed(2) + "</td></tr>");
+                                        htmls += ("<td colspan='4' style='text-align:right;font-size:11px;margin-right:10px;'><span>Room Disc (" + costCenterDis.RoomDis + " %) : </span>Rs." + parseFloat((costCenterDis.RoomDis / 100) * costCenterDis.RoomCharge).toFixed(2) + "</td></tr>");
+                                    }
                                 }
                             }
                         }

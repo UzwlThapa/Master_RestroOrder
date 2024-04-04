@@ -92,7 +92,6 @@
                     pdf.addHTML($("#reportDisplay"), 0, 0, options, function () {
                         pdf.save('ItemSalesReport_' + $('#startDate').val() + '_' + $("#EndDate").val() + '.pdf');
                     });
-
                 });
             },
 

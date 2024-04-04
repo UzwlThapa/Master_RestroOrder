@@ -48,6 +48,7 @@ namespace SageFrame.Modules.Admin.LoginControl
         public string AddItemInMenuSearch = ConfigurationManager.AppSettings["AddItemInMenuSearch"].ToString();
         public string numpin = ConfigurationManager.AppSettings["NumPinPad"].ToString();
         public string QRCode = ConfigurationManager.AppSettings["QRCode"].ToString();
+        public string ShowTotalDiscount = ConfigurationManager.AppSettings["ShowTotalDiscount"] ?? "false";
         public int LicenceExpiryDays = 0;
         private Random random = new Random();
         protected void Page_Init(object sender, EventArgs e)

@@ -382,9 +382,6 @@ function prints() {
                             $(MyRows[selectedIndex - 1]).find('td:eq(3)').html($("#DdUnit").val());
                             $(MyRows[selectedIndex - 1]).find('td:eq(4)').html($("#txtQuentity").val());
                             $(MyRows[selectedIndex - 1]).find('td:eq(5)').html($("#txtRate").val());
-                            //$(MyRows[selectedIndex - 1]).find('td:eq(6)').html($("#txtLotNNo").val());
-                            //$(MyRows[selectedIndex - 1]).find('td:eq(7)').html($("#txtBatchNo").val());
-                            //$(MyRows[selectedIndex - 1]).find('td:eq(8)').html($("#txtExpDate").val());
                             $(MyRows[selectedIndex - 1]).find('td:eq(6)').html($("#txtTotal").val());
                             $(MyRows[selectedIndex - 1]).find('td:eq(6)').html($("#txtTotal").attr('attr-conversion'));
                         }

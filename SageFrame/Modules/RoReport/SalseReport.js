@@ -232,13 +232,9 @@ function IntegerAndDecimal(evt, element) {
 
                 });
 
-
-
                 $(".DatePick").datepicker({
                     dateFormat: "yy-mm-dd"
                 }).datepicker("setDate", "0");
-
-
 
                 $("#txtMonthlyDate").datepicker({
                     dateFormat: 'yy-m',
@@ -249,7 +245,6 @@ function IntegerAndDecimal(evt, element) {
                 for (i = new Date().getFullYear(); i > 1900; i--) {
                     $('#seit').append($('<option/>').val(i).html(i));
                 }
-
 
                 for (var i = 0; i < 60; i++) {
                     $('.Min').append($('<option/>').val(i).html(i));
@@ -282,16 +277,6 @@ function IntegerAndDecimal(evt, element) {
                         eventFunction.SaleReportByBillNo();
                     }
                 });
-
-                //$("#EndBillNo").keyup(function (event) {
-                //    var startBillNo = $("#EndBillNo").val();
-                //    var EndBillNo = $("#EndBillNo").val();
-                //    var totalsum = TotalAmount;
-                //    if (EndBillNo < startBillNo) {
-                //        $("#EndBillNo").val("");
-                //    }
-                //})
-
 
                 $("#StartEndReportView").on('click', function () {
                     eventFunction.StartEndDateByReport();
@@ -708,20 +693,24 @@ function IntegerAndDecimal(evt, element) {
                     $('#printedDate').show();
                     var dNow = new Date();
                     var contents = $('#DailyReport');
-                    contents.find('tr th:nth-child(14), tr td:nth-child(14)').hide();
+                    contents.find('.ignore-export').hide();
                     $('#lblPrintedOn').html(dNow);
-                    var options = {
-                        background: '#FFFFFF',
-                        pagesplit: true,
-                    };
-                    var pdf = new jsPDF('p', 'pt', 'a4');
-                    pdf.internal.scaleFactor = 2.22;
-                    pdf.addHTML(contents, 0, 0, options, function () {
-                        pdf.save('SalesReport_' + $('#startDate').val() + '_' + $("#EndDate").val() + '.pdf');
-                    });
-                    contents.find('tr th:nth-child(14), tr td:nth-child(14)').show();
-                    $('#printedDate').hide();
 
+                    var pdf = new jsPDF('l', 'pt', 'a4');
+                    pdf.internal.scaleFactor = 2;
+                    pdf.addHTML(
+                        contents,
+                        0,
+                        0,
+                        {
+                            background: '#FFFFFF',
+                            pagesplit: true,
+                        },
+                        function () {
+                            pdf.save('SalesReport_' + $('#startDate').val() + '_' + $("#EndDate").val() + '.pdf');
+                        });
+                    contents.find('.ignore-export').show();
+                    $('#printedDate').hide();
                 });
             },
             ajaxCall: function (config) {
@@ -1240,7 +1229,7 @@ function IntegerAndDecimal(evt, element) {
                 htmls += "<th style='text-align:right;border:1px solid #575757;padding:2px;' class='tdrate'>Net Amt</th>";
                 htmls += "<th style='text-align:right;border:1px solid #575757;padding:2px;' class='tdrate'>Received Amnt</th>";
                 htmls += "<th style='text-align:right;border:1px solid #575757;padding:2px;' class='tdrate'>Sur/Def</th>";
-                htmls += "<th style='text-align:center;border:1px solid #575757;padding:2px;' class='sort_disable tdcenter' >Action (Bill)</th>";
+                htmls += "<th style='text-align:center;border:1px solid #575757;padding:2px;' class='sort_disable tdcenter ignore-export' >Action (Bill)</th>";
                 htmls += "</tr>"
                 htmls += "</thead>"
                 htmls += "<tbody>"
@@ -1288,9 +1277,9 @@ function IntegerAndDecimal(evt, element) {
                             htmls += "<td class='f' style='text-align:right;border:1px solid #575757;padding:2px;'>" + value.ReceivedAmount.toFixed(2) + "</td>";
                             htmls += "<td class='f' style='text-align:right;border:1px solid #575757;padding:2px;'>" + value.SurplusDeficit.toFixed(2) + "</td>";
 
-                            htmls += '<td class="tdcenter"><label id="' + value.salesMasterId + "_" + value.SPMID + "_" + value.Status + "_" + value.SalesType + '" class="icon-preview btnViewBill" />';
+                            htmls += '<td class="tdcenter ignore-export"><label id="' + value.salesMasterId + "_" + value.SPMID + "_" + value.Status + "_" + value.SalesType + '" class="icon-preview btnViewBill" />';
 
-                            htmls += '<td class="tdcenter">';
+                            htmls += '<td class="tdcenter ignore-export">';
 
                             var roles = userRole.split(',');
                             if (roles.includes("Super User") || roles.includes("Void Bill")) {
@@ -1344,24 +1333,9 @@ function IntegerAndDecimal(evt, element) {
                 htmls += "</tr>"
                 htmls += "</tfoot>"
                 TotalAmount = 0;
-                // htmls += "</tbody>";
                 htmls += "</table>";
 
-
-
-
                 $('#DailyReport').html(htmls);
-
-                //$("#DailyReport").on("click", ".btnEditCustomer", function () {
-                //    var smID = $(this).attr('id').split('_')[0];
-                //    eventFunction.EditCustomer(smID);
-
-                //})
-
-
-
-
-
             },
             GetCustomeronCheck: function () {
                 var customer = 1;
@@ -1393,8 +1367,6 @@ function IntegerAndDecimal(evt, element) {
                                 htmls += "<td>" + value.Name + "</td>";
                                 htmls += "<td>" + value.PAN + "</td>";
                                 htmls += "<td>" + value.Addresss + "</td>";
-                                // htmls += "<td>" + value.Occupation + "</td>";
-                                // htmls += "<td>" + value.Company + "</td>";
                                 htmls += "<td>" + value.TelMobile + "</td>";
                                 htmls += "<td>" + value.discount + "</td>";
                                 htmls += "<td>" + "<img src='/images/completed.png' class='selectCust' style='width:20px;height:20px;' type='button'  id='_" + value.MembershipID + "_" + value.Fname + "_" + value.Lname + "_" + value.PAN + "_" + value.Address + "_" + value.discount + "_" + value.TelMobile + "' value='Delete'  /></td>";
@@ -1406,9 +1378,7 @@ function IntegerAndDecimal(evt, element) {
                             $('#membeshipformlist').html(htmls);
                             $('#customertable').DataTable(
                                 {
-
                                     "jQueryUI": true,
-
                                 });
 
                             $("#membeshipformlist").dialog({
@@ -1418,30 +1388,23 @@ function IntegerAndDecimal(evt, element) {
                                 resizable: true,
                                 position: ['center', 'center']
                             });
-
-
                         } else {
                             $('#membeshipformlist').html('No data');
 
                         }
                         $(".dataTables_scrollBody").css('height', '100%');
 
-                        //  $("#membeshipformlist").on('click', '.selectCust', function (event) {
                         $("#membeshipformlist").on('click', '#customertable tr', function (event) {
                             var dataAttribute = $(this).attr('id');
                             var ids = dataAttribute.split('_');
 
                             $("#custId").val(ids[1]);
-                            //$("#txtCustomerName").val(ids[2] + " " + ids[3]);
-                            //$("#txtPanNumber").val(ids[4]);
                             $("#txtCustomerName").prop('disabled', true);
-
 
                             $("#txtCustomerNameP").val(ids[2] + " " + ids[3]);
                             $('#txtPAN').val(ids[4]);
                             $("#txtCustomerNameP").prop('disabled', true);
                             $("#membeshipformlist").dialog('close');
-
                         });
                     },
                     failure: function (response) {
@@ -1565,7 +1528,6 @@ function IntegerAndDecimal(evt, element) {
 
                                 var salesPaymentList = new Array();
 
-                                //if ($('#chkPayMentMode').is(':checked')) {
                                 $('#divEditCustomer').find('.pmntCheck').each(function () {
                                     if ($(this).is(':checked')) {
                                         var row = $(this).closest('tr');
@@ -1635,18 +1597,7 @@ function IntegerAndDecimal(evt, element) {
 
 
                 $('.pmntCheck').on('change', function () {
-                    ////$(this).closest('tr').find('.txtPayAmount').val(Math.abs(parseFloat($('#txtsurplus').text())));
-                    ////$('.txtPayAmount').change()
-                    //if ($(this).attr('id').split('_')[1] == "4" && $(this).is(':checked') && billInfo.CustomerID < 1) {
-                    //    $(this).prop('checked', false);
-                    //    GetCustomeronChange(billInfo.CustomerID, this);
-                    //}
-                    //else if ($(this).attr('id').split('_')[1] == "4" && $(this).is(':checked') && billInfo.CustomerID > 1) {
-                    //    $(".txtRem").show();
-                    //}
-                    //else {
-                    //    $(".txtRem").hide();
-                    //}
+
                     if ($(this).is(':checked') && $(this).attr('id').split('_')[1] == "4") {
                         //alert(1);
                         eventFunction.GetCustomeronCheck();
@@ -1671,27 +1622,13 @@ function IntegerAndDecimal(evt, element) {
                             $("#hdfCusID").val('');
                             $("#txtCustomerNameP").val('');
                             $("#txtPAN").val('');
-                            //$("#hdfAddress").val('');
-                            //$(".txtRemarks").val('');
-                            //$(".txtRem").hide();
-
                         }
                     } else {
                         var surplusDef = parseFloat($('#txtsurplus').html());
                         if (surplusDef < 0) {
-                            //if ($(this).attr('id').split('_')[1] == "1") {
-                            //    $("#txtTenderAmount").val(Math.abs(surplusDef));
-                            //    $("#txtReturnAmount").val('0');
-                            //}
                             $(this).closest('tr').find('.txtPayAmount').val(Math.abs(surplusDef));
                             $('.txtPayAmount').change();
                         }
-                        //else {
-                        //    if ($(this).attr('id').split('_')[1] == "1") {
-                        //        $("#txtTenderAmount").val('0');
-                        //        $("#txtReturnAmount").val('0');
-                        //    }
-                        //}
                     }
                 });
 

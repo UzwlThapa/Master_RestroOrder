@@ -69,16 +69,23 @@
                     $('#printedDate').show();
                     var dNow = new Date();
                     $('#lblPrintedOn').html(dNow);
-                    var options = {
-                        background: '#FFF',
-                        pagesplit: true,
-                    };
-                    var pdf = new jsPDF('p', 'pt', 'a4');
-                    pdf.internal.scaleFactor = 2.3;
-                    pdf.addHTML($("#DailyReport"), 0, 0, options, function () {
-                        pdf.save('GLReport_' + $('#txtStartDate').val() + '_' + $("#txtToDate").val() + '.pdf');
+                    var contents = $('#DailyReport');
+                    contents.find('.ignore-export').hide();
 
-                    });
+                    var pdf = new jsPDF('l', 'pt', 'a4');
+                    pdf.internal.scaleFactor = 2;
+                    pdf.addHTML(
+                        contents,
+                        0,
+                        0,
+                        {
+                            background: '#FFFFFF',
+                            pagesplit: true,
+                        },
+                        function () {
+                            pdf.save('GLReport_' + $('#txtStartDate').val() + '_' + $("#txtToDate").val() + '.pdf');
+                        });
+                    contents.find('.ignore-export').show();
                     $('#printedDate').hide();
                 });
             },
@@ -287,7 +294,7 @@
                 htmls += "<table id='unittableSecond' class='sfGridwrapper  display pur-static-tbl tablee-section reportsprint' cellspacing='0' style='border:none;width:100%;border-collapse:collapse;'>";
                 htmls += "<thead>";
                 htmls += '<tr style="font-weight:bold;">';
-                htmls += "<th style='text-align:left;border:1px solid #575757;padding-left:2rem !important;'>Date</th><th style='text-align:left;border:1px solid #575757;padding:2px;'>Particulars</th><th style='text-align:right;border:1px solid #575757;padding:2px;'>Debit</th><th style='text-align:right;border:1px solid #575757;padding:2px;'>Credit</th><th style='text-align:right;border:1px solid #575757;padding-right: 8px !important;'>Balance</th><th style='text-align:right;border:1px solid #575757;padding-right: 8px !important;'>View</th>";
+                htmls += "<th style='text-align:left;border:1px solid #575757;padding-left:2rem !important;'>Date</th><th style='text-align:left;border:1px solid #575757;padding:2px;'>Particulars</th><th style='text-align:right;border:1px solid #575757;padding:2px;'>Debit</th><th style='text-align:right;border:1px solid #575757;padding:2px;'>Credit</th><th style='text-align:right;border:1px solid #575757;padding-right: 8px !important;'>Balance</th><th class='ignore-export' style='text-align:right;border:1px solid #575757;padding-right: 8px !important;'>View</th>";
                 htmls += "</tr>";
                 htmls += "</thead>";
                 htmls += "<tbody>";
@@ -314,7 +321,7 @@
                         htmls += '<td></td>';
                         htmls += '<td></td>';
                         htmls += '<td></td>';
-                        htmls += '<td></td>';
+                        htmls += '<td class="ignore-export"></td>';
                         htmls += '</tr>';
 
                         // Opening Balance
@@ -331,9 +338,8 @@
                             htmls += `<td style="text-align:right;border:1px solid #575757;">${formatNumber(openingBalance[0].Debit)}</td>`;
                             htmls += `<td style="text-align:right;border:1px solid #575757;">${formatNumber(openingBalance[0].Credit)}</td>`;
                             htmls += `<td style="text-align:right;border:1px solid #575757;padding-right: 8px !important;">${formatNumber((openingBalance[0].Balance >= 0 ? openingBalance[0].Balance : openingBalance[0].Balance * -1)) + (openingBalance[0].Balance >= 0 ? ' Dr' : ' Cr')}</td>`;
-                            htmls += '<td></td>';
-                            htmls += '</tr>';
-                            console.log("Account View Opening Balance : " + openingBalance[0].Balance);
+                            htmls += '<td class="ignore-export"></td>';
+                            htmls += '</tr>'; 
 
                             var newOpeningBalanceAVew = parseFloat(openingBalance[0].Balance);
                             runningBalance = newOpeningBalanceAVew;
@@ -367,12 +373,10 @@
                             htmls += `<td style="text-align:right;border:1px solid #575757;">${formatNumber(value.Debit)}</td>`;
                             htmls += `<td style="text-align:right;border:1px solid #575757;">${formatNumber(value.Credit)}</td>`;
                             htmls += `<td style="text-align:right;border:1px solid #575757;padding-right: 8px !important;">${formatNumber(Math.abs(runningBalance))} ${runningBalance >= 0 ? ' Dr' : ' Cr'}</td>`;
-                            htmls += `<td style="text-align:right;border:1px solid #575757;padding:2px;"><button class="icon-preview btnViewTransaction" type='button' faid="${value.FinancialAcID}" id="${value.TransactionID}"></button></td>`;
+                            htmls += `<td class='ignore-export' style="text-align:right;border:1px solid #575757;padding:2px;"><button class="icon-preview btnViewTransaction" type='button' faid="${value.FinancialAcID}" id="${value.TransactionID}"></button></td>`;
                             htmls += '</tr>';
                         });
-
-
-
+                         
                         // Group Footer
                         htmls += '<tr style="text-align:left;background:#cfcfcf;font-weight:bold;">';
                         htmls += '<td></td>';
@@ -380,7 +384,7 @@
                         htmls += `<td style="text-align:right;">Ledger Total: ${formatNumber(groupTotalDr)}</td>`;
                         htmls += `<td style="text-align:right;">${formatNumber(groupTotalCr)}</td>`;
                         htmls += `<td style="text-align:right;padding-right: 8px !important;">${formatNumber((groupTotalBal >= 0 ? groupTotalBal : groupTotalBal * -1)) + (groupTotalBal >= 0 ? ' Dr' : ' Cr')}</td>`;
-                        htmls += '<td></td>';
+                        htmls += '<td class="ignore-export"></td>';
                         htmls += '</tr>';
 
                         groupTotalDr = 0;
@@ -395,7 +399,7 @@
                     htmls += `<td style="text-align:right;">Grand Total:${formatNumber(grandTotalDr)}</td>`;
                     htmls += `<td style="text-align:right;">${formatNumber(grandTotalCr)}</td>`;
                     htmls += `<td style="text-align:right;padding-right: 8px !important;">${formatNumber((grandTotalBal >= 0 ? grandTotalBal : grandTotalBal * -1)) + (grandTotalBal >= 0 ? ' Dr' : ' Cr')}</td>`;
-                    htmls += '<td></td>';
+                    htmls += '<td class="ignore-export"></td>';
                     htmls += '</tr>';
 
                     grandTotalDr = 0;
@@ -529,7 +533,7 @@
                 htmls += "<table id='unittableSecond' class='sfGridwrapper  display pur-static-tbl tablee-section reportsprint' cellspacing='0' style='border:none;width:100%;border-collapse:collapse;'>";
                 htmls += "<thead>";
                 htmls += '<tr style="font-weight:bold;">';
-                htmls += "<th style='text-align:left;border:1px solid #575757;padding-left:2rem !important;'>Date</th><th style='text-align:left;border:1px solid #575757;padding:2px;'>Particulars</th><th style='text-align:right;border:1px solid #575757;padding:2px;'>Debit</th><th style='text-align:right;border:1px solid #575757;padding:2px;'>Credit</th><th style='text-align:right;border:1px solid #575757;padding-right: 8px !important;'>Balance</th><th style='text-align:right;border:1px solid #575757;padding-right: 8px !important;'>View</th>";
+                htmls += "<th style='text-align:left;border:1px solid #575757;padding-left:2rem !important;'>Date</th><th style='text-align:left;border:1px solid #575757;padding:2px;'>Particulars</th><th style='text-align:right;border:1px solid #575757;padding:2px;'>Debit</th><th style='text-align:right;border:1px solid #575757;padding:2px;'>Credit</th><th style='text-align:right;border:1px solid #575757;padding-right: 8px !important;'>Balance</th><th class='ignore-export' style='text-align:right;border:1px solid #575757;padding-right: 8px !important;'>View</th>";
                 htmls += "</tr>";
                 htmls += "</thead>";
                 htmls += "<tbody>";
@@ -564,7 +568,7 @@
                         htmls += '<td></td>';
                         htmls += '<td></td>';
                         htmls += '<td></td>';
-                        htmls += '<td></td>';
+                        htmls += '<td class="ignore-export"></td>';
                         htmls += '</tr>';
 
                         // Opening Balance
@@ -578,10 +582,9 @@
                             htmls += `<td style="text-align:right;border:1px solid #575757;">${formatNumber(openingBalance[0].Debit)}</td>`;
                             htmls += `<td style="text-align:right;border:1px solid #575757;">${formatNumber(openingBalance[0].Credit)}</td>`;
                             htmls += `<td style="text-align:right;border:1px solid #575757;padding-right: 8px !important;">${formatNumber((openingBalance[0].Balance >= 0 ? openingBalance[0].Balance : openingBalance[0].Balance * -1)) + (openingBalance[0].Balance >= 0 ? ' Dr' : ' Cr')}</td>`;
-                            htmls += '<td></td>';
+                            htmls += '<td class="ignore-export"></td>';
                             htmls += '</tr>';
-                            console.log("Detail View  " + openingBalance[0].Balance);
-
+                             
                             var newOpeningBalanceDView = parseFloat(openingBalance[0].Balance);
 
                             Balance = newOpeningBalanceDView;
@@ -609,7 +612,7 @@
                             htmls += `<td style="text-align:right;border:1px solid #575757;">${formatNumber(value.Debit)}</td>`;
                             htmls += `<td style="text-align:right;border:1px solid #575757;">${formatNumber(value.Credit)}</td>`;
                             htmls += `<td style="text-align:right;border:1px solid #575757;padding-right: 8px !important;">${formatNumber(Math.abs(Balance))} ${Balance >= 0 ? ' Dr' : ' Cr'}</td>`;
-                            htmls += `<td style="text-align:right;border:1px solid #575757;padding:2px;"><button class="icon-preview btnViewTransaction" type='button' faid="${value.FinancialAcID}" id="${value.TransactionID}"></button></td>`;
+                            htmls += `<td class="ignore-export" style="text-align:right;border:1px solid #575757;padding:2px;"><button class="icon-preview btnViewTransaction" type='button' faid="${value.FinancialAcID}" id="${value.TransactionID}"></button></td>`;
                             htmls += '</tr>';
                         });
 
@@ -623,7 +626,7 @@
                         htmls += `<td style="text-align:right;">Ledger Total: ${formatNumber(groupTotalDr)}</td>`;
                         htmls += `<td style="text-align:right;">${formatNumber(groupTotalCr)}</td>`;
                         htmls += `<td style="text-align:right;padding-right: 8px !important;">${formatNumber((groupTotalBal >= 0 ? groupTotalBal : groupTotalBal * -1)) + (groupTotalBal >= 0 ? ' Dr' : ' Cr')}</td>`;
-                        htmls += '<td></td>';
+                        htmls += '<td class="ignore-export"></td>';
                         htmls += '</tr>';
 
                         groupTotalDr = 0;
@@ -638,7 +641,7 @@
                     htmls += `<td style="text-align:right;">Grand Total:${formatNumber(grandTotalDr)}</td>`;
                     htmls += `<td style="text-align:right;">${formatNumber(grandTotalCr)}</td>`;
                     htmls += `<td style="text-align:right;padding-right: 8px !important;">${formatNumber((grandTotalBal >= 0 ? grandTotalBal : grandTotalBal * -1)) + (grandTotalBal >= 0 ? ' Dr' : ' Cr')}</td>`;
-                    htmls += '<td></td>';
+                    htmls += '<td class="ignore-export"></td>';
                     htmls += '</tr>';
 
                     grandTotalDr = 0;
