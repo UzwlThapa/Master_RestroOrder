@@ -27,20 +27,17 @@ public class WebServiceForCusBalanceReport : System.Web.Services.WebService
     {
         try
         {
-
             RestrOrderController dcobj = new RestrOrderController();
             return dcobj.getCustomerBalanceReport(startDate, endDate, CustomerName);
         }
         catch (Exception)
         {
-
             throw;
         }
     }
 
     public WebServiceForCusBalanceReport()
     {
-
         //Uncomment the following line if using designed components 
         //InitializeComponent(); 
     }
@@ -182,7 +179,7 @@ public class WebServiceForCusBalanceReport : System.Web.Services.WebService
         }
 
     }
-    
+
     [WebMethod]
     public string GetGoodsReceivedDetailsByGMId(int gmid)
     {
@@ -193,11 +190,10 @@ public class WebServiceForCusBalanceReport : System.Web.Services.WebService
     public string sendSMS(string to, string text)
     {
         SMS sms = new SMS();
-        //return jss.Serialize(sms.PostSMS(to, text));
         return sms.PostSMS(to, text);
     }
 
-          [WebMethod]
+    [WebMethod]
     public string savePrintCount(int Printcount, string BillNo, string PrintedBy)
     {
         RestrOrderController rocc = new RestrOrderController();
@@ -206,9 +202,9 @@ public class WebServiceForCusBalanceReport : System.Web.Services.WebService
             return rocc.SavePrintCountDetail(Printcount, BillNo, PrintedBy);
         }
         return "";
-
     }
-  [WebMethod]
+
+    [WebMethod]
     public string getcustomerbalanceReceipt(int memberpayid)
     {
         RestoLoyaltyController dfcobj = new RestoLoyaltyController();
@@ -217,10 +213,9 @@ public class WebServiceForCusBalanceReport : System.Web.Services.WebService
     }
 
     [WebMethod]
-    public void CreditCancelWithReason(int id, int memberId,string userName, string reason, string date)
+    public void CreditCancelWithReason(int id, int memberId, string userName, string reason, string date)
     {
         RestrOrderController rc = new RestrOrderController();
         rc.CreditCancelWithReason(id, memberId, userName, reason, date);
     }
-
 }

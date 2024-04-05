@@ -439,7 +439,7 @@ function Print() {
                 $("#BalanceTransactionlist").on('click', '.btnCancelCredit', function (event) {
 
                     var Username = SageFrameUserName;
-
+                    debugger;
                     var nepaliDate = formatDate();
 
                     var id = $(this).attr('id');

@@ -831,28 +831,28 @@ function IntegerAndDecimal(evt, element) {
                 if (datas.length > 0) {
                     htmls += "<h4>Tables in " + datas[0].restroRoom + "</h4><hr><ul>";
 
-                    $.each(datas, function (index, value) {
-                        debugger;
-                        // new added for table bill not cleared issue majheri
+                    $.each(datas, function (index, value) { 
                         htmls += ("<a id ='" + (value.IsTable ? "Table_" : "Room_"));
                         if (value.BillPaid.toString() == '1') {
                             htmls += ("" + value.restrotableId + "_clearBill' class='imgtable'>");
                             htmls += ("<li>");
                             htmls += ("<img src='" + p.HostUrl + "/Modules/RestroDashboard/image/" + (value.IsTable ? "tableyellow.png" : "room-red.png") + "'> ");
+                            htmls += ("<h5 style='color: #a9a960;font-weight:bold;font-size: 9pt;' class='");
                         }
                         else {
                             if (value.tableDate == "") {
                                 htmls += ("" + value.restrotableId + "_img_yes_notoccupied_" + value.restrotableTitle + "' class = 'imgtable'  >");
                                 htmls += ("<li>");
                                 htmls += ("<img src='" + p.HostUrl + "/Modules/RestroDashboard/image/" + (value.IsTable ? "tablegreen.png" : "room-green.png") + "'> ");
+                                htmls += ("<h5 style='color: green;font-weight:bold;font-size: 9pt;' class='");
                             } else {
                                 htmls += ("" + value.restrotableId + "_img_yes_occupied_" + value.restrotableTitle + "' class = 'imgtable'  >");
                                 htmls += ("<li>");
                                 htmls += ("<img src='" + p.HostUrl + "/Modules/RestroDashboard/image/" + (value.IsTable ? "tablered.png" : "room-red.png") + "'> ");
+                                htmls += ("<h5 style='color: red;font-weight:bold;font-size: 9pt;' class='");
                             }
                         }
 
-                        htmls += ("<h5 class='");
                         htmls += (value.BillPaid.toString() == '0' && value.IsCancelled.toString() == '0' && value.IsTable ? "NotPaid" : "Paid");
                         htmls += ("' >" + (value.MergeTableList > 0 ? value.MergeTableName : value.restrotableTitle) + "</h5>");
 
@@ -912,7 +912,8 @@ function IntegerAndDecimal(evt, element) {
                 $('.Rooms').html("");
                 var datas = JSON.parse(result.d);
                 if (datas.length > 0) {
-                    htmls += "<h4>Rooms in " + datas[0].Title + "</h4><hr><ul>";
+                    //htmls += "<h4>Rooms in " + datas[0].Title + "</h4><hr><ul>";
+                    htmls += "<h4>Rooms</h4><hr><ul>";
                     $.each(datas, function (index, value) {
                         htmls += ("<a id ='");
                         htmls += ("Room_" + value.restroRoomId + "_img' class = 'imgRoom' >")
@@ -999,7 +1000,6 @@ function IntegerAndDecimal(evt, element) {
                             htmls += ("<td>" + value.Quantity + "</td>");
                             htmls += ("<td>" + value.SRate + "</td>");
                             qnty += parseFloat(value.Quantity);
-                            //amt = parseFloat(value.Quantity) * parseFloat(value.Amount);
                             amt = parseFloat(value.Amount);
                             totalAmount += parseFloat(amt);
                             htmls += ("<td>" + amt.toFixed(2) + "</td></tr>");
