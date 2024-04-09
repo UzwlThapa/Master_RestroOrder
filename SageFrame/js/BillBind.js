@@ -193,7 +193,7 @@ function getBill(salesMasterId, foodCourtOrder) {
                 var time = date[1].split(":")[0] + ":" + date[1].split(":")[1] + " " + date[2];
                 htmls += "<td colspan='6' style='text-align:right;font-size:11px;margin-right:10px;'>INV No : " + billBody[0].BillNo + "</td>";
 
-                htmls += "<tr><td colspan='1' style='text-align:left;font-size:11px;'>Invoice Date : " + billBody[0].NepaliInvoiceDate.split('.').join('/') + "</td>";
+                htmls += "<tr><td colspan='1' style='text-align:left;font-size:11px;'>Invoice Date (NP) : " + billBody[0].NepaliInvoiceDate.split('.').join('/') + "</td>";
                 if (!foodCourtOrder) {
                     htmls += "<td colspan='6' style='text-align:right;font-size:11px;margin-right:10px;'>Table : " + billBody[0].restrotableTitle + "</td>";
                 } else {
@@ -201,7 +201,10 @@ function getBill(salesMasterId, foodCourtOrder) {
                 }
                 htmls += "</tr>";
 
-                htmls += "<tr><td colspan='2' style='text-align:left;font-size:11px;'>Transaction Date : " + billBody[0].Date.split(' ')[0] + "</td>";
+                var dateSegment = billBody[0].Date.split(' ');
+                var timeSegment = dateSegment[1].split(':');
+                var time = `${timeSegment[0]}:${timeSegment[1]}`;
+                htmls += "<tr><td colspan='2' style='text-align:left;font-size:11px;'>Invoice Date : " + dateSegment[0] + " " + time + " " + dateSegment[2] + "</td>";
 
                 htmls += "</tr>";
             }
