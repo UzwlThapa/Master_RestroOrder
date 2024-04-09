@@ -5160,7 +5160,7 @@ div#NumPad {
 /*  Dining Table layout override*/
 
 .Tables ul li, .OccupiedRooms ul li, .Rooms ul li, .RoomsForMerge ul li, .TablesForMerge ul li, .RoomsForShift ul li, .TablesForShift ul li {
-    width: 7rem;
+    width: 6rem !important;
 }
 
 .Rooms, .RoomsForMerge, .RoomsForShift, .TablesInRooms {
@@ -5190,7 +5190,7 @@ div#NumPad {
 }
 
 .TablesInRooms > ul {
-    margin-left: 1rem;
+    margin-left: 1rem !important;
 }
 
 .Tables h4 {

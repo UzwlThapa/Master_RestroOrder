@@ -30,6 +30,7 @@ namespace SageFrame.RestoLoyalty
                 Param.Add(new KeyValuePair<string, object>("@Birthday", MemberInfo.Birthday));
                 Param.Add(new KeyValuePair<string, object>("@Anniversary", MemberInfo.Anniversary));
                 Param.Add(new KeyValuePair<string, object>("@CardNumber", MemberInfo.CardNumber));
+                Param.Add(new KeyValuePair<string, object>("@ExtraDetail", MemberInfo.ExtraDetail));
                 Param.Add(new KeyValuePair<string, object>("@OpeningBalance", MemberInfo.OpeningBalance));
                 if (MemberInfo.DateOfIssue == "")
                 {

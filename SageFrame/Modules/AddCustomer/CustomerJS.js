@@ -49,11 +49,11 @@ function Print() {
     // $('#tabss').css('display', 'block');
     $.companyProfcreate = function (p) {
         p = $.extend
-             ({
-                 UserModuleID: '',
-                 ModulePath: '',
-                 Customer: ''
-             }, p);
+            ({
+                UserModuleID: '',
+                ModulePath: '',
+                Customer: ''
+            }, p);
         var v = 0;
         var name = [];
         var checks = [];
@@ -86,11 +86,11 @@ function Print() {
                 $('#txtSearch').on('keyup', function () {
                     companyProf.Bindmember();
                 });
-              
+
                 var mid = getParameterByName("ID", window.location.href);
 
                 if (mid != null) {
-                    
+
                     companyProf.config.method = "getmembershiplistbyId";
                     companyProf.config.url = companyProf.config.baseURL + companyProf.config.method;
                     companyProf.config.data = JSON2.stringify({ memberid: mid });
@@ -135,9 +135,9 @@ function Print() {
                 });
 
                 numbers = [];
-               // if (p.Customer == 1) {
-                    companyProf.getmember();
-              //  }
+                // if (p.Customer == 1) {
+                companyProf.getmember();
+                //  }
 
             },
             init: function () {
@@ -167,7 +167,7 @@ function Print() {
                 });
 
                 $('#btnPdf').click(function () {
-                    $('#printedDate').show();                  
+                    $('#printedDate').show();
                     $('.BrandEdit').hide();
                     $('.checkbox').hide();
                     $('.edit').hide();
@@ -187,7 +187,7 @@ function Print() {
                     $('.checkbox').show();
                     $('.edit').show();
                 });
-          
+
 
                 $("#txtCardNumber").change(function () {
                     for (var i = 0; i < checks.length; i++) {
@@ -209,15 +209,14 @@ function Print() {
                     }
                 });
                 $("#selLoyalityCardType").change(function () {
-                    if($("#selLoyalityCardType").val() == '1')
-                    {
+                    if ($("#selLoyalityCardType").val() == '1') {
                         $("#txtDiscount").attr("disabled", false);
                     } else {
-                        companyProf.GetLoyalityDiscountByCard(parseInt($("#selLoyalityCardType").val()));                    
+                        companyProf.GetLoyalityDiscountByCard(parseInt($("#selLoyalityCardType").val()));
                     }
-                    
+
                 });
-                
+
                 $("#btnSaveMembershipApplication").on("click", function (event) {
                     var checkValid = companyProf.ValidationForm();
                     if (checkValid) {
@@ -298,10 +297,10 @@ function Print() {
                                 window.close();
                             }
                         });
-                            $("#divForMember").hide();
-                            companyProf.getmember();
-                            $(".report-view").show();
-                            $(".report-filter").show();
+                        $("#divForMember").hide();
+                        companyProf.getmember();
+                        $(".report-view").show();
+                        $(".report-filter").show();
                         break;
                     case 3:
                         Custlist = [];
@@ -323,15 +322,14 @@ function Print() {
                         userRole = role.Roles;
                         break;
                     case 7:
-                        if (data.d == 100)
-                        {
+                        if (data.d == 100) {
                             jAlert("This Customer cannot be deleted.", "Information!!", function () { });
                         } else {
                             jAlert("Deleted successfully", "Information!!", function () {
                                 companyProf.getmember();
                             });
                         }
-                       
+
                         break;
                     case 8:
                         loyalitylist = JSON.parse(data.d);
@@ -402,7 +400,7 @@ function Print() {
             },
 
             SaveMembership: function () {
-                
+
                 var MemberInfo = {};
                 MemberInfo.MembershipID = companyProf.config.MembershipID;
                 MemberInfo.Fname = $('#txtFirstName').val();
@@ -426,9 +424,12 @@ function Print() {
                 MemberInfo.DateOfExpire = $('#txtDateOfExpiry').val();
                 MemberInfo.discount = $('#txtDiscount').val();
                 MemberInfo.OpeningBalance = $('#txtOpeningBalance').val();
+                MemberInfo.ExtraDetail = $('#txtExtraDetail').val();
+
                 if (MemberInfo.discount == "") {
                     MemberInfo.discount = 0;
                 }
+
                 MemberInfo.IsCustomer = true;
                 MemberInfo.IsVat = false;
                 MemberInfo.AddedBy = SageFrameUserName;
@@ -477,7 +478,7 @@ function Print() {
                 htmls += "<table id='Brandtable' class='reportsprint' cellspacing='0'>"
                 htmls += "<thead>"
                 htmls += "<tr>"
-                htmls += "<th><input type='checkbox' class='checkbox'  id='select_all' /></th><th style='width:200px'> Name </th><th style='width:200px'> Address </th><th>PAN</th><th>Card No.</th><th> Occupation </th><th> Company </th><th> ContactNo.</th><th style='width:90px'> Discount(%) </th><th class='tdrate' style='width:90px'> Opening BAL </th><th class='tdrate' style='width:90px'> RMNG BAL </th><th class='tdrate' style='width:90px'> Total Paid </th>"
+                htmls += "<th><input type='checkbox' class='checkbox'  id='select_all' /></th><th style='width:200px'> Name </th><th style='width:200px'> Address </th><th>PAN</th><th>Card No.</th><th> Extra Info </th><th> Occupation </th><th> Company </th><th> ContactNo.</th><th style='width:90px'> Discount(%) </th><th class='tdrate' style='width:90px'> Opening BAL </th><th class='tdrate' style='width:90px'> RMNG BAL </th><th class='tdrate' style='width:90px'> Total Paid </th>"
 
                 if (Roles.includes("Manager") || Roles.includes("Super User") || Roles.includes("Site Admin")) {
                     htmls += "<th class='edit'>Edit</th>";
@@ -504,6 +505,7 @@ function Print() {
                             htmls += "<td style='width:200px'>" + value.Addresss + "</td>";
                             htmls += "<td style='width:90px'>" + value.PAN + "</td>";
                             htmls += "<td style='width:90px'>" + value.CardNumber + "</td>";
+                            htmls += "<td>" + value.ExtraDetail + "</td>";
                             htmls += "<td>" + value.Occupation + "</td>";
                             htmls += "<td>" + value.Company + "</td>";
                             htmls += "<td>" + value.TelMobile + "</td>";
@@ -513,15 +515,15 @@ function Print() {
                             htmls += "<td style='width:90px;text-align:right;'>Rs. " + value.UptoNowPaid + "</td>";
 
                             if (Roles.includes("Manager") || Roles.includes("Super User") || Roles.includes("Site Admin")) {
-                                htmls += "<td>" + "<img src='/images/edit.png' class='edit-icon BrandEdit' type='button'  id='" + value.MembershipID + "+" + value.Fname + "+" + value.Lname + "+" + value.Address + "+" + value.City + "+" + value.Country + "+" + value.TelHome + "+" + value.TelWork + "+" + value.TelMobile + "+" + value.Email + "+" + value.Occupation + "+" + value.Company + "+" + value.Birthday + "+" + value.Anniversary + "+" + value.CardNumber + "+" + value.DateOfIssue + "+" + value.DateOfExpire + "+" + value.discount + "+" + value.PAN + "+" + value.IsCustomer + "+" + value.OpeningBalance + "' value='Edit'  /></td>";
+                                htmls += "<td>" + "<img src='/images/edit.png' class='edit-icon BrandEdit' type='button'  id='" + value.MembershipID + "+" + value.Fname + "+" + value.Lname + "+" + value.Address + "+" + value.City + "+" + value.Country + "+" + value.TelHome + "+" + value.TelWork + "+" + value.TelMobile + "+" + value.Email + "+" + value.Occupation + "+" + value.Company + "+" + value.Birthday + "+" + value.Anniversary + "+" + value.CardNumber + "+" + value.DateOfIssue + "+" + value.DateOfExpire + "+" + value.discount + "+" + value.PAN + "+" + value.IsCustomer + "+" + value.OpeningBalance + "+" + value.ExtraDetail + "' value='Edit'  /></td>";
                             }
                             if (Roles.includes("Super User")) {
-                            htmls += "<td>" + "<img src='/images/delete.png' class='BrandDelete' type='button'  id=_" + value.MembershipID + " value='Delete'  /></td>";
+                                htmls += "<td>" + "<img src='/images/delete.png' class='BrandDelete' type='button'  id=_" + value.MembershipID + " value='Delete'  /></td>";
                             }
                             htmls += "</tr>"
                             checks.push(value.CardNumber);
                         }
-                        });
+                    });
 
                 } else {
                     htmls += "<tr>";
@@ -529,31 +531,31 @@ function Print() {
                     htmls += '</tr>';
 
                 }
-                    htmls += "</tbody>";
-                    htmls += "</table>";
-                    $('#membeshipformlist').html(htmls);
+                htmls += "</tbody>";
+                htmls += "</table>";
+                $('#membeshipformlist').html(htmls);
 
-             
+
                 $(".dataTables_scrollBody").css('height', '100%');
-                    $('#select_all').on('click', function () {
-                        if (this.checked) {
-                            $('.checkbox').each(function () {
-                                this.checked = true;
-                            });
-                        } else {
-                            $('.checkbox').each(function () {
-                                this.checked = false;
-                            });
-                        }
-                    });
+                $('#select_all').on('click', function () {
+                    if (this.checked) {
+                        $('.checkbox').each(function () {
+                            this.checked = true;
+                        });
+                    } else {
+                        $('.checkbox').each(function () {
+                            this.checked = false;
+                        });
+                    }
+                });
 
-                    $('.checkbox').on('click', function () {
-                        if ($('.checkbox:checked').length == $('.checkbox').length) {
-                            $('#select_all').prop('checked', true);
-                        } else {
-                            $('#select_all').prop('checked', false);
-                        }
-                    });
+                $('.checkbox').on('click', function () {
+                    if ($('.checkbox:checked').length == $('.checkbox').length) {
+                        $('#select_all').prop('checked', true);
+                    } else {
+                        $('#select_all').prop('checked', false);
+                    }
+                });
 
                 $("#membeshipformlist").on('click', '.BrandEdit', function (event) {
                     var ids = $(this).attr('id');
@@ -577,11 +579,11 @@ function Print() {
                     $('#txtDateOfExpiry').val(words[16].split(" ")[0]);
                     $('#txtDiscount').val(words[17]);
                     $('#txtCustPan').val(words[18]);
-                    $('#Customer').val(words[19]);  
-                    $('#txtOpeningBalance').val(words[20]);  
+                    $('#Customer').val(words[19]);
+                    $('#txtOpeningBalance').val(words[20]);
+                    $('#txtExtraDetail').val(words[21]);
                     $.each(loyalitylist, function (index, item) {
-                        if (words[17] == item.discount)
-                        {
+                        if (words[17] == item.discount) {
                             $("#selLoyalityCardType").val(item.CardTypeID);
                             $("#selLoyalityCardType").change();
                         }

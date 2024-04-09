@@ -16,7 +16,7 @@ namespace SageFrame.RestoLoyalty
         public decimal rate { get; set; }
         public decimal NetAmount { get; set; }
         public bool IsCombo { get; set; }
-        
+
     }
 
     public class BalanceTransaction
@@ -73,6 +73,7 @@ namespace SageFrame.RestoLoyalty
         public bool IsVat { get; set; }
         public int GoodReceivedMainId { get; set; }
         public decimal OpeningBalance { get; set; }
+        public string ExtraDetail { get; set; }
     }
 
     public class AgentInfo
@@ -95,7 +96,7 @@ namespace SageFrame.RestoLoyalty
         public string Company { get; set; }
         //public string Birthday { get; set; }
         //public string Anniversary { get; set; }
-       // public string CardNumber { get; set; }
+        // public string CardNumber { get; set; }
         public string DateOfIssue { get; set; }
         public string DateOfExpire { get; set; }
         public decimal Commission { get; set; }
@@ -134,7 +135,7 @@ namespace SageFrame.RestoLoyalty
     //}
 
     public class ItemInfo
-         {
+    {
         public int ItemRateID { get; set; }
         public int ITId { get; set; }
 
@@ -151,15 +152,15 @@ namespace SageFrame.RestoLoyalty
 
 
         public int RId { get; set; }
-       
-       
+
+
         public decimal PRate { get; set; }
         public decimal SRate { get; set; }
         public string ValidFrom { get; set; }
         public string PostedBy { get; set; }
         public DateTime PostedOn { get; set; }
 
-         
+
 
     }
 
@@ -199,7 +200,7 @@ namespace SageFrame.RestoLoyalty
     }
     public class extraBillingDetails
     {
-      //  public int ExtraBillingDetailsID { get; set; }
+        //  public int ExtraBillingDetailsID { get; set; }
         public int BillingID { get; set; }
 
         public string Item { get; set; }

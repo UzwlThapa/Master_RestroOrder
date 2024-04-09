@@ -168,6 +168,13 @@
                     <td></td>
                 </tr>
                 <tr>
+                    <td>Extra Info :
+                    </td>
+                    <td>
+                        <textarea type="text" id="txtExtraDetail" class="sfInputbox "></textarea>
+                    </td>
+                </tr>
+                <tr>
                     <td></td>
                     <td>
                         <input type="button" id="btnSaveMembershipApplication" value="Save" class="sfLocale icon-save sfBtn" />

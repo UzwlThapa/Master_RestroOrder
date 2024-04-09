@@ -1,16 +1,18 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeFile="AddCustomer.ascx.cs" Inherits="Modules_AddCustomer_AddCustomer" %>
 <style>
-
     input[readonly] {
         cursor: pointer !important;
     }
-    #txtCardNumber{text-transform: uppercase;}
+
+    #txtCardNumber {
+        text-transform: uppercase;
+    }
 </style>
 <script type="text/javascript">
     $(function () {
         $(this).companyProfEDIT({
             ModulePath: '<%=modulePath %>',
-            UserModuleID: '<%=userModuleID %>',          
+            UserModuleID: '<%=userModuleID %>',
         });
         $("#txtAnniversary").datepicker({
             changeYear: true,
@@ -26,9 +28,9 @@
 <div class="RO_wrapper">
     <div id="divForMember">
         <div class="main">
-            <table style="display:block;">
+            <table style="display: block;">
                 <tr>
-                    <td  class="custo">First Name :
+                    <td class="custo">First Name :
                     </td>
                     <td>
                         <input type="text" id="txtFirstName" class="sfInputbox " name="FirstName" />
@@ -139,42 +141,39 @@
                         <input type="text" id="txtDiscount" class="sfInputbox " name="Discount" onkeypress='return IntegerAndDecimal(event,this);' placeholder="percentage" />
                     </td>
                 </tr>
-                  <tr class="custo">
+                <tr class="custo">
                     <td>Date Of Expiry :
                     </td>
                     <td>
                         <input type="text" id="txtDateOfExpiry" class="sfInputbox " name="DateOfExpiry" readonly />
                     </td>
 
-                    <td>
-                    </td>
-                    <td>
-                    </td>
-                </tr>
-                <tr >
                     <td>Opening Balance :
                     </td>
                     <td>
                         <input type="text" id="txtOpeningBalance" class="sfInputbox " value="0" />
                     </td>
-
-                    <td>
+                </tr>
+                <tr>
+                    <td>Extra Info :
                     </td>
                     <td>
+                        <textarea type="text" id="txtExtraDetail" class="sfInputbox "></textarea>
                     </td>
                 </tr>
                 <tr>
                     <td></td>
                     <td>
                         <input type="button" id="btnSaveMembershipApplication" value="Save" class="sfLocale icon-save sfBtn" />
-                        <%--<input type="button" id="btnCancelItem" class="sfLocale icon-close sfBtn" value="Cancel">--%>
                     </td>
                 </tr>
             </table>
-            
+
         </div>
     </div>
-    
-          <div class="report-filter" style="display:none;">
-             <span>Search :</span> <input type="text" class="sfInputbox" id="txtSearch" /></div>
+
+    <div class="report-filter" style="display: none;">
+        <span>Search :</span>
+        <input type="text" class="sfInputbox" id="txtSearch" />
+    </div>
 </div>
