@@ -58,11 +58,11 @@ public partial class Modules_Dinning_Dinning : BaseUserControl
     private void BindRoomsDatas()
     {
         StringBuilder str = new StringBuilder();
-        str.Append("<div class='Rooms'> </div>");
+        str.Append("<div class='Rooms Rooms_Custom'> </div>");
         ltrRoom.Text = str.ToString();
 
         StringBuilder str1 = new StringBuilder();
-        str1.Append("<div class='TablesInRooms Tables'> </div>");
+        str1.Append("<div class='TablesInRooms TablesInRooms_Custom Tables Tables_Custom'> </div>");
         ltrtable.Text = str1.ToString();
     }
 

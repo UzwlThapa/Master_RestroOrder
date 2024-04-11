@@ -164,19 +164,13 @@ function IntegerAndDecimal(evt, element) {
 
                     var effect = 'slide';
                     var options = { direction: 'right' };
-                    var duration = 700;
-                    //if ($('#callwaiterDiv').css("display") == 'none') {
-
-                    //    $('#callwaiterDiv').toggle(effect, options, duration);
-                    //    $('#CusOrder').hide();
-                    //}
+                    var duration = 700; 
                     $('.delivery').prop('checked', true);
                     $(".com").show();
                     $(".dine").hide();
                 });
 
-                $(".imgroomtype").on('click', function () {
-                    //$('#DialogOrderDetail').html("");
+                $(".imgroomtype").on('click', function () { 
                     $('#CusOrder').hide();
                     $('.hometab').hide();
 
@@ -1219,19 +1213,19 @@ function IntegerAndDecimal(evt, element) {
                         htmls += ("<a id ='" + (value.IsTable ? "Table_" : "Room_"));
                         if (value.BillPaid.toString() == '1') {
                             htmls += ("" + value.restrotableId + "_clearBill' class='imgtable'>");
-                            htmls += ("<li>");
+                            htmls += ("<li style='width: 6rem !important;'>");
                             htmls += ("<img src='" + p.HostUrl + "/Modules/RestroDashboard/image/" + (value.IsTable ? "tableyellow.png" : "room-red.png") + "'> ");
                             htmls += ("<h5 style='color: #a9a960;font-weight:bold;font-size: 9pt;' class='");
                         }
                         else {
                             if (value.tableDate == "") {
                                 htmls += ("" + value.restrotableId + "_img_yes_notoccupied_" + value.restrotableTitle + "' class = 'imgtable'  >");
-                                htmls += ("<li>");
+                                htmls += ("<li style='width: 6rem !important;'>");
                                 htmls += ("<img src='" + p.HostUrl + "/Modules/RestroDashboard/image/" + (value.IsTable ? "tablegreen.png" : "room-green.png") + "'> ");
                                 htmls += ("<h5 style='color: green;font-weight:bold;font-size: 9pt;' class='");
                             } else {
                                 htmls += ("" + value.restrotableId + "_img_yes_occupied_" + value.restrotableTitle + "' class = 'imgtable'  >");
-                                htmls += ("<li>");
+                                htmls += ("<li style='width: 6rem !important;'>");
                                 htmls += ("<img src='" + p.HostUrl + "/Modules/RestroDashboard/image/" + (value.IsTable ? "tablered.png" : "room-red.png") + "'> ");
                                 htmls += ("<h5 style='color: red;font-weight:bold;font-size: 9pt;' class='");
                             }
@@ -1373,13 +1367,12 @@ function IntegerAndDecimal(evt, element) {
                 var htmls = [];
                 $('.Rooms').html("");
                 var datas = result.d;
-                if (datas.length > 0) {
-                    //htmls += "<h4>Rooms in " + datas[0].Title + "</h4><hr><ul>";
+                if (datas.length > 0) { 
                     htmls += "<h4>Rooms</h4><hr><ul>";
                     $.each(datas, function (index, value) {
                         htmls += ("<a id ='");
                         htmls += ("Room_" + value.restroRoomId + "_img' class = 'imgRoom' >")
-                        htmls += ("<li>");
+                        htmls += ("<li style='width: 6rem !important;'>");
                         htmls += ("<img src='" + p.HostUrl + "/Modules/RestroDashboard/image/room.png'> ");
                         htmls += ("<h5 class='NotPaid'>" + value.restroRoom + "</h5></li></a>");
 
@@ -1396,10 +1389,8 @@ function IntegerAndDecimal(evt, element) {
                     $('.TablesInRooms').hide();
                 }
                 $('.imgroomtype').on('click', function () {
-
                     $(this).closest('li').siblings('li').removeClass('active');
                     $(this).closest('li').addClass('active');
-
                 });
 
                 $(".imgRoom").on('click', function () {
@@ -1409,17 +1400,12 @@ function IntegerAndDecimal(evt, element) {
                     var id = data.split('_');
                     RoomId = parseInt(id[1]);
                     activeorder = id[1];
-
                     DashboardFunction.GetTableByRoomTypeId(parseInt(id[1]));
-
                 });
+
                 $('.Rooms').show();
-                //$('.Tables').hide();
-                //$('.TablesInRooms').hide();
-                //$('#OccupiedTablesdiv').hide();
                 $('#OccupiedRoomsdiv').hide();
                 $('#BookedRoomsdiv').hide();
-
             },
 
             BindTabledataById: function (result) {
@@ -1567,8 +1553,7 @@ function IntegerAndDecimal(evt, element) {
                     DashboardFunction.config.ShiftID = $(this).attr('id').split("_")[1];
                     $(".imgroomtypeforshift").val("");
                     $(".imgRoomForShift").val("");
-                    $(".TablesForShift").hide();
-                    //$(".RoomsForShift").hide();
+                    $(".TablesForShift").hide(); 
                     pinfor = "shift";
                     $('#divForRoomTableShift').dialog({
                         'title': 'Shift Table',
@@ -1610,7 +1595,6 @@ function IntegerAndDecimal(evt, element) {
                     $(".imgroomtypeforshift").val("");
                     $(".imgRoomForShift").val("");
                     $(".TablesForShift").hide();
-                    //$(".RoomsForShift").hide();
                     $('#divForRoomTableShift').dialog({
                         'title': 'Shift Table',
                         width: 650,
@@ -2873,13 +2857,11 @@ function IntegerAndDecimal(evt, element) {
 
                 });
                 $('div.dataTables_filter input').addClass('sfInputbox');
-                $('#OccupiedTables').on('click', '.shiftTable', function () {
-                    //$('#DialogOrderDetail').dialog('close');
+                $('#OccupiedTables').on('click', '.shiftTable', function () { 
                     DashboardFunction.config.ShiftID = $(this).attr('id').split("_")[1];
                     $(".imgroomtypeforshift").val("");
                     $(".imgRoomForShift").val("");
-                    $(".TablesForShift").hide();
-                    //$(".RoomsForShift").hide();
+                    $(".TablesForShift").hide(); 
                     pinfor = "shift";
                     $('#divForRoomTableShift').dialog({
                         'title': 'Shift Table',

@@ -835,19 +835,19 @@ function IntegerAndDecimal(evt, element) {
                         htmls += ("<a id ='" + (value.IsTable ? "Table_" : "Room_"));
                         if (value.BillPaid.toString() == '1') {
                             htmls += ("" + value.restrotableId + "_clearBill' class='imgtable'>");
-                            htmls += ("<li>");
+                            htmls += ("<li style='width: 6rem !important;'>");
                             htmls += ("<img src='" + p.HostUrl + "/Modules/RestroDashboard/image/" + (value.IsTable ? "tableyellow.png" : "room-red.png") + "'> ");
                             htmls += ("<h5 style='color: #a9a960;font-weight:bold;font-size: 9pt;' class='");
                         }
                         else {
                             if (value.tableDate == "") {
                                 htmls += ("" + value.restrotableId + "_img_yes_notoccupied_" + value.restrotableTitle + "' class = 'imgtable'  >");
-                                htmls += ("<li>");
+                                htmls += ("<li style='width: 6rem !important;'>");
                                 htmls += ("<img src='" + p.HostUrl + "/Modules/RestroDashboard/image/" + (value.IsTable ? "tablegreen.png" : "room-green.png") + "'> ");
                                 htmls += ("<h5 style='color: green;font-weight:bold;font-size: 9pt;' class='");
                             } else {
                                 htmls += ("" + value.restrotableId + "_img_yes_occupied_" + value.restrotableTitle + "' class = 'imgtable'  >");
-                                htmls += ("<li>");
+                                htmls += ("<li style='width: 6rem !important;'>");
                                 htmls += ("<img src='" + p.HostUrl + "/Modules/RestroDashboard/image/" + (value.IsTable ? "tablered.png" : "room-red.png") + "'> ");
                                 htmls += ("<h5 style='color: red;font-weight:bold;font-size: 9pt;' class='");
                             }
@@ -917,7 +917,7 @@ function IntegerAndDecimal(evt, element) {
                     $.each(datas, function (index, value) {
                         htmls += ("<a id ='");
                         htmls += ("Room_" + value.restroRoomId + "_img' class = 'imgRoom' >")
-                        htmls += ("<li>");
+                        htmls += ("<li style='width: 6rem !important;'>");
                         htmls += ("<img src='" + p.HostUrl + "/Modules/RestroDashboard/image/room.png'> ");
                         htmls += ("<h5 class='NotPaid'>" + value.restroRoom + "</h5></li></a>");
                     });

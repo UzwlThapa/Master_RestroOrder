@@ -5159,15 +5159,15 @@ div#NumPad {
 
 /*  Dining Table layout override*/
 
-.Tables ul li, .OccupiedRooms ul li, .Rooms ul li, .RoomsForMerge ul li, .TablesForMerge ul li, .RoomsForShift ul li, .TablesForShift ul li {
+.Tables_Custom ul li, .Rooms_Custom ul li {
     width: 6rem !important;
 }
 
-.Rooms, .RoomsForMerge, .RoomsForShift, .TablesInRooms {
+.Rooms_Custom, .TablesInRooms_Custom {
     height: 100vh;
 }
 
-    .Rooms > h4, .RoomsForMerge > h4, .RoomsForShift > h4, .TablesInRooms > h4 {
+    .Rooms_Custom > h4, .TablesInRooms_Custom > h4 {
         text-align: start;
     }
 
@@ -5177,7 +5177,7 @@ div#NumPad {
     justify-content: flex-start;
 }
 
-.Rooms ul, .RoomsForMerge ul, .RoomsForShift ul {
+.Rooms_Custom ul {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -5189,10 +5189,10 @@ div#NumPad {
     border-left: 1px solid #ced3ce;
 }
 
-.TablesInRooms > ul {
+.TablesInRooms_Custom > ul {
     margin-left: 1rem !important;
 }
 
-.Tables h4 {
+.Tables_Custom h4 {
     margin-left: 1rem !important;
 }
