@@ -86,23 +86,9 @@ function payment(salesMasterid) {
                 position: ['center', 'center'],
                 close: function () {
                     $(this).dialog("destroy");
+                    refreshIframe();
                 }
             });
-
-            //$('#tblPayment').on('click', "#txtTenderAmount, #txtReturnAmount, .txtPayAmount", function () {
-            //    $(this).val('');
-            //});
-            //$('#tblReturn').on('click', "#txtAmount", function () {
-            //    $(this).val('');
-            //});
-
-            // $('.ui-dialog ').mouseup(function(){
-            //     if($(".txtNum, .txtPayAmount, .PINbutton, #numbox, .del, #NumPad ").is(':focus')){
-
-            //     }else{
-            //         $("#NumPad").hide();
-            //     }
-            // });
 
             $("#tblPayment").on('click', ".txtNum, .txtPayAmount", function (event) {
                 InitializeNumPin(this, $(this).val());
@@ -111,8 +97,6 @@ function payment(salesMasterid) {
             $('#tblPayment').on('keyup keydown', "#txtTenderAmount", function () {
                 var row = $(this).closest('tr');
                 var returnAmnt = (Number($("#txtTenderAmount").val()) - Number(billInfo.TotalAmount)).toFixed(2);
-                //$("#txtReturnAmount").val((parseFloat(returnAmnt) > 0 ? parseFloat(returnAmnt) : 0));
-                //var payAmnt = (Number($("#txtTenderAmount").val()) - $("#txtReturnAmount").val() > 0 ? (Number($("#txtTenderAmount").val()) - $("#txtReturnAmount").val()) : Number($("#txtTenderAmount").val()));
                 $("#txtReturnAmount").val(parseFloat(returnAmnt) > 0 ? parseFloat(returnAmnt) : 0);
                 var payAmnt = (Number($("#txtTenderAmount").val()) - $("#txtReturnAmount").val());
                 $(row).find('.txtPayAmount').val(payAmnt.toFixed(2));
@@ -121,7 +105,6 @@ function payment(salesMasterid) {
             $('#tblPayment').on('keyup keydown', "#txtReturnAmount", function () {
                 var row = $(this).closest('tr');
                 var returnAmnt = Number($("#txtReturnAmount").val()).toFixed(2);
-                //var payAmnt = (Number($("#txtTenderAmount").val()) - returnAmnt > 0 ? (Number($("#txtTenderAmount").val()) - returnAmnt) : Number($("#txtTenderAmount").val()));
                 var payAmnt = (Number($("#txtTenderAmount").val()) - returnAmnt);
                 $(row).find('.txtPayAmount').val(payAmnt.toFixed(2));
                 $('.txtPayAmount').change();
@@ -143,8 +126,6 @@ function payment(salesMasterid) {
                 }
             });
             $('.pmntCheck').on('change', function () {
-                //$(this).closest('tr').find('.txtPayAmount').val(Math.abs(parseFloat($('#txtsurplus').text())));
-                //$('.txtPayAmount').change()
                 if ($(this).attr('id').split('_')[1] == "4" && $(this).is(':checked') && billInfo.CustomerID < 1) {
                     $(this).prop('checked', false);
                     GetCustomeronChange(billInfo.CustomerID, this);

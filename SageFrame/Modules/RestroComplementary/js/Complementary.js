@@ -896,6 +896,7 @@ function getSelectionStart(o) {
                             $.alerts.dialogClass = "order-info";
                             jAlert("Complementary is successfully saved, </br> <b>" + $('#ddlTableName :selected').text() + "</b>", "Information!!", function () {
                                 parent.$.colorbox.close();
+                                location.reload();
                             });
                       //  }
                         break;

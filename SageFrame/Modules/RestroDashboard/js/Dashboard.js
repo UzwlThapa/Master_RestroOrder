@@ -164,13 +164,13 @@ function IntegerAndDecimal(evt, element) {
 
                     var effect = 'slide';
                     var options = { direction: 'right' };
-                    var duration = 700; 
+                    var duration = 700;
                     $('.delivery').prop('checked', true);
                     $(".com").show();
                     $(".dine").hide();
                 });
 
-                $(".imgroomtype").on('click', function () { 
+                $(".imgroomtype").on('click', function () {
                     $('#CusOrder').hide();
                     $('.hometab').hide();
 
@@ -1367,7 +1367,7 @@ function IntegerAndDecimal(evt, element) {
                 var htmls = [];
                 $('.Rooms').html("");
                 var datas = result.d;
-                if (datas.length > 0) { 
+                if (datas.length > 0) {
                     htmls += "<h4>Rooms</h4><hr><ul>";
                     $.each(datas, function (index, value) {
                         htmls += ("<a id ='");
@@ -1463,12 +1463,6 @@ function IntegerAndDecimal(evt, element) {
                     });
                     htmls += ("<tr class='Total_Amt'><td colspan='3'  style='text-align:right;font-weight:bold;'>Total Amount:</td><td colspan='1' style='text-align:left;font-weight:bold;'><span class='totle'>" + totalAmount.toFixed(2) + "</span></td></tr>");
                     htmls += ("</tbody></table>");
-                    //htmls += ("<div class='splitMainView clearfix'>");
-                    //htmls += ("<input type='checkbox' id='splitcheckbox' />");
-                    //htmls += ("<label for='splitcheckbox' style='color:#575757;'>Split Bills</label>");
-                    //htmls += ("<div id='NoOfBill' class='sfBtn restro-btn' style='margin-left:10px;'>Change Bill No.</div>")
-                    //htmls += ("<div id='billsnumber'></div>")
-                    //htmls += ("<input id='Save_" + datas[0].restrotableId + "' type='button' class='sfBtn SaveSplitData restro-btn splithead' value='Save Split' style='margin-left:10px;margin-top:10px'/></div>");
                     if (datas[0].Note != null && datas[0].Note != "") {
                         htmls += ("<div class='ordering'><input id='Merge_" + datas[0].restrotableId + "' type='button' class='sfBtn removeMerge restro-btn' value='Remove Merge' />");
                     } else {
@@ -1491,8 +1485,6 @@ function IntegerAndDecimal(evt, element) {
                     if (isMergedTable) {
                         htmls += ("<input id='Merge_" + activeorder + "' type='button' class='sfBtn removeMerge restro-btn' value='Remove Merge' style='margin-left:10px;' />");
                     }
-                    //htmls += ("<input id='Pay_" + activeorder + "' type='button'  class='sfBtn paynow' value='Pay Now ' /></div>");
-
                 }
                 $('#DialogOrderDetail').html(htmls);
                 shiftItemsInitialize();
@@ -1553,7 +1545,7 @@ function IntegerAndDecimal(evt, element) {
                     DashboardFunction.config.ShiftID = $(this).attr('id').split("_")[1];
                     $(".imgroomtypeforshift").val("");
                     $(".imgRoomForShift").val("");
-                    $(".TablesForShift").hide(); 
+                    $(".TablesForShift").hide();
                     pinfor = "shift";
                     $('#divForRoomTableShift').dialog({
                         'title': 'Shift Table',
@@ -2857,11 +2849,11 @@ function IntegerAndDecimal(evt, element) {
 
                 });
                 $('div.dataTables_filter input').addClass('sfInputbox');
-                $('#OccupiedTables').on('click', '.shiftTable', function () { 
+                $('#OccupiedTables').on('click', '.shiftTable', function () {
                     DashboardFunction.config.ShiftID = $(this).attr('id').split("_")[1];
                     $(".imgroomtypeforshift").val("");
                     $(".imgRoomForShift").val("");
-                    $(".TablesForShift").hide(); 
+                    $(".TablesForShift").hide();
                     pinfor = "shift";
                     $('#divForRoomTableShift').dialog({
                         'title': 'Shift Table',

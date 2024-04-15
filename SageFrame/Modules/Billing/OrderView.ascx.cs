@@ -26,8 +26,9 @@ public partial class Modules_Order_OrderView : BaseUserControl
         {
             IncludeCss("Order", "/Modules/Billing/css/orderlistview.css");
         }
-        IncludeJs("", "/Modules/Billing/js/orders.js");
-         
+        IncludeJs("", "/js/orders.js");
+        //IncludeJs("", "/Modules/Billing/js/orders.js");
+
         IncludeJs("Order", "/Modules/Billing/js/Orderitem.js"
             ,"/Modules/Billing/js/owl.carousel.js","/Modules/Billing/js/owl.carousel.js");
         IncludeJs("Order", "/Modules/Billing/js/jquery.scrollTo.min.js");

@@ -175,7 +175,7 @@ function GetMenuforOrder(languageid) {
                             htmls += "<div><img id='menuimg_" + value.ItemId + "_" + value.LanguageMenuText + "' class='menuimg' src='/Modules/ROCompanyInfo/logo/logo.png' width='150px' height='120px'>";
                         else
                             htmls += "<div><img id='menuimg_" + value.ItemId + "_" + value.LanguageMenuText + "' class='menuimg' src='/Modules/ROI_Item/ImageItem/" + value.ImagePath + "' width='150px' height='120px' alt='Image not found'>";
-                        htmls += "<div class='itmname menuimg' id='menuimg_" + value.ItemId + "_" + value.LanguageMenuText + "'>" + value.LanguageMenuText + "</div></div>";
+                        htmls += "<div class='itmname" + (OrdermenuImageshow == false ? ' noImage' : '') + " menuimg' id='menuimg_" + value.ItemId + "_" + value.LanguageMenuText + "'>" + value.LanguageMenuText + "</div></div>";
                     }
                 });
                 htmls += "</div>";
@@ -187,6 +187,7 @@ function GetMenuforOrder(languageid) {
 
             if (OrdermenuImageshow == false) {
                 $('img.menuimg').remove();
+                $('img.categoryimg').remove();
                 $('.restaurant-part-menu').click(function () {
                     $('img.categoryimg , img.itemimg').remove();
                 });
@@ -240,6 +241,7 @@ function GetCategoriesBymenuID(menuid, categoryName, languageid) {
     });
 }
 function BindCategoriesByMenu(result, categoryName) {
+    debugger;
     var htmls = [];
     $('#Categoryshow').html("");
     $('#Itemshow').html("");
@@ -255,9 +257,9 @@ function BindCategoriesByMenu(result, categoryName) {
         $.each(datas, function (index, value) {
             htmls += '<div><img attr-type="i" attr-iscat=' + value.IsCategory + ' id="categoryimg_' + value.ItemId + '_' + value.LanguageMenuText + '_false_' + value.IsOutOfStock + '_' + value.SRate + '" class="categoryimg" src="/Modules/' + (value.ImagePath == "" ? "'/Modules/ROCompanyInfo/logo/logo.png'" : "ROI_Item/ImageItem/" + value.ImagePath) + '" width="150px" height="120px">';
             if (value.SRate == '0')
-                htmls += '<div class="itmname categoryimg" id="categoryimg_' + value.ItemId + '_' + value.LanguageMenuText + '_false_' + value.IsOutOfStock + '_' + value.SRate + '" attr-iscat=' + value.IsCategory + '>' + value.LanguageMenuText + (value.IsOutOfStock ? "(Out Of Stock)" : '') + '</div></div>';
+                htmls += '<div class="itmname' + (OrdermenuImageshow == false ? ' noImage' : '') + ' categoryimg" id="categoryimg_' + value.ItemId + '_' + value.LanguageMenuText + '_false_' + value.IsOutOfStock + '_' + value.SRate + '" attr-iscat=' + value.IsCategory + '>' + value.LanguageMenuText + (value.IsOutOfStock ? "(Out Of Stock)" : '') + '</div></div>';
             else
-                htmls += '<div class="itmname categoryimg" id="categoryimg_' + value.ItemId + '_' + value.LanguageMenuText + '_false_' + value.IsOutOfStock + '_' + value.SRate + '" attr-iscat=' + value.IsCategory + '>' + value.LanguageMenuText + (value.IsOutOfStock ? "(Out Of Stock)" : "(Rs. " + value.SRate + ")") + '</div></div>';
+                htmls += '<div class="itmname' + (OrdermenuImageshow == false ? ' noImage' : '') + ' categoryimg" id="categoryimg_' + value.ItemId + '_' + value.LanguageMenuText + '_false_' + value.IsOutOfStock + '_' + value.SRate + '" attr-iscat=' + value.IsCategory + '>' + value.LanguageMenuText + (value.IsOutOfStock ? "(Out Of Stock)" : "(Rs. " + value.SRate + ")") + '</div></div>';
         });
         htmls += "</div>";
         $('#Categoryshow').html(htmls);
@@ -265,9 +267,19 @@ function BindCategoriesByMenu(result, categoryName) {
         htmls += "<h6>No category Available in this Section</h6>";
         $('#Categoryshow').html(htmls);
     }
+
+    if (OrdermenuImageshow == false) {
+        $('img.menuimg').remove();
+        $('img.categoryimg').remove();
+        $('.restaurant-part-menu').click(function () {
+            $('img.categoryimg , img.itemimg').remove();
+        });
+    }
+
     $(".categoryimg").on("error", function () {
         $(this).attr('src', '/Modules/ROCompanyInfo/logo/logo.png');
     });
+
     if (orderlistviewtype) {
         $('.orderbackA').on('click', function () {
             $('#Categoryshow').hide();
@@ -358,9 +370,9 @@ function GetItemByCategoryID(categoryId, subItem, categoryName) {
                 $.each(datas, function (index, value) {
                     htmls += "<div><img attr-type='i' id='itemimg_" + value.ItemID + "_" + value.LanguageMenuText + "_false_" + value.IsCategory + "_" + value.IsOutOfStock + "_" + value.SRate + "' class='itemimg' src='/Modules/" + (value.ImagePath == "" ? src = '/Modules/ROCompanyInfo/logo/logo.png' : 'ROI_Item/ImageItem/' + value.ImagePath) + "' width='150px' height='120px'>";
                     if (value.SRate == '0')
-                        htmls += "<div class='itmname itemimg' id='itemimg_" + value.ItemID + "_" + value.LanguageMenuText + "_false_" + value.IsCategory + "_" + value.IsOutOfStock + "_" + value.SRate + "'>" + value.LanguageMenuText + (value.IsOutOfStock ? '(Out Of Stock)' : '') + "</div></div>";
+                        htmls += "<div class='itmname" + (OrdermenuImageshow == false ? ' noImage' : '') + " itemimg' id='itemimg_" + value.ItemID + "_" + value.LanguageMenuText + "_false_" + value.IsCategory + "_" + value.IsOutOfStock + "_" + value.SRate + "'>" + value.LanguageMenuText + (value.IsOutOfStock ? '(Out Of Stock)' : '') + "</div></div>";
                     else
-                        htmls += "<div class='itmname itemimg' id='itemimg_" + value.ItemID + "_" + value.LanguageMenuText + "_false_" + value.IsCategory + "_" + value.IsOutOfStock + "_" + value.SRate + "'>" + value.LanguageMenuText + (value.IsOutOfStock ? '(Out Of Stock)' : '(Rs. ' + value.SRate + ')') + "</div></div>";
+                        htmls += "<div class='itmname" + (OrdermenuImageshow == false ? ' noImage' : '') + " itemimg' id='itemimg_" + value.ItemID + "_" + value.LanguageMenuText + "_false_" + value.IsCategory + "_" + value.IsOutOfStock + "_" + value.SRate + "'>" + value.LanguageMenuText + (value.IsOutOfStock ? '(Out Of Stock)' : '(Rs. ' + value.SRate + ')') + "</div></div>";
                 });
                 htmls += "</div>";
             }
@@ -434,17 +446,24 @@ function getcomboformenu() {
                         htmls += "<div><img attr-type='c' id='menuimg_" + value.ComboID + "_" + value.Name + "_true_" + value.SalesPrice + "' class='menuimgg' src='/Modules/ROCompanyInfo/logo/" + companyInfo.Logo + "' width='150px' height='120px'>";
                     else
                         htmls += "<div><img attr-type='c' id='menuimg_" + value.ComboID + "_" + value.Name + "_true_" + value.SalesPrice + "' class='menuimgg' src='/Modules/ROCumboPack/images/" + value.ImagePath + "' width='150px' height='120px' alt='Image not found'>";
-                    htmls += "<div attr-type='c' class='itmname menuimgg' id='menuimg_" + value.ComboID + "_" + value.Name + "_true_" + value.SalesPrice + "' >" + value.Name + " (Rs. " + value.SalesPrice + ")</div></div>";
+                    htmls += "<div attr-type='c' class='itmname" + (OrdermenuImageshow == false ? ' noImage' : '') + " menuimgg' id='menuimg_" + value.ComboID + "_" + value.Name + "_true_" + value.SalesPrice + "' >" + value.Name + " (Rs. " + value.SalesPrice + ")</div></div>";
 
                 });
                 htmls += "</div>";
-                $('#ComboMenu').html(htmls);
-
-
+                $('#ComboMenu').html(htmls); 
             } else {
                 htmls += "<h6>No Menu Available </h6>";
                 $('#ComboMenu').html(htmls);
             }
+
+            if (OrdermenuImageshow == false) {
+                $('img.menuimgg').remove();
+                $('img.categoryimg').remove();
+                $('.restaurant-part-menu').click(function () {
+                    $('img.categoryimg , img.menuimgg').remove();
+                });
+            }
+
             if (!orderlistviewtype) {
                 $('.menuss').owlCarousel({
 
@@ -713,6 +732,7 @@ function SaveCanceledItems(cancelobjs) {
 }
 
 function SaveOrderedData() {
+    debugger;
     var splited = false;
     var cancel = false;
     var orders = [];
@@ -1713,8 +1733,6 @@ function BindPaymentModes() {
                 }
             }
         }
-
-
     });
 };
 function BindBillingTerm(totalAmount, totaldis, datas) {
@@ -1926,7 +1944,6 @@ function GetCustomeronCheck() {
 
                 $("#txtLoyaltyDiscount").val(ids[6]);
                 $("#membeshipformlist").dialog('close');
-                //$("#selDiscountType").change();
             });
         },
         failure: function (response) {
@@ -2033,12 +2050,17 @@ function savePrintCount(printcount, billNo, printedBy) {
         success: function (data) {
             Print();
             $('#BillingView').dialog('close');
+            debugger;
             jAlert("Bill successfully Generated", "Information!!", function () {
                 if (foodCourtOrder) {
                     $('.bindorderlist').html('');
                     Reset();
                 } else {
-                    parent.$.colorbox.close();
+                    if (window.location.search != '') {
+                        window.location.href = window.location.href.split('?')[0];
+                    } else {
+                        parent.$.colorbox.close();
+                    }
                 }
             });
         },
@@ -2810,7 +2832,7 @@ function GetPreviousItemByID(Id, OID) {
                 if (TableId <= 0 && OrderMasterID > 0) {
                     ShowOrderPayView();
                 }
-            } else { 
+            } else {
                 localStorage.setItem('orderType', null);
             }
         },

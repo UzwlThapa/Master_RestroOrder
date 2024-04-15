@@ -111,8 +111,7 @@ function IntegerAndDecimal(evt, element) {
                 });
 
                 $('#hdnPinMatch').on('change', function () {
-                    if ($('#hdnPinMatch').val() == "true") {
-                        //$('#hdnPinMatch').unbind('change');
+                    if ($('#hdnPinMatch').val() == "true") { 
                         var pinFor = $('#hdnPinFor').val();
                         if (pinFor == 'Book') {
                             DashboardFunction.SaveRoomBook();
@@ -134,8 +133,7 @@ function IntegerAndDecimal(evt, element) {
                             $('.paynows').click();
                         } else if (pinFor == 'CancelOrder') {
                             $('#cancelby').text($('#hdnPinBy').val());
-                            $('#splitNoCancel').val($('#billno').val());
-                            // billno
+                            $('#splitNoCancel').val($('#billno').val()); 
                             $('#canceltextarea').val('');
                             $('#DisplayCancel').dialog({
                                 title: 'Cancel Order'
@@ -576,9 +574,7 @@ function IntegerAndDecimal(evt, element) {
                 $("#txtCusID").val(result[0].MembershipID);
                 $("#txtCashCusName").val(result[0].Fname + " " + result[0].Lname);
                 $("#txtNumber").val(result[0].TelMobile);
-                $("#txtLoyaltyDiscount").val(result[0].discount);
-                //$("#selDiscountType").val(3);
-                //$("#selDiscountType").change();
+                $("#txtLoyaltyDiscount").val(result[0].discount); 
                 $("#txtLoyaltyDiscount").change();
                 $(".disc").hide();
                 $(".roomdisc").hide();
@@ -1636,8 +1632,7 @@ function IntegerAndDecimal(evt, element) {
 
                 }
                 //AddChanges
-
-
+                 
                 if (orderdetails.length > 0) {
                     noOfGuest = parseInt(orderdetails[0].GuestNo);
                     htmls += ("<div class='left-sec' style='width:100%;margin-right:0;'><div class='dialogflex'><h4>Room : " + orderdetails[0].restroRoom + "  / Table : " + (orderdetails[0].MergeTableName != "" && orderdetails[0].MergeTableName != null ? orderdetails[0].MergeTableName : orderdetails[0].restrotableTitle) + " </h4><h4> Waiter: " + orderdetails[0].Waiter + "</h4></div>");
@@ -2493,11 +2488,8 @@ function IntegerAndDecimal(evt, element) {
 
                 $("#generateBill").on('click', function () {
                     DashboardFunction.Checkbill(tableinfo.OrderMasterId, seatNo, parseInt(tableinfo.TableId));
-                    //$('#hdnPinFor').val('generateBill');
-                    //InitializePin();
                 });
-
-
+                 
                 var roles = userRole.split(',');
                 if (roles.includes("Super User") || roles.includes("Billing_Discount")) {
                     $("#enablebtn").hide();
@@ -2511,6 +2503,7 @@ function IntegerAndDecimal(evt, element) {
                 $('.paynows').unbind('click').on('click', function () {
                     jConfirm('Are You Sure  ?', 'Pay', function (confirmed) {
                         if (confirmed) {
+                            debugger;
                             var billingTerm = new Array();
                             var salesMaster = new Object();
                             var splited = 0;

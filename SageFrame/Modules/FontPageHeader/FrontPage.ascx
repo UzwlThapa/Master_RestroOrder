@@ -27,7 +27,6 @@
 <script type="text/javascript">
     //<![CDATA[
     $(document).ready(() => {
-        debugger;
         var licenceExpiryDays = parseInt(localStorage.getItem('LicenceExpiryDays') || '0');
         if (licenceExpiryDays <= 10) {
             $('#licenceExpiryWrapper').attr('style', 'visibility:visible !important');

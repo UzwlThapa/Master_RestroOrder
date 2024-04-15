@@ -104,19 +104,23 @@ font-weight: normal; font-style: normal; }
 }
 
 .itmname {
-    position: absolute;
     bottom: 0px;
     left: 0px;
     right: 25px;
     font-family: 'RobotoCondensed-Regular';
     padding: 10px;
-  /*  min-height: 70px;*/
-    font-size: 15px;
-    color: #FFFFFF;
+    font-size: 12pt;
     background: rgba(0, 0, 0, 0.65);
-    text-align: left;
+    color: #fff;
     cursor: pointer;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
 }
+
+    .itmname.noImage { 
+        background: rgb(116 65 13) !important; 
+    }
 
     .restaurant-part-menu h5 {
     text-align: center;

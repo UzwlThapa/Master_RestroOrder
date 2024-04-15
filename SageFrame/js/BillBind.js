@@ -462,8 +462,18 @@ function getBill(salesMasterId, foodCourtOrder) {
                             debugger;
                             var showTotalDiscount = localStorage.getItem('ShowTotalDiscount') ?? 'false';
                             if (showTotalDiscount == 'true') {
-                                var totalDiscount = parseFloat(discount.bardis ?? '0') + parseFloat(discount.bakerydis ?? '0') + parseFloat(discount.kotdis ?? '0') + parseFloat(discount.pizzadis ?? '0') + parseFloat(discount.roomdis ?? '0') + parseFloat(discount.roomdis ?? '0');
-                                htmls += ("<td colspan='4' style='text-align:right;font-size:11px;margin-right:10px;'><span>Total Disc: </span>Rs." + parseFloat(totalDiscount).toFixed(2) + "</td></tr>");
+                                var totalDisc = 0;
+                                $.each(costCenterDis.GroupDis, function (index, value) {
+                                    if (value.Discount > 0) {
+                                        if (costCenterDis.isFlatDis) {
+                                            totalDisc += parseFloat(value.Discount).toFixed(2);
+
+                                        } else {
+                                            totalDisc += parseFloat((value.Discount / 100) * (value.TotalAmount + value.NonTaxableAmt)).toFixed(2);
+                                        }
+                                    }
+                                });
+                                htmls += ("<td colspan='4' style='text-align:right;font-size:11px;margin-right:10px;'><span>Total Disc: </span>Rs." + parseFloat(totalDisc).toFixed(2) + "</td></tr>");
                             }
                             else {
                                 $.each(costCenterDis.GroupDis, function (index, value) {
