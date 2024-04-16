@@ -1218,7 +1218,7 @@ function IntegerAndDecimal(evt, element) {
                             htmls += ("<h5 style='color: #a9a960;font-weight:bold;font-size: 9pt;' class='");
                         }
                         else {
-                            if (value.tableDate == "") {
+                            if (value.IsOccupied == 0) {
                                 htmls += ("" + value.restrotableId + "_img_yes_notoccupied_" + value.restrotableTitle + "' class = 'imgtable'  >");
                                 htmls += ("<li style='width: 6rem !important;'>");
                                 htmls += ("<img src='" + p.HostUrl + "/Modules/RestroDashboard/image/" + (value.IsTable ? "tablegreen.png" : "room-green.png") + "'> ");
@@ -2108,8 +2108,7 @@ function IntegerAndDecimal(evt, element) {
                     htmls += "<h4>Tables in " + datas[0].restroRoom + "</h4><hr><ul>";
 
                     $.each(datas, function (index, value) {
-                        //if (!value.MergeTableList > 0 && (value.BillPaid != 0 || value.IsCancelled != 0)) {
-                        if (!value.MergetableList > 0 && value.restrotablesStatusID == 6 && value.IsTable && (value.BillPaid != 0 || value.IsCancelled != 0)) {
+                        if (!value.MergetableList > 0 && value.restrotablesStatusID == 6 && value.IsTable && (value.IsOccupied == 0 || value.BillPaid.toString() != '1' || value.IsCancelled != 0) {
                             htmls += ("<li>");
                             htmls += ("<a id ='");
                             htmls += ("Table_" + value.restrotableId + "_img_" + value.IsTable + "_" + value.restrotableTitle + "' class = 'imgtableshift' ><img src='" + p.HostUrl + "/Modules/RestroDashboard/image/tablegreen.png'></a> ");
@@ -2125,7 +2124,7 @@ function IntegerAndDecimal(evt, element) {
                             }
 
 
-                            if (value.BillPaid.toString() == '0' && value.IsCancelled.toString() == '0') {
+                            if (value.IsOccupied == 1 && value.tableDate !== "") {
                                 htmls += ("<h5 class='order-time'");
 
                                 var dateprev = new Date(value.tableDate);
@@ -2137,11 +2136,10 @@ function IntegerAndDecimal(evt, element) {
                                     var m = Math.floor(s / 60); //Get remaining minutes
                                     s -= m * 60;
                                     if (h == 0) {
-                                        return (m < 10 ? '0' + m : m) + "M";//zero padding on minutes and seconds                           }
+                                        return (m < 10 ? '0' + m : m) + "M";//zero padding on minutes and seconds                          
                                     } else {
-                                        return h + "H:" + (m < 10 ? '0' + m : m) + "M";//zero padding on minutes and seconds                           }
+                                        return h + "H:" + (m < 10 ? '0' + m : m) + "M";//zero padding on minutes and seconds                          
                                     }
-
                                 }
                                 var dinal = secondsTimeSpanToHMS(diff)
                                 htmls += ("' >" + value.tabletime + "</h5><h5 class='order-timeA'>" + dinal + "</h5>");

@@ -645,6 +645,7 @@ namespace SageFrame.RestroOrder
         public string MergeTableName { get; set; }
         public int restrotablesStatusID { get; set; }
         public int BillPaid { get; set; }
+        public int IsOccupied { get; set; }
         public string tableDate { get; set; }
         public string tabletime { get; set; }
         public int IsCancelled

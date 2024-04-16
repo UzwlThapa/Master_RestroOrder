@@ -290,7 +290,7 @@ function shiftItems() {
     var tableF = tablesList.filter((val) => val.restrotableId == tableId);
     if (tableF != null) {
         shift.fromTableTitle = tableF[0].restrotableTitle;
-    } 
+    }
 
     shift.toTable = $('#toTables').val() == null ? tableId : $('#toTables').val();
     var tableT = tablesList.filter((val) => val.restrotableId == shift.toTable);
@@ -314,8 +314,11 @@ function shiftItems() {
             $('#shiftItems').dialog('close');
             jAlert('Item Successfully Shifted', 'Information!!', function () {
                 $(".ui-dialog-content").dialog("close");
-                // $('.imgRoom').click();              
                 parent.$.colorbox.close();
+                var location = window.location.href.split('/')
+                if (location[location.length - 1] == "Dining.aspx") {
+                    window.location.reload();
+                }
             });
             $('#hdnPinFor').val("");
             $('#hdnPinMatch').val("false");

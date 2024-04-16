@@ -111,7 +111,7 @@ function IntegerAndDecimal(evt, element) {
                 });
 
                 $('#hdnPinMatch').on('change', function () {
-                    if ($('#hdnPinMatch').val() == "true") { 
+                    if ($('#hdnPinMatch').val() == "true") {
                         var pinFor = $('#hdnPinFor').val();
                         if (pinFor == 'Book') {
                             DashboardFunction.SaveRoomBook();
@@ -133,7 +133,7 @@ function IntegerAndDecimal(evt, element) {
                             $('.paynows').click();
                         } else if (pinFor == 'CancelOrder') {
                             $('#cancelby').text($('#hdnPinBy').val());
-                            $('#splitNoCancel').val($('#billno').val()); 
+                            $('#splitNoCancel').val($('#billno').val());
                             $('#canceltextarea').val('');
                             $('#DisplayCancel').dialog({
                                 title: 'Cancel Order'
@@ -574,7 +574,7 @@ function IntegerAndDecimal(evt, element) {
                 $("#txtCusID").val(result[0].MembershipID);
                 $("#txtCashCusName").val(result[0].Fname + " " + result[0].Lname);
                 $("#txtNumber").val(result[0].TelMobile);
-                $("#txtLoyaltyDiscount").val(result[0].discount); 
+                $("#txtLoyaltyDiscount").val(result[0].discount);
                 $("#txtLoyaltyDiscount").change();
                 $(".disc").hide();
                 $(".roomdisc").hide();
@@ -827,7 +827,7 @@ function IntegerAndDecimal(evt, element) {
                 if (datas.length > 0) {
                     htmls += "<h4>Tables in " + datas[0].restroRoom + "</h4><hr><ul>";
 
-                    $.each(datas, function (index, value) { 
+                    $.each(datas, function (index, value) {
                         htmls += ("<a id ='" + (value.IsTable ? "Table_" : "Room_"));
                         if (value.BillPaid.toString() == '1') {
                             htmls += ("" + value.restrotableId + "_clearBill' class='imgtable'>");
@@ -836,7 +836,7 @@ function IntegerAndDecimal(evt, element) {
                             htmls += ("<h5 style='color: #a9a960;font-weight:bold;font-size: 9pt;' class='");
                         }
                         else {
-                            if (value.tableDate == "") {
+                            if (value.IsOccupied == 0) {
                                 htmls += ("" + value.restrotableId + "_img_yes_notoccupied_" + value.restrotableTitle + "' class = 'imgtable'  >");
                                 htmls += ("<li style='width: 6rem !important;'>");
                                 htmls += ("<img src='" + p.HostUrl + "/Modules/RestroDashboard/image/" + (value.IsTable ? "tablegreen.png" : "room-green.png") + "'> ");
@@ -852,7 +852,7 @@ function IntegerAndDecimal(evt, element) {
                         htmls += (value.BillPaid.toString() == '0' && value.IsCancelled.toString() == '0' && value.IsTable ? "NotPaid" : "Paid");
                         htmls += ("' >" + (value.MergeTableList > 0 ? value.MergeTableName : value.restrotableTitle) + "</h5>");
 
-                        if (value.tableDate !== "") {
+                        if (value.IsOccupied == 1 && value.tableDate !== "") {
                             htmls += ("<h5 class='order-time'");
                             var dateprev = new Date(value.tableDate);
                             var datet = new Date();
@@ -1492,10 +1492,9 @@ function IntegerAndDecimal(evt, element) {
                     htmls += "<h4>Tables in " + datas[0].restroRoom + "</h4><hr><ul>";
                     $.each(datas, function (index, value) {
                         if (!value.MergeTableList > 0 && (value.IsTable || value.OrderMasterId > 0)) {
-                            //if (!value.MergetableList > 0 && value.restrotablesStatusID == 6 && value.IsTable && (value.BillPaid != 0 || value.IsCancelled != 0)) {
                             htmls += ("<li>");
                             htmls += ("<a id ='");
-                            htmls += ("Table_" + value.restrotableId + "_img_" + value.IsTable + "_" + value.restrotableTitle + "_" + value.GuestNo + "' class = 'imgtableshift' ><img src='" + p.HostUrl + "/Modules/RestroDashboard/image/" + ((value.BillPaid != 0 || value.IsCancelled != 0) ? 'tablegreen' : 'tablered') + ".png'></a> ");
+                            htmls += ("Table_" + value.restrotableId + "_img_" + value.IsTable + "_" + value.restrotableTitle + "_" + value.GuestNo + "_" + (value.BillPaid.toString() == '1' ? 'tableyellow' : value.IsOccupied == 1 ? 'tablered' : 'tablegreen') + "' class= 'imgtableshift' ><img src='" + p.HostUrl + "/Modules/RestroDashboard/image/" + (value.BillPaid.toString() == '1' ? 'tableyellow' : value.IsOccupied == 1 ? 'tablered' : 'tablegreen') + ".png'></a> ");
                             htmls += ("<h5 class='");
                             htmls += (value.BillPaid.toString() == '0' && value.IsCancelled.toString() == '0' ? "NotPaid" : "Paid");
                             htmls += ("' >" + value.restrotableTitle + "</h5>");
@@ -1511,14 +1510,24 @@ function IntegerAndDecimal(evt, element) {
 
                 }
 
-
                 $(".imgtableshift").on('click', function () {
                     tabletoshift = $(this).attr('id').split('_')[1];
-                    $('#shiftToTableName').html($(this).attr('id').split('_')[4]);
                     var seatNo = $(this).attr('id').split("_")[5];
-                    $('#shiftToTableSeatNo').html('<option value="0">New</option>');
-                    for (var i = 1; i <= seatNo; i++) {
-                        $('#shiftToTableSeatNo').append('<option value="' + i + '">' + i + '</option>');
+                    var status = $(this).attr('id').split("_")[6];
+
+                    if (status == 'tableyellow') {
+                        jAlert("Please clear pending bill first!", 'Alert!!');
+                    }
+                    else if (status == 'tablered') {
+                        jAlert("Table is already occupied!", 'Alert!!');
+                    }
+                    else {
+
+                        $('#shiftToTableName').html($(this).attr('id').split('_')[4]);
+                        $('#shiftToTableSeatNo').html('<option value="0">New</option>');
+                        for (var i = 1; i <= seatNo; i++) {
+                            $('#shiftToTableSeatNo').append('<option value="' + i + '">' + i + '</option>');
+                        }
                     }
                 });
                 $('.TablesForShift').show();
@@ -1632,7 +1641,7 @@ function IntegerAndDecimal(evt, element) {
 
                 }
                 //AddChanges
-                 
+
                 if (orderdetails.length > 0) {
                     noOfGuest = parseInt(orderdetails[0].GuestNo);
                     htmls += ("<div class='left-sec' style='width:100%;margin-right:0;'><div class='dialogflex'><h4>Room : " + orderdetails[0].restroRoom + "  / Table : " + (orderdetails[0].MergeTableName != "" && orderdetails[0].MergeTableName != null ? orderdetails[0].MergeTableName : orderdetails[0].restrotableTitle) + " </h4><h4> Waiter: " + orderdetails[0].Waiter + "</h4></div>");
@@ -2489,7 +2498,7 @@ function IntegerAndDecimal(evt, element) {
                 $("#generateBill").on('click', function () {
                     DashboardFunction.Checkbill(tableinfo.OrderMasterId, seatNo, parseInt(tableinfo.TableId));
                 });
-                 
+
                 var roles = userRole.split(',');
                 if (roles.includes("Super User") || roles.includes("Billing_Discount")) {
                     $("#enablebtn").hide();
