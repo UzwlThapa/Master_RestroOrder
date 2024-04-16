@@ -121,16 +121,20 @@
     right: 25px;
     font-family: 'RobotoCondensed-Regular';
     padding-left: 2px;
-    font-size: 12pt;
+    font-size: 10pt;
     background: rgba(0, 0, 0, 0.65);
     color: #fff;
     cursor: pointer;
     min-height: 40px;
-    line-height: 40px;
+    height: auto;
     text-align: center;
 }
     .itmname.noImage {
         background: rgb(116 65 13) !important;
+        display: flex !important;
+        align-items: center !important;
+        height: 100% !important;
+        justify-content: center !important;
     }
 
 

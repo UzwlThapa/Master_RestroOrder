@@ -2,11 +2,18 @@
     background: rgba(0, 0, 0, 0.65);
     color: #fff;
     padding: 4px;
-    font-size: 12pt;
+    font-size: 10pt;
     min-height: 40px;
-    line-height: 40px;
+    height: auto;
     text-align: center;
 }
+    .itmname.noImage {
+        background: rgb(116 65 13) !important;
+        display: flex !important;
+        align-items: center !important;
+        height: 100% !important;
+        justify-content: center !important;
+    }
 
 .owl-prev {
     top: -70% !important;
