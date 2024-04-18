@@ -1339,6 +1339,21 @@ namespace SageFrame.RestroOrder
                 throw;
             }
         }
+        internal List<restroTable> GetTableByRoomTypeIdWeb(int RoomId)
+        {
+            try
+            {
+                List<KeyValuePair<string, object>> Param = new List<KeyValuePair<string, object>>();
+                Param.Add(new KeyValuePair<string, object>("@RoomTypeId", RoomId));
+                List<restroTable> list = new List<restroTable>();
+                list = sqlHandler.ExecuteAsList<restroTable>("[USP_RO_GetTableByRoomTypeIdWeb]", Param);
+                return list;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
         internal List<OrderDetailClass> GettabledataById(int TableId)
         {
             try

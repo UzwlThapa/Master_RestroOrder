@@ -457,6 +457,10 @@ namespace SageFrame.RestroOrder
         {
             return restroOrderProvider.GetTableByRoomTypeId(RoomId);
         }
+        public List<restroTable> GetTableByRoomTypeIdWeb(int RoomId)
+        {
+            return restroOrderProvider.GetTableByRoomTypeIdWeb(RoomId);
+        }
         public List<OrderDetailClass> GettabledataById(int TableId)
         {
             return restroOrderProvider.GettabledataById(TableId);

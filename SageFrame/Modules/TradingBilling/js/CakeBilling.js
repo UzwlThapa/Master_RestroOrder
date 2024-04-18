@@ -861,7 +861,7 @@ function print() {
                 });
             },
             GetUnoccupiedTableByRoomTypeId: function (roomid) {
-                DashboardFunction.config.method = "GetTableByRoomTypeId";
+                DashboardFunction.config.method = "GetTableByRoomTypeIdWeb";
                 DashboardFunction.config.url = DashboardFunction.config.baseURL + DashboardFunction.config.method;
                 DashboardFunction.config.data = JSON2.stringify({
                     RoomId: roomid

@@ -22,12 +22,18 @@ public class ReservationService  : System.Web.Services.WebService {
     {
         return JsonConvert.SerializeObject(roc.GetRoomByRoomTypeId(RoomTypeID));
     }
-
-
+         
     [WebMethod]
     public string GetTableByRoomTypeId(int RoomId)
     {
         List<restroTable> restroTableList = roc.GetTableByRoomTypeId(RoomId);
+        return JsonConvert.SerializeObject(restroTableList);
+    }
+
+    [WebMethod]
+    public string GetTableByRoomTypeIdWeb(int RoomId)
+    {
+        List<restroTable> restroTableList = roc.GetTableByRoomTypeIdWeb(RoomId);
         return JsonConvert.SerializeObject(restroTableList);
     }
 

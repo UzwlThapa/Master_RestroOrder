@@ -44,6 +44,13 @@ public class RO_layoutWebService  : System.Web.Services.WebService {
         List<restroTable> restroTableList = roc.GetTableByRoomTypeId(RoomId);
         return JsonConvert.SerializeObject(restroTableList);
     }
+        
+    [WebMethod]
+    public string GetTableByRoomTypeIdWeb(int RoomId)
+    {
+        List<restroTable> restroTableList = roc.GetTableByRoomTypeIdWeb(RoomId);
+        return JsonConvert.SerializeObject(restroTableList);
+    }
 
     [WebMethod]
     public void saveTableLayout(List<SaveLayoutTable> table)

@@ -453,6 +453,12 @@ public class DashBoardWebService : System.Web.Services.WebService
         return JsonConvert.SerializeObject(restroTableList);
     }
 
+    [WebMethod]
+    public string GetTableByRoomTypeIdWeb(int RoomId)
+    {
+        List<restroTable> restroTableList = roc.GetTableByRoomTypeIdWeb(RoomId);
+        return JsonConvert.SerializeObject(restroTableList);
+    }
 
     [WebMethod]
     public string GettabledataByIdforMenu(int TableId)

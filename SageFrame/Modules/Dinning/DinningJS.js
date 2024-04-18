@@ -701,7 +701,7 @@ function IntegerAndDecimal(evt, element) {
             },
 
             GetUnoccupiedTableByRoomTypeId: function (roomid) {
-                DashboardFunction.config.method = "GetTableByRoomTypeId";
+                DashboardFunction.config.method = "GetTableByRoomTypeIdWeb";
                 DashboardFunction.config.url = DashboardFunction.config.baseURL + DashboardFunction.config.method;
                 DashboardFunction.config.data = JSON2.stringify({
                     RoomId: roomid
@@ -766,7 +766,7 @@ function IntegerAndDecimal(evt, element) {
             },
 
             GetTableByRoomTypeId: function (roomid) {
-                DashboardFunction.config.method = "GetTableByRoomTypeId";
+                DashboardFunction.config.method = "GetTableByRoomTypeIdWeb";
                 DashboardFunction.config.url = DashboardFunction.config.baseURL + DashboardFunction.config.method;
                 DashboardFunction.config.data = JSON2.stringify({
                     RoomId: roomid
