@@ -466,10 +466,10 @@ function getBill(salesMasterId, foodCourtOrder) {
                                 $.each(costCenterDis.GroupDis, function (index, value) {
                                     if (value.Discount > 0) {
                                         if (costCenterDis.isFlatDis) {
-                                            totalDisc += parseFloat(value.Discount).toFixed(2);
+                                            totalDisc += parseFloat(value.Discount);
 
                                         } else {
-                                            totalDisc += parseFloat((value.Discount / 100) * (value.TotalAmount + value.NonTaxableAmt)).toFixed(2);
+                                            totalDisc += parseFloat((value.Discount / 100) * (value.TotalAmount + value.NonTaxableAmt));
                                         }
                                     }
                                 });

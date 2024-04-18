@@ -68,6 +68,7 @@ function Print() {
         var TotalAmount = 0;
         var totamount = 0;
         var htmls = "";
+        var selectedMemberId = 0;
         var remainingbal = 0;
         var openingBalance = 0;
         var providers = [];
@@ -88,21 +89,8 @@ function Print() {
                 ajaxCallMode: 0
             },
             InitialSetup: function () {
-
                 eventFunction.GetCustomer();
                 eventFunction.GetProviderList();
-
-                //$("#txtMonthlyDate").datepicker({
-                //    dateFormat: 'yy-m',
-                //    changeMonth: true,
-                //    changeYear: true,
-                //});
-
-                //$(".hide").hide();
-
-                //for (i = new Date().getFullYear() ; i > 1900; i--) {
-                //    $('#seit').append($('<option/>').val(i).html(i));
-                //}
             },
             init: function () {
 
@@ -111,10 +99,6 @@ function Print() {
                 $('#txtSearch').on('keyup', function () {
                     eventFunction.Bindmembership();
                 });
-
-                //$("#membeshipformlist2").on('click', '.total', function (event) {
-                //    InitializeNumPin(this, $(this).val());
-                //});
 
                 $("#btnExport").click(function (e) {
                     var dNow = new Date();
@@ -271,8 +255,6 @@ function Print() {
                         eventFunction.InitialSetup();
                         break;
                     case 11:
-
-                        console.log(data);
                         eventFunction.bindCustomerTransactionbyID(data);
                         break;
                     case 12:
@@ -301,8 +283,7 @@ function Print() {
                         break;
                     case 16:
                         jAlert('Saved Reason successfully.', 'Information!!', function () { $.alerts.dialogClass = null; });
-                        //$("#StartEndReportView").click();
-                        //location.reload();
+                        eventFunction.getCustomerTransactionbyID(selectedMemberId);
                         break;
                 }
             },
@@ -428,13 +409,10 @@ function Print() {
                 htmls += "</table>";
                 $('#membeshipformlist').html(htmls);
 
-
                 $("#Brandtable").on('click', '.PayBalance', function (event) {
                     var id = parseInt($(this).attr('id'));
                     eventFunction.GetCustomerBalance(id);
-
                 });
-
 
                 $("#BalanceTransactionlist").on('click', '.btnCancelCredit', function (event) {
 
@@ -448,10 +426,7 @@ function Print() {
                     var id = parseInt(idValues[0]);
                     var MemberID = parseInt(idValues[1]);
 
-
-                    //eventFunction.GetCustomerBalance(id);
                     var row = $(this).parents('tr');
-                    // var name = row.find('td:eq(0)').text();
 
                     $('.cancelCreditAmount').dialog(
                         {
@@ -487,10 +462,10 @@ function Print() {
                     )
                 });
 
-
                 $("#Brandtable").on('click', '.btnViewCustomerTransaction', function (event) {
                     debugger;
                     var id = parseInt($(this).attr('id'));
+                    selectedMemberId = id;
                     var row = $(this).parents('tr');
                     var name = row.find('td:eq(0)').text();
                     var address = row.find('td:eq(1)').text();
@@ -504,7 +479,7 @@ function Print() {
                     remainingbal = parseFloat(balance.split(" ")[2]);
                     openingBalance = parseFloat(opening.split(" ")[2]);
                     htmls = "";
-                    htmls += '    <button type="button" class="sfBtn restro-btn fa fa-print" id="btnPrints" style="margin-right:2px;">Print</button>';
+                    htmls += '<button type="button" class="sfBtn restro-btn fa fa-print" id="btnPrints" style="margin-right:2px;">Print</button>';
                     htmls += '<div id="ViewDetailsReport" style="margin-top:10px;">';
                     htmls += '<table class="popupprint"><tr colspan="2"><th>Name:</th><td>' + name + '</td>';
                     htmls += '<tr><th>Address:</th><td>' + address + '</td><th>Contact:</th><td>' + Contact + '</td></tr>';
@@ -560,12 +535,11 @@ function Print() {
                 eventFunction.config.data = JSON.stringify({ MembershipID: MembershipID });
                 eventFunction.config.ajaxCallMode = 11;
                 eventFunction.ajaxCall(eventFunction.config);
-                // $("#membeshipformlist").dialog('open');
             },
 
             bindCustomerTransactionbyID: function (result) {
                 debugger;
-
+                $("#tblForCustomerTransaction_wrapper").remove();
                 var data = result.d;
                 htmls = "";
                 var sn = 1;
@@ -614,13 +588,25 @@ function Print() {
                     htmls += '<tr><td style="text-align:center;border:1px solid #575757;padding:2px;">' + (index + increment) + '</td>';
                     if (value.billNo != "") {
                         var ids = value.MemberPayID;
-                        if (value.iscustomer == 0) {
-                            htmls += "<td style='text-align:left;border:1px solid #575757;padding:2px;'>" + value.AddedOn + " <a target='_blank' id='" + value.salesMasterId + "' class='goodreceiveView' >(" + value.billNo + ")</a></td>";
-                            htmls += "<td></td>";
-                        }
-                        else {
-                            htmls += "<td style='text-align:left;border:1px solid #575757;padding:2px;'>" + value.AddedOn + " <a target='_blank' id='" + value.salesMasterId + "_" + value.SalesType + "' class='billView' >(" + value.billNo + ")</a></td>";
-                            htmls += "<td style='text-align:center;border:1px solid #575757;padding:2px;'>" + value.Remarks + "</td>";
+
+                        if (value.IsCancelled == false) {
+                            if (value.iscustomer == 0) {
+                                htmls += "<td style='text-align:left;border:1px solid #575757;padding:2px;'>" + value.AddedOn + " <a target='_blank' id='" + value.salesMasterId + "' class='goodreceiveView' >(" + value.billNo + ")</a></td>";
+                                htmls += "<td></td>";
+                            }
+                            else {
+                                htmls += "<td style='text-align:left;border:1px solid #575757;padding:2px;'>" + value.AddedOn + " <a target='_blank' id='" + value.salesMasterId + "_" + value.SalesType + "' class='billView' >(" + value.billNo + ")</a></td>";
+                                htmls += "<td style='text-align:center;border:1px solid #575757;padding:2px;'>" + value.Remarks + "</td>";
+                            }
+                        } else {
+                            if (value.iscustomer == 0) {
+                                htmls += "<td style='text-align:left;border:1px solid #575757;padding:2px;'>" + value.AddedOn + "</td>";
+                                htmls += "<td></td>";
+                            }
+                            else {
+                                htmls += "<td style='text-align:left;border:1px solid #575757;padding:2px;'>" + value.AddedOn + "</td>";
+                                htmls += "<td style='text-align:center;border:1px solid #575757;padding:2px;'>" + value.Remarks + "</td>";
+                            }
                         }
                     }
                     else {
@@ -633,10 +619,7 @@ function Print() {
                     totalCredit += value.CreditAmount;
                     totalSettlement += value.SettlementAmount;
 
-
-
                     if (value.CreditAmount == 0) {
-                        //debugger;
                         htmls += '<td style="text-align:center;border:1px solid #575757;padding:2px;"> Paid </td>';
                         currentBal -= (parseFloat(value.PayAmount) + parseFloat(value.SettlementAmount));
                         htmls += '<td style="text-align:left;border:1px solid #575757;padding:2px;">' + value.AddedBy + '</td>';
@@ -660,25 +643,17 @@ function Print() {
                         }
                     }
 
-
                     htmls += '<td style="text-align:right;border:1px solid #575757;padding:2px;"class="tdrate">' + parseFloat(currentBal).toFixed(2) + '</td>';
-                    if (value.CreditAmount > 0 && value.IsCancelled != true && billnoCount[value.billNo].count <= 1) {
-                        // Check if the bill count is 1
-                        htmls += '<td class="tdcenter"><label id="' + value.MemberPayID + "," + value.MemberID + '" class="icon-close btnCancelCredit"></label></td>';
-
+                    if (value.CreditAmount > 0 && value.IsCancelled == false && billnoCount[value.billNo].count <= 1) {
+                        htmls += '<td class="tdcenter"><label id="' + value.salesMasterId + "," + value.MemberID + '" class="icon-close btnCancelCredit"></label></td>';
                     } else {
-
                         htmls += '<td style="text-align:right;border:1px solid #575757;padding:2px;" class="tdrate">-</td>';
-                        // htmls += '<td class="tdcenter">-</td>';
                     }
                     htmls += '</tr>';
-                    // totalBalance += value.PayAmount;
                     sn++;
                 });
-                // htmls += '<tr><td></td><td>Total : </td><td>' + totalBalance + '</td><td></td><td></td></tr>';
 
                 htmls += '</tbody>';
-
                 htmls += `<tfoot>
                                 <tr>
                                     <td></td>
