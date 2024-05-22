@@ -306,9 +306,6 @@
         </div>
     </div>
 </div>
-
-<div id="clearTableDialog" style="display: none;">
-</div>
 <script>
 
     $('#CusOrder').hide(), { direction: 'right' };
