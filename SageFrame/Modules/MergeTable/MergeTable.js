@@ -226,19 +226,22 @@ var arrOccupiedTables = [];
                 if (datas.length > 0) {
                     htmls += "<h4>Tables in " + datas[0].restroRoom + "</h4><hr><ul>";
                     $.each(datas, function (index, value) {
+                        
                         var billNotCleared = ((value.BillPaid == 1 && value.restrotablesStatusID == 7) ? true : false);
                         if (value.MergeTableList <= 0 && value.IsTable && !billNotCleared) {
                             htmls += "<li>"
                             htmls += ("<input type='checkbox' class='imgtablemerge' id='");
 
-                            if (value.BillPaid == 0 && value.IsCancelled == 0) {
+                            //if (value.BillPaid == 0 && value.IsCancelled == 0) {
+                            if (value.BillPaid.toString() == '0' && value.IsOccupied == 1) {
                                 htmls += ("Table_" + value.restrotableId + "_img_" + value.IsTable + "_" + value.restrotableTitle + '_' + value.MergeTableList + '_' + value.MergeID + '_yes' + "' /> ");
                             } else {
                                 htmls += ("Table_" + value.restrotableId + "_img_" + value.IsTable + "_" + value.restrotableTitle + '_' + value.MergeTableList + '_' + value.MergeID + '_no' + "' /> ");
                             }
                             htmls += ("<label for ='");
 
-                            if (value.BillPaid == 0 && value.IsCancelled == 0) {
+                            //if (value.BillPaid == 0 && value.IsCancelled == 0) {
+                            if (value.BillPaid.toString() == '0' && value.IsOccupied == 1) {
                                 htmls += ("Table_" + value.restrotableId + "_img_" + value.IsTable + "_" + value.restrotableTitle + '_' + value.MergeTableList + '_' + value.MergeID + '_yes' + "' class = '' >");
                                 htmls += ("<img class='imgForTable' id='IMG_" + value.restrotableId + "' src='" + p.HostUrl + "/Modules/RestroDashboard/image/tablered.png'></label> ");
                             } else {
