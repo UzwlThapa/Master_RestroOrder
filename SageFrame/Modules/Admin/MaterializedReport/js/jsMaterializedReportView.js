@@ -116,7 +116,36 @@
                     htmls[index++] = '<p style="text-align:center;margin:0;">From: ' + $('#txtStartDate').val() + ' &nbsp; &nbsp; To: ' + $('#txtEndDate').val() + '</p>';
                     htmls[index++] = '<p id="printedDate" style="display:none;text-align:center;margin:0;">Printed On : <label id="lblPrintedOn"></label></p>';
                     htmls[index++] = '</div>';
-                htmls[index++] = '<table class="tableForMaterizedView sfGridwrapper reportsprint report_XL display" cellspacing="0" style="width:100%;border:none;border-collapse:collapse;"><thead><tr><th style="border:1px solid #575757;text-align:center;">FiscalYear</th><th style="border:1px solid #575757;text-align:center;">Bill_No</th><th style="border:1px solid #575757;text-align:center;">Customer_Name</th><th style="border:1px solid #575757;text-align:center;">Customer_PAN</th><th style="border:1px solid #575757;text-align:center;">Bill_Date</th><th style="border:1px solid #575757;text-align:center;">Amount</th><th style="border:1px solid #575757;text-align:center;">Discount</th><th style="border:1px solid #575757;text-align:center;">ServiceCharge</th><th style="border:1px solid #575757;text-align:center;">TaxableAmount</th><th style="border:1px solid #575757;text-align:center;">Tax_Amount</th><th style="border:1px solid #575757;text-align:center;">Total Amount</th><th style="border:1px solid #575757;text-align:center;">Sync with IRD</th><th style="border:1px solid #575757;text-align:center;">Is_Printed</th><th style="border:1px solid #575757;text-align:center;">Is_bill_Active</th><th style="border:1px solid #575757;text-align:center;">Print_Count</th><th style="border:1px solid #575757;text-align:center;">Last_Printed</th><th style="border:1px solid #575757;text-align:center;">Entered_by</th><th style="border:1px solid #575757;text-align:center;">Printed_by</th><th style="border:1px solid #575757;text-align:center;">Is_realtime</th></tr></thead><tbody>';
+                //htmls[index++] = '<table class="tableForMaterizedView sfGridwrapper reportsprint report_XL display" cellspacing="0" style="width:100%;border:none;border-collapse:collapse;"><thead><tr><th style="border:1px solid #575757;text-align:center;">FiscalYear</th><th style="border:1px solid #575757;text-align:center;">Bill_No</th><th style="border:1px solid #575757;text-align:center;">Customer_Name</th><th style="border:1px solid #575757;text-align:center;">Customer_PAN</th><th style="border:1px solid #575757;text-align:center;">Bill_Date</th><th style="border:1px solid #575757;text-align:center;">Amount</th><th style="border:1px solid #575757;text-align:center;">Discount</th><th style="border:1px solid #575757;text-align:center;">ServiceCharge</th><th style="border:1px solid #575757;text-align:center;">TaxableAmount</th><th style="border:1px solid #575757;text-align:center;">Tax_Amount</th><th style="border:1px solid #575757;text-align:center;">Total Amount</th><th style="border:1px solid #575757;text-align:center;">Sync with IRD</th><th style="border:1px solid #575757;text-align:center;">Is_Printed</th><th style="border:1px solid #575757;text-align:center;">Is_bill_Active</th><th style="border:1px solid #575757;text-align:center;">Print_Count</th><th style="border:1px solid #575757;text-align:center;">Last_Printed</th><th style="border:1px solid #575757;text-align:center;">Entered_by</th><th style="border:1px solid #575757;text-align:center;">Printed_by</th><th style="border:1px solid #575757;text-align:center;">Is_realtime</th></tr></thead><tbody>';
+                htmls[index++] = `
+  <table class="tableForMaterizedView sfGridwrapper reportsprint report_XL display" cellspacing="0" style="width:100%;border:none;border-collapse:collapse;">
+    <thead>
+      <tr>
+        <th style="border:1px solid #575757;text-align:center;">FiscalYear</th>
+        <th style="border:1px solid #575757;text-align:center;">Bill_No</th>
+        <th style="border:1px solid #575757;text-align:center;">Customer_Name</th>
+        <th style="border:1px solid #575757;text-align:center;">Customer_PAN</th>
+        <th style="border:1px solid #575757;text-align:center;">Bill_Date</th>
+        <th style="border:1px solid #575757;text-align:center;">Amount</th>
+        <th style="border:1px solid #575757;text-align:center;">Discount</th>
+        <th style="border:1px solid #575757;text-align:center;">ServiceCharge</th>
+        <th style="border:1px solid #575757;text-align:center;">TaxableAmount</th>
+        <th style="border:1px solid #575757;text-align:center;">Tax_Amount</th>
+        <th style="border:1px solid #575757;text-align:center;">Total Amount</th>
+        <th style="border:1px solid #575757;text-align:center;">Sync with IRD</th>
+        <th style="border:1px solid #575757;text-align:center;">Is_Bill_Printed</th>
+        <th style="border:1px solid #575757;text-align:center;">Is_bill_Active</th>
+        <!--<th style="border:1px solid #575757;text-align:center;">Print_Count</th>-->
+        <th style="border:1px solid #575757;text-align:center;">Printed_Time</th>
+        <th style="border:1px solid #575757;text-align:center;">Entered_by</th>
+        <th style="border:1px solid #575757;text-align:center;">Printed_by</th>
+        <th style="border:1px solid #575757;text-align:center;">Is_realtime</th>
+        <th style="border:1px solid #575757;text-align:center;">Payment_Method</th>
+      </tr>
+    </thead>
+    <tbody>
+`;
+
                     if (datas.length > 0) {
                     for (var i = 0; i < datas.length; i++) {
                         //htmls[index++] = '<tr class="' + (datas[i].Is_Active ? 'activebill' : 'inactivebill') + '" style="border-bottom:1px solid #575757;padding:2px;' + (datas[i].Is_Active ? '' : 'text-decoration: line-through;') + '"><td style="border:1px solid #575757;padding:2px;">' + datas[i].FiscalYear + '</td>';
@@ -137,11 +166,12 @@
                         //printedDate = value.Printed_Time.split(' ')[0].split('/');
                         //nepali_printedDate = AD2BS(printedDate[2] + '-' + printedDate[0] + '-' + printedDate[1]);
                         //htmls += '<td>' + nepali_printedDate + ' ' + value.Printed_Time.split(' ')[1] + ' ' + value.Printed_Time.split(' ')[2] + '</td>';
-                        htmls[index++] = '<td style="border:1px solid #575757;padding:2px;">' + datas[i].PrintCount + '</td>';
+                        //htmls[index++] = '<td style="border:1px solid #575757;padding:2px;">' + datas[i].PrintCount + '</td>';
                         htmls[index++] = '<td style="border:1px solid #575757;padding:2px;">' + datas[i].Printed_Time + '</td>';
                         htmls[index++] = '<td style="border:1px solid #575757;padding:2px;">' + datas[i].Entered_by + '</td>';
                         htmls[index++] = '<td style="border:1px solid #575757;padding:2px;">' + datas[i].Printed_by + '</td>';
                         htmls[index++] = '<td style="text-align:center;border:1px solid #575757;padding:2px;">' + (datas[i].SyncWithIRD ? datas[i].isrealtime : 'N') + '</td>';
+                        htmls[index++] = '<td style="text-align:center;border:1px solid #575757;padding:2px;">' + (datas[i].PaymentModes) + '</td>';
                         htmls[index++] = '</tr>';
                         if (datas[i].Is_Active == true) {
                             a += datas[i].AMOUNT;
