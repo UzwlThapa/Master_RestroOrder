@@ -1018,7 +1018,7 @@ namespace SageFrame.RestroOrder
         public decimal AMOUNT { get; set; }
         public decimal Discount { get; set; }
         public decimal ServiceCharge { get; set; }
-
+        public string PaymentModes { get; set; }
         public decimal TaxableAmount { get; set; }
         public decimal Tax_Amount { get; set; }
         public bool Is_Printed { get; set; }
