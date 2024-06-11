@@ -330,9 +330,9 @@ function SavePayment(salesMasterid, totalAmount) {
             salesPayment.Customer = $('#txtCustomerName').val();
             salesPayment.Address = $('#hdfAddress').val();
             salesPayment.PAN = $('#txtPAN').val();
-            salesPayment.PayAmount = $(row).find('.txtPayAmount').val();
-            salesPayment.TenderAmount = (spmid == 1 ? $(row).find('#txtTenderAmount').val() : 0);
-            salesPayment.ReturnAmount = (spmid == 1 ? $(row).find('#txtReturnAmount').val() : 0);
+            salesPayment.PayAmount = parseFloat($(row).find('.txtPayAmount').val() ?? "0");
+            salesPayment.TenderAmount = parseFloat((spmid == 1 ? $(row).find('#txtTenderAmount').val() : 0));
+            salesPayment.ReturnAmount = parseFloat((spmid == 1 ? $(row).find('#txtReturnAmount').val() : 0));
             salesPayment.Remarks = $('.txtRem > .txtRemarks').val();
             salesPayment.BillAmount = totalAmount;
             salesPaymentList.push(salesPayment);
