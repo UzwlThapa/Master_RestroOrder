@@ -3095,6 +3095,9 @@ function print() {
                                 else {
                                     htmls += ("<input id='Shift_" + type.OrderMasterId + "_" + type.restrotableTitle + "_" + type.GuestNo + "_" + type.restrotableId + "_" + type.OrderNo + "' type='button' class='sfBtn shiftTable restro-btn' value='Shift' style='padding:1px 4px; margin-left:10px;' />");
                                 } 
+                                if (Roles.includes("Advance Bill") || Roles.includes("Super User")) {
+                                    htmls += ("<input id='Print_" + type.OrderMasterId + "_" + type.restrotableTitle + "' type='button' class='sfBtn print restro-btn' value='Print' style='padding:1px 4px; margin-left:10px;' />");
+                                }
                                 htmls += ("</div></td></tr>");
                             }
                         }
