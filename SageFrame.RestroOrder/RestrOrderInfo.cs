@@ -1081,6 +1081,7 @@ namespace SageFrame.RestroOrder
     public class SalesDetails
     {
         public int salesMasterId { get; set; }
+        public string HsCode { get; set; }
         public int ItemId { get; set; }
         public float qty { get; set; }
         public decimal rate { get; set; }
@@ -1364,6 +1365,7 @@ namespace SageFrame.RestroOrder
         public int PITId { get; set; }
         public string ITCode { get; set; }
         public int ItemId { get; set; }
+        public string HsCode { get; set; }
         public int MUnitId { get; set; }
         public int DSUnitId { get; set; }
         public int DPUnitId { get; set; }
@@ -1413,7 +1415,7 @@ namespace SageFrame.RestroOrder
         public decimal COGS { get; set; }
         public string ItemName { get; set; }
         public bool IsPriceEditable { get; set; }
-
+        //public string HsCode { get; set; }
     }
 
 

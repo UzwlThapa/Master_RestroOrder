@@ -170,6 +170,12 @@
                 </td>
             </tr>
 
+            <%--Code For HS Code--%>
+            <tr>
+                <td>HS Code :</td>
+                <td><input type="text" id="txtMenuHsCode" name="txtMenuHsCode" class="sfInputbox" /></td>
+            </tr>
+
             <tr style="display: none;">
                 <td>Is Unit Wise Rate :
                 </td>
