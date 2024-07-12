@@ -164,9 +164,9 @@ public class OrderWebService : System.Web.Services.WebService
                 List<OrderDetailClass> orderInDatabaseOrdered = orderInDatabase.Where(p => p.Status == "Ordered").ToList();
                 foreach (OrderDetailClass ord in orderInDatabaseOrdered)
                 {
-                    List<OrderDetailClass> newOrders = orderMasterInfo.OrderDetailsList.Where(p => p.ItemId == ord.ItemId && p.SeatNo == ord.SeatNo && p.IsCombo == ord.IsCombo).ToList();
+                    OrderDetailClass newOrders = orderMasterInfo.OrderDetailsList.Where(p => p.ItemId == ord.ItemId && p.SeatNo == ord.SeatNo && p.IsCombo == ord.IsCombo && p.Quantity == 0).FirstOrDefault();
                     //if (newOrders.Count < 1)
-                    if (newOrders == null || newOrders.Count == 0)
+                    if (newOrders != null)
                     {
                         cancelledOrders.Add(ord);
                     }

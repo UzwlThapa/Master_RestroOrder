@@ -49,6 +49,7 @@ var orderlistviewtype = JSON.parse(localStorage.getItem("ordermenulisttype"));
 var OrdermenuImageshow = JSON.parse(localStorage.getItem("OrdermenuImageshow"));
 var AddItemInMenuSearch = JSON.parse(localStorage.getItem("AddItemInMenuSearch"));
 var menuID = 0;
+var OrderListArrayCanceledList = [];
 
 var creditLimit = (localStorage.getItem("creditLimit"));
 
@@ -450,7 +451,7 @@ function getcomboformenu() {
 
                 });
                 htmls += "</div>";
-                $('#ComboMenu').html(htmls); 
+                $('#ComboMenu').html(htmls);
             } else {
                 htmls += "<h6>No Menu Available </h6>";
                 $('#ComboMenu').html(htmls);
@@ -738,16 +739,33 @@ function SaveOrderedData() {
     var orders = [];
     var orderDetailsList = new Array();
     for (var i = 0; i < OrderListArray.length; i++) {
-        var orderDetail = new Object();
-        orderDetail.Quantity = parseInt(OrderListArray[i].Quantity),
-            orderDetail.ItemId = OrderListArray[i].ItemId,
-            orderDetail.IsCombo = OrderListArray[i].IsCombo,
-            orderDetail.Rate = 0.0,
-            orderDetail.Note = OrderListArray[i].Note,
-            orderDetail.SeatNo = OrderListArray[i].SeatNo;
-        orderDetail.Amount = 0.0
-        orderDetail.Waiter = SageFrameUserName;
-        orderDetailsList.push(orderDetail);
+        if (OrderListArray[i].ItemId) {
+            var orderDetail = new Object();
+            orderDetail.Quantity = parseInt(OrderListArray[i].Quantity),
+                orderDetail.ItemId = OrderListArray[i].ItemId,
+                orderDetail.IsCombo = OrderListArray[i].IsCombo,
+                orderDetail.Rate = 0.0,
+                orderDetail.Note = OrderListArray[i].Note,
+                orderDetail.SeatNo = OrderListArray[i].SeatNo;
+            orderDetail.Amount = 0.0
+            orderDetail.Waiter = SageFrameUserName;
+            orderDetailsList.push(orderDetail);
+        }
+    }
+
+    for (var i = 0; i < OrderListArrayCanceledList.length; i++) {
+        if (OrderListArray[i].ItemId) {
+            var orderDetailCancelled = new Object();
+            orderDetailCancelled.Quantity = 0,
+                orderDetailCancelled.ItemId = OrderListArray[i].ItemId,
+                orderDetailCancelled.IsCombo = OrderListArray[i].IsCombo,
+                orderDetailCancelled.Rate = 0.0,
+                orderDetailCancelled.Note = OrderListArray[i].Note,
+                orderDetailCancelled.SeatNo = OrderListArray[i].SeatNo;
+            orderDetailCancelled.Amount = 0.0
+            orderDetailCancelled.Waiter = SageFrameUserName;
+            orderDetailsList.push(orderDetailCancelled);
+        }
     }
 
     let guestNo = 1;
@@ -2286,6 +2304,7 @@ function initialSetup(tableId, oId, hostUrl, foodCourt, Delievery) {
                 $("#tr_" + row + "_" + itemrow[2]).remove();
                 $.each(OrderListArray, function (i) {
                     if (OrderListArray[i].ItemId == parseInt(row) && OrderListArray[i].IsCombo.toString() == itemrow[2]) {
+                        OrderListArrayCanceledList.push(OrderListArray[i]);
                         OrderListArray.splice(i, 1);
                         return false;
                     }
