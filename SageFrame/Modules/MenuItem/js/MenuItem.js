@@ -446,7 +446,7 @@
                                 htmls += '<td>' + value.SRate + '</td>';
                                 htmls += '<td style="display:none;">' + value.IsProdMaterial + '</td>';
                                 htmls += '<td class="tdcenter"><label id="' + value.ITId + '" class="view icon-preview"/></td>';
-                                htmls += '<td class="tdcenter"><label id="' + value.ITId + '+' + value.ITCode + '+' + value.ImagePath + '+' + value.IsMenu + '+' + value.IsExpirable + '+' + value.IsProdMaterial + '+' + value.IsUnitWiseRate + '+' + value.ItemCostCentreID + '+' + value.IsActive + '+' + value.SmallUnit + '+' + value.PITId + '+' + value.LargeUnit + '+' + value.Conversion + '+' + value.IsDefaultPurchaseUnit + '+' + value.IsDefaultSalesUnit + '+' + value.SRate + '+' + value.ValidFrom + '+' + value.Details + '+' + value.IsExtra + '+' + value.ITName + '+' + value.CostCenterName + '+' + value.IsTaxable + '" class="edit icon-edit" value="Edit"/></td>';
+                                htmls += '<td class="tdcenter"><label id="' + value.ITId + '+' + value.ITCode + '+' + value.ImagePath + '+' + value.IsMenu + '+' + value.IsExpirable + '+' + value.IsProdMaterial + '+' + value.IsUnitWiseRate + '+' + value.ItemCostCentreID + '+' + value.IsActive + '+' + value.SmallUnit + '+' + value.PITId + '+' + value.LargeUnit + '+' + value.Conversion + '+' + value.IsDefaultPurchaseUnit + '+' + value.IsDefaultSalesUnit + '+' + value.SRate + '+' + value.ValidFrom + '+' + value.Details + '+' + value.IsExtra + '+' + value.ITName + '+' + value.CostCenterName + '+' + value.IsTaxable + '+' + value.HsCode + '" class="edit icon-edit" value="Edit"/></td>';
                                 htmls += '<td class="tdcenter"><label id="' + value.ITId + '" class="delete icon-delete"  value="Delete"/></td>';
                             }
                             else {
@@ -513,7 +513,7 @@
                 });
 
                 $("#tableForItemList").on('click', '.edit', function () {
-                    debugger;
+
                     $("#btnAdd ,#btnExcel").hide();
                     $("#DivForItemlist").hide();
                     eventFunction.config.ItemIDUpdate = 1;
@@ -523,6 +523,7 @@
                     $('#SelCostCenter').val(word[20].split(' ')[0]);
                     $('#txtItemName').val(word[19]);
                     $("#txtItemCode").val(word[1]);
+                    $("#txtMenuHsCode").val(word[22]);
                     $("#ImgPrvs").attr("src", "/Modules/ROI_Item/ImageItem/" + word[2]);
                     $("#txtImage").val(word[2]);
                     $(".ajax-file-upload").show();
@@ -606,6 +607,7 @@
                 itemObject.PITId = $("#SelCategoryName").val() == null ? 0 : parseInt($("#SelCategoryName").val());
                 itemObject.ITName = $("#txtItemName").val();
                 itemObject.ITCode = $("#txtItemCode").val() == "" ? $("#txtItemName").val() : $("#txtItemCode").val();
+                itemObject.HsCode = $("#txtMenuHsCode").val();
                 itemObject.ImagePath = $("#txtImage").val();
                 itemObject.IsMenu = true;
                 itemObject.IsExpirable = $("#chkbxIsExpirable").is(':checked');
@@ -725,6 +727,7 @@
                 eventFunction.config.ItemIDUpdate = 0;
                 $("#SelCategoryName").val("");
                 $("#txtItemName").val("");
+                $("#txtMenuHsCode").val("");
                 $("#txtItemCode").val("");
                 $("#txtImage").val("");
                 $("#fileImage").val("");

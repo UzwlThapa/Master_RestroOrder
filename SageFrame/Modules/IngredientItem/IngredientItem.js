@@ -282,6 +282,7 @@
                 itemObject.ITName = $("#txtInvItemName").val();
                 itemObject.ITCode = $("#txtInvItemCode").val() == "" ? $("#txtInvItemName").val() : $("#txtInvItemCode").val();
                 itemObject.ImagePath = $("#txtInvImage").val();
+                itemObject.HsCode = $("#txtInvHsCode").val();
                 itemObject.IsMenu = false;
                 itemObject.IsExpirable = $("#chkbxInvIsExpirable").is(':checked');
                 itemObject.IsProdMaterial = true;
@@ -534,7 +535,7 @@
                             htmls += '<td>' + value.CostCenterName + '</td>';
                             htmls += '<td>' + value.IsExpirable + '</td>';
                             htmls += '<td><label id="' + value.ITId + '" class="view icon-preview"/></td>';
-                            htmls += '<td><label id="' + value.ITId + '+' + value.ITCode + '+' + value.ImagePath + '+' + value.IsMenu + '+' + value.IsExpirable + '+' + value.IsProdMaterial + '+' + value.IsUnitWiseRate + '+' + value.ItemCostCentreID + '+' + value.IsActive + '+' + value.SmallUnit + '+' + value.PITId + '+' + value.LargeUnit + '+' + value.Conversion + '+' + value.IsDefaultPurchaseUnit + '+' + value.IsDefaultSalesUnit + '+' + value.SRate + '+' + value.ValidFrom + '+' + value.Details + '+' + value.IsExtra + '"   class="edit icon-edit" value="Edit"/></td>';
+                            htmls += '<td><label id="' + value.ITId + '+' + value.ITCode + '+' + value.ImagePath + '+' + value.IsMenu + '+' + value.IsExpirable + '+' + value.IsProdMaterial + '+' + value.IsUnitWiseRate + '+' + value.ItemCostCentreID + '+' + value.IsActive + '+' + value.SmallUnit + '+' + value.PITId + '+' + value.LargeUnit + '+' + value.Conversion + '+' + value.IsDefaultPurchaseUnit + '+' + value.IsDefaultSalesUnit + '+' + value.SRate + '+' + value.ValidFrom + '+' + value.Details + '+' + value.IsExtra + '+' + value.HsCode + '"   class="edit icon-edit" value="Edit"/></td>';
                             htmls += '<td><label id="' + value.ITId + '" class="delete icon-delete"  value="Delete"/></td>';
                             htmls += '</tr>';
                         }
@@ -602,6 +603,7 @@
                     var word = ids.split("+");
 
                     $("#txtInvItemCode").val(word[1]);
+                    $("#txtInvHsCode").val(word[19]);
                     $("#InvImgPrvs").attr("src", "/Modules/ROI_Item/ImageItem/" + word[2]);
                     $("#txtInvImage").val(word[2]);
                     $(".ajax-file-upload").show();
@@ -737,6 +739,7 @@
                 $("#SelInvCategoryName").val("");
                 $("#txtInvItemName").val("");
                 $("#txtInvItemCode").val("");
+                $("#txtInvHsCode").val("");
               
                 $("#txtInvImage").val("");
                 $("#fileInvImage").val("");

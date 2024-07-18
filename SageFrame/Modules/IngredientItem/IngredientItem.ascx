@@ -158,6 +158,15 @@
                             </div>
                         </td>
                 </tr>
+
+                <%--Added for HS Code--%>
+                <tr>
+                    <td>HS Code :</td>
+                    <td>
+                         <input type="text" id="txtInvHsCode" name="txtInvHsCode" class="sfInputbox" />
+                    </td>
+                </tr>
+
                 <tr>
                     <td>Is Expirable :
                     </td>
