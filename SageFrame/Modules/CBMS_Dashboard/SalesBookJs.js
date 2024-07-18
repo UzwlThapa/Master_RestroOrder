@@ -186,7 +186,7 @@
                 fhtmls += "<tr>";
                 fhtmls += "<th colspan='5' style='text-align:center;border:1px solid #575757;padding:2px;font-weight:bold;'>Total : </th>";
                 fhtmls += '<th class="tdrate" style="text-align:center;border:1px solid #575757;padding:2px;font-weight:bold;">' + totalQty + '</th>';
-                fhtmls += '<th class="tdrate" style="text-align:center;border:1px solid #575757;padding:2px;font-weight:bold;"></th>';
+                fhtmls += '<th colspan="2" style="text-align:center;border:1px solid #575757;padding:2px;font-weight:bold;"></th>';
                 fhtmls += '<th class="tdrate" style="text-align:center;border:1px solid #575757;padding:2px;font-weight:bold;">' + totalSales.toFixed(2) + '</th>';
                 fhtmls += '<th class="tdrate" style="text-align:center;border:1px solid #575757;padding:2px;font-weight:bold;">' + 0 + '</th>';
                 fhtmls += '<th class="tdrate" style="text-align:center;border:1px solid #575757;padding:2px;font-weight:bold;">' + taxableSales.toFixed(2) + '</th>';

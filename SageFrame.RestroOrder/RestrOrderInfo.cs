@@ -410,8 +410,6 @@ namespace SageFrame.RestroOrder
         public float Quantity { get; set; }
         public decimal Rate { get; set; }
         public decimal SRate { get; set; }
-        // decimal ExciseRate { get; set; }
-        //  public System.DateTime Date { get; set; }
         public decimal Amount { get; set; }
         public Decimal Bevrage { get; set; }
         public bool IsCancelled { get; set; }
@@ -433,6 +431,7 @@ namespace SageFrame.RestroOrder
         public int restroRoomId { get; set; }
         public string restroRoom { get; set; }
         public string BillNo { get; set; }
+        public string HsCode { get; set; }
         public string fiscalYear { get; set; }
         public string GetBillNo()
         {
@@ -1081,6 +1080,7 @@ namespace SageFrame.RestroOrder
     public class SalesDetails
     {
         public int salesMasterId { get; set; }
+        public string HsCode { get; set; }
         public int ItemId { get; set; }
         public float qty { get; set; }
         public decimal rate { get; set; }
@@ -1364,6 +1364,7 @@ namespace SageFrame.RestroOrder
         public int PITId { get; set; }
         public string ITCode { get; set; }
         public int ItemId { get; set; }
+        public string HsCode { get; set; }
         public int MUnitId { get; set; }
         public int DSUnitId { get; set; }
         public int DPUnitId { get; set; }
@@ -1413,7 +1414,7 @@ namespace SageFrame.RestroOrder
         public decimal COGS { get; set; }
         public string ItemName { get; set; }
         public bool IsPriceEditable { get; set; }
-
+        //public string HsCode { get; set; }
     }
 
 

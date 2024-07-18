@@ -3633,7 +3633,9 @@ namespace SageFrame.RestroOrder
                     new KeyValuePair<string, dynamic>("@IsMenu", itemObject.IsMenu),
                     new KeyValuePair<string, dynamic>("@IsActive", itemObject.IsActive),
                     new KeyValuePair<string, dynamic>("@IsTaxable", itemObject.IsTaxable),
-                    new KeyValuePair<string, dynamic>("@AddedBy", itemObject.AddedBy)
+                    new KeyValuePair<string, dynamic>("@AddedBy", itemObject.AddedBy),
+                    new KeyValuePair<string, dynamic>("@HsCode", itemObject.HsCode)
+
                 };
                 int ids = sqlHandler.ExecuteAsScalar<int>("[usp_roi_SaveItemsOfRestro]", Param);
 
@@ -3720,7 +3722,8 @@ namespace SageFrame.RestroOrder
                 new KeyValuePair<string, dynamic>("@IsMenu", itemObject.IsMenu),
                 new KeyValuePair<string, dynamic>("@IsActive", itemObject.IsActive),
                 new KeyValuePair<string, dynamic>("@AddedBy", itemObject.AddedBy),
-                new KeyValuePair<string, dynamic>("@IsTaxable", itemObject.IsTaxable)
+                new KeyValuePair<string, dynamic>("@IsTaxable", itemObject.IsTaxable),
+                new KeyValuePair<string, dynamic>("@HsCode", itemObject.HsCode)
             };
             int ids = sqlHandler.ExecuteAsScalar<int>("[usp_roi_SaveItemsOfRestro]", Param);
 

@@ -179,13 +179,6 @@ D:\danfe\Master_RestroOrder\SageFrame.Laundry\obj\Debug\SageFrame.Laundry.csproj
 D:\danfe\Master_RestroOrder\SageFrame.Laundry\obj\Debug\SageFrame.Laundry.dll
 D:\danfe\Master_RestroOrder\SageFrame.Laundry\obj\Debug\SageFrame.Laundry.pdb
 Z:\Work\Other\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.Laundry\obj\Debug\SageFram.F3E409ED.Up2Date
-G:\Danfe-Git\Master_RestroOrder\SageFrame\bin\SageFrame.Laundry.dll
-G:\Danfe-Git\Master_RestroOrder\SageFrame\bin\SageFrame.Laundry.pdb
-G:\Danfe-Git\Master_RestroOrder\SageFrame.Laundry\obj\Debug\SageFrame.Laundry.csproj.AssemblyReference.cache
-G:\Danfe-Git\Master_RestroOrder\SageFrame.Laundry\obj\Debug\SageFrame.Laundry.csproj.CoreCompileInputs.cache
-G:\Danfe-Git\Master_RestroOrder\SageFrame.Laundry\obj\Debug\SageFrame.Laundry.csproj.CopyComplete
-G:\Danfe-Git\Master_RestroOrder\SageFrame.Laundry\obj\Debug\SageFrame.Laundry.dll
-G:\Danfe-Git\Master_RestroOrder\SageFrame.Laundry\obj\Debug\SageFrame.Laundry.pdb
 Z:\Work\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame\bin\SageFrame.Laundry.dll
 Z:\Work\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame\bin\SageFrame.Laundry.pdb
 Z:\Work\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.Laundry\obj\Debug\SageFrame.Laundry.csproj.AssemblyReference.cache
@@ -193,3 +186,10 @@ Z:\Work\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.Laundry\obj\Debug\S
 Z:\Work\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.Laundry\obj\Debug\SageFram.F3E409ED.Up2Date
 Z:\Work\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.Laundry\obj\Debug\SageFrame.Laundry.dll
 Z:\Work\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.Laundry\obj\Debug\SageFrame.Laundry.pdb
+G:\Danfe-Git\Master_RestroOrder\SageFrame\bin\SageFrame.Laundry.dll
+G:\Danfe-Git\Master_RestroOrder\SageFrame\bin\SageFrame.Laundry.pdb
+G:\Danfe-Git\Master_RestroOrder\SageFrame.Laundry\obj\Debug\SageFrame.Laundry.csproj.AssemblyReference.cache
+G:\Danfe-Git\Master_RestroOrder\SageFrame.Laundry\obj\Debug\SageFrame.Laundry.csproj.CoreCompileInputs.cache
+G:\Danfe-Git\Master_RestroOrder\SageFrame.Laundry\obj\Debug\SageFrame.Laundry.csproj.CopyComplete
+G:\Danfe-Git\Master_RestroOrder\SageFrame.Laundry\obj\Debug\SageFrame.Laundry.dll
+G:\Danfe-Git\Master_RestroOrder\SageFrame.Laundry\obj\Debug\SageFrame.Laundry.pdb
