@@ -754,14 +754,14 @@ function SaveOrderedData() {
     }
 
     for (var i = 0; i < OrderListArrayCanceledList.length; i++) {
-        if (OrderListArray[i].ItemId) {
+        if (OrderListArrayCanceledList[i].ItemId) {
             var orderDetailCancelled = new Object();
             orderDetailCancelled.Quantity = 0,
-                orderDetailCancelled.ItemId = OrderListArray[i].ItemId,
-                orderDetailCancelled.IsCombo = OrderListArray[i].IsCombo,
+                orderDetailCancelled.ItemId = OrderListArrayCanceledList[i].ItemId,
+                orderDetailCancelled.IsCombo = OrderListArrayCanceledList[i].IsCombo,
                 orderDetailCancelled.Rate = 0.0,
-                orderDetailCancelled.Note = OrderListArray[i].Note,
-                orderDetailCancelled.SeatNo = OrderListArray[i].SeatNo;
+                orderDetailCancelled.Note = OrderListArrayCanceledList[i].Note,
+                orderDetailCancelled.SeatNo = OrderListArrayCanceledList[i].SeatNo;
             orderDetailCancelled.Amount = 0.0
             orderDetailCancelled.Waiter = SageFrameUserName;
             orderDetailsList.push(orderDetailCancelled);
