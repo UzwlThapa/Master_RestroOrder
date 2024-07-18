@@ -1557,7 +1557,6 @@ namespace SageFrame.RestroOrder
                     Param1.Add(new KeyValuePair<string, object>("@NetAmount", sd[i].NetAmount));
                     Param1.Add(new KeyValuePair<string, object>("@CostCenterId", sd[i].CostCenterId));
                     Param1.Add(new KeyValuePair<string, object>("@IsCombo", sd[i].IsCombo));
-                    Param1.Add(new KeyValuePair<string, object>("@HsCode", sd[i].HsCode));
                     sqlHandler.ExecuteAsScalar<object>("usp_ro_savesalesDetail", Param1);
                     Param1.Clear();
                 }
@@ -3654,8 +3653,7 @@ namespace SageFrame.RestroOrder
                         new KeyValuePair<string, dynamic>("@Details", itemObject.Details),
                         new KeyValuePair<string, dynamic>("@SmallUnit", itemObject.SmallUnit),
                         new KeyValuePair<string, dynamic>("@AddedBy", itemObject.AddedBy),
-                        new KeyValuePair<string, dynamic>("@IsExtra", itemObject.IsExtra),
-                        new KeyValuePair<string, dynamic>("@HsCode", itemObject.HsCode)
+                        new KeyValuePair<string, dynamic>("@IsExtra", itemObject.IsExtra)
                     };
                     sqlHandler.ExecuteNonQuery("[usp_roi_SaveItemsDetailsOfRestro]", Param4);
 
@@ -3743,8 +3741,7 @@ namespace SageFrame.RestroOrder
                     new KeyValuePair<string, dynamic>("@Details", itemObject.Details),
                     new KeyValuePair<string, dynamic>("@SmallUnit", itemObject.SmallUnit),
                     new KeyValuePair<string, dynamic>("@AddedBy", itemObject.AddedBy),
-                    new KeyValuePair<string, dynamic>("@IsExtra", itemObject.IsExtra),
-                    new KeyValuePair<string, dynamic>("@HsCode", itemObject.HsCode)
+                    new KeyValuePair<string, dynamic>("@IsExtra", itemObject.IsExtra)
                 };
                 sqlHandler.ExecuteNonQuery("[usp_roi_SaveItemsDetailsOfRestro]", Param4);
 
@@ -4506,7 +4503,6 @@ namespace SageFrame.RestroOrder
                         Param1.Add(new KeyValuePair<string, object>("@NetAmount", sd.NetAmount));
                         Param1.Add(new KeyValuePair<string, object>("@CostCenterId", sd.CostCenterId));
                         Param1.Add(new KeyValuePair<string, object>("@IsCombo", sd.IsCombo));
-                        Param1.Add(new KeyValuePair<string, object>("@HsCode", sd.HsCode));
                         var si = sqlHandler.ExecuteAsScalar<object>("usp_ro_savesalesDetail", Param1);
                         int salesdetailId = Convert.ToInt32(si);
                         if (sd.extraSales != null && sd.extraSales.Count > 0)

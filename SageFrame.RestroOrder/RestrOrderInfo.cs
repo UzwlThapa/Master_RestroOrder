@@ -410,8 +410,6 @@ namespace SageFrame.RestroOrder
         public float Quantity { get; set; }
         public decimal Rate { get; set; }
         public decimal SRate { get; set; }
-        // decimal ExciseRate { get; set; }
-        //  public System.DateTime Date { get; set; }
         public decimal Amount { get; set; }
         public Decimal Bevrage { get; set; }
         public bool IsCancelled { get; set; }
@@ -433,6 +431,7 @@ namespace SageFrame.RestroOrder
         public int restroRoomId { get; set; }
         public string restroRoom { get; set; }
         public string BillNo { get; set; }
+        public string HsCode { get; set; }
         public string fiscalYear { get; set; }
         public string GetBillNo()
         {

@@ -210,8 +210,8 @@ function getBill(salesMasterId, foodCourtOrder) {
             }
 
             htmls += ("<tr class='orderedInfo'>");
+            htmls += ("<td style='width: 2%;text-align:left;font-size:12px;font-weight:bold;border-bottom:1px dotted;border-top:1px dotted;'>HS Cd.</td>");
             htmls += ("<td colspan=" + (splitCostCenter ? 1 : 1) + " style='text-align:left;font-size:12px;font-weight:bold;border-bottom:1px dotted;border-top:1px dotted;'>Item</td>");
-            htmls += ("<td colspan= + style='text-align:left;font-size:12px;font-weight:bold;border-bottom:1px dotted;border-top:1px dotted;'>HSCode</td>");
             htmls += ("<td style='font-size:12px;font-weight:bold;text-align:center;border-bottom:1px dotted;border-top:1px dotted;'>Qty</td>");
             htmls += ("<td style='font-size:12px;font-weight:bold;text-align:right;border-bottom:1px dotted;border-top:1px dotted;'>Rate</td>");
             if (splitCostCenter) {
@@ -237,10 +237,10 @@ function getBill(salesMasterId, foodCourtOrder) {
             $.each(billBody, function (index, item) {
                 var rateN = item.Rate;
                 htmls += ("<tr class='orderedInfo' style='height:16px;'>");
+                htmls += ("<td style='width: 2%;text-align:left;font-size:12px;'>" + (item.HsCode ? item.HsCode : "") + "</td>");
                 htmls += ("<td colspan=" + (splitCostCenter ? 1 : 1) + " style='text-align:left;font-size:12px;'>" + item.ITName.split('_')[0] + "</td>");
-                htmls += ("<td style='text-align:center;font-size:12px;'>" + (item.HsCode ? item.HsCode : "") + "</td>");
-       
-                
+
+
                 htmls += ("<td style='text-align:center;font-size:12px;'>" + item.Quantity + "</td>");
                 itemsQnty += item.Quantity;
                 if (isab) {
@@ -418,7 +418,7 @@ function getBill(salesMasterId, foodCourtOrder) {
             htmls += "<tr class='" + (splitCostCenter ? "orderedInfo" : "") + "'>";
 
             if (splitCostCenter) {
-                htmls += ("<td colspan='3' style='text-align:right;border-bottom:1px dotted;font-size:11px;'><span style='font-weight:bold;font-size:11px;'>");
+                htmls += ("<td colspan='4' style='text-align:right;border-bottom:1px dotted;font-size:11px;'><span style='font-weight:bold;font-size:11px;'>");
                 if (totalItemsQntyVisible)
                     htmls += ("<span style='float:left;font-weight:bold;font-size:11px;'>Total Qty: " + itemsQnty + " </span>");
                 htmls += ("Sub Total :</td>");
@@ -428,7 +428,7 @@ function getBill(salesMasterId, foodCourtOrder) {
                 htmls += ("<td colspan='1' style='text-align:right;border-bottom:1px dotted;font-size:11px;'><span style='font-weight:bold;font-size:11px;'></span>Rs." + pizzaAmount.toFixed(2) + "</td>");
             }
             else {
-                htmls += ("<td colspan='2' style='text-align:right;border-bottom:1px dotted;font-size:11px;border-top:1px dotted;'><span style='font-weight:bold;font-size:11px;'>");
+                htmls += ("<td colspan='3' style='text-align:right;border-bottom:1px dotted;font-size:11px;border-top:1px dotted;'><span style='font-weight:bold;font-size:11px;'>");
                 if (totalItemsQntyVisible)
                     htmls += ("<span style='font-weight:bold;font-size:11px;'>Total Qty: " + itemsQnty + " </span></td><td colspan='2' style='text-align:right;border-bottom:1px dotted;font-size:11px;border-top:1px dotted;margin-right:10px;'>");
 
@@ -742,8 +742,8 @@ function getSalesReport_CakeBill(SalesMasterID, SalesType) {
             htmls += '<td colspan="6" style="text-align:right;font-size:11px;margin-right:10px;">Cashier : ' + billBody[0].Cashier + '</td>';
             htmls += "</tr>";
             htmls += ("<tr class=''>");
+            htmls += ("<td style='width: 2%;text-align:left;font-size:12px;font-weight:bold;border-bottom:1px dotted;border-top:1px dotted;'>HS Cd.</td>");
             htmls += ("<td style='text-align:left;font-size:12px;font-weight:bold;border-bottom:1px dotted;border-top:1px dotted;'>Item</td>");
-            htmls += ("<td style='text-align:left;font-size:12px;font-weight:bold;border-bottom:1px dotted;border-top:1px dotted;'>HS Code</td>");
             htmls += ("<td style='font-size:12px;font-weight:bold;text-align:center;border-bottom:1px dotted;border-top:1px dotted;'>Qty</td>");
             htmls += ("<td style='font-size:12px;font-weight:bold;text-align:right;border-bottom:1px dotted;border-top:1px dotted;'>Rate</td>");
             if (splitCostCenter) {
@@ -769,8 +769,8 @@ function getSalesReport_CakeBill(SalesMasterID, SalesType) {
             //for bill body
             $.each(billBody, function (index, item) {
                 htmls += ("<tr class='orderedInfo' style='height:16px;'>");
+                htmls += ("<td style='width: 2%;text-align:left;font-size:12px;'>" + item.HsCode + "</td>");
                 htmls += ("<td colspan=" + (splitCostCenter ? 1 : 1) + " style='text-align:left;font-size:12px;'>" + item.ITName + "</td>");
-                htmls += ("<td style='text-align:center;font-size:12px;'>" + item.HsCode + "</td>");
                 htmls += ("<td style='text-align:center;font-size:12px;'>" + item.Quantity + "</td>");
                 itemsQnty += item.Quantity;
                 htmls += ("<td style='text-align:right;font-size:12px;'>" + item.Rate + "</td>");
