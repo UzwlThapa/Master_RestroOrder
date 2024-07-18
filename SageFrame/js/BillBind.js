@@ -291,7 +291,7 @@ function getBill(salesMasterId, foodCourtOrder) {
                         }
                     }
                     else {
-                        htmls += ("<td style='text-align:right;font-size:12px;'>" + (rateN) + "</td>");
+                        htmls += ("<td style='text-align:right;font-size:12px;'>" + (rateN).toFixed(2) + "</td>");
                         if (splitCostCenter) {
                             htmls += ("<td style='text-align:right;font-size:12px;'>" + (item.Amount).toFixed(2) + "</td>");
                             htmls += ("<td style='text-align:right;font-size:12px;'>" + (item.Bevrage) + "</td>");
@@ -304,7 +304,7 @@ function getBill(salesMasterId, foodCourtOrder) {
                     }
                 }
                 else {
-                    htmls += ("<td style='text-align:right;font-size:12px;'>" + (rateN) + "</td>");
+                    htmls += ("<td style='width: 2%; text-align:right;font-size:12px;'>" + (rateN).toFixed(2) + "</td>");
                     if (splitCostCenter) {
                         htmls += ("<td style='text-align:right;font-size:12px;'>" + (item.Amount).toFixed(2) + "</td>");
                         htmls += ("<td style='text-align:right;font-size:12px;'>" + (item.Bevrage) + "</td>");
