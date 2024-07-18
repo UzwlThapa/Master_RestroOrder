@@ -403,14 +403,14 @@ function getBill(salesMasterId, foodCourtOrder) {
                             }
                         }
                         roomRateN = roomRateN * (1 + companyInfo[0].VATRate / 100.0);
-                        htmls += ("<td colspan='4' style='text-align:right;border-top:1px dotted;font-size:11px;margin-right:10px;'>Room Chrg (Rs. " + (roomRateN).toFixed(2) + "/Day): Rs." + (roomRateN * billBody[0].BookedDays).toFixed(2) + " (" + billBody[0].BookedDays + " Days)</td>");
+                        htmls += ("<td colspan='7' style='text-align:right;border-top:1px dotted;font-size:11px;margin-right:10px;'>Room Chrg (Rs. " + (roomRateN).toFixed(2) + "/Day): Rs." + (roomRateN * billBody[0].BookedDays).toFixed(2) + " (" + billBody[0].BookedDays + " Days)</td>");
                         roomAmount = (roomRateN * billBody[0].BookedDays);
                     } else {
-                        htmls += ("<td colspan='4' style='text-align:right;border-top:1px dotted;font-size:11px;margin-right:10px;'>Room Chrg (Rs. " + billBody[0].RoomRate + "/Day): Rs." + billBody[0].RoomCharge + " (" + billBody[0].BookedDays + " Days)</td>");
+                        htmls += ("<td colspan='7' style='text-align:right;border-top:1px dotted;font-size:11px;margin-right:10px;'>Room Chrg (Rs. " + billBody[0].RoomRate + "/Day): Rs." + billBody[0].RoomCharge + " (" + billBody[0].BookedDays + " Days)</td>");
                         roomAmount = billBody[0].RoomCharge;
                     }
                 } else {
-                    htmls += ("<td colspan='4' style='text-align:right;border-top:1px dotted;font-size:11px;margin-right:10px;'>Room Chrg (Rs. " + billBody[0].RoomRate + "/Day): Rs." + billBody[0].RoomCharge + " (" + billBody[0].BookedDays + " Days)</td>");
+                    htmls += ("<td colspan='7' style='text-align:right;border-top:1px dotted;font-size:11px;margin-right:10px;'>Room Chrg (Rs. " + billBody[0].RoomRate + "/Day): Rs." + billBody[0].RoomCharge + " (" + billBody[0].BookedDays + " Days)</td>");
                     roomAmount = billBody[0].RoomCharge;
                 }
                 htmls += ("</tr>");
@@ -418,7 +418,7 @@ function getBill(salesMasterId, foodCourtOrder) {
             htmls += "<tr class='" + (splitCostCenter ? "orderedInfo" : "") + "'>";
 
             if (splitCostCenter) {
-                htmls += ("<td colspan='4' style='text-align:right;border-bottom:1px dotted;font-size:11px;'><span style='font-weight:bold;font-size:11px;'>");
+                htmls += ("<td colspan='7' style='text-align:right;border-bottom:1px dotted;font-size:11px;'><span style='font-weight:bold;font-size:11px;'>");
                 if (totalItemsQntyVisible)
                     htmls += ("<span style='float:left;font-weight:bold;font-size:11px;'>Total Qty: " + itemsQnty + " </span>");
                 htmls += ("Sub Total :</td>");
@@ -461,7 +461,7 @@ function getBill(salesMasterId, foodCourtOrder) {
                 else {
                     if (costCenterDis.GroupDis.length > 0) {
                         if (costCenterDis.isLoyalty) {
-                            htmls += ("<td colspan='4' style='text-align:right;font-size:11px;margin-right:10px;'><span>Loyality Disc (" + costCenterDis.LoaylityDis + "%): </span>Rs." + parseFloat(billBody[0].totaldiscount).toFixed(2) + "</td></tr>");
+                            htmls += ("<td colspan='7' style='text-align:right;font-size:11px;margin-right:10px;'><span>Loyality Disc (" + costCenterDis.LoaylityDis + "%): </span>Rs." + parseFloat(billBody[0].totaldiscount).toFixed(2) + "</td></tr>");
                         } else {
                             debugger;
                             var showTotalDiscount = localStorage.getItem('ShowTotalDiscount') ?? 'false';
@@ -477,33 +477,33 @@ function getBill(salesMasterId, foodCourtOrder) {
                                         }
                                     }
                                 });
-                                htmls += ("<td colspan='4' style='text-align:right;font-size:11px;margin-right:10px;'><span>Total Disc: </span>Rs." + parseFloat(totalDisc).toFixed(2) + "</td></tr>");
+                                htmls += ("<td colspan='7' style='text-align:right;font-size:11px;margin-right:10px;'><span>Total Disc: </span>Rs." + parseFloat(totalDisc).toFixed(2) + "</td></tr>");
                             }
                             else {
                                 $.each(costCenterDis.GroupDis, function (index, value) {
                                     if (value.Discount > 0) {
                                         if (costCenterDis.isFlatDis) {
-                                            htmls += ("<td colspan='4' style='text-align:right;font-size:11px;margin-right:10px;'><span>" + value.GroupName + " Disc: </span>Rs." + parseFloat(value.Discount).toFixed(2) + "</td></tr>");
+                                            htmls += ("<td colspan='7' style='text-align:right;font-size:11px;margin-right:10px;'><span>" + value.GroupName + " Disc: </span>Rs." + parseFloat(value.Discount).toFixed(2) + "</td></tr>");
 
                                         } else {
-                                            htmls += ("<td colspan='4' style='text-align:right;font-size:11px;margin-right:10px;'><span>" + value.GroupName + " Disc (" + value.Discount + " %) : </span>Rs." + parseFloat((value.Discount / 100) * (value.TotalAmount + value.NonTaxableAmt)).toFixed(2) + "</td></tr>");
+                                            htmls += ("<td colspan='7' style='text-align:right;font-size:11px;margin-right:10px;'><span>" + value.GroupName + " Disc (" + value.Discount + " %) : </span>Rs." + parseFloat((value.Discount / 100) * (value.TotalAmount + value.NonTaxableAmt)).toFixed(2) + "</td></tr>");
                                         }
                                     }
                                 });
                                 if (costCenterDis.RoomDis > 0) {
 
                                     if (costCenterDis.isFlatDis) {
-                                        htmls += ("<td colspan='4' style='text-align:right;font-size:11px;margin-right:10px;'><span>Room Disc: </span>Rs." + parseFloat(costCenterDis.RoomDis).toFixed(2) + "</td></tr>");
+                                        htmls += ("<td colspan='7' style='text-align:right;font-size:11px;margin-right:10px;'><span>Room Disc: </span>Rs." + parseFloat(costCenterDis.RoomDis).toFixed(2) + "</td></tr>");
 
                                     } else {
-                                        htmls += ("<td colspan='4' style='text-align:right;font-size:11px;margin-right:10px;'><span>Room Disc (" + costCenterDis.RoomDis + " %) : </span>Rs." + parseFloat((costCenterDis.RoomDis / 100) * costCenterDis.RoomCharge).toFixed(2) + "</td></tr>");
+                                        htmls += ("<td colspan='7' style='text-align:right;font-size:11px;margin-right:10px;'><span>Room Disc (" + costCenterDis.RoomDis + " %) : </span>Rs." + parseFloat((costCenterDis.RoomDis / 100) * costCenterDis.RoomCharge).toFixed(2) + "</td></tr>");
                                     }
                                 }
                             }
                         }
                         if (isab) {
                             if (isAbbreviated) {
-                                htmls += ("<tr><td colspan='4' style='text-align:right;font-size:9px;margin-right:10px;font-style'><em>(Discount has already been deducted in above mentioned item rate)</em></td></tr>");
+                                htmls += ("<tr><td colspan='7' style='text-align:right;font-size:9px;margin-right:10px;font-style'><em>(Discount has already been deducted in above mentioned item rate)</em></td></tr>");
                             }
                         }
                     }
@@ -514,14 +514,14 @@ function getBill(salesMasterId, foodCourtOrder) {
             totaldis = (billBody[0].totaldiscount).toFixed(2);
 
             if (!isab) {
-                htmls += ("<tr style='border-top:1px solid;'><td colspan='" + (splitCostCenter ? "7" : "4") + "' style='font-weight:bold;text-align:right;font-size:11px;margin-right:10px;'>");
+                htmls += ("<tr style='border-top:1px solid;'><td colspan='7' style='font-weight:bold;text-align:right;font-size:11px;margin-right:10px;'>");
                 htmls += ("<span style='font-weight:bold;'> Basic Amnt : </span>Rs. " + (parseFloat(kotAmount) + parseFloat(bevAmount) + parseFloat(roomAmount) + parseFloat(bakeryAmount) + parseFloat(pizzaAmount) - parseFloat(totaldis)).toFixed(2));
                 htmls += ("</td>");
                 htmls += ("</tr>");
             }
             else {
                 if (!isAbbreviated) {
-                    htmls += ("<tr style='border-top:1px solid;'><td colspan='" + (splitCostCenter ? "7" : "4") + "' style='font-weight:bold;text-align:right;font-size:11px;margin-right:10px;'>");
+                    htmls += ("<tr style='border-top:1px solid;'><td colspan='7' style='font-weight:bold;text-align:right;font-size:11px;margin-right:10px;'>");
                     htmls += ("<span style='font-weight:bold;'> Basic Amnt : </span>Rs. " + (parseFloat(kotAmount) + parseFloat(bevAmount) + parseFloat(roomAmount) + parseFloat(bakeryAmount) + parseFloat(pizzaAmount) - parseFloat(totaldis)).toFixed(2));
                     htmls += ("</td>");
                     htmls += ("</tr>");
@@ -625,10 +625,10 @@ function getBill(salesMasterId, foodCourtOrder) {
 
             if (!billBody[0].IsTable && billBody[0].BookedDays > 0) {
                 htmls += ("<tr>");
-                htmls += ("<td colspan='" + (splitCostCenter ? "7" : "4") + "'  style='text-align:right;font-size:12px;'><span>Adv. Payment : </span><span>(Rs. " + billBody[0].AdvancePayment.toFixed(2) + ")</span></td>");
+                htmls += ("<td colspan='7'  style='text-align:right;font-size:12px;'><span>Adv. Payment : </span><span>(Rs. " + billBody[0].AdvancePayment.toFixed(2) + ")</span></td>");
                 htmls += ("</tr>");
                 htmls += ("<tr>");
-                htmls += ("<td colspan='" + (splitCostCenter ? "7" : "4") + "'  style='font-weight:bold;text-align:right;font-size:14px;'><span>Rem. Amount : </span><span>Rs. " + billBody[0].BasicAmount.toFixed(2) + "</span></td>");
+                htmls += ("<td colspan='7'  style='font-weight:bold;text-align:right;font-size:14px;'><span>Rem. Amount : </span><span>Rs. " + billBody[0].BasicAmount.toFixed(2) + "</span></td>");
                 htmls += ("</tr>");
             }
 
@@ -804,12 +804,12 @@ function getSalesReport_CakeBill(SalesMasterID, SalesType) {
                 pizzadis = parseFloat(discount.pizzadis).toFixed(2);
             }
             if (!billBody[0].IsTable && billBody[0].BookedDays > 0 && !splitCostCenter) {
-                htmls += ("<td colspan='4' style='text-align:right;border-top:1px dotted;font-size:11px;margin-right:10px;'>Room Chrg (Rs. " + billBody[0].RoomRate + "/Day): Rs." + billBody[0].RoomCharge + " (" + billBody[0].BookedDays + " Days)</td>");
+                htmls += ("<td colspan='7' style='text-align:right;border-top:1px dotted;font-size:11px;margin-right:10px;'>Room Chrg (Rs. " + billBody[0].RoomRate + "/Day): Rs." + billBody[0].RoomCharge + " (" + billBody[0].BookedDays + " Days)</td>");
                 htmls += ("</tr>");
                 roomAmount = billBody[0].RoomCharge;
             }
             htmls += "<tr class='" + (splitCostCenter ? "orderedInfo" : "") + "'>";
-            htmls += ("<td colspan='4' style='text-align:right;border-bottom:1px dotted;font-size:11px;'><span style='font-weight:bold;font-size:11px;'>");
+            htmls += ("<td colspan='7' style='text-align:right;border-bottom:1px dotted;font-size:11px;'><span style='font-weight:bold;font-size:11px;'>");
             htmls += ("Sub Total : </span>Rs." + cakeTotalAmount.toFixed(2) + "</td>");
             htmls += ("</tr>");
             if (!billBody[0].IsTable && billBody[0].BookedDays > 0 && discount.isLoyalty && splitCostCenter) {
@@ -819,7 +819,7 @@ function getSalesReport_CakeBill(SalesMasterID, SalesType) {
             }
             if (discount.cakedis != "") {
                 htmls += ("<tr>");
-                htmls += ("<td colspan='" + (splitCostCenter ? 7 : 4) + "' style='text-align:right;font-size:11px;margin-right:10px;'>Discount: ");
+                htmls += ("<td colspan='7' style='text-align:right;font-size:11px;margin-right:10px;'>Discount: ");
                 htmls += ("Rs." + parseFloat(discount.cakedis));
                 htmls += ("</td>");
                 htmls += ("</tr>");
@@ -827,7 +827,7 @@ function getSalesReport_CakeBill(SalesMasterID, SalesType) {
 
             if (discount.isLoyalty) {
                 htmls += ("<tr>");
-                htmls += ("<td colspan='" + (splitCostCenter ? 7 : 4) + "' style='text-align:right;font-size:11px;margin-right:10px;'>Loyalty Discount (" + discount.loyaltydis + " %) : ");
+                htmls += ("<td colspan='7' style='text-align:right;font-size:11px;margin-right:10px;'>Loyalty Discount (" + discount.loyaltydis + " %) : ");
                 htmls += ("Rs." + parseFloat((kotAmount + bevAmount + bakeryAmount + pizzaAmount + roomAmount) * (parseFloat(discount.loyaltydis) / 100)).toFixed(2))
                 htmls += ("</td>");
                 totaldis = parseFloat((kotAmount + bevAmount + bakeryAmount + pizzaAmount + roomAmount) * (parseFloat(discount.loyaltydis) / 100)).toFixed(2);
@@ -849,19 +849,19 @@ function getSalesReport_CakeBill(SalesMasterID, SalesType) {
                 }
                 else {
                     if (kotdis > 0) {
-                        htmls += ("<td colspan='4' style='text-align:right;font-size:11px;margin-right:10px;'><span>KOT Disc (" + discount.kotdis + discType + ") : </span>Rs." + parseFloat(kotdis).toFixed(2) + "</td></tr>");
+                        htmls += ("<td colspan='7' style='text-align:right;font-size:11px;margin-right:10px;'><span>KOT Disc (" + discount.kotdis + discType + ") : </span>Rs." + parseFloat(kotdis).toFixed(2) + "</td></tr>");
                     }
                     htmls += ("<tr class='orderedInfo'>");
                     if (bevdis > 0) {
-                        htmls += ("<td colspan='4' style='text-align:right;font-size:11px;margin-right:10px;'><span>Bar Disc (" + discount.bardis + discType + ") : </span>Rs." + parseFloat(bevdis).toFixed(2) + "</td>");
+                        htmls += ("<td colspan='7' style='text-align:right;font-size:11px;margin-right:10px;'><span>Bar Disc (" + discount.bardis + discType + ") : </span>Rs." + parseFloat(bevdis).toFixed(2) + "</td>");
                     }
                     htmls += ("<tr class='orderedInfo'>");
                     if (bakerydis > 0) {
-                        htmls += ("<td colspan='4' style='text-align:right;font-size:11px;margin-right:10px;'><span>Bakery Disc (" + discount.bakerydis + discType + ") : </span>Rs." + parseFloat(bakerydis).toFixed(2) + "</td>");
+                        htmls += ("<td colspan='7' style='text-align:right;font-size:11px;margin-right:10px;'><span>Bakery Disc (" + discount.bakerydis + discType + ") : </span>Rs." + parseFloat(bakerydis).toFixed(2) + "</td>");
                     }
                     htmls += ("<tr class='orderedInfo'>");
                     if (pizzadis > 0) {
-                        htmls += ("<td colspan='4' style='text-align:right;font-size:11px;margin-right:10px;'><span>Pizza Disc (" + discount.pizzadis + discType + ") : </span>Rs." + parseFloat(pizzadis).toFixed(2) + "</td>");
+                        htmls += ("<td colspan='7' style='text-align:right;font-size:11px;margin-right:10px;'><span>Pizza Disc (" + discount.pizzadis + discType + ") : </span>Rs." + parseFloat(pizzadis).toFixed(2) + "</td>");
                     }
                 }
                 htmls += ("</tr>");
@@ -872,13 +872,13 @@ function getSalesReport_CakeBill(SalesMasterID, SalesType) {
                 }
                 if (!billBody[0].IsTable && billBody[0].BookedDays > 0) {
                     htmls += ("<tr>");
-                    htmls += ("<td colspan='" + (splitCostCenter ? 7 : 4) + "' style='text-align:right;border-top:1px dotted;font-size:11px;margin-right:10px;'>Room Disc. : Rs." + parseFloat(roomdis).toFixed(2) + "</td>");
+                    htmls += ("<td colspan='7' style='text-align:right;border-top:1px dotted;font-size:11px;margin-right:10px;'>Room Disc. : Rs." + parseFloat(roomdis).toFixed(2) + "</td>");
                     htmls += ("</tr>");
                 }
                 totaldis = (parseFloat(kotdis) + parseFloat(bevdis) + parseFloat(roomdis) + parseFloat(bakerydis) + parseFloat(pizzadis)).toFixed(2);
             }
 
-            htmls += ("<tr style='border-top:1px solid;'><td colspan='" + (splitCostCenter ? "7" : "4") + "' style='font-weight:bold;text-align:right;font-size:11px;margin-right:10px;'>");
+            htmls += ("<tr style='border-top:1px solid;'><td colspan='7' style='font-weight:bold;text-align:right;font-size:11px;margin-right:10px;'>");
             htmls += ("<span style='font-weight:bold;'> Basic Amnt : </span>Rs. " + parseFloat(cakeTotalAmount - discount.cakedis).toFixed(2));
             htmls += ("</td>");
             htmls += ("</tr>");
