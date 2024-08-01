@@ -1,8 +1,8 @@
 ﻿var companyInfo = JSON.parse(localStorage.getItem("companyInfo"));
 
 var disLimitBasicAmt = 0.00;
-var isPossible = false;
-var isButtonClicked = false;
+var isPossible = true;
+var isButtonClicked = true;
 var orddetail = null;
 var billingterms = null;
 var costcenters = null;

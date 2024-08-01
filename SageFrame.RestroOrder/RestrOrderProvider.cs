@@ -5002,38 +5002,92 @@ namespace SageFrame.RestroOrder
                 throw;
             }
         }
+        //internal void SaveExtraItem(extraItem extraItem)
+        //{
+        //    using (TransactionScope ts = new TransactionScope())
+        //    {
+        //        try
+        //        {
+        //            List<KeyValuePair<string, object>> Param = new List<KeyValuePair<string, object>>();
+        //            Param.Add(new KeyValuePair<string, object>("@ExtraItemID", extraItem.ExtraItemID));
+        //            Param.Add(new KeyValuePair<string, object>("@ExtraItem", extraItem.ExtraItem));
+        //            Param.Add(new KeyValuePair<string, object>("@ExtraPrice", extraItem.ExtraPrice));
+        //            Param.Add(new KeyValuePair<string, object>("@IsActive", extraItem.IsActive));
+        //            Param.Add(new KeyValuePair<string, object>("@AddedBy", extraItem.AddedBy));
+        //            var a = sqlHandler.ExecuteAsScalar<object>("[usp_ro_extraitemsave]", Param);
+        //            List<KeyValuePair<string, object>> Param2 = new List<KeyValuePair<string, object>>();
+        //            Param2.Add(new KeyValuePair<string, object>("@ExtraItemID", Convert.ToInt32(a)));
+        //            sqlHandler.ExecuteNonQuery("[usp_ro_removeExtraIngredient]", Param2);
+
+        //                foreach (IngredientItems ing in extraItem.Ingredientdata)
+        //                {
+        //                    List<KeyValuePair<string, object>> Param1 = new List<KeyValuePair<string, object>>();
+        //                    Param1.Add(new KeyValuePair<string, object>("@ExtraItemID", Convert.ToInt32(a)));
+        //                    Param1.Add(new KeyValuePair<string, object>("@IngredientID", ing.IngredientID));
+        //                    Param1.Add(new KeyValuePair<string, object>("@Quantity", ing.Quantity));
+        //                    sqlHandler.ExecuteNonQuery("[usp_ro_extraIngredientSave]", Param1);
+        //                }
+
+        //        }
+        //        catch (Exception)
+        //        {
+        //            throw;
+        //        }
+        //        ts.Complete();
+        //    }
+        //}
+
         internal void SaveExtraItem(extraItem extraItem)
         {
             using (TransactionScope ts = new TransactionScope())
             {
                 try
                 {
-                    List<KeyValuePair<string, object>> Param = new List<KeyValuePair<string, object>>();
-                    Param.Add(new KeyValuePair<string, object>("@ExtraItemID", extraItem.ExtraItemID));
-                    Param.Add(new KeyValuePair<string, object>("@ExtraItem", extraItem.ExtraItem));
-                    Param.Add(new KeyValuePair<string, object>("@ExtraPrice", extraItem.ExtraPrice));
-                    Param.Add(new KeyValuePair<string, object>("@IsActive", extraItem.IsActive));
-                    Param.Add(new KeyValuePair<string, object>("@AddedBy", extraItem.AddedBy));
-                    var a = sqlHandler.ExecuteAsScalar<object>("[usp_ro_extraitemsave]", Param);
-                    List<KeyValuePair<string, object>> Param2 = new List<KeyValuePair<string, object>>();
-                    Param2.Add(new KeyValuePair<string, object>("@ExtraItemID", Convert.ToInt32(a)));
-                    sqlHandler.ExecuteNonQuery("[usp_ro_removeExtraIngredient]", Param2);
-                    foreach (IngredientItems ing in extraItem.Ingredientdata)
+                    
+                    List<KeyValuePair<string, object>> param = new List<KeyValuePair<string, object>>
+            {
+                new KeyValuePair<string, object>("@ExtraItemID", extraItem.ExtraItemID),
+                new KeyValuePair<string, object>("@ExtraItem", extraItem.ExtraItem),
+                new KeyValuePair<string, object>("@ExtraPrice", extraItem.ExtraPrice),
+                new KeyValuePair<string, object>("@IsActive", extraItem.IsActive),
+                new KeyValuePair<string, object>("@AddedBy", extraItem.AddedBy)
+            };
+                    var extraItemId = sqlHandler.ExecuteAsScalar<object>("[usp_ro_extraitemsave]", param);
+
+                    
+                    List<KeyValuePair<string, object>> removeParams = new List<KeyValuePair<string, object>>
+            {
+                new KeyValuePair<string, object>("@ExtraItemID", Convert.ToInt32(extraItemId))
+            };
+                    sqlHandler.ExecuteNonQuery("[usp_ro_removeExtraIngredient]", removeParams);
+
+                    
+                    if (extraItem.Ingredientdata != null && extraItem.Ingredientdata.Count > 0)
                     {
-                        List<KeyValuePair<string, object>> Param1 = new List<KeyValuePair<string, object>>();
-                        Param1.Add(new KeyValuePair<string, object>("@ExtraItemID", Convert.ToInt32(a)));
-                        Param1.Add(new KeyValuePair<string, object>("@IngredientID", ing.IngredientID));
-                        Param1.Add(new KeyValuePair<string, object>("@Quantity", ing.Quantity));
-                        sqlHandler.ExecuteNonQuery("[usp_ro_extraIngredientSave]", Param1);
+                        foreach (IngredientItems ing in extraItem.Ingredientdata)
+                        {
+                            List<KeyValuePair<string, object>> addParams = new List<KeyValuePair<string, object>>
+                    {
+                        new KeyValuePair<string, object>("@ExtraItemID", Convert.ToInt32(extraItemId)),
+                        new KeyValuePair<string, object>("@IngredientID", ing.IngredientID),
+                        new KeyValuePair<string, object>("@Quantity", ing.Quantity)
+                    };
+                            sqlHandler.ExecuteNonQuery("[usp_ro_extraIngredientSave]", addParams);
+                        }
                     }
+
+                    ts.Complete();
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     throw;
                 }
-                ts.Complete();
             }
         }
+
+
+
+
         internal List<extraItem> GetExtraItemList()
         {
             try

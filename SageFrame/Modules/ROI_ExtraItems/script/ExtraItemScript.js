@@ -38,6 +38,7 @@
 
                 });
                 $("#btnSave").on('click', function () {
+                    debugger;
                     var check = eventFunction.ValidationForm();
 
                     if (check) {
@@ -137,7 +138,7 @@
             },
 
             SaveExtraItem: function () {
-
+                debugger;
                 var extraItem = new Object;
                 extraItem.ExtraItemID = eventFunction.config.ExtraItemID;
                 extraItem.ExtraItem = $("#txtExtraItemName").val();
@@ -245,6 +246,7 @@
                 });
             },
             BindIngredientByID: function (result) {
+                debugger;
                 $(".unit").show();
                 datas = JSON.parse(result);
                 if (datas.length > 0) {

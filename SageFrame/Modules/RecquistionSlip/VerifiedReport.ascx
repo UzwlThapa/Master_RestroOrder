@@ -1,7 +1,7 @@
 ﻿0<%@ Control Language="C#" AutoEventWireup="true" CodeFile="VerifiedReport.ascx.cs" Inherits="Modules_RecquistionSlip_VerifiedReport" %>
 <script type="text/javascript">
     $(document).ready(function () {
-        var IsPossible = false;
+        var IsPossible = true;
         $("#txtStartDate").datepicker('setDate', 'today');
         $("#txtStartDate").datepicker({
             changeMonth: true,
