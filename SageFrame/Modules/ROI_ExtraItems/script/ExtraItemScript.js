@@ -67,6 +67,20 @@
                         jAlert('Empty textbox!', 'Alert!!', function () { $.alerts.dialogClass = null; });
                     }
                 });
+                
+                 $("#tableForIngredient").on("click", ".removeTextboxIngredient", function (x, y) {
+                    var IngredientID = $(this).closest('tr').find('td .hdnIngredientID').val();
+                    var ItemID = $(this).closest('tr').find('td .hdnItemID').val();
+                    if (ItemID != "") {
+                        eventFunction.config.method = "DeleteIngredientItemByID";
+                        eventFunction.config.url = eventFunction.config.baseURL + eventFunction.config.method;
+                        eventFunction.config.data = JSON2.stringify({ IngredientID: IngredientID, ItemID: ItemID });
+                        eventFunction.config.ajaxCallMode = 6;
+                        eventFunction.ajaxCall(eventFunction.config);
+                    }
+                    $(this).closest('tr').remove();
+                });
+                
                 $(".txtIngredient").autocomplete({
                     source: AutocompleteIngredient,
                     delay: 0,
@@ -114,6 +128,8 @@
                         break;
                     case 5:
                         eventFunction.BindIngredientByID(data.d);
+                        break;
+                    case 6:
                         break;
                 }
             },
