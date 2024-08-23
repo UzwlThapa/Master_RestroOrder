@@ -3,6 +3,7 @@ var ttlAmt = 0;
 var CodeQR = JSON.parse(localStorage.getItem("QRCode"));
 var netAmt = 0.00;
 var IsNonTaxable = false;
+let sn = 1;
 
 function getBill(salesMasterId, foodCourtOrder) {
     $.ajax({
@@ -16,7 +17,7 @@ function getBill(salesMasterId, foodCourtOrder) {
         success: function (data) {
             debugger;
             var data = data.d;
-            var splitCostCenter = data.splitCostCenter;
+            var splitCostCenter = data.splitCostCenter; 
             var companyInfo = data.companyInfo;
             var billInfo = data.billInfo;
             var billBody = data.orderDetail;
@@ -150,12 +151,12 @@ function getBill(salesMasterId, foodCourtOrder) {
                     comphtmls += ("<tr><td colspan='7' style='font-size:12px;text-align:center;'><b id='InvoiceType'>TAX INVOICE</b></td></tr>");
                 }
             }
-            comphtmls += ("<tr><td colspan='1' style='font-size:11px;text-align:left;'>" + (companyInfo[0].IsPan ? "PAN" : "VAT") + " No. : " + companyInfo[0].PAN + "</td>");
+            comphtmls += ("<tr><td colspan='3' style='font-size:11px;text-align:left;'>" + (companyInfo[0].IsPan ? "PAN" : "VAT") + " No. : " + companyInfo[0].PAN + "</td>");
 
             if (billBody[0].PrintCount - 1 != 0) {
                 if (!billInfo.IsCancelled && !billInfo.IsArchived) {
 
-                    comphtmls += ("<td colspan='6' style='font-size:11px;text-align:right;margin-right:10px;'><span>Copy of Original:" + (billBody[0].PrintCount - 1) + "</span></td></tr>");
+                    comphtmls += ("<td colspan='3' style='font-size:11px;text-align:right;margin-right:10px;'><span>Copy of Original:" + (billBody[0].PrintCount - 1) + "</span></td></tr>");
 
                 }
             }
@@ -171,59 +172,72 @@ function getBill(salesMasterId, foodCourtOrder) {
                 htmls += "<tr>";
             }
 
-            htmls += "<td colspan='1' style='text-align:left;font-size:11px;'>Customer : " + (billBody[0].CusName == "" ? "" : billBody[0].CusName);
+            htmls += "<td colspan='3' style='text-align:left;font-size:11px;'>Customer : " + (billBody[0].CusName == "" ? "" : billBody[0].CusName);
             htmls += ("</td>");
 
-            htmls += "<td colspan='6' style='text-align:right;font-size:11px;margin-right:10px;'>PAN : " + billBody[0].PAN + "</td></tr>";
+            htmls += "<td colspan='3' style='text-align:right;font-size:11px;margin-right:10px;'>PAN : " + billBody[0].PAN + "</td></tr>";
             if (!foodCourtOrder) {
-                htmls += "<tr><td colspan='1' style='text-align:left;font-size:11px;'>Phone No. : " + billBody[0].PhoneNumber + "</td>";
-                htmls += "<td colspan='6' style='text-align:right;font-size:11px;'>Cashier : " + billBody[0].Cashier + "</td></tr>";
+                htmls += "<tr><td colspan='3' style='text-align:left;font-size:11px;'>Phone No. : " + billBody[0].PhoneNumber + "</td>";
+                htmls += "<td colspan='3' style='text-align:right;font-size:11px;'>Cashier : " + billBody[0].Cashier + "</td></tr>";
             }
             if (billInfo.IsCancelled || billInfo.IsArchived) {
-                htmls += "<tr><td colspan='2' style='text-align:left;font-size:11px;'>Ref Inv No : " + billInfo.InvoiceNo + "(" + billInfo.InvoiceDate + ")</td></tr>";
-                htmls += "<tr><td colspan='4' style='text-align:right !important;font-size:11px;'>C/N Remarks : " + billInfo.CreditNoteReason + "</td></tr>";
+                htmls += "<tr><td colspan='3' style='text-align:left;font-size:11px;'>Ref Inv No : " + billInfo.InvoiceNo + "(" + billInfo.InvoiceDate + ")</td></tr>";
+                htmls += "<tr><td colspan='3' style='text-align:right !important;font-size:11px;'>C/N Remarks : " + billInfo.CreditNoteReason + "</td></tr>";
                 if (!foodCourtOrder) {
-                    htmls += "<tr><td colspan='2' style='text-align:left;font-size:11px;'>Table : " + billBody[0].restrotableTitle + "</td></tr>";
+                    htmls += "<tr><td colspan='3' style='text-align:left;font-size:11px;'>Table : " + billBody[0].restrotableTitle + "</td></tr>";
                 } else {
-                    htmls += '<tr><td colspan="4" style="text-align:right !important;font-size:11px;">Cashier : ' + billBody[0].Cashier + '</td></tr>';
+                    htmls += '<tr><td colspan="3" style="text-align:right !important;font-size:11px;">Cashier : ' + billBody[0].Cashier + '</td></tr>';
                 }
             } else {
-                htmls += "<tr><td colspan='1' style='text-align:left;font-size:11px;'>Address : " + billBody[0].Address + "</td>";
+                htmls += "<tr><td colspan='3' style='text-align:left;font-size:11px;'>Address : " + billBody[0].Address + "</td>";
                 var date = billBody[0].Date.split(" ");
                 var time = date[1].split(":")[0] + ":" + date[1].split(":")[1] + " " + date[2];
-                htmls += "<td colspan='6' style='text-align:right;font-size:11px;margin-right:10px;'>INV No : " + billBody[0].BillNo + "</td>";
+                htmls += "<td colspan='3' style='text-align:right;font-size:11px;margin-right:10px;'>INV No : " + billBody[0].BillNo + "</td>";
 
-                htmls += "<tr><td colspan='1' style='text-align:left;font-size:11px;'>Invoice Date (NP) : " + billBody[0].NepaliInvoiceDate.split('.').join('/') + "</td>";
+                htmls += "<tr><td colspan='4' style='text-align:left;font-size:11px;'>Date(B.S.) : " + billBody[0].NepaliInvoiceDate.split('.').join('/') + "</td>";
                 if (!foodCourtOrder) {
-                    htmls += "<td colspan='6' style='text-align:right;font-size:11px;margin-right:10px;'>Table : " + billBody[0].restrotableTitle + "</td>";
+                    htmls += "<td colspan='3' style='text-align:right;font-size:11px;margin-right:10px;'>Table : " + billBody[0].restrotableTitle + "</td>";
                 } else {
-                    htmls += '<td colspan="6" style="text-align:right;font-size:11px;margin-right:10px;">Cashier : ' + billBody[0].Cashier + '</td>';
+                    htmls += '<td colspan="3" style="text-align:right;font-size:11px;margin-right:10px;">Cashier : ' + billBody[0].Cashier + '</td>';
                 }
                 htmls += "</tr>";
 
                 var dateSegment = billBody[0].Date.split(' ');
                 var timeSegment = dateSegment[1].split(':');
                 var time = `${timeSegment[0]}:${timeSegment[1]}`;
-                htmls += "<tr><td colspan='2' style='text-align:left;font-size:11px;'>Invoice Date : " + dateSegment[0] + "</td><td colspan='2' style='text-align:right;font-size:11px;'>Time : " + time + dateSegment[2] + "</td>";
+                var timezone = dateSegment[2] ? dateSegment[2] : "";
+                
+                //Date format yy-mm-dd
+               var fullDate = dateSegment[0].split('/'); // Split date in 'dd/mm/yyyy' format
+               var formattedDate = `${fullDate[2]}/${fullDate[1]}/${fullDate[0]}`; // Formatting to 'yyyy-mm-dd'
 
+                htmls += "<tr><td colspan='4' style='text-align:left;font-size:11px;'>Date(A.D.) : " + formattedDate + "</td><td colspan='3' style='text-align:right;font-size:11px;'>Time : " + time + timezone + "</td>";
                 htmls += "</tr>";
             }
 
+           
+            //New Style 2081/82 format
             htmls += ("<tr class='orderedInfo'>");
-            htmls += ("<td style='width: 2%;text-align:left;font-size:12px;font-weight:bold;border-bottom:1px dotted;border-top:1px dotted;'>HS Cd.</td>");
-            htmls += ("<td colspan=" + (splitCostCenter ? 1 : 1) + " style='text-align:left;font-size:12px;font-weight:bold;border-bottom:1px dotted;border-top:1px dotted;'>Item</td>");
-            htmls += ("<td style='font-size:12px;font-weight:bold;text-align:center;border-bottom:1px dotted;border-top:1px dotted;'>Qty</td>");
-            htmls += ("<td style='font-size:12px;font-weight:bold;text-align:right;border-bottom:1px dotted;border-top:1px dotted;'>Rate</td>");
+            htmls += ("<td style='text-align:left; font-size:12px; font-weight:bold; border-bottom:1px dotted; border-top:1px dotted;'>SN</td>");
+            htmls += ("<td style='text-align:left; font-size:12px; font-weight:bold; border-bottom:1px dotted; border-top:1px dotted;'>HSCode</td>");
+            htmls += ("<td colspan='" + (splitCostCenter ? 1 : 1) + "' style='text-align:center; font-size:12px; font-weight:bold; border-bottom:1px dotted; border-top:1px dotted;'>Item</td>");
+            htmls += ("<td style='font-size:12px; font-weight:bold; text-align:center; border-bottom:1px dotted; border-top:1px dotted;'>Qty</td>");
+            htmls += ("<td style='font-size:12px; font-weight:bold; text-align:center; border-bottom:1px dotted; border-top:1px dotted;'>Rate</td>");
+
             if (splitCostCenter) {
-                htmls += ("<td style='font-size:12px;font-weight:bold;text-align:right;border-bottom:1px dotted;'>Food</td>");
-                htmls += ("<td style='font-size:12px;font-weight:bold;text-align:right;border-bottom:1px dotted;'>Bev</td>");
-                htmls += ("<td style='font-size:12px;font-weight:bold;text-align:right;border-bottom:1px dotted;'>Bakery</td>");
-                htmls += ("<td style='font-size:12px;font-weight:bold;text-align:right;border-bottom:1px dotted;margin-right:10px;'>Pizza</td>");
+                htmls += ("<td style='font-size:12px; font-weight:bold; text-align:right; border-bottom:1px dotted;'>Food</td>");
+                htmls += ("<td style='font-size:12px; font-weight:bold; text-align:right; border-bottom:1px dotted;'>Bev</td>");
+                htmls += ("<td style='font-size:12px; font-weight:bold; text-align:right; border-bottom:1px dotted;'>Bakery</td>");
+                htmls += ("<td style='font-size:12px; font-weight:bold; text-align:right; border-bottom:1px dotted;'>Pizza</td>");
+            } else {
+                htmls += ("<td style='font-size:12px; font-weight:bold; text-align:right; border-bottom:1px dotted; border-top:1px dotted;'>Amnt</td>");
             }
-            else {
-                htmls += ("<td style='font-size:12px;font-weight:bold;text-align:right;border-bottom:1px dotted;border-top:1px dotted;margin-right:10px;'>Amnt</td>");
-            }
+
             htmls += ("</tr>");
+
+
+
+
 
             var count = 1;
             kotAmount = 0.00;
@@ -234,15 +248,17 @@ function getBill(salesMasterId, foodCourtOrder) {
             itemsQnty = 0.00;
 
             var BasicAmt = 0.00;
+            sn = 1;
+            
             $.each(billBody, function (index, item) {
                 var rateN = item.Rate;
                 htmls += ("<tr class='orderedInfo' style='height:16px;'>");
-                htmls += ("<td style='width: 2%;text-align:left;font-size:12px;'>" + (item.HsCode ? item.HsCode : "") + "</td>");
+                htmls += ("<td style='text-align:left;font-size:12px;'>" + sn + "</td>");
+                htmls += ("<td style='text-align:left;font-size:12px;'>" + (item.HsCode ? item.HsCode : "") + "</td>");
                 htmls += ("<td colspan=" + (splitCostCenter ? 1 : 1) + " style='text-align:left;font-size:12px;'>" + item.ITName.split('_')[0] + "</td>");
-
-
-                htmls += ("<td style='text-align:center;font-size:12px;'>" + item.Quantity + "</td>");
+                htmls += ("<td style='text-align:center;font-size:12px;padding-right:15px;'>" + item.Quantity + "</td>");
                 itemsQnty += item.Quantity;
+                sn++;
                 if (isab) {
                     if (isAbbreviated) {
                         if (!costCenterDis.isFlatDis) {
@@ -287,7 +303,7 @@ function getBill(salesMasterId, foodCourtOrder) {
                         }
                         else {
                             //Item Rate Including VAT without Discount (JUNAR UPDATE)
-                            htmls += ("<td style='text-align:right;font-size:12px;margin-right:10px;'>" + ((rateN * item.Quantity) * (1 + companyInfo[0].VATRate / 100.0)).toFixed(2) + "</td>");
+                            htmls += ("<td style='text-align:center;font-size:12px;margin-right:10px;'>" + ((rateN * item.Quantity) * (1 + companyInfo[0].VATRate / 100.0)).toFixed(2) + "</td>");
                         }
                     }
                     else {
@@ -299,7 +315,7 @@ function getBill(salesMasterId, foodCourtOrder) {
                             htmls += ("<td style='text-align:right;font-size:12px;margin-right:10px;'>" + (item.Pizza) + "</td>");
                         }
                         else {
-                            htmls += ("<td style='text-align:right;font-size:12px;margin-right:10px;'>" + (rateN * item.Quantity).toFixed(2) + "</td>");
+                            htmls += ("<td style='text-align:center;font-size:12px;margin-right:10px;'>" + (rateN * item.Quantity).toFixed(2) + "</td>");
                         }
                     }
                 }
@@ -312,7 +328,7 @@ function getBill(salesMasterId, foodCourtOrder) {
                         htmls += ("<td style='text-align:right;font-size:12px;margin-right:10px;'>" + (item.Pizza) + "</td>");
                     }
                     else {
-                        htmls += ("<td style='text-align:right;font-size:12px;margin-right:10px;'>" + (rateN * item.Quantity).toFixed(2) + "</td>");
+                        htmls += ("<td style='text-align:center;font-size:12px;margin-right:10px;'>" + (rateN * item.Quantity).toFixed(2) + "</td>");
                     }
                 }
                 htmls += ("</tr>");
@@ -428,10 +444,10 @@ function getBill(salesMasterId, foodCourtOrder) {
                 htmls += ("<td colspan='1' style='text-align:right;border-bottom:1px dotted;font-size:11px;'><span style='font-weight:bold;font-size:11px;'></span>Rs." + pizzaAmount.toFixed(2) + "</td>");
             }
             else {
-                htmls += ("<td colspan='3' style='text-align:right;border-bottom:1px dotted;font-size:11px;border-top:1px dotted;'><span style='font-weight:bold;font-size:11px;'>");
+                htmls += ("<td colspan='4' style='text-align:right;border-bottom:1px dotted;font-size:11px;border-top:1px dotted;'><span style='font-weight:bold;font-size:11px;'>");
                 if (totalItemsQntyVisible)
-                    htmls += ("<span style='font-weight:bold;font-size:11px;'>Total Qty: " + itemsQnty + " </span></td><td colspan='2' style='text-align:right;border-bottom:1px dotted;font-size:11px;border-top:1px dotted;margin-right:10px;'>");
-
+                    htmls += ("<span style='font-weight:bold;font-size:11px;'>Total Qty: " + itemsQnty + " </span></td><td colspan='2' style='text-align:right;border-bottom:1px dotted;font-size:11px;border-top:1px dotted;margin-right:10px;padding-right:12px;'>");
+ 
                 //Item Rate Including VAT without Discount (JUNAR UPDATE)
                 htmls += ("Sub Total : </span>Rs." + (BasicAmt + roomAmount).toFixed(2) + "</td>");
             }
@@ -729,21 +745,22 @@ function getSalesReport_CakeBill(SalesMasterID, SalesType) {
             var logoInfo = comphtmls;
             var htmls = "";
             htmls += "<tr style='border-top:1px dotted;'>";
-            htmls += "<td colspan='1' style='text-align:left;font-size:11px;'>Customer : " + (billBody[0].CusName == "" ? "" : billBody[0].CusName);
+            htmls += "<td colspan='2' style='text-align:left;font-size:11px;'>Customer : " + (billBody[0].CusName == "" ? "" : billBody[0].CusName);
             htmls += ("</td>");
 
-            htmls += "<td colspan='6' style='text-align:right;font-size:11px;margin-right:10px;'>PAN : " + billBody[0].PAN + "</td></tr>";
-            htmls += "<tr><td colspan='1' style='text-align:left;font-size:11px;'>INV No : " + billBody[0].BillNo + "</td>";
+            htmls += "<td colspan='3' style='text-align:right;font-size:11px;margin-right:10px;'>PAN : " + billBody[0].PAN + "</td></tr>";
+            htmls += "<tr><td colspan='3' style='text-align:left;font-size:11px;'>INV No : " + billBody[0].BillNo + "</td>";
 
             var date = billBody[0].Date.split(" ");
             var time = date[1].split(":")[0] + ":" + date[1].split(":")[1] + " " + date[2];
-            htmls += "<td colspan='6' style='text-align:right;font-size:11px;margin-right:10px;'>Time : " + time + "</td>";
-            htmls += "<tr><td colspan='1' style='text-align:left;font-size:11px;'>Date : " + billBody[0].NepaliInvoiceDate.split('.').join('/') + "</td>";
-            htmls += '<td colspan="6" style="text-align:right;font-size:11px;margin-right:10px;">Cashier : ' + billBody[0].Cashier + '</td>';
+            htmls += "<td colspan='3' style='text-align:right;font-size:11px;margin-right:10px;'>Time : " + time + "</td>";
+            htmls += "<tr><td colspan='3' style='text-align:left;font-size:11px;'>Date : " + billBody[0].NepaliInvoiceDate.split('.').join('/') + "</td>";
+            htmls += '<td colspan="3" style="text-align:right;font-size:11px;margin-right:10px;">Cashier : ' + billBody[0].Cashier + '</td>';
             htmls += "</tr>";
             htmls += ("<tr class=''>");
-            htmls += ("<td style='width: 2%;text-align:left;font-size:12px;font-weight:bold;border-bottom:1px dotted;border-top:1px dotted;'>HS Cd.</td>");
-            htmls += ("<td style='text-align:left;font-size:12px;font-weight:bold;border-bottom:1px dotted;border-top:1px dotted;'>Item</td>");
+            htmls += ("<td style='text-align:left;font-size:12px;font-weight:bold;border-bottom:1px dotted;border-top:1px dotted;'>SN</td>");
+            htmls += ("<td style='text-align:left;font-size:12px;font-weight:bold;border-bottom:1px dotted;border-top:1px dotted;'>HSCode</td>");
+            htmls += ("<td style='text-align:center;font-size:12px;font-weight:bold;border-bottom:1px dotted;border-top:1px dotted;'>Item</td>");
             htmls += ("<td style='font-size:12px;font-weight:bold;text-align:center;border-bottom:1px dotted;border-top:1px dotted;'>Qty</td>");
             htmls += ("<td style='font-size:12px;font-weight:bold;text-align:right;border-bottom:1px dotted;border-top:1px dotted;'>Rate</td>");
             if (splitCostCenter) {
@@ -753,7 +770,7 @@ function getSalesReport_CakeBill(SalesMasterID, SalesType) {
                 htmls += ("<td style='font-size:12px;font-weight:bold;text-align:right;border-bottom:1px dotted;margin-right:10px;'>Pizza</td>");
             }
             else {
-                htmls += ("<td style='font-size:12px;font-weight:bold;text-align:right;border-bottom:1px dotted;border-top:1px dotted;margin-right:10px;'>Amnt</td>");
+                htmls += ("<td style='font-size:12px;font-weight:bold;text-align:center;border-bottom:1px dotted;border-top:1px dotted;'>Amnt</td>");
             }
             htmls += ("</tr>");
 
@@ -765,10 +782,11 @@ function getSalesReport_CakeBill(SalesMasterID, SalesType) {
             pizzaAmount = 0.00;
             itemsQnty = 0.00;
             var cakeTotalAmount = 0.00;
-
+            sn = 1;
             //for bill body
             $.each(billBody, function (index, item) {
                 htmls += ("<tr class='orderedInfo' style='height:16px;'>");
+                htmls += ("<td style='width: 2%;text-align:left;font-size:12px;'>" + sn + "</td>");
                 htmls += ("<td style='width: 2%;text-align:left;font-size:12px;'>" + item.HsCode + "</td>");
                 htmls += ("<td colspan=" + (splitCostCenter ? 1 : 1) + " style='text-align:left;font-size:12px;'>" + item.ITName + "</td>");
                 htmls += ("<td style='text-align:center;font-size:12px;'>" + item.Quantity + "</td>");
@@ -776,7 +794,7 @@ function getSalesReport_CakeBill(SalesMasterID, SalesType) {
                 htmls += ("<td style='text-align:right;font-size:12px;'>" + item.Rate + "</td>");
                 htmls += ("<td style='text-align:right;font-size:12px;'>" + (item.Rate * item.Quantity).toFixed(2) + "</td>");
                 cakeTotalAmount += (item.Rate * item.Quantity);
-
+                sn++;
                 htmls += ("</tr>");
             });
 
