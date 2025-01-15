@@ -132,6 +132,8 @@
         <th style="border:1px solid #575757;text-align:center;">TaxableAmount</th>
         <th style="border:1px solid #575757;text-align:center;">Tax_Amount</th>
         <th style="border:1px solid #575757;text-align:center;">Total Amount</th>
+        <th style="border:1px solid #575757;text-align:center;">VAT_refund_amount</th>
+        <th style="border:1px solid #575757;text-align:center;">Transaction_id</th>
         <th style="border:1px solid #575757;text-align:center;">Sync with IRD</th>
         <th style="border:1px solid #575757;text-align:center;">Is_Bill_Printed</th>
         <th style="border:1px solid #575757;text-align:center;">Is_bill_Active</th>
@@ -146,8 +148,28 @@
     <tbody>
 `;
 
-                    if (datas.length > 0) {
+                if (datas.length > 0) {
+                    var tracker = false;
+                    var PrintCountAdjusted = false;
+
                     for (var i = 0; i < datas.length; i++) {
+
+                        // Case 1: PrintCount >= 2 and hasn't been adjusted yet
+                        if (datas[i].PrintCount >= 2 && !datas[i].PrintCountAdjusted) {
+                            datas[i].PrintCount -= 1;  // Subtract 1 from PrintCount
+                            datas[i].PrintCountAdjusted = true; // Mark the adjustment as done
+                            tracker = true;  // Mark that we have made an adjustment for this bill
+                        }
+
+                        // Case 2: If the bill is archived or cancelled and hasn't been adjusted yet
+                        if ((datas[i].IsArchived || datas[i].IsCancelled) && !datas[i].PrintCountAdjusted) {
+                            if (datas[i].PrintCount > 0) {
+                                datas[i].PrintCount -= 1;  // Subtract 1 from PrintCount
+                            }
+                            datas[i].PrintCountAdjusted = true; // Mark this bill as adjusted
+                            tracker = true;  // Mark that we have made an adjustment for this bill
+                        }
+
                         //htmls[index++] = '<tr class="' + (datas[i].Is_Active ? 'activebill' : 'inactivebill') + '" style="border-bottom:1px solid #575757;padding:2px;' + (datas[i].Is_Active ? '' : 'text-decoration: line-through;') + '"><td style="border:1px solid #575757;padding:2px;">' + datas[i].FiscalYear + '</td>';
                         htmls[index++] = '<tr class="' + datas[i].salesMasterId + '" style="border-bottom:1px solid #575757;padding:2px;' + (datas[i].Is_Active ? '' : '') + '"><td style="border:1px solid #575757;padding:2px;">' + datas[i].FiscalYear + '</td>';
                         htmls[index++] = '<td style="border:1px solid #575757;padding:2px;">' + datas[i].Bill_No + '</td>';
@@ -160,8 +182,14 @@
                         htmls[index++] = '<td style="text-align:right;padding:2px;border:1px solid #575757;">Rs. ' + datas[i].TaxableAmount.toFixed(2) + '</td>';
                         htmls[index++] = '<td style="text-align:right;padding:2px;border:1px solid #575757;">Rs. ' + datas[i].Tax_Amount.toFixed(2) + '</td>';
                         htmls[index++] = '<td style="text-align:right;padding:2px;border:1px solid #575757;">Rs. ' + (datas[i].TaxableAmount + datas[i].Tax_Amount).toFixed(2) + '</td>';
+                        htmls[index++] = '<td style="text-align:right;padding:2px;border:1px solid #575757;">NULL</td>';
+                        htmls[index++] = '<td style="text-align:right;padding:2px;border:1px solid #575757;">NULL</td>';
                         htmls[index++] = '<td style="text-align:center;border:1px solid #575757;padding:2px;">' + (datas[i].SyncWithIRD ? 'Y' : 'N') + '</td>';
-                        htmls[index++] = '<td style="text-align:center;border:1px solid #575757;padding:2px;">' + (datas[i].Is_Printed ? 'Y' : 'N') + '</td>';
+                        //htmls[index++] = '<td style="text-align:center;border:1px solid #575757;padding:2px;">' + (datas[i].Is_Printed ? 'Y' : 'N') + '</td>';
+
+                        /*htmls[index++] = '<td style="text-align:center;border:1px solid #575757;padding:2px;">' + datas[i].PrintCount + '</td>';*/
+
+                        htmls[index++] = '<td style="text-align:center;border:1px solid #575757;padding:2px;">' + datas[i].PrintCount + '</td>';
                         htmls[index++] = '<td style="text-align:center;border:1px solid #575757;padding:2px;">' + (datas[i].Is_Active ? 'Y' : 'N') + '</td>';
                         //printedDate = value.Printed_Time.split(' ')[0].split('/');
                         //nepali_printedDate = AD2BS(printedDate[2] + '-' + printedDate[0] + '-' + printedDate[1]);

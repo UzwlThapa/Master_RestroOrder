@@ -135,7 +135,7 @@ function getBill(salesMasterId, foodCourtOrder) {
             if (billInfo.IsArchived) {
                 comphtmls += ("<tr><td colspan='7' style='font-size:12px;text-align:center;'><b>Credit Note</b></td></tr>");
             } else if (billInfo.IsCancelled) {
-                comphtmls += ("<tr><td colspan='7' style='font-size:12px;text-align:center;'><b>Cancellation</b></td></tr>");
+                comphtmls += ("<tr><td colspan='7' style='font-size:12px;text-align:center;'><b>Credit Note</b></td></tr>");
             }
             else {
                 if (isab) {
@@ -170,7 +170,7 @@ function getBill(salesMasterId, foodCourtOrder) {
                 htmls += "<td colspan='2' style='text-align:left;font-size:11px;'>C/N No : " + billInfo.CreditNoteNumber + "</td></tr>";
                 htmls += "<tr><td colspan='1' style='text-align:left;font-size:11px;'>Date : " + billInfo.CreditNoteDate + "</td></tr>";
                 htmls += "<tr>";
-            }
+            }            
 
             htmls += "<td colspan='3' style='text-align:left;font-size:11px;'>Customer : " + (billBody[0].CusName == "" ? "" : billBody[0].CusName);
             htmls += ("</td>");
