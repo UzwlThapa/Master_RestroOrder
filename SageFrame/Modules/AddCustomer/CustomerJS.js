@@ -242,7 +242,7 @@ function Print() {
                         });
                         $(".checkbox:checked").each(function () {
                             var row = $(this).parents('tr');
-                            var num = row.find('td:eq(7)').text();
+                            var num = row.find('td:eq(8)').text();
                             numbers.push(num);
                         });
                         $('#mobileNumber').val(numbers);

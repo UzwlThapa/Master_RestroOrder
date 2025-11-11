@@ -7,7 +7,7 @@ function Print() {
     $('#printedDate').show();
     $('#lblPrintedOn').html(new Date());
     var contents = $('#DailyReport').clone();
-    contents.find('tr th:nth-child(14), tr td:nth-child(14)').remove();
+    contents.find('tr th:nth-child(16), tr td:nth-child(16)').remove();
     $('#printedDate').hide();
     var frame1 = document.createElement('iframe');
     frame1.name = "frame1";
@@ -678,7 +678,7 @@ function IntegerAndDecimal(evt, element) {
                     var dNow = new Date();
                     $('#lblPrintedOn').html(dNow);
                     var contents = $('#DailyReport').clone();
-                    contents.find('tr th:nth-child(14), tr td:nth-child(14)').remove();
+                    contents.find('tr th:nth-child(16), tr td:nth-child(16)').remove();
                     let file = new Blob([contents.get(0).innerHTML], { type: "application/vnd.ms-excel" });
                     let url = URL.createObjectURL(file);
                     let a = $("<a />", {
@@ -1229,7 +1229,8 @@ function IntegerAndDecimal(evt, element) {
                 htmls += "<th style='text-align:right;border:1px solid #575757;padding:2px;' class='tdrate'>Net Amt</th>";
                 htmls += "<th style='text-align:right;border:1px solid #575757;padding:2px;' class='tdrate'>Received Amnt</th>";
                 htmls += "<th style='text-align:right;border:1px solid #575757;padding:2px;' class='tdrate'>Sur/Def</th>";
-                htmls += "<th style='text-align:center;border:1px solid #575757;padding:2px;' class='sort_disable tdcenter ignore-export' >Action (Bill)</th>";
+                htmls += "<th colspan='2' style='text-align:center;border:1px solid #575757;padding:2px;' class='sort_disable tdcenter ignore-export'>Action (Bill)</th>";
+                //htmls += "<th style='text-align:center;border:1px solid #575757;padding:2px;' class='sort_disable tdcenter ignore-export' >Action (Bill)</th>";
                 htmls += "</tr>"
                 htmls += "</thead>"
                 htmls += "<tbody>"
