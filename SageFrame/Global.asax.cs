@@ -103,10 +103,19 @@ namespace SageFrame
             sLog.SessionLogStart(sessionTracker, sessionID);
         }
 
-        protected void Application_BeginRequest(object sender, EventArgs e)
-        {
+		protected void Application_BeginRequest(object sender, EventArgs e)
+		{
+			HttpContext.Current.Response.AddHeader("Access-Control-Allow-Origin", "*");
+			HttpContext.Current.Response.AddHeader("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
+			HttpContext.Current.Response.AddHeader("Access-Control-Allow-Headers", "Content-Type, Accept, X-Requested-With");
 
-        }
+			if (HttpContext.Current.Request.HttpMethod == "OPTIONS")
+			{
+				HttpContext.Current.Response.StatusCode = 200;
+				HttpContext.Current.Response.End();
+			}
+		}
+
 
         protected void Application_AuthenticateRequest(object sender, EventArgs e)
         {
