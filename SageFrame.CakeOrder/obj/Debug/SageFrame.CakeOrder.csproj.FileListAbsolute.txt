@@ -306,3 +306,14 @@ G:\Danfe\DanfeProductsSourceCode\Master_RestroOrder\SageFrame.CakeOrder\obj\Debu
 G:\Danfe\DanfeProductsSourceCode\Master_RestroOrder\SageFrame.CakeOrder\obj\Debug\SageFram.2F1FC954.Up2Date
 G:\Danfe\DanfeProductsSourceCode\Master_RestroOrder\SageFrame.CakeOrder\obj\Debug\SageFrame.CakeOrder.dll
 G:\Danfe\DanfeProductsSourceCode\Master_RestroOrder\SageFrame.CakeOrder\obj\Debug\SageFrame.CakeOrder.pdb
+G:\Danfe\Restro_Order_Code\Master_RestroOrder\SageFrame.CakeOrder\bin\Debug\SageFrame.CakeOrder.dll
+G:\Danfe\Restro_Order_Code\Master_RestroOrder\SageFrame.CakeOrder\bin\Debug\SageFrame.CakeOrder.pdb
+G:\Danfe\Restro_Order_Code\Master_RestroOrder\SageFrame.CakeOrder\bin\Debug\SageFrame.Common.dll
+G:\Danfe\Restro_Order_Code\Master_RestroOrder\SageFrame.CakeOrder\bin\Debug\SageFrame.RestoLoyalty.dll
+G:\Danfe\Restro_Order_Code\Master_RestroOrder\SageFrame.CakeOrder\bin\Debug\SageFrame.RestoLoyalty.pdb
+G:\Danfe\Restro_Order_Code\Master_RestroOrder\SageFrame.CakeOrder\bin\Debug\SageFrame.Common.pdb
+G:\Danfe\Restro_Order_Code\Master_RestroOrder\SageFrame.CakeOrder\obj\Debug\SageFrame.CakeOrder.csproj.AssemblyReference.cache
+G:\Danfe\Restro_Order_Code\Master_RestroOrder\SageFrame.CakeOrder\obj\Debug\SageFrame.CakeOrder.csproj.CoreCompileInputs.cache
+G:\Danfe\Restro_Order_Code\Master_RestroOrder\SageFrame.CakeOrder\obj\Debug\SageFram.2F1FC954.Up2Date
+G:\Danfe\Restro_Order_Code\Master_RestroOrder\SageFrame.CakeOrder\obj\Debug\SageFrame.CakeOrder.dll
+G:\Danfe\Restro_Order_Code\Master_RestroOrder\SageFrame.CakeOrder\obj\Debug\SageFrame.CakeOrder.pdb

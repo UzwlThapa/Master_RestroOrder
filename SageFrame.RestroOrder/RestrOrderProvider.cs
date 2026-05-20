@@ -6173,8 +6173,20 @@ namespace SageFrame.RestroOrder
                         Param1.Add(new KeyValuePair<string, object>("@OPBal", PurchaseReturn.PurchaseObjItemBal[i].OPBal));
                         Param1.Add(new KeyValuePair<string, object>("@CLBal", PurchaseReturn.PurchaseObjItemBal[i].CLBal));
                         var b = sqh.ExecuteAsScalar<object>("[ROI_SavePurchaseReturnitembal]", Param1);
-                        //ItemBal
                     }
+
+                    // NEW: Update vendor balance
+                    List<KeyValuePair<string, object>> vParam = new List<KeyValuePair<string, object>>();
+                    vParam.Add(new KeyValuePair<string, object>("@VendorId", PurchaseReturn.vendorId));
+                    vParam.Add(new KeyValuePair<string, object>("@PurchaseReturnId", PurchaseReturn.PurchaseReturnId));
+                    sqh.ExecuteNonQuery("USP_UpdateVendorBalanceOnPurchaseReturn", vParam);
+
+                    // NEW: Post accounting entries
+                    List<KeyValuePair<string, object>> aParam = new List<KeyValuePair<string, object>>();
+                    aParam.Add(new KeyValuePair<string, object>("@PurchaseReturnId", PurchaseReturn.PurchaseReturnId));
+                    sqh.ExecuteNonQuery("usp_SaveTransactionForPurchaseReturn", aParam);
+
+                    
                     ts.Complete();
                     return PurchaseReturn.PurchaseReturnId;
 
