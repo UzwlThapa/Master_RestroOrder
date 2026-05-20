@@ -1,9 +1,9 @@
-﻿var SageFrame = {};
+var SageFrame = {};
 $(function () {
     SageFrame = {
         config: {
             isPostBack: false,
-            async: false,
+            async: true,
             cache: false,
             type: 'POST',
             contentType: "application/json; charset=utf-8",
@@ -122,7 +122,7 @@ $(function () {
                     url: SageFrame.config.baseURL + "GetLocalizedMessage",
                     data: param,
                     dataType: SageFrame.config.dataType,
-                    async: false,
+                    async: true,
                     success: function (msg) {
                         message = msg.d;
                     }
@@ -350,7 +350,7 @@ $(function () {
         $.ajax({
             type: 'POST',
             contentType: "application/json; charset=utf-8",
-            async: false,
+            async: true,
             cache: false,
             url: SageFrameAppPath + "/Modules/Admin/ModuleMessage/services/ModuleMessageWebService.asmx/UpdateMessage",
             data: JSON2.stringify({ ModuleID: _ModuleID, IsActive: false }),

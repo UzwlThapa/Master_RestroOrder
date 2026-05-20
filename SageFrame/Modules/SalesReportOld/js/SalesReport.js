@@ -1,4 +1,4 @@
-﻿
+
 function IntegerAndDecimal(evt, element) {
     var charCode = (evt.which) ? evt.which : event.keyCode
     if ((charCode != 8) &&
@@ -52,7 +52,7 @@ function Print() {
         var DashboardFunction = {
             config: {
                 isPostBack: false,
-                async: false,
+                async: true,
                 cache: false,
                 type: 'POST',
                 contentType: "application/json; charset=utf-8",

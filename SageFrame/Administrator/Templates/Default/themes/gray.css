@@ -1,4 +1,4 @@
-﻿body {color:#555; }
+body {color:#555; }
 p { color:#555;}
 li.preview a.icon-preview:before {color:rgba(255,255,255,0.35);}
 li:hover.preview a.icon-preview, li:hover.preview a.icon-preview:before { color:rgba(255,255,255,1);}

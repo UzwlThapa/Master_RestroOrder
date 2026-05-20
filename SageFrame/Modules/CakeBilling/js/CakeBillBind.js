@@ -1,11 +1,11 @@
-﻿var totalItemsQntyVisible = true;
+var totalItemsQntyVisible = true;
 var netAmt = 0.00;
 var ttlAmt = 0;
 var CodeQR = JSON.parse(localStorage.getItem("QRCode"));
 function getCakeBill(salesMasterId, foodCourtOrder) {
     $.ajax({
         type: "POST",
-        async: false,
+        async: true,
         cache: false,
         url: SageFrameHostURL + "/Modules/RoReport/SalesReport.asmx/GetCakeBill",
         data: JSON.stringify({ SalesMasterID: salesMasterId, SalesType: 'cake' }),

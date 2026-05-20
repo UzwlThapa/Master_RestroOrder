@@ -1,5 +1,5 @@
-﻿/*
- * FCKeditor - The text editor for Internet - http://www.fckeditor.net
+/*
+ * FCKeditor - The text editor for Internet - //www.fckeditor.net
  * Copyright (C) 2003-2008 Frederico Caldeira Knabben
  *
  * == BEGIN LICENSE ==
@@ -8,13 +8,13 @@
  * choice:
  *
  *  - GNU General Public License Version 2 or later (the "GPL")
- *    http://www.gnu.org/licenses/gpl.html
+ *    //www.gnu.org/licenses/gpl.html
  *
  *  - GNU Lesser General Public License Version 2.1 or later (the "LGPL")
- *    http://www.gnu.org/licenses/lgpl.html
+ *    //www.gnu.org/licenses/lgpl.html
  *
  *  - Mozilla Public License Version 1.1 or later (the "MPL")
- *    http://www.mozilla.org/MPL/MPL-1.1.html
+ *    //www.mozilla.org/MPL/MPL-1.1.html
  *
  * == END LICENSE ==
  *
@@ -149,7 +149,7 @@ function Ok()
 function UpdateEmbed( e )
 {
 	SetAttribute( e, 'type'			, 'application/x-shockwave-flash' ) ;
-	SetAttribute( e, 'pluginspage'	, 'http://www.macromedia.com/go/getflashplayer' ) ;
+	SetAttribute( e, 'pluginspage'	, '//www.macromedia.com/go/getflashplayer' ) ;
 
 	SetAttribute( e, 'src', GetE('txtUrl').value ) ;
 	SetAttribute( e, "width" , GetE('txtWidth').value ) ;
@@ -212,7 +212,7 @@ function UpdatePreview()
 	}
 }
 
-// <embed id="ePreview" src="fck_flash/claims.swf" width="100%" height="100%" style="visibility:hidden" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer">
+// <embed id="ePreview" src="fck_flash/claims.swf" width="100%" height="100%" style="visibility:hidden" type="application/x-shockwave-flash" pluginspage="//www.macromedia.com/go/getflashplayer">
 
 function BrowseServer()
 {

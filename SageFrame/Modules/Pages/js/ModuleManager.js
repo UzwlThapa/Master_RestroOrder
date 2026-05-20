@@ -1,4 +1,4 @@
-﻿(function ($) {
+(function ($) {
     $.createModuleManager = function (p) {
         p = $.extend
         ({
@@ -1583,7 +1583,7 @@
                         userName: SageFrameUserName,
                         secureToken: SageFrameSecureToken
                     }),
-                    async: false,
+                    async: true,
                     dataType: ModuleManager.config.dataType,
                     success: function (data) {
                         var usermodule = data.d;

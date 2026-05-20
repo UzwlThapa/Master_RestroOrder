@@ -1,4 +1,4 @@
-﻿(function ($) {
+(function ($) {
     $.createLayoutManager = function (p) {
         p = $.extend
         ({
@@ -13,7 +13,7 @@
         var LayoutManager = {
             config: {
                 isPostBack: false,
-                async: false,
+                async: true,
                 cache: false,
                 type: 'POST',
                 contentType: "application/json; charset=utf-8",
@@ -955,7 +955,7 @@
                     contentType: this.config.contentType,
                     cache: this.config.cache,
                     url: url,
-                    async: false,
+                    async: true,
                     data: param,
                     dataType: this.config.dataType,
                     success: function (msg) { data = msg.d; },

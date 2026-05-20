@@ -1,0 +1,304 @@
+/* ============================================================
+   responsive.css
+   Resolution-independent layout with media queries
+   Fixes: Send Order layout, menu/order panel split for tablet
+   ============================================================ */
+
+/* ── Base / shared resets ─────────────────────────────────── */
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+/* ── Desktop (> 1024px) — existing behaviour preserved ──────
+   sfCol_60 = 60 % left menu panel
+   sfCol_40 = 40 % right order-list panel (position:fixed)
+   totallist = fixed bottom bar, same 40 % width
+   ──────────────────────────────────────────────────────────── */
+@media screen and (min-width: 1025px) {
+
+    .sfCol_60.menu-bg {
+        width: 60%;
+        float: left;
+        min-height: 95vh;
+    }
+
+    .sfCol_40.order-list-bg {
+        width: 40%;
+        position: fixed;
+        right: 0;
+        top: 34px;
+        bottom: 0;
+        overflow-y: auto;
+    }
+
+    .totallist {
+        width: 40%;
+        position: fixed;
+        bottom: 5px;
+        right: 0;
+    }
+
+    /* Menu grid – 5 columns */
+    .menus > div,
+    .itemsss > div,
+    .items > div,
+    .menuss > div {
+        width: 18%;
+        margin-right: 2%;
+    }
+
+    /* Order-list tab max height */
+    div#OrderedTab,
+    #InPrgTab,
+    #CompTab {
+        max-height: 56vh;
+    }
+
+    div#OrderedTab.comp_tbl {
+        max-height: 49vh;
+    }
+}
+
+
+/* ── Tablet landscape (769px – 1024px) ──────────────────────
+   Layout stays side-by-side but panels resize.
+   Send Order button and totallist are kept visible.
+   ──────────────────────────────────────────────────────────── */
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+
+    /* ----- Two-panel split ----- */
+    .sfCol_60.menu-bg {
+        width: 55%;
+        float: left;
+        min-height: 100vh;
+        position: relative;
+    }
+
+    .sfCol_40.order-list-bg {
+        width: 45%;
+        position: fixed;
+        right: 0;
+        top: 34px;
+        bottom: 60px;          /* leave room for totallist */
+        overflow-y: auto;
+        padding-bottom: 10px;
+    }
+
+    /* ----- Total / Send-Order bar ----- */
+    .totallist {
+        width: 45%;
+        position: fixed;
+        bottom: 0;
+        right: 0;
+        z-index: 100;
+    }
+
+    .totallist > table td {
+        padding: 0 10px;
+        font-size: 13px;
+    }
+
+    /* SendOrder button – make sure it is always reachable */
+    #SendOrder {
+        font-size: 13px;
+        padding: 6px 10px;
+    }
+
+    /* ----- Menu grid – 4 columns on tablet landscape ----- */
+    .menus > div,
+    .itemsss > div,
+    .items > div,
+    .menuss > div {
+        width: 23%;
+        margin-right: 2%;
+    }
+
+    /* ----- Menu item image ----- */
+    .restaurant-part-menu img {
+        height: 90px;
+    }
+
+    /* ----- Order-list tabs ----- */
+    div#OrderedTab,
+    #InPrgTab,
+    #CompTab {
+        max-height: 52vh;
+    }
+
+    div#OrderedTab.comp_tbl {
+        max-height: 45vh;
+    }
+
+    /* ----- Search / language dropdowns ----- */
+    .sfCol_60.menu-bg .order-search {
+        right: 15px;
+    }
+
+    .sfCol_60.menu-bg .lan_selection {
+        right: 160px;
+    }
+
+    /* ----- Owl carousel arrows ----- */
+    .owl-prev,
+    .owl-next {
+        top: 50% !important;
+        transform: translateY(-50%);
+    }
+}
+
+
+/* ── Tablet portrait (481px – 768px) ────────────────────────
+   Stack panels vertically; order list goes below menu.
+   ──────────────────────────────────────────────────────────── */
+@media screen and (min-width: 481px) and (max-width: 768px) {
+
+    /* ----- Unfix panels – stack them ---- */
+    .sfCol_60.menu-bg,
+    .sfCol_40.order-list-bg {
+        width: 100%;
+        float: none;
+        position: relative;
+        top: auto;
+        right: auto;
+        bottom: auto;
+        left: auto;
+        min-height: auto;
+    }
+
+    .sfCol_40.order-list-bg {
+        border-top: 3px solid #f99934;
+    }
+
+    /* ----- Total bar – full width, stick to bottom ----- */
+    .totallist {
+        width: 100%;
+        position: fixed;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        z-index: 200;
+    }
+
+    /* Add scroll padding so content isn't hidden behind totallist */
+    .sfCol_40.order-list-bg {
+        padding-bottom: 55px;
+    }
+
+    /* ----- Menu grid – 3 columns ----- */
+    .menus > div,
+    .itemsss > div,
+    .items > div,
+    .menuss > div {
+        width: 31%;
+        margin-right: 2%;
+    }
+
+    /* ----- Order-list tabs – full height auto ----- */
+    div#OrderedTab,
+    #InPrgTab,
+    #CompTab {
+        max-height: 45vh;
+    }
+
+    /* ----- Search / language repositioned ----- */
+    .sfCol_60.menu-bg .order-search {
+        right: 10px;
+        top: 5px;
+    }
+
+    .sfCol_60.menu-bg .lan_selection {
+        right: 120px;
+        top: 5px;
+    }
+
+    /* ----- SendOrder button full-width ----- */
+    .orderlist-btn {
+        text-align: center;
+    }
+
+    #SendOrder {
+        width: 100%;
+        font-size: 14px;
+        padding: 8px 0;
+    }
+
+    /* ----- Owl arrows ----- */
+    .owl-prev,
+    .owl-next {
+        top: 50% !important;
+        transform: translateY(-50%);
+    }
+}
+
+
+/* ── Mobile (≤ 480px) ────────────────────────────────────── */
+@media screen and (max-width: 480px) {
+
+    .sfCol_60.menu-bg,
+    .sfCol_40.order-list-bg {
+        width: 100%;
+        float: none;
+        position: relative;
+        top: auto;
+        right: auto;
+        bottom: auto;
+    }
+
+    .totallist {
+        width: 100%;
+        position: fixed;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        z-index: 200;
+    }
+
+    .sfCol_40.order-list-bg {
+        padding-bottom: 60px;
+    }
+
+    /* ----- Menu grid – 2 columns ----- */
+    .menus > div,
+    .itemsss > div,
+    .items > div,
+    .menuss > div {
+        width: 48%;
+        margin-right: 2%;
+    }
+
+    .restaurant-part-menu img {
+        height: 80px;
+    }
+
+    div#OrderedTab,
+    #InPrgTab,
+    #CompTab {
+        max-height: 40vh;
+    }
+
+    .sfCol_60.menu-bg .order-search {
+        right: 5px;
+    }
+
+    .sfCol_60.menu-bg .lan_selection {
+        right: 90px;
+    }
+
+    #SendOrder {
+        width: 100%;
+        font-size: 13px;
+        padding: 8px 0;
+    }
+
+    .orderlist-btn {
+        text-align: center;
+    }
+}
+
+
+/* ── Utility: always prevent horizontal scroll ───────────── */
+body,
+.RO_wrapper {
+    max-width: 100%;
+    overflow-x: hidden;
+}

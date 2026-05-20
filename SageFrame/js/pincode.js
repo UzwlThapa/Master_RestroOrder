@@ -1,7 +1,7 @@
-﻿var userRoles = JSON.parse(localStorage.getItem("userRoles"));
+var userRoles = JSON.parse(localStorage.getItem("userRoles"));
 var pinSettings = JSON.parse(localStorage.getItem("rolePinSettings"));
 var numpin = JSON.parse(localStorage.getItem("numpin"));
-var disablePin = true;
+var disablePin = false;
 var obj;
 var value;
 function checkUserPinSetting() {

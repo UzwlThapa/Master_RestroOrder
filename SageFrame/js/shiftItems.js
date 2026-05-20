@@ -1,4 +1,4 @@
-﻿var ordersList = [];
+var ordersList = [];
 var tableId = 0;
 var fromOrderMasterId = 0;
 var fromOrderNo = 0;

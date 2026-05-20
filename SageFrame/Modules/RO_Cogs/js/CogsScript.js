@@ -1,4 +1,4 @@
-﻿function validateFloatKeyPress(el, evt) {
+function validateFloatKeyPress(el, evt) {
     var charCode = (evt.which) ? evt.which : event.keyCode;
     var number = el.value.split('.');
     if (charCode != 46 && charCode > 31 && (charCode < 48 || charCode > 57)) {
@@ -26,7 +26,7 @@
         var eventFunction = {
             config: {
                 isPostBack: false,
-                async: false,
+                async: true,
                 cache: false,
                 type: 'POST',
                 contentType: "application/json; charset=utf-8",

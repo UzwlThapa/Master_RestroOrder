@@ -1,5 +1,5 @@
 /*! jQuery UI - v1.11.4 - 2015-12-25
-* http://jqueryui.com
+* //jqueryui.com
 * Copyright jQuery Foundation and other contributors; Licensed MIT */
 
 (function( factory ) {

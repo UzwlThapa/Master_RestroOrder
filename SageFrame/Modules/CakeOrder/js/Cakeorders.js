@@ -1,4 +1,4 @@
-﻿var baseUrl = SageFrameHostURL + "/Modules/CakeOrder/services/CakeOrderWebService.asmx/";
+var baseUrl = SageFrameHostURL + "/Modules/CakeOrder/services/CakeOrderWebService.asmx/";
 var companyInfo = JSON.parse(localStorage.getItem("companyInfo"));
 var AutocompleteItem = new Array();
 var PreviousOrdersList = new Array();
@@ -49,7 +49,7 @@ var menuID = 0;
 function GetmembershiplistbyId(memberid) {
     $.ajax({
         type: "POST",
-        async: false,
+        async: true,
         cache: false,
         url: baseUrl + "getmembershiplistbyId",
         data: JSON2.stringify({ memberid: memberid }),
@@ -71,7 +71,7 @@ function GetmembershiplistbyId(memberid) {
 function GetGlobalizedMenu() {
     $.ajax({
         type: "POST",
-        async: false,
+        async: true,
         cache: false,
         url: baseUrl + "getLanguage",
         data: "",
@@ -98,7 +98,7 @@ function GetItemForSearch() {
     var lookUpName = 'cake';
     $.ajax({
         type: "POST",
-        async: false,
+        async: true,
         cache: false,
         //url: baseUrl + "GetItemForSearch",
         url: SageFrameHostURL + '/Modules/WholeSale/services/WholeSaleWebService.asmx/GetItemForWholeSaleSearch',
@@ -156,7 +156,7 @@ function GetItemForSearch() {
 function GetMenuforOrder(languageid) {
     $.ajax({
         type: "POST",
-        async: false,
+        async: true,
         cache: false,
         url: baseUrl + "getGlobalizedMenu",
         data: JSON2.stringify({ languageid: languageid }),
@@ -226,7 +226,7 @@ function GetMenuforOrder(languageid) {
 //function GetMenuforOrder(languageid) {
 //    $.ajax({
 //        type: "POST",
-//        async: false,
+//        async: true,
 //        cache: false,
 //        url: baseUrl + "getGlobalizedMenu",
 //        data: JSON2.stringify({ languageid: languageid }),
@@ -304,7 +304,7 @@ function GetMenuforOrder(languageid) {
 function GetCategoriesBymenuID(menuid, categoryName, languageid) {
     $.ajax({
         type: "POST",
-        async: false,
+        async: true,
         cache: false,
         url: baseUrl + "GetCategoriesBymenuID",
         data: JSON2.stringify({ MenuId: menuid, languageid: languageid }),
@@ -423,7 +423,7 @@ function GetItemByCategoryID(categoryId, subItem, categoryName) {
     var LanguageID = $("#selLanguage").val() == null ? 1 : $("#selLanguage").val();
     $.ajax({
         type: "POST",
-        async: false,
+        async: true,
         cache: false,
         url: baseUrl + "GetItemByCategoryID",
         data: JSON2.stringify({ CategoriesID: categoryId, LanguageID: LanguageID }),
@@ -505,7 +505,7 @@ function GetItemByCategoryID(categoryId, subItem, categoryName) {
 function getcomboformenu() {
     $.ajax({
         type: "POST",
-        async: false,
+        async: true,
         cache: false,
         url: baseUrl + "getitemforcumbo",
         data: "",
@@ -569,7 +569,7 @@ function getcomboformenu() {
 function GetExtraItemsByItem() {
     $.ajax({
         type: "POST",
-        async: false,
+        async: true,
         cache: false,
         url: baseUrl + "GetExtraItemsByItem",
         data: "",
@@ -779,7 +779,7 @@ function bindForCancel(result) {
 function SaveCanceledItems(cancelobjs) {
     $.ajax({
         type: "POST",
-        async: false,
+        async: true,
         cache: false,
         url: baseUrl + "SaveCanceledItems",
         data: JSON2.stringify({ CancelItems: cancelobjs }),
@@ -863,7 +863,7 @@ function SaveOrderedData() {
     //exclusively for cake
     $.ajax({
         type: "POST",
-        async: false,
+        async: true,
         cache: false,
         url: baseUrl + "SaveCakeOrderIntoDataBase",
         data: JSON2.stringify({ cakeOrderMasterInfo: cakeOrderMasterInf, orderExtraItems: ExtraItems, cakeorder: cakeorder }),
@@ -906,7 +906,7 @@ function SaveOrderedData() {
 function GetDataForSalesBill(orderMasterId) {
     $.ajax({
         type: "POST",
-        async: false,
+        async: true,
         cache: false,
         url: baseUrl + "GetDataForSalesBill",
         data: JSON2.stringify({ orderMasterId: orderMasterId }),
@@ -1620,7 +1620,7 @@ function GetCustomeronCheck() {
     var customer = 1;
     $.ajax({
         type: "POST",
-        async: false,
+        async: true,
         cache: false,
         url: baseUrl + "GetCustomerDatas",
         data: JSON2.stringify({ customer: customer }),
@@ -1714,7 +1714,7 @@ function SaveSalesBill(salesMaster, salesDetail, splited, billingTerm, discount)
     var customer = 1;
     $.ajax({
         type: "POST",
-        async: false,
+        async: true,
         cache: false,
         url: baseUrl + "SaveSalesBill",
         data: JSON2.stringify({ salesMaster: salesMaster, salesDetail: salesDetail, splited: splited, billingTerm: billingTerm, flatorperdiscount: discount }),
@@ -1753,7 +1753,7 @@ function SaveFoodCourtSalesBill(salesMaster, salesDetail, splited, billingTerm, 
     var customer = 1;
     $.ajax({
         type: "POST",
-        async: false,
+        async: true,
         cache: false,
         url: baseUrl + "SaveFoodCourtSalesBill",
         data: JSON2.stringify({ salesMaster: salesMaster, salesDetail: salesDetail, splited: splited, billingTerm: billingTerm, flatorperdiscount: discount, payment: salesPayment }),
@@ -1796,7 +1796,7 @@ function SaveFoodCourtSalesBill(salesMaster, salesDetail, splited, billingTerm, 
 function savePrintCount(printcount, billNo, printedBy) {
     $.ajax({
         type: "POST",
-        async: false,
+        async: true,
         cache: false,
         url: baseUrl + "savePrintCount",
         data: JSON2.stringify({ Printcount: printcount, BillNo: billNo, PrintedBy: printedBy }),
@@ -1854,7 +1854,7 @@ function CancelOrderedData() {
     ordermaster.IsCancelled = true,
         $.ajax({
             type: "POST",
-            async: false,
+            async: true,
             cache: false,
             url: baseUrl + "CancelOrderIntoDataBase",
             data: JSON2.stringify({ orderMasterInfo: ordermaster }),
@@ -1928,7 +1928,7 @@ function initialSetup(tableId, oId, hostUrl, foodCourt, Delievery) {
     if (foodCourt) {
         $.ajax({
             type: "POST",
-            async: false,
+            async: true,
             cache: false,
             url: baseUrl + "IsFoodCourtAutoBilling",
             data: '',
@@ -2330,7 +2330,7 @@ function initialSetup(tableId, oId, hostUrl, foodCourt, Delievery) {
             var languageid = $("#selLanguage").val() == null ? 1 : $("#selLanguage").val();
             $.ajax({
                 type: "POST",
-                async: false,
+                async: true,
                 cache: false,
                 url: baseUrl + "txtSearchForItem",
                 data: JSON2.stringify({ ItemName: name, languageid: languageid }),
@@ -2461,7 +2461,7 @@ function initialSetup(tableId, oId, hostUrl, foodCourt, Delievery) {
 function GetPreviousItemByID(Id, OID) {
     $.ajax({
         type: "POST",
-        async: false,
+        async: true,
         cache: false,
         url: baseUrl + "GetPreviousItemByID",
         data: JSON2.stringify({ Id: parseInt(Id), OID: parseInt(OID) }),
@@ -2619,7 +2619,7 @@ function GetPreviousItemByID(Id, OID) {
 function getProviderList() {
     $.ajax({
         type: "POST",
-        async: false,
+        async: true,
         cache: false,
         url: baseUrl + "GetProviderList",
         data: '',
@@ -2798,7 +2798,7 @@ function BillShortcutKey(e) {
 function saveSales(data, isFoodCourt) {
     $.ajax({
         type: "POST",
-        async: false,
+        async: true,
         cache: false,
         url: SageFrameHostURL + "/Services/RestroWebservice.asmx/SaveSales",
         data: data,
@@ -2839,7 +2839,7 @@ function saveSales(data, isFoodCourt) {
 function getMemberDetailsbyinfo(info) {
     $.ajax({
         type: "POST",
-        async: false,
+        async: true,
         cache: false,
         url: baseUrl + "getMemberDetailsbyinfo",
         data: JSON2.stringify({ info: info }),
@@ -2876,7 +2876,7 @@ function getMemberDetailsbyinfo(info) {
 function CheckRolesFromPin(pin) {
     $.ajax({
         type: "POST",
-        async: false,
+        async: true,
         cache: false,
         url: SageFrameHostURL + "/Modules/RestroDashboard/services/DashboardWebService.asmx/CheckPin",
         data: JSON.stringify({ pin: pin }),
@@ -2904,7 +2904,7 @@ function CheckRolesFromPin(pin) {
 function GetUserName(username) {
     $.ajax({
         type: "POST",
-        async: false,
+        async: true,
         cache: false,
         url: SageFrameHostURL + "/Modules/RestroDashboard/services/DashboardWebService.asmx/GetRolesByUsername",
         data: JSON.stringify({ username: username }),

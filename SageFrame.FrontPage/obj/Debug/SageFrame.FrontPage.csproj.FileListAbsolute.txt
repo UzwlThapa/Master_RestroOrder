@@ -178,3 +178,10 @@ G:\Danfe-Git\Master_RestroOrder\SageFrame.FrontPage\obj\Debug\SageFrame.FrontPag
 G:\Danfe-Git\Master_RestroOrder\SageFrame.FrontPage\obj\Debug\SageFrame.FrontPage.csproj.CopyComplete
 G:\Danfe-Git\Master_RestroOrder\SageFrame.FrontPage\obj\Debug\SageFrame.FrontPage.dll
 G:\Danfe-Git\Master_RestroOrder\SageFrame.FrontPage\obj\Debug\SageFrame.FrontPage.pdb
+G:\Danfe\DanfeProductsSourceCode\OldCodeNoHttps\Master_RestroOrder\SageFrame\bin\SageFrame.FrontPage.dll
+G:\Danfe\DanfeProductsSourceCode\OldCodeNoHttps\Master_RestroOrder\SageFrame\bin\SageFrame.FrontPage.pdb
+G:\Danfe\DanfeProductsSourceCode\OldCodeNoHttps\Master_RestroOrder\SageFrame.FrontPage\obj\Debug\SageFrame.FrontPage.csproj.AssemblyReference.cache
+G:\Danfe\DanfeProductsSourceCode\OldCodeNoHttps\Master_RestroOrder\SageFrame.FrontPage\obj\Debug\SageFrame.FrontPage.csproj.CoreCompileInputs.cache
+G:\Danfe\DanfeProductsSourceCode\OldCodeNoHttps\Master_RestroOrder\SageFrame.FrontPage\obj\Debug\SageFram.3E268F37.Up2Date
+G:\Danfe\DanfeProductsSourceCode\OldCodeNoHttps\Master_RestroOrder\SageFrame.FrontPage\obj\Debug\SageFrame.FrontPage.dll
+G:\Danfe\DanfeProductsSourceCode\OldCodeNoHttps\Master_RestroOrder\SageFrame.FrontPage\obj\Debug\SageFrame.FrontPage.pdb

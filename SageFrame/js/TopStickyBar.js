@@ -1,4 +1,4 @@
-﻿$(function () {
+$(function () {
     $(".sfLocalee").SystemLocalize();
     $('#imgAdmin').attr("src", SageFrameAppPath + "/Administrator/Templates/Default/images/admin-icon.png");
     $('#rdbEdit').attr("checked", true);

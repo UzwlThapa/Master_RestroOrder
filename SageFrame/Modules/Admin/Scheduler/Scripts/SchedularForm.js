@@ -1,4 +1,4 @@
-﻿var currentElement = "";
+var currentElement = "";
 var url = SchedularModuleFilePath + "WebServices/SchedulerWebService.asmx/";
 var offset_ = 1;
 var current_ = 1;

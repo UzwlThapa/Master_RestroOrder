@@ -1,4 +1,4 @@
-﻿(function ($) {
+(function ($) {
     $.companyProfCreate
         = function (p) {
         p = $.extend({
@@ -11,7 +11,7 @@
         var eventFuntion = {
             config: {
                 isPostBack: false,
-                async: false,
+                async: true,
                 cache: false,
                 type: 'POST',
                 contentType: "application/json; charset=utf-8",

@@ -1,4 +1,4 @@
-Ôªø
+
 var IncludeBillCancel = false;
 var IncludeSalesReturn = false;
 
@@ -29,7 +29,7 @@ function IntegerAndDecimal(evt, element) {
     var charCode = (evt.which) ? evt.which : event.keyCode
 
     if ((charCode != 8) &&
-        (charCode != 46 || $(element).val().indexOf('.') != -1) &&      // ‚Äú.‚Äù CHECK DOT, AND ONLY ONE.
+        (charCode != 46 || $(element).val().indexOf('.') != -1) &&      // ì.î CHECK DOT, AND ONLY ONE.
         (charCode < 48 || charCode > 57))
         return false;
 
@@ -69,7 +69,7 @@ function IntegerAndDecimal(evt, element) {
         var eventFunction = {
             config: {
                 isPostBack: false,
-                async: false,
+                async: true,
                 cache: false,
                 type: 'POST',
                 contentType: "application/json; charset=utf-8",
@@ -1343,7 +1343,7 @@ function IntegerAndDecimal(evt, element) {
                 var baseUrl = SageFrameHostURL + "/Modules/CakeBilling/services/CakeBillingWebService.asmx/";
                 $.ajax({
                     type: "POST",
-                    async: false,
+                    async: true,
                     cache: false,
                     url: baseUrl + "GetCustomerDatas",
                     data: JSON2.stringify({ customer: customer }),
@@ -1424,7 +1424,7 @@ function IntegerAndDecimal(evt, element) {
                 html += '<div id="payment">';
                 $.ajax({
                     type: "POST",
-                    async: false,
+                    async: true,
                     cache: false,
                     url: SageFrameHostURL + "/Services/OrderWebservice.asmx/GetPaymentModesAndProviders",
                     data: JSON.stringify({ salesMasterId: salesMasterID }),
@@ -1553,7 +1553,7 @@ function IntegerAndDecimal(evt, element) {
 
                                 $.ajax({
                                     type: "POST",
-                                    async: false,
+                                    async: true,
                                     cache: false,
                                     url: eventFunction.config.baseURL + "ChangePayMode",
                                     data: JSON2.stringify({ SalesPayment: salesPaymentList, }),

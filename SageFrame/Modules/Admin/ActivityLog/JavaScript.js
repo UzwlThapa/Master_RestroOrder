@@ -1,4 +1,4 @@
-﻿/// <reference path="../../../../js/jquery-1.7.js" />
+/// <reference path="../../../../js/jquery-1.7.js" />
 /// <reference path="WebService.asmx" />
 (function ($) {
     var tabs = $("#tabs").tabs();
@@ -14,7 +14,7 @@
         var eventFunction = {
             config: {
                 isPostBack: false,
-                async: false,
+                async: true,
                 cache: false,
                 type: 'POST',
                 contentType: "application/json; charset=utf-8",

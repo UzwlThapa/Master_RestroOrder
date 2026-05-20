@@ -1,4 +1,4 @@
-﻿(function($) {
+(function($) {
     $.fn.LoadFirst = function(templateFavIcon) {
         $('div.sfMessage').on("click", function() {
             $(this).slideUp();

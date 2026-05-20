@@ -1,5 +1,5 @@
 // jQuery plugin: PutCursorAtEnd 1.0
-// http://plugins.jquery.com/project/PutCursorAtEnd
+// //plugins.jquery.com/project/PutCursorAtEnd
 // by teedyay
 //
 // Puts the cursor at the end of a textbox/ textarea

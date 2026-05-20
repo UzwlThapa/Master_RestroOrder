@@ -1,4 +1,4 @@
-﻿(function($) {
+(function($) {
     var Offset = 0;
 
     var str = ' ';
@@ -14,7 +14,7 @@
         var TaskToDo = {
             config: {
                 isPostBack: false,
-                async: false,
+                async: true,
                 cache: false,
                 type: 'POST',
                 contentType: "application/json; charset=utf-8",
@@ -277,7 +277,7 @@
                 });
                 $.ajax({
                     type: TaskToDo.config.type,
-                    async: false,
+                    async: true,
                     url: TaskToDo.config.baseURL + "GetTaskContent",
                     data: myData,
                     contentType: TaskToDo.config.contentType,

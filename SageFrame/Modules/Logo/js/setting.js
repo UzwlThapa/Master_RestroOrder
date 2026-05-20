@@ -1,9 +1,9 @@
-﻿var LogoSetting = {
+var LogoSetting = {
     config: {
         moduleId: 0,
         portalId: 0,
         type: "POST",
-        async: false,
+        async: true,
         contentType: "application/json;charset=uf=8",
         dataType: "json",
         serviceUrl: '',

@@ -1,18 +1,18 @@
 /*
 * jQuery UI Tree 1.7.1
 *
-* Copyright (c) 2009 Titkov Anton, ElSoft company (http://elsoft.tomsk.ru)
+* Copyright (c) 2009 Titkov Anton, ElSoft company (//elsoft.tomsk.ru)
 * Dual licensed under the MIT (MIT-LICENSE.txt)
 * and GPL (GPL-LICENSE.txt) licenses.
 *
-* http://elsoft.tomsk.ru/jQuery/
+* //elsoft.tomsk.ru/jQuery/
 *
 * Version 0.1
 *
 * Depends:
 *	ui.core.js
 *	ui.draggable.js
-*	ui.droppable.js - modified by Titkov Anton (http://elsoft.tomsk.ru/jQuery)
+*	ui.droppable.js - modified by Titkov Anton (//elsoft.tomsk.ru/jQuery)
 */
 
 /*
@@ -287,7 +287,7 @@ var mas = [];
             if (this.isExpand(li)) return this.collapse(li);
             else return this.expand(li);
         },
-        //http://www.jordivila.net/code/js/jquery/ui-widgetTree/widgetTree.js
+        ////www.jordivila.net/code/js/jquery/ui-widgetTree/widgetTree.js
         openNode: function($lisOpen) {
             if ($lisOpen) {
                 $lisOpen.addClass('ui-tree-expanded')

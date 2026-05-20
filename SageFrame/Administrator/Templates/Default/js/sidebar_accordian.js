@@ -16,18 +16,18 @@ collapsible : menu works like an accordion but can be fully collapsed
 <ul class="menu [optional class] [optional class]">
 <li><a href="#">Sub menu heading</a>
 <ul>
-<li><a href="http://site.com/">Link</a></li>
-<li><a href="http://site.com/">Link</a></li>
-<li><a href="http://site.com/">Link</a></li>
+<li><a href="//site.com/">Link</a></li>
+<li><a href="//site.com/">Link</a></li>
+<li><a href="//site.com/">Link</a></li>
 ...
 ...
 </ul>
 // This item is open at page load time
 <li class="expand"><a href="#">Sub menu heading</a>
 <ul>
-<li><a href="http://site.com/">Link</a></li>
-<li><a href="http://site.com/">Link</a></li>
-<li><a href="http://site.com/">Link</a></li>
+<li><a href="//site.com/">Link</a></li>
+<li><a href="//site.com/">Link</a></li>
+<li><a href="//site.com/">Link</a></li>
 ...
 ...
 </ul>
@@ -37,7 +37,7 @@ collapsible : menu works like an accordion but can be fully collapsed
 
 Copyright 2007-2010 by Marco van Hylckama Vlieg
 
-web: http://www.i-marco.nl/weblog/
+web: //www.i-marco.nl/weblog/
 email: marco@i-marco.nl
 
 Free to use any way you like.

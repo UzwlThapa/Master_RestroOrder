@@ -1,4 +1,4 @@
-﻿(function($) {
+(function($) {
     var totalField = 0;
     $.SageCDN = function(p) {
         p = $.extend
@@ -8,7 +8,7 @@
         var CDN = {
             config: {
                 isPostBack: false,
-                async: false,
+                async: true,
                 cache: false,
                 type: 'POST',
                 contentType: "application/json; charset=utf-8",

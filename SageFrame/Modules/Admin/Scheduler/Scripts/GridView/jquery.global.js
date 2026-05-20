@@ -1,4 +1,4 @@
-﻿// Define Global Varaiblse
+// Define Global Varaiblse
 
 // ID =#
 // Class =.

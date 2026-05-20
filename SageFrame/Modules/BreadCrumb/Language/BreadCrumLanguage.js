@@ -1,3 +1,3 @@
-﻿var BreadCrumLanguage = {
+var BreadCrumLanguage = {
 'Welcome': 'Welcome'
 };

@@ -1,4 +1,4 @@
-﻿
+
 (function ($) {
     var tempPageNo = 0;
     var chooseCase = 0;
@@ -26,7 +26,7 @@
         pa4 = {
             config: {
                 isPostBack: false,
-                async: false,
+                async: true,
                 cache: false,
                 type: 'POST',
                 contentType: "application/json; charset=utf-8",

@@ -46,3 +46,4 @@ padding-left: 0;
 }
 
 
+/* Enhanced Responsive Styles */@media screen and (max-width: 1024px) { .sfCol_60, .sfCol_40 { width: 100% !important; float: none !important; } .BookedTable-list-tbl { font-size: 12px; } } @media screen and (max-width: 768px) { .sfCol_100, .sfCol_50 { width: 100% !important; } .imgtable { width: 60px !important; height: 60px !important; } }

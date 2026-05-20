@@ -1,18 +1,18 @@
 /**
  * jQuery lightBox plugin
- * This jQuery plugin was inspired and based on Lightbox 2 by Lokesh Dhakar (http://www.huddletogether.com/projects/lightbox2/)
+ * This jQuery plugin was inspired and based on Lightbox 2 by Lokesh Dhakar (//www.huddletogether.com/projects/lightbox2/)
  * and adapted to me for use like a plugin from jQuery.
  * @name jquery-lightbox-0.5.js
- * @author Leandro Vieira Pinho - http://leandrovieira.com
+ * @author Leandro Vieira Pinho - //leandrovieira.com
  * @version 0.5
  * @date April 11, 2008
  * @category jQuery plugin
  * @copyright (c) 2008 Leandro Vieira Pinho (leandrovieira.com)
- * @license CCAttribution-ShareAlike 2.5 Brazil - http://creativecommons.org/licenses/by-sa/2.5/br/deed.en_US
- * @example Visit http://leandrovieira.com/projects/jquery/lightbox/ for more informations about this jQuery plugin
+ * @license CCAttribution-ShareAlike 2.5 Brazil - //creativecommons.org/licenses/by-sa/2.5/br/deed.en_US
+ * @example Visit //leandrovieira.com/projects/jquery/lightbox/ for more informations about this jQuery plugin
  */
 
-// Offering a Custom Alias suport - More info: http://docs.jquery.com/Plugins/Authoring#Custom_Alias
+// Offering a Custom Alias suport - More info: //docs.jquery.com/Plugins/Authoring#Custom_Alias
 (function($) {
 	/**
 	 * $ is an alias to jQuery object

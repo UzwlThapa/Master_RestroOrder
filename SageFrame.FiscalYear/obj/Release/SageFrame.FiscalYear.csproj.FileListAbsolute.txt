@@ -256,3 +256,12 @@ Z:\Work\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.FiscalYear\obj\Rele
 Z:\Work\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.FiscalYear\obj\Release\SageFram.7A5E9D10.Up2Date
 Z:\Work\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.FiscalYear\obj\Release\SageFrame.FiscalYear.dll
 Z:\Work\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.FiscalYear\obj\Release\SageFrame.FiscalYear.pdb
+G:\Danfe\DanfeProductsSourceCode\OldCodeNoHttps\Master_RestroOrder\SageFrame.FiscalYear\bin\Release\SageFrame.FiscalYear.dll
+G:\Danfe\DanfeProductsSourceCode\OldCodeNoHttps\Master_RestroOrder\SageFrame.FiscalYear\bin\Release\SageFrame.FiscalYear.pdb
+G:\Danfe\DanfeProductsSourceCode\OldCodeNoHttps\Master_RestroOrder\SageFrame.FiscalYear\bin\Release\SageFrame.Common.dll
+G:\Danfe\DanfeProductsSourceCode\OldCodeNoHttps\Master_RestroOrder\SageFrame.FiscalYear\bin\Release\SageFrame.Common.pdb
+G:\Danfe\DanfeProductsSourceCode\OldCodeNoHttps\Master_RestroOrder\SageFrame.FiscalYear\obj\Release\SageFrame.FiscalYear.csproj.AssemblyReference.cache
+G:\Danfe\DanfeProductsSourceCode\OldCodeNoHttps\Master_RestroOrder\SageFrame.FiscalYear\obj\Release\SageFrame.FiscalYear.csproj.CoreCompileInputs.cache
+G:\Danfe\DanfeProductsSourceCode\OldCodeNoHttps\Master_RestroOrder\SageFrame.FiscalYear\obj\Release\SageFram.7A5E9D10.Up2Date
+G:\Danfe\DanfeProductsSourceCode\OldCodeNoHttps\Master_RestroOrder\SageFrame.FiscalYear\obj\Release\SageFrame.FiscalYear.dll
+G:\Danfe\DanfeProductsSourceCode\OldCodeNoHttps\Master_RestroOrder\SageFrame.FiscalYear\obj\Release\SageFrame.FiscalYear.pdb

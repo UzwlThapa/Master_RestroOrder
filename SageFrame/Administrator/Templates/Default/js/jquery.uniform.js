@@ -2,19 +2,19 @@
 
 Uniform v1.7.5
 Copyright © 2009 Josh Pyles / Pixelmatrix Design LLC
-http://pixelmatrixdesign.com
+//pixelmatrixdesign.com
 
 Requires jQuery 1.4 or newer
 
 Much thanks to Thomas Reynolds and Buck Wilson for their help and advice on this
 
-Disabling text selection is made possible by Mathias Bynens <http://mathiasbynens.be/>
-and his noSelect plugin. <http://github.com/mathiasbynens/noSelect-jQuery-Plugin>
+Disabling text selection is made possible by Mathias Bynens <//mathiasbynens.be/>
+and his noSelect plugin. <//github.com/mathiasbynens/noSelect-jQuery-Plugin>
 
 Also, thanks to David Kaneda and Eugene Bond for their contributions to the plugin
 
 License:
-MIT License - http://www.opensource.org/licenses/mit-license.php
+MIT License - //www.opensource.org/licenses/mit-license.php
 
 Enjoy!
 

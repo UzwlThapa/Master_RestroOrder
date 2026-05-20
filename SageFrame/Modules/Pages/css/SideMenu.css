@@ -1,4 +1,4 @@
-﻿.cssClassSideMenu{background: url(../images/left-navi-heading-bg.jpg) no-repeat 0 0;}
+.cssClassSideMenu{background: url(../images/left-navi-heading-bg.jpg) no-repeat 0 0;}
 .cssClassSideMenu ul{ margin:0; padding:0;}
 .cssClassSideMenu ul li{ margin:0; padding:0; }
 .cssClassSideMenu ul li a { font: 20px/30px 'Cuprum', serif; color:#000; padding:0 0 0 15px; display:block;}

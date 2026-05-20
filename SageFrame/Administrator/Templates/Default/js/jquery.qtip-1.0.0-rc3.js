@@ -2,10 +2,10 @@
  * jquery.qtip. The jQuery tooltip plugin
  *
  * Copyright (c) 2009 Craig Thompson
- * http://craigsworks.com
+ * //craigsworks.com
  *
  * Licensed under MIT
- * http://www.opensource.org/licenses/mit-license.php
+ * //www.opensource.org/licenses/mit-license.php
  *
  * Launch  : February 2009
  * Version : 1.0.0-rc3
@@ -1849,7 +1849,7 @@
 
    // BGIFRAME JQUERY PLUGIN ADAPTION
    //   Special thanks to Brandon Aaron for this plugin
-   //   http://plugins.jquery.com/project/bgiframe
+   //   //plugins.jquery.com/project/bgiframe
    function bgiframe()
    {
       var self, html, dimensions;

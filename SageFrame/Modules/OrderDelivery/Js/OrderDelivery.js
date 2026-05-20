@@ -1,4 +1,4 @@
-﻿
+
 (function ($) {
     var tabs = $("#tabs").tabs();
     var tabs = $("#OrderTab").tabs();
@@ -53,7 +53,7 @@
         var OrderItemFunction = {
             config: {
                 isPostBack: false,
-                async: false,
+                async: true,
                 cache: false,
                 type: 'POST',
                 contentType: "application/json; charset=utf-8",

@@ -3,11 +3,11 @@
  * version: 3.1.10
  * @requires jQuery v1.5 or later & form plugin
  * Copyright (c) 2013 Ravishanker Kusuma
- * http://hayageek.com/
+ * //hayageek.com/
  */
 (function ($) {
     if ($.fn.ajaxForm == undefined) {
-        // $.getScript(("https:" == document.location.protocol ? "https://" : "http://") + "malsup.github.io/jquery.form.js");
+        // $.getScript(("https:" == document.location.protocol ? "https://" : "//") + "malsup.github.io/jquery.form.js");
         $.getScript("" + SageFrameHostURL + "/js/uploadfile/form.js");
     }
     var feature = {};
@@ -25,7 +25,7 @@
             duplicateStrict: false,
             allowedTypes: "*",
             //For list of acceptFiles
-            // http://stackoverflow.com/questions/11832930/html-input-file-accept-attribute-file-type-csv
+            // //stackoverflow.com/questions/11832930/html-input-file-accept-attribute-file-type-csv
             acceptFiles: "*",
             fileName: "file",
             formData: {},

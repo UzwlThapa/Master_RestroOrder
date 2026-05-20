@@ -5,10 +5,10 @@
  * @requires jQuery v1.2.3
  * 
  * Copyright (c) 2007 Christian Bach
- * Examples and docs at: http://tablesorter.com
+ * Examples and docs at: //tablesorter.com
  * Dual licensed under the MIT and GPL licenses:
- * http://www.opensource.org/licenses/mit-license.php
- * http://www.gnu.org/licenses/gpl.html
+ * //www.opensource.org/licenses/mit-license.php
+ * //www.gnu.org/licenses/gpl.html
  * 
  */
 /**

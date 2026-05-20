@@ -9,7 +9,7 @@
                 }, p);
         var ModuleName = {
             config: {
-                async: false,
+                async: true,
                 cache: false,
                 type: 'POST',
                 contentType: "application/json; charset=utf-8",

@@ -1,5 +1,5 @@
-Ôªø/*
- * FCKeditor - The text editor for Internet - http://www.fckeditor.net
+/*
+ * FCKeditor - The text editor for Internet - //www.fckeditor.net
  * Copyright (C) 2003-2008 Frederico Caldeira Knabben
  *
  * == BEGIN LICENSE ==
@@ -8,20 +8,20 @@
  * choice:
  *
  *  - GNU General Public License Version 2 or later (the "GPL")
- *    http://www.gnu.org/licenses/gpl.html
+ *    //www.gnu.org/licenses/gpl.html
  *
  *  - GNU Lesser General Public License Version 2.1 or later (the "LGPL")
- *    http://www.gnu.org/licenses/lgpl.html
+ *    //www.gnu.org/licenses/lgpl.html
  *
  *  - Mozilla Public License Version 1.1 or later (the "MPL")
- *    http://www.mozilla.org/MPL/MPL-1.1.html
+ *    //www.mozilla.org/MPL/MPL-1.1.html
  *
  * == END LICENSE ==
  *
  * Placholder Italian language file.
  */
 FCKLang.PlaceholderBtn			= 'Aggiungi/Modifica Placeholder' ;
-FCKLang.PlaceholderDlgTitle		= 'Propriet√† del Placeholder' ;
+FCKLang.PlaceholderDlgTitle		= 'Propriet‡ del Placeholder' ;
 FCKLang.PlaceholderDlgName		= 'Nome del Placeholder' ;
 FCKLang.PlaceholderErrNoName	= 'Digitare il nome del placeholder' ;
-FCKLang.PlaceholderErrNameInUse	= 'Il nome inserito √® gi√† in uso' ;
+FCKLang.PlaceholderErrNameInUse	= 'Il nome inserito Ë gi‡ in uso' ;

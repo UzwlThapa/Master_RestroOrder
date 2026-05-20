@@ -1,11 +1,11 @@
-﻿/**
+/**
 * tablePagination - A table plugin for jQuery that creates pagination elements
 *
-* http://neoalchemy.org/tablePagination.html
+* //neoalchemy.org/tablePagination.html
 *
 * Copyright (c) 2009 Ryan Zielke (neoalchemy.com)
 * licensed under the MIT licenses:
-* http://www.opensource.org/licenses/mit-license.php
+* //www.opensource.org/licenses/mit-license.php
 *
 * @name tablePagination
 * @type jQuery

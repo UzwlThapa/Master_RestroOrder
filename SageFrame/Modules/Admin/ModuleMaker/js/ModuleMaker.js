@@ -137,7 +137,7 @@
         var primaryKey = "";
         var ModuleMaker = {
             config: {
-                async: false,
+                async: true,
                 cache: false,
                 type: 'POST',
                 contentType: "application/json; charset=utf-8",

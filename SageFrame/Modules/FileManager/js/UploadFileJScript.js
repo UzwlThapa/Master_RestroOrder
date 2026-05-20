@@ -1,4 +1,4 @@
-﻿
+
 (function ($) {
     var defaullts = {
         ShowImage: true,

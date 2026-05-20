@@ -1,8 +1,8 @@
-﻿$(function () {
+$(function () {
     var SiteMap = {
         config: {
             isPostBack: false,
-            async: false,
+            async: true,
             cache: false,
             type: 'POST',
             contentType: "application/json; charset=utf-8",
@@ -135,7 +135,7 @@
             if (!item.IsActive) { PageLink = '#'; }
             var title = item.LinkType == 0 ? item.PageName : item.Title;
             PageLink = item.LinkType == 1 ? '#' : PageLink;
-            var arrowStyle = item.ChildCount > 0 ? '<span class="sf-sub-indicator"> »</span>' : '';
+            var arrowStyle = item.ChildCount > 0 ? '<span class="sf-sub-indicator"> �</span>' : '';
             html = '<a  href=' + PageLink + '>' + title + '</a>';
             return html;
         }

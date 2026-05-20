@@ -1,4 +1,4 @@
-﻿function ajaxCall(config, responseData) {
+function ajaxCall(config, responseData) {
     $.ajax({
         type: config.type,
         contentType: config.contentType,

@@ -1,4 +1,4 @@
-﻿//$(document).on('click', '#btnUpload', function () {
+//$(document).on('click', '#btnUpload', function () {
 //    var fileUpload = $("#fileUpload").get(0);
 //    var file = fileUpload.files[0];
 //    if (file != null) {

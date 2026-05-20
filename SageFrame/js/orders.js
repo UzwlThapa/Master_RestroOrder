@@ -1,4 +1,4 @@
-﻿
+
 var companyInfo = JSON.parse(localStorage.getItem("companyInfo"));
 
 var disLimitBasicAmt = 0.00;

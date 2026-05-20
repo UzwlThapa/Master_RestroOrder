@@ -1,4 +1,4 @@
-﻿function formatDate(date) {
+function formatDate(date) {
     var month = date.getMonth() + 1;
     var day = date.getDate();
     var year = date.getFullYear();
@@ -27,7 +27,7 @@ function onlyUnique(value, index, self) {
         var eventFunction = {
             config: {
                 isPostBack: false,
-                async: false,
+                async: true,
                 cache: false,
                 type: 'POST',
                 contentType: "application/json; charset=utf-8",

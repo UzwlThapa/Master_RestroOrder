@@ -1,4 +1,4 @@
-﻿
+
 var companyInfo = JSON.parse(localStorage.getItem("companyInfo"));
 
 function IntegerAndDecimal(evt, element) {
@@ -65,7 +65,7 @@ function IntegerAndDecimal(evt, element) {
         var DashboardFunction = {
             config: {
                 isPostBack: false,
-                async: false,
+                async: true,
                 cache: false,
                 type: 'POST',
                 contentType: "application/json; charset=utf-8",

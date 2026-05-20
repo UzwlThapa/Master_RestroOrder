@@ -1,6 +1,6 @@
     /*
     Property: alert
-      Shortcut for alert // http://www.csscody.com/demo   --  more examples here ----//
+      Shortcut for alert // //www.csscody.com/demo   --  more examples here ----//
       
     Argument:
       properties - see Options in messageBox

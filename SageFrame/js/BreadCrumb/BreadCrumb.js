@@ -1,4 +1,4 @@
-﻿(function($) {
+(function($) {
     $.createBreadCrumb = function(p) {
         p = $.extend({
             baseURL: '/Modules/BreadCrumb/BreadCrumbWebService.asmx/',

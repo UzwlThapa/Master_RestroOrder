@@ -1,4 +1,4 @@
-﻿var Languages = {
+var Languages = {
   'AFRIKAANS' : 'af',
   'ALBANIAN' : 'sq',
   'AMHARIC' : 'am',

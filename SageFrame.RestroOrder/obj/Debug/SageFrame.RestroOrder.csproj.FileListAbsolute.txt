@@ -185,3 +185,10 @@ Z:\Work\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.RestroOrder\obj\Deb
 Z:\Work\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.RestroOrder\obj\Debug\SageFram.6530C07E.Up2Date
 Z:\Work\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.RestroOrder\obj\Debug\SageFrame.RestroOrder.dll
 Z:\Work\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.RestroOrder\obj\Debug\SageFrame.RestroOrder.pdb
+G:\Danfe\DanfeProductsSourceCode\OldCodeNoHttps\Master_RestroOrder\SageFrame\bin\SageFrame.RestroOrder.dll
+G:\Danfe\DanfeProductsSourceCode\OldCodeNoHttps\Master_RestroOrder\SageFrame\bin\SageFrame.RestroOrder.pdb
+G:\Danfe\DanfeProductsSourceCode\OldCodeNoHttps\Master_RestroOrder\SageFrame.RestroOrder\obj\Debug\SageFrame.RestroOrder.csproj.AssemblyReference.cache
+G:\Danfe\DanfeProductsSourceCode\OldCodeNoHttps\Master_RestroOrder\SageFrame.RestroOrder\obj\Debug\SageFrame.RestroOrder.csproj.CoreCompileInputs.cache
+G:\Danfe\DanfeProductsSourceCode\OldCodeNoHttps\Master_RestroOrder\SageFrame.RestroOrder\obj\Debug\SageFram.6530C07E.Up2Date
+G:\Danfe\DanfeProductsSourceCode\OldCodeNoHttps\Master_RestroOrder\SageFrame.RestroOrder\obj\Debug\SageFrame.RestroOrder.dll
+G:\Danfe\DanfeProductsSourceCode\OldCodeNoHttps\Master_RestroOrder\SageFrame.RestroOrder\obj\Debug\SageFrame.RestroOrder.pdb

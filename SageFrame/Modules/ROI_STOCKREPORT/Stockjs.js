@@ -1,4 +1,4 @@
-﻿function Print() {
+function Print() {
     $('#printedDate').show();
     $('#lblPrintedOn').html(new Date());
     var contents = $('#DailyReport').clone();
@@ -36,7 +36,7 @@
         var eventFunction = {
             config: {
                 isPostBack: false,
-                async: false,
+                async: true,
                 cache: false,
                 type: 'POST',
                 contentType: "application/json; charset=utf-8",

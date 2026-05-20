@@ -1,4 +1,4 @@
-﻿using SageFrame.RestroOrder;
+using SageFrame.RestroOrder;
 using System.Drawing;
 using System.Drawing.Printing;
 using System.Configuration;
@@ -288,7 +288,13 @@ public class Printer
             var ItemLength = 0;
             ItemLength = itm.ITName.Trim().Length;
             var IName = "";
-            IName = ItemLength > 17 ? itm.ITName.Trim().Substring(0, 13) + ".." : itm.ITName.Trim();
+            // Improved wrapping logic
+            string fullItemName = itm.ITName.Trim();
+            int maxNameLen = 17;
+            string firstLine = fullItemName.Length > maxNameLen ? fullItemName.Substring(0, maxNameLen) : fullItemName;
+            string remainder = fullItemName.Length > maxNameLen ? fullItemName.Substring(maxNameLen) : "";
+            //string remainder = fullItemName.Length > maxNameLen ? fullItemName.Substring(maxNameLen) : \"\";
+            IName = firstLine;
 
             if (ItemLength < 17)
             {
@@ -304,8 +310,13 @@ public class Printer
 
             var newit = (IName + format).Length;
             offset = offset + (int)fontHeight + 10;
-            line = IName + format + (itm.Quantity) + " " + (decimal.Round(abbRate, 1, MidpointRounding.AwayFromZero)) + " " + (decimal.Round((decimal)Amt, 1, MidpointRounding.AwayFromZero));
+            line = IName.PadRight(18) + itm.Quantity.ToString().PadRight(4) + decimal.Round(abbRate, 1).ToString().PadRight(6) + decimal.Round((decimal)Amt, 1).ToString();
             graphic.DrawString(line, font, new SolidBrush(Color.Black), startX, startY + offset);
+            if (!string.IsNullOrEmpty(remainder)) {
+                offset += (int)fontHeight;
+                graphic.DrawString("  " + remainder, font, new SolidBrush(Color.Black), startX, startY + offset);
+                //graphic.DrawString(\"  \" + remainder, font, new SolidBrush(Color.Black), startX, startY + offset);
+            }
         }
 
         offset = offset + (int)fontHeight;
@@ -591,7 +602,6 @@ public class Printer
 
             offset = offset + (int)fontHeight + 10;
             line = IName + format + (kot.Status == "Cancelled" ? ("(" + itm.Quantity) + ")" : (itm.Quantity) + " " + (itm.Rate) + " " + (Amt));
-            graphic.DrawString(line, font, new SolidBrush(Color.Black), startX, startY + offset);
 
         }
 

@@ -1,5 +1,5 @@
-Ôªø/*
- * FCKeditor - The text editor for Internet - http://www.fckeditor.net
+/*
+ * FCKeditor - The text editor for Internet - //www.fckeditor.net
  * Copyright (C) 2003-2008 Frederico Caldeira Knabben
  *
  * == BEGIN LICENSE ==
@@ -8,13 +8,13 @@
  * choice:
  *
  *  - GNU General Public License Version 2 or later (the "GPL")
- *    http://www.gnu.org/licenses/gpl.html
+ *    //www.gnu.org/licenses/gpl.html
  *
  *  - GNU Lesser General Public License Version 2.1 or later (the "LGPL")
- *    http://www.gnu.org/licenses/lgpl.html
+ *    //www.gnu.org/licenses/lgpl.html
  *
  *  - Mozilla Public License Version 1.1 or later (the "MPL")
- *    http://www.mozilla.org/MPL/MPL-1.1.html
+ *    //www.mozilla.org/MPL/MPL-1.1.html
  *
  * == END LICENSE ==
  *
@@ -131,21 +131,21 @@ MergeDown			: "Unisci in Basso",
 HorizontalSplitCell	: "Dividi Cella Orizzontalmente",
 VerticalSplitCell	: "Dividi Cella Verticalmente",
 TableDelete			: "Cancella Tabella",
-CellProperties		: "Propriet√† cella",
-TableProperties		: "Propriet√† tabella",
-ImageProperties		: "Propriet√† immagine",
-FlashProperties		: "Propriet√† Oggetto Flash",
+CellProperties		: "Propriet‡ cella",
+TableProperties		: "Propriet‡ tabella",
+ImageProperties		: "Propriet‡ immagine",
+FlashProperties		: "Propriet‡ Oggetto Flash",
 
-AnchorProp			: "Propriet√† ancora",
-ButtonProp			: "Propriet√† bottone",
-CheckboxProp		: "Propriet√† checkbox",
-HiddenFieldProp		: "Propriet√† campo nascosto",
-RadioButtonProp		: "Propriet√† radio button",
-ImageButtonProp		: "Propriet√† bottone immagine",
-TextFieldProp		: "Propriet√† campo di testo",
-SelectionFieldProp	: "Propriet√† menu di selezione",
-TextareaProp		: "Propriet√† area di testo",
-FormProp			: "Propriet√† modulo",
+AnchorProp			: "Propriet‡ ancora",
+ButtonProp			: "Propriet‡ bottone",
+CheckboxProp		: "Propriet‡ checkbox",
+HiddenFieldProp		: "Propriet‡ campo nascosto",
+RadioButtonProp		: "Propriet‡ radio button",
+ImageButtonProp		: "Propriet‡ bottone immagine",
+TextFieldProp		: "Propriet‡ campo di testo",
+SelectionFieldProp	: "Propriet‡ menu di selezione",
+TextareaProp		: "Propriet‡ area di testo",
+FormProp			: "Propriet‡ modulo",
 
 FontFormats			: "Normale;Formattato;Indirizzo;Titolo 1;Titolo 2;Titolo 3;Titolo 4;Titolo 5;Titolo 6;Paragrafo (DIV)",
 
@@ -153,14 +153,14 @@ FontFormats			: "Normale;Formattato;Indirizzo;Titolo 1;Titolo 2;Titolo 3;Titolo 
 ProcessingXHTML		: "Elaborazione XHTML in corso. Attendere prego...",
 Done				: "Completato",
 PasteWordConfirm	: "Il testo da incollare sembra provenire da Word. Desideri pulirlo prima di incollare?",
-NotCompatiblePaste	: "Questa funzione √® disponibile solo per Internet Explorer 5.5 o superiore. Desideri incollare il testo senza pulirlo?",
+NotCompatiblePaste	: "Questa funzione Ë disponibile solo per Internet Explorer 5.5 o superiore. Desideri incollare il testo senza pulirlo?",
 UnknownToolbarItem	: "Elemento della barra strumenti sconosciuto \"%1\"",
 UnknownCommand		: "Comando sconosciuto \"%1\"",
 NotImplemented		: "Comando non implementato",
 UnknownToolbarSet	: "La barra di strumenti \"%1\" non esiste",
-NoActiveX			: "Le impostazioni di sicurezza del tuo browser potrebbero limitare alcune funzionalit√† dell'editor. Devi abilitare l'opzione \"Esegui controlli e plug-in ActiveX\". Potresti avere errori e notare funzionalit√† mancanti.",
-BrowseServerBlocked : "Non √® possibile aprire la finestra di espolorazione risorse. Verifica che tutti i blocca popup siano bloccati.",
-DialogBlocked		: "Non √® possibile aprire la finestra di dialogo. Verifica che tutti i blocca popup siano bloccati.",
+NoActiveX			: "Le impostazioni di sicurezza del tuo browser potrebbero limitare alcune funzionalit‡ dell'editor. Devi abilitare l'opzione \"Esegui controlli e plug-in ActiveX\". Potresti avere errori e notare funzionalit‡ mancanti.",
+BrowseServerBlocked : "Non Ë possibile aprire la finestra di espolorazione risorse. Verifica che tutti i blocca popup siano bloccati.",
+DialogBlocked		: "Non Ë possibile aprire la finestra di dialogo. Verifica che tutti i blocca popup siano bloccati.",
 VisitLinkBlocked	: "It was not possible to open a new window. Make sure all popup blockers are disabled.",	//MISSING
 
 // Dialogs
@@ -191,7 +191,7 @@ DlgGenLinkCharset	: "Set di caretteri della risorsa collegata",
 DlgGenStyle			: "Stile",
 
 // Image Dialog
-DlgImgTitle			: "Propriet√† immagine",
+DlgImgTitle			: "Propriet‡ immagine",
 DlgImgInfoTab		: "Informazioni immagine",
 DlgImgBtnUpload		: "Invia al server",
 DlgImgURL			: "URL",
@@ -219,7 +219,7 @@ DlgImgAlertUrl		: "Devi inserire l'URL per l'immagine",
 DlgImgLinkTab		: "Collegamento",
 
 // Flash Dialog
-DlgFlashTitle		: "Propriet√† Oggetto Flash",
+DlgFlashTitle		: "Propriet‡ Oggetto Flash",
 DlgFlashChkPlay		: "Avvio Automatico",
 DlgFlashChkLoop		: "Cicla",
 DlgFlashChkMenu		: "Abilita Menu di Flash",
@@ -276,7 +276,7 @@ DlgLnkPopTop		: "Posizione dall'alto",
 DlnLnkMsgNoUrl		: "Devi inserire l'URL del collegamento",
 DlnLnkMsgNoEMail	: "Devi inserire un'indirizzo e-mail",
 DlnLnkMsgNoAnchor	: "Devi selezionare un'ancora",
-DlnLnkMsgInvPopName	: "Il nome del popup deve iniziare con una lettera, e non pu√≤ contenere spazi",
+DlnLnkMsgInvPopName	: "Il nome del popup deve iniziare con una lettera, e non puÚ contenere spazi",
 
 // Color Dialog
 DlgColorTitle		: "Seleziona colore",
@@ -291,7 +291,7 @@ DlgSmileyTitle		: "Inserisci emoticon",
 DlgSpecialCharTitle	: "Seleziona carattere speciale",
 
 // Table Dialog
-DlgTableTitle		: "Propriet√† tabella",
+DlgTableTitle		: "Propriet‡ tabella",
 DlgTableRows		: "Righe",
 DlgTableColumns		: "Colonne",
 DlgTableBorder		: "Dimensione bordo",
@@ -310,7 +310,7 @@ DlgTableCaption		: "Intestazione",
 DlgTableSummary		: "Indice",
 
 // Table Cell Dialog
-DlgCellTitle		: "Propriet√† cella",
+DlgCellTitle		: "Propriet‡ cella",
 DlgCellWidth		: "Larghezza",
 DlgCellWidthPx		: "pixel",
 DlgCellWidthPc		: "percento",
@@ -342,7 +342,7 @@ DlgFindAndReplaceTitle	: "Cerca e Sostituisci",
 // Find Dialog
 DlgFindTitle		: "Trova",
 DlgFindFindBtn		: "Trova",
-DlgFindNotFoundMsg	: "L'elemento cercato non √® stato trovato.",
+DlgFindNotFoundMsg	: "L'elemento cercato non Ë stato trovato.",
 
 // Replace Dialog
 DlgReplaceTitle			: "Sostituisci",
@@ -361,7 +361,7 @@ PasteAsText		: "Incolla come testo semplice",
 PasteFromWord	: "Incolla da Word",
 
 DlgPasteMsg2	: "Incolla il testo all'interno dell'area sottostante usando la scorciatoia di tastiere (<STRONG>Ctrl+V</STRONG>) e premi <STRONG>OK</STRONG>.",
-DlgPasteSec		: "A causa delle impostazioni di sicurezza del browser,l'editor non √® in grado di accedere direttamente agli appunti. E' pertanto necessario incollarli di nuovo in questa finestra.",
+DlgPasteSec		: "A causa delle impostazioni di sicurezza del browser,l'editor non Ë in grado di accedere direttamente agli appunti. E' pertanto necessario incollarli di nuovo in questa finestra.",
 DlgPasteIgnoreFont		: "Ignora le definizioni di Font",
 DlgPasteRemoveStyles	: "Rimuovi le definizioni di Stile",
 
@@ -370,10 +370,10 @@ ColorAutomatic	: "Automatico",
 ColorMoreColors	: "Altri colori...",
 
 // Document Properties
-DocProps		: "Propriet√† del Documento",
+DocProps		: "Propriet‡ del Documento",
 
 // Anchor Dialog
-DlgAnchorTitle		: "Propriet√† ancora",
+DlgAnchorTitle		: "Propriet‡ ancora",
 DlgAnchorName		: "Nome ancora",
 DlgAnchorErrorName	: "Inserici il nome dell'ancora",
 
@@ -446,8 +446,8 @@ DlgHiddenName	: "Nome",
 DlgHiddenValue	: "Valore",
 
 // Bulleted List Dialog
-BulletedListProp	: "Propriet√† lista puntata",
-NumberedListProp	: "Propriet√† lista numerata",
+BulletedListProp	: "Propriet‡ lista puntata",
+NumberedListProp	: "Propriet‡ lista numerata",
 DlgLstStart			: "Inizio",
 DlgLstType			: "Tipo",
 DlgLstTypeCircle	: "Tondo",
@@ -506,7 +506,7 @@ DlgDocPreview		: "Anteprima",
 // Templates Dialog
 Templates			: "Modelli",
 DlgTemplatesTitle	: "Contenuto dei modelli",
-DlgTemplatesSelMsg	: "Seleziona il modello da aprire nell'editor<br />(il contenuto attuale verr√† eliminato):",
+DlgTemplatesSelMsg	: "Seleziona il modello da aprire nell'editor<br />(il contenuto attuale verr‡ eliminato):",
 DlgTemplatesLoading	: "Caricamento modelli in corso. Attendere prego...",
 DlgTemplatesNoTpl	: "(Nessun modello definito)",
 DlgTemplatesReplace	: "Cancella il contenuto corrente",

@@ -1,12 +1,12 @@
 /*!
 	Colorbox 1.6.4
 	license: MIT
-	http://www.jacklmoore.com/colorbox
+	//www.jacklmoore.com/colorbox
 */
 (function ($, document, window) {
 	var
 	// Default settings object.
-	// See http://jacklmoore.com/colorbox for details.
+	// See //jacklmoore.com/colorbox for details.
 	defaults = {
 		// data sources
 		html: false,
@@ -195,7 +195,7 @@
 	}
 
 	// Get the window height using innerHeight when available to avoid an issue with iOS
-	// http://bugs.jquery.com/ticket/6724
+	// //bugs.jquery.com/ticket/6724
 	function winheight() {
 		return window.innerHeight ? window.innerHeight : $(window).height();
 	}
@@ -520,7 +520,7 @@
 	function addBindings() {
 		function clickHandler(e) {
 			// ignore non-left-mouse-clicks and clicks modified with ctrl / command, shift, or alt.
-			// See: http://jacklmoore.com/notes/click-events/
+			// See: //jacklmoore.com/notes/click-events/
 			if (!(e.which > 1 || e.shiftKey || e.altKey || e.metaKey || e.ctrlKey)) {
 				e.preventDefault();
 				launch(this);

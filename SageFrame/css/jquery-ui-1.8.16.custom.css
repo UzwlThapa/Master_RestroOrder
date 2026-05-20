@@ -772,11 +772,11 @@ font-size:13px; font-weight: bold;
 }/*
  * jQuery UI Resizable 1.8.16
  *
- * Copyright 2011, AUTHORS.txt (http://jqueryui.com/about)
+ * Copyright 2011, AUTHORS.txt (//jqueryui.com/about)
  * Dual licensed under the MIT or GPL Version 2 licenses.
- * http://jquery.org/license
+ * //jquery.org/license
  *
- * http://docs.jquery.com/UI/Resizable#theming
+ * //docs.jquery.com/UI/Resizable#theming
  */
 .ui-resizable {
 	position: relative;
@@ -848,11 +848,11 @@ font-size:13px; font-weight: bold;
 }/*
  * jQuery UI Selectable 1.8.16
  *
- * Copyright 2011, AUTHORS.txt (http://jqueryui.com/about)
+ * Copyright 2011, AUTHORS.txt (//jqueryui.com/about)
  * Dual licensed under the MIT or GPL Version 2 licenses.
- * http://jquery.org/license
+ * //jquery.org/license
  *
- * http://docs.jquery.com/UI/Selectable#theming
+ * //docs.jquery.com/UI/Selectable#theming
  */
 .ui-selectable-helper {
 	position: absolute;
@@ -862,11 +862,11 @@ font-size:13px; font-weight: bold;
 /*
  * jQuery UI Accordion 1.8.16
  *
- * Copyright 2011, AUTHORS.txt (http://jqueryui.com/about)
+ * Copyright 2011, AUTHORS.txt (//jqueryui.com/about)
  * Dual licensed under the MIT or GPL Version 2 licenses.
- * http://jquery.org/license
+ * //jquery.org/license
  *
- * http://docs.jquery.com/UI/Accordion#theming
+ * //docs.jquery.com/UI/Accordion#theming
  */
 /* IE/Win - Fix animation bug - #4615 */
 .ui-accordion {
@@ -915,11 +915,11 @@ font-size:13px; font-weight: bold;
 /*
  * jQuery UI Autocomplete 1.8.16
  *
- * Copyright 2011, AUTHORS.txt (http://jqueryui.com/about)
+ * Copyright 2011, AUTHORS.txt (//jqueryui.com/about)
  * Dual licensed under the MIT or GPL Version 2 licenses.
- * http://jquery.org/license
+ * //jquery.org/license
  *
- * http://docs.jquery.com/UI/Autocomplete#theming
+ * //docs.jquery.com/UI/Autocomplete#theming
  */
 .ui-autocomplete {
 	position: absolute;
@@ -932,11 +932,11 @@ font-size:13px; font-weight: bold;
 /*
  * jQuery UI Menu 1.8.16
  *
- * Copyright 2010, AUTHORS.txt (http://jqueryui.com/about)
+ * Copyright 2010, AUTHORS.txt (//jqueryui.com/about)
  * Dual licensed under the MIT or GPL Version 2 licenses.
- * http://jquery.org/license
+ * //jquery.org/license
  *
- * http://docs.jquery.com/UI/Menu#theming
+ * //docs.jquery.com/UI/Menu#theming
  */
 .ui-menu {
 	list-style:none;
@@ -966,11 +966,11 @@ font-size:13px; font-weight: bold;
 /*
  * jQuery UI Button 1.8.16
  *
- * Copyright 2011, AUTHORS.txt (http://jqueryui.com/about)
+ * Copyright 2011, AUTHORS.txt (//jqueryui.com/about)
  * Dual licensed under the MIT or GPL Version 2 licenses.
- * http://jquery.org/license
+ * //jquery.org/license
  *
- * http://docs.jquery.com/UI/Button#theming
+ * //docs.jquery.com/UI/Button#theming
  */
 .ui-button {
 	text-align: center;
@@ -1062,11 +1062,11 @@ padding: 0;
 /*
  * jQuery UI Dialog 1.8.16
  *
- * Copyright 2011, AUTHORS.txt (http://jqueryui.com/about)
+ * Copyright 2011, AUTHORS.txt (//jqueryui.com/about)
  * Dual licensed under the MIT or GPL Version 2 licenses.
- * http://jquery.org/license
+ * //jquery.org/license
  *
- * http://docs.jquery.com/UI/Dialog#theming
+ * //docs.jquery.com/UI/Dialog#theming
  */
 .ui-dialog {
 	position: absolute;
@@ -1142,11 +1142,11 @@ padding: 0;
 /*
  * jQuery UI Slider 1.8.16
  *
- * Copyright 2011, AUTHORS.txt (http://jqueryui.com/about)
+ * Copyright 2011, AUTHORS.txt (//jqueryui.com/about)
  * Dual licensed under the MIT or GPL Version 2 licenses.
- * http://jquery.org/license
+ * //jquery.org/license
  *
- * http://docs.jquery.com/UI/Slider#theming
+ * //docs.jquery.com/UI/Slider#theming
  */
 .ui-slider {
 	position: relative;
@@ -1205,11 +1205,11 @@ padding: 0;
 }/*
  * jQuery UI Tabs 1.8.16
  *
- * Copyright 2011, AUTHORS.txt (http://jqueryui.com/about)
+ * Copyright 2011, AUTHORS.txt (//jqueryui.com/about)
  * Dual licensed under the MIT or GPL Version 2 licenses.
- * http://jquery.org/license
+ * //jquery.org/license
  *
- * http://docs.jquery.com/UI/Tabs#theming
+ * //docs.jquery.com/UI/Tabs#theming
  */
 .ui-tabs {
 	position: relative;
@@ -1265,11 +1265,11 @@ padding: 0;
 
  * jQuery UI Datepicker 1.8.16
  *
- * Copyright 2011, AUTHORS.txt (http://jqueryui.com/about)
+ * Copyright 2011, AUTHORS.txt (//jqueryui.com/about)
  * Dual licensed under the MIT or GPL Version 2 licenses.
- * http://jquery.org/license
+ * //jquery.org/license
  *
- * http://docs.jquery.com/UI/Datepicker#theming
+ * //docs.jquery.com/UI/Datepicker#theming
  */
 .ui-datepicker {
 	width: 17em;
@@ -1446,11 +1446,11 @@ padding: 0;
 }/*
  * jQuery UI Progressbar 1.8.16
  *
- * Copyright 2011, AUTHORS.txt (http://jqueryui.com/about)
+ * Copyright 2011, AUTHORS.txt (//jqueryui.com/about)
  * Dual licensed under the MIT or GPL Version 2 licenses.
- * http://jquery.org/license
+ * //jquery.org/license
  *
- * http://docs.jquery.com/UI/Progressbar#theming
+ * //docs.jquery.com/UI/Progressbar#theming
  */
 .ui-progressbar {
 	height:2em;

@@ -193,3 +193,10 @@ G:\Danfe-Git\Master_RestroOrder\SageFrame.Laundry\obj\Debug\SageFrame.Laundry.cs
 G:\Danfe-Git\Master_RestroOrder\SageFrame.Laundry\obj\Debug\SageFrame.Laundry.csproj.CopyComplete
 G:\Danfe-Git\Master_RestroOrder\SageFrame.Laundry\obj\Debug\SageFrame.Laundry.dll
 G:\Danfe-Git\Master_RestroOrder\SageFrame.Laundry\obj\Debug\SageFrame.Laundry.pdb
+G:\Danfe\DanfeProductsSourceCode\OldCodeNoHttps\Master_RestroOrder\SageFrame\bin\SageFrame.Laundry.dll
+G:\Danfe\DanfeProductsSourceCode\OldCodeNoHttps\Master_RestroOrder\SageFrame\bin\SageFrame.Laundry.pdb
+G:\Danfe\DanfeProductsSourceCode\OldCodeNoHttps\Master_RestroOrder\SageFrame.Laundry\obj\Debug\SageFrame.Laundry.csproj.AssemblyReference.cache
+G:\Danfe\DanfeProductsSourceCode\OldCodeNoHttps\Master_RestroOrder\SageFrame.Laundry\obj\Debug\SageFrame.Laundry.csproj.CoreCompileInputs.cache
+G:\Danfe\DanfeProductsSourceCode\OldCodeNoHttps\Master_RestroOrder\SageFrame.Laundry\obj\Debug\SageFram.F3E409ED.Up2Date
+G:\Danfe\DanfeProductsSourceCode\OldCodeNoHttps\Master_RestroOrder\SageFrame.Laundry\obj\Debug\SageFrame.Laundry.dll
+G:\Danfe\DanfeProductsSourceCode\OldCodeNoHttps\Master_RestroOrder\SageFrame.Laundry\obj\Debug\SageFrame.Laundry.pdb

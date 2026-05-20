@@ -1,4 +1,4 @@
-﻿(function ($) {
+(function ($) {
     $.Note = function (p) {
         p = $.extend
              ({
@@ -10,7 +10,7 @@
         var eventFunction = {
             config: {
                 isPostBack: false,
-                async: false,
+                async: true,
                 cache: false,
                 type: 'POST',
                 contentType: "application/json; charset=utf-8",

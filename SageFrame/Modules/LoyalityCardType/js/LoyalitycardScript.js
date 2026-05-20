@@ -1,7 +1,7 @@
-Ôªøfunction IntegerAndDecimal(evt, element) {
+function IntegerAndDecimal(evt, element) {
     var charCode = (evt.which) ? evt.which : event.keyCode
     if ((charCode != 8) &&
-        (charCode != 46 || $(element).val().indexOf('.') != -1) &&      // ‚Äú.‚Äù CHECK DOT, AND ONLY ONE.
+        (charCode != 46 || $(element).val().indexOf('.') != -1) &&      // ì.î CHECK DOT, AND ONLY ONE.
         (charCode < 48 || charCode > 57))
         return false;
     return true;
@@ -25,7 +25,7 @@
         var companyProf = {
             config: {
                 isPostBack: false,
-                async: false,
+                async: true,
                 cache: false,
                 type: 'POST',
                 contentType: "application/json; charset=utf-8",

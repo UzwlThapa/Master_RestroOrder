@@ -1,4 +1,4 @@
-﻿var viewtype = "";
+var viewtype = "";
 (function ($) {
     var tabs = $("#tabs").tabs();
      $('#tabs').css('display', 'block');
@@ -15,7 +15,7 @@
         var eventFunction = {
             config: {
                 isPostBack: false,
-                async: false,
+                async: true,
                 cache: false,
                 type: 'POST',
                 contentType: "application/json; charset=utf-8",

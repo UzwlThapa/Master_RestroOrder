@@ -1,8 +1,8 @@
-﻿/* http://keith-wood.name/datepick.html
+/* //keith-wood.name/datepick.html
    Date picker for jQuery v4.0.5.
    Written by Keith Wood (kbwood{at}iinet.com.au) February 2010.
-   Dual licensed under the GPL (http://dev.jquery.com/browser/trunk/jquery/GPL-LICENSE.txt) and 
-   MIT (http://dev.jquery.com/browser/trunk/jquery/MIT-LICENSE.txt) licenses. 
+   Dual licensed under the GPL (//dev.jquery.com/browser/trunk/jquery/GPL-LICENSE.txt) and 
+   MIT (//dev.jquery.com/browser/trunk/jquery/MIT-LICENSE.txt) licenses. 
    Please attribute the author if you use it. */
 
 (function($) { // Hide scope, no $ conflict

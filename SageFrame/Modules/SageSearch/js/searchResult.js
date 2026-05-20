@@ -1,4 +1,4 @@
-﻿(function ($) {
+(function ($) {
     var arrResultToBind = new Array();
     var SortID = 0;
     var arrItemListType = new Array();
@@ -17,7 +17,7 @@
         var SearchResult = {
             config: {
                 isPostBack: false,
-                async: false,
+                async: true,
                 cache: false,
                 type: 'POST',
                 contentType: "application/json; charset=utf-8",

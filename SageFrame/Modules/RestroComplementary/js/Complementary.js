@@ -1,4 +1,4 @@
-﻿var orderlistviewtype = JSON.parse(localStorage.getItem("ordermenulisttype"));
+var orderlistviewtype = JSON.parse(localStorage.getItem("ordermenulisttype"));
 function isNumber(evt) {
     evt = (evt) ? evt : window.event;
     var charCode = (evt.which) ? evt.which : evt.keyCode;
@@ -92,7 +92,7 @@ function getSelectionStart(o) {
         var OrderItemFunction = {
             config: {
                 isPostBack: false,
-                async: false,
+                async: true,
                 cache: false,
                 type: 'POST',
                 contentType: "application/json; charset=utf-8",

@@ -1,14 +1,14 @@
 /**
  * jQuery Validation Plugin 1.8.0
  *
- * http://bassistance.de/jquery-plugins/jquery-plugin-validation/
- * http://docs.jquery.com/Plugins/Validation
+ * //bassistance.de/jquery-plugins/jquery-plugin-validation/
+ * //docs.jquery.com/Plugins/Validation
  *
  * Copyright (c) 2006 - 2011 Jörn Zaefferer
  *
  * Dual licensed under the MIT and GPL licenses:
- *   http://www.opensource.org/licenses/mit-license.php
- *   http://www.gnu.org/licenses/gpl.html
+ *   //www.opensource.org/licenses/mit-license.php
+ *   //www.gnu.org/licenses/gpl.html
  */
 
 (function() {
@@ -211,7 +211,7 @@ jQuery.validator.addMethod("url2", function(value, element, param) {
 }, jQuery.validator.messages.url);
 
 // NOTICE: Modified version of Castle.Components.Validator.CreditCardValidator
-// Redistributed under the the Apache License 2.0 at http://www.apache.org/licenses/LICENSE-2.0
+// Redistributed under the the Apache License 2.0 at //www.apache.org/licenses/LICENSE-2.0
 // Valid Types: mastercard, visa, amex, dinersclub, enroute, discover, jcb, unknown, all (overrides all other settings)
 jQuery.validator.addMethod("creditcardtypes", function(value, element, param) {
 

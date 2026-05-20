@@ -1,4 +1,4 @@
-Ôªøfunction isNumber(evt) {
+function isNumber(evt) {
     evt = (evt) ? evt : window.event;
     var charCode = (evt.which) ? evt.which : evt.keyCode;
     if (charCode > 31 && (charCode < 48 || charCode > 57)) {
@@ -10,7 +10,7 @@ function IntDec(evt, element) {
     var charCode = (evt.which) ? evt.which : event.keyCode
 
     if ((charCode != 8) &&
-        (charCode != 46 || $(element).val().indexOf('.') != -1) &&      // ‚Äú.‚Äù CHECK DOT, AND ONLY ONE.
+        (charCode != 46 || $(element).val().indexOf('.') != -1) &&      // ì.î CHECK DOT, AND ONLY ONE.
         (charCode < 48 || charCode > 57))
         return false;
 
@@ -33,7 +33,7 @@ function IntDec(evt, element) {
         var eventFunction = {
             config: {
                 isPostBack: false,
-                async: false,
+                async: true,
                 cache: false,
                 type: 'POST',
                 contentType: "application/json; charset=utf-8",

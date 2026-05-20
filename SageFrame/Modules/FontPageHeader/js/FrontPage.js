@@ -17,7 +17,7 @@
         var companyInfo = JSON.parse(localStorage.getItem("companyInfo"));
         var FrontPage = {
             config: {
-                async: false,
+                async: true,
                 cache: false,
                 type: 'POST',
                 contentType: "application/json; charset=utf-8",

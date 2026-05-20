@@ -348,3 +348,20 @@ Z:\Work\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.CostCenter\obj\Debu
 Z:\Work\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.CostCenter\obj\Debug\SageFram.B4D3DA7B.Up2Date
 Z:\Work\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.CostCenter\obj\Debug\SageFrame.CostCenter.dll
 Z:\Work\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.CostCenter\obj\Debug\SageFrame.CostCenter.pdb
+G:\Danfe\DanfeProductsSourceCode\OldCodeNoHttps\Master_RestroOrder\SageFrame.CostCenter\bin\Debug\SageFrame.CostCenter.dll
+G:\Danfe\DanfeProductsSourceCode\OldCodeNoHttps\Master_RestroOrder\SageFrame.CostCenter\bin\Debug\SageFrame.CostCenter.pdb
+G:\Danfe\DanfeProductsSourceCode\OldCodeNoHttps\Master_RestroOrder\SageFrame.CostCenter\bin\Debug\SageFrame.Common.dll
+G:\Danfe\DanfeProductsSourceCode\OldCodeNoHttps\Master_RestroOrder\SageFrame.CostCenter\bin\Debug\SageFrame.Core.dll
+G:\Danfe\DanfeProductsSourceCode\OldCodeNoHttps\Master_RestroOrder\SageFrame.CostCenter\bin\Debug\SageFrame.Security.dll
+G:\Danfe\DanfeProductsSourceCode\OldCodeNoHttps\Master_RestroOrder\SageFrame.CostCenter\bin\Debug\AjaxControlToolkit.dll
+G:\Danfe\DanfeProductsSourceCode\OldCodeNoHttps\Master_RestroOrder\SageFrame.CostCenter\bin\Debug\SageFrame.Templating.dll
+G:\Danfe\DanfeProductsSourceCode\OldCodeNoHttps\Master_RestroOrder\SageFrame.CostCenter\bin\Debug\SageFrame.CDN.dll
+G:\Danfe\DanfeProductsSourceCode\OldCodeNoHttps\Master_RestroOrder\SageFrame.CostCenter\bin\Debug\ICSharpCode.SharpZipLib.dll
+G:\Danfe\DanfeProductsSourceCode\OldCodeNoHttps\Master_RestroOrder\SageFrame.CostCenter\bin\Debug\Ionic.Zip.dll
+G:\Danfe\DanfeProductsSourceCode\OldCodeNoHttps\Master_RestroOrder\SageFrame.CostCenter\bin\Debug\SageFrame.Common.pdb
+G:\Danfe\DanfeProductsSourceCode\OldCodeNoHttps\Master_RestroOrder\SageFrame.CostCenter\bin\Debug\SageFrame.Security.pdb
+G:\Danfe\DanfeProductsSourceCode\OldCodeNoHttps\Master_RestroOrder\SageFrame.CostCenter\obj\Debug\SageFrame.CostCenter.csproj.AssemblyReference.cache
+G:\Danfe\DanfeProductsSourceCode\OldCodeNoHttps\Master_RestroOrder\SageFrame.CostCenter\obj\Debug\SageFrame.CostCenter.csproj.CoreCompileInputs.cache
+G:\Danfe\DanfeProductsSourceCode\OldCodeNoHttps\Master_RestroOrder\SageFrame.CostCenter\obj\Debug\SageFram.B4D3DA7B.Up2Date
+G:\Danfe\DanfeProductsSourceCode\OldCodeNoHttps\Master_RestroOrder\SageFrame.CostCenter\obj\Debug\SageFrame.CostCenter.dll
+G:\Danfe\DanfeProductsSourceCode\OldCodeNoHttps\Master_RestroOrder\SageFrame.CostCenter\obj\Debug\SageFrame.CostCenter.pdb

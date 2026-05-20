@@ -1,4 +1,4 @@
-﻿(function ($) {
+(function ($) {
     $.createDashboardLinks = function (p) {
         p = $.extend
         ({
@@ -12,7 +12,7 @@
         var DashboardMgr = {
             config: {
                 isPostBack: false,
-                async: false,
+                async: true,
                 cache: false,
                 type: 'POST',
                 contentType: "application/json; charset=utf-8",
@@ -542,7 +542,7 @@
                     url: DashboardMgr.config.baseURL + "GetLocalizedMessage",
                     data: param,
                     dataType: DashboardMgr.config.dataType,
-                    async: false,
+                    async: true,
                     success: function (msg) {
                         message = msg.d;
                     }

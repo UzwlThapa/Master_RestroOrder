@@ -1,5 +1,5 @@
-﻿/*
- * FCKeditor - The text editor for Internet - http://www.fckeditor.net
+/*
+ * FCKeditor - The text editor for Internet - //www.fckeditor.net
  * Copyright (C) 2003-2008 Frederico Caldeira Knabben
  *
  * == BEGIN LICENSE ==
@@ -8,20 +8,20 @@
  * choice:
  *
  *  - GNU General Public License Version 2 or later (the "GPL")
- *    http://www.gnu.org/licenses/gpl.html
+ *    //www.gnu.org/licenses/gpl.html
  *
  *  - GNU Lesser General Public License Version 2.1 or later (the "LGPL")
- *    http://www.gnu.org/licenses/lgpl.html
+ *    //www.gnu.org/licenses/lgpl.html
  *
  *  - Mozilla Public License Version 1.1 or later (the "MPL")
- *    http://www.mozilla.org/MPL/MPL-1.1.html
+ *    //www.mozilla.org/MPL/MPL-1.1.html
  *
  * == END LICENSE ==
  *
  * Editor configuration settings.
  *
  * Follow this link for more information:
- * http://docs.fckeditor.net/FCKeditor_2.x/Developers_Guide/Configuration/Configuration_Options
+ * //docs.fckeditor.net/FCKeditor_2.x/Developers_Guide/Configuration/Configuration_Options
  */
 
 FCKConfig.CustomConfigurationsPath = '' ;
@@ -200,7 +200,7 @@ FCKConfig.NopTokensXmlPath = FCKConfig.EditorPath + 'nopMessageTokens.xml';
 FCKConfig.TemplatesXmlPath	= FCKConfig.EditorPath + 'fcktemplates.xml' ;
 
 FCKConfig.SpellChecker			= 'ieSpell' ;	// 'ieSpell' | 'SpellerPages'
-FCKConfig.IeSpellDownloadUrl	= 'http://www.iespell.com/download.php' ;
+FCKConfig.IeSpellDownloadUrl	= '//www.iespell.com/download.php' ;
 FCKConfig.SpellerPagesServerScript = 'server-scripts/spellchecker.php' ;	// Available extension: .php .cfm .pl
 FCKConfig.FirefoxSpellChecker	= false ;
 

@@ -1,4 +1,4 @@
-﻿function formatAMPM() {
+function formatAMPM() {
     var date = new Date();
     var hours = date.getHours();
     var minutes = date.getMinutes();
@@ -77,7 +77,7 @@ function Print() {
         var eventFunction = {
             config: {
                 isPostBack: false,
-                async: false,
+                async: true,
                 cache: false,
                 type: 'POST',
                 contentType: "application/json; charset=utf-8",

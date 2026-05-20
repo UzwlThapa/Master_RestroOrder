@@ -6,7 +6,7 @@
 CKEDITOR.editorConfig = function( config ) {
 	// Define changes to default configuration here.
 	// For complete reference see:
-	// http://docs.ckeditor.com/#!/api/CKEDITOR.config
+	// //docs.ckeditor.com/#!/api/CKEDITOR.config
 
 	// The toolbar groups arrangement, optimized for a single toolbar row.
 	config.toolbarGroups = [

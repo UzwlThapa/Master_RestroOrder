@@ -1,5 +1,5 @@
-﻿/*
- * FCKeditor - The text editor for Internet - http://www.fckeditor.net
+/*
+ * FCKeditor - The text editor for Internet - //www.fckeditor.net
  * Copyright (C) 2003-2008 Frederico Caldeira Knabben
  *
  * == BEGIN LICENSE ==
@@ -8,13 +8,13 @@
  * choice:
  *
  *  - GNU General Public License Version 2 or later (the "GPL")
- *    http://www.gnu.org/licenses/gpl.html
+ *    //www.gnu.org/licenses/gpl.html
  *
  *  - GNU Lesser General Public License Version 2.1 or later (the "LGPL")
- *    http://www.gnu.org/licenses/lgpl.html
+ *    //www.gnu.org/licenses/lgpl.html
  *
  *  - Mozilla Public License Version 1.1 or later (the "MPL")
- *    http://www.mozilla.org/MPL/MPL-1.1.html
+ *    //www.mozilla.org/MPL/MPL-1.1.html
  *
  * == END LICENSE ==
  *
@@ -63,7 +63,7 @@ FCKXHtml.GetXHTML = function( node, includeNode, format )
 
 	this.XML = null ;
 
-	// Safari adds xmlns="http://www.w3.org/1999/xhtml" to the root node (#963)
+	// Safari adds xmlns="//www.w3.org/1999/xhtml" to the root node (#963)
 	if ( FCKBrowserInfo.IsSafari )
 		sXHTML = sXHTML.replace( /^<xhtml.*?>/, '<xhtml>' ) ;
 

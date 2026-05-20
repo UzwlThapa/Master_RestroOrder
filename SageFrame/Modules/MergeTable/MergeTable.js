@@ -1,4 +1,4 @@
-﻿var arrOccupiedTableIds = [];
+var arrOccupiedTableIds = [];
 var mergeTableList = [];
 var arrOccupiedTables = [];
 (function ($) {
@@ -19,7 +19,7 @@ var arrOccupiedTables = [];
         var DashboardFunction = {
             config: {
                 isPostBack: false,
-                async: false,
+                async: true,
                 cache: false,
                 type: 'POST',
                 contentType: "application/json; charset=utf-8",

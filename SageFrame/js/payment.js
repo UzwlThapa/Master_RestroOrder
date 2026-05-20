@@ -1,4 +1,4 @@
-﻿var custName = '';
+var custName = '';
 var phoneNumber = '';
 var discount = 0;
 function payment(salesMasterid) {

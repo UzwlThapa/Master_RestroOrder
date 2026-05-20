@@ -150,3 +150,12 @@ Z:\Work\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.HouseKeeping\obj\Re
 Z:\Work\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.HouseKeeping\obj\Release\SageFram.50AB6378.Up2Date
 Z:\Work\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.HouseKeeping\obj\Release\SageFrame.HouseKeeping.dll
 Z:\Work\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.HouseKeeping\obj\Release\SageFrame.HouseKeeping.pdb
+G:\Danfe\DanfeProductsSourceCode\OldCodeNoHttps\Master_RestroOrder\SageFrame.HouseKeeping\bin\Release\SageFrame.HouseKeeping.dll
+G:\Danfe\DanfeProductsSourceCode\OldCodeNoHttps\Master_RestroOrder\SageFrame.HouseKeeping\bin\Release\SageFrame.HouseKeeping.pdb
+G:\Danfe\DanfeProductsSourceCode\OldCodeNoHttps\Master_RestroOrder\SageFrame.HouseKeeping\bin\Release\SageFrame.Common.dll
+G:\Danfe\DanfeProductsSourceCode\OldCodeNoHttps\Master_RestroOrder\SageFrame.HouseKeeping\bin\Release\SageFrame.Common.pdb
+G:\Danfe\DanfeProductsSourceCode\OldCodeNoHttps\Master_RestroOrder\SageFrame.HouseKeeping\obj\Release\SageFrame.HouseKeeping.csproj.AssemblyReference.cache
+G:\Danfe\DanfeProductsSourceCode\OldCodeNoHttps\Master_RestroOrder\SageFrame.HouseKeeping\obj\Release\SageFrame.HouseKeeping.csproj.CoreCompileInputs.cache
+G:\Danfe\DanfeProductsSourceCode\OldCodeNoHttps\Master_RestroOrder\SageFrame.HouseKeeping\obj\Release\SageFram.50AB6378.Up2Date
+G:\Danfe\DanfeProductsSourceCode\OldCodeNoHttps\Master_RestroOrder\SageFrame.HouseKeeping\obj\Release\SageFrame.HouseKeeping.dll
+G:\Danfe\DanfeProductsSourceCode\OldCodeNoHttps\Master_RestroOrder\SageFrame.HouseKeeping\obj\Release\SageFrame.HouseKeeping.pdb

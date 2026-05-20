@@ -201,3 +201,18 @@ Z:\Work\Danfe Solution Pvt. Ltd\Master_RestroOrder\AccountReport\obj\Release\Sag
 Z:\Work\Danfe Solution Pvt. Ltd\Master_RestroOrder\AccountReport\obj\Release\SageFram.53A44CF7.Up2Date
 Z:\Work\Danfe Solution Pvt. Ltd\Master_RestroOrder\AccountReport\obj\Release\SageFrame.AccountReport.dll
 Z:\Work\Danfe Solution Pvt. Ltd\Master_RestroOrder\AccountReport\obj\Release\SageFrame.AccountReport.pdb
+G:\Danfe\DanfeProductsSourceCode\OldCodeNoHttps\Master_RestroOrder\AccountReport\bin\Release\SageFrame.AccountReport.dll
+G:\Danfe\DanfeProductsSourceCode\OldCodeNoHttps\Master_RestroOrder\AccountReport\bin\Release\SageFrame.AccountReport.pdb
+G:\Danfe\DanfeProductsSourceCode\OldCodeNoHttps\Master_RestroOrder\AccountReport\bin\Release\SageFrame.Common.dll
+G:\Danfe\DanfeProductsSourceCode\OldCodeNoHttps\Master_RestroOrder\AccountReport\bin\Release\SageFrame.Core.dll
+G:\Danfe\DanfeProductsSourceCode\OldCodeNoHttps\Master_RestroOrder\AccountReport\bin\Release\AjaxControlToolkit.dll
+G:\Danfe\DanfeProductsSourceCode\OldCodeNoHttps\Master_RestroOrder\AccountReport\bin\Release\SageFrame.Templating.dll
+G:\Danfe\DanfeProductsSourceCode\OldCodeNoHttps\Master_RestroOrder\AccountReport\bin\Release\SageFrame.CDN.dll
+G:\Danfe\DanfeProductsSourceCode\OldCodeNoHttps\Master_RestroOrder\AccountReport\bin\Release\ICSharpCode.SharpZipLib.dll
+G:\Danfe\DanfeProductsSourceCode\OldCodeNoHttps\Master_RestroOrder\AccountReport\bin\Release\Ionic.Zip.dll
+G:\Danfe\DanfeProductsSourceCode\OldCodeNoHttps\Master_RestroOrder\AccountReport\bin\Release\SageFrame.Common.pdb
+G:\Danfe\DanfeProductsSourceCode\OldCodeNoHttps\Master_RestroOrder\AccountReport\obj\Release\SageFrame.AccountReport.csproj.AssemblyReference.cache
+G:\Danfe\DanfeProductsSourceCode\OldCodeNoHttps\Master_RestroOrder\AccountReport\obj\Release\SageFrame.AccountReport.csproj.CoreCompileInputs.cache
+G:\Danfe\DanfeProductsSourceCode\OldCodeNoHttps\Master_RestroOrder\AccountReport\obj\Release\SageFram.53A44CF7.Up2Date
+G:\Danfe\DanfeProductsSourceCode\OldCodeNoHttps\Master_RestroOrder\AccountReport\obj\Release\SageFrame.AccountReport.dll
+G:\Danfe\DanfeProductsSourceCode\OldCodeNoHttps\Master_RestroOrder\AccountReport\obj\Release\SageFrame.AccountReport.pdb

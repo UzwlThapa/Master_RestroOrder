@@ -1,4 +1,4 @@
-﻿(function ($) {
+(function ($) {
     $.createSageMenu = function (p) {
         p = $.extend({
             ContainerClientID: 'divNav1',

@@ -1,6 +1,6 @@
-﻿/*
+/*
  * jQuery Excel Export Plugin Library
- * http://tarunbatta.blogspot.com/
+ * //tarunbatta.blogspot.com/
  *
  * Copyright (c) 2013 Tarun Batta
  * Licensed under BTechCo licenses.
@@ -169,7 +169,7 @@
         }
 
         function Export(htmltable) {
-            var excelFile = "<html xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:x='urn:schemas-microsoft-com:office:excel' xmlns='http://www.w3.org/TR/REC-html40'>";
+            var excelFile = "<html xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:x='urn:schemas-microsoft-com:office:excel' xmlns='//www.w3.org/TR/REC-html40'>";
             excelFile += "<head>";
             excelFile += "<!--[if gte mso 9]>";
             excelFile += "<xml>";

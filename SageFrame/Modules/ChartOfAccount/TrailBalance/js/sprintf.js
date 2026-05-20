@@ -4,15 +4,15 @@ function sprintf( ) {
     // Return a formatted string  
     // 
     // version: 903.3016
-    // discuss at: http://phpjs.org/functions/sprintf
-    // +   original by: Ash Searle (http://hexmen.com/blog/)
-    // + namespaced by: Michael White (http://getsprink.com)
+    // discuss at: //phpjs.org/functions/sprintf
+    // +   original by: Ash Searle (//hexmen.com/blog/)
+    // + namespaced by: Michael White (//getsprink.com)
     // +    tweaked by: Jack
-    // +   improved by: Kevin van Zonneveld (http://kevin.vanzonneveld.net)
+    // +   improved by: Kevin van Zonneveld (//kevin.vanzonneveld.net)
     // +      input by: Paulo Ricardo F. Santos
-    // +   improved by: Kevin van Zonneveld (http://kevin.vanzonneveld.net)
-    // +      input by: Brett Zamir (http://brettz9.blogspot.com)
-    // +   improved by: Kevin van Zonneveld (http://kevin.vanzonneveld.net)
+    // +   improved by: Kevin van Zonneveld (//kevin.vanzonneveld.net)
+    // +      input by: Brett Zamir (//brettz9.blogspot.com)
+    // +   improved by: Kevin van Zonneveld (//kevin.vanzonneveld.net)
     // *     example 1: sprintf("%01.2f", 123.1);
     // *     returns 1: 123.10
     // *     example 2: sprintf("[%10s]", 'monkey');

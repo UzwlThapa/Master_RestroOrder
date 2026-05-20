@@ -1,5 +1,5 @@
-Ôªø/*
- * FCKeditor - The text editor for Internet - http://www.fckeditor.net
+/*
+ * FCKeditor - The text editor for Internet - //www.fckeditor.net
  * Copyright (C) 2003-2008 Frederico Caldeira Knabben
  *
  * == BEGIN LICENSE ==
@@ -8,20 +8,20 @@
  * choice:
  *
  *  - GNU General Public License Version 2 or later (the "GPL")
- *    http://www.gnu.org/licenses/gpl.html
+ *    //www.gnu.org/licenses/gpl.html
  *
  *  - GNU Lesser General Public License Version 2.1 or later (the "LGPL")
- *    http://www.gnu.org/licenses/lgpl.html
+ *    //www.gnu.org/licenses/lgpl.html
  *
  *  - Mozilla Public License Version 1.1 or later (the "MPL")
- *    http://www.mozilla.org/MPL/MPL-1.1.html
+ *    //www.mozilla.org/MPL/MPL-1.1.html
  *
  * == END LICENSE ==
  *
  * Placeholder French language file.
  */
-FCKLang.PlaceholderBtn			= "Ins√©rer/Modifier l'Espace r√©serv√©" ;
-FCKLang.PlaceholderDlgTitle		= "Propri√©t√©s de l'Espace r√©serv√©" ;
-FCKLang.PlaceholderDlgName		= "Nom de l'Espace r√©serv√©" ;
-FCKLang.PlaceholderErrNoName	= "Veuillez saisir le nom de l'Espace r√©serv√©" ;
-FCKLang.PlaceholderErrNameInUse	= "Ce nom est d√©j√† utilis√©" ;
+FCKLang.PlaceholderBtn			= "InsÈrer/Modifier l'Espace rÈservÈ" ;
+FCKLang.PlaceholderDlgTitle		= "PropriÈtÈs de l'Espace rÈservÈ" ;
+FCKLang.PlaceholderDlgName		= "Nom de l'Espace rÈservÈ" ;
+FCKLang.PlaceholderErrNoName	= "Veuillez saisir le nom de l'Espace rÈservÈ" ;
+FCKLang.PlaceholderErrNameInUse	= "Ce nom est dÈj‡ utilisÈ" ;

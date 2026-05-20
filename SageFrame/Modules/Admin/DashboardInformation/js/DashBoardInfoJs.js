@@ -1,4 +1,4 @@
-ï»¿////////// SageFrame Take A Tour 
+////////// SageFrame Take A Tour 
 
 // Here the tourTimeOut varible is taken as global and assign all the setTimeout Methods Used to Synchonize the Animation to it
 // so that clearSetTimeOut method can easily destroy the SetTimeout Method at any Context being proccessed...
@@ -533,7 +533,7 @@ $(function () {
 						   "<span class='sfTrHeading'>Page Help</span>To know what the respective pages do, click on the Page Help. This page help option is available for every pages included on the dashboard.<br/><br/><button id='btnSfTourHelp' class='sfBtn' >Expand</button>",
                             "<span class='sfTrHeading'>SageFrame Welcome Screen</span>You can take a short tour to SageFrame, watch video tutorials, read user manuals and get an insight of available modules.",
                             "<span class='sfTrHeading'>C-Panel</span>This is your C-Panel for easy access of frequently used controls available in the system.",
-                            "<span class='sfTrHeading'>Site Analytics</span>The Visitorâ€™s List gives you the siteâ€™s data and web usage in graphical form. You can however see full statistics from the link given.",
+                            "<span class='sfTrHeading'>Site Analytics</span>The Visitor’s List gives you the site’s data and web usage in graphical form. You can however see full statistics from the link given.",
                             //"<span class='sfTrHeading'>Portal Snapshot</span>Get each and every information of pages, modules and users with the Portal Snapshot.",
                             "<span class='sfTrHeading'>To-Do-List</span>Make a note of the tasks to be done as well as see the previous, present and future tasks list."),
    prevTourBtnClick = 0;

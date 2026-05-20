@@ -1,4 +1,4 @@
-﻿var SystemLocale = {
+var SystemLocale = {
     "Home": "Home",
     "CPANEL": "CPANEL",
     "Customize:": "Customize:",

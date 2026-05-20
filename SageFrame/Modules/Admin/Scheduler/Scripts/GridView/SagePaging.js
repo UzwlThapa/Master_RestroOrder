@@ -1,4 +1,4 @@
-﻿var sagePaging = {
+var sagePaging = {
     Paging: function(Total, Rows) {
         this.maxPage = ''
         this.rowPerPage = ''

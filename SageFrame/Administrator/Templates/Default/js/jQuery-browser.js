@@ -1,4 +1,4 @@
-﻿/*
+/*
 * ******************************************************************************
 *  jquery.mb.components
 *  file: jquery.browser.js
@@ -6,13 +6,13 @@
 *  Copyright (c) 2001-2013. Matteo Bicocchi (Pupunzi);
 *  Open lab srl, Firenze - Italy
 *  email: matteo@open-lab.com
-*  site: http://pupunzi.com
-*  blog: http://pupunzi.open-lab.com
-*  http://open-lab.com
+*  site: //pupunzi.com
+*  blog: //pupunzi.open-lab.com
+*  //open-lab.com
 *
 *  Licences: MIT, GPL
-*  http://www.opensource.org/licenses/mit-license.php
-*  http://www.gnu.org/licenses/gpl.html
+*  //www.opensource.org/licenses/mit-license.php
+*  //www.gnu.org/licenses/gpl.html
 *
 *  last modified: 16/01/13 20.38
 *  *****************************************************************************

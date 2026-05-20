@@ -1,4 +1,4 @@
-﻿(function ($) {
+(function ($) {
      var tabs = $("#tabs").tabs();
     $.Counter = function (p) {
         var arrayNote = [];
@@ -13,7 +13,7 @@
         var eventFunction = {
             config: {
                 isPostBack: false,
-                async: false,
+                async: true,
                 cache: false,
                 type: 'POST',
                 contentType: "application/json; charset=utf-8",

@@ -1,4 +1,4 @@
-﻿var baseUrl = SageFrameHostURL + "/Modules/TradingBilling/services/CakeBillingWebService.asmx/";
+var baseUrl = SageFrameHostURL + "/Modules/TradingBilling/services/CakeBillingWebService.asmx/";
 var isButtonClicked = false;
 var orddetail = null;
 var orderdetails = null;
@@ -33,7 +33,7 @@ function GetBillingCustomeronCheck() {
     var customer = 1;
     $.ajax({
         type: "POST",
-        async: false,
+        async: true,
         cache: false,
         url: baseUrl + "GetCustomerDatas",
         data: JSON2.stringify({ customer: customer }),
@@ -173,7 +173,7 @@ function savePrintCount(printcount, billNo, printedBy, salesType) {
 
     $.ajax({
         type: "POST",
-        async: false,
+        async: true,
         cache: false,
         url: baseUrl + "savePrintCount",
         data: JSON2.stringify({ Printcount: printcount, BillNo: billNo, PrintedBy: printedBy, SalesType: salesType }),
@@ -264,7 +264,7 @@ function print() {
         var DashboardFunction = {
             config: {
                 isPostBack: false,
-                async: false,
+                async: true,
                 cache: false,
                 type: 'POST',
                 contentType: "application/json; charset=utf-8",
@@ -3074,7 +3074,7 @@ function BillShortcutKey(e) {
     //alert(JSON2.stringify({ salesMaster: salesMaster, salesDetail: salesDetail, splited: splited, billingTerm: billingTerm, flatorperdiscount: discount }));
     $.ajax({
         type: "POST",
-        async: false,
+        async: true,
         cache: false,
         url: SageFrameHostURL + "/Services/RestroWebservice.asmx/SaveSales",
         data: JSON2.stringify({ salesMaster: salesMaster, salesDetail: salesDetail, splited: splited, billingTerm: billingTerm, flatorperdiscount: discount, payment: salesPayment, isFoodCourt: false }),
@@ -3115,7 +3115,7 @@ function SaveFoodCourtSalesBill(salesMaster, salesDetail, billingTerm, salesPaym
 
     $.ajax({
         type: "POST",
-        async: false,
+        async: true,
         cache: false,
         url: baseUrl + "saveCakeSalesBill",
         data: JSON2.stringify({ salesMaster: salesMaster, salesDetail: salesDetail, billingTerm: billingTerm, spm: salesPayment, flatorperdiscount: flatorperdiscount }),
@@ -3214,7 +3214,7 @@ function calculateSurpDefct(str)  //// str->1 for Tender, str->2 for Return amt
 function getProviderList() {
     $.ajax({
         type: "POST",
-        async: false,
+        async: true,
         cache: false,
         url: baseUrl + "GetProviderList",
         data: '',

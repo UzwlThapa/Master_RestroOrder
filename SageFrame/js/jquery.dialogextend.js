@@ -4,10 +4,10 @@
 * Copyright (c) 2010 Shum Ting Hin
 *
 * Licensed under MIT
-*   http://www.opensource.org/licenses/mit-license.php
+*   //www.opensource.org/licenses/mit-license.php
 *
 * Project Home:
-*   http://code.google.com/p/jquery-dialogextend/
+*   //code.google.com/p/jquery-dialogextend/
 *
 * Depends:
 *   jQuery 1.4

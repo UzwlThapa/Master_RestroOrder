@@ -1,4 +1,4 @@
-﻿function Print() {
+function Print() {
     var contents = $('#purchaseBookDiv').html();
     var frame1 = document.createElement('iframe');
     frame1.name = "frame1";
@@ -29,7 +29,7 @@
         var eventFunction = {
             config: {
                 isPostBack: false,
-                async: false,
+                async: true,
                 cache: false,
                 type: 'POST',
                 contentType: "application/json; charset=utf-8",

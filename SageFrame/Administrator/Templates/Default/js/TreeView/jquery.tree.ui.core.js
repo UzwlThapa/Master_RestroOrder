@@ -1,11 +1,11 @@
 /*
  * jQuery UI @VERSION
  *
- * Copyright (c) 2009 AUTHORS.txt (http://jqueryui.com/about)
+ * Copyright (c) 2009 AUTHORS.txt (//jqueryui.com/about)
  * Dual licensed under the MIT (MIT-LICENSE.txt)
  * and GPL (GPL-LICENSE.txt) licenses.
  *
- * http://docs.jquery.com/UI
+ * //docs.jquery.com/UI
  * 
  * modified $.ui.mouse._mouseDown and $.ui.mouse._mouseUp
  */
@@ -108,7 +108,7 @@ $.ui = {
 if (isFF2) {
 	var attr = $.attr,
 		removeAttr = $.fn.removeAttr,
-		ariaNS = "http://www.w3.org/2005/07/aaa",
+		ariaNS = "//www.w3.org/2005/07/aaa",
 		ariaState = /^aria-/,
 		ariaRole = /^wairole:/;
 

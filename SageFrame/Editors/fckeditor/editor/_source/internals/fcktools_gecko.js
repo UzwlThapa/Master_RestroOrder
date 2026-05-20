@@ -1,5 +1,5 @@
-﻿/*
- * FCKeditor - The text editor for Internet - http://www.fckeditor.net
+/*
+ * FCKeditor - The text editor for Internet - //www.fckeditor.net
  * Copyright (C) 2003-2008 Frederico Caldeira Knabben
  *
  * == BEGIN LICENSE ==
@@ -8,13 +8,13 @@
  * choice:
  *
  *  - GNU General Public License Version 2 or later (the "GPL")
- *    http://www.gnu.org/licenses/gpl.html
+ *    //www.gnu.org/licenses/gpl.html
  *
  *  - GNU Lesser General Public License Version 2.1 or later (the "LGPL")
- *    http://www.gnu.org/licenses/lgpl.html
+ *    //www.gnu.org/licenses/lgpl.html
  *
  *  - Mozilla Public License Version 1.1 or later (the "MPL")
- *    http://www.mozilla.org/MPL/MPL-1.1.html
+ *    //www.mozilla.org/MPL/MPL-1.1.html
  *
  * == END LICENSE ==
  *
@@ -121,7 +121,7 @@ FCKTools.CreateXmlObject = function( object )
 			// Originaly, we were had the following here:
 			// return document.implementation.createDocument( '', '', null ) ;
 			// But that doesn't work if we're running under domain relaxation mode, so we need a workaround.
-			// See http://ajaxian.com/archives/xml-messages-with-cross-domain-json about the trick we're using.
+			// See //ajaxian.com/archives/xml-messages-with-cross-domain-json about the trick we're using.
 			var doc = ( new DOMParser() ).parseFromString( '<tmp></tmp>', 'text/xml' ) ;
 			FCKDomTools.RemoveNode( doc.firstChild ) ;
 			return doc ;

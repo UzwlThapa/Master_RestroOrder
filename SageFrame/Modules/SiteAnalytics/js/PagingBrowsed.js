@@ -1,4 +1,4 @@
-﻿(function($) {
+(function($) {
     var tempPageNo = 0;
     var chooseCase = 0;
     $.Page1 = function(Setting) {
@@ -25,7 +25,7 @@
         pa1 = {
             config: {
                 isPostBack: false,
-                async: false,
+                async: true,
                 cache: false,
                 type: 'POST',
                 contentType: "application/json; charset=utf-8",

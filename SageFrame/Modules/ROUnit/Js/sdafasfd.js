@@ -1,4 +1,4 @@
-﻿
+
 (function ($) {
 
     // var tabs = $("#tabs").tabs().addClass("ui-tabs-vertical ui-helper-clearfix");
@@ -15,7 +15,7 @@
         var companyProf = {
             config: {
                 isPostBack: false,
-                async: false,
+                async: true,
                 cache: false,
                 type: 'POST',
                 contentType: "application/json; charset=utf-8",

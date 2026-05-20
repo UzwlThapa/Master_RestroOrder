@@ -1,4 +1,4 @@
-﻿var isGroup = "";
+var isGroup = "";
 (function ($) {
 
     var tabs = $("#tabs").tabs();
@@ -20,7 +20,7 @@
         var eventFunction = {
             config: {
                 isPostBack: false,
-                async: false,
+                async: true,
                 cache: false,
                 type: 'POST',
                 contentType: "application/json; charset=utf-8",

@@ -1,4 +1,4 @@
-﻿function Print() {
+function Print() {
     $('#printedDate').show();
     $('#lblPrintedOn').html(new Date());
     var contents = $('#reportDisplay').html();
@@ -36,7 +36,7 @@
         var companyProf = {
             config: {
                 isPostBack: false,
-                async: false,
+                async: true,
                 cache: false,
                 type: 'POST',
                 contentType: "application/json; charset=utf-8",

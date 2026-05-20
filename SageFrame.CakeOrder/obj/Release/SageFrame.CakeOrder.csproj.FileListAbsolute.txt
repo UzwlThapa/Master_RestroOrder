@@ -182,3 +182,14 @@ Z:\Work\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.CakeOrder\obj\Relea
 Z:\Work\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.CakeOrder\obj\Release\SageFram.2F1FC954.Up2Date
 Z:\Work\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.CakeOrder\obj\Release\SageFrame.CakeOrder.dll
 Z:\Work\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.CakeOrder\obj\Release\SageFrame.CakeOrder.pdb
+G:\Danfe\DanfeProductsSourceCode\OldCodeNoHttps\Master_RestroOrder\SageFrame.CakeOrder\bin\Release\SageFrame.CakeOrder.dll
+G:\Danfe\DanfeProductsSourceCode\OldCodeNoHttps\Master_RestroOrder\SageFrame.CakeOrder\bin\Release\SageFrame.CakeOrder.pdb
+G:\Danfe\DanfeProductsSourceCode\OldCodeNoHttps\Master_RestroOrder\SageFrame.CakeOrder\bin\Release\SageFrame.Common.dll
+G:\Danfe\DanfeProductsSourceCode\OldCodeNoHttps\Master_RestroOrder\SageFrame.CakeOrder\bin\Release\SageFrame.RestoLoyalty.dll
+G:\Danfe\DanfeProductsSourceCode\OldCodeNoHttps\Master_RestroOrder\SageFrame.CakeOrder\bin\Release\SageFrame.RestoLoyalty.pdb
+G:\Danfe\DanfeProductsSourceCode\OldCodeNoHttps\Master_RestroOrder\SageFrame.CakeOrder\bin\Release\SageFrame.Common.pdb
+G:\Danfe\DanfeProductsSourceCode\OldCodeNoHttps\Master_RestroOrder\SageFrame.CakeOrder\obj\Release\SageFrame.CakeOrder.csproj.AssemblyReference.cache
+G:\Danfe\DanfeProductsSourceCode\OldCodeNoHttps\Master_RestroOrder\SageFrame.CakeOrder\obj\Release\SageFrame.CakeOrder.csproj.CoreCompileInputs.cache
+G:\Danfe\DanfeProductsSourceCode\OldCodeNoHttps\Master_RestroOrder\SageFrame.CakeOrder\obj\Release\SageFram.2F1FC954.Up2Date
+G:\Danfe\DanfeProductsSourceCode\OldCodeNoHttps\Master_RestroOrder\SageFrame.CakeOrder\obj\Release\SageFrame.CakeOrder.dll
+G:\Danfe\DanfeProductsSourceCode\OldCodeNoHttps\Master_RestroOrder\SageFrame.CakeOrder\obj\Release\SageFrame.CakeOrder.pdb

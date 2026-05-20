@@ -1,10 +1,10 @@
-Ôªøvar isButtonClicked = false;
+var isButtonClicked = false;
 var salesMaster = 0;
 function IntegerAndDecimal(evt, element) {
     var charCode = (evt.which) ? evt.which : event.keyCode
 
     if ((charCode != 8) &&
-        (charCode != 46 || $(element).val().indexOf('.') != -1) &&      // ‚Äú.‚Äù CHECK DOT, AND ONLY ONE.
+        (charCode != 46 || $(element).val().indexOf('.') != -1) &&      // ì.î CHECK DOT, AND ONLY ONE.
         (charCode < 48 || charCode > 57))
         return false;
 
@@ -35,7 +35,7 @@ function IntegerAndDecimal(evt, element) {
         var DashboardFunction = {
             config: {
                 isPostBack: false,
-                async: false,
+                async: true,
                 cache: false,
                 type: 'POST',
                 contentType: "application/json; charset=utf-8",
@@ -196,7 +196,7 @@ function SendToCBMS() {
         isButtonClicked = false;
         $.ajax({
             type: "POST",
-            async: false,
+            async: true,
             cache: false,
             url: SageFrameHostURL + "/Services/RestroWebservice.asmx/SendToCBMS",
             data: JSON.stringify({ salesMasterId: salesMaster }),

@@ -1,4 +1,4 @@
-﻿using SageFrame.Web.Utilities;
+using SageFrame.Web.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -3234,17 +3234,104 @@ namespace SageFrame.RestroOrder
             List<FiscalYearInfo> list = sqlHandler.ExecuteAsList<FiscalYearInfo>("[usp_ro_GetCurrentActiveFiscalYear]");
             return list;
         }
+        //internal void CancelBillWithReason(int id, string userName, string reason, bool restoreOrder, bool? isWholesale = false)
+        //{
+        //    try
+        //    {
+
+        //        if (isWholesale != false)
+        //        {
+
+        //        }
+        //        else
+        //        {
+        //            if (restoreOrder)
+        //            {
+        //                List<KeyValuePair<string, object>> Param2 = new List<KeyValuePair<string, object>>();
+        //                Param2.Add(new KeyValuePair<string, object>("@salesMasterId", id));
+        //                Param2.Add(new KeyValuePair<string, object>("@userName", userName));
+        //                sqlHandler.ExecuteNonQuery("[USP_RO_restoreOrder]", Param2);
+        //            }
+
+        //            List<KeyValuePair<string, object>> Param = new List<KeyValuePair<string, object>>();
+        //            Param.Add(new KeyValuePair<string, object>("@salesMasterId", id));
+        //            Param.Add(new KeyValuePair<string, object>("@Reasons", reason));
+        //            Param.Add(new KeyValuePair<string, object>("@userName", userName));
+        //            sqlHandler.ExecuteNonQuery("[USP_RO_CancelReason]", Param);
+        //            // removed sales return
+
+        //            //List<SalesDetailClass> salesDetail = new List<SalesDetailClass>();
+
+        //            //List<KeyValuePair<string, object>> Param3 = new List<KeyValuePair<string, object>>();
+        //            //Param3.Add(new KeyValuePair<string, object>("@salesMasterId", id));
+        //            //salesDetail = sqlHandler.ExecuteAsList<SalesDetailClass>("[USP_GetSalesDetailClass]", Param3);
+
+        //            //foreach (var item in salesDetail)
+        //            //{
+        //            //    List<KeyValuePair<string, object>> Param4 = new List<KeyValuePair<string, object>>();
+        //            //    Param4.Add(new KeyValuePair<string, object>("@ItemID", item.ItemId));
+        //            //    Param4.Add(new KeyValuePair<string, object>("@SalesDetailId", item.SalesDetailId));
+        //            //    Param4.Add(new KeyValuePair<string, object>("@STId", item.StoreId));
+        //            //    Param4.Add(new KeyValuePair<string, object>("@SalesReturnQty", item.SalesQty));
+        //            //    Param4.Add(new KeyValuePair<string, object>("@SalesReturnUnit", item.SalesUnit));
+        //            //    Param4.Add(new KeyValuePair<string, object>("@SalesReturnAmt", item.SalesAmt));
+        //            //    sqlHandler.ExecuteNonQuery("[dbo].[ROI_SAVESalesReturnItemBal]", Param4);
+        //            //}
+        //        }
+        //    }
+        //    catch (Exception)
+        //    {
+        //        throw;
+        //    }
+        //}
+
+        //internal void CancelBill(int id, string userName, string reason, bool restoreOrder)
+        //{
+        //    if (restoreOrder)
+        //    {
+        //        List<KeyValuePair<string, object>> Param2 = new List<KeyValuePair<string, object>>();
+        //        Param2.Add(new KeyValuePair<string, object>("@salesMasterId", id));
+        //        Param2.Add(new KeyValuePair<string, object>("@userName", userName));
+        //        sqlHandler.ExecuteNonQuery("[USP_RO_restoreOrder]", Param2);
+        //    }
+
+        //    List<KeyValuePair<string, object>> Param = new List<KeyValuePair<string, object>>();
+        //    Param.Add(new KeyValuePair<string, object>("@salesMasterId", id));
+        //    Param.Add(new KeyValuePair<string, object>("@Reasons", reason));
+        //    Param.Add(new KeyValuePair<string, object>("@userName", userName));
+        //    //List<OrderDetailClass> list = new List<OrderDetailClass>();
+        //    sqlHandler.ExecuteNonQuery("[USP_RO_BillCancelReason]", Param);
+
+        //    List<SalesDetailClass> salesDetail = new List<SalesDetailClass>();
+
+        //    List<KeyValuePair<string, object>> Param3 = new List<KeyValuePair<string, object>>();
+        //    Param3.Add(new KeyValuePair<string, object>("@salesMasterId", id));
+        //    salesDetail = sqlHandler.ExecuteAsList<SalesDetailClass>("[USP_GetSalesDetailClass]", Param3);
+
+        //    foreach (var item in salesDetail)
+        //    {
+        //        List<KeyValuePair<string, object>> Param4 = new List<KeyValuePair<string, object>>();
+        //        Param4.Add(new KeyValuePair<string, object>("@ItemID", item.ItemId));
+        //        Param4.Add(new KeyValuePair<string, object>("@SalesDetailId", item.SalesDetailId));
+        //        Param4.Add(new KeyValuePair<string, object>("@STId", item.StoreId));
+        //        Param4.Add(new KeyValuePair<string, object>("@SalesReturnQty", item.SalesQty));
+        //        Param4.Add(new KeyValuePair<string, object>("@SalesReturnUnit", item.SalesUnit));
+        //        Param4.Add(new KeyValuePair<string, object>("@SalesReturnAmt", item.SalesAmt));
+        //        sqlHandler.ExecuteNonQuery("[dbo].[ROI_SAVESalesReturnItemBal]", Param4);
+        //    }
+
+        //}
         internal void CancelBillWithReason(int id, string userName, string reason, bool restoreOrder, bool? isWholesale = false)
         {
             try
             {
-
                 if (isWholesale != false)
                 {
-
+                    // Handle wholesale cancellation if needed
                 }
                 else
                 {
+                    // Step 1: Restore order if needed (restores ingredients)
                     if (restoreOrder)
                     {
                         List<KeyValuePair<string, object>> Param2 = new List<KeyValuePair<string, object>>();
@@ -3253,30 +3340,14 @@ namespace SageFrame.RestroOrder
                         sqlHandler.ExecuteNonQuery("[USP_RO_restoreOrder]", Param2);
                     }
 
+                    // Step 2: Cancel and handle stock return (now inside SP)
                     List<KeyValuePair<string, object>> Param = new List<KeyValuePair<string, object>>();
                     Param.Add(new KeyValuePair<string, object>("@salesMasterId", id));
                     Param.Add(new KeyValuePair<string, object>("@Reasons", reason));
                     Param.Add(new KeyValuePair<string, object>("@userName", userName));
                     sqlHandler.ExecuteNonQuery("[USP_RO_CancelReason]", Param);
-                    // removed sales return
 
-                    //List<SalesDetailClass> salesDetail = new List<SalesDetailClass>();
-
-                    //List<KeyValuePair<string, object>> Param3 = new List<KeyValuePair<string, object>>();
-                    //Param3.Add(new KeyValuePair<string, object>("@salesMasterId", id));
-                    //salesDetail = sqlHandler.ExecuteAsList<SalesDetailClass>("[USP_GetSalesDetailClass]", Param3);
-
-                    //foreach (var item in salesDetail)
-                    //{
-                    //    List<KeyValuePair<string, object>> Param4 = new List<KeyValuePair<string, object>>();
-                    //    Param4.Add(new KeyValuePair<string, object>("@ItemID", item.ItemId));
-                    //    Param4.Add(new KeyValuePair<string, object>("@SalesDetailId", item.SalesDetailId));
-                    //    Param4.Add(new KeyValuePair<string, object>("@STId", item.StoreId));
-                    //    Param4.Add(new KeyValuePair<string, object>("@SalesReturnQty", item.SalesQty));
-                    //    Param4.Add(new KeyValuePair<string, object>("@SalesReturnUnit", item.SalesUnit));
-                    //    Param4.Add(new KeyValuePair<string, object>("@SalesReturnAmt", item.SalesAmt));
-                    //    sqlHandler.ExecuteNonQuery("[dbo].[ROI_SAVESalesReturnItemBal]", Param4);
-                    //}
+                    // Stock return now handled inside USP_RO_CancelReason - no C# loop needed
                 }
             }
             catch (Exception)
@@ -3287,39 +3358,46 @@ namespace SageFrame.RestroOrder
 
         internal void CancelBill(int id, string userName, string reason, bool restoreOrder)
         {
-            if (restoreOrder)
+            try
             {
-                List<KeyValuePair<string, object>> Param2 = new List<KeyValuePair<string, object>>();
-                Param2.Add(new KeyValuePair<string, object>("@salesMasterId", id));
-                Param2.Add(new KeyValuePair<string, object>("@userName", userName));
-                sqlHandler.ExecuteNonQuery("[USP_RO_restoreOrder]", Param2);
+                // Step 1: Restore order if needed (unusual for paid bills)
+                if (restoreOrder)
+                {
+                    List<KeyValuePair<string, object>> Param2 = new List<KeyValuePair<string, object>>();
+                    Param2.Add(new KeyValuePair<string, object>("@salesMasterId", id));
+                    Param2.Add(new KeyValuePair<string, object>("@userName", userName));
+                    sqlHandler.ExecuteNonQuery("[USP_RO_restoreOrder]", Param2);
+                }
+
+                // Step 2: Full cancellation
+                List<KeyValuePair<string, object>> Param = new List<KeyValuePair<string, object>>();
+                Param.Add(new KeyValuePair<string, object>("@salesMasterId", id));
+                Param.Add(new KeyValuePair<string, object>("@Reasons", reason));
+                Param.Add(new KeyValuePair<string, object>("@userName", userName));
+                sqlHandler.ExecuteNonQuery("[USP_RO_BillCancelReason]", Param);
+
+                // Stock return for paid bills (keep in C# for now if preferred)
+                List<SalesDetailClass> salesDetail = new List<SalesDetailClass>();
+                List<KeyValuePair<string, object>> Param3 = new List<KeyValuePair<string, object>>();
+                Param3.Add(new KeyValuePair<string, object>("@salesMasterId", id));
+                salesDetail = sqlHandler.ExecuteAsList<SalesDetailClass>("[USP_GetSalesDetailClass]", Param3);
+
+                foreach (var item in salesDetail)
+                {
+                    List<KeyValuePair<string, object>> Param4 = new List<KeyValuePair<string, object>>();
+                    Param4.Add(new KeyValuePair<string, object>("@ItemID", item.ItemId));
+                    Param4.Add(new KeyValuePair<string, object>("@SalesDetailId", item.SalesDetailId));
+                    Param4.Add(new KeyValuePair<string, object>("@STId", item.StoreId));
+                    Param4.Add(new KeyValuePair<string, object>("@SalesReturnQty", item.SalesQty));
+                    Param4.Add(new KeyValuePair<string, object>("@SalesReturnUnit", item.SalesUnit));
+                    Param4.Add(new KeyValuePair<string, object>("@SalesReturnAmt", item.SalesAmt));
+                    sqlHandler.ExecuteNonQuery("[dbo].[ROI_SAVESalesReturnItemBal]", Param4);
+                }
             }
-
-            List<KeyValuePair<string, object>> Param = new List<KeyValuePair<string, object>>();
-            Param.Add(new KeyValuePair<string, object>("@salesMasterId", id));
-            Param.Add(new KeyValuePair<string, object>("@Reasons", reason));
-            Param.Add(new KeyValuePair<string, object>("@userName", userName));
-            //List<OrderDetailClass> list = new List<OrderDetailClass>();
-            sqlHandler.ExecuteNonQuery("[USP_RO_BillCancelReason]", Param);
-
-            List<SalesDetailClass> salesDetail = new List<SalesDetailClass>();
-
-            List<KeyValuePair<string, object>> Param3 = new List<KeyValuePair<string, object>>();
-            Param3.Add(new KeyValuePair<string, object>("@salesMasterId", id));
-            salesDetail = sqlHandler.ExecuteAsList<SalesDetailClass>("[USP_GetSalesDetailClass]", Param3);
-
-            foreach (var item in salesDetail)
+            catch (Exception)
             {
-                List<KeyValuePair<string, object>> Param4 = new List<KeyValuePair<string, object>>();
-                Param4.Add(new KeyValuePair<string, object>("@ItemID", item.ItemId));
-                Param4.Add(new KeyValuePair<string, object>("@SalesDetailId", item.SalesDetailId));
-                Param4.Add(new KeyValuePair<string, object>("@STId", item.StoreId));
-                Param4.Add(new KeyValuePair<string, object>("@SalesReturnQty", item.SalesQty));
-                Param4.Add(new KeyValuePair<string, object>("@SalesReturnUnit", item.SalesUnit));
-                Param4.Add(new KeyValuePair<string, object>("@SalesReturnAmt", item.SalesAmt));
-                sqlHandler.ExecuteNonQuery("[dbo].[ROI_SAVESalesReturnItemBal]", Param4);
+                throw;
             }
-
         }
 
         internal void ChangePaymentMode(List<SalesPayment> salesPayment)
@@ -3469,6 +3547,7 @@ namespace SageFrame.RestroOrder
             {
                 List<KeyValuePair<string, object>> Param = new List<KeyValuePair<string, object>>();
                 Param.Add(new KeyValuePair<string, object>("@OrderDetailsID", item.OrderDetailsID));
+                Param.Add(new KeyValuePair<string, object>("@OrderMasterID", item.OrderMasterId));
                 Param.Add(new KeyValuePair<string, object>("@SeatNo", item.SeatNo));
                 Param.Add(new KeyValuePair<string, object>("@restrotableId", item.restrotableId));
                 sqlHandler.ExecuteNonQuery("[USP_ROI_SaveSplittedData]", Param);
@@ -6172,10 +6251,23 @@ namespace SageFrame.RestroOrder
                         Param1.Add(new KeyValuePair<string, object>("@STId", PurchaseReturn.PurchaseObjItemBal[i].STId));
                         Param1.Add(new KeyValuePair<string, object>("@OPBal", PurchaseReturn.PurchaseObjItemBal[i].OPBal));
                         Param1.Add(new KeyValuePair<string, object>("@CLBal", PurchaseReturn.PurchaseObjItemBal[i].CLBal));
-                        var b = sqh.ExecuteAsScalar<object>("[ROI_SavePurchaseReturnitembal]", Param1);
+                        //var b = sqh.ExecuteAsScalar<object>("[ROI_SavePurchaseReturnitembal]", Param1);
                         //ItemBal
+                        var b = sqh.ExecuteAsScalar<object>("[ROI_SavePurchaseReturnitembal]", Param1);
                     }
-                    ts.Complete();
+
+                    // NEW: Update vendor balance
+                    List<KeyValuePair<string, object>> vParam = new List<KeyValuePair<string, object>>();
+                    vParam.Add(new KeyValuePair<string, object>("@VendorId", PurchaseReturn.vendorId));
+                    vParam.Add(new KeyValuePair<string, object>("@PurchaseReturnId", PurchaseReturn.PurchaseReturnId));
+                    sqh.ExecuteNonQuery("USP_UpdateVendorBalanceOnPurchaseReturn", vParam);
+
+                    // NEW: Post accounting entries
+                    List<KeyValuePair<string, object>> aParam = new List<KeyValuePair<string, object>>();
+                    aParam.Add(new KeyValuePair<string, object>("@PurchaseReturnId", PurchaseReturn.PurchaseReturnId));
+                    sqh.ExecuteNonQuery("usp_SaveTransactionForPurchaseReturn", aParam);
+      
+                   ts.Complete();
                     return PurchaseReturn.PurchaseReturnId;
 
                 }

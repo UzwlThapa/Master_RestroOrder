@@ -4,7 +4,7 @@
 //		www.geckonewmedia.com
 // 
 //		v1.1
-//		18/09/09 * bug fix by John V - http://blog.geekyjohn.com/
+//		18/09/09 * bug fix by John V - //blog.geekyjohn.com/
 //-------------------------------------------------
 
 (function($) {

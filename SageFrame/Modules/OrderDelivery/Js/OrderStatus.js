@@ -1,4 +1,4 @@
-﻿var companyInfo = JSON.parse(localStorage.getItem("companyInfo"));
+var companyInfo = JSON.parse(localStorage.getItem("companyInfo"));
 
 function IntegerAndDecimal(evt, element) {
     var charCode = (evt.which) ? evt.which : event.keyCode
@@ -49,7 +49,7 @@ function print() {
         var companyProf = {
             config: {
                 isPostBack: false,
-                async: false,
+                async: true,
                 cache: false,
                 type: 'POST',
                 contentType: "application/json; charset=utf-8",

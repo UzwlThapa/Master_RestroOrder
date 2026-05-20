@@ -3,10 +3,10 @@
 * version: 1.2 (05/05/2008)
 * @requires jQuery v1.2 or later
 *
-* Examples at http://famspam.com/facebox/
+* Examples at //famspam.com/facebox/
 *
 * Licensed under the MIT:
-*   http://www.opensource.org/licenses/mit-license.php
+*   //www.opensource.org/licenses/mit-license.php
 *
 * Copyright 2007, 2008 Chris Wanstrath [ chris@ozmm.org ]
 *

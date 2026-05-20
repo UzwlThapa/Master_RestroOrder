@@ -1,4 +1,4 @@
-﻿function trimAll(sagestrJAVA) {
+function trimAll(sagestrJAVA) {
     if (sagestrJAVA != null) {
         while (sagestrJAVA.substring(0, 1) == ' ') {
             sagestrJAVA = sagestrJAVA.substring(1, sagestrJAVA.length);

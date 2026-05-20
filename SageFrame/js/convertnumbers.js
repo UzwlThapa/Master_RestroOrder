@@ -1,4 +1,4 @@
-﻿
+
         function convertNumberToWords(inputval) {
 
             var number = $.trim(inputval);

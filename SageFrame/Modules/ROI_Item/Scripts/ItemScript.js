@@ -1,4 +1,4 @@
-﻿(function ($) {
+(function ($) {
       var tabs = $("#tabs").tabs();
   $('#tabs').css('display', 'block');
     $.companyProfcreate = function (p) {
@@ -19,7 +19,7 @@
         var eventFunction = {
             config: {
                 isPostBack: false,
-                async: false,
+                async: true,
                 cache: false,
                 type: 'POST',
                 contentType: "application/json; charset=utf-8",

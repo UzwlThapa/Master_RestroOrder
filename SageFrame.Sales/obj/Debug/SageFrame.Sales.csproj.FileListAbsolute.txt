@@ -192,3 +192,12 @@ Z:\Work\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.Sales\obj\Debug\Sag
 Z:\Work\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.Sales\obj\Debug\SageFram.E113DE83.Up2Date
 Z:\Work\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.Sales\obj\Debug\SageFrame.Sales.dll
 Z:\Work\Danfe Solution Pvt. Ltd\Master_RestroOrder\SageFrame.Sales\obj\Debug\SageFrame.Sales.pdb
+G:\Danfe\DanfeProductsSourceCode\OldCodeNoHttps\Master_RestroOrder\SageFrame.Sales\bin\Debug\SageFrame.Sales.dll
+G:\Danfe\DanfeProductsSourceCode\OldCodeNoHttps\Master_RestroOrder\SageFrame.Sales\bin\Debug\SageFrame.Sales.pdb
+G:\Danfe\DanfeProductsSourceCode\OldCodeNoHttps\Master_RestroOrder\SageFrame.Sales\bin\Debug\SageFrame.Common.dll
+G:\Danfe\DanfeProductsSourceCode\OldCodeNoHttps\Master_RestroOrder\SageFrame.Sales\bin\Debug\SageFrame.Common.pdb
+G:\Danfe\DanfeProductsSourceCode\OldCodeNoHttps\Master_RestroOrder\SageFrame.Sales\obj\Debug\SageFrame.Sales.csproj.AssemblyReference.cache
+G:\Danfe\DanfeProductsSourceCode\OldCodeNoHttps\Master_RestroOrder\SageFrame.Sales\obj\Debug\SageFrame.Sales.csproj.CoreCompileInputs.cache
+G:\Danfe\DanfeProductsSourceCode\OldCodeNoHttps\Master_RestroOrder\SageFrame.Sales\obj\Debug\SageFram.E113DE83.Up2Date
+G:\Danfe\DanfeProductsSourceCode\OldCodeNoHttps\Master_RestroOrder\SageFrame.Sales\obj\Debug\SageFrame.Sales.dll
+G:\Danfe\DanfeProductsSourceCode\OldCodeNoHttps\Master_RestroOrder\SageFrame.Sales\obj\Debug\SageFrame.Sales.pdb

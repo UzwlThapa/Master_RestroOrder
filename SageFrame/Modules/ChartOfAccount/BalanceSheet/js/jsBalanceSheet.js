@@ -1,4 +1,4 @@
-﻿/// <reference path="../../../Roi_CounterPerson/jquery.dataTables.min.js" />
+/// <reference path="../../../Roi_CounterPerson/jquery.dataTables.min.js" />
 (function ($) {
     $.companyProfcreate = function (p) {
         p = $.extend
@@ -11,7 +11,7 @@
         var eventFunction = {
             config: {
                 isPostBack: false,
-                async: false,
+                async: true,
                 cache: false,
                 type: 'POST',
                 contentType: "application/json; charset=utf-8",

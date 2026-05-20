@@ -1,11 +1,11 @@
 /**
  * jQuery Easy Confirm Dialog plugin 1.2
  *
- * Copyright (c) 2010 Emil Janitzek (http://projectshadowlight.org)
- * Based on Confirm 1.3 by Nadia Alramli (http://nadiana.com/)
+ * Copyright (c) 2010 Emil Janitzek (//projectshadowlight.org)
+ * Based on Confirm 1.3 by Nadia Alramli (//nadiana.com/)
  *
  * Samples and instructions at: 
- * http://projectshadowlight.org/jquery-easy-confirm-dialog/
+ * //projectshadowlight.org/jquery-easy-confirm-dialog/
  *
  * This script is free software: you can redistribute it and/or modify it 
  * under the terms of the GNU General Public License as published by the Free 

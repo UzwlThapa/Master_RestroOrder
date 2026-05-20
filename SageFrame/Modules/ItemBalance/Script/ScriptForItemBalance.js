@@ -1,4 +1,4 @@
-﻿(function ($) {
+(function ($) {
     var tabs = $("#tabs").tabs();
     var deletecount = 0;
     $.companyProfcreate = function (p) {
@@ -15,7 +15,7 @@
         var companyProf = {
             config: {
                 isPostBack: false,
-                async: false,
+                async: true,
                 cache: false,
                 type: 'POST',
                 contentType: "application/json; charset=utf-8",

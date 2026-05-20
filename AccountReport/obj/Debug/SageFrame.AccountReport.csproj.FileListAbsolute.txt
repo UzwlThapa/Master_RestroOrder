@@ -138,3 +138,10 @@ Z:\Work\Danfe Solution Pvt. Ltd\Master_RestroOrder\AccountReport\obj\Debug\SageF
 Z:\Work\Danfe Solution Pvt. Ltd\Master_RestroOrder\AccountReport\obj\Debug\SageFram.53A44CF7.Up2Date
 Z:\Work\Danfe Solution Pvt. Ltd\Master_RestroOrder\AccountReport\obj\Debug\SageFrame.AccountReport.dll
 Z:\Work\Danfe Solution Pvt. Ltd\Master_RestroOrder\AccountReport\obj\Debug\SageFrame.AccountReport.pdb
+G:\Danfe\DanfeProductsSourceCode\OldCodeNoHttps\Master_RestroOrder\SageFrame\bin\SageFrame.AccountReport.dll
+G:\Danfe\DanfeProductsSourceCode\OldCodeNoHttps\Master_RestroOrder\SageFrame\bin\SageFrame.AccountReport.pdb
+G:\Danfe\DanfeProductsSourceCode\OldCodeNoHttps\Master_RestroOrder\AccountReport\obj\Debug\SageFrame.AccountReport.csproj.AssemblyReference.cache
+G:\Danfe\DanfeProductsSourceCode\OldCodeNoHttps\Master_RestroOrder\AccountReport\obj\Debug\SageFrame.AccountReport.csproj.CoreCompileInputs.cache
+G:\Danfe\DanfeProductsSourceCode\OldCodeNoHttps\Master_RestroOrder\AccountReport\obj\Debug\SageFram.53A44CF7.Up2Date
+G:\Danfe\DanfeProductsSourceCode\OldCodeNoHttps\Master_RestroOrder\AccountReport\obj\Debug\SageFrame.AccountReport.dll
+G:\Danfe\DanfeProductsSourceCode\OldCodeNoHttps\Master_RestroOrder\AccountReport\obj\Debug\SageFrame.AccountReport.pdb

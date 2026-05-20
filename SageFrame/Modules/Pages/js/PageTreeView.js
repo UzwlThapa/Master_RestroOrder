@@ -1,4 +1,4 @@
-﻿(function ($) {
+(function ($) {
     $.createPageTreeView = function (p) {
         p = $.extend
         ({
@@ -18,7 +18,7 @@
         var PageTreeView = {
             config: {
                 isPostBack: false,
-                async: false,
+                async: true,
                 cache: false,
                 type: 'POST',
                 contentType: "application/json; charset=u0tf-8",
@@ -948,7 +948,7 @@
                     type: PageTreeView.config.type,
                     contentType: PageTreeView.config.contentType,
                     cache: PageTreeView.config.cache,
-                    async: false,
+                    async: true,
                     url: PageTreeView.config.baseURL + "GetAllMenu",
                     data: JSON2.stringify({
                         userName: p.UserName,

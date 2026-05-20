@@ -1,12 +1,12 @@
 /*
-    http://www.JSON.org/json2.js
+    //www.JSON.org/json2.js
     2008-03-24
 
     Public Domain.
 
     NO WARRANTY EXPRESSED OR IMPLIED. USE AT YOUR OWN RISK.
 
-    See http://www.JSON.org/js.html
+    See //www.JSON.org/js.html
     
     modified by Rick Strahl to support MS AJAX style
                             date formats

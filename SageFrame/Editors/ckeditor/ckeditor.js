@@ -1,6 +1,6 @@
-﻿/*
+/*
 Copyright (c) 2003-2011, CKSource - Frederico Knabben. All rights reserved.
-For licensing, see LICENSE.html or http://ckeditor.com/license
+For licensing, see LICENSE.html or //ckeditor.com/license
 */
 
 (function () {
@@ -2390,7 +2390,7 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
         forceEnterMode: false,
         shiftEnterMode: 2,
         corePlugins: '',
-        docType: '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">',
+        docType: '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "//www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">',
         bodyId: '',
         bodyClass: '',
         fullPage: false,
@@ -6793,7 +6793,7 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
             var t = {}, u = [],
                 v = {
                     nbsp: '\xa0',
-                    shy: '­',
+                    shy: '�',
                     gt: '>',
                     lt: '<',
                     amp: '&'
@@ -11777,7 +11777,7 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
                                         N.removeClass('cke_toolbox_collapser_min');
                                         N.setAttribute('title', M.lang.toolbarCollapse);
                                     }
-                                    N.getFirst().setText(T ? '▲' : '◀');
+                                    N.getFirst().setText(T ? '?' : '?');
                                     var U = Q.$.offsetHeight - S;
                                     P.setStyle('height', R - U + 'px');
                                     M.fire('resize');
@@ -15934,7 +15934,7 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 
         function t(y) {
             w(y);
-            var z = y.createText('​');
+            var z = y.createText('?');
             y.setCustomData('cke-fillingChar', z);
             return z;
         };

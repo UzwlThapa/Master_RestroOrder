@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Default.aspx.cs"
+<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Default.aspx.cs"
     Inherits="SageFrame._Default" %>
 
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>

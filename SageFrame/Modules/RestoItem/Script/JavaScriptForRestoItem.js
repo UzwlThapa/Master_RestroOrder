@@ -1,4 +1,4 @@
-﻿(function ($) {
+(function ($) {
     var tabs = $("#tabs").tabs();
     $.companyProfcreate = function (p) {
         p = $.extend
@@ -12,7 +12,7 @@
         var companyProf = {
             config: {
                 isPostBack: false,
-                async: false,
+                async: true,
                 cache: false,
                 type: 'POST',
                 contentType: "application/json; charset=utf-8",

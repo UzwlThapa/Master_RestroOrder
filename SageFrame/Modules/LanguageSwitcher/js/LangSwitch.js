@@ -1,4 +1,4 @@
-﻿(function($) {
+(function($) {
     $.createLangSwitch = function(p) {
         p = $.extend({
             PortalID: 1,
@@ -9,7 +9,7 @@
         var LanguageSwitch = {
             config: {
                 isPostBack: false,
-                async: false,
+                async: true,
                 cache: false,
                 type: 'POST',
                 contentType: "application/json; charset=utf-8",
@@ -67,7 +67,7 @@
                     dataType: LanguageSwitch.config.dataType,
                     success: LanguageSwitch.ajaxSuccess,
                     error: LanguageSwitch.ajaxFailure,
-                    async: false
+                    async: true
                 });
             },
             GetPages: function() {
@@ -101,7 +101,7 @@
                 LanguageSwitch.config.ajaxCallMode = null;
                 $.ajax({
                     type: LanguageSwitch.config.type,
-                    async: false,
+                    async: true,
                     contentType: LanguageSwitch.config.contentType,
                     cache: LanguageSwitch.config.cache,
                     url: LanguageSwitch.config.url,

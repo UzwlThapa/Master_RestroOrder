@@ -1,4 +1,4 @@
-﻿(function ($) {
+(function ($) {
     var QId = 0;
     var arrItemListType = new Array();
     rowTotal = 0;
@@ -15,7 +15,7 @@
         var FAQList = {
             config: {
                 isPostBack: false,
-                async: false,
+                async: true,
                 cache: false,
                 type: 'POST',
                 contentType: "application/json; charset=utf-8",

@@ -1,4 +1,4 @@
-﻿(function ($) {
+(function ($) {
     $.createModuleLoader = function (p) {
         p = $.extend
                ({
@@ -7,7 +7,7 @@
 
         var ModuleLoader = {
             config: {
-                async: false,
+                async: true,
                 cache: false,
                 type: 'POST',
                 contentType: "application/json; charset=utf-8",

@@ -1,4 +1,4 @@
-﻿(function($) {
+(function($) {
     $.feedbackTab = function(p) {
         p = $.extend
         ({
@@ -12,7 +12,7 @@
         var feedbackTab = {
             config: {
                 isPostBack: false,
-                async: false,
+                async: true,
                 cache: false,
                 type: 'POST',
                 contentType: "application/json; charset=utf-8",

@@ -1,4 +1,4 @@
-Ôªø(function (global, factory) {
+(function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
   typeof define === 'function' && define.amd ? define(factory) :
   (global.jspdf = factory());
@@ -1381,7 +1381,7 @@
               }
               // End the path object without filling or stroking it.
               // This operator is a path-painting no-op, used primarily for the side effect of changing the current clipping path
-              // (see Section 4.4.3, ‚ÄúClipping Path Operators‚Äù)
+              // (see Section 4.4.3, ìClipping Path Operatorsî)
               out('n');
           };
 
@@ -2046,7 +2046,7 @@
    * Copyright (c) 2016 Alexander Weidt, https://github.com/BiggA94
    *
    * Licensed under the MIT License.
-   * http://opensource.org/licenses/mit-license
+   * //opensource.org/licenses/mit-license
    */
 
   (window.AcroForm = function (jsPDFAPI) {
@@ -3042,7 +3042,7 @@ Q\n";
           get: function get() {
               if (!_T || _T.length < 1) {
                   if (this instanceof AcroForm.ChildClass) {
-                      // In case of a Child from a Radio¬¥Group, you don't need a FieldName!!!
+                      // In case of a Child from a Radio¥Group, you don't need a FieldName!!!
                       return;
                   }
                   return "(FieldObject" + AcroForm.Field.FieldNum++ + ")";
@@ -3723,7 +3723,7 @@ Q\n";
    * Copyright (c) 2014 Diego Casorran
    *
    * Licensed under the MIT License.
-   * http://opensource.org/licenses/mit-license
+   * //opensource.org/licenses/mit-license
    */
 
   (function (jsPDFAPI) {
@@ -4204,7 +4204,7 @@ Q\n";
 
   	/**
     * @see this discussion
-    * http://stackoverflow.com/questions/6965107/converting-between-strings-and-arraybuffers
+    * //stackoverflow.com/questions/6965107/converting-between-strings-and-arraybuffers
     *
     * As stated, i imagine the method below is highly inefficent for large files.
     *
@@ -4243,7 +4243,7 @@ Q\n";
     *
     * Taken from here
     *
-    * http://jsperf.com/encoding-xhr-image-data/31
+    * //jsperf.com/encoding-xhr-image-data/31
     *
     * Need to test if this is a better solution for larger files
     *
@@ -4413,7 +4413,7 @@ Q\n";
 
   	//takes a string imgData containing the raw bytes of
   	//a jpeg image and returns [width, height]
-  	//Algorithm from: http://www.64lines.com/jpeg-width-height
+  	//Algorithm from: //www.64lines.com/jpeg-width-height
   	var getJpegSize = function getJpegSize(imgData) {
   		'use strict';
 
@@ -4521,7 +4521,7 @@ Q\n";
    * Copyright (c) 2014 Steven Spungin (TwelveTone LLC)  steven@twelvetone.tv
    *
    * Licensed under the MIT License.
-   * http://opensource.org/licenses/mit-license
+   * //opensource.org/licenses/mit-license
    */
 
   /**
@@ -4813,7 +4813,7 @@ Q\n";
    * jsPDF Autoprint Plugin
    *
    * Licensed under the MIT License.
-   * http://opensource.org/licenses/mit-license
+   * //opensource.org/licenses/mit-license
    */
 
   (function (jsPDFAPI) {
@@ -4841,7 +4841,7 @@ Q\n";
    * Copyright (c) 2014 Steven Spungin (TwelveTone LLC)  steven@twelvetone.tv
    *
    * Licensed under the MIT License.
-   * http://opensource.org/licenses/mit-license
+   * //opensource.org/licenses/mit-license
    */
 
   /**
@@ -5278,7 +5278,7 @@ Q\n";
   /**
    * jsPDF Context2D PlugIn Copyright (c) 2014 Steven Spungin (TwelveTone LLC) steven@twelvetone.tv
    *
-   * Licensed under the MIT License. http://opensource.org/licenses/mit-license
+   * Licensed under the MIT License. //opensource.org/licenses/mit-license
    */
 
   /**
@@ -6583,7 +6583,7 @@ Q\n";
       c2d.internal.rxRgba = /rgba\s*\(\s*(\d+)\s*,\s*(\d+)\s*,\s*(\d+)\s*,\s*([\d\.]+)\s*\)/;
       c2d.internal.rxTransparent = /transparent|rgba\s*\(\s*(\d+)\s*,\s*(\d+)\s*,\s*(\d+)\s*,\s*0+\s*\)/;
 
-      // http://hansmuller-flex.blogspot.com/2011/10/more-about-approximating-circular-arcs.html
+      // //hansmuller-flex.blogspot.com/2011/10/more-about-approximating-circular-arcs.html
       c2d.internal.arc = function (c2d, xc, yc, r, a1, a2, anticlockwise, style) {
           var includeMove = true;
 
@@ -6706,7 +6706,7 @@ Q\n";
        *
        * Returns an object with four points, where x1,y1 and x4,y4 are the arc's end points and x2,y2 and x3,y3 are the cubic bezier's control points.
        *
-       * This algorithm is based on the approach described in: A. Ri≈°kus, "Approximation of a Cubic Bezier Curve by Circular Arcs and Vice Versa," Information Technology and Control, 35(4), 2006 pp. 371-378.
+       * This algorithm is based on the approach described in: A. Riökus, "Approximation of a Cubic Bezier Curve by Circular Arcs and Vice Versa," Information Technology and Control, 35(4), 2006 pp. 371-378.
        */
 
       c2d.internal.createSmallArc = function (r, a1, a2) {
@@ -7812,7 +7812,7 @@ Q\n";
    * Copyright (c) 2014 Steven Spungin (TwelveTone LLC)  steven@twelvetone.tv
    *
    * Licensed under the MIT License.
-   * http://opensource.org/licenses/mit-license
+   * //opensource.org/licenses/mit-license
    */
 
   /**
@@ -8056,7 +8056,7 @@ Q\n";
   	'use strict';
 
   	/*
-    * @see http://www.w3.org/TR/PNG-Chunks.html
+    * @see //www.w3.org/TR/PNG-Chunks.html
     *
     Color    Allowed      Interpretation
     Type     Bit Depths
@@ -8073,8 +8073,8 @@ Q\n";
   	/*
     * PNG filter method types
     *
-    * @see http://www.w3.org/TR/PNG-Filters.html
-    * @see http://www.libpng.org/pub/png/book/chapter09.html
+    * @see //www.w3.org/TR/PNG-Filters.html
+    * @see //www.libpng.org/pub/png/book/chapter09.html
     *
     * This is what the value 'Predictor' in decode params relates to
     *
@@ -8150,7 +8150,7 @@ Q\n";
   	},
   	    createZlibHeader = function createZlibHeader(bytes, level) {
   		/*
-     * @see http://www.ietf.org/rfc/rfc1950.txt for zlib header
+     * @see //www.ietf.org/rfc/rfc1950.txt for zlib header
      */
   		var cm = 8;
   		var cinfo = Math.LOG2E * Math.log(0x8000) - 8;
@@ -8557,7 +8557,7 @@ Q\n";
    * jsPDF Autoprint Plugin
    *
    * Licensed under the MIT License.
-   * http://opensource.org/licenses/mit-license
+   * //opensource.org/licenses/mit-license
    */
 
   (function (jsPDFAPI) {
@@ -9446,14 +9446,14 @@ Q\n";
       var metadata_object_number = "";
 
       jsPDFAPI.addMetadata = function (metadata, namespaceuri) {
-          xmpnamespaceuri = namespaceuri || "http://jspdf.default.namespaceuri/"; //The namespace URI for an XMP name shall not be empty
+          xmpnamespaceuri = namespaceuri || "//jspdf.default.namespaceuri/"; //The namespace URI for an XMP name shall not be empty
           xmpmetadata = metadata;
           this.internal.events.subscribe('postPutResources', function () {
               if (!xmpmetadata) {
                   metadata_object_number = "";
               } else {
                   var xmpmeta_beginning = '<x:xmpmeta xmlns:x="adobe:ns:meta/">';
-                  var rdf_beginning = '<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"><rdf:Description rdf:about="" xmlns:jspdf="' + xmpnamespaceuri + '"><jspdf:metadata>';
+                  var rdf_beginning = '<rdf:RDF xmlns:rdf="//www.w3.org/1999/02/22-rdf-syntax-ns#"><rdf:Description rdf:about="" xmlns:jspdf="' + xmpnamespaceuri + '"><jspdf:metadata>';
                   var rdf_ending = '</jspdf:metadata></rdf:Description></rdf:RDF>';
                   var xmpmeta_ending = '</x:xmpmeta>';
                   var utf8_xmpmeta_beginning = unescape(encodeURIComponent(xmpmeta_beginning));
@@ -9485,7 +9485,7 @@ Q\n";
    * A Blob implementation.
    * 2014-07-24
    *
-   * By Eli Grey, http://eligrey.com
+   * By Eli Grey, //eligrey.com
    * By Devin Samarin, https://github.com/dsamarin
    * License: X11/MIT
    *   See https://github.com/eligrey/Blob.js/blob/master/LICENSE.md
@@ -9495,7 +9495,7 @@ Q\n";
   /*jslint bitwise: true, regexp: true, confusion: true, es5: true, vars: true, white: true,
     plusplus: true */
 
-  /*! @source http://purl.eligrey.com/github/Blob.js/blob/master/Blob.js */
+  /*! @source //purl.eligrey.com/github/Blob.js/blob/master/Blob.js */
 
   (function (view) {
   	"use strict";
@@ -9556,7 +9556,7 @@ Q\n";
   		if (!real_URL.createObjectURL) {
   			URL = view.URL = function(uri) {
   				var
-  					  uri_info = document.createElementNS("http://www.w3.org/1999/xhtml", "a")
+  					  uri_info = document.createElementNS("//www.w3.org/1999/xhtml", "a")
   					, uri_origin
   				;
   				uri_info.href = uri;
@@ -9697,7 +9697,7 @@ Q\n";
    * A saveAs() FileSaver implementation.
    * 1.1.20151003
    *
-   * By Eli Grey, http://eligrey.com
+   * By Eli Grey, //eligrey.com
    * License: MIT
    *   See https://github.com/eligrey/FileSaver.js/blob/master/LICENSE.md
    */
@@ -9705,7 +9705,7 @@ Q\n";
   /*global self */
   /*jslint bitwise: true, indent: 4, laxbreak: true, laxcomma: true, smarttabs: true, plusplus: true */
 
-  /*! @source http://purl.eligrey.com/github/FileSaver.js/blob/master/FileSaver.js */
+  /*! @source //purl.eligrey.com/github/FileSaver.js/blob/master/FileSaver.js */
 
   var saveAs = saveAs || (function(view) {
   	"use strict";
@@ -9719,7 +9719,7 @@ Q\n";
   		, get_URL = function() {
   			return view.URL || view.webkitURL || view;
   		}
-  		, save_link = doc.createElementNS("http://www.w3.org/1999/xhtml", "a")
+  		, save_link = doc.createElementNS("//www.w3.org/1999/xhtml", "a")
   		, can_use_save_link = "download" in save_link
   		, click = function(node) {
   			var event = new MouseEvent("click");
@@ -9812,7 +9812,7 @@ Q\n";
   					} else {
   						var new_tab = view.open(object_url, "_blank");
   						if (new_tab == undefined && is_safari) {
-  							//Apple do not allow window.open, see http://bit.ly/1kZffRI
+  							//Apple do not allow window.open, see //bit.ly/1kZffRI
   							view.location.href = object_url
   						}
   					}
@@ -9848,7 +9848,7 @@ Q\n";
   			}
   			// Object and web filesystem URLs have a problem saving in Google Chrome when
   			// viewed in a tab, so I force save with application/octet-stream
-  			// http://code.google.com/p/chromium/issues/detail?id=91158
+  			// //code.google.com/p/chromium/issues/detail?id=91158
   			// Update: Google errantly closed 91158, I submitted it again:
   			// https://code.google.com/p/chromium/issues/detail?id=389642
   			if (view.chrome && type && type !== force_saveable_type) {
@@ -9968,7 +9968,7 @@ Q\n";
    * Copyright (c) 2012 chick307 <chick307@gmail.com>
    *
    * Licensed under the MIT License.
-   * http://opensource.org/licenses/mit-license
+   * //opensource.org/licenses/mit-license
    */
 
   void function(global, callback) {
@@ -10152,7 +10152,7 @@ Q\n";
    * Copyright (c) 2014 Steven Spungin (TwelveTone LLC)  steven@twelvetone.tv
    *
    * Licensed under the MIT License.
-   * http://opensource.org/licenses/mit-license
+   * //opensource.org/licenses/mit-license
    */
 
   /**
@@ -12371,7 +12371,7 @@ Q\n";
   
 
   /*
-    html2canvas 0.5.0-beta3 <http://html2canvas.hertzen.com>
+    html2canvas 0.5.0-beta3 <//html2canvas.hertzen.com>
     Copyright (c) 2016 Niklas von Hertzen
 
     Released under  License
@@ -12379,7 +12379,7 @@ Q\n";
 
   !function(e){if("object"==typeof exports&&"undefined"!=typeof module)module.exports=e();else if("function"==typeof define&&define.amd)define([],e);else{var f;"undefined"!=typeof window?f=window:"undefined"!=typeof global?f=global:"undefined"!=typeof self&&(f=self),f.html2canvas=e()}}(function(){var define,module,exports;return (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(_dereq_,module,exports){
   (function (global){
-  /*! http://mths.be/punycode v1.2.4 by @mathias */
+  /*! //mths.be/punycode v1.2.4 by @mathias */
   ;(function(root) {
 
   	/** Detect free variables */
@@ -12479,7 +12479,7 @@ Q\n";
   	 * UCS-2 exposes as separate characters) into a single code point,
   	 * matching UTF-16.
   	 * @see `punycode.ucs2.encode`
-  	 * @see <http://mathiasbynens.be/notes/javascript-encoding>
+  	 * @see <//mathiasbynens.be/notes/javascript-encoding>
   	 * @memberOf punycode.ucs2
   	 * @name decode
   	 * @param {String} string The Unicode input string (UCS-2).
@@ -12573,7 +12573,7 @@ Q\n";
 
   	/**
   	 * Bias adaptation function as per section 3.4 of RFC 3492.
-  	 * http://tools.ietf.org/html/rfc3492#section-3.4
+  	 * //tools.ietf.org/html/rfc3492#section-3.4
   	 * @private
   	 */
   	function adapt(delta, numPoints, firstTime) {
@@ -12848,7 +12848,7 @@ Q\n";
   		/**
   		 * An object of methods to convert from JavaScript's internal character
   		 * representation (UCS-2) to Unicode code points, and back.
-  		 * @see <http://mathiasbynens.be/notes/javascript-encoding>
+  		 * @see <//mathiasbynens.be/notes/javascript-encoding>
   		 * @memberOf punycode
   		 * @type Object
   		 */
@@ -12995,7 +12995,7 @@ Q\n";
   };
 
   },{"./log":13}],3:[function(_dereq_,module,exports){
-  // http://dev.w3.org/csswg/css-color/
+  // //dev.w3.org/csswg/css-color/
 
   function Color(value) {
       this.r = 0;
@@ -13702,7 +13702,7 @@ Q\n";
   ImageLoader.prototype.getOrigin = function(url) {
       var link = this.link || (this.link = document.createElement("a"));
       link.href = url;
-      link.href = link.href; // IE9, LOL! - http://jsfiddle.net/niklasvh/2e48b/
+      link.href = link.href; // IE9, LOL! - //jsfiddle.net/niklasvh/2e48b/
       return link.protocol + link.hostname + link.port;
   };
 
@@ -13796,7 +13796,7 @@ Q\n";
               case "center":
                   break; // centered by default
               // Firefox internally converts position keywords to percentages:
-              // http://www.w3.org/TR/2010/WD-CSS2-20101207/colors.html#propdef-background-position
+              // //www.w3.org/TR/2010/WD-CSS2-20101207/colors.html#propdef-background-position
               default: // percentage or absolute length
                   // TODO: support absolute start point positions (e.g., use bounds to convert px to a ratio)
                   var ratio = parseFloat(position, 10) * 1e-2;
@@ -14195,7 +14195,7 @@ Q\n";
           renderer.rectangle(0, 0, renderer.width, renderer.height, new Color(options.background));
       }
       if (element === element.ownerDocument.documentElement) {
-          // http://www.w3.org/TR/css3-background/#special-backgrounds
+          // //www.w3.org/TR/css3-background/#special-backgrounds
           var canvasBackground = new NodeContainer(parent.color('backgroundColor').isTransparent() ? element.ownerDocument.body : element.ownerDocument.documentElement, null);
           renderer.rectangle(0, 0, renderer.width, renderer.height, canvasBackground.color('backgroundColor'));
       }
@@ -14433,7 +14433,7 @@ Q\n";
   function ClearTransform() {}
 
   NodeParser.prototype.parse = function(stack) {
-      // http://www.w3.org/TR/CSS21/visuren.html#z-index
+      // //www.w3.org/TR/CSS21/visuren.html#z-index
       var negativeZindex = stack.contexts.filter(negativeZIndex); // 2. the child stacking contexts with negative stack levels (most negative first).
       var descendantElements = stack.children.filter(isElement);
       var descendantNonFloats = descendantElements.filter(not(isFloating));
@@ -15551,7 +15551,7 @@ Q\n";
       var img = new Image();
       var canvas = document.createElement("canvas");
       var ctx =  canvas.getContext("2d");
-      img.src = "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg'></svg>";
+      img.src = "data:image/svg+xml,<svg xmlns='//www.w3.org/2000/svg'></svg>";
 
       try {
           ctx.drawImage(img, 0, 0);
@@ -16810,13 +16810,13 @@ Q\n";
 
   	if (typeof global.btoa === 'undefined') {
   		global.btoa = function(data) {
-  			//  discuss at: http://phpjs.org/functions/base64_encode/
-  			// original by: Tyler Akins (http://rumkin.com)
+  			//  discuss at: //phpjs.org/functions/base64_encode/
+  			// original by: Tyler Akins (//rumkin.com)
   			// improved by: Bayron Guevara
   			// improved by: Thunder.m
-  			// improved by: Kevin van Zonneveld (http://kevin.vanzonneveld.net)
-  			// improved by: Kevin van Zonneveld (http://kevin.vanzonneveld.net)
-  			// improved by: Rafal Kukawski (http://kukawski.pl)
+  			// improved by: Kevin van Zonneveld (//kevin.vanzonneveld.net)
+  			// improved by: Kevin van Zonneveld (//kevin.vanzonneveld.net)
+  			// improved by: Rafal Kukawski (//kukawski.pl)
   			// bugfixed by: Pellentesque Malesuada
   			//   example 1: base64_encode('Kevin van Zonneveld');
   			//   returns 1: 'S2V2aW4gdmFuIFpvbm5ldmVsZA=='
@@ -16853,16 +16853,16 @@ Q\n";
 
   	if (typeof global.atob === 'undefined') {
   		global.atob = function(data) {
-  			//  discuss at: http://phpjs.org/functions/base64_decode/
-  			// original by: Tyler Akins (http://rumkin.com)
+  			//  discuss at: //phpjs.org/functions/base64_decode/
+  			// original by: Tyler Akins (//rumkin.com)
   			// improved by: Thunder.m
-  			// improved by: Kevin van Zonneveld (http://kevin.vanzonneveld.net)
-  			// improved by: Kevin van Zonneveld (http://kevin.vanzonneveld.net)
+  			// improved by: Kevin van Zonneveld (//kevin.vanzonneveld.net)
+  			// improved by: Kevin van Zonneveld (//kevin.vanzonneveld.net)
   			//    input by: Aman Gupta
-  			//    input by: Brett Zamir (http://brett-zamir.me)
+  			//    input by: Brett Zamir (//brett-zamir.me)
   			// bugfixed by: Onno Marsman
   			// bugfixed by: Pellentesque Malesuada
-  			// bugfixed by: Kevin van Zonneveld (http://kevin.vanzonneveld.net)
+  			// bugfixed by: Kevin van Zonneveld (//kevin.vanzonneveld.net)
   			//   example 1: base64_decode('S2V2aW4gdmFuIFpvbm5ldmVsZA==');
   			//   returns 1: 'Kevin van Zonneveld'
 

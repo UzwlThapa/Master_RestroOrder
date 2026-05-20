@@ -2,7 +2,7 @@
 /**
 *
 *  Base64 encode / decode
-*  http://www.webtoolkit.info/
+*  //www.webtoolkit.info/
 *
 **/
 

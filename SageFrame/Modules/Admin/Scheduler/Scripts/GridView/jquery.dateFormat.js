@@ -1,4 +1,4 @@
-﻿(function($) {
+(function($) {
     $.format = (function() {
 
         var parseMonth = function(value) {

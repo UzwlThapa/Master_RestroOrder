@@ -1,4 +1,4 @@
-﻿(function ($) {
+(function ($) {
     $.createMenu = function (p) {
         var order = 0;
         var level = 0;
@@ -11,7 +11,7 @@
         var MenuMgr = {
             config: {
                 isPostBack: false,
-                async: false,
+                async: true,
                 cache: false,
                 type: 'POST',
                 contentType: "application/json; charset=utf-8",
@@ -50,7 +50,7 @@
                     var ExternalLink = $(this).val();
                     if ($(this).val().length > 0) {
                         if (!$(this).val().match(/^http/)) {
-                            $(this).val('http://' + ExternalLink);
+                            $(this).val('//' + ExternalLink);
                         }
                     }
                 });
@@ -830,7 +830,7 @@
                         UserName: SageFrameUserName,
                         secureToken: SageFrameSecureToken
                     }),
-                    async: false,
+                    async: true,
                     dataType: MenuMgr.config.dataType,
                     success: function (msg) {
                         $('#txtMenuName').val('');
@@ -869,7 +869,7 @@
                         UserName: SageFrameUserName,
                         secureToken: SageFrameSecureToken
                     }),
-                    async: false,
+                    async: true,
                     dataType: MenuMgr.config.dataType,
                     success: function (msg) {
                         $('#menuList').find('#' + MenuID).find('.sfMenuname').text($('#txtMenuName').val());
@@ -1155,7 +1155,7 @@
                     url: MenuMgr.config.baseURL + "AddExternalLink",
                     data: JSON2.stringify(ExternalLinkItems),
                     dataType: MenuMgr.config.dataType,
-                    async: false,
+                    async: true,
                     success: function (msg) {
                         MenuMgr.ClearValidation();
                     }
@@ -1191,7 +1191,7 @@
                     url: MenuMgr.config.baseURL + "AddHtmlContent",
                     data: JSON2.stringify(HtmlContent),
                     dataType: MenuMgr.config.dataType,
-                    async: false,
+                    async: true,
                     success: function (msg) {
                         MenuMgr.ClearValidation();
                     }
@@ -1439,7 +1439,7 @@
                     cache: MenuMgr.config.cache,
                     url: MenuMgr.config.baseURL + "GetDetails",
                     data: param,
-                    async: false,
+                    async: true,
                     dataType: MenuMgr.config.dataType,
                     success: function (msg) {
                         var data = msg.d;

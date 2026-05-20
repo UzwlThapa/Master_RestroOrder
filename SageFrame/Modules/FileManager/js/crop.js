@@ -1,4 +1,4 @@
-﻿
+
 function Init() {
     // Patch for IE to force "overflow: auto;"
     document.getElementById("imgContainer").style["position"] = "relative";

@@ -1,4 +1,4 @@
-﻿function Print() {
+function Print() {
     $('#printedDate').show();
     $('.edit-heading').hide();
     $('#lblPrintedOn').html(new Date());
@@ -42,7 +42,7 @@
         var eventFunction = {
             config: {
                 isPostBack: false,
-                async: false,
+                async: true,
                 cache: false,
                 type: 'POST',
                 contentType: "application/json; charset=utf-8",

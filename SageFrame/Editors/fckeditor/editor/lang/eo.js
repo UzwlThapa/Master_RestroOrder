@@ -1,5 +1,5 @@
-﻿/*
- * FCKeditor - The text editor for Internet - http://www.fckeditor.net
+/*
+ * FCKeditor - The text editor for Internet - //www.fckeditor.net
  * Copyright (C) 2003-2008 Frederico Caldeira Knabben
  *
  * == BEGIN LICENSE ==
@@ -8,13 +8,13 @@
  * choice:
  *
  *  - GNU General Public License Version 2 or later (the "GPL")
- *    http://www.gnu.org/licenses/gpl.html
+ *    //www.gnu.org/licenses/gpl.html
  *
  *  - GNU Lesser General Public License Version 2.1 or later (the "LGPL")
- *    http://www.gnu.org/licenses/lgpl.html
+ *    //www.gnu.org/licenses/lgpl.html
  *
  *  - Mozilla Public License Version 1.1 or later (the "MPL")
- *    http://www.mozilla.org/MPL/MPL-1.1.html
+ *    //www.mozilla.org/MPL/MPL-1.1.html
  *
  * == END LICENSE ==
  *
@@ -26,12 +26,12 @@ var FCKLang =
 // Language direction : "ltr" (left to right) or "rtl" (right to left).
 Dir					: "ltr",
 
-ToolbarCollapse		: "Kaŝi Ilobreton",
+ToolbarCollapse		: "Kasi Ilobreton",
 ToolbarExpand		: "Vidigi Ilojn",
 
 // Toolbar Items and Context Menu
 Save				: "Sekurigi",
-NewPage				: "Nova Paĝo",
+NewPage				: "Nova Pago",
 Preview				: "Vidigi Aspekton",
 Cut					: "Eltondi",
 Copy				: "Kopii",
@@ -39,20 +39,20 @@ Paste				: "Interglui",
 PasteText			: "Interglui kiel Tekston",
 PasteWord			: "Interglui el Word",
 Print				: "Presi",
-SelectAll			: "Elekti ĉion",
+SelectAll			: "Elekti cion",
 RemoveFormat		: "Forigi Formaton",
 InsertLinkLbl		: "Ligilo",
-InsertLink			: "Enmeti/Ŝanĝi Ligilon",
+InsertLink			: "Enmeti/Sangi Ligilon",
 RemoveLink			: "Forigi Ligilon",
 VisitLink			: "Open Link",	//MISSING
-Anchor				: "Enmeti/Ŝanĝi Ankron",
+Anchor				: "Enmeti/Sangi Ankron",
 AnchorDelete		: "Remove Anchor",	//MISSING
 InsertImageLbl		: "Bildo",
-InsertImage			: "Enmeti/Ŝanĝi Bildon",
+InsertImage			: "Enmeti/Sangi Bildon",
 InsertFlashLbl		: "Flash",	//MISSING
 InsertFlash			: "Insert/Edit Flash",	//MISSING
 InsertTableLbl		: "Tabelo",
-InsertTable			: "Enmeti/Ŝanĝi Tabelon",
+InsertTable			: "Enmeti/Sangi Tabelon",
 InsertLineLbl		: "Horizonta Linio",
 InsertLine			: "Enmeti Horizonta Linio",
 InsertSpecialCharLbl: "Speciala Signo",
@@ -69,9 +69,9 @@ Superscript			: "Superskribo",
 LeftJustify			: "Maldekstrigi",
 CenterJustify		: "Centrigi",
 RightJustify		: "Dekstrigi",
-BlockJustify		: "Ĝisrandigi Ambaŭflanke",
-DecreaseIndent		: "Malpligrandigi Krommarĝenon",
-IncreaseIndent		: "Pligrandigi Krommarĝenon",
+BlockJustify		: "Gisrandigi Ambauflanke",
+DecreaseIndent		: "Malpligrandigi Krommargenon",
+IncreaseIndent		: "Pligrandigi Krommargenon",
 Blockquote			: "Blockquote",	//MISSING
 CreateDiv			: "Create Div Container",	//MISSING
 EditDiv				: "Edit Div Container",	//MISSING
@@ -91,8 +91,8 @@ FontSize			: "Grando",
 TextColor			: "Teksta Koloro",
 BGColor				: "Fona Koloro",
 Source				: "Fonto",
-Find				: "Serĉi",
-Replace				: "Anstataŭigi",
+Find				: "Serci",
+Replace				: "Anstatauigi",
 SpellCheck			: "Literumada Kontrolilo",
 UniversalKeyboard	: "Universala Klavaro",
 PageBreakLbl		: "Page Break",	//MISSING
@@ -103,7 +103,7 @@ Checkbox		: "Markobutono",
 RadioButton		: "Radiobutono",
 TextField		: "Teksta kampo",
 Textarea		: "Teksta Areo",
-HiddenField		: "Kaŝita Kampo",
+HiddenField		: "Kasita Kampo",
 Button			: "Butono",
 SelectionField	: "Elekta Kampo",
 ImageButton		: "Bildbutono",
@@ -124,14 +124,14 @@ InsertColumnBefore	: "Insert Column Before",	//MISSING
 DeleteColumns		: "Forigi Kolumnojn",
 InsertCellAfter		: "Insert Cell After",	//MISSING
 InsertCellBefore	: "Insert Cell Before",	//MISSING
-DeleteCells			: "Forigi Ĉelojn",
-MergeCells			: "Kunfandi Ĉelojn",
+DeleteCells			: "Forigi Celojn",
+MergeCells			: "Kunfandi Celojn",
 MergeRight			: "Merge Right",	//MISSING
 MergeDown			: "Merge Down",	//MISSING
 HorizontalSplitCell	: "Split Cell Horizontally",	//MISSING
 VerticalSplitCell	: "Split Cell Vertically",	//MISSING
 TableDelete			: "Delete Table",	//MISSING
-CellProperties		: "Atributoj de Ĉelo",
+CellProperties		: "Atributoj de Celo",
 TableProperties		: "Atributoj de Tabelo",
 ImageProperties		: "Atributoj de Bildo",
 FlashProperties		: "Flash Properties",	//MISSING
@@ -139,7 +139,7 @@ FlashProperties		: "Flash Properties",	//MISSING
 AnchorProp			: "Ankraj Atributoj",
 ButtonProp			: "Butonaj Atributoj",
 CheckboxProp		: "Markobutonaj Atributoj",
-HiddenFieldProp		: "Atributoj de Kaŝita Kampo",
+HiddenFieldProp		: "Atributoj de Kasita Kampo",
 RadioButtonProp		: "Radiobutonaj Atributoj",
 ImageButtonProp		: "Bildbutonaj Atributoj",
 TextFieldProp		: "Atributoj de Teksta Kampo",
@@ -152,11 +152,11 @@ FontFormats			: "Normala;Formatita;Adreso;Titolo 1;Titolo 2;Titolo 3;Titolo 4;Ti
 // Alerts and Messages
 ProcessingXHTML		: "Traktado de XHTML. Bonvolu pacienci...",
 Done				: "Finita",
-PasteWordConfirm	: "La algluota teksto ŝajnas esti Word-devena. Ĉu vi volas purigi ĝin antaŭ ol interglui?",
-NotCompatiblePaste	: "Tiu ĉi komando bezonas almenaŭ Internet Explorer 5.5. Ĉu vi volas daŭrigi sen purigado?",
+PasteWordConfirm	: "La algluota teksto sajnas esti Word-devena. Cu vi volas purigi gin antau ol interglui?",
+NotCompatiblePaste	: "Tiu ci komando bezonas almenau Internet Explorer 5.5. Cu vi volas daurigi sen purigado?",
 UnknownToolbarItem	: "Ilobretero nekonata \"%1\"",
 UnknownCommand		: "Komandonomo nekonata \"%1\"",
-NotImplemented		: "Komando ne ankoraŭ realigita",
+NotImplemented		: "Komando ne ankorau realigita",
 UnknownToolbarSet	: "La ilobreto \"%1\" ne ekzistas",
 NoActiveX			: "Your browser's security settings could limit some features of the editor. You must enable the option \"Run ActiveX controls and plug-ins\". You may experience errors and notice missing features.",	//MISSING
 BrowseServerBlocked : "The resources browser could not be opened. Make sure that all popup blockers are disabled.",	//MISSING
@@ -174,7 +174,7 @@ DlgInfoTab			: "Info",	//MISSING
 DlgAlertUrl			: "Please insert the URL",	//MISSING
 
 // General Dialogs Labels
-DlgGenNotSet		: "<Defaŭlta>",
+DlgGenNotSet		: "<Defaulta>",
 DlgGenId			: "Id",
 DlgGenLangDir		: "Skribdirekto",
 DlgGenLangDirLtr	: "De maldekstro dekstren (LTR)",
@@ -195,16 +195,16 @@ DlgImgTitle			: "Atributoj de Bildo",
 DlgImgInfoTab		: "Informoj pri Bildo",
 DlgImgBtnUpload		: "Sendu al Servilo",
 DlgImgURL			: "URL",
-DlgImgUpload		: "Alŝuti",
-DlgImgAlt			: "Anstataŭiga Teksto",
-DlgImgWidth			: "Larĝo",
+DlgImgUpload		: "Alsuti",
+DlgImgAlt			: "Anstatauiga Teksto",
+DlgImgWidth			: "Largo",
 DlgImgHeight		: "Alto",
 DlgImgLockRatio		: "Konservi Proporcion",
 DlgBtnResetSize		: "Origina Grando",
 DlgImgBorder		: "Bordero",
 DlgImgHSpace		: "HSpaco",
 DlgImgVSpace		: "VSpaco",
-DlgImgAlign			: "Ĝisrandigo",
+DlgImgAlign			: "Gisrandigo",
 DlgImgAlignLeft		: "Maldekstre",
 DlgImgAlignAbsBottom: "Abs Malsupre",
 DlgImgAlignAbsMiddle: "Abs Centre",
@@ -235,8 +235,8 @@ DlgLnkTargetTab		: "Celo",
 
 DlgLnkType			: "Tipo de Ligilo",
 DlgLnkTypeURL		: "URL",
-DlgLnkTypeAnchor	: "Ankri en tiu ĉi paĝo",
-DlgLnkTypeEMail		: "Retpoŝto",
+DlgLnkTypeAnchor	: "Ankri en tiu ci pago",
+DlgLnkTypeEMail		: "Retposto",
 DlgLnkProto			: "Protokolo",
 DlgLnkProtoOther	: "<alia>",
 DlgLnkURL			: "URL",
@@ -246,21 +246,21 @@ DlgLnkAnchorById	: "Per Elementidentigilo",
 DlgLnkNoAnchors		: "<Ne disponeblas ankroj en la dokumento>",
 DlgLnkEMail			: "Retadreso",
 DlgLnkEMailSubject	: "Temlinio",
-DlgLnkEMailBody		: "Mesaĝa korpo",
-DlgLnkUpload		: "Alŝuti",
+DlgLnkEMailBody		: "Mesaga korpo",
+DlgLnkUpload		: "Alsuti",
 DlgLnkBtnUpload		: "Sendi al Servilo",
 
 DlgLnkTarget		: "Celo",
 DlgLnkTargetFrame	: "<kadro>",
-DlgLnkTargetPopup	: "<ŝprucfenestro>",
+DlgLnkTargetPopup	: "<sprucfenestro>",
 DlgLnkTargetBlank	: "Nova Fenestro (_blank)",
 DlgLnkTargetParent	: "Gepatra Fenestro (_parent)",
 DlgLnkTargetSelf	: "Sama Fenestro (_self)",
 DlgLnkTargetTop		: "Plej Supra Fenestro (_top)",
 DlgLnkTargetFrameName	: "Nomo de Kadro",
-DlgLnkPopWinName	: "Nomo de Ŝprucfenestro",
-DlgLnkPopWinFeat	: "Atributoj de la Ŝprucfenestro",
-DlgLnkPopResize		: "Grando Ŝanĝebla",
+DlgLnkPopWinName	: "Nomo de Sprucfenestro",
+DlgLnkPopWinFeat	: "Atributoj de la Sprucfenestro",
+DlgLnkPopResize		: "Grando Sangebla",
 DlgLnkPopLocation	: "Adresobreto",
 DlgLnkPopMenu		: "Menubreto",
 DlgLnkPopScroll		: "Rulumlisteloj",
@@ -268,7 +268,7 @@ DlgLnkPopStatus		: "Statobreto",
 DlgLnkPopToolbar	: "Ilobreto",
 DlgLnkPopFullScrn	: "Tutekrane (IE)",
 DlgLnkPopDependent	: "Dependa (Netscape)",
-DlgLnkPopWidth		: "Larĝo",
+DlgLnkPopWidth		: "Largo",
 DlgLnkPopHeight		: "Alto",
 DlgLnkPopLeft		: "Pozicio de Maldekstro",
 DlgLnkPopTop		: "Pozicio de Supro",
@@ -295,37 +295,37 @@ DlgTableTitle		: "Atributoj de Tabelo",
 DlgTableRows		: "Linioj",
 DlgTableColumns		: "Kolumnoj",
 DlgTableBorder		: "Bordero",
-DlgTableAlign		: "Ĝisrandigo",
-DlgTableAlignNotSet	: "<Defaŭlte>",
+DlgTableAlign		: "Gisrandigo",
+DlgTableAlignNotSet	: "<Defaulte>",
 DlgTableAlignLeft	: "Maldekstre",
 DlgTableAlignCenter	: "Centre",
 DlgTableAlignRight	: "Dekstre",
-DlgTableWidth		: "Larĝo",
+DlgTableWidth		: "Largo",
 DlgTableWidthPx		: "Bitbilderoj",
 DlgTableWidthPc		: "elcentoj",
 DlgTableHeight		: "Alto",
-DlgTableCellSpace	: "Interspacigo de Ĉeloj",
-DlgTableCellPad		: "Ĉirkaŭenhava Plenigado",
+DlgTableCellSpace	: "Interspacigo de Celoj",
+DlgTableCellPad		: "Cirkauenhava Plenigado",
 DlgTableCaption		: "Titolo",
 DlgTableSummary		: "Summary",	//MISSING
 
 // Table Cell Dialog
 DlgCellTitle		: "Atributoj de Celo",
-DlgCellWidth		: "Larĝo",
+DlgCellWidth		: "Largo",
 DlgCellWidthPx		: "bitbilderoj",
 DlgCellWidthPc		: "elcentoj",
 DlgCellHeight		: "Alto",
 DlgCellWordWrap		: "Linifaldo",
-DlgCellWordWrapNotSet	: "<Defaŭlte>",
+DlgCellWordWrapNotSet	: "<Defaulte>",
 DlgCellWordWrapYes	: "Jes",
 DlgCellWordWrapNo	: "Ne",
-DlgCellHorAlign		: "Horizonta Ĝisrandigo",
-DlgCellHorAlignNotSet	: "<Defaŭlte>",
+DlgCellHorAlign		: "Horizonta Gisrandigo",
+DlgCellHorAlignNotSet	: "<Defaulte>",
 DlgCellHorAlignLeft	: "Maldekstre",
 DlgCellHorAlignCenter	: "Centre",
 DlgCellHorAlignRight: "Dekstre",
-DlgCellVerAlign		: "Vertikala Ĝisrandigo",
-DlgCellVerAlignNotSet	: "<Defaŭlte>",
+DlgCellVerAlign		: "Vertikala Gisrandigo",
+DlgCellVerAlignNotSet	: "<Defaulte>",
 DlgCellVerAlignTop	: "Supre",
 DlgCellVerAlignMiddle	: "Centre",
 DlgCellVerAlignBottom	: "Malsupre",
@@ -340,17 +340,17 @@ DlgCellBtnSelect	: "Elekti...",
 DlgFindAndReplaceTitle	: "Find and Replace",	//MISSING
 
 // Find Dialog
-DlgFindTitle		: "Serĉi",
-DlgFindFindBtn		: "Serĉi",
+DlgFindTitle		: "Serci",
+DlgFindFindBtn		: "Serci",
 DlgFindNotFoundMsg	: "La celteksto ne estas trovita.",
 
 // Replace Dialog
-DlgReplaceTitle			: "Anstataŭigi",
-DlgReplaceFindLbl		: "Serĉi:",
-DlgReplaceReplaceLbl	: "Anstataŭigi per:",
+DlgReplaceTitle			: "Anstatauigi",
+DlgReplaceFindLbl		: "Serci:",
+DlgReplaceReplaceLbl	: "Anstatauigi per:",
 DlgReplaceCaseChk		: "Kongruigi Usklecon",
-DlgReplaceReplaceBtn	: "Anstataŭigi",
-DlgReplaceReplAllBtn	: "Anstataŭigi Ĉiun",
+DlgReplaceReplaceBtn	: "Anstatauigi",
+DlgReplaceReplAllBtn	: "Anstatauigi Ciun",
 DlgReplaceWordChk		: "Tuta Vorto",
 
 // Paste Operations / Dialog
@@ -366,7 +366,7 @@ DlgPasteIgnoreFont		: "Ignore Font Face definitions",	//MISSING
 DlgPasteRemoveStyles	: "Remove Styles definitions",	//MISSING
 
 // Color Picker
-ColorAutomatic	: "Aŭtomata",
+ColorAutomatic	: "Automata",
 ColorMoreColors	: "Pli da Koloroj...",
 
 // Document Properties
@@ -379,20 +379,20 @@ DlgAnchorErrorName	: "Bv tajpi la ankran nomon",
 
 // Speller Pages Dialog
 DlgSpellNotInDic		: "Ne trovita en la vortaro",
-DlgSpellChangeTo		: "Ŝanĝi al",
+DlgSpellChangeTo		: "Sangi al",
 DlgSpellBtnIgnore		: "Malatenti",
-DlgSpellBtnIgnoreAll	: "Malatenti Ĉiun",
-DlgSpellBtnReplace		: "Anstataŭigi",
-DlgSpellBtnReplaceAll	: "Anstataŭigi Ĉiun",
+DlgSpellBtnIgnoreAll	: "Malatenti Ciun",
+DlgSpellBtnReplace		: "Anstatauigi",
+DlgSpellBtnReplaceAll	: "Anstatauigi Ciun",
 DlgSpellBtnUndo			: "Malfari",
 DlgSpellNoSuggestions	: "- Neniu propono -",
-DlgSpellProgress		: "Literumkontrolado daŭras...",
-DlgSpellNoMispell		: "Literumkontrolado finita: neniu fuŝo trovita",
-DlgSpellNoChanges		: "Literumkontrolado finita: neniu vorto ŝanĝita",
-DlgSpellOneChange		: "Literumkontrolado finita: unu vorto ŝanĝita",
-DlgSpellManyChanges		: "Literumkontrolado finita: %1 vortoj ŝanĝitaj",
+DlgSpellProgress		: "Literumkontrolado dauras...",
+DlgSpellNoMispell		: "Literumkontrolado finita: neniu fuso trovita",
+DlgSpellNoChanges		: "Literumkontrolado finita: neniu vorto sangita",
+DlgSpellOneChange		: "Literumkontrolado finita: unu vorto sangita",
+DlgSpellManyChanges		: "Literumkontrolado finita: %1 vortoj sangitaj",
 
-IeSpellDownload			: "Literumada Kontrolilo ne instalita. Ĉu vi volas elŝuti ĝin nun?",
+IeSpellDownload			: "Literumada Kontrolilo ne instalita. Cu vi volas elsuti gin nun?",
 
 // Button Dialog
 DlgButtonText		: "Teksto (Valoro)",
@@ -435,7 +435,7 @@ DlgTextareaRows	: "Vicoj",
 // Text Field Dialog
 DlgTextName			: "Nomo",
 DlgTextValue		: "Valoro",
-DlgTextCharWidth	: "Signolarĝo",
+DlgTextCharWidth	: "Signolargo",
 DlgTextMaxChars		: "Maksimuma Nombro da Signoj",
 DlgTextType			: "Tipo",
 DlgTextTypeText		: "Teksto",
@@ -460,12 +460,12 @@ DlgLstTypeSRoman	: "Malgrandaj Romanaj Ciferoj (i, ii, iii)",
 DlgLstTypeLRoman	: "Grandaj Romanaj Ciferoj (I, II, III)",
 
 // Document Properties Dialog
-DlgDocGeneralTab	: "Ĝeneralaĵoj",
+DlgDocGeneralTab	: "Generalajoj",
 DlgDocBackTab		: "Fono",
-DlgDocColorsTab		: "Koloroj kaj Marĝenoj",
+DlgDocColorsTab		: "Koloroj kaj Margenoj",
 DlgDocMetaTab		: "Metadatumoj",
 
-DlgDocPageTitle		: "Paĝotitolo",
+DlgDocPageTitle		: "Pagotitolo",
 DlgDocLangDir		: "Skribdirekto de la Lingvo",
 DlgDocLangDirLTR	: "De maldekstro dekstren (LTR)",
 DlgDocLangDirRTL	: "De dekstro maldekstren (LTR)",
@@ -492,12 +492,12 @@ DlgDocCText			: "Teksto",
 DlgDocCLink			: "Ligilo",
 DlgDocCVisited		: "Vizitita Ligilo",
 DlgDocCActive		: "Aktiva Ligilo",
-DlgDocMargins		: "Paĝaj Marĝenoj",
+DlgDocMargins		: "Pagaj Margenoj",
 DlgDocMaTop			: "Supra",
 DlgDocMaLeft		: "Maldekstra",
 DlgDocMaRight		: "Dekstra",
 DlgDocMaBottom		: "Malsupra",
-DlgDocMeIndex		: "Ŝlosilvortoj de la Dokumento (apartigita de komoj)",
+DlgDocMeIndex		: "Slosilvortoj de la Dokumento (apartigita de komoj)",
 DlgDocMeDescr		: "Dokumenta Priskribo",
 DlgDocMeAuthor		: "Verkinto",
 DlgDocMeCopy		: "Kopirajto",

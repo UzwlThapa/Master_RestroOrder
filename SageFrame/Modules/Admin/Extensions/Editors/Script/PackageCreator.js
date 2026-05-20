@@ -1,4 +1,4 @@
-﻿var upload;
+var upload;
 var ModuleFilePath = "Modules/Admin/Extensions/Editors/";
 
 $(document).ready(function () {

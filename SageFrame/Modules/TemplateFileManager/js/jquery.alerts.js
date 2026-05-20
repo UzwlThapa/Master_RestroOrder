@@ -3,10 +3,10 @@
 // Version 1.1
 //
 // Cory S.N. LaViska
-// A Beautiful Site (http://abeautifulsite.net/)
+// A Beautiful Site (//abeautifulsite.net/)
 // 14 May 2009
 //
-// Visit http://abeautifulsite.net/notebook/87 for more information
+// Visit //abeautifulsite.net/notebook/87 for more information
 //
 // Usage:
 //		jAlert( message, [title, callback] )

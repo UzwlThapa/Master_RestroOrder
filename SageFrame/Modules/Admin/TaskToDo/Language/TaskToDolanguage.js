@@ -1,4 +1,4 @@
-﻿var TaskToDoLanguage = {
+var TaskToDoLanguage = {
     'All': 'All',
     'Previous': 'Previous',
     'Today': 'Today',

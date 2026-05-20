@@ -1,4 +1,4 @@
-﻿var companyInfo = JSON.parse(localStorage.getItem("companyInfo"));
+var companyInfo = JSON.parse(localStorage.getItem("companyInfo"));
 
 var disLimitBasicAmt = 0.00;
 var isPossible = true;
@@ -105,7 +105,7 @@ function print() {
         var DashboardFunction = {
             config: {
                 isPostBack: false,
-                async: false,
+                async: true,
                 cache: false,
                 type: 'POST',
                 contentType: "application/json; charset=utf-8",
@@ -3627,7 +3627,7 @@ function SaveAcc() {
     //alert(JSON2.stringify({ salesMaster: salesMaster, salesDetail: salesDetail, splited: splited, billingTerm: billingTerm, flatorperdiscount: discount }));
     $.ajax({
         type: "POST",
-        async: false,
+        async: true,
         cache: false,
         url: SageFrameHostURL + "/Services/RestroWebservice.asmx/SaveSales",
         data: JSON2.stringify({ salesMaster: salesMaster, salesDetail: salesDetail, splited: splited, billingTerm: billingTerm, flatorperdiscount: discount, payment: salesPayment, isFoodCourt: false }),

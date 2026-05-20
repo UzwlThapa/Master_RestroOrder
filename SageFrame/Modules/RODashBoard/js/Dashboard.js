@@ -1,4 +1,4 @@
-﻿(function ($) {
+(function ($) {
     $.companyDashboardcreate = function (p) {
         p = $.extend
              ({
@@ -9,7 +9,7 @@
         var DashboardFunction = {
             config: {
                 isPostBack: false,
-                async: false,
+                async: true,
                 cache: false,
                 type: 'POST',
                 contentType: "application/json; charset=utf-8",

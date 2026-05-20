@@ -1,4 +1,4 @@
-﻿function Print() {
+function Print() {
     var contents = $('#salesBookDiv').html();
     var frame1 = document.createElement('iframe');
     frame1.name = "frame1";
@@ -29,7 +29,7 @@
         var eventFunction = {
             config: {
                 isPostBack: false,
-                async: false,
+                async: true,
                 cache: false,
                 type: 'POST',
                 contentType: "application/json; charset=utf-8",
@@ -185,18 +185,18 @@
             },
             SetMonth: function () {
                 month[0] = "No Month";
-                month[1] = "बैशाख";
-                month[2] = "जेठ";
-                month[3] = "अषाढ";
-                month[4] = "श्रावण";
-                month[5] = "भाद्र";
-                month[6] = "आश्विन";
-                month[7] = "कार्तिक";
-                month[8] = "मङ्सिर";
-                month[9] = "पौष";
-                month[10] = "माघ";
-                month[11] = "फाल्गुन";
-                month[12] = "चैत्र";
+                month[1] = "?????";
+                month[2] = "???";
+                month[3] = "????";
+                month[4] = "??????";
+                month[5] = "?????";
+                month[6] = "??????";
+                month[7] = "???????";
+                month[8] = "??????";
+                month[9] = "???";
+                month[10] = "???";
+                month[11] = "???????";
+                month[12] = "?????";
             }
         };
         eventFunction.init();

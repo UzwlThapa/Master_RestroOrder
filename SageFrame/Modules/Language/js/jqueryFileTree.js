@@ -3,10 +3,10 @@
 // Version 1.01
 //
 // Cory S.N. LaViska
-// A Beautiful Site (http://abeautifulsite.net/)
+// A Beautiful Site (//abeautifulsite.net/)
 // 24 March 2008
 //
-// Visit http://abeautifulsite.net/notebook.php?article=58 for more information
+// Visit //abeautifulsite.net/notebook.php?article=58 for more information
 //
 // Usage: $('.fileTreeDemo').fileTree( options, callback )
 //
@@ -28,7 +28,7 @@
 // TERMS OF USE
 // 
 // jQuery File Tree is licensed under a Creative Commons License and is copyrighted (C)2008 by Cory S.N. LaViska.
-// For details, visit http://creativecommons.org/licenses/by/3.0/us/
+// For details, visit //creativecommons.org/licenses/by/3.0/us/
 //
 if(jQuery) (function($){
 	

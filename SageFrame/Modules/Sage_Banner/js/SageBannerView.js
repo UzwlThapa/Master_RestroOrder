@@ -1,4 +1,4 @@
-﻿; (function($) {
+; (function($) {
     $.View = function(p) {
         p = $.extend
         ({

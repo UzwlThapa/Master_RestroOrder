@@ -3,9 +3,9 @@
 // jquery.pajinate.js - version 0.2
 // A jQuery plugin for paginating through any number of DOM elements
 // 
-// Copyright (c) 2010, Wes Nolte (http://wesnolte.com)
+// Copyright (c) 2010, Wes Nolte (//wesnolte.com)
 // Liscensed under the MIT License (MIT-LICENSE.txt)
-// http://www.opensource.org/licenses/mit-license.php
+// //www.opensource.org/licenses/mit-license.php
 // Created: 2010-04-16 | Updated: 2010-04-26
 /*******************************************************************************************/
 

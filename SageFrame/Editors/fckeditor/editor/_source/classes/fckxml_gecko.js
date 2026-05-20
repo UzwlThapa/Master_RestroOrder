@@ -1,5 +1,5 @@
-﻿/*
- * FCKeditor - The text editor for Internet - http://www.fckeditor.net
+/*
+ * FCKeditor - The text editor for Internet - //www.fckeditor.net
  * Copyright (C) 2003-2008 Frederico Caldeira Knabben
  *
  * == BEGIN LICENSE ==
@@ -8,13 +8,13 @@
  * choice:
  *
  *  - GNU General Public License Version 2 or later (the "GPL")
- *    http://www.gnu.org/licenses/gpl.html
+ *    //www.gnu.org/licenses/gpl.html
  *
  *  - GNU Lesser General Public License Version 2.1 or later (the "LGPL")
- *    http://www.gnu.org/licenses/lgpl.html
+ *    //www.gnu.org/licenses/lgpl.html
  *
  *  - Mozilla Public License Version 1.1 or later (the "MPL")
- *    http://www.mozilla.org/MPL/MPL-1.1.html
+ *    //www.mozilla.org/MPL/MPL-1.1.html
  *
  * == END LICENSE ==
  *
@@ -54,7 +54,7 @@ FCKXml.prototype =
 			{
 				// If document.domain has been changed (#123), we'll have a security
 				// error at this point. The workaround here is parsing the responseText:
-				// http://alexander.kirk.at/2006/07/27/firefox-15-xmlhttprequest-reqresponsexml-and-documentdomain/
+				// //alexander.kirk.at/2006/07/27/firefox-15-xmlhttprequest-reqresponsexml-and-documentdomain/
 				oXml = (new DOMParser()).parseFromString( oXmlHttp.responseText, 'text/xml' ) ;
 			}
 		}

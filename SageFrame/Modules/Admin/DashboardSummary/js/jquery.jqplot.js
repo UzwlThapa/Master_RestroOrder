@@ -19,17 +19,17 @@
  *
  * The author would appreciate an email letting him know of any substantial
  * use of jqPlot.  You can reach the author at: chris at jqplot dot com 
- * or see http://www.jqplot.com/info.php.  This is, of course, not required.
+ * or see //www.jqplot.com/info.php.  This is, of course, not required.
  *
  * If you are feeling kind and generous, consider supporting the project by
- * making a donation at: http://www.jqplot.com/donate.php.
+ * making a donation at: //www.jqplot.com/donate.php.
  *
  * sprintf functions contained in jqplot.sprintf.js by Ash Searle:
  * 
  *     version 2007.04.27
  *     author Ash Searle
- *     http://hexmen.com/blog/2007/03/printf-sprintf/
- *     http://hexmen.com/js/sprintf.js
+ *     //hexmen.com/blog/2007/03/printf-sprintf/
+ *     //hexmen.com/js/sprintf.js
  *     The author (Ash Searle) has placed this code in the public domain:
  *     "This code is unrestricted: you are free to use it however you like."
  * 
@@ -392,7 +392,7 @@
     
     // canvas related tests taken from modernizer:
     // Copyright (c) 2009 - 2010 Faruk Ates.
-    // http://www.modernizr.com
+    // //www.modernizr.com
     
     $.jqplot.support_canvas = function() {
         if (typeof $.jqplot.support_canvas.result == 'undefined') {
@@ -5334,10 +5334,10 @@
     // method as presented in:
     //
     // Kruger, CJC, Constrained Cubic Spine Interpolation for Chemical Engineering Applications
-    // http://www.korf.co.uk/spline.pdf
+    // //www.korf.co.uk/spline.pdf
     //
     // The implementation below borrows heavily from the sample Visual Basic
-    // implementation by CJC Kruger found in http://www.korf.co.uk/spline.xls
+    // implementation by CJC Kruger found in //www.korf.co.uk/spline.xls
     //
     /////////
 
@@ -5450,15 +5450,15 @@
     // This implementation is derived from the one posted
     // by krypin on the jqplot-users mailing list:
     //
-    // http://groups.google.com/group/jqplot-users/browse_thread/thread/748be6a445723cea?pli=1
+    // //groups.google.com/group/jqplot-users/browse_thread/thread/748be6a445723cea?pli=1
     //
     // with a blog post:
     //
-    // http://blog.statscollector.com/a-plugin-renderer-for-jqplot-to-draw-a-hermite-spline/
+    // //blog.statscollector.com/a-plugin-renderer-for-jqplot-to-draw-a-hermite-spline/
     //
     // and download of the original plugin:
     //
-    // http://blog.statscollector.com/wp-content/uploads/2010/02/jqplot.hermiteSplineRenderer.js
+    // //blog.statscollector.com/wp-content/uploads/2010/02/jqplot.hermiteSplineRenderer.js
     //////////
 
     // called with scope of series
@@ -9396,8 +9396,8 @@
      * <pre>
      * Ken Snyder (ken d snyder at gmail dot com)
      * 2008-09-10
-     * version 2.0.2 (http://kendsnyder.com/sandbox/date/)     
-     * Creative Commons Attribution License 3.0 (http://creativecommons.org/licenses/by/3.0/)
+     * version 2.0.2 (//kendsnyder.com/sandbox/date/)     
+     * Creative Commons Attribution License 3.0 (//creativecommons.org/licenses/by/3.0/)
      * </pre>
      * 
      * @class
@@ -10873,7 +10873,7 @@
      *     precision or length of the output based on arguments instead of fixed
      *     numbers.
      *
-     *     See http://perldoc.perl.org/functions/sprintf.html for more information.
+     *     See //perldoc.perl.org/functions/sprintf.html for more information.
      *
      *     Implemented:
      *     - zero and space-padding
@@ -10895,8 +10895,8 @@
      *     @author Ash Searle 
      * 
      * You can see the original work and comments on his blog:
-     * http://hexmen.com/blog/2007/03/printf-sprintf/
-     * http://hexmen.com/js/sprintf.js
+     * //hexmen.com/blog/2007/03/printf-sprintf/
+     * //hexmen.com/js/sprintf.js
      */
      
      /**
