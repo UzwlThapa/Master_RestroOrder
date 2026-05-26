@@ -1,9 +1,9 @@
-
+Ôªø
 function IntegerAndDecimal(evt, element) {
     var charCode = (evt.which) ? evt.which : event.keyCode
 
     if ((charCode != 8) &&
-        (charCode != 46 || $(element).val().indexOf('.') != -1) &&      // ì.î CHECK DOT, AND ONLY ONE.
+        (charCode != 46 || $(element).val().indexOf('.') != -1) &&      // ‚Äú.‚Äù CHECK DOT, AND ONLY ONE.
         (charCode < 48 || charCode > 57))
         return false;
 
@@ -51,7 +51,7 @@ function IntegerAndDecimal(evt, element) {
         var DashboardFunction = {
             config: {
                 isPostBack: false,
-                async: true,
+                async: false,
                 cache: false,
                 type: 'POST',
                 contentType: "application/json; charset=utf-8",
@@ -2793,6 +2793,9 @@ function IntegerAndDecimal(evt, element) {
                 var frameDoc = frame1.contentWindow ? frame1.contentWindow : frame1.contentDocument.document ? frame1.contentDocument.document : frame1.contentDocument;
                 frameDoc.document.open();
                 frameDoc.document.write('<html><head><title></title>');
+                if (typeof billPrintStyles !== 'undefined') {
+                    frameDoc.document.write(billPrintStyles);
+                }
                 frameDoc.document.write('</head><body>');
                 frameDoc.document.write(contents);
                 frameDoc.document.write('</body>');

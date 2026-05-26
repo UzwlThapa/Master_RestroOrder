@@ -1,4 +1,4 @@
-var companyInfo = JSON.parse(localStorage.getItem("companyInfo"));
+﻿var companyInfo = JSON.parse(localStorage.getItem("companyInfo"));
 
 var disLimitBasicAmt = 0.00;
 var isPossible = true;
@@ -45,6 +45,9 @@ function print() {
     var frameDoc = frame1.contentWindow ? frame1.contentWindow : frame1.contentDocument.document ? frame1.contentDocument.document : frame1.contentDocument;
     frameDoc.document.open();
     frameDoc.document.write('<html><head><title></title>');
+    if (typeof billPrintStyles !== 'undefined') {
+        frameDoc.document.write(billPrintStyles);
+    }
     frameDoc.document.write('</head><body>');
     frameDoc.document.write(contents);
     frameDoc.document.write('</body>');
@@ -105,7 +108,7 @@ function print() {
         var DashboardFunction = {
             config: {
                 isPostBack: false,
-                async: true,
+                async: false,
                 cache: false,
                 type: 'POST',
                 contentType: "application/json; charset=utf-8",
@@ -3627,7 +3630,7 @@ function SaveAcc() {
     //alert(JSON2.stringify({ salesMaster: salesMaster, salesDetail: salesDetail, splited: splited, billingTerm: billingTerm, flatorperdiscount: discount }));
     $.ajax({
         type: "POST",
-        async: true,
+        async: false,
         cache: false,
         url: SageFrameHostURL + "/Services/RestroWebservice.asmx/SaveSales",
         data: JSON2.stringify({ salesMaster: salesMaster, salesDetail: salesDetail, splited: splited, billingTerm: billingTerm, flatorperdiscount: discount, payment: salesPayment, isFoodCourt: false }),
