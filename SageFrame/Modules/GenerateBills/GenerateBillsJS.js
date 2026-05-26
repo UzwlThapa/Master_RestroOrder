@@ -45,6 +45,9 @@ function print() {
     var frameDoc = frame1.contentWindow ? frame1.contentWindow : frame1.contentDocument.document ? frame1.contentDocument.document : frame1.contentDocument;
     frameDoc.document.open();
     frameDoc.document.write('<html><head><title></title>');
+    if (typeof billPrintStyles !== 'undefined') {
+        frameDoc.document.write(billPrintStyles);
+    }
     frameDoc.document.write('</head><body>');
     frameDoc.document.write(contents);
     frameDoc.document.write('</body>');
