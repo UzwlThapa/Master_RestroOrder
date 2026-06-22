@@ -24,6 +24,17 @@ namespace SageFrame.RestroOrder
         public string Customer { get; set; }
     }
 
+    public class ItemSalesReport
+    {
+        public string ItemName   { get; set; }
+        public string Category   { get; set; }
+        public decimal Quantity  { get; set; }
+        public decimal UnitPrice { get; set; }
+        public decimal Discount  { get; set; }
+        public decimal NetAmount { get; set; }
+        public string ITUnit     { get; set; }
+    }
+
     public class StockReport
     {
         public string ItemID { get; set; }

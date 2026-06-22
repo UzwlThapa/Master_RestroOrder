@@ -7,6 +7,7 @@ using System.Web.Services.Protocols;
 using System.Collections.Generic;
 using SageFrame.RestroOrder;
 using Newtonsoft.Json;
+using System.Globalization;
 
 [WebService(Namespace = "http://tempuri.org/")]
 [WebServiceBinding(ConformsTo = WsiProfiles.BasicProfile1_1)]
@@ -28,7 +29,7 @@ public class wsDashboardSummary : System.Web.Services.WebService
     [WebMethod]
     public DailyClosingReport GenerateDayClosingReport()
     {
-        return con.GenerateDayClosingReport(DateTime.Now.ToString(), false);
+        return con.GenerateDayClosingReport(DateTime.Now.ToString("yyyy-MM-dd"), false);
     }
 
     [WebMethod]
@@ -42,15 +43,46 @@ public class wsDashboardSummary : System.Web.Services.WebService
     public void GenerateXLDashboard(string period)
     {
         if (string.IsNullOrEmpty(period))
-        {
             throw new Exception("Period is not provided");
+
+        DateTime parsedDate;
+        string[] formats = { "yyyyMMdd", "yyyy-MM-dd", "MM/dd/yyyy", "M/d/yyyy", "dd/MM/yyyy" };
+        if (!DateTime.TryParseExact(period, formats, CultureInfo.InvariantCulture, DateTimeStyles.None, out parsedDate))
+        {
+            // Log the error (optional) and fallback to today
+            parsedDate = DateTime.Today;
+            // You could also log to a file or event log, but we'll just use today.
         }
-        string reportDate = (period == null || period == "") ? DateTime.Now.ToString("yyyyMMdd", System.Globalization.CultureInfo.GetCultureInfo("en-US")) : period;
+        string safeDate = parsedDate.ToString("yyyyMMdd");
+
         string templateBasePath = System.IO.Path.GetFullPath(Server.MapPath(@"~/Documents/XLSX"));
-        Hangfire.BackgroundJob.Enqueue(() => dailyController.SendMail(reportDate, templateBasePath));
-        
-        //dailyController.SendMail(reportDate, templateBasePath);
+        Hangfire.BackgroundJob.Enqueue(() => dailyController.SendMail(safeDate, templateBasePath));
     }
+
+    // wsDashboardSummary.asmx — add this WebMethod
+    [WebMethod]
+    public string ResendDailyReport(string date)
+    {
+        try
+        {
+            if (string.IsNullOrEmpty(date))
+                date = DateTime.Today.ToString("yyyyMMdd");
+
+            string templateBasePath = System.IO.Path.GetFullPath(Server.MapPath(@"~/Documents/XLSX"));
+            
+            // Enqueue as a new Hangfire background job
+            string jobId = Hangfire.BackgroundJob.Enqueue(
+                () => dailyController.SendMail(date, templateBasePath));
+
+            // REPLACED interpolation with concatenation (C# 5 compatible)
+            return "Resend job queued. Job ID: " + jobId;
+        }
+        catch (Exception ex)
+        {
+            return "Error: " + ex.Message;
+        }
+    }
+
     [WebMethod]
     public string CheckPinCodeMatch(string PinCode,string username)
     {
@@ -79,5 +111,4 @@ public class wsDashboardSummary : System.Web.Services.WebService
         List<OccupiedTables> tables = fnt.getOccupiedTableList();
         return JsonConvert.SerializeObject(tables);
     }
-
 }

@@ -1,0 +1,12 @@
+[2026-06-22 17:10:36] SendMail called with date: '20260622' -> parsed as 20260622
+[2026-06-22 17:10:36] File not found, generating: G:\Danfe\Restro_Order_Code\Master_RestroOrder\SageFrame\Documents\XLSX\RestroOrder_Daily_Report_AsOf_20260622.xlsx
+[2026-06-22 17:10:36] Template found at: G:\Danfe\Restro_Order_Code\Master_RestroOrder\SageFrame\Documents\XLSX\RestroOrder_Daily_Report_AsOf_Template.xlsx
+[2026-06-22 17:10:36] GenerateXlsxFile called with date: 20260622 -> parsed as 20260622
+[2026-06-22 17:10:37] File generated successfully.
+[22/06/2026 17:10:42] Mail sent OK for 20260622 (attempt 1) from Cafe Bella
+[2026-06-22 17:39:48] SendMail called with date: '20260622' -> parsed as 20260622
+[2026-06-22 17:39:48] File not found, generating: G:\Danfe\Restro_Order_Code\Master_RestroOrder\SageFrame\Documents\XLSX\RestroOrder_Daily_Report_AsOf_20260622.xlsx
+[2026-06-22 17:39:48] Template found at: G:\Danfe\Restro_Order_Code\Master_RestroOrder\SageFrame\Documents\XLSX\RestroOrder_Daily_Report_AsOf_Template.xlsx
+[2026-06-22 17:39:48] GenerateXlsxFile called with date: 20260622 -> parsed as 20260622
+[2026-06-22 17:39:49] File generated successfully.
+[22/06/2026 17:39:54] Mail sent OK for 20260622 (attempt 1) from Cafe Bella

@@ -1,5 +1,5 @@
 ﻿function IntegerAndDecimal(evt, element) {
-    var charCode = (evt.which) ? evt.which : event.keyCode
+    var charCode = evt.which || evt.keyCode;
 
     if ((charCode != 8) &&
         (charCode != 46 || $(element).val().indexOf('.') != -1) &&      // “.” CHECK DOT, AND ONLY ONE.
@@ -310,15 +310,37 @@
             },
             CloseTheDay: function () {
                 var financialID = $('#hdfFinancialID').val();
-                var splitdate = $('#hdfPeriod').val().split(' ')[0].split('/');
-                var cashSettlement = parseFloat($('#txtCashSettlement').val());
-                var formattedMomth = ("0" + splitdate[0]).slice(-2);
-                var formattedDay = ("0" + splitdate[1]).slice(-2);
-                var period = String(splitdate[2]) + String(formattedMomth) + String(formattedDay);
+                var rawPeriod = $('#hdfPeriod').val().split(' ')[0];   // "2026-06-22"
+                var periodParts = rawPeriod.split('-');
+                var period;
+                if (periodParts.length === 3) {
+                    // yyyy-MM-dd → yyyyMMdd
+                    period = periodParts[0] + periodParts[1] + periodParts[2];
+                } else {
+                    // fallback: reformat using Date object
+                    var d = new Date(rawPeriod);
+                    var mm = String(d.getMonth() + 1).padStart(2, '0');
+                    var dd = String(d.getDate()).padStart(2, '0');
+                    period = d.getFullYear() + mm + dd;
+                }
+
+                var cashSettlement = parseFloat($('#txtCashSettlement').val()) || 0;
+                var cashinCounter = parseFloat($('#txtCashInCounter').val()) || 0;
+                var closingBalance = parseFloat($('#txtClosingBalance').val()) || 0;
+                var totalexpenses = parseFloat($('#txtExpenses').val()) || 0;
+                var remarks = $('#txtRemarks').val() || '';
 
                 eventFunction.config.method = "CloseTheDay";
                 eventFunction.config.url = eventFunction.config.baseURL + eventFunction.config.method;
-                eventFunction.config.data = JSON2.stringify({ financialID: financialID, period: period, cashSettlement: cashSettlement })
+                eventFunction.config.data = JSON2.stringify({
+                    financialID: financialID,
+                    period: period,
+                    cashSettlement: cashSettlement,
+                    cashinCounter: cashinCounter,
+                    closingBalance: closingBalance,
+                    totalexpenses: totalexpenses,
+                    remarks: remarks
+                });
                 eventFunction.config.ajaxCallMode = 7;
                 eventFunction.ajaxCall(eventFunction.config);
             },

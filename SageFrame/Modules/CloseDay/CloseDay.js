@@ -1,5 +1,5 @@
 ﻿function IntegerAndDecimal(evt, element) {
-    var charCode = (evt.which) ? evt.which : event.keyCode
+    var charCode = evt.which || evt.keyCode;
 
     if ((charCode != 8) &&
         (charCode != 46 || $(element).val().indexOf('.') != -1) &&      // “.” CHECK DOT, AND ONLY ONE.

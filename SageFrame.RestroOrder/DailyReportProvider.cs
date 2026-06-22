@@ -113,6 +113,13 @@ namespace SageFrame.RestroOrder
             return CashDenominationList[0];
         }
 
+        internal List<ItemSalesReport> GetDailyItemSalesForMail(string period)
+        {
+            List<KeyValuePair<string, object>> Param = new List<KeyValuePair<string, object>>();
+            Param.Add(new KeyValuePair<string, object>("@date", period));
+            return sqlHandler.ExecuteAsList<ItemSalesReport>("[usp_ro_dailyItemSalesForMail]", Param);
+        }
+
         internal string Mailkey(string MailKey)
         {
             List<KeyValuePair<string, object>> Parameter = new List<KeyValuePair<string, object>>();

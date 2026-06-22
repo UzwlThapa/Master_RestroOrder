@@ -9,6 +9,7 @@ using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Mail;
+using System.Reflection;
 using System.Security.Cryptography;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -18,28 +19,136 @@ namespace SageFrame.RestroOrder
 {
     public class DailyReportController
     {
-    private DailyReportProvider dailyReportProvider;
-    private RestrOrderProvider restroOrderProvider;
+        private DailyReportProvider dailyReportProvider;
+        private RestrOrderProvider restroOrderProvider;
+
+        // Maps the sheet name shown in the Table Of Contents to its TOC row,
+        // used to generate both the TOC links and the per-sheet "back" link.
+        private static readonly (string SheetName, int TocRow)[] TocEntries = new[]
+        {
+            ("Summary", 10),
+            ("Daily Sales Report", 11),
+            ("Item Sales Report", 12),
+            ("Card Transactions", 13),
+            ("Cheque Transactions", 14),
+            ("Credit Collection", 15),
+            ("Daily Purchase Report", 16),
+            ("Daily Stock Report", 17),
+            ("Customers", 18),
+            ("Vendors", 19),
+        };
+
         public DailyReportController()
         {
             dailyReportProvider = new DailyReportProvider();
             restroOrderProvider = new RestrOrderProvider();
         }
+
+        /// <summary>
+        /// Locates the Excel template file by searching several common locations.
+        /// Logs all attempts and throws if not found.
+        /// </summary>
+        private string ResolveTemplatePath(string templateBasePath, string logPath)
+        {
+            string templateFileName = "RestroOrder_Daily_Report_AsOf_Template.xlsx";
+
+            var candidates = new List<string>();
+            candidates.Add(Path.Combine(templateBasePath, templateFileName));
+
+            string assemblyDir = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+            if (assemblyDir != null)
+            {
+                candidates.Add(Path.Combine(assemblyDir, templateFileName));
+                candidates.Add(Path.Combine(assemblyDir, "Documents", "XLSX", templateFileName));
+            }
+
+            string appBase = AppDomain.CurrentDomain.BaseDirectory;
+            candidates.Add(Path.Combine(appBase, templateFileName));
+            candidates.Add(Path.Combine(appBase, "Documents", "XLSX", templateFileName));
+            candidates.Add(Path.Combine(appBase, "..", "Documents", "XLSX", templateFileName));
+
+            if (assemblyDir != null)
+            {
+                string dir = assemblyDir;
+                for (int i = 0; i < 4; i++)
+                {
+                    dir = Path.GetDirectoryName(dir);
+                    if (string.IsNullOrEmpty(dir)) break;
+                    candidates.Add(Path.Combine(dir, "Documents", "XLSX", templateFileName));
+                }
+            }
+
+            foreach (var path in candidates)
+            {
+                try
+                {
+                    string normalized = Path.GetFullPath(path);
+                    if (File.Exists(normalized))
+                    {
+                        File.AppendAllText(logPath,
+                            "[" + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "] Template found at: " + normalized + "\n");
+                        return normalized;
+                    }
+                }
+                catch { /* skip invalid paths */ }
+            }
+
+            var tried = string.Join("\n  ", candidates.Select(p =>
+            { try { return Path.GetFullPath(p); } catch { return p; } }));
+            string error = "Template '" + templateFileName + "' not found. Searched:\n  " + tried;
+            File.AppendAllText(logPath,
+                "[" + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "] ERROR: " + error + "\n");
+
+            throw new FileNotFoundException(error, templateFileName);
+        }
+
+        /// <summary>
+        /// Writes a live worksheet hyperlink into the Table Of Contents row for the given sheet
+        /// and styles it as a link (blue, underlined). Re-created on every run, so it can never
+        /// go stale even if sheet names change later.
+        /// </summary>
+        private void CreateTocLink(ExcelWorksheet toc, int row, string targetSheet)
+        {
+            var cell = toc.Cells["E" + row];
+            cell.Hyperlink = new ExcelHyperLink("'" + targetSheet + "'!A1", targetSheet);
+            cell.Style.Font.UnderLine = true;
+            cell.Style.Font.Color.SetColor(Color.Blue);
+        }
+
+        /// <summary>
+        /// Attaches a "back to contents" hyperlink to A1 of a report sheet. The template already
+        /// contains the "&lt; Back" label text and styling in A1 — this only wires up the link.
+        /// </summary>
+        private void AddBackLink(ExcelWorksheet ws)
+        {
+            var cell = ws.Cells["A1"];
+            cell.Hyperlink = new ExcelHyperLink("'Table Of Contents'!A1", "Table Of Contents");
+        }
+
         public void GenerateXlsxFile(string date, string templateBasePath)
         {
-            StringBuilder sb = new StringBuilder();
-            foreach (Match m in Regex.Matches(date, @"\d"))
+            if (!Directory.Exists(templateBasePath))
+                Directory.CreateDirectory(templateBasePath);
+
+            string logPath = Path.Combine(templateBasePath, "MailLog.txt");
+            string templatePath = ResolveTemplatePath(templateBasePath, logPath);
+
+            DateTime reportDate;
+            string[] formats = { "yyyyMMdd", "yyyy-MM-dd", "MM/dd/yyyy", "M/d/yyyy", "dd/MM/yyyy" };
+            if (!DateTime.TryParseExact(date, formats, CultureInfo.InvariantCulture, DateTimeStyles.None, out reportDate))
             {
-                sb.Append(m);
+                reportDate = DateTime.Today;
+                File.AppendAllText(logPath,
+                    "[" + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "] WARNING: Could not parse '" + date + "', using today (" + reportDate.ToString("yyyyMMdd") + ").\n");
             }
-            string result = sb.ToString();
-            //string date = DateTime.Now.AddMonths(-2).AddDays(-1).ToString("yyyyMMdd", System.Globalization.CultureInfo.GetCultureInfo("en-US"));
-            DateTime reportDate = new DateTime(
-                Convert.ToInt32(result.Substring(0, 4)),
-                Convert.ToInt32(result.Substring(4, 2)),
-                Convert.ToInt32(result.Substring(6, 2))
-                );
-            var templatePath = templateBasePath + "\\RestroOrder_Daily_Report_AsOf_Template.xlsx";
+            else
+            {
+                File.AppendAllText(logPath,
+                    "[" + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "] GenerateXlsxFile called with date: " + date + " -> parsed as " + reportDate.ToString("yyyyMMdd") + "\n");
+            }
+
+            string safeDate = reportDate.ToString("yyyyMMdd");
+
             using (ExcelPackage p = new ExcelPackage())
             {
                 using (FileStream stream = new FileStream(templatePath, FileMode.Open))
@@ -47,19 +156,40 @@ namespace SageFrame.RestroOrder
                     p.Load(stream);
                     ExcelWorksheet worksheetTOC = p.Workbook.Worksheets["Table Of Contents"];
                     worksheetTOC.Cells["D6"].Value = reportDate.ToLongDateString();
+
                     ExcelWorksheet worksheetSummary = p.Workbook.Worksheets["Summary"];
-                    //worksheetSummary.Cells["D6"].Value = DateTime.Now.AddMonths(-2).AddDays(-1).ToLongDateString();
                     ExcelWorksheet worksheetCard = p.Workbook.Worksheets["Card Transactions"];
                     ExcelWorksheet worksheetCheque = p.Workbook.Worksheets["Cheque Transactions"];
-                    ExcelWorksheet worksheetCredit = p.Workbook.Worksheets["Cheque Transactions"];
                     ExcelWorksheet worksheetSales = p.Workbook.Worksheets["Daily Sales Report"];
-                    //worksheetSummary.Cells["D5"].Value = DateTime.Now.AddMonths(-2).AddDays(-1).ToLongDateString();
                     ExcelWorksheet worksheetStocks = p.Workbook.Worksheets["Daily Stock Report"];
                     ExcelWorksheet worksheetCreditors = p.Workbook.Worksheets["Customers"];
                     ExcelWorksheet worksheetVendors = p.Workbook.Worksheets["Vendors"];
                     ExcelWorksheet worksheetPurchase = p.Workbook.Worksheets["Daily Purchase Report"];
                     ExcelWorksheet worksheetCreditCollection = p.Workbook.Worksheets["Credit Collection"];
-                    List<CreditPayReport> creditCollectionList = getCreditPayReportByDates(DateTime.ParseExact(date, "yyyyMMdd", CultureInfo.InvariantCulture), DateTime.ParseExact(date, "yyyyMMdd", CultureInfo.InvariantCulture), true);
+                    ExcelWorksheet worksheetItemSales = p.Workbook.Worksheets["Item Sales Report"];
+                    // NOTE: the old "worksheetCredit" variable was a duplicate reference to
+                    // "Cheque Transactions" and was never used anywhere — removed.
+
+                    // ---- Table Of Contents: generate real hyperlinks every run ----
+                    foreach (var entry in TocEntries)
+                        CreateTocLink(worksheetTOC, entry.TocRow, entry.SheetName);
+
+                    // ---- Every report sheet: wire up the "< Back" link in A1 ----
+                    AddBackLink(worksheetSummary);
+                    AddBackLink(worksheetSales);
+                    AddBackLink(worksheetItemSales);
+                    AddBackLink(worksheetCard);
+                    AddBackLink(worksheetCheque);
+                    AddBackLink(worksheetStocks);
+                    AddBackLink(worksheetCreditCollection);
+                    AddBackLink(worksheetPurchase);
+                    AddBackLink(worksheetCreditors);
+                    AddBackLink(worksheetVendors);
+
+                    // Credit Collection
+                    List<CreditPayReport> creditCollectionList = getCreditPayReportByDates(
+                        DateTime.ParseExact(safeDate, "yyyyMMdd", CultureInfo.InvariantCulture),
+                        DateTime.ParseExact(safeDate, "yyyyMMdd", CultureInfo.InvariantCulture), true);
                     int rowIdex = 10;
                     foreach (CreditPayReport row in creditCollectionList)
                     {
@@ -71,20 +201,20 @@ namespace SageFrame.RestroOrder
                         worksheetCreditCollection.Cells["H" + rowIdex].Value = row.AddedBy;
                         rowIdex++;
                     }
-                    //Border
                     using (ExcelRange Rng = worksheetCreditCollection.Cells[10, 4, rowIdex, 8])
                     {
                         var border = Rng.Style.Border;
                         border.Top.Style = border.Left.Style = border.Bottom.Style = border.Right.Style = ExcelBorderStyle.Thin;
                         var dataFont = Rng.Style.Font;
-                        dataFont.SetFromFont(new Font("Calibri", 8)); //Do this first
+                        dataFont.SetFromFont(new Font("Calibri", 8));
                     }
-                    //Bold
                     using (ExcelRange Rng = worksheetCreditCollection.Cells[rowIdex, 4, rowIdex, 8])
                     {
                         var dataFont = Rng.Style.Font;
-                        dataFont.SetFromFont(new Font("Calibri", 10)); //Do this first
+                        dataFont.SetFromFont(new Font("Calibri", 10));
                         dataFont.Bold = true;
+                        Rng.Style.Fill.PatternType = ExcelFillStyle.Solid;
+                        Rng.Style.Fill.BackgroundColor.SetColor(Color.LightGray);
                     }
                     if (creditCollectionList.Count > 0)
                     {
@@ -92,7 +222,11 @@ namespace SageFrame.RestroOrder
                         worksheetCreditCollection.Cells["G" + (rowIdex).ToString()].Formula = "SUM(G10:G" + (rowIdex - 1).ToString() + ")";
                         worksheetCreditCollection.Cells["G" + (rowIdex).ToString()].Style.Numberformat.Format = "###,###,##0.00";
                     }
-                    List<dailyreport> purchaseList = getdailyReportByReportNumber(DateTime.ParseExact(date, "yyyyMMdd", CultureInfo.InvariantCulture), DateTime.ParseExact(date, "yyyyMMdd", CultureInfo.InvariantCulture), 4); //4 for purchase report
+
+                    // Purchase Report
+                    List<dailyreport> purchaseList = getdailyReportByReportNumber(
+                        DateTime.ParseExact(safeDate, "yyyyMMdd", CultureInfo.InvariantCulture),
+                        DateTime.ParseExact(safeDate, "yyyyMMdd", CultureInfo.InvariantCulture), 4); //4 for purchase report
                     rowIdex = 10;
                     foreach (dailyreport row in purchaseList)
                     {
@@ -114,22 +248,20 @@ namespace SageFrame.RestroOrder
                         worksheetPurchase.Cells["P" + rowIdex].Value = row.PostedOn;
                         rowIdex++;
                     }
-                    //Border
                     using (ExcelRange Rng = worksheetPurchase.Cells[10, 4, rowIdex, 16])
                     {
                         var border = Rng.Style.Border;
                         border.Top.Style = border.Left.Style = border.Bottom.Style = border.Right.Style = ExcelBorderStyle.Thin;
                         var dataFont = Rng.Style.Font;
-                        dataFont.SetFromFont(new Font("Calibri", 8)); //Do this first
+                        dataFont.SetFromFont(new Font("Calibri", 8));
                     }
-                    //Bold
                     using (ExcelRange Rng = worksheetPurchase.Cells[rowIdex, 4, rowIdex, 16])
                     {
-                        //Rng.Value = "Welcome to Everyday be coding - tutorials for beginners";
-                        //Rng.Style.Font.Size = 30;
                         var dataFont = Rng.Style.Font;
-                        dataFont.SetFromFont(new Font("Calibri", 10)); //Do this first
+                        dataFont.SetFromFont(new Font("Calibri", 10));
                         dataFont.Bold = true;
+                        Rng.Style.Fill.PatternType = ExcelFillStyle.Solid;
+                        Rng.Style.Fill.BackgroundColor.SetColor(Color.LightGray);
                     }
                     if (purchaseList.Count > 0)
                     {
@@ -138,9 +270,8 @@ namespace SageFrame.RestroOrder
                         worksheetPurchase.Cells["M" + (rowIdex).ToString()].Style.Numberformat.Format = "###,###,##0.00";
                     }
 
-
-
-                    List<SalesReport> salesList = GenerateDailySalesReport(date);
+                    // Daily Sales Report
+                    List<SalesReport> salesList = GenerateDailySalesReport(safeDate);
                     rowIdex = 10;
                     foreach (SalesReport row in salesList)
                     {
@@ -172,22 +303,20 @@ namespace SageFrame.RestroOrder
                         worksheetSales.Cells["R" + rowIdex].Value = row.Customer;
                         rowIdex++;
                     }
-                    //Border
                     using (ExcelRange Rng = worksheetSales.Cells[10, 4, rowIdex, 18])
                     {
                         var border = Rng.Style.Border;
                         border.Top.Style = border.Left.Style = border.Bottom.Style = border.Right.Style = ExcelBorderStyle.Thin;
                         var dataFont = Rng.Style.Font;
-                        dataFont.SetFromFont(new Font("Calibri", 8)); //Do this first
+                        dataFont.SetFromFont(new Font("Calibri", 8));
                     }
-                    //Bold
                     using (ExcelRange Rng = worksheetSales.Cells[rowIdex, 4, rowIdex, 18])
                     {
-                        //Rng.Value = "Welcome to Everyday be coding - tutorials for beginners";
-                        //Rng.Style.Font.Size = 30;
                         var dataFont = Rng.Style.Font;
-                        dataFont.SetFromFont(new Font("Calibri", 10)); //Do this first
+                        dataFont.SetFromFont(new Font("Calibri", 10));
                         dataFont.Bold = true;
+                        Rng.Style.Fill.PatternType = ExcelFillStyle.Solid;
+                        Rng.Style.Fill.BackgroundColor.SetColor(Color.LightGray);
                     }
                     if (salesList.Count > 0)
                     {
@@ -216,7 +345,8 @@ namespace SageFrame.RestroOrder
                         worksheetSales.Cells["P" + (rowIdex).ToString()].Style.Numberformat.Format = "###,###,##0.00";
                     }
 
-                    List<SalesReport> dayPartSalesList = dailyReportProvider.GetDayPartWiseSalesReport(date);
+                    // Day-part sales
+                    List<SalesReport> dayPartSalesList = dailyReportProvider.GetDayPartWiseSalesReport(safeDate);
                     rowIdex = 10;
                     foreach (SalesReport row in dayPartSalesList)
                     {
@@ -265,8 +395,19 @@ namespace SageFrame.RestroOrder
                             worksheetSales.Cells["X22"].Style.Numberformat.Format = "###,###,##0.00";
                         }
                     }
+                    worksheetSales.Cells["U16"].Formula = "ROUND(U12-U13+U14+U15,2)";
+                    worksheetSales.Cells["U16"].Style.Numberformat.Format = "###,###,##0.00";
+                    worksheetSales.Cells["U23"].Formula = "ROUND(U19-U20+U21+U22,2)";
+                    worksheetSales.Cells["U23"].Style.Numberformat.Format = "###,###,##0.00";
+                    worksheetSales.Cells["X16"].Formula = "ROUND(X12-X13+X14+X15,2)";
+                    worksheetSales.Cells["X16"].Style.Numberformat.Format = "###,###,##0.00";
+                    worksheetSales.Cells["X23"].Formula = "ROUND(X19+X20+X21+X22,2)";
+                    worksheetSales.Cells["X23"].Style.Numberformat.Format = "###,###,##0.00";
 
-                    List<providersReport> cardSalesList = getAllProvidersReport(DateTime.ParseExact(date, "yyyyMMdd", CultureInfo.InvariantCulture), DateTime.ParseExact(date, "yyyyMMdd", CultureInfo.InvariantCulture), 3, 0);
+                    // Card Transactions
+                    List<providersReport> cardSalesList = getAllProvidersReport(
+                        DateTime.ParseExact(safeDate, "yyyyMMdd", CultureInfo.InvariantCulture),
+                        DateTime.ParseExact(safeDate, "yyyyMMdd", CultureInfo.InvariantCulture), 3, 0);
                     rowIdex = 10;
                     foreach (providersReport row in cardSalesList)
                     {
@@ -282,24 +423,20 @@ namespace SageFrame.RestroOrder
                         worksheetCard.Cells["L" + rowIdex].Style.Numberformat.Format = "###,###,##0.00";
                         rowIdex++;
                     }
-
-                    //Border
                     using (ExcelRange Rng = worksheetCard.Cells[10, 4, rowIdex, 12])
                     {
                         var border = Rng.Style.Border;
                         border.Top.Style = border.Left.Style = border.Bottom.Style = border.Right.Style = ExcelBorderStyle.Thin;
                         var dataFont = Rng.Style.Font;
-                        dataFont.SetFromFont(new Font("Calibri", 8)); //Do this first
+                        dataFont.SetFromFont(new Font("Calibri", 8));
                     }
-
-                    //Bold
                     using (ExcelRange Rng = worksheetCard.Cells[rowIdex, 4, rowIdex, 12])
                     {
-                        //Rng.Value = "Welcome to Everyday be coding - tutorials for beginners";
-                        //Rng.Style.Font.Size = 30;
                         var dataFont = Rng.Style.Font;
-                        dataFont.SetFromFont(new Font("Calibri", 10)); //Do this first
+                        dataFont.SetFromFont(new Font("Calibri", 10));
                         dataFont.Bold = true;
+                        Rng.Style.Fill.PatternType = ExcelFillStyle.Solid;
+                        Rng.Style.Fill.BackgroundColor.SetColor(Color.LightGray);
                     }
                     if (cardSalesList.Count > 0)
                     {
@@ -307,7 +444,11 @@ namespace SageFrame.RestroOrder
                         worksheetCard.Cells["L" + (rowIdex).ToString()].Formula = "SUM(L10:L" + (rowIdex - 1).ToString() + ")";
                         worksheetCard.Cells["L" + (rowIdex).ToString()].Style.Numberformat.Format = "###,###,##0.00";
                     }
-                    List<providersReport> chequeSalesList = getAllProvidersReport(DateTime.ParseExact(date, "yyyyMMdd", CultureInfo.InvariantCulture), DateTime.ParseExact(date, "yyyyMMdd", CultureInfo.InvariantCulture), 2, 0);
+
+                    // Cheque Transactions
+                    List<providersReport> chequeSalesList = getAllProvidersReport(
+                        DateTime.ParseExact(safeDate, "yyyyMMdd", CultureInfo.InvariantCulture),
+                        DateTime.ParseExact(safeDate, "yyyyMMdd", CultureInfo.InvariantCulture), 2, 0);
                     rowIdex = 10;
                     foreach (providersReport row in chequeSalesList)
                     {
@@ -323,22 +464,20 @@ namespace SageFrame.RestroOrder
                         worksheetCheque.Cells["L" + rowIdex].Style.Numberformat.Format = "###,###,##0.00";
                         rowIdex++;
                     }
-                    //Border
                     using (ExcelRange Rng = worksheetCheque.Cells[10, 4, rowIdex, 12])
                     {
                         var border = Rng.Style.Border;
                         border.Top.Style = border.Left.Style = border.Bottom.Style = border.Right.Style = ExcelBorderStyle.Thin;
                         var dataFont = Rng.Style.Font;
-                        dataFont.SetFromFont(new Font("Calibri", 8)); //Do this first
+                        dataFont.SetFromFont(new Font("Calibri", 8));
                     }
-                    //Bold
                     using (ExcelRange Rng = worksheetCheque.Cells[rowIdex, 4, rowIdex, 11])
                     {
-                        //Rng.Value = "Welcome to Everyday be coding - tutorials for beginners";
-                        //Rng.Style.Font.Size = 30;
                         var dataFont = Rng.Style.Font;
-                        dataFont.SetFromFont(new Font("Calibri", 10)); //Do this first
+                        dataFont.SetFromFont(new Font("Calibri", 10));
                         dataFont.Bold = true;
+                        Rng.Style.Fill.PatternType = ExcelFillStyle.Solid;
+                        Rng.Style.Fill.BackgroundColor.SetColor(Color.LightGray);
                     }
                     if (chequeSalesList.Count > 0)
                     {
@@ -346,7 +485,9 @@ namespace SageFrame.RestroOrder
                         worksheetCheque.Cells["L" + (rowIdex).ToString()].Formula = "SUM(L10:L" + (rowIdex - 1).ToString() + ")";
                         worksheetCheque.Cells["L" + (rowIdex).ToString()].Style.Numberformat.Format = "###,###,##0.00";
                     }
-                    List<StockReport> stockList = GenerateDailyStockReport(date);
+
+                    // Daily Stock Report
+                    List<StockReport> stockList = GenerateDailyStockReport(safeDate);
                     rowIdex = 10;
                     foreach (StockReport row in stockList)
                     {
@@ -358,76 +499,66 @@ namespace SageFrame.RestroOrder
                         worksheetStocks.Cells["I" + rowIdex].Value = row.Symbol;
                         rowIdex++;
                     }
-                    //Border and font
                     using (ExcelRange Rng = worksheetStocks.Cells[10, 4, rowIdex, 9])
                     {
                         var border = Rng.Style.Border;
                         border.Top.Style = border.Left.Style = border.Bottom.Style = border.Right.Style = ExcelBorderStyle.Thin;
                         var dataFont = Rng.Style.Font;
-                        dataFont.SetFromFont(new Font("Calibri", 8)); //Do this first
+                        dataFont.SetFromFont(new Font("Calibri", 8));
                     }
 
-                    List<SummaryReport> summaryReportList = GenerateDailySummaryReport(date);
+                    // Summary Report
+                    List<SummaryReport> summaryReportList = GenerateDailySummaryReport(safeDate);
                     rowIdex = 9;
                     foreach (SummaryReport row in summaryReportList)
                     {
-                        worksheetSummary.Cells["E9"].Value = row.OpeningBalance;
-                        worksheetSummary.Cells["E9"].Style.Numberformat.Format = "###,###,##0.00";
-                        worksheetSummary.Cells["E10"].Value = row.Cash;
-                        worksheetSummary.Cells["E11"].Style.Numberformat.Format = "###,###,##0.00";
-                        worksheetSummary.Cells["E12"].Value = row.Card;
-                        worksheetSummary.Cells["E10"].Style.Numberformat.Format = "###,###,##0.00";
-                        worksheetSummary.Cells["E11"].Value = row.Cheque;
-                        worksheetSummary.Cells["E12"].Style.Numberformat.Format = "###,###,##0.00";
-                        worksheetSummary.Cells["E13"].Value = row.Credit;
-                        worksheetSummary.Cells["E13"].Style.Numberformat.Format = "###,###,##0.00";
-                        
-                        worksheetSummary.Cells["E14"].Value = row.eSewa;
-                        worksheetSummary.Cells["E14"].Style.Numberformat.Format = "###,###,##0.00";
-                        
-                        worksheetSummary.Cells["E15"].Value = row.FonePay;
-                        worksheetSummary.Cells["E15"].Style.Numberformat.Format = "###,###,##0.00";
-                        
-                        worksheetSummary.Cells["E16"].Value = row.SurplusDeficit;
-                        worksheetSummary.Cells["E16"].Style.Numberformat.Format = "###,###,##0.00";
-                        worksheetSummary.Cells["E17"].Value = row.CreditCollectedInCash;
-                        worksheetSummary.Cells["E17"].Style.Numberformat.Format = "###,###,##0.00";
-                        worksheetSummary.Cells["E18"].Value = row.CreditCollectedInCard;
-                        worksheetSummary.Cells["E18"].Style.Numberformat.Format = "###,###,##0.00";
-                        worksheetSummary.Cells["E19"].Value = row.CreditCollectedInCheque;
-                        worksheetSummary.Cells["E19"].Style.Numberformat.Format = "###,###,##0.00";
-
-                        worksheetSummary.Cells["E20"].Value = row.CreditCollectedIneSewa;
-                        worksheetSummary.Cells["E20"].Style.Numberformat.Format = "###,###,##0.00";
-
-                        worksheetSummary.Cells["E21"].Value = row.CreditCollectedInFonePay;
-                        worksheetSummary.Cells["E21"].Style.Numberformat.Format = "###,###,##0.00";
-
-                        worksheetSummary.Cells["E22"].Value = row.AdvanceCollectedInCash;
-                        worksheetSummary.Cells["E22"].Style.Numberformat.Format = "###,###,##0.00";
-                        worksheetSummary.Cells["E23"].Value = row.AdvanceCollectedInCard;
-                        worksheetSummary.Cells["E23"].Style.Numberformat.Format = "###,###,##0.00";
-                        worksheetSummary.Cells["E24"].Value = row.AdvanceCollectedInCheque;
-                        worksheetSummary.Cells["E24"].Style.Numberformat.Format = "###,###,##0.00";
-
-                        worksheetSummary.Cells["E25"].Value = row.AdvanceCollectedIneSewa;
-                        worksheetSummary.Cells["E25"].Style.Numberformat.Format = "###,###,##0.00";
-
-                        worksheetSummary.Cells["E26"].Value = row.AdvanceCollectedInFonePay;
-                        worksheetSummary.Cells["E26"].Style.Numberformat.Format = "###,###,##0.00";
-
-                        worksheetSummary.Cells["E27"].Value = row.TotalCashReceived;
-                        worksheetSummary.Cells["E27"].Style.Numberformat.Format = "###,###,##0.00";
-                        worksheetSummary.Cells["E28"].Value = row.TotalExpenses;
-                        worksheetSummary.Cells["E28"].Style.Numberformat.Format = "###,###,##0.00";
-                        worksheetSummary.Cells["E29"].Value = row.CashInCounter;
-                        worksheetSummary.Cells["E29"].Style.Numberformat.Format = "###,###,##0.00";
-                        worksheetSummary.Cells["E30"].Value = row.CashSettlement;
-                        worksheetSummary.Cells["E30"].Style.Numberformat.Format = "###,###,##0.00";
-                        worksheetSummary.Cells["E31"].Value = row.ClosingBalance;
-                        worksheetSummary.Cells["E31"].Style.Numberformat.Format = "###,###,##0.00";
+                        worksheetSummary.Cells["F9"].Value = row.OpeningBalance;
+                        worksheetSummary.Cells["F9"].Style.Numberformat.Format = "###,###,##0.00";
+                        worksheetSummary.Cells["F10"].Value = row.Cash;
+                        worksheetSummary.Cells["F10"].Style.Numberformat.Format = "###,###,##0.00";
+                        worksheetSummary.Cells["F11"].Value = row.Card;
+                        worksheetSummary.Cells["F11"].Style.Numberformat.Format = "###,###,##0.00";
+                        worksheetSummary.Cells["F12"].Value = row.Cheque;
+                        worksheetSummary.Cells["F12"].Style.Numberformat.Format = "###,###,##0.00";
+                        worksheetSummary.Cells["F13"].Value = row.Credit;
+                        worksheetSummary.Cells["F13"].Style.Numberformat.Format = "###,###,##0.00";
+                        worksheetSummary.Cells["F14"].Value = row.eSewa;
+                        worksheetSummary.Cells["F14"].Style.Numberformat.Format = "###,###,##0.00";
+                        worksheetSummary.Cells["F15"].Value = row.FonePay;
+                        worksheetSummary.Cells["F15"].Style.Numberformat.Format = "###,###,##0.00";
+                        worksheetSummary.Cells["F16"].Value = row.SurplusDeficit;
+                        worksheetSummary.Cells["F16"].Style.Numberformat.Format = "###,###,##0.00";
+                        worksheetSummary.Cells["F17"].Value = row.CreditCollectedInCash;
+                        worksheetSummary.Cells["F17"].Style.Numberformat.Format = "###,###,##0.00";
+                        worksheetSummary.Cells["F18"].Value = row.CreditCollectedInCard;
+                        worksheetSummary.Cells["F18"].Style.Numberformat.Format = "###,###,##0.00";
+                        worksheetSummary.Cells["F19"].Value = row.CreditCollectedInCheque;
+                        worksheetSummary.Cells["F19"].Style.Numberformat.Format = "###,###,##0.00";
+                        worksheetSummary.Cells["F20"].Value = row.CreditCollectedIneSewa;
+                        worksheetSummary.Cells["F20"].Style.Numberformat.Format = "###,###,##0.00";
+                        worksheetSummary.Cells["F21"].Value = row.CreditCollectedInFonePay;
+                        worksheetSummary.Cells["F21"].Style.Numberformat.Format = "###,###,##0.00";
+                        worksheetSummary.Cells["F22"].Value = row.AdvanceCollectedInCash;
+                        worksheetSummary.Cells["F22"].Style.Numberformat.Format = "###,###,##0.00";
+                        worksheetSummary.Cells["F23"].Value = row.AdvanceCollectedInCard;
+                        worksheetSummary.Cells["F23"].Style.Numberformat.Format = "###,###,##0.00";
+                        worksheetSummary.Cells["F24"].Value = row.AdvanceCollectedInCheque;
+                        worksheetSummary.Cells["F24"].Style.Numberformat.Format = "###,###,##0.00";
+                        worksheetSummary.Cells["F25"].Value = row.AdvanceCollectedIneSewa;
+                        worksheetSummary.Cells["F25"].Style.Numberformat.Format = "###,###,##0.00";
+                        worksheetSummary.Cells["F26"].Value = row.AdvanceCollectedInFonePay;
+                        worksheetSummary.Cells["F26"].Style.Numberformat.Format = "###,###,##0.00";
+                        worksheetSummary.Cells["F27"].Value = row.TotalCashReceived;
+                        worksheetSummary.Cells["F27"].Style.Numberformat.Format = "###,###,##0.00";
+                        worksheetSummary.Cells["F28"].Value = row.TotalExpenses;
+                        worksheetSummary.Cells["F28"].Style.Numberformat.Format = "###,###,##0.00";
+                        worksheetSummary.Cells["F29"].Value = row.CashInCounter;
+                        worksheetSummary.Cells["F29"].Style.Numberformat.Format = "###,###,##0.00";
+                        worksheetSummary.Cells["F30"].Value = row.CashSettlement;
+                        worksheetSummary.Cells["F30"].Style.Numberformat.Format = "###,###,##0.00";
+                        worksheetSummary.Cells["F31"].Value = row.ClosingBalance;
+                        worksheetSummary.Cells["F31"].Style.Numberformat.Format = "###,###,##0.00";
                     }
-
 
                     CashDenomination deno = dailyReportProvider.GetCashDenomination();
                     worksheetSummary.Cells["H10"].Value = deno.thousand;
@@ -440,44 +571,47 @@ namespace SageFrame.RestroOrder
                     worksheetSummary.Cells["H17"].Value = deno.two;
                     worksheetSummary.Cells["H18"].Value = deno.one;
 
-
-                    List<providersReport> summaryProviders = restroOrderProvider.getSummaryProvidersReport(DateTime.ParseExact(date, "yyyyMMdd", CultureInfo.InvariantCulture), DateTime.ParseExact(date, "yyyyMMdd", CultureInfo.InvariantCulture), 0, 0); //roc.getSummaryProvidersReport(startDate, endDate, paymentMode, provider);
+                    // Provider summary
+                    List<providersReport> summaryProviders = restroOrderProvider.getSummaryProvidersReport(
+                        DateTime.ParseExact(safeDate, "yyyyMMdd", CultureInfo.InvariantCulture),
+                        DateTime.ParseExact(safeDate, "yyyyMMdd", CultureInfo.InvariantCulture), 0, 0);
                     rowIdex = 10;
                     foreach (providersReport row in summaryProviders)
                     {
-                        worksheetSummary.Cells["L" + rowIdex].Value = row.ProviderName;
-                        worksheetSummary.Cells["M" + rowIdex].Value = row.payAmount;
-                        worksheetSummary.Cells["M" + rowIdex].Style.Numberformat.Format = "###,###,##0.00";
+                        worksheetSummary.Cells["K" + rowIdex].Value = row.ProviderName;
+                        worksheetSummary.Cells["L" + rowIdex].Value = row.payAmount;
+                        worksheetSummary.Cells["L" + rowIdex].Style.Numberformat.Format = "###,###,##0.00";
                         rowIdex++;
                     }
-                    //Border and font
-                    using (ExcelRange Rng = worksheetSummary.Cells[10, 12, rowIdex, 13])
+                    using (ExcelRange Rng = worksheetSummary.Cells[10, 11, rowIdex, 12])
                     {
                         var border = Rng.Style.Border;
                         border.Top.Style = border.Left.Style = border.Bottom.Style = border.Right.Style = ExcelBorderStyle.Thin;
                         var dataFont = Rng.Style.Font;
-                        dataFont.SetFromFont(new Font("Calibri", 8)); //Do this first
+                        dataFont.SetFromFont(new Font("Calibri", 8));
                     }
 
-
-                    List<costCenterReport> summaryCostCenter = restroOrderProvider.getSummaryCostCenterReport(DateTime.ParseExact(date, "yyyyMMdd", CultureInfo.InvariantCulture), DateTime.ParseExact(date, "yyyyMMdd", CultureInfo.InvariantCulture), 0); 
+                    // Cost Center
+                    List<costCenterReport> summaryCostCenter = restroOrderProvider.getSummaryCostCenterReport(
+                        DateTime.ParseExact(safeDate, "yyyyMMdd", CultureInfo.InvariantCulture),
+                        DateTime.ParseExact(safeDate, "yyyyMMdd", CultureInfo.InvariantCulture), 0);
                     rowIdex = 10;
                     foreach (costCenterReport row in summaryCostCenter)
                     {
-                        worksheetSummary.Cells["O" + rowIdex].Value = row.CostCenterName;
-                        worksheetSummary.Cells["P" + rowIdex].Value = row.Total;
-                        worksheetSummary.Cells["P" + rowIdex].Style.Numberformat.Format = "###,###,##0.00";
+                        worksheetSummary.Cells["N" + rowIdex].Value = row.CostCenterName;
+                        worksheetSummary.Cells["O" + rowIdex].Value = row.Total;
+                        worksheetSummary.Cells["O" + rowIdex].Style.Numberformat.Format = "###,###,##0.00";
                         rowIdex++;
                     }
-                    //Border and font
-                    using (ExcelRange Rng = worksheetSummary.Cells[10, 15, rowIdex, 16])
+                    using (ExcelRange Rng = worksheetSummary.Cells[10, 14, rowIdex, 15])
                     {
                         var border = Rng.Style.Border;
                         border.Top.Style = border.Left.Style = border.Bottom.Style = border.Right.Style = ExcelBorderStyle.Thin;
                         var dataFont = Rng.Style.Font;
-                        dataFont.SetFromFont(new Font("Calibri", 8)); //Do this first
+                        dataFont.SetFromFont(new Font("Calibri", 8));
                     }
 
+                    // Creditors
                     List<CreditorBalanceReport> creditorBalanceReportList = GenerateDailyCreditorsReport();
                     rowIdex = 10;
                     foreach (CreditorBalanceReport row in creditorBalanceReportList)
@@ -493,14 +627,15 @@ namespace SageFrame.RestroOrder
                         worksheetCreditors.Cells["K" + rowIdex].Style.Numberformat.Format = "###,###,##0.00";
                         rowIdex++;
                     }
-                    //Border and font
                     using (ExcelRange Rng = worksheetCreditors.Cells[10, 4, rowIdex, 11])
                     {
                         var border = Rng.Style.Border;
                         border.Top.Style = border.Left.Style = border.Bottom.Style = border.Right.Style = ExcelBorderStyle.Thin;
                         var dataFont = Rng.Style.Font;
-                        dataFont.SetFromFont(new Font("Calibri", 8)); //Do this first
+                        dataFont.SetFromFont(new Font("Calibri", 8));
                     }
+
+                    // Vendors
                     List<CreditorBalanceReport> vendorBalanceReportList = GenerateDailyVendorsReport();
                     rowIdex = 10;
                     foreach (CreditorBalanceReport row in vendorBalanceReportList)
@@ -516,21 +651,80 @@ namespace SageFrame.RestroOrder
                         worksheetVendors.Cells["K" + rowIdex].Style.Numberformat.Format = "###,###,##0.00";
                         rowIdex++;
                     }
-                    //Border and font
                     using (ExcelRange Rng = worksheetVendors.Cells[10, 4, rowIdex, 11])
                     {
                         var border = Rng.Style.Border;
                         border.Top.Style = border.Left.Style = border.Bottom.Style = border.Right.Style = ExcelBorderStyle.Thin;
                         var dataFont = Rng.Style.Font;
-                        dataFont.SetFromFont(new Font("Calibri", 8)); //Do this first
+                        dataFont.SetFromFont(new Font("Calibri", 8));
                     }
+
+                    // Item Sales Report
+                    if (worksheetItemSales != null)
+                    {
+                        List<ItemSalesReport> itemSalesList = GetDailyItemSalesForMail(safeDate);
+                        rowIdex = 10;
+                        foreach (ItemSalesReport row in itemSalesList)
+                        {
+                            worksheetItemSales.Cells["D" + rowIdex].Value = row.Category;
+                            worksheetItemSales.Cells["E" + rowIdex].Value = row.ItemName;
+                            worksheetItemSales.Cells["F" + rowIdex].Value = row.Quantity;
+                            worksheetItemSales.Cells["F" + rowIdex].Style.Numberformat.Format = "###,###,##0.00";
+                            worksheetItemSales.Cells["G" + rowIdex].Value = row.ITUnit;
+                            worksheetItemSales.Cells["H" + rowIdex].Value = row.UnitPrice;
+                            worksheetItemSales.Cells["H" + rowIdex].Style.Numberformat.Format = "###,###,##0.00";
+                            worksheetItemSales.Cells["I" + rowIdex].Value = row.NetAmount;
+                            worksheetItemSales.Cells["I" + rowIdex].Style.Numberformat.Format = "###,###,##0.00";
+                            rowIdex++;
+                        }
+                        using (ExcelRange Rng = worksheetItemSales.Cells[10, 4, rowIdex, 9])
+                        {
+                            var border = Rng.Style.Border;
+                            border.Top.Style = border.Left.Style = border.Bottom.Style = border.Right.Style = ExcelBorderStyle.Thin;
+                            var dataFont = Rng.Style.Font;
+                            dataFont.SetFromFont(new Font("Calibri", 8));
+                        }
+                        if (itemSalesList.Count > 0)
+                        {
+                            worksheetItemSales.Cells["D" + rowIdex].Value = "Total";
+                            using (ExcelRange Rng = worksheetItemSales.Cells[rowIdex, 4, rowIdex, 9])
+                            {
+                                var dataFont = Rng.Style.Font;
+                                dataFont.SetFromFont(new Font("Calibri", 10));
+                                dataFont.Bold = true;
+                                Rng.Style.Fill.PatternType = ExcelFillStyle.Solid;
+                                Rng.Style.Fill.BackgroundColor.SetColor(Color.LightGray);
+                            }
+                            worksheetItemSales.Cells["F" + rowIdex].Formula = "SUM(F10:F" + (rowIdex - 1) + ")";
+                            worksheetItemSales.Cells["F" + rowIdex].Style.Numberformat.Format = "###,###,##0.00";
+                            worksheetItemSales.Cells["I" + rowIdex].Formula = "SUM(I10:I" + (rowIdex - 1) + ")";
+                            worksheetItemSales.Cells["I" + rowIdex].Style.Numberformat.Format = "###,###,##0.00";
+                        }
+                    }
+
+                    // ---- AutoFit every populated sheet now that all data is in, before recalculation ----
+                    foreach (var ws in p.Workbook.Worksheets)
+                    {
+                        if (ws.Dimension == null) continue;
+                        ws.Cells[ws.Dimension.Address].AutoFitColumns();
+                        for (int col = 1; col <= ws.Dimension.End.Column; col++)
+                        {
+                            if (ws.Column(col).Width > 40)
+                                ws.Column(col).Width = 40;
+                        }
+                    }
+
+                    // ---- Force Excel to recalculate on open, in case cached values go stale ----
+                    p.Workbook.CalcMode = ExcelCalcMode.Automatic;
+                    p.Workbook.FullCalcOnLoad = true;
                 }
                 p.Workbook.Calculate();
-                var outputFilePath = templateBasePath + "\\RestroOrder_Daily_Report_AsOf_" + date + ".xlsx";
+                var outputFilePath = templateBasePath + "\\RestroOrder_Daily_Report_AsOf_" + safeDate + ".xlsx";
                 Byte[] bin = p.GetAsByteArray();
-                System.IO.File.WriteAllBytes(outputFilePath, bin);
+                File.WriteAllBytes(outputFilePath, bin);
             }
         }
+
         private void AddEmails(MailMessage mail, string csvEmails, string AddIn)
         {
             MailAddressCollection emails = new MailAddressCollection();
@@ -543,10 +737,10 @@ namespace SageFrame.RestroOrder
                         mail.To.Add(new MailAddress(mails[i]));
                         break;
                     case "CC":
-                        mail.To.Add(new MailAddress(mails[i]));
+                        mail.CC.Add(new MailAddress(mails[i]));
                         break;
                     case "BCC":
-                        mail.To.Add(new MailAddress(mails[i]));
+                        mail.Bcc.Add(new MailAddress(mails[i]));
                         break;
                 }
             }
@@ -603,72 +797,164 @@ namespace SageFrame.RestroOrder
 
         public void SendMail(string date, string templateBasePath)
         {
-            List<companyInfo> companies = new List<companyInfo>();
-            companies = restroOrderProvider.getCompanyInfo();
-             
-            MailMessage mail = new MailMessage(); 
-            var MailKey = dailyReportProvider.Mailkey("MailKey");
-            var MailVal = dailyReportProvider.MailValue("MailValue");
-            MailKey = Decrypt(MailKey);
-            MailVal = Decrypt(MailVal);
-            SmtpClient smtp = new SmtpClient
+            if (!Directory.Exists(templateBasePath))
+                Directory.CreateDirectory(templateBasePath);
+            string logPath = Path.Combine(templateBasePath, "MailLog.txt");
+
+            DateTime reportDate;
+            string[] formats = { "yyyyMMdd", "yyyy-MM-dd", "MM/dd/yyyy", "M/d/yyyy", "dd/MM/yyyy" };
+            if (!DateTime.TryParseExact(date, formats, CultureInfo.InvariantCulture, DateTimeStyles.None, out reportDate))
             {
-                Host = "smtp.gmail.com",
-                Port = 587,
-                EnableSsl = true,
-                DeliveryMethod = System.Net.Mail.SmtpDeliveryMethod.Network,
-                UseDefaultCredentials = false,
-                Credentials = new NetworkCredential(MailVal, MailKey)
-            };
-        
+                reportDate = DateTime.Today;
+                File.AppendAllText(logPath,
+                    "[" + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "] WARNING: SendMail could not parse '" + date + "', using today (" + reportDate.ToString("yyyyMMdd") + ").\n");
+            }
+            else
+            {
+                File.AppendAllText(logPath,
+                    "[" + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "] SendMail called with date: '" + date + "' -> parsed as " + reportDate.ToString("yyyyMMdd") + "\n");
+            }
+            string safeDate = reportDate.ToString("yyyyMMdd");
+
+            List<companyInfo> companies = restroOrderProvider.getCompanyInfo();
+            string companyName = (companies != null && companies.Count > 0) ? companies[0].Name : "RestroOrder";
+            string safeCompanyName = Regex.Replace(companyName, @"[^\w\s\-\.]", "").Trim();
+
+            var MailKey = Decrypt(dailyReportProvider.Mailkey("MailKey"));
+            var MailVal = Decrypt(dailyReportProvider.MailValue("MailValue"));
+
+            var attachmentPath = Path.Combine(templateBasePath, "RestroOrder_Daily_Report_AsOf_" + safeDate + ".xlsx");
+            if (!File.Exists(attachmentPath))
+            {
+                File.AppendAllText(logPath,
+                    "[" + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "] File not found, generating: " + attachmentPath + "\n");
+                try
+                {
+                    GenerateXlsxFile(safeDate, templateBasePath);
+                    File.AppendAllText(logPath,
+                        "[" + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "] File generated successfully.\n");
+                }
+                catch (Exception genEx)
+                {
+                    File.AppendAllText(logPath,
+                        "[" + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "] ERROR generating file: " + genEx.Message + "\n");
+                    throw;
+                }
+            }
+
+            decimal totalSales = 0, cash = 0, card = 0, eSewa = 0, fonePay = 0;
             try
             {
-                mail.From = new MailAddress(MailVal.ToString()); 
-                AddEmails(mail, System.Configuration.ConfigurationManager.AppSettings["MailTo"].ToString(), "TO");
+                List<SummaryReport> s = GenerateDailySummaryReport(safeDate);
+                if (s.Count > 0)
+                {
+                    totalSales = s[0].TotalSales;
+                    cash = s[0].Cash;
+                    card = s[0].Card;
+                    eSewa = s[0].eSewa;
+                    fonePay = s[0].FonePay;
+                }
+            }
+            catch { /* non-fatal – mail still sends even if summary fails */ }
 
-                if (System.Configuration.ConfigurationManager.AppSettings["MailCC"].ToString() != "" && System.Configuration.ConfigurationManager.AppSettings["MailCC"].ToString().Length > 5)
-                {
-                    AddEmails(mail, System.Configuration.ConfigurationManager.AppSettings["MailCC"].ToString(), "CC");
-                }
-                mail.Subject = companies[0].Name +" - RestroOrder Daily Report - " + date;
-                string Body = "Please find the daily reports attached in this mail.<br /><br />Regards,<br />RestroOrder Team.";
-                mail.Body = Body;
-                mail.IsBodyHtml = true;
-                var attachmentPath = templateBasePath + "\\RestroOrder_Daily_Report_AsOf_" + date + ".xlsx";
-                if (!(System.IO.File.Exists(attachmentPath)))
-                {
-                    GenerateXlsxFile(date, templateBasePath);
-                }
-                mail.Attachments.Add(new Attachment(attachmentPath));
-                
-                smtp.Send(mail);
-            }
-            catch (Exception ex)
+            string body = "<html><body style='font-family:Arial,sans-serif;font-size:14px;color:#1B2A4A;'>"
+                + "<p>Dear Owner,</p>"
+                + "<p>Please find the attached <strong>Daily Report for " + reportDate.ToString("dd MMM yyyy") + "</strong> from <strong>" + safeCompanyName + "</strong>.</p>"
+                + "<table style='border-collapse:collapse;margin:12px 0;min-width:300px;'>"
+                + "<tr style='background:#1B2A4A;color:#fff;'>"
+                + "<th style='padding:8px 16px;text-align:left;'>Payment Mode</th>"
+                + "<th style='padding:8px 16px;text-align:right;'>Amount (Rs.)</th>"
+                + "</tr>"
+                + "<tr style='background:#D6E8F5;'><td style='padding:6px 16px;'>Cash</td><td style='padding:6px 16px;text-align:right;'>" + cash.ToString("N2") + "</td></tr>"
+                + "<tr><td style='padding:6px 16px;'>Card</td><td style='padding:6px 16px;text-align:right;'>" + card.ToString("N2") + "</td></tr>"
+                + "<tr style='background:#D6E8F5;'><td style='padding:6px 16px;'>eSewa</td><td style='padding:6px 16px;text-align:right;'>" + eSewa.ToString("N2") + "</td></tr>"
+                + "<tr><td style='padding:6px 16px;'>FonePay</td><td style='padding:6px 16px;text-align:right;'>" + fonePay.ToString("N2") + "</td></tr>"
+                + "<tr style='background:#1B2A4A;color:#fff;font-weight:bold;'>"
+                + "<td style='padding:8px 16px;'>Total Sales</td>"
+                + "<td style='padding:8px 16px;text-align:right;'>" + totalSales.ToString("N2") + "</td>"
+                + "</tr>"
+                + "</table>"
+                + "<p>Full details in the attached Excel report.</p>"
+                + "<p style='color:#888;font-size:12px;'>Regards,<br/>" + safeCompanyName + " — RestroOrder System</p>"
+                + "</body></html>";
+
+            const int maxRetries = 3;
+            const int delaySeconds = 30;
+            Exception lastEx = null;
+
+            for (int attempt = 1; attempt <= maxRetries; attempt++)
             {
-                throw ex;
+                SmtpClient smtp = new SmtpClient
+                {
+                    Host = "smtp.gmail.com",
+                    Port = 587,
+                    EnableSsl = true,
+                    DeliveryMethod = System.Net.Mail.SmtpDeliveryMethod.Network,
+                    UseDefaultCredentials = false,
+                    Credentials = new System.Net.NetworkCredential(MailVal, MailKey)
+                };
+                MailMessage mail = new MailMessage();
+                try
+                {
+                    mail.From = new MailAddress(MailVal, safeCompanyName);
+                    mail.Subject = safeCompanyName + " - RestroOrder Daily Report - " + reportDate.ToString("dd MMM yyyy");
+                    mail.Body = body;
+                    mail.IsBodyHtml = true;
+
+                    mail.Headers.Add("X-Mailer", "RestroOrder System");
+                    mail.Headers.Add("Message-ID", "<" + safeDate + "." + Guid.NewGuid().ToString("N") + "@restroorder.com>");
+                    mail.Priority = MailPriority.Normal;
+
+                    AddEmails(mail, System.Configuration.ConfigurationManager.AppSettings["MailTo"].ToString(), "TO");
+
+                    string cc = System.Configuration.ConfigurationManager.AppSettings["MailCC"] ?? "";
+                    if (cc.Length > 5)
+                        AddEmails(mail, cc, "CC");
+
+                    mail.Attachments.Add(new Attachment(attachmentPath));
+                    smtp.Send(mail);
+
+                    File.AppendAllText(logPath,
+                        "[" + DateTime.Now.ToString() + "] Mail sent OK for " + safeDate + " (attempt " + attempt.ToString() + ") from " + safeCompanyName + "\r\n");
+                    return;
+                }
+                catch (Exception ex)
+                {
+                    lastEx = ex;
+                    File.AppendAllText(logPath,
+                        "[" + DateTime.Now.ToString() + "] Attempt " + attempt.ToString() + "/" + maxRetries.ToString() + " FAILED for " + safeDate + ": " + ex.Message + "\r\n");
+                    if (attempt < maxRetries)
+                        System.Threading.Thread.Sleep(delaySeconds * 1000);
+                }
+                finally
+                {
+                    mail.Dispose();
+                    smtp.Dispose();
+                }
             }
-            finally
-            {
-                mail.Dispose();
-                smtp.Dispose();
-            }
+            throw new Exception("Mail failed after " + maxRetries.ToString() + " attempts for " + safeDate + ". See MailLog.txt.", lastEx);
         }
+
         public List<SalesReport> GenerateDailySalesReport(string period)
         {
             return dailyReportProvider.GenerateDailySalesReport(period);
         }
+
         public List<StockReport> GenerateDailyStockReport(string period)
         {
             return dailyReportProvider.GenerateDailyStockReport(period);
         }
+
         public List<SummaryReport> GenerateDailySummaryReport(string period)
         {
             return dailyReportProvider.GenerateDailySummaryReport(period);
         }
+
         public List<CreditorBalanceReport> GenerateDailyCreditorsReport()
         {
             return dailyReportProvider.GenerateDailyCreditorsReport();
         }
+
         public List<CreditorBalanceReport> GenerateDailyVendorsReport()
         {
             return dailyReportProvider.GenerateDailyVendorsReport();
@@ -683,9 +969,15 @@ namespace SageFrame.RestroOrder
         {
             return dailyReportProvider.getdailyReportByReportNumber(startdate, enddate, ReportNum);
         }
+
         public List<providersReport> getAllProvidersReport(DateTime startDate, DateTime endDate, int paymentMode, int provider)
         {
             return dailyReportProvider.getAllProvidersReport(startDate, endDate, paymentMode, provider);
+        }
+
+        public List<ItemSalesReport> GetDailyItemSalesForMail(string period)
+        {
+            return dailyReportProvider.GetDailyItemSalesForMail(period);
         }
     }
 }
