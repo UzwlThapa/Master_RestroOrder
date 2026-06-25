@@ -22,22 +22,6 @@ namespace SageFrame.RestroOrder
         private DailyReportProvider dailyReportProvider;
         private RestrOrderProvider restroOrderProvider;
 
-        // Maps the sheet name shown in the Table Of Contents to its TOC row,
-        // used to generate both the TOC links and the per-sheet "back" link.
-        private static readonly (string SheetName, int TocRow)[] TocEntries = new[]
-        {
-            ("Summary", 10),
-            ("Daily Sales Report", 11),
-            ("Item Sales Report", 12),
-            ("Card Transactions", 13),
-            ("Cheque Transactions", 14),
-            ("Credit Collection", 15),
-            ("Daily Purchase Report", 16),
-            ("Daily Stock Report", 17),
-            ("Customers", 18),
-            ("Vendors", 19),
-        };
-
         public DailyReportController()
         {
             dailyReportProvider = new DailyReportProvider();
@@ -52,9 +36,13 @@ namespace SageFrame.RestroOrder
         {
             string templateFileName = "RestroOrder_Daily_Report_AsOf_Template.xlsx";
 
+            // Candidate locations to search, in priority order
             var candidates = new List<string>();
+
+            // 1. The passed-in base path (client-specific)
             candidates.Add(Path.Combine(templateBasePath, templateFileName));
 
+            // 2. Relative to the executing assembly (DLL location)
             string assemblyDir = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
             if (assemblyDir != null)
             {
@@ -62,11 +50,13 @@ namespace SageFrame.RestroOrder
                 candidates.Add(Path.Combine(assemblyDir, "Documents", "XLSX", templateFileName));
             }
 
+            // 3. Relative to the AppDomain base (web root / bin parent)
             string appBase = AppDomain.CurrentDomain.BaseDirectory;
             candidates.Add(Path.Combine(appBase, templateFileName));
             candidates.Add(Path.Combine(appBase, "Documents", "XLSX", templateFileName));
             candidates.Add(Path.Combine(appBase, "..", "Documents", "XLSX", templateFileName));
 
+            // 4. Walk up from assembly dir up to 4 levels, looking for Documents\XLSX
             if (assemblyDir != null)
             {
                 string dir = assemblyDir;
@@ -78,6 +68,7 @@ namespace SageFrame.RestroOrder
                 }
             }
 
+            // Search all candidates
             foreach (var path in candidates)
             {
                 try
@@ -93,6 +84,7 @@ namespace SageFrame.RestroOrder
                 catch { /* skip invalid paths */ }
             }
 
+            // Log all attempted paths
             var tried = string.Join("\n  ", candidates.Select(p =>
             { try { return Path.GetFullPath(p); } catch { return p; } }));
             string error = "Template '" + templateFileName + "' not found. Searched:\n  " + tried;
@@ -103,40 +95,53 @@ namespace SageFrame.RestroOrder
         }
 
         /// <summary>
-        /// Writes a live worksheet hyperlink into the Table Of Contents row for the given sheet
-        /// and styles it as a link (blue, underlined). Re-created on every run, so it can never
-        /// go stale even if sheet names change later.
-        /// </summary>
-        private void CreateTocLink(ExcelWorksheet toc, int row, string targetSheet)
-        {
-            var cell = toc.Cells["E" + row];
-            cell.Hyperlink = new ExcelHyperLink("'" + targetSheet + "'!A1", targetSheet);
-            cell.Style.Font.UnderLine = true;
-            cell.Style.Font.Color.SetColor(Color.Blue);
-        }
-
-        /// <summary>
-        /// Attaches a "back to contents" hyperlink to A1 of a report sheet. The template already
-        /// contains the "&lt; Back" label text and styling in A1 — this only wires up the link.
+        /// Safely adds a "Back to Table Of Contents" hyperlink in cell A1 of each sheet.
         /// </summary>
         private void AddBackLink(ExcelWorksheet ws)
         {
-            var cell = ws.Cells["A1"];
-            cell.Hyperlink = new ExcelHyperLink("'Table Of Contents'!A1", "Table Of Contents");
+            try
+            {
+                if (ws == null) return;
+
+                // Get the TOC sheet – exit if it doesn't exist
+                ExcelWorksheet tocSheet = ws.Workbook.Worksheets["Table Of Contents"];
+                if (tocSheet == null) return;
+
+                // Check if cell A1 exists (it always does, but we'll be safe)
+                if (ws.Cells["A1"] == null) return;
+
+                // Only add the link if the current sheet is not the TOC itself
+                if (ws.Name.Equals("Table Of Contents", StringComparison.OrdinalIgnoreCase))
+                    return;
+
+                ws.Cells["A1"].Hyperlink = new ExcelHyperLink("'Table Of Contents'!A1", "Back to TOC");
+                ws.Cells["A1"].Style.Font.UnderLine = true;
+                ws.Cells["A1"].Style.Font.Color.SetColor(Color.Blue);
+            }
+            catch
+            {
+                // Silently ignore any errors – the report generation should not fail just because a link couldn't be added
+            }
         }
 
         public void GenerateXlsxFile(string date, string templateBasePath)
         {
+            // 1. Ensure the target folder exists
             if (!Directory.Exists(templateBasePath))
                 Directory.CreateDirectory(templateBasePath);
 
+            // 2. Set up logging
             string logPath = Path.Combine(templateBasePath, "MailLog.txt");
+
+            // 3. Locate the template (auto‑detect)
             string templatePath = ResolveTemplatePath(templateBasePath, logPath);
 
+            // 4. Try to parse the date from various formats
             DateTime reportDate;
             string[] formats = { "yyyyMMdd", "yyyy-MM-dd", "MM/dd/yyyy", "M/d/yyyy", "dd/MM/yyyy" };
             if (!DateTime.TryParseExact(date, formats, CultureInfo.InvariantCulture, DateTimeStyles.None, out reportDate))
             {
+                // Fallback: use today if parsing fails – but log a warning
                 reportDate = DateTime.Today;
                 File.AppendAllText(logPath,
                     "[" + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "] WARNING: Could not parse '" + date + "', using today (" + reportDate.ToString("yyyyMMdd") + ").\n");
@@ -147,8 +152,10 @@ namespace SageFrame.RestroOrder
                     "[" + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "] GenerateXlsxFile called with date: " + date + " -> parsed as " + reportDate.ToString("yyyyMMdd") + "\n");
             }
 
+            // Use the parsed date as a clean string
             string safeDate = reportDate.ToString("yyyyMMdd");
 
+            // 5. Continue with Excel generation – use `safeDate` everywhere
             using (ExcelPackage p = new ExcelPackage())
             {
                 using (FileStream stream = new FileStream(templatePath, FileMode.Open))
@@ -160,6 +167,7 @@ namespace SageFrame.RestroOrder
                     ExcelWorksheet worksheetSummary = p.Workbook.Worksheets["Summary"];
                     ExcelWorksheet worksheetCard = p.Workbook.Worksheets["Card Transactions"];
                     ExcelWorksheet worksheetCheque = p.Workbook.Worksheets["Cheque Transactions"];
+                    ExcelWorksheet worksheetCredit = p.Workbook.Worksheets["Cheque Transactions"];
                     ExcelWorksheet worksheetSales = p.Workbook.Worksheets["Daily Sales Report"];
                     ExcelWorksheet worksheetStocks = p.Workbook.Worksheets["Daily Stock Report"];
                     ExcelWorksheet worksheetCreditors = p.Workbook.Worksheets["Customers"];
@@ -167,24 +175,28 @@ namespace SageFrame.RestroOrder
                     ExcelWorksheet worksheetPurchase = p.Workbook.Worksheets["Daily Purchase Report"];
                     ExcelWorksheet worksheetCreditCollection = p.Workbook.Worksheets["Credit Collection"];
                     ExcelWorksheet worksheetItemSales = p.Workbook.Worksheets["Item Sales Report"];
-                    // NOTE: the old "worksheetCredit" variable was a duplicate reference to
-                    // "Cheque Transactions" and was never used anywhere — removed.
 
-                    // ---- Table Of Contents: generate real hyperlinks every run ----
-                    foreach (var entry in TocEntries)
-                        CreateTocLink(worksheetTOC, entry.TocRow, entry.SheetName);
-
-                    // ---- Every report sheet: wire up the "< Back" link in A1 ----
-                    AddBackLink(worksheetSummary);
-                    AddBackLink(worksheetSales);
-                    AddBackLink(worksheetItemSales);
-                    AddBackLink(worksheetCard);
-                    AddBackLink(worksheetCheque);
-                    AddBackLink(worksheetStocks);
-                    AddBackLink(worksheetCreditCollection);
-                    AddBackLink(worksheetPurchase);
-                    AddBackLink(worksheetCreditors);
-                    AddBackLink(worksheetVendors);
+                    // --- Add back-links to all sheets (except TOC) ---
+                    // Wrap in try-catch to prevent a single failure from breaking the whole report
+                    try
+                    {
+                        AddBackLink(worksheetSummary);
+                        AddBackLink(worksheetCard);
+                        AddBackLink(worksheetCheque);
+                        AddBackLink(worksheetSales);
+                        AddBackLink(worksheetStocks);
+                        AddBackLink(worksheetCreditors);
+                        AddBackLink(worksheetVendors);
+                        AddBackLink(worksheetPurchase);
+                        AddBackLink(worksheetCreditCollection);
+                        AddBackLink(worksheetItemSales);
+                    }
+                    catch (Exception ex)
+                    {
+                        // Log but don't rethrow – the report can still be generated
+                        File.AppendAllText(logPath,
+                            "[" + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "] ERROR adding back-links: " + ex.Message + "\n");
+                    }
 
                     // Credit Collection
                     List<CreditPayReport> creditCollectionList = getCreditPayReportByDates(
@@ -201,6 +213,7 @@ namespace SageFrame.RestroOrder
                         worksheetCreditCollection.Cells["H" + rowIdex].Value = row.AddedBy;
                         rowIdex++;
                     }
+                    //Border
                     using (ExcelRange Rng = worksheetCreditCollection.Cells[10, 4, rowIdex, 8])
                     {
                         var border = Rng.Style.Border;
@@ -208,13 +221,12 @@ namespace SageFrame.RestroOrder
                         var dataFont = Rng.Style.Font;
                         dataFont.SetFromFont(new Font("Calibri", 8));
                     }
+                    //Bold
                     using (ExcelRange Rng = worksheetCreditCollection.Cells[rowIdex, 4, rowIdex, 8])
                     {
                         var dataFont = Rng.Style.Font;
                         dataFont.SetFromFont(new Font("Calibri", 10));
                         dataFont.Bold = true;
-                        Rng.Style.Fill.PatternType = ExcelFillStyle.Solid;
-                        Rng.Style.Fill.BackgroundColor.SetColor(Color.LightGray);
                     }
                     if (creditCollectionList.Count > 0)
                     {
@@ -248,6 +260,7 @@ namespace SageFrame.RestroOrder
                         worksheetPurchase.Cells["P" + rowIdex].Value = row.PostedOn;
                         rowIdex++;
                     }
+                    //Border
                     using (ExcelRange Rng = worksheetPurchase.Cells[10, 4, rowIdex, 16])
                     {
                         var border = Rng.Style.Border;
@@ -255,13 +268,12 @@ namespace SageFrame.RestroOrder
                         var dataFont = Rng.Style.Font;
                         dataFont.SetFromFont(new Font("Calibri", 8));
                     }
+                    //Bold
                     using (ExcelRange Rng = worksheetPurchase.Cells[rowIdex, 4, rowIdex, 16])
                     {
                         var dataFont = Rng.Style.Font;
                         dataFont.SetFromFont(new Font("Calibri", 10));
                         dataFont.Bold = true;
-                        Rng.Style.Fill.PatternType = ExcelFillStyle.Solid;
-                        Rng.Style.Fill.BackgroundColor.SetColor(Color.LightGray);
                     }
                     if (purchaseList.Count > 0)
                     {
@@ -303,6 +315,7 @@ namespace SageFrame.RestroOrder
                         worksheetSales.Cells["R" + rowIdex].Value = row.Customer;
                         rowIdex++;
                     }
+                    //Border
                     using (ExcelRange Rng = worksheetSales.Cells[10, 4, rowIdex, 18])
                     {
                         var border = Rng.Style.Border;
@@ -310,13 +323,12 @@ namespace SageFrame.RestroOrder
                         var dataFont = Rng.Style.Font;
                         dataFont.SetFromFont(new Font("Calibri", 8));
                     }
+                    //Bold
                     using (ExcelRange Rng = worksheetSales.Cells[rowIdex, 4, rowIdex, 18])
                     {
                         var dataFont = Rng.Style.Font;
                         dataFont.SetFromFont(new Font("Calibri", 10));
                         dataFont.Bold = true;
-                        Rng.Style.Fill.PatternType = ExcelFillStyle.Solid;
-                        Rng.Style.Fill.BackgroundColor.SetColor(Color.LightGray);
                     }
                     if (salesList.Count > 0)
                     {
@@ -395,6 +407,7 @@ namespace SageFrame.RestroOrder
                             worksheetSales.Cells["X22"].Style.Numberformat.Format = "###,###,##0.00";
                         }
                     }
+                    // Day-part subtotal formulas – ROUND prevents floating-point garbage in totals
                     worksheetSales.Cells["U16"].Formula = "ROUND(U12-U13+U14+U15,2)";
                     worksheetSales.Cells["U16"].Style.Numberformat.Format = "###,###,##0.00";
                     worksheetSales.Cells["U23"].Formula = "ROUND(U19-U20+U21+U22,2)";
@@ -423,6 +436,8 @@ namespace SageFrame.RestroOrder
                         worksheetCard.Cells["L" + rowIdex].Style.Numberformat.Format = "###,###,##0.00";
                         rowIdex++;
                     }
+
+                    //Border
                     using (ExcelRange Rng = worksheetCard.Cells[10, 4, rowIdex, 12])
                     {
                         var border = Rng.Style.Border;
@@ -430,13 +445,13 @@ namespace SageFrame.RestroOrder
                         var dataFont = Rng.Style.Font;
                         dataFont.SetFromFont(new Font("Calibri", 8));
                     }
+
+                    //Bold
                     using (ExcelRange Rng = worksheetCard.Cells[rowIdex, 4, rowIdex, 12])
                     {
                         var dataFont = Rng.Style.Font;
                         dataFont.SetFromFont(new Font("Calibri", 10));
                         dataFont.Bold = true;
-                        Rng.Style.Fill.PatternType = ExcelFillStyle.Solid;
-                        Rng.Style.Fill.BackgroundColor.SetColor(Color.LightGray);
                     }
                     if (cardSalesList.Count > 0)
                     {
@@ -464,6 +479,7 @@ namespace SageFrame.RestroOrder
                         worksheetCheque.Cells["L" + rowIdex].Style.Numberformat.Format = "###,###,##0.00";
                         rowIdex++;
                     }
+                    //Border
                     using (ExcelRange Rng = worksheetCheque.Cells[10, 4, rowIdex, 12])
                     {
                         var border = Rng.Style.Border;
@@ -471,13 +487,12 @@ namespace SageFrame.RestroOrder
                         var dataFont = Rng.Style.Font;
                         dataFont.SetFromFont(new Font("Calibri", 8));
                     }
+                    //Bold
                     using (ExcelRange Rng = worksheetCheque.Cells[rowIdex, 4, rowIdex, 11])
                     {
                         var dataFont = Rng.Style.Font;
                         dataFont.SetFromFont(new Font("Calibri", 10));
                         dataFont.Bold = true;
-                        Rng.Style.Fill.PatternType = ExcelFillStyle.Solid;
-                        Rng.Style.Fill.BackgroundColor.SetColor(Color.LightGray);
                     }
                     if (chequeSalesList.Count > 0)
                     {
@@ -499,6 +514,7 @@ namespace SageFrame.RestroOrder
                         worksheetStocks.Cells["I" + rowIdex].Value = row.Symbol;
                         rowIdex++;
                     }
+                    //Border and font
                     using (ExcelRange Rng = worksheetStocks.Cells[10, 4, rowIdex, 9])
                     {
                         var border = Rng.Style.Border;
@@ -507,7 +523,7 @@ namespace SageFrame.RestroOrder
                         dataFont.SetFromFont(new Font("Calibri", 8));
                     }
 
-                    // Summary Report
+                    // Summary Report – column letters updated to F, K/L, N/O
                     List<SummaryReport> summaryReportList = GenerateDailySummaryReport(safeDate);
                     rowIdex = 9;
                     foreach (SummaryReport row in summaryReportList)
@@ -571,7 +587,7 @@ namespace SageFrame.RestroOrder
                     worksheetSummary.Cells["H17"].Value = deno.two;
                     worksheetSummary.Cells["H18"].Value = deno.one;
 
-                    // Provider summary
+                    // Provider summary – shifted to K/L
                     List<providersReport> summaryProviders = restroOrderProvider.getSummaryProvidersReport(
                         DateTime.ParseExact(safeDate, "yyyyMMdd", CultureInfo.InvariantCulture),
                         DateTime.ParseExact(safeDate, "yyyyMMdd", CultureInfo.InvariantCulture), 0, 0);
@@ -583,6 +599,7 @@ namespace SageFrame.RestroOrder
                         worksheetSummary.Cells["L" + rowIdex].Style.Numberformat.Format = "###,###,##0.00";
                         rowIdex++;
                     }
+                    //Border and font – columns 11 (K) to 12 (L)
                     using (ExcelRange Rng = worksheetSummary.Cells[10, 11, rowIdex, 12])
                     {
                         var border = Rng.Style.Border;
@@ -591,7 +608,7 @@ namespace SageFrame.RestroOrder
                         dataFont.SetFromFont(new Font("Calibri", 8));
                     }
 
-                    // Cost Center
+                    // Cost Center – shifted to N/O
                     List<costCenterReport> summaryCostCenter = restroOrderProvider.getSummaryCostCenterReport(
                         DateTime.ParseExact(safeDate, "yyyyMMdd", CultureInfo.InvariantCulture),
                         DateTime.ParseExact(safeDate, "yyyyMMdd", CultureInfo.InvariantCulture), 0);
@@ -603,6 +620,7 @@ namespace SageFrame.RestroOrder
                         worksheetSummary.Cells["O" + rowIdex].Style.Numberformat.Format = "###,###,##0.00";
                         rowIdex++;
                     }
+                    //Border and font – columns 14 (N) to 15 (O)
                     using (ExcelRange Rng = worksheetSummary.Cells[10, 14, rowIdex, 15])
                     {
                         var border = Rng.Style.Border;
@@ -627,6 +645,7 @@ namespace SageFrame.RestroOrder
                         worksheetCreditors.Cells["K" + rowIdex].Style.Numberformat.Format = "###,###,##0.00";
                         rowIdex++;
                     }
+                    //Border and font
                     using (ExcelRange Rng = worksheetCreditors.Cells[10, 4, rowIdex, 11])
                     {
                         var border = Rng.Style.Border;
@@ -651,6 +670,7 @@ namespace SageFrame.RestroOrder
                         worksheetVendors.Cells["K" + rowIdex].Style.Numberformat.Format = "###,###,##0.00";
                         rowIdex++;
                     }
+                    //Border and font
                     using (ExcelRange Rng = worksheetVendors.Cells[10, 4, rowIdex, 11])
                     {
                         var border = Rng.Style.Border;
@@ -659,7 +679,7 @@ namespace SageFrame.RestroOrder
                         dataFont.SetFromFont(new Font("Calibri", 8));
                     }
 
-                    // Item Sales Report
+                    // Item Sales Report – new sheet
                     if (worksheetItemSales != null)
                     {
                         List<ItemSalesReport> itemSalesList = GetDailyItemSalesForMail(safeDate);
@@ -692,8 +712,6 @@ namespace SageFrame.RestroOrder
                                 var dataFont = Rng.Style.Font;
                                 dataFont.SetFromFont(new Font("Calibri", 10));
                                 dataFont.Bold = true;
-                                Rng.Style.Fill.PatternType = ExcelFillStyle.Solid;
-                                Rng.Style.Fill.BackgroundColor.SetColor(Color.LightGray);
                             }
                             worksheetItemSales.Cells["F" + rowIdex].Formula = "SUM(F10:F" + (rowIdex - 1) + ")";
                             worksheetItemSales.Cells["F" + rowIdex].Style.Numberformat.Format = "###,###,##0.00";
@@ -701,22 +719,6 @@ namespace SageFrame.RestroOrder
                             worksheetItemSales.Cells["I" + rowIdex].Style.Numberformat.Format = "###,###,##0.00";
                         }
                     }
-
-                    // ---- AutoFit every populated sheet now that all data is in, before recalculation ----
-                    foreach (var ws in p.Workbook.Worksheets)
-                    {
-                        if (ws.Dimension == null) continue;
-                        ws.Cells[ws.Dimension.Address].AutoFitColumns();
-                        for (int col = 1; col <= ws.Dimension.End.Column; col++)
-                        {
-                            if (ws.Column(col).Width > 40)
-                                ws.Column(col).Width = 40;
-                        }
-                    }
-
-                    // ---- Force Excel to recalculate on open, in case cached values go stale ----
-                    p.Workbook.CalcMode = ExcelCalcMode.Automatic;
-                    p.Workbook.FullCalcOnLoad = true;
                 }
                 p.Workbook.Calculate();
                 var outputFilePath = templateBasePath + "\\RestroOrder_Daily_Report_AsOf_" + safeDate + ".xlsx";
@@ -797,6 +799,7 @@ namespace SageFrame.RestroOrder
 
         public void SendMail(string date, string templateBasePath)
         {
+            // ── Normalise date to yyyyMMdd immediately ──────────────────────────
             if (!Directory.Exists(templateBasePath))
                 Directory.CreateDirectory(templateBasePath);
             string logPath = Path.Combine(templateBasePath, "MailLog.txt");
@@ -815,10 +818,14 @@ namespace SageFrame.RestroOrder
                     "[" + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "] SendMail called with date: '" + date + "' -> parsed as " + reportDate.ToString("yyyyMMdd") + "\n");
             }
             string safeDate = reportDate.ToString("yyyyMMdd");
+            // ───────────────────────────────────────────────────────────────────
 
             List<companyInfo> companies = restroOrderProvider.getCompanyInfo();
             string companyName = (companies != null && companies.Count > 0) ? companies[0].Name : "RestroOrder";
+
+            // ── Sanitise display name to reduce spam flags ─────────────────────
             string safeCompanyName = Regex.Replace(companyName, @"[^\w\s\-\.]", "").Trim();
+            // ─────────────────────────────────────────────────────────────────────
 
             var MailKey = Decrypt(dailyReportProvider.Mailkey("MailKey"));
             var MailVal = Decrypt(dailyReportProvider.MailValue("MailValue"));
@@ -842,6 +849,7 @@ namespace SageFrame.RestroOrder
                 }
             }
 
+            // Build HTML body with daily summary so owner sees key numbers without opening Excel
             decimal totalSales = 0, cash = 0, card = 0, eSewa = 0, fonePay = 0;
             try
             {
@@ -901,9 +909,11 @@ namespace SageFrame.RestroOrder
                     mail.Body = body;
                     mail.IsBodyHtml = true;
 
+                    // ── Anti‑spam headers ────────────────────────────────────────
                     mail.Headers.Add("X-Mailer", "RestroOrder System");
                     mail.Headers.Add("Message-ID", "<" + safeDate + "." + Guid.NewGuid().ToString("N") + "@restroorder.com>");
                     mail.Priority = MailPriority.Normal;
+                    // ──────────────────────────────────────────────────────────────
 
                     AddEmails(mail, System.Configuration.ConfigurationManager.AppSettings["MailTo"].ToString(), "TO");
 

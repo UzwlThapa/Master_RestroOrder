@@ -253,3 +253,12 @@ G:\Danfe-Git\Master_RestroOrder\SageFrame.HouseKeeping\obj\Debug\SageFrame.House
 G:\Danfe-Git\Master_RestroOrder\SageFrame.HouseKeeping\obj\Debug\SageFrame.HouseKeeping.csproj.CopyComplete
 G:\Danfe-Git\Master_RestroOrder\SageFrame.HouseKeeping\obj\Debug\SageFrame.HouseKeeping.dll
 G:\Danfe-Git\Master_RestroOrder\SageFrame.HouseKeeping\obj\Debug\SageFrame.HouseKeeping.pdb
+G:\Danfe\Restro_Order_Code\Master_RestroOrder\SageFrame.HouseKeeping\bin\Debug\SageFrame.HouseKeeping.dll
+G:\Danfe\Restro_Order_Code\Master_RestroOrder\SageFrame.HouseKeeping\bin\Debug\SageFrame.HouseKeeping.pdb
+G:\Danfe\Restro_Order_Code\Master_RestroOrder\SageFrame.HouseKeeping\bin\Debug\SageFrame.Common.dll
+G:\Danfe\Restro_Order_Code\Master_RestroOrder\SageFrame.HouseKeeping\bin\Debug\SageFrame.Common.pdb
+G:\Danfe\Restro_Order_Code\Master_RestroOrder\SageFrame.HouseKeeping\obj\Debug\SageFrame.HouseKeeping.csproj.AssemblyReference.cache
+G:\Danfe\Restro_Order_Code\Master_RestroOrder\SageFrame.HouseKeeping\obj\Debug\SageFrame.HouseKeeping.csproj.CoreCompileInputs.cache
+G:\Danfe\Restro_Order_Code\Master_RestroOrder\SageFrame.HouseKeeping\obj\Debug\SageFram.50AB6378.Up2Date
+G:\Danfe\Restro_Order_Code\Master_RestroOrder\SageFrame.HouseKeeping\obj\Debug\SageFrame.HouseKeeping.dll
+G:\Danfe\Restro_Order_Code\Master_RestroOrder\SageFrame.HouseKeeping\obj\Debug\SageFrame.HouseKeeping.pdb
