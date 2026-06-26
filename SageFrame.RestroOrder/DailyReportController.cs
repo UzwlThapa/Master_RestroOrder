@@ -14,6 +14,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using System.Configuration;   // added for ConfigurationManager
 
 namespace SageFrame.RestroOrder
 {
@@ -988,6 +989,159 @@ namespace SageFrame.RestroOrder
         public List<ItemSalesReport> GetDailyItemSalesForMail(string period)
         {
             return dailyReportProvider.GetDailyItemSalesForMail(period);
+        }
+
+        // ────────────────────────── NEW METHODS ────────────────────────────────
+        /// <summary>
+        /// Reads a time from version.config (e.g. "08:00") and returns it as a TimeSpan.
+        /// Falls back to the provided default if the key is missing or unparseable.
+        /// </summary>
+        private TimeSpan GetConfiguredTime(string key, TimeSpan defaultValue)
+        {
+            string value = ConfigurationManager.AppSettings[key];
+            if (string.IsNullOrWhiteSpace(value))
+                return defaultValue;
+
+            TimeSpan parsed;
+            if (TimeSpan.TryParse(value, out parsed))
+                return parsed;
+
+            return defaultValue;
+        }
+
+        /// <summary>
+        /// Sends a simple "day not closed" warning email – no report, no attachment.
+        /// </summary>
+        private void SendMissedCloseWarning(string date)
+        {
+            string displayDate = DateTime.ParseExact(date, "yyyy-MM-dd", CultureInfo.InvariantCulture)
+                                        .ToString("dd MMM yyyy");
+            string safeDate = DateTime.ParseExact(date, "yyyy-MM-dd", CultureInfo.InvariantCulture)
+                                      .ToString("yyyyMMdd");
+
+            // SMTP credentials (same as SendMail)
+            var MailKey = Decrypt(dailyReportProvider.Mailkey("MailKey"));
+            var MailVal = Decrypt(dailyReportProvider.MailValue("MailValue"));
+
+            // Company name from DB (e.g. "Cafe Bella")
+            List<companyInfo> companies = restroOrderProvider.getCompanyInfo();
+            string companyName = (companies != null && companies.Count > 0) ? companies[0].Name : "RestroOrder";
+            string safeCompanyName = Regex.Replace(companyName, @"[^\w\s\-\.]", "").Trim();
+
+            string subject = $"⚠ {safeCompanyName} – Day not closed: {displayDate}";
+            string body = $"Dear Owner,\r\n\r\n"
+                        + $"The closing procedure for {displayDate} was not completed.\r\n\r\n"
+                        + "Please ask the staff member on duty to close the day in the system as soon as possible.\r\n\r\n"
+                        + "No financial report is available until the day is closed.\r\n\r\n"
+                        + $"Regards,\r\n{safeCompanyName} — Danfe Solution Pvt. Ltd.";
+
+            // Log to App_Data (no report path needed)
+            string appDataPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "App_Data");
+            Directory.CreateDirectory(appDataPath);
+            string logPath = Path.Combine(appDataPath, "MailLog.txt");
+
+            const int maxRetries = 3;
+            const int delaySeconds = 30;
+            Exception lastEx = null;
+
+            for (int attempt = 1; attempt <= maxRetries; attempt++)
+            {
+                SmtpClient smtp = new SmtpClient
+                {
+                    Host = "smtp.gmail.com",
+                    Port = 587,
+                    EnableSsl = true,
+                    DeliveryMethod = SmtpDeliveryMethod.Network,
+                    UseDefaultCredentials = false,
+                    Credentials = new NetworkCredential(MailVal, MailKey)
+                };
+                MailMessage mail = new MailMessage();
+                try
+                {
+                    mail.From = new MailAddress(MailVal, safeCompanyName);
+                    mail.Subject = subject;
+                    mail.Body = body;
+                    mail.IsBodyHtml = false;                     // plain text avoids spam filters
+
+                    // Anti‑spam headers
+                    mail.Headers.Add("X-Mailer", "RestroOrder System");
+                    mail.Headers.Add("Message-ID", "<" + safeDate + ".missedclose." + Guid.NewGuid().ToString("N") + "@restroorder.com>");
+                    mail.Priority = MailPriority.Normal;
+
+                    // Recipients from version.config
+                    AddEmails(mail, ConfigurationManager.AppSettings["MailTo"].ToString(), "TO");
+                    string cc = ConfigurationManager.AppSettings["MailCC"] ?? "";
+                    if (cc.Length > 5)
+                        AddEmails(mail, cc, "CC");
+
+                    smtp.Send(mail);
+                    File.AppendAllText(logPath,
+                        $"[{DateTime.Now}] Missed‑close warning sent for {safeDate} (attempt {attempt})\r\n");
+                    return;
+                }
+                catch (Exception ex)
+                {
+                    lastEx = ex;
+                    File.AppendAllText(logPath,
+                        $"[{DateTime.Now}] Missed‑close warning attempt {attempt}/{maxRetries} FAILED: {ex.Message}\r\n");
+                    if (attempt < maxRetries)
+                        System.Threading.Thread.Sleep(delaySeconds * 1000);
+                }
+                finally
+                {
+                    mail.Dispose();
+                    smtp.Dispose();
+                }
+            }
+            throw new Exception($"Missed‑close warning failed after {maxRetries} attempts.", lastEx);
+        }
+
+        /// <summary>
+        /// Checks if yesterday was closed. If not, sends a simple warning email.
+        /// Called every 10 minutes by the Hangfire recurring job.
+        /// </summary>
+        public void CheckAndSendMissedReports()
+        {
+            // 0. Bail out if the feature is disabled in config
+            string enabledSetting = ConfigurationManager.AppSettings["EnableCloseDayWarning"];
+            if (!string.IsNullOrEmpty(enabledSetting) && enabledSetting.Trim().ToLower() != "true")
+                return;
+
+            // 1. Read opening time from config (default 08:00)
+            TimeSpan openingTime = GetConfiguredTime("DayOpeningTime", new TimeSpan(8, 0, 0));
+
+            // 2. Do nothing until after opening time
+            if (DateTime.Now.TimeOfDay < openingTime)
+                return;
+
+            // 3. Idempotency: only run once per calendar day
+            string todayKey = DateTime.Today.ToString("yyyyMMdd");
+            string appDataPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "App_Data");
+            string markerPath = Path.Combine(appDataPath, $"MissedReport_{todayKey}.txt");
+            if (File.Exists(markerPath))
+                return;
+
+            try
+            {
+                // 4. Query yesterday's record using the existing ClosDayReport method
+                string dateKey = DateTime.Today.AddDays(-1).ToString("yyyy-MM-dd");
+                List<DailyClosingReport> reports = restroOrderProvider.ClosDayReport(dateKey, dateKey);
+
+                // 5. If no record or IsClosed == 0 → not closed
+                if (reports == null || reports.Count == 0 || !reports[0].IsClosed)
+                {
+                    // 6. Send the warning email
+                    SendMissedCloseWarning(dateKey);
+                }
+
+                // 7. Write marker file so we don't send again today
+                Directory.CreateDirectory(appDataPath);
+                File.WriteAllText(markerPath, "sent");
+            }
+            catch
+            {
+                // Optionally log the exception
+            }
         }
     }
 }

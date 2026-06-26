@@ -1,8 +1,8 @@
 ﻿using Hangfire;
 using Owin;
-
 using System.Configuration;
 using Microsoft.Owin;
+using SageFrame.RestroOrder;
 
 /// <summary>
 /// Summary description for Startup
@@ -26,6 +26,9 @@ public partial class Startup
         //RecurringJob.AddOrUpdate(() => CBMS.syncSales(), cronExpression);
         //RecurringJob.AddOrUpdate(() => CBMS.syncReturnedSales(), cronExpression);
 
+        RecurringJob.AddOrUpdate("CheckMissedCloseDay",
+    () => new DailyReportController().CheckAndSendMissedReports(),
+    "*/10 * * * *");
     }
 
 }

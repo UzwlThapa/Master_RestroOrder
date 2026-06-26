@@ -1,0 +1,2 @@
+[26/06/2026 11:00:31] Missed‑close warning attempt 1/3 FAILED: Failure sending mail.
+[26/06/2026 11:01:07] Missed‑close warning sent for 20260625 (attempt 2)
