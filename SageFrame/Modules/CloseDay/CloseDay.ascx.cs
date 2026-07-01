@@ -5,6 +5,7 @@ using System.Configuration;
 public partial class Modules_CloseDay_CloseDay : BaseUserControl
 {
     public string OccupiedTableDayClosedEnable = ConfigurationManager.AppSettings["OccupiedTableDayClosedEnable"].ToString();
+    public string DayCloseFixedFloat = ConfigurationManager.AppSettings["DayCloseFixedFloat"] ?? "0";
     protected void Page_Load(object sender, EventArgs e)
     {
         IncludeCss("SiteAnalytics", "/Modules/SiteAnalytics/css/jquery.jqplot.css");

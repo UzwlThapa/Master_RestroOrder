@@ -10,3 +10,36 @@
 [2026-06-22 17:39:48] GenerateXlsxFile called with date: 20260622 -> parsed as 20260622
 [2026-06-22 17:39:49] File generated successfully.
 [22/06/2026 17:39:54] Mail sent OK for 20260622 (attempt 1) from Cafe Bella
+[2026-07-01 11:41:08] SendMail called with date: '20260107' -> parsed as 20260107
+[2026-07-01 11:41:08] File not found, generating: G:\Danfe\Restro_Order_Code\Master_RestroOrder\SageFrame\Documents\XLSX\RestroOrder_Daily_Report_AsOf_20260107.xlsx
+[2026-07-01 11:41:08] Template found at: G:\Danfe\Restro_Order_Code\Master_RestroOrder\SageFrame\Documents\XLSX\RestroOrder_Daily_Report_AsOf_Template.xlsx
+[2026-07-01 11:41:08] GenerateXlsxFile called with date: 20260107 -> parsed as 20260107
+[2026-07-01 11:41:10] File generated successfully.
+[01/07/2026 11:41:15] Mail sent OK for 20260107 (attempt 1) from Cafe Bella
+[2026-07-01 14:11:00] SendMail called with date: '20260701' -> parsed as 20260701
+[2026-07-01 14:11:00] File not found, generating: G:\Danfe\Restro_Order_Code\Master_RestroOrder\SageFrame\Documents\XLSX\RestroOrder_Daily_Report_AsOf_20260701.xlsx
+[2026-07-01 14:11:00] Template found at: G:\Danfe\Restro_Order_Code\Master_RestroOrder\SageFrame\Documents\XLSX\RestroOrder_Daily_Report_AsOf_Template.xlsx
+[2026-07-01 14:11:00] GenerateXlsxFile called with date: 20260701 -> parsed as 20260701
+[2026-07-01 14:11:01] File generated successfully.
+[01/07/2026 14:11:06] Mail sent OK for 20260701 (attempt 1) from Cafe Bella
+[2026-07-01 14:35:19] SendMail called with date: '20260701' -> parsed as 20260701
+[01/07/2026 14:35:19] Attempt 1/3 FAILED for 20260701: The process cannot access the file 'G:\Danfe\Restro_Order_Code\Master_RestroOrder\SageFrame\Documents\XLSX\RestroOrder_Daily_Report_AsOf_20260701.xlsx' because it is being used by another process.
+[01/07/2026 14:35:49] Attempt 2/3 FAILED for 20260701: The process cannot access the file 'G:\Danfe\Restro_Order_Code\Master_RestroOrder\SageFrame\Documents\XLSX\RestroOrder_Daily_Report_AsOf_20260701.xlsx' because it is being used by another process.
+[01/07/2026 14:36:19] Attempt 3/3 FAILED for 20260701: The process cannot access the file 'G:\Danfe\Restro_Order_Code\Master_RestroOrder\SageFrame\Documents\XLSX\RestroOrder_Daily_Report_AsOf_20260701.xlsx' because it is being used by another process.
+[2026-07-01 14:43:58] SendMail called with date: '20260701' -> parsed as 20260701
+[2026-07-01 14:43:58] File not found, generating: G:\Danfe\Restro_Order_Code\Master_RestroOrder\SageFrame\Documents\XLSX\RestroOrder_Daily_Report_AsOf_20260701.xlsx
+[2026-07-01 14:43:59] Template found at: G:\Danfe\Restro_Order_Code\Master_RestroOrder\SageFrame\Documents\XLSX\RestroOrder_Daily_Report_AsOf_Template.xlsx
+[2026-07-01 14:43:59] GenerateXlsxFile called with date: 20260701 -> parsed as 20260701
+[2026-07-01 14:43:59] File generated successfully.
+[01/07/2026 14:44:03] Mail sent OK for 20260701 (attempt 1) from Cafe Bella
+[2026-07-01 15:27:36] SendMail called with date: '20260701' -> parsed as 20260701
+[2026-07-01 15:27:36] File not found, generating: G:\Danfe\Restro_Order_Code\Master_RestroOrder\SageFrame\Documents\XLSX\RestroOrder_Daily_Report_AsOf_20260701.xlsx
+[2026-07-01 15:27:36] Template found at: G:\Danfe\Restro_Order_Code\Master_RestroOrder\SageFrame\Documents\XLSX\RestroOrder_Daily_Report_AsOf_Template.xlsx
+[2026-07-01 15:27:36] GenerateXlsxFile called with date: 20260701 -> parsed as 20260701
+[2026-07-01 15:27:37] ERROR generating file: The process cannot access the file 'G:\Danfe\Restro_Order_Code\Master_RestroOrder\SageFrame\Documents\XLSX\RestroOrder_Daily_Report_AsOf_Template.xlsx' because it is being used by another process.
+[2026-07-01 15:29:42] SendMail called with date: '20260701' -> parsed as 20260701
+[2026-07-01 15:29:43] File not found, generating: G:\Danfe\Restro_Order_Code\Master_RestroOrder\SageFrame\Documents\XLSX\RestroOrder_Daily_Report_AsOf_20260701.xlsx
+[2026-07-01 15:29:43] Template found at: G:\Danfe\Restro_Order_Code\Master_RestroOrder\SageFrame\Documents\XLSX\RestroOrder_Daily_Report_AsOf_Template.xlsx
+[2026-07-01 15:29:43] GenerateXlsxFile called with date: 20260701 -> parsed as 20260701
+[2026-07-01 15:29:43] File generated successfully.
+[01/07/2026 15:29:48] Mail sent OK for 20260701 (attempt 1) from Cafe Bella

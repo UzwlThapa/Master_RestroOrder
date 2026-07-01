@@ -5043,7 +5043,7 @@ namespace SageFrame.RestroOrder
             {
                 try
                 {
-                    
+
                     List<KeyValuePair<string, object>> param = new List<KeyValuePair<string, object>>
             {
                 new KeyValuePair<string, object>("@ExtraItemID", extraItem.ExtraItemID),
@@ -5054,14 +5054,14 @@ namespace SageFrame.RestroOrder
             };
                     var extraItemId = sqlHandler.ExecuteAsScalar<object>("[usp_ro_extraitemsave]", param);
 
-                    
+
                     List<KeyValuePair<string, object>> removeParams = new List<KeyValuePair<string, object>>
             {
                 new KeyValuePair<string, object>("@ExtraItemID", Convert.ToInt32(extraItemId))
             };
                     sqlHandler.ExecuteNonQuery("[usp_ro_removeExtraIngredient]", removeParams);
 
-                    
+
                     if (extraItem.Ingredientdata != null && extraItem.Ingredientdata.Count > 0)
                     {
                         foreach (IngredientItems ing in extraItem.Ingredientdata)
@@ -5442,18 +5442,21 @@ namespace SageFrame.RestroOrder
             Param.Add(new KeyValuePair<string, object>("@itemname", itemname));
             return sqlHandler.ExecuteAsList<itemsales>("[USP_RO_ComplementarySALESREPORT]", Param);
         }
-        internal DailyClosingReport GenerateDayClosingReport(string date, bool viewOnly)
+        internal DailyClosingReport GenerateDayClosingReport(
+    string date,
+    bool viewOnly,
+    bool useCounterCashForVendor = false,
+    decimal dayCloseFixedFloat = 0)   // NEW
         {
             try
             {
-                //CultureInfo provider = CultureInfo.InvariantCulture;
-                //DateTime tempDate = DateTime.ParseExact(date, "dd/mm/yyyy", provider);
-
                 DateTime today = DateTime.Today;
 
                 List<KeyValuePair<string, object>> Param = new List<KeyValuePair<string, object>>();
                 Param.Add(new KeyValuePair<string, object>("@date", today));
                 Param.Add(new KeyValuePair<string, object>("@viewOnly ", viewOnly));
+                Param.Add(new KeyValuePair<string, object>("@UseCounterCashForVendor", useCounterCashForVendor));
+                Param.Add(new KeyValuePair<string, object>("@DayCloseFixedFloat", dayCloseFixedFloat));   // NEW
                 return sqlHandler.ExecuteAsObject<DailyClosingReport>("[usp_ro_generateDailyFinancialReport]", Param);
             }
             catch (Exception)
@@ -6186,7 +6189,7 @@ namespace SageFrame.RestroOrder
                     aParam.Add(new KeyValuePair<string, object>("@PurchaseReturnId", PurchaseReturn.PurchaseReturnId));
                     sqh.ExecuteNonQuery("usp_SaveTransactionForPurchaseReturn", aParam);
 
-                    
+
                     ts.Complete();
                     return PurchaseReturn.PurchaseReturnId;
 
@@ -6667,4 +6670,3 @@ namespace SageFrame.RestroOrder
 
     }
 }
-

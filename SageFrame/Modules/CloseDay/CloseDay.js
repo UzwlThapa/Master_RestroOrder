@@ -2,7 +2,7 @@
     var charCode = evt.which || evt.keyCode;
 
     if ((charCode != 8) &&
-        (charCode != 46 || $(element).val().indexOf('.') != -1) &&      // “.” CHECK DOT, AND ONLY ONE.
+        (charCode != 46 || $(element).val().indexOf('.') != -1) &&
         (charCode < 48 || charCode > 57))
         return false;
 
@@ -32,7 +32,7 @@ function Print() {
 
 function prints() {
     $("#btnCloseDay").hide();
-    $(".sfInputbox").css('border','none');
+    $(".sfInputbox").css('border', 'none');
     var contents = $('.dashboardmain').html();
     $("#btnCloseDay").show();
     var frame1 = document.createElement('iframe');
@@ -55,12 +55,13 @@ function prints() {
 (function ($) {
     $.companyProfcreate = function (p) {
         p = $.extend
-             ({
-                 UserModuleID: '',
-                 CloseDay: '',
-                 OccupiedTableDayClosedEnable: '',
-                 ModulePath: '/Modules/Admin/DashboardSummary/WebServices/'
-             }, p);
+            ({
+                UserModuleID: '',
+                CloseDay: '',
+                OccupiedTableDayClosedEnable: '',
+                FixedFloat: '0',                   // Fixed float amount from config
+                ModulePath: '/Modules/Admin/DashboardSummary/WebServices/'
+            }, p);
         var tableList = new Array;
         var eventFunction = {
             config: {
@@ -81,7 +82,37 @@ function prints() {
                     eventFunction.GenerateDayClosingReport();
                     eventFunction.GetOccupiedTableList();
                 }
-               
+                // If fixed float is enabled, make CashSettlement read-only
+                if (parseFloat(p.FixedFloat) > 0) {
+                    $('#txtCashSettlement').prop('readonly', true);
+                }
+            },
+            // Applies fixed float logic: auto-calculates CashSettlement and ClosingBalance
+            ApplyFixedFloat: function (cashInCounter) {
+                var floatAmt = parseFloat(p.FixedFloat);
+                if (floatAmt <= 0) return false;
+
+                cashInCounter = parseFloat(cashInCounter) || 0;
+
+                // Settlement = amount to remove = CashInCounter - floatAmt (min 0)
+                var settlement = Math.max(0, cashInCounter - floatAmt);
+                $('#txtCashSettlement').val(settlement.toFixed(2));
+
+                // ClosingBalance = actual cash left (could be less than float if short)
+                var closingBalance = cashInCounter - settlement;
+                $('#txtClosingBalance').text('Rs. ' + closingBalance.toFixed(2));
+
+                // Warning if drawer is short
+                if (cashInCounter < floatAmt) {
+                    var shortAmt = (floatAmt - cashInCounter).toFixed(2);
+                    $('#shortfallWarning').remove();
+                    $('<div id="shortfallWarning" style="color:red;font-weight:bold;margin-top:5px;">' +
+                        '⚠ Cash drawer is short by Rs. ' + shortAmt + '. Please verify the count.</div>')
+                        .insertAfter('#txtCashSettlement');
+                } else {
+                    $('#shortfallWarning').remove();
+                }
+                return true;
             },
             init: function () {
                 eventFunction.InitialSetup();
@@ -137,26 +168,33 @@ function prints() {
                 NumCodeSetup();
 
                 $("#btnPrints").click(function () {
-                    $('h5').css('margin','5px');
-                    $('.closeday-sec table , .closeday-total table').css('font-size','75%');
-                    $('.right-sec').css('border-top','1px solid');
+                    $('h5').css('margin', '5px');
+                    $('.closeday-sec table , .closeday-total table').css('font-size', '75%');
+                    $('.right-sec').css('border-top', '1px solid');
                     prints();
                 });
-                
+
+                // Expenses keyup – recalc CashInCounter and apply fixed float
                 $('#txtExpenses').on('keyup', function () {
-                    var expenses = $('#txtExpenses').val() == "" ? 0 : $('#txtExpenses').val();
-                    var cash = $('#txtCashSettlement').val() == "" ? 0 : $('#txtCashSettlement').val();
-                    $('#txtCashInCounter').text('Rs. ' + (parseFloat($('#txtOpeningBal').text().split(' ')[1]) + parseFloat($('#txtTotalCashReceived').text().split(' ')[1]) - parseFloat(expenses)).toFixed(2));
-                    $('#txtClosingBalance').text('Rs. ' + (parseFloat($('#txtCashInCounter').text().split(' ')[1]) - parseFloat(cash).toFixed(2))); $('#txtCashSettlement').attr('value', cash);
+                    var expenses = parseFloat($('#txtExpenses').val()) || 0;
+                    var opening = parseFloat($('#txtOpeningBal').text().split(' ')[1]) || 0;
+                    var totalCashReceived = parseFloat($('#txtTotalCashReceived').text().split(' ')[1]) || 0;
+                    var newCounter = opening + totalCashReceived - expenses;
+                    $('#txtCashInCounter').text('Rs. ' + newCounter.toFixed(2));
+                    eventFunction.ApplyFixedFloat(newCounter);
                     $('#txtExpenses').attr('value', expenses);
                 });
 
+                // CashSettlement keyup – but it's read-only when fixed float is active
                 $('#txtCashSettlement').on('keyup', function () {
-                    var cash = $('#txtCashSettlement').val() == "" ? 0 : $('#txtCashSettlement').val();
-                    $('#txtClosingBalance').text('Rs. ' + (parseFloat($('#txtCashInCounter').text().split(' ')[1]) - parseFloat(cash)).toFixed(2));
+                    var cash = parseFloat($('#txtCashSettlement').val()) || 0;
+                    var counter = parseFloat($('#txtCashInCounter').text().split(' ')[1]) || 0;
+                    var closing = counter - cash;
+                    $('#txtClosingBalance').text('Rs. ' + closing.toFixed(2));
                     $('#txtCashSettlement').attr('value', cash);
                 });
 
+                // Denomination count – compute total
                 $('#Cash').on('keyup', function () {
                     var thousand = 1000 * $('#txtthousand').val();
                     var fivehundred = 500 * $('#txtfivehundred').val();
@@ -181,38 +219,37 @@ function prints() {
                     $('#txtone').attr('value', $('#txtone').val());
                 });
 
+                // Close Day button – validate denomination against Cash In Counter
                 $('#btnCloseDay').on('click', function () {
-                    var closingbal = (parseFloat($('#txtCashInCounter').text().split(' ')[1]) - parseFloat($('#txtCashSettlement').val()));
-                    var balance = closingbal.toFixed();
-                    var balanceplus = parseFloat(balance) + 1;
-                    var balanceminus = balance - 1;
-                    var totalsum = $('#txtTotalSum').val();
+                    // Get the physical cash expected in the drawer
+                    var cashInCounter = parseFloat($('#txtCashInCounter').text().split(' ')[1]) || 0;
+                    // Get the cash counted from denominations
+                    var totalsum = parseFloat($('#txtTotalSum').val()) || 0;
 
+                    // Allow a 1 Rupee difference to handle rounding
+                    var diff = Math.abs(totalsum - cashInCounter);
+
+                    // Check if tables are occupied (if the feature is enabled)
                     if (p.OccupiedTableDayClosedEnable == "true") {
                         if (tableList != "[]") {
-                            jAlert("Some Tables are still occupied. Makes sure all the tables are vacant.");
-                        }
-                        else if (totalsum != balance && totalsum != balanceplus && totalsum != balanceminus) {
-                            jAlert("Cash Denomination is not equal to closing balance");
-                        }
-                        else {
-                            $('#hdnPinFor').val('CloseDay');
-                            InitializePin();
+                            jAlert("Some tables are still occupied. Please make sure all tables are vacant before closing the day.");
+                            return;
                         }
                     }
-                    else {
-                        if (totalsum != balance && totalsum != balanceplus && totalsum != balanceminus) {
-                            jAlert("Cash Denomination is not equal to closing balance");
-                        }
-                        else {
-                                $('#hdnPinFor').val('CloseDay');
-                            InitializePin();
-                        }
+
+                    // Main validation: denomination total must match Cash In Counter
+                    if (diff > 1) {
+                        jAlert(
+                            "Cash Denomination total (Rs. " + totalsum.toFixed(2) +
+                            ") does not match the Cash In Counter (Rs. " + cashInCounter.toFixed(2) + ").\n\n" +
+                            "Please count the cash in the drawer again and enter the correct numbers."
+                        );
+                        return;
                     }
-                 
-                  
-                    //eventFunction.CloseTheDay();
-                   // 
+
+                    // Everything is correct – proceed with PIN check
+                    $('#hdnPinFor').val('CloseDay');
+                    InitializePin();
                 });
             },
             ajaxCall: function (config) {
@@ -237,12 +274,12 @@ function prints() {
                             eventFunction.BindDayClosingData(data.d);
                         else
                             $("#divCloseDay").hide(),
-                            $("#CashDomination").hide(),
-                            jAlert("There is no data.", "Information!!");
+                                $("#CashDomination").hide(),
+                                jAlert("There is no data.", "Information!!");
                         break;
                     case 2:
                         $("#divCloseDay").hide(),
-                        jAlert("The Day has been closed.", "Information!!");
+                            jAlert("The Day has been closed.", "Information!!");
                         break;
                     case 3:
                         var result = data.d;
@@ -286,7 +323,6 @@ function prints() {
                 eventFunction.ajaxCall(eventFunction.config);
             },
 
-
             BindCloseDayReport: function (data) {
                 $("#CloseDayReport").show();
                 $("#CloseDayReport").html();
@@ -311,12 +347,8 @@ function prints() {
                 var tblTotalSales = 0;
                 var tblTotalExpenses = 0;
                 htmls += '<div class="Report_header"><h4 style="text-align:center;margin:0;">' + companyInfo.Name + '</h4>';
-
                 htmls += '<p style="text-align:center;margin:0;">' + companyInfo.Address + ' , ' + (companyInfo.IsPan ? 'PAN' : 'VAT') + ' : ' + companyInfo.PAN + '</p>';
-               
-                htmls += '<p style="margin:0;text-align:center;">Close Day Report</p> <p style="text-align:center;margin:0;">From : ' + ($('#txtStartDate').val() == "" ? "Beginning" : $('#txtStartDate').val())  + '   To : ' + ($('#txtEndDate').val() == "" ? "End" : $('#txtEndDate').val()) + '</p>';
-               
-               
+                htmls += '<p style="margin:0;text-align:center;">Close Day Report</p> <p style="text-align:center;margin:0;">From : ' + ($('#txtStartDate').val() == "" ? "Beginning" : $('#txtStartDate').val()) + '   To : ' + ($('#txtEndDate').val() == "" ? "End" : $('#txtEndDate').val()) + '</p>';
                 htmls += '<p id="printedDate" style="display:none;text-align:center;margin:0;margin-bottom:5px;">Printed On : <label id="lblPrintedOn"></label></p></div>';
                 htmls += "<table id='tableForViewReport' class='reportsprint' cellspacing='0' style='border:none;width:100%;'>"
                 htmls += "<thead>"
@@ -344,7 +376,7 @@ function prints() {
                         htmls += "<td>" + value.Credit + "</td>";
                         htmls += "<td>" + value.TotalCashReceived + "</td>";
                         htmls += "<td>" + value.SurplusDeficit + "</td>";
-                        htmls += "<td>" + value.CreditCollectedInCash + "</td>";                     
+                        htmls += "<td>" + value.CreditCollectedInCash + "</td>";
                         htmls += "<td>" + value.CreditCollectedInCard + "</td>";
                         htmls += "<td>" + value.CreditCollectedInCheque + "</td>";
                         htmls += "<td>" + value.AdvanceCollectedInCash + "</td>";
@@ -375,7 +407,7 @@ function prints() {
                         tblClosingBalance += value.ClosingBalance;
                         tblTotalSales += value.TotalSales;
                         tblTotalExpenses += value.TotalExpenses;
-                        
+
                         count++;
                     });
                 }
@@ -406,13 +438,11 @@ function prints() {
                 htmls += '<th>' + tblTotalSales.toFixed(2) + '</th>';
                 htmls += '<th>' + tblTotalExpenses.toFixed(2) + '</th>';
                 htmls += '</tr>';
-               
 
                 htmls += "</tfoot>";
                 htmls += "</table>";
 
                 $('#CloseDayReport').html(htmls);
-            
             },
             GenerateDayClosingReport: function () {
                 eventFunction.config.method = "GenerateDayClosingReport";
@@ -424,10 +454,10 @@ function prints() {
             BindDayClosingData: function (result) {
                 if (result.IsClosed) {
                     $("#divCloseDay").hide(),
-                      $("#CashDomination").hide(),
-                    jAlert("The Day has already been closed", "Information!!", function () {
-                        parent.$.colorbox.close();
-                    });
+                        $("#CashDomination").hide(),
+                        jAlert("The Day has already been closed", "Information!!", function () {
+                            parent.$.colorbox.close();
+                        });
                 }
                 else {
                     $('#hdfFinancialID').val(result.FinancialID);
@@ -456,14 +486,17 @@ function prints() {
                     $('#txtAdvanceCollectedIneSewa').html('Rs. ' + result.AdvanceCollectedIneSewa);
                     $('#txtAdvanceCollectedInFonePay').html('Rs. ' + result.AdvanceCollectedInFonePay);
 
+                    // Apply fixed float logic after data is loaded
+                    var cashInCounter = parseFloat($('#txtCashInCounter').text().split(' ')[1]) || 0;
+                    eventFunction.ApplyFixedFloat(cashInCounter);
                 }
             },
             CloseTheDay: function () {
                 var financialID = $('#hdfFinancialID').val();
                 var splitdate = $('#hdfPeriod').val().split(' ')[0].split('/');
                 var cashSettlement = parseFloat($('#txtCashSettlement').val());
-                var formattedMomth = ("0" + splitdate[0]).slice(-2);
-                var formattedDay = ("0" + splitdate[1]).slice(-2);
+                var formattedMomth = ("0" + splitdate[1]).slice(-2);   // Month (was splitdate[0])
+                var formattedDay = ("0" + splitdate[0]).slice(-2);    // Day (was splitdate[1])
                 var period = String(splitdate[2]) + String(formattedMomth) + String(formattedDay);
                 var totalexpenses = $('#txtExpenses').val();
                 var remarks = $('#txtRemarks').val();
@@ -477,7 +510,7 @@ function prints() {
                 eventFunction.config.method = "CloseTheDay";
                 eventFunction.config.url = eventFunction.config.baseURL + eventFunction.config.method;
                 eventFunction.config.data = JSON2.stringify({
-                    financialID: financialID, period: period, cashSettlement: cashSettlement, cashinCounter:cashinCounter, closingBalance:closingBalance, totalexpenses: totalexpenses, remarks: remarks
+                    financialID: financialID, period: period, cashSettlement: cashSettlement, cashinCounter: cashinCounter, closingBalance: closingBalance, totalexpenses: totalexpenses, remarks: remarks
                 })
                 eventFunction.config.ajaxCallMode = 4;
                 eventFunction.ajaxCall(eventFunction.config);

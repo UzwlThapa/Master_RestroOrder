@@ -180,7 +180,7 @@ namespace SageFrame.RestroOrder
         public OrderMasterClass GetOrderDetailsFromDatabase(string tableId)
         {
             return RestrOrderProvider.GetOrderDetailsFromDatabase(tableId);
-        } 
+        }
         public void TempPurchaseDetailTsk(MvTempPurchaseDetail item)
         {
             RestrOrderProvider.TempPurchaseDetailTsk(item);
@@ -1687,10 +1687,15 @@ namespace SageFrame.RestroOrder
         {
             return restroOrderProvider.getComplementsalesreport(Start, EndDate, tableid, roomid, itemname);
         }
-        public DailyClosingReport GenerateDayClosingReport(string date, bool viewOnly)
+
+        public DailyClosingReport GenerateDayClosingReport(string date, bool viewOnly,bool useCounterCashForVendor = false,decimal dayCloseFixedFloat = 0)
         {
-            return restroOrderProvider.GenerateDayClosingReport(date, viewOnly);
+            return restroOrderProvider.GenerateDayClosingReport(date,viewOnly,useCounterCashForVendor,dayCloseFixedFloat);
         }
+        //public DailyClosingReport GenerateDayClosingReport(string date, bool viewOnly, bool useCounterCashForVendor = false)
+        //{
+        //    return restroOrderProvider.GenerateDayClosingReport(date, viewOnly, useCounterCashForVendor);
+        //}
         public void CloseTheDay(int financialID, decimal cashSettlement, decimal cashinCounter, decimal closingBalance, decimal totalexpenses, string remarks)
         {
             restroOrderProvider.CloseTheDay(financialID, cashSettlement, cashinCounter, closingBalance, totalexpenses, remarks);
@@ -1832,7 +1837,7 @@ namespace SageFrame.RestroOrder
         {
             return restroOrderProvider.getPurchaseNoForReport();
         }
-        public void saveBevearge(List<ROInvItem> itemlist, List<extraItem> extraItemList= null)
+        public void saveBevearge(List<ROInvItem> itemlist, List<extraItem> extraItemList = null)
         {
             restroOrderProvider.saveBevearge(itemlist, extraItemList);
         }

@@ -16,8 +16,9 @@
     $(function () {
         $(this).companyProfEDIT({
             OccupiedTableDayClosedEnable: "<%= OccupiedTableDayClosedEnable %>",
-            CloseDay: 1
-        });
+           FixedFloat: "<%= DayCloseFixedFloat %>",   // <-- ADD THIS LINE
+           CloseDay: 1
+       });
         resizeIframe();
     });
 
@@ -200,7 +201,7 @@
         <div id="CashDomination" class="right-sec">
             <div class="right-secA right-secAA">
                 <div class="dialogflex">
-                    <h5>Cash Domination</h5>
+                    <h5>Cash Denomination</h5>
                 </div>
                 <table id="Cash">
                     <tr>
