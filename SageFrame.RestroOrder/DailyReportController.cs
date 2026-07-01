@@ -884,7 +884,7 @@ namespace SageFrame.RestroOrder
                 + "</tr>"
                 + "</table>"
                 + "<p>Full details in the attached Excel report.</p>"
-                + "<p style='color:#888;font-size:12px;'>Regards,<br/>" + safeCompanyName + " — RestroOrder System</p>"
+                + "<p style='color:#888;font-size:12px;'>Regards,<br/>" + safeCompanyName + " — Danfe Solution Pvt. Ltd.</p>"
                 + "</body></html>";
 
             const int maxRetries = 3;
