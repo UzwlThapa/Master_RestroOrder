@@ -1,1 +1,47 @@
-.vs
+```
+# Build artifacts
+bin/
+obj/
+*.dll
+*.exe
+*.pdb
+*.config
+*.log
+
+# Dependencies
+packages/
+node_modules/
+bower_components/
+
+# IDE files
+.vs/
+.vshistory/
+.vscode/
+*.user
+*.userosscache
+*.suo
+*.userprefs
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Temporary files
+*.tmp
+*.temp
+*.bak
+
+# Environment
+.env
+.env.local
+*.env.*
+
+# Logs
+*.log
+
+# Backup and migration files
+*.bak
+*.backup
+*.migration
+```
