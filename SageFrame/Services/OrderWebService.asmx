@@ -286,8 +286,22 @@ public class OrderWebService : System.Web.Services.WebService
                 {
                     if (table.restrotableTitle == null)
                     {
-                        status = "Pick Order";
-                        printSuccessful += print.PrintOrders(addedOrders, "Take Away", orderMasterInfo.Date, orderMasterInfo.UserName, "Added", ordermasterid, toke.OrderNo, toke.TokenNo, toke.CustomerName, toke.Phone);
+                        if (addedOrders.Count > 0)
+                        {
+                            status = "Pick Order";
+                            printSuccessful += print.PrintOrders(addedOrders, "Take Away", orderMasterInfo.Date, orderMasterInfo.UserName, "Added", ordermasterid, toke.OrderNo, toke.TokenNo, toke.CustomerName, toke.Phone);
+                        }
+
+                        if (cancelledOrders.Count > 0)
+                        {
+                            status = "Cancelled";
+                            printSuccessful += print.PrintOrders(cancelledOrders, "Take Away", orderMasterInfo.Date, orderMasterInfo.UserName, "Cancelled", ordermasterid, toke.OrderNo, toke.TokenNo, toke.CustomerName, toke.Phone);
+                        }
+
+                        if (toppingOnly.Count > 0)
+                        {
+                            PrintExtra(toppingOnly, "Take Away", orderMasterInfo.Date, orderMasterInfo.UserName, 1, ordermasterid);
+                        }
                     }
                     else
                     {

@@ -2,3 +2,7 @@
 [26/06/2026 11:01:07] Missed‑close warning sent for 20260625 (attempt 2)
 [27/06/2026 14:45:05] Missed‑close warning sent for 20260626 (attempt 1)
 [01/07/2026 09:33:05] Missed‑close warning sent for 20260630 (attempt 1)
+[03/07/2026 12:01:07] Missed‑close warning sent for 20260702 (attempt 1)
+[06/07/2026 10:26:04] Missed‑close warning sent for 20260705 (attempt 1)
+[09/07/2026 17:42:05] Missed‑close warning sent for 20260708 (attempt 1)
+[10/07/2026 12:01:04] Missed‑close warning sent for 20260709 (attempt 1)

@@ -37,6 +37,8 @@ function IntegerAndDecimal(evt, element) {
         return true;
     }
 }
+
+// --- FIXED: print() now properly injects billPrintStyles ---
 function print() {
     var contents = $('#customer-bill').html();
     var frame1 = document.createElement('iframe');
@@ -45,6 +47,7 @@ function print() {
     var frameDoc = frame1.contentWindow ? frame1.contentWindow : frame1.contentDocument.document ? frame1.contentDocument.document : frame1.contentDocument;
     frameDoc.document.open();
     frameDoc.document.write('<html><head><title></title>');
+    // --- CRITICAL FIX: Inject billPrintStyles from BillBind.js ---
     if (typeof billPrintStyles !== 'undefined') {
         frameDoc.document.write(billPrintStyles);
     }
@@ -58,6 +61,7 @@ function print() {
         document.body.removeChild(frame1);
     }, 500);
 }
+
 (function ($) {
     var tabs = $("#tabs").tabs();
     $('#tabs').css('display', 'block');
@@ -112,7 +116,7 @@ function print() {
                 cache: false,
                 type: 'POST',
                 contentType: "application/json; charset=utf-8",
-                data: {},// "{'emailAddress':'bob@bob.com', 'password':'Password1'}", 
+                data: {},
                 dataType: 'json',
                 baseURL: p.ModulePath + "services/DashBoardWebService.asmx/",
                 method: "",
@@ -181,7 +185,6 @@ function print() {
 
                 $('#hdnPinMatch').on('change', function () {
                     if ($('#hdnPinMatch').val() == "true") {
-                        //$('#hdnPinMatch').unbind('change');
                         var pinFor = $('#hdnPinFor').val();
                         if (pinFor == 'Book') {
                             DashboardFunction.SaveRoomBook();
@@ -224,7 +227,6 @@ function print() {
                     }
                     else {
                         DashboardFunction.Checkbill(OrderMasterID, parseInt($('#splitNoCancel').val() == null ? 0 : $('#splitNoCancel').val()), fromtableId);
-                        //DashboardFunction.CancelOrderedData();
                     }
                 });
 
@@ -241,10 +243,6 @@ function print() {
                         CustAddress = rows.find('td:eq(2)').text();
                         CustPAN = rows.find('td:eq(1)').text();
 
-                        //$("#chkCus").prop("checked", true);
-
-                        //totamount = $("#bindtotalamount").val();
-                        //DashboardFunction.DeleteItem(id);
                     } else if (membershipfor == "PaymentLoyalty") {
                         $("#txtCusID").val(ids[1]);
                         $("#txtCashCusName").val(ids[2] + " " + ids[3]);
@@ -289,7 +287,6 @@ function print() {
                     DashboardFunction.GetUnoccupiedRoomByRoomTypeId(parseInt(id));
                 });
                 $('#txtBookFrom').datetimepicker({
-                    //minDate: 'dateToday',
                     hour: 12,
                     minute: 00,
                     minDate: new Date(),
@@ -315,7 +312,6 @@ function print() {
 
                                     $('#txtDays').val(FinalDays);
                                     $('#txtAmount').val((parseFloat(FinalDays) * parseFloat($('#txtRate').val())).toFixed(2));
-                                    //$('#BookAdvancePay').val('0');
                                 } else {
                                     jAlert('!!SORRY!! Room Not available for the selected Date and Time.', "Alert!!", function () { $.alerts.dialogClass = null; });
                                     $('#txtBookFrom').val('');
@@ -350,7 +346,6 @@ function print() {
 
                                     $('#txtDays').val(FinalDays);
                                     $('#txtAmount').val((parseFloat(FinalDays) * parseFloat($('#txtRate').val())).toFixed(2));
-                                    //$('#BookAdvancePay').val('0');
                                 } else {
                                     jAlert('!!SORRY!! Room Not available for the selected Date and Time.', "Alert!!", function () { $.alerts.dialogClass = null; });
                                     $('#txtBookFrom').val('');
@@ -389,7 +384,6 @@ function print() {
                     jConfirm('Are You Sure  ?', 'Shift', function (confirmed) {
                         if (confirmed) {
                             $('#hdnPinFor').val('Shift');
-                            //InitializePin();
                             DashboardFunction.Checkbill(DashboardFunction.config.ShiftOrderMasterID, $("#shiftingTableSeatNo").val(), fromtableId);
                         }
                     });
@@ -462,9 +456,12 @@ function print() {
                     case 57:
                         $('#DialogOrderDetail').dialog('close');
                         DashboardFunction.GetBill(data.d)
-                        print();
-                        $('#InvoiceType').html('INVOICE');
-                        $('#btnPrints').click();
+                        // --- FIXED: Sequential prints instead of back-to-back ---
+                        print();  // Tax Invoice
+                        setTimeout(function() {
+                            $('#InvoiceType').html('INVOICE');
+                            print();  // Invoice copy
+                        }, 1000);
                         DashboardFunction.GetUserName();
                         var paymentAfterGenerateBill = JSON.parse(localStorage.getItem("paymentAfterGenerateBill"));
                         if (paymentAfterGenerateBill) {
@@ -584,13 +581,11 @@ function print() {
                         if ($('.customerForCash').prop('checked') == false) {
 
                             var basicAmt = parseFloat(disLimitBasicAmt);
-                            //var tempDis = $('.totalDiscount').val().split('.');
                             var ttlDis = parseFloat($('.totalDiscount').attr('attr-amount'));
 
                             var disper = parseFloat((ttlDis * 100) / basicAmt);
 
-                            // Check for discount limit
-                            var creditlimit = p.creditLimit; //Percentage
+                            var creditlimit = p.creditLimit;
                             if (creditlimit >= disper) {
                                 InitializePin();
                             }
@@ -734,7 +729,6 @@ function print() {
                 DashboardFunction.config.method = "GetDataForPrint";
                 DashboardFunction.config.url = DashboardFunction.config.baseURL + DashboardFunction.config.method;
                 DashboardFunction.config.data = JSON2.stringify({ orderMasterId: orderMasterId });
-                //DashboardFunction.config.ajaxCallMode = 56;
                 DashboardFunction.ajaxCall(DashboardFunction.config);
             },
             GetDataForSalesBill: function (orderMasterId) {
@@ -869,7 +863,7 @@ function print() {
                 DashboardFunction.config.ID = id;
 
             },
-            //<<----------------------------- Bind Here ---------------------------------------->
+            //<<----------------------------- Bind Here ---------------------------------------->>
 
             Bindmembership: function (data) {
 
@@ -949,13 +943,11 @@ function print() {
 
                     if (words[19] == "true") {
                         $('#rdoCustomer').prop('checked', true);
-                        //$('#rdoVender').attr('checked', false);
                         $(".custo").show();
                         $(".vend").hide();
                     }
                     else {
                         $('#rdoVender').prop('checked', true);
-                        // $('#rdoCustomer').attr('checked', false);
                         $(".custo").hide();
                         $(".vend").show();
                     }
@@ -1014,7 +1006,6 @@ function print() {
                     $.each(datas, function (index, value) {
                         if (value.IsTable) {
                             if (!value.MergeTableList > 0 && (value.IsTable || value.OrderMasterId > 0)) {
-                                //if (!value.MergetableList > 0 && value.restrotablesStatusID == 6 && value.IsTable && (value.BillPaid != 0 || value.IsCancelled != 0)) {
                                 htmls += ("<li>");
                                 htmls += ("<a id ='");
                                 htmls += ("Table_" + value.restrotableId + "_img_" + value.IsTable + "_" + value.restrotableTitle + "_" + value.GuestNo + "' class = 'imgtableshift' ><img src='" + p.HostUrl + "/Modules/RestroDashboard/image/" + ((value.BillPaid != 0 || value.IsCancelled != 0) ? 'tablegreen' : 'tablered') + ".png'></a> ");
@@ -1082,7 +1073,6 @@ function print() {
                 if (orderdetails.length > 0) {
                     noOfGuest = parseInt(orderdetails[0].GuestNo);
                     htmls += ("<div class='left-sec'><div style='text-align:center;'><h4>Complimentary Receipt</h4></div><div class='dialogflex'><h4>Room : " + orderdetails[0].restroRoom + "  / Table : " + orderdetails[0].restrotableTitle + " </h4><h4> Date: " + orderdetails[0].tableDate.toString("MM/dd/yyyy") + "</h4></div>");
-                    //htmls += ("<div style='text-align:center'><div><h4>Complimentary Receipt</h4></div><div class='dialogflex'><h4>Room : " + orderdetails[0].restroRoom + "  / Table : " + orderdetails[0].restrotableTitle + " </h4><h4> Date: " + orderdetails[0].tableDate.toString("MM/dd/yyyy") + "</h4></div>");
                     htmls += ("<div class='dialogflex' style=margin-top:5px;><h5>Ordered Items Details</h5>");
 
                     htmls += "</div>";
@@ -1097,7 +1087,6 @@ function print() {
                         qnty += parseFloat(value.Quantity);
                         amt = parseFloat(value.Quantity) * parseFloat(value.Rate);
                         totalAmount += parseFloat(amt);
-                        //console.log('totalAmount: ' + totalAmount);
                         htmls += ("<td class='item-amount'>" + amt.toFixed(2) + "</td></tr>");
 
                         sn++;
@@ -1132,6 +1121,10 @@ function print() {
                     var frameDoc = frame1.contentWindow ? frame1.contentWindow : frame1.contentDocument.document ? frame1.contentDocument.document : frame1.contentDocument;
                     frameDoc.document.open();
                     frameDoc.document.write('<html><head><title></title>');
+                    // --- FIX: Inject billPrintStyles for complimentary prints too ---
+                    if (typeof billPrintStyles !== 'undefined') {
+                        frameDoc.document.write(billPrintStyles);
+                    }
                     frameDoc.document.write('</head><body>');
                     frameDoc.document.write(contents);
                     frameDoc.document.write('</body>');
@@ -1141,8 +1134,6 @@ function print() {
                         window.frames["frame1"].print();
                         document.body.removeChild(frame1);
 
-                        //// refresh complimentary orders
-                        //alert('Print successfull');
                         $('#DialogOrderDetail').dialog('close');
                         DashboardFunction.GetComplimentaryOccupiedTables(true);
                     }, 500);
@@ -1208,7 +1199,7 @@ function print() {
                         }
                     });
 
-                    debugger;
+                    // removed debugger
                     //Check
                     totaldis = 0;
                     totaldis += (parseFloat(kotAmount) * (parseFloat(costcenters[0].coDiscount) / 100));
@@ -1524,7 +1515,7 @@ function print() {
                         datas.billingTerm.push(term);
                         DashboardFunction.BindBillingTerm(totalAmount, totaldis, datas);
                     } else {
-                        debugger;
+                        // removed debugger
                         $.each(datas.billingTerm, function (index, value) {
                             if (value.ID == 62) {
                                 datas.billingTerm.splice(index, 1)
@@ -1533,8 +1524,6 @@ function print() {
                         DashboardFunction.BindBillingTerm(totalAmount, totaldis, datas);
                     }
                 });
-
-                // $(".txtdiscount , .txtnum").on('click', function (event) {
 
                 $('.customerForCash').on('change', function () {
                     if ($('.customerForCash').prop('checked') == true) {
@@ -1557,8 +1546,6 @@ function print() {
                         $("#txtCashCusName").prop('disabled', false);
                         $("#txtCusAddress").prop('disabled', false);
                         $("#txtPan").prop('disabled', false);
-                        //$("#selDiscountType").val(1);
-                        //$("#selDiscountType").change();
                         $("#txtLoyaltyDiscount").val(0);
                     }
                 })
@@ -1611,9 +1598,7 @@ function print() {
                             }
                             amt = parseFloat(value.Quantity) * parseFloat(value.Rate);
 
-                            //if (!isab) {
                             totalAmount += parseFloat(amt);
-                            //}
 
                             if (!isab)
                                 itms += ("<td class='item-amount'>" + amt + "</td></tr>");
@@ -1632,17 +1617,12 @@ function print() {
                                     rate += parseFloat(value.Quantity * value.ExtraPrice);
                                 });
                                 itms += ("</td>");
-                                //itms += ("</td><td>" + qnty + "</td>");
                                 if ($("#selDiscountType").val() == "4") {
-                                    //itms += ("<td class='item-rate'>" + 1 + "</td>");
                                     amt = parseFloat(qnty);
                                 } else {
-                                    //itms += ("<td class='item-rate'>" + rate + "</td>");
                                     amt = parseFloat(rate);
                                 }
                                 totalAmount += parseFloat(amt);
-
-                                //console.log('totalAmount: ' + totalAmount);
 
                                 itms += ("<td class='item-amount'>" + amt + "</td></tr>");
 
@@ -1755,7 +1735,6 @@ function print() {
                                 totalAmountN += parseFloat(_this.find('td').eq(4).text());
 
                             });
-                            // cgGroup.TotalDis = disRate;
                             $('.totle').text((totalAmountN).toFixed(2));
 
                             var Roomitemrow = $('.room-details-tbl').find('tbody').find('tr');
@@ -1835,7 +1814,6 @@ function print() {
                                     totalAmountN += parseFloat(_this.find('td').eq(4).text());
 
                                 });
-                                // cgGroup.TotalDis = disRate;
                                 $('.totle').text((totalAmountN).toFixed(2));
 
                                 if ($(this).attr('id') == 'txtRoomDiscount') {
@@ -1850,10 +1828,7 @@ function print() {
                                             rate.text(disAbb.toFixed(2))
                                             _this.find('td').eq(3).text((qty * disAbb).toFixed(2))
                                             totalAmountR += parseFloat(_this.find('td').eq(3).text());
-
-                                            //console.log('Rate:' + rateInt + 'Amt:' + (qty * disAbb) + 'Total:' + totalAmountR)
                                         });
-                                        // cgGroup.TotalDis = disRate;
                                         $('.roomtotle').text((totalAmountR).toFixed(2));
                                     }
                                 }
@@ -1861,7 +1836,7 @@ function print() {
 
 
 
-                            } //else {
+                            }
 
                             $(".txt_dis").each(function () {
                                 var keyIndex = parseFloat($(this).attr('id').split('_')[1]);
@@ -1946,7 +1921,6 @@ function print() {
                                     totalAmountN += parseFloat(_this.find('td').eq(4).text());
 
                                 });
-                                //cgGroup.TotalDis = ttldis;
                                 $('.totle').text((totalAmountN).toFixed(2));
 
                                 if ($(this).attr('id') == 'txtRoomDiscount') {
@@ -1961,10 +1935,7 @@ function print() {
                                             rate.text(disAbb.toFixed(2))
                                             _this.find('td').eq(3).text((qty * disAbb).toFixed(2))
                                             totalAmountR += parseFloat(_this.find('td').eq(3).text());
-
-                                            //console.log('Rate:' + rateInt + 'Amt:' + (qty * disAbb) + 'Total:' + totalAmountR)
                                         });
-                                        // cgGroup.TotalDis = disRate;
                                         $('.roomtotle').text((totalAmountR).toFixed(2));
                                     }
                                 };
@@ -1975,8 +1946,7 @@ function print() {
                                 var keyIndex = parseFloat($(this).attr('id').split('_')[1]);
                                 if (keyIndex >= 0) {
                                     dis += (parseFloat(getValue(this)));
-                                    //costCenterGroup[keyIndex].TotalDis = parseFloat(getValue(this));
-                                } else { //ROOM
+                                } else {
                                     dis += (parseFloat(getValue(this)));
                                 }
                             })
@@ -1990,8 +1960,7 @@ function print() {
                                 var keyIndex = parseFloat($(this).attr('id').split('_')[1]);
                                 if (keyIndex >= 0) {
                                     dis += (parseFloat(getValue(this)));
-                                    //costCenterGroup[keyIndex].TotalDis = parseFloat(getValue(this));
-                                } else { //ROOM
+                                } else {
                                     dis += (parseFloat(getValue(this)));
                                 }
                             })
@@ -2021,15 +1990,11 @@ function print() {
 
                 $("#generateBill").on('click', function () {
                     DashboardFunction.Checkbill(tableinfo.OrderMasterId, seatNo, parseInt(tableinfo.TableId));
-                    //$('#hdnPinFor').val('generateBill');
-                    //InitializePin();
                 });
 
                 $('.paynows').unbind('click').on('click', function () {
                     jConfirm('Are You Sure  ?', 'Pay', function (confirmed) {
                         if (confirmed) {
-                            //var id = $(this).attr('id').split('_');
-                            //console.log(orderdetails);
                             var billingTerm = new Array();
                             var salesMaster = new Object();
                             var splited = 0;
@@ -2329,8 +2294,6 @@ function print() {
                                     rate += parseFloat(value.ExtraPrice * value.Quantity);
                                 });
                                 htmls += "</td>";
-                                //htmls += ("</td><td>" + qnty + "</td>");
-                                //htmls += ("<td class='item-rate'>" + (rate/qnty) + "</td>");
                                 amt = parseFloat(rate);
 
 
@@ -2355,7 +2318,6 @@ function print() {
                     if (isab) {
                         if (isAbbreviated) {
                             htmls += ("</tbody><tfoot><tr class='Total_Amt'><td colspan='3'  style='text-align:right;font-weight:bold;'>Total Qnty : " + qnty.toFixed(2) + "</td><td colspan='2'  style='text-align:right;font-weight:bold;'>Amount : Rs.<span class='totle'> " + (totalAmount * (1 + v_rate / 100.0)).toFixed(2) + "</span></td></tr>");
-                            //totalAmount = (totalAmount * (1 + v_rate / 100.0));
                         }
                         else {
                             htmls += ("</tbody><tfoot><tr class='Total_Amt'><td colspan='3'  style='text-align:right;font-weight:bold;'>Total Qnty : " + qnty.toFixed(2) + "</td><td colspan='2'  style='text-align:right;font-weight:bold;'>Amount : <span class='totle'>Rs. " + totalAmount.toFixed(2) + "</span></td></tr>");
@@ -2456,8 +2418,6 @@ function print() {
                     }
                 });
 
-                // $(".txtdiscount , .txtnum").on('click', function (event) {
-
                 $('.customerForCash').on('change', function () {
                     if ($('.customerForCash').prop('checked') == true) {
                         membershipfor = "PaymentLoyalty";
@@ -2480,8 +2440,6 @@ function print() {
                         $("#txtCusAddress").prop('disabled', false);
                         $("#txtPan").prop('disabled', false);
 
-                        //$("#selDiscountType").val(1);
-                        //$("#selDiscountType").change();
                         $("#txtLoyaltyDiscount").val(0);
                     }
                 })
@@ -2993,7 +2951,6 @@ function print() {
                             }
                         }
 
-                        //htmls += ("<tr>");
                         htmls += ("<td attr-term='Taxable Amount' attr-percent='0' ><strong>Taxable Amount : </strong><input type=\"text\" id=\"txtTaxableAmt\" value=\"Rs. " + netAmount.toFixed(2) + "\"  class=\"sfInputbox_bill afterdiscountAmt \" disabled attr-amount='" + netAmount.toFixed(2) + "'/></td>");
                         htmls += ("</tr>");
                         if (!isab) {
@@ -3404,7 +3361,6 @@ function print() {
                                 }
                                 roomHtmls += ("<input id='Booking_" + type.OrderMasterId + "' type='button' class='sfBtn editBooking restro-btn' value='Edit' style='padding:1px 4px; margin-left:10px;' />");
                             }
-                            //roomHtmls += ("<input id='Pay_" + type.TableId + "_" + type.OrderMasterId + "' type='button'  class='sfBtn paynow restro-btn' value='Pay' style='padding:1px 4px; margin-left:10px;'/>");
                             roomHtmls += ("<input id='Cancel_" + type.OrderMasterId + "_" + type.TableId + "_" + type.GuestNo + "' type='button' class='sfBtn cancelorder restro-btn' value='Cancel' style='padding:1px 4px; margin-left:10px;' />");
                             roomHtmls += ("</div></td></tr>");
                         }
@@ -3437,7 +3393,6 @@ function print() {
                         window.location.href = url;
                     });
                     $('#BookedRooms').on('click', '.paynow', function () {
-                        //alert('shree');
                         var id = $(this).attr('id');
                         var data = id.split('_');
                         DashboardFunction.GetDataForSalesBill(data[2]);
@@ -3527,6 +3482,7 @@ function print() {
 })(jQuery);
 
 
+// --- FIXED: SaveAcc() now uses sequential prints ---
 function SaveAcc() {
     isButtonClicked = false;
     var billingTerm = new Array();
@@ -3627,7 +3583,7 @@ function SaveAcc() {
     discount.bakerydis = $('#txtBakeryDiscount').val();
     discount.pizzadis = $('#txtPizzaDiscount').val();
     var salesPayment = {};
-    //alert(JSON2.stringify({ salesMaster: salesMaster, salesDetail: salesDetail, splited: splited, billingTerm: billingTerm, flatorperdiscount: discount }));
+    
     $.ajax({
         type: "POST",
         async: false,
@@ -3646,18 +3602,19 @@ function SaveAcc() {
                 modal: true,
                 position: ['center', 'top']
             });
-            print();
-            $('#InvoiceType').html('INVOICE');
-            print();
-
-            $('#BillingView').dialog('close');
-            jAlert('Bill Successfully Generated.', 'Information', function () {
-                parent.$.colorbox.close();
-            });
+            // --- FIX: Sequential prints with delay ---
+            print();  // Tax Invoice
+            setTimeout(function() {
+                $('#InvoiceType').html('INVOICE');
+                print();  // Invoice copy
+                $('#BillingView').dialog('close');
+                jAlert('Bill Successfully Generated.', 'Information', function () {
+                    parent.$.colorbox.close();
+                });
+            }, 1000);
         },
         failure: function (response) {
             jAlert("Sorry some error occured. Contact the support team.", "Error!!");
         }
     });
-    //}
 }

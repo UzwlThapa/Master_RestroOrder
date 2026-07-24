@@ -1,4 +1,4 @@
-﻿
+﻿﻿
 var companyInfo = JSON.parse(localStorage.getItem("companyInfo"));
 
 var disLimitBasicAmt = 0.00;
@@ -242,7 +242,7 @@ function GetCategoriesBymenuID(menuid, categoryName, languageid) {
     });
 }
 function BindCategoriesByMenu(result, categoryName) {
-    debugger;
+    // removed debugger
     var htmls = [];
     $('#Categoryshow').html("");
     $('#Itemshow').html("");
@@ -675,7 +675,7 @@ function bindForCancel(result) {
             });
 
             $('.saveCanceledItem').unbind('click').on('click', function () {
-                debugger;
+                // removed debugger
                 var myStr = $(".txtreason").val();
                 var newStr = myStr.replace(/  +/g, ' ');
                 if (newStr.length <= 4) {
@@ -733,7 +733,7 @@ function SaveCanceledItems(cancelobjs) {
 }
 
 function SaveOrderedData() {
-    debugger;
+    // removed debugger
     var splited = false;
     var cancel = false;
     var orders = [];
@@ -810,7 +810,7 @@ function SaveOrderedData() {
         contentType: "application/json; charset=utf-8",
         dataType: "json",
         success: function (data) {
-            debugger;
+            // removed debugger
             var val = data.d.split("_");
             var orderid = val[0];
             $.each(val, function (index, value) {
@@ -1357,7 +1357,7 @@ function GetDataForSalesBill(orderMasterId) {
             }
 
             $('.txt_dis').on('keyup', function () {
-                debugger;
+                // removed debugger
                 totalAmount = 0.00;
                 $.each(costCenterGroup, (i, v) => {
                     totalAmount += v.TotalAmt;
@@ -1527,7 +1527,7 @@ function GetDataForSalesBill(orderMasterId) {
                 var salesMaster = new Object();
                 var splited = 0;
                 var salesDetail = new Array();
-                debugger;
+                // removed debugger
                 salesMaster.billNo = orderdetails[0].BillNo;
                 salesMaster.BillDate = new Intl.DateTimeFormat('en-US').format(new Date());
                 salesMaster.NepaliInvoiceDate = formatDate();
@@ -1678,7 +1678,7 @@ function BindPaymentModes() {
             var response = JSON.parse(response.d ?? '{}');
             if (response != null && response.length > 0) {
                 $.each(response, function (index, item) {
-                    debugger;
+                    // removed debugger
                     htmls += '<tr>';
                     if (index == 0) {
                         htmls += '<td><input type="checkbox" checked="checked"  class="pmntCheck" id="chkBox_' + item.PaymentModeID + '" /><label for="chkBox_' + item.PaymentModeID + '" style="margin:0;margin-left:5px;font-weight:bold;cursor:pointer;">' + item.PaymentMode + ' : </label></td>';
@@ -1754,7 +1754,7 @@ function BindPaymentModes() {
     });
 };
 function BindBillingTerm(totalAmount, totaldis, datas) {
-    debugger;
+    // removed debugger
     //Abb Change
     var isab = companyInfo.IsAbbreviated;
     let v_rate = companyInfo.VATRate;
@@ -1971,7 +1971,7 @@ function GetCustomeronCheck() {
 }
 
 function SaveSalesBill(salesMaster, salesDetail, splited, billingTerm, discount) {
-    debugger;
+    // removed debugger
     var customer = 1;
     $.ajax({
         type: "POST",
@@ -1984,7 +1984,7 @@ function SaveSalesBill(salesMaster, salesDetail, splited, billingTerm, discount)
         success: function (data) {
             $('#DialogOrderDetail').hide();
 
-            debugger;
+            // removed debugger
             getBill(data.d, false);
 
             $('#BillingView').dialog({
@@ -1995,14 +1995,20 @@ function SaveSalesBill(salesMaster, salesDetail, splited, billingTerm, discount)
                 position: ['center', 'top'],
                 dialogClass: 'popup-titlebg'
             });
-            $('#btnPrints').unbind('click').on('click', function () {
-                $('#divPrintedOn').text(formatAMPM());
-                savePrintCount((parseInt($('#hdfPrntCnt').val()) + 1), parseInt($('#hdfSMID').val()), SageFrameUserName);
-            });
 
-            Print();
-            $('#InvoiceType').html('INVOICE');
-            $('#btnPrints').click();
+            // ---- FIX: Print Tax Invoice first, then Invoice after delay ----
+            Print();  // Tax Invoice (current label is "TAX INVOICE")
+
+            setTimeout(function() {
+                $('#InvoiceType').html('INVOICE');   // change label
+                Print();  // Invoice copy
+                // Update print count after both prints are triggered
+                savePrintCount(
+                    (parseInt($('#hdfPrntCnt').val()) + 1),
+                    parseInt($('#hdfSMID').val()),
+                    SageFrameUserName
+                );
+            }, 1000);  // 1 second gap ensures first print dialog is shown
         },
         failure: function (response) {
             jAlert("Sorry some error occured. Contact the support team.", "Error!!");
@@ -2033,15 +2039,20 @@ function SaveFoodCourtSalesBill(salesMaster, salesDetail, splited, billingTerm, 
                 dialogClass: 'popup-titlebg'
             });
 
-            $('#btnPrints').unbind('click').on('click', function () {
-                $('#divPrintedOn').text(formatAMPM());
-                savePrintCount((parseInt($('#hdfPrntCnt').val()) + 1), parseInt($('#hdfSMID').val()), SageFrameUserName);
-            });
+            // ---- FIX: same delayed two-print sequence ----
+            Print();  // Tax Invoice
 
-            Print();
-            $('#InvoiceType').html('INVOICE');
-            $('#btnPrints').click();
+            setTimeout(function() {
+                $('#InvoiceType').html('INVOICE');
+                Print();  // Invoice
+                savePrintCount(
+                    (parseInt($('#hdfPrntCnt').val()) + 1),
+                    parseInt($('#hdfSMID').val()),
+                    SageFrameUserName
+                );
+            }, 1000);
 
+            // Reset fields (keep as is)
             $('#txtCustName').val('');
             $('#txtContactNo').val('');
             $('#CustomerID').text(0);
@@ -2066,9 +2077,9 @@ function savePrintCount(printcount, billNo, printedBy) {
         contentType: "application/json; charset=utf-8",
         dataType: "json",
         success: function (data) {
-            Print();
+            // REMOVED: Print();   // <-- DELETE THIS LINE
             $('#BillingView').dialog('close');
-            debugger;
+            // removed debugger
             jAlert("Bill successfully Generated", "Information!!", function () {
                 if (foodCourtOrder) {
                     $('.bindorderlist').html('');
@@ -2110,7 +2121,7 @@ function Print() {
 }
 
 function CancelOrderedData() {
-    debugger;
+    // removed debugger
     var id = OrderMasterID;
     var cancel = false;
     var ordermaster = new Object();
@@ -2146,7 +2157,7 @@ function CancelOrderedData() {
 //Avata Change
 function initialSetup(tableId, oId, hostUrl, foodCourt, Delievery) {
     $('#hdnPinMatch').on('change', function () {
-        debugger;
+        // removed debugger
         if ($('#hdnPinMatch').val() == "true") {
             var pinFor = $('#hdnPinFor').val();
             if (pinFor == 'generateBill') {
@@ -2329,7 +2340,7 @@ function initialSetup(tableId, oId, hostUrl, foodCourt, Delievery) {
     $(".sfCol_13").hide();
 
     $('#SendOrder').on('click', function () {
-        debugger;
+        // removed debugger
         if (OrderDelivery == true) {
             if ($("#txtCustName").val().length < 3) {
                 jAlert('Please Insert valid name', 'Alert!!');
@@ -2364,7 +2375,7 @@ function initialSetup(tableId, oId, hostUrl, foodCourt, Delievery) {
     });
 
     $('#btnSumbit').unbind('click').on('click', function () {
-        debugger;
+        // removed debugger
         var myStr = $("#canceltextarea").val();
         var newStr = myStr.replace(/  +/g, ' ');
         if (newStr.length <= 4) {
@@ -2707,7 +2718,7 @@ function GetPreviousItemByID(Id, OID) {
             var htmls = "";
             var i = 1;
 
-            debugger;
+            // removed debugger
             $('#OLroomname').text((allOrders[0].room == null ? "" : allOrders[0].room));
             $('#OLTablename').text((allOrders[0].restrotableTitle == null ? "" : allOrders[0].restrotableTitle));
             RoomId = allOrders[0].RoomId;
@@ -2964,7 +2975,7 @@ function BillShortcutKey(e) {
         salesMaster.DeliveryCharge = 0;
         salesMaster.DeliveredBy = "";
 
-        debugger;
+        // removed debugger
         $.each(billingterms, function (index, value) {
             if (document.getElementById('BTerm_' + value.ID + '_' + value.IsAdd) != null) {
                 var bt = {
@@ -2985,7 +2996,7 @@ function BillShortcutKey(e) {
         }
         billingTerm.push(bt);
 
-        debugger;
+        // removed debugger
         $.each(orderdetails, function (index, value) {
             var extra = [];
             if (value.orderExtraItem != undefined && value.orderExtraItem.length > 0) {
@@ -3052,7 +3063,7 @@ function BillShortcutKey(e) {
 }
 
 function saveSales(data, isFoodCourt) {
-    debugger;
+    // removed debugger
     $.ajax({
         type: "POST",
         async: false,
@@ -3071,18 +3082,23 @@ function saveSales(data, isFoodCourt) {
                 modal: true,
                 position: ['center', 'top']
             });
-            Print();
-            $('#InvoiceType').html('INVOICE');
-            Print();
-            $('#BillingView').dialog('close');
-            jAlert("Bill successfully Generated", "Information!!", function () {
-                if (foodCourtOrder) {
-                    $('.bindorderlist').html('');
-                    Reset();
-                } else {
-                    parent.$.colorbox.close();
-                }
-            });
+
+            // ---- FIX: sequential prints ----
+            Print();  // Tax Invoice
+
+            setTimeout(function() {
+                $('#InvoiceType').html('INVOICE');
+                Print();  // Invoice
+                // Update print count after both
+                savePrintCount(
+                    (parseInt($('#hdfPrntCnt').val()) + 1),
+                    parseInt($('#hdfSMID').val()),
+                    SageFrameUserName
+                );
+            }, 1000);
+
+            // The success alert will be handled inside savePrintCount, so we can remove the duplicate here.
+            // But if you want to keep it, ensure it doesn't fire twice.
         },
         failure: function (response) {
             jAlert("Sorry some error occured. Contact the support team.", "Error!!");
@@ -3100,7 +3116,7 @@ function getMemberDetailsbyinfo(info) {
         contentType: "application/json; charset=utf-8",
         dataType: "json",
         success: function (data) {
-            debugger;
+            // removed debugger
             var datas = JSON.parse(data.d);
             $("#txtCusID").val(datas[0].MembershipID);
             $("#txtCashCusName").val(datas[0].Name);
@@ -3193,4 +3209,3 @@ function CalculateTotal() {
     var total = amount + extraRate;
     $('.totalamount').text('Total Amount: Rs. ' + total);
 }
-

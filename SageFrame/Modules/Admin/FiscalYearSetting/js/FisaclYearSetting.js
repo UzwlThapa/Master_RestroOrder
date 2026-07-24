@@ -1,5 +1,17 @@
 ﻿(function ($) {
     var tabs = $("#tabs").tabs();
+
+    // Helper: convert ASP.NET JSON date or ISO string to mm/dd/yyyy
+    function formatDate(raw) {
+        if (!raw) return '';
+        var ms = /\/Date\((\d+)\)\//.exec(raw);   // handles "/Date(1234567890000)/"
+        var d = ms ? new Date(parseInt(ms[1], 10)) : new Date(raw);
+        if (isNaN(d.getTime())) return '';
+        var mm = ('0' + (d.getMonth() + 1)).slice(-2);
+        var dd = ('0' + d.getDate()).slice(-2);
+        return mm + '/' + dd + '/' + d.getFullYear();
+    }
+
     $.fiscalYearSetting = function (p) {
         p = $.extend
              ({
@@ -28,20 +40,23 @@
                 Username: p.Username
             },
             InitialSetup: function () {
+                // FIX: Use onSelect with validation, not onClose
                 jQuery("#txtStartDate").datepicker({
                     dateFormat: 'mm/dd/yy',
                     changeMonth: true,
                     changeYear: true,
-                    onClose: function (selectedDate) {
-                        jQuery("#txtEndDate").datepicker("option", "minDate", selectedDate);
+                    onSelect: function (selectedDate) {
+                        var d = jQuery("#txtStartDate").datepicker("getDate");
+                        if (d) jQuery("#txtEndDate").datepicker("option", "minDate", d);
                     }
                 });
                 jQuery("#txtEndDate").datepicker({
                     dateFormat: 'mm/dd/yy',
                     changeMonth: true,
                     changeYear: true,
-                    onClose: function (selectedDate) {
-                        jQuery("#txtStartDate").datepicker("option", "maxDate", selectedDate);
+                    onSelect: function (selectedDate) {
+                        var d = jQuery("#txtEndDate").datepicker("getDate");
+                        if (d) jQuery("#txtStartDate").datepicker("option", "maxDate", d);
                     }
                 });
                 $('#btnAddfy').click(function () {
@@ -67,9 +82,18 @@
                     var row = $(this).parents('tr');
                     $('#txtFyId').val(row.attr('data'));
                     $('#txtFyName').val(row.find('td:eq(1)').text());
-                    $('#txtStartDate').val(row.find('td:eq(2)').text().split(' ')[0])
-                    $('#txtEndDate').val(row.find('td:eq(3)').text().split(' ')[0])
-                    $('#chkIsActive').prop('checked', row.find('td:eq(4)').text())
+
+                    // FIX: Use setDate with the already-formatted cell text
+                    var startDate = row.find('td:eq(2)').text();
+                    var endDate = row.find('td:eq(3)').text();
+                    if (startDate) jQuery("#txtStartDate").datepicker("setDate", startDate);
+                    if (endDate)   jQuery("#txtEndDate").datepicker("setDate", endDate);
+
+                    // Clear any lingering constraints
+                    jQuery("#txtStartDate").datepicker("option", "maxDate", null);
+                    jQuery("#txtEndDate").datepicker("option", "minDate", null);
+
+                    $('#chkIsActive').prop('checked', row.find('td:eq(4)').text() === 'true');
                 });
             },
             validation: function () {
@@ -112,7 +136,10 @@
                 var html = '';
                 $.each(data, function (x, d) {
                     var c = x % 2 == 0 ? "even" : "odd";
-                    html += '<tr class=' + c + ' data=' + d.fyId + '><td>' + d.fyId + '</td><td>' + d.fyName + '</td><td>' + d.StartDate + '</td><td>' + d.EndDate + '</td><td>' + d.isActive + '</td><td><a class="icon-edit"></a></td></tr>';
+                    // FIX: format dates before inserting into table
+                    var start = formatDate(d.StartDate);
+                    var end   = formatDate(d.EndDate);
+                    html += '<tr class=' + c + ' data=' + d.fyId + '><td>' + d.fyId + '</td><td>' + d.fyName + '</td><td>' + start + '</td><td>' + end + '</td><td>' + d.isActive + '</td><td><a class="icon-edit"></a></td></tr>';
                 });
                 $('#tblFiscalData tbody').html(html);
             },
@@ -156,8 +183,11 @@
             ResetAll: function () {
                 $('#txtFyId').val(0);
                 $('#txtFyName').val('');
-                $('#txtStartDate').val('');
-                $('#txtEndDate').val('');
+                // FIX: clear datepicker inputs and constraints properly
+                jQuery("#txtStartDate").datepicker("setDate", null);
+                jQuery("#txtEndDate").datepicker("setDate", null);
+                jQuery("#txtStartDate").datepicker("option", "maxDate", null);
+                jQuery("#txtEndDate").datepicker("option", "minDate", null);
                 $('#chkIsActive').prop('checked', true);
                 $('#btnPurchaseAdd').text('Add');
             }
