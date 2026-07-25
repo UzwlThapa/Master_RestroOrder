@@ -62,8 +62,12 @@ AND ISNULL (IsCancelled, 0) = 0 );
 
 IF ( @orderMasterId IS NULL )
 BEGIN
+-- Get actual guest count from source order, default to 1
+DECLARE @actualGuestNo INT;
+SELECT @actualGuestNo = ISNULL(GuestNo, 1) FROM RO_OrderMasters WHERE OrderMasterID = @oldOrderMasterId;
+
 INSERT INTO RO_OrderMasters ( RoomId, TableId, BillNo, Date, IsCancelled, BasicAmount, TermAmount, NetAmount, UserName, Remarks, IsSplit, GuestNo, BillPaid, OID, OrderStatus, IsPrinted )
-VALUES ( ( SELECT restroRoomId FROM RO_restroTable WHERE restrotableId = @toTable ), @toTable, 0, GETDATE (), 0, 0, 0, 0, @shiftedBy, '', 1, @toSplitNo, 0, 0, 1, 1 );
+VALUES ( ( SELECT restroRoomId FROM RO_restroTable WHERE restrotableId = @toTable ), @toTable, 0, GETDATE (), 0, 0, 0, 0, @shiftedBy, '', 1, @actualGuestNo, 0, 0, 1, 1 );
 
 SET @orderMasterId = SCOPE_IDENTITY();
 
@@ -127,14 +131,14 @@ SET @continue = 1;
 END
 END;
 
--- 5. Recalculate Totals
+-- 5. Recalculate Totals (including TermAmount for consistency)
 SELECT @srcBasicAmount = SUM(ISNULL(Rate, 0) * ISNULL(Quantity, 0))
 FROM RO_Order_Detail WHERE OrderMasterId = @oldOrderMasterId AND IsCancelled = 0;
-UPDATE RO_OrderMasters SET BasicAmount = ISNULL(@srcBasicAmount, 0) WHERE OrderMasterID = @oldOrderMasterId;
+UPDATE RO_OrderMasters SET BasicAmount = ISNULL(@srcBasicAmount, 0), TermAmount = ISNULL(@srcBasicAmount, 0) WHERE OrderMasterID = @oldOrderMasterId;
 
 SELECT @destBasicAmount = SUM(ISNULL(Rate, 0) * ISNULL(Quantity, 0))
 FROM RO_Order_Detail WHERE OrderMasterId = @orderMasterId AND IsCancelled = 0;
-UPDATE RO_OrderMasters SET BasicAmount = ISNULL(@destBasicAmount, 0) WHERE OrderMasterID = @orderMasterId;
+UPDATE RO_OrderMasters SET BasicAmount = ISNULL(@destBasicAmount, 0), TermAmount = ISNULL(@destBasicAmount, 0) WHERE OrderMasterID = @orderMasterId;
 
 -- 6. Close Source Order if Empty
 IF ( (SELECT COUNT(*) FROM RO_Order_Detail WHERE OrderMasterId = @oldOrderMasterId AND IsCancelled = 0) = 0 )
@@ -254,8 +258,12 @@ BEGIN
             -- Create new order or merge logic
             IF @ToOrderMasterId IS NULL
             BEGIN
+                -- Get actual guest count from source order, default to 1
+                DECLARE @actualGuestNo INT;
+                SELECT @actualGuestNo = ISNULL(GuestNo, 1) FROM RO_OrderMasters WHERE OrderMasterID = @FromOrderMasterId;
+                
                 INSERT INTO RO_OrderMasters (RoomId, TableId, Date, UserName, IsSplit, GuestNo, OrderStatus, BillPaid, IsCancelled, BasicAmount)
-                VALUES (@roomid, @ToTableID, GETDATE(), @shiftedBy, 0, @prevGuestNo, 1, 0, 0, 0);
+                VALUES (@roomid, @ToTableID, GETDATE(), @shiftedBy, 0, @actualGuestNo, 1, 0, 0, 0);
                 
                 SET @ToOrderMasterId = SCOPE_IDENTITY();
                 
@@ -276,12 +284,12 @@ BEGIN
         SELECT @fromTable, od.SeatNo, @ToTableID, ISNULL(NULLIF(@toSeatNo,0), od.SeatNo), @shiftedBy, od.ROI_ItemId, od.Quantity, od.IsCombo, GETDATE(), @FromOrderMasterId, @ToOrderMasterId, 'Table'
         FROM RO_Order_Detail od WHERE od.OrderMasterId = @FromOrderMasterId;
 
-        -- 5. Recalculate Totals
+        -- 5. Recalculate Totals (including TermAmount for consistency)
         SELECT @srcBasicAmount = SUM(Rate * Quantity) FROM RO_Order_Detail WHERE OrderMasterId = @FromOrderMasterId AND IsCancelled = 0;
-        UPDATE RO_OrderMasters SET BasicAmount = ISNULL(@srcBasicAmount, 0) WHERE OrderMasterID = @FromOrderMasterId;
+        UPDATE RO_OrderMasters SET BasicAmount = ISNULL(@srcBasicAmount, 0), TermAmount = ISNULL(@srcBasicAmount, 0) WHERE OrderMasterID = @FromOrderMasterId;
 
         SELECT @destBasicAmount = SUM(Rate * Quantity) FROM RO_Order_Detail WHERE OrderMasterId = @ToOrderMasterId AND IsCancelled = 0;
-        UPDATE RO_OrderMasters SET BasicAmount = ISNULL(@destBasicAmount, 0) WHERE OrderMasterID = @ToOrderMasterId;
+        UPDATE RO_OrderMasters SET BasicAmount = ISNULL(@destBasicAmount, 0), TermAmount = ISNULL(@destBasicAmount, 0) WHERE OrderMasterID = @ToOrderMasterId;
 
         -- 6. Close Source if Empty
         IF (SELECT COUNT(*) FROM RO_Order_Detail WHERE OrderMasterId = @FromOrderMasterId AND IsCancelled = 0) = 0

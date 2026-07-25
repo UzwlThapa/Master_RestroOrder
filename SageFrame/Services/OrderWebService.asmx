@@ -8,6 +8,7 @@ using SageFrame.RestroOrder;
 using System.Web.Script.Serialization;
 using System.Linq;
 using System.Collections.Generic;
+using System.IO;
 using SageFrame.CostCenter;
 using SageFrame.RestoLoyalty;
 using Newtonsoft.Json;
@@ -71,18 +72,71 @@ public class OrderWebService : System.Web.Services.WebService
     [WebMethod]
     public string SaveOrderIntoDataBase(OrderMasterClass orderMasterInfo, List<OrderExtraItem> orderExtraItem)
     {
-
+        string rawJsonLogPath = HttpContext.Current.Server.MapPath("~/App_Data/OrderLogs");
+        
         try
         {
+            // Ensure log directory exists
+            if (!System.IO.Directory.Exists(rawJsonLogPath))
+            {
+                System.IO.Directory.CreateDirectory(rawJsonLogPath);
+            }
+
             RestrOrderController rocobj = new RestrOrderController();
             List<OrderDetailClass> orderDetailList = new List<OrderDetailClass>();
             orderDetailList = orderMasterInfo.OrderDetailsList;
+            
+            // VALIDATION: Check for null or empty order details
+            if (orderDetailList == null || orderDetailList.Count == 0)
+            {
+                LogOrderError(rawJsonLogPath, orderMasterInfo, "OrderDetailsList is null or empty");
+                return JsonConvert.SerializeObject(new { success = false, orderId = 0, message = "No order items provided" });
+            }
+
+            // VALIDATION: Sanitize UserName (remove extra quotes if tablet sends "\"Test\"")
+            if (!string.IsNullOrEmpty(orderMasterInfo.UserName))
+            {
+                orderMasterInfo.UserName = orderMasterInfo.UserName.Trim('"').Trim();
+            }
+            else
+            {
+                orderMasterInfo.UserName = "Unknown";
+            }
+
             orderMasterInfo.Date = DateTime.Now;
 
             decimal BasicAmount = 0;
             string status = string.Empty;
+            
+            // VALIDATION: Validate each order detail before processing
             foreach (OrderDetailClass ord in orderDetailList)
             {
+                // Check for invalid ItemId
+                if (ord.ItemId <= 0)
+                {
+                    LogOrderError(rawJsonLogPath, orderMasterInfo, $"Invalid ItemId: {ord.ItemId} in order detail");
+                    return JsonConvert.SerializeObject(new { success = false, orderId = 0, message = $"Invalid ItemId detected: {ord.ItemId}" });
+                }
+
+                // Sanitize Note field - replace literal "null" strings with empty string
+                if (string.IsNullOrEmpty(ord.Note) || ord.Note.ToLower() == "null")
+                {
+                    ord.Note = string.Empty;
+                }
+
+                // Sanitize ExtraItem field - replace literal "null" strings with empty string
+                if (string.IsNullOrEmpty(ord.ExtraItem) || ord.ExtraItem.ToLower() == "null")
+                {
+                    ord.ExtraItem = string.Empty;
+                }
+
+                // Validate Quantity
+                if (ord.Quantity <= 0)
+                {
+                    LogOrderError(rawJsonLogPath, orderMasterInfo, $"Invalid Quantity: {ord.Quantity} for ItemId: {ord.ItemId}");
+                    return JsonConvert.SerializeObject(new { success = false, orderId = 0, message = $"Invalid quantity detected for item {ord.ItemId}" });
+                }
+
                 List<ROInvItem> itemList = new List<ROInvItem>();
                 if (ord.IsCombo)
                 {
@@ -92,6 +146,13 @@ public class OrderWebService : System.Web.Services.WebService
                 {
                     itemList = rocobj.getitemwithRate(ord.ItemId);
                 }
+                
+                if (itemList == null || itemList.Count == 0)
+                {
+                    LogOrderError(rawJsonLogPath, orderMasterInfo, $"Item not found in database: ItemId={ord.ItemId}");
+                    return JsonConvert.SerializeObject(new { success = false, orderId = 0, message = $"Item {ord.ItemId} not found in database" });
+                }
+                
                 BasicAmount += (Convert.ToDecimal(itemList[0].SRate) * Convert.ToDecimal(ord.Quantity));
                 ord.Rate = Convert.ToDecimal(itemList[0].SRate);
             }
@@ -330,12 +391,48 @@ public class OrderWebService : System.Web.Services.WebService
                 }
             }
 
-            return printSuccessful;
+            // Return structured JSON response for success case
+            return JsonConvert.SerializeObject(new { success = true, orderId = ordermasterid, message = "Order saved successfully" });
         }
         catch (Exception ex)
         {
-            throw ex;
+            // Log the exception with full details
+            try
+            {
+                string rawJsonLogPath = HttpContext.Current.Server.MapPath("~/App_Data/OrderLogs");
+                if (!System.IO.Directory.Exists(rawJsonLogPath))
+                {
+                    System.IO.Directory.CreateDirectory(rawJsonLogPath);
+                }
+                
+                string logFileName = System.IO.Path.Combine(rawJsonLogPath, $"OrderError_{DateTime.Now:yyyyMMdd_HHmmss}.log");
+                string errorMessage = $"EXCEPTION: {ex.Message}\nSTACK TRACE: {ex.StackTrace}\nINNER EXCEPTION: {(ex.InnerException != null ? ex.InnerException.Message : "None")}";
+                System.IO.File.AppendAllText(logFileName, errorMessage + "\n\n");
+            }
+            catch { /* Ignore logging errors */ }
+            
+            // Return structured JSON response for error case instead of throwing
+            return JsonConvert.SerializeObject(new { success = false, orderId = 0, message = "Order save failed: " + ex.Message });
         }
+    }
+
+    /// <summary>
+    /// Logs order validation errors to a file for debugging tablet/mobile order issues
+    /// </summary>
+    private void LogOrderError(string logPath, OrderMasterClass orderMasterInfo, string errorMessage)
+    {
+        try
+        {
+            string logFileName = System.IO.Path.Combine(logPath, $"OrderValidation_{DateTime.Now:yyyyMMdd_HHmmss}.log");
+            string logContent = $"TIME: {DateTime.Now:yyyy-MM-dd HH:mm:ss}\n" +
+                               $"USERNAME: {orderMasterInfo.UserName}\n" +
+                               $"TABLEID: {orderMasterInfo.TableId}\n" +
+                               $"ORDERMASTERID: {orderMasterInfo.OrderMasterID}\n" +
+                               $"ERROR: {errorMessage}\n" +
+                               $"ORDER DETAILS COUNT: {(orderMasterInfo.OrderDetailsList != null ? orderMasterInfo.OrderDetailsList.Count.ToString() : "NULL")}\n\n";
+            System.IO.File.AppendAllText(logFileName, logContent);
+        }
+        catch { /* Ignore logging errors */ }
     }
 
     protected List<OrderExtraItem> CheckExtraItems(List<OrderExtraItem> extra, bool added, int ordermasterid, int newOrdermasterid)

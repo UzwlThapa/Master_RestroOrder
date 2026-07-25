@@ -1,74 +1,43 @@
 ```
-# Database related
-*.sql
-
-# Compiled and build artifacts
-*.pyc
-__pycache__/
-*.o
-*.obj
-*.class
+# Build artifacts
 *.dll
-*.so
-*.a
-*.out
+*.exe
+*.pdb
+*.config
+*.manifest
+*.cache
+*.tmp
 
 # Dependencies
-.venv/
-venv/
+packages/
 node_modules/
-target/
-.gradle/
-.mypy_cache/
-.pytest_cache/
-dist/
-build/
 
-# Logs and temp files
+# Logs
 *.log
-*.tmp
-*.swp
-*.swo
+logs/
 
 # Environment
 .env
 .env.local
-.env.*
+*.env.*
 
 # Editors
-.vscode/
-.idea/
+.vs/
+.vim/
+*.swp
+*.swo
 
-# System files
+# OS
 .DS_Store
 Thumbs.db
 
-# Coverage
-coverage/
-htmlcov/
-.coverage
+# Database
+*.db
+*.mdb
+*.ldb
 
-# Compressed files
-*.zip
-*.gz
-*.tar
-*.tgz
-*.bz2
-*.xz
-*.7z
-*.rar
-*.zst
-*.lz4
-*.lzh
-*.cab
-*.arj
-*.rpm
-*.deb
-*.Z
-*.lz
-*.lzo
-*.tar.gz
-*.tar.bz2
-*.tar.xz
-*.tar.zst
+# Backup files
+*~
+*.bak
+*.old
 ```

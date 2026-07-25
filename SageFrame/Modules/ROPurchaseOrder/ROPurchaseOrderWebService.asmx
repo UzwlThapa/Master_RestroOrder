@@ -54,8 +54,31 @@ public class RoWebService : System.Web.Services.WebService
     {
         try
         {
+            // Log raw incoming JSON for debugging
+            string logPath = Server.MapPath("/App_Data/OrderLogs/");
+            if (!Directory.Exists(logPath))
+                Directory.CreateDirectory(logPath);
+            string logFile = Path.Combine(logPath, "CancelOrderLog_" + DateTime.Now.ToString("yyyyMMdd_HHmmss") + ".txt");
+            File.WriteAllText(logFile, "Raw JSON:\n" + json + "\n\nTimestamp: " + DateTime.Now + "\n");
+
             JavaScriptSerializer jss = new JavaScriptSerializer();
-            var orderMasterInfo = jss.Deserialize<OrderMasterClass>(json);
+            OrderMasterClass orderMasterInfo;
+            
+            try
+            {
+                orderMasterInfo = jss.Deserialize<OrderMasterClass>(json);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("JSON Deserialization failed: " + ex.Message);
+            }
+
+            // Sanitize UserName - remove extra quotes
+            if (!string.IsNullOrEmpty(orderMasterInfo.UserName))
+            {
+                orderMasterInfo.UserName = orderMasterInfo.UserName.Trim().Trim('\"');
+            }
+
             RestrOrderController rocobj = new RestrOrderController();
             List<OrderDetailClass> orderList = rocobj.GetOrderDetailsByMaster(orderMasterInfo.OrderMasterID).Where(p => p.Status == "Ordered" && p.SeatNo == orderMasterInfo.GuestNo).ToList();
             restroTable table = rocobj.GetTableNoBYId(Convert.ToInt32(orderMasterInfo.TableId));
@@ -76,17 +99,6 @@ public class RoWebService : System.Web.Services.WebService
 
                 CancelItems.Add(cancelItm);
             }
-            //string jsonString = "";
-            //string path = "/Modules/ROPurchaseOrder/cancelOrder.Json";
-            //string fullPath = Server.MapPath(path);
-            //using (var file = new StreamWriter(fullPath, false))
-            //{
-            //    file.Flush();
-            //    file.Write(jsonString);
-            //    file.Close();
-            //    file.Dispose();
-            //}
-            //Context.Response.Clear();
             Context.Response.ContentType = "application/json";
             try
             {
@@ -105,23 +117,34 @@ public class RoWebService : System.Web.Services.WebService
 
                 if (printed != null && printed != "")
                 {
-                    Context.Response.Write("{statusCode:200, message: \"Success\"}");
+                    Context.Response.Write("{\"success\": true, \"statusCode\": 200, \"message\": \"Success\"}");
                 }
                 else
                 {
-                    Context.Response.Write("{statusCode:100, message: \"Print Failed\"}");
+                    Context.Response.Write("{\"success\": false, \"statusCode\": 100, \"message\": \"Print Failed\"}");
                 }
 
             }
             catch (Exception ex)
             {
-                Context.Response.Write("{statusCode:100, message: \"" + ex.Message +"\"}");
+                // Log exception
+                string errorLogFile = Path.Combine(logPath, "CancelOrderError_" + DateTime.Now.ToString("yyyyMMdd_HHmmss") + ".txt");
+                File.WriteAllText(errorLogFile, "Exception:\n" + ex.ToString() + "\nRaw JSON:\n" + json + "\n\nTimestamp: " + DateTime.Now + "\n");
+                
+                Context.Response.Write("{\"success\": false, \"statusCode\": 100, \"message\": \"" + ex.Message.Replace("\"", "\\\"") + "\"}");
             }
 
         }
-        catch (Exception)
+        catch (Exception ex)
         {
-            throw;
+            // Log outer exception
+            string logPath = Server.MapPath("/App_Data/OrderLogs/");
+            if (!Directory.Exists(logPath))
+                Directory.CreateDirectory(logPath);
+            string logFile = Path.Combine(logPath, "CancelOrderOuterError_" + DateTime.Now.ToString("yyyyMMdd_HHmmss") + ".txt");
+            File.WriteAllText(logFile, "Outer Exception:\n" + ex.ToString() + "\nRaw JSON:\n" + json + "\n\nTimestamp: " + DateTime.Now + "\n");
+            
+            Context.Response.Write("{\"success\": false, \"statusCode\": 100, \"message\": \"" + ex.Message.Replace("\"", "\\\"") + "\"}");
         }
 
     }
@@ -129,33 +152,50 @@ public class RoWebService : System.Web.Services.WebService
     [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
     public void SaveCanceledItems(string json)
     {
+        // Log raw incoming JSON for debugging
+        string logPath = Server.MapPath("/App_Data/OrderLogs/");
+        if (!Directory.Exists(logPath))
+            Directory.CreateDirectory(logPath);
+        string logFile = Path.Combine(logPath, "SaveCanceledItemsLog_" + DateTime.Now.ToString("yyyyMMdd_HHmmss") + ".txt");
+        File.WriteAllText(logFile, "Raw JSON:\n" + json + "\n\nTimestamp: " + DateTime.Now + "\n");
+
         JavaScriptSerializer jss = new JavaScriptSerializer();
-        var CancelItems = jss.Deserialize<CancelledOrder>(json);
-        //string jsonString = "";
-        //string path = "/Modules/ROPurchaseOrder/cancelleditems.Json";
-        //string fullPath = Server.MapPath(path);
-        //using (var file = new StreamWriter(fullPath, false))
-        //{
-        //    file.Flush();
-        //    file.Write(jsonString);
-        //    file.Close();
-        //    file.Dispose();
-        //}
+        CancelledOrder CancelItems;
+        
+        try
+        {
+            CancelItems = jss.Deserialize<CancelledOrder>(json);
+        }
+        catch (Exception ex)
+        {
+            // Log deserialization error
+            string errorLogFile = Path.Combine(logPath, "SaveCanceledItemsError_" + DateTime.Now.ToString("yyyyMMdd_HHmmss") + ".txt");
+            File.WriteAllText(errorLogFile, "Deserialization Exception:\n" + ex.ToString() + "\nRaw JSON:\n" + json + "\n\nTimestamp: " + DateTime.Now + "\n");
+            
+            Context.Response.Clear();
+            Context.Response.ContentType = "application/json";
+            Context.Response.Write("{\"success\": false, \"statusCode\": 100, \"message\": \"" + ex.Message.Replace("\"", "\\\"") + "\"}");
+            return;
+        }
+        
         try
         {
             RestrOrderController controller = new RestrOrderController();
             controller.SaveCanceledItems(CancelItems.cancelledOrderItems);
             Context.Response.Clear();
             Context.Response.ContentType = "application/json";
-            Context.Response.Write("{statusCode:200, message: \"Success\"}");
+            Context.Response.Write("{\"success\": true, \"statusCode\": 200, \"message\": \"Success\"}");
         }
         catch (Exception ex)
         {
+            // Log exception
+            string errorLogFile = Path.Combine(logPath, "SaveCanceledItemsExecError_" + DateTime.Now.ToString("yyyyMMdd_HHmmss") + ".txt");
+            File.WriteAllText(errorLogFile, "Execution Exception:\n" + ex.ToString() + "\nRaw JSON:\n" + json + "\n\nTimestamp: " + DateTime.Now + "\n");
+            
             Context.Response.Clear();
             Context.Response.ContentType = "application/json";
-            Context.Response.Write("{statusCode:100, message: \"" + ex.Message +"\"}");
+            Context.Response.Write("{\"success\": false, \"statusCode\": 100, \"message\": \"" + ex.Message.Replace("\"", "\\\"") + "\"}");
         }
-        //List<OrderDetailCancel> CancelItems = new List<OrderDetailCancel>();
     }
     [WebMethod]
     [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
@@ -163,29 +203,24 @@ public class RoWebService : System.Web.Services.WebService
     {
         try
         {
-            int ordered = CheckOrder(json);
-            string jsonString = "";
-            JavaScriptSerializer jss = new JavaScriptSerializer();
-            var json1 = jss.Deserialize<OrderMasterClass>(json);
-            jsonString = JsonConvert.SerializeObject(json1, Formatting.Indented);
-            //string path = "/Modules/ROPurchaseOrder/purchaseorder.Json";
-            //string fullPath = Server.MapPath(path);
-            //using (var file = new StreamWriter(fullPath, false))
-            //{
-            //    file.Flush();
-            //    file.Write(jsonString);
-            //    file.Close();
-            //    file.Dispose();
-            //}
+            // Log raw incoming JSON for debugging tablet issues
+            string logPath = Server.MapPath("/App_Data/OrderLogs/");
+            if (!Directory.Exists(logPath))
+                Directory.CreateDirectory(logPath);
+            
+            string logFile = Path.Combine(logPath, "OrderLog_" + DateTime.Now.ToString("yyyyMMdd_HHmmss") + ".txt");
+            File.WriteAllText(logFile, "Raw JSON:\n" + json + "\n\nTimestamp: " + DateTime.Now + "\n");
 
+            int ordered = CheckOrder(json);
+            
             string status = "";
             if (ordered == 1)
             {
-                status = "{statusCode:200, message: \"Success\"}";
+                status = "{\"success\": true, \"statusCode\": 200, \"message\": \"Success\"}";
             }
             else
             {
-                status = "{statusCode:100, message:\"Printing Failed\"}";
+                status = "{\"success\": false, \"statusCode\": 100, \"message\": \"Printing Failed\"}";
             }
             Context.Response.Clear();
             Context.Response.ContentType = "application/json";
@@ -195,7 +230,14 @@ public class RoWebService : System.Web.Services.WebService
         }
         catch (Exception ex)
         {
-            Context.Response.Write("{statusCode:100, message:\""+ex.Message+"\"}");
+            // Log exception details
+            string logPath = Server.MapPath("/App_Data/OrderLogs/");
+            if (!Directory.Exists(logPath))
+                Directory.CreateDirectory(logPath);
+            string logFile = Path.Combine(logPath, "OrderError_" + DateTime.Now.ToString("yyyyMMdd_HHmmss") + ".txt");
+            File.WriteAllText(logFile, "Exception:\n" + ex.ToString() + "\nRaw JSON:\n" + json + "\n\nTimestamp: " + DateTime.Now + "\n");
+            
+            Context.Response.Write("{\"success\": false, \"statusCode\": 100, \"message\": \"" + ex.Message.Replace("\"", "\\\"") + "\"}");
         }
     }
 
@@ -204,7 +246,78 @@ public class RoWebService : System.Web.Services.WebService
     {
         RestrOrderController rocobj = new RestrOrderController();
         JavaScriptSerializer jss = new JavaScriptSerializer();
-        var json1 = jss.Deserialize<OrderMasterClass>(json);
+        
+        // Strict JSON parsing with error handling
+        OrderMasterClass json1;
+        try
+        {
+            json1 = jss.Deserialize<OrderMasterClass>(json);
+        }
+        catch (Exception ex)
+        {
+            throw new Exception("JSON Deserialization failed: " + ex.Message);
+        }
+
+        // Validate critical fields
+        if (string.IsNullOrEmpty(json1.UserName))
+        {
+            throw new Exception("UserName is required");
+        }
+        
+        // Sanitize UserName - remove extra quotes if tablet sends "\"Test\"" instead of "Test"
+        json1.UserName = json1.UserName.Trim().Trim('\"');
+        
+        // Validate OrderDetailsList
+        if (json1.OrderDetailsList == null || json1.OrderDetailsList.Count == 0)
+        {
+            throw new Exception("OrderDetailsList cannot be empty");
+        }
+
+        // Validate each order detail
+        for (int i = 0; i < json1.OrderDetailsList.Count; i++)
+        {
+            var item = json1.OrderDetailsList[i];
+            
+            // Validate ItemId
+            if (item.ItemId <= 0)
+            {
+                throw new Exception("Invalid ItemId at index " + i + ": " + item.ItemId);
+            }
+            
+            // Validate Quantity
+            if (item.Quantity <= 0)
+            {
+                throw new Exception("Invalid Quantity at index " + i + ": " + item.Quantity);
+            }
+            
+            // Convert literal "null" strings to empty strings for Note field
+            if (!string.IsNullOrEmpty(item.Note) && item.Note.Trim().ToLower() == "null")
+            {
+                item.Note = string.Empty;
+            }
+            
+            // Convert literal "null" strings to empty strings for ExtraItem field
+            if (!string.IsNullOrEmpty(item.ExtraItem) && item.ExtraItem.Trim().ToLower() == "null")
+            {
+                item.ExtraItem = string.Empty;
+            }
+        }
+        
+        // Validate and sanitize orderExtraItem if present
+        if (json1.orderExtraItem != null)
+        {
+            for (int i = 0; i < json1.orderExtraItem.Count; i++)
+            {
+                var extra = json1.orderExtraItem[i];
+                
+                // Convert literal "null" strings to empty strings for ExtraItem field
+                if (!string.IsNullOrEmpty(extra.ExtraItem) && extra.ExtraItem.Trim().ToLower() == "null")
+                {
+                    extra.ExtraItem = string.Empty;
+                }
+            }
+        }
+
         json1.Date = DateTime.Now;
 
         decimal BasicAmount = 0;
@@ -224,6 +337,13 @@ public class RoWebService : System.Web.Services.WebService
             {
                 itemList = rocobj.getitemwithRate(orderDetailList[i].ItemId);
             }
+            
+            // Validate item exists in database
+            if (itemList == null || itemList.Count == 0)
+            {
+                throw new Exception("Item not found in database: ItemId=" + orderDetailList[i].ItemId);
+            }
+            
             orderDetail.SeatNo = (orderDetail.SeatNo <= json1.GuestNo ? orderDetail.SeatNo : json1.GuestNo);
             orderDetail.Rate = Convert.ToDecimal(itemList[0].SRate);
             orderDetail.Amount = orderDetail.Rate * Convert.ToDecimal(orderDetailList[i].Quantity);
