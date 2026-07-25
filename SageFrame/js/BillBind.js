@@ -1,5 +1,7 @@
 // Replace your entire getBill function with this optimized version:
 
+var totalItemsQntyVisible = true;
+
 function getBill(salesMasterId, foodCourtOrder) {
     $.ajax({
         type: "POST",

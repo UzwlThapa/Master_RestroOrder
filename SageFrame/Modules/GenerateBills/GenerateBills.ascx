@@ -82,6 +82,8 @@
 </style>
 <script type="text/javascript">
 
+    var totalItemsQntyVisible = true;
+
 
     $(function () {
         $(this).companyDashboardEDIT({

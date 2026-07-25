@@ -1,6 +1,17 @@
 ﻿
 var companyInfo = JSON.parse(localStorage.getItem("companyInfo"));
 
+function formatDate(dateString) {
+    if (!dateString || dateString === '' || dateString === null || dateString === undefined) {
+        return '';
+    }
+    var date = new Date(dateString);
+    if (isNaN(date.getTime())) {
+        return '';
+    }
+    return date.toLocaleDateString() + ' ' + date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+}
+
 function IntegerAndDecimal(evt, element) {
     var charCode = (evt.which) ? evt.which : event.keyCode
     if ((charCode != 8) &&
