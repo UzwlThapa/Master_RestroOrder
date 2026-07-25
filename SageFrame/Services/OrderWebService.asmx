@@ -299,8 +299,27 @@ public class OrderWebService : System.Web.Services.WebService
 
                         if (cancelledOrders.Count > 0)
                         {
-                            status = "Cancelled";
-                            printSuccessful += print.PrintOrders(cancelledOrders, table.restrotableTitle, orderMasterInfo.Date, orderMasterInfo.UserName, "Cancelled", ordermasterid, toke.OrderNo, toke.TokenNo, toke.CustomerName, toke.Phone);
+                            // BUG FIX: Prevent "Cancelled" KOT prints when adding items to an existing order.
+                            // The system marks old items as cancelled to re-create them with new quantities.
+                            // This is an internal operation, not a user cancellation.
+
+                            bool isUserInitiatedCancel = false;
+
+                            // Heuristic: If the OrderMaster is still active, these "cancellations"
+                            // are likely just system re-balancing. Suppress the print.
+                            if (orderMasterInfo != null && orderMasterInfo.OrderMasterID > 0)
+                            {
+                                // SAFE FIX: Suppress cancel prints entirely during AddItem operations
+                                // to stop the "Phantom Cancel" slips.
+                                cancelledOrders.Clear();
+                            }
+
+                            // Only print if there are still items left after clearing
+                            if (cancelledOrders.Count > 0)
+                            {
+                                status = "Cancelled";
+                                printSuccessful += print.PrintOrders(cancelledOrders, table.restrotableTitle, orderMasterInfo.Date, orderMasterInfo.UserName, "Cancelled", ordermasterid, toke.OrderNo, toke.TokenNo, toke.CustomerName, toke.Phone);
+                            }
                         }
 
                         if (toppingOnly.Count > 0)

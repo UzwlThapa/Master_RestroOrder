@@ -1,1 +1,43 @@
-.vs
+# SQL and database related
+*.sql
+*.db
+*.sqlite
+
+# Web service files
+*.asmx
+*.asmx.cs
+
+# Dependencies
+packages/
+bin/
+obj/
+
+# Logs and temp files
+*.log
+*.tmp
+*.temp
+
+# Environment
+.env
+.env.local
+*.env.*
+
+# Editors
+.vs/
+.vshost.exe
+.user
+.userosscache
+.usersprefs
+
+# OS generated files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Build results
+Debug/
+Release/
+x64/
+x86/
+build/
+dist/
