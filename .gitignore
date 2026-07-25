@@ -1,16 +1,24 @@
-# SQL and database related
-*.sql
-*.db
-*.sqlite
-
-# Web service files
-*.asmx
+```
+# Compiled and binary files
 *.asmx.cs
+*.asmx.resx
+*.js.map
+*.min.js
+*.bundle.js
+
+# Build artifacts
+bin/
+obj/
+Debug/
+Release/
+_build/
+dist/
+build/
 
 # Dependencies
 packages/
-bin/
-obj/
+node_modules/
+lib/
 
 # Logs and temp files
 *.log
@@ -24,20 +32,18 @@ obj/
 
 # Editors
 .vs/
-.vshost.exe
-.user
-.userosscache
-.usersprefs
+.vscode/
+.idea/
+*.userprefs
+*.user
 
 # OS generated files
 .DS_Store
 Thumbs.db
 desktop.ini
 
-# Build results
-Debug/
-Release/
-x64/
-x86/
-build/
-dist/
+# Backup files
+*.bak
+*.backup
+*~
+```

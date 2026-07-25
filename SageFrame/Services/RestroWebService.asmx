@@ -39,11 +39,9 @@ public class RestroWebService : System.Web.Services.WebService
     }
 
     [WebMethod]
-    public void shiftItems(string json)
+    public string shiftItems(string json)
     {
         var shiftItems = serializer.Deserialize<ShiftItems>(json);
-        Context.Response.Clear();
-        Context.Response.ContentType = "application/json";
         try
         {
             //List<OrderDetailClass> orderList = roController.GetOrderDetailsByMaster(shiftItems.OrderMasterID);
@@ -54,36 +52,50 @@ public class RestroWebService : System.Web.Services.WebService
             //}
 
             roController.shiftItems(shiftItems);
-            Context.Response.Write("{statusCode:200, message: \"Success\"}");
+            return JsonConvert.SerializeObject(new { Success = true, Message = "Items shifted successfully" });
         }
         catch (Exception ex)
         {
-            Context.Response.Write("{statusCode:100, message:\"" + ex.Message + "\"}");
+            return JsonConvert.SerializeObject(new { Success = false, Message = "Shift failed: " + ex.Message });
         }
     }
 
     [WebMethod]
-    public void shiftItemsWeb(ShiftItems shiftItems)
+    public string shiftItemsWeb(ShiftItems shiftItems)
     {
-        List<OrderDetailClass> orderList = roController.GetOrderDetailsByMaster(shiftItems.OrderMasterID);
-        List<OrderDetailClass> shiftOrderList = new List<OrderDetailClass>();
-        decimal basicAmount = 0;
-        shiftItems.itemList.ForEach((sitem) =>
+        try
         {
-            var item = orderList.Find((itm) => itm.ItemId == sitem.ItemId);
-            item.Quantity = sitem.Quantity;
-            shiftOrderList.Add(item);
-            basicAmount += (decimal)sitem.Quantity * item.Rate;
-        });
+            List<OrderDetailClass> orderList = roController.GetOrderDetailsByMaster(shiftItems.OrderMasterID);
+            List<OrderDetailClass> shiftOrderList = new List<OrderDetailClass>();
+            decimal basicAmount = 0;
+            
+            shiftItems.itemList.ForEach((sitem) =>
+            {
+                var item = orderList.Find((itm) => itm.ItemId == sitem.ItemId);
+                if (item != null)
+                {
+                    item.Quantity = sitem.Quantity;
+                    shiftOrderList.Add(item);
+                    basicAmount += (decimal)sitem.Quantity * item.Rate;
+                }
+            });
 
-        // Send Kot Print for shift items
-        if (System.Configuration.ConfigurationManager.AppSettings["PrintOrderShiftBill"] == "true")
-        { 
-            OrderPrint print = new OrderPrint();
-            print.PrintShiftBill(shiftOrderList, "", DateTime.Now, shiftItems.fromTableTitle, shiftItems.toTableTitle, shiftItems.shiftedBy, "Ordered", shiftItems.OrderMasterID, shiftItems.OrderNo, 0, "", "");
+            // Send KOT Print for shift items
+            if (System.Configuration.ConfigurationManager.AppSettings["PrintOrderShiftBill"] == "true")
+            { 
+                OrderPrint print = new OrderPrint();
+                print.PrintShiftBill(shiftOrderList, "", DateTime.Now, shiftItems.fromTableTitle, shiftItems.toTableTitle, shiftItems.shiftedBy, "Ordered", shiftItems.OrderMasterID, shiftItems.OrderNo, 0, "", "");
+            }
+            
+            shiftItems.BasicAmount = basicAmount;
+            roController.shiftItems(shiftItems);
+            
+            return JsonConvert.SerializeObject(new { Success = true, Message = "Items shifted successfully" });
         }
-        shiftItems.BasicAmount = basicAmount;
-        roController.shiftItems(shiftItems);
+        catch (Exception ex)
+        {
+            return JsonConvert.SerializeObject(new { Success = false, Message = "Shift failed: " + ex.Message });
+        }
     }
 
     [WebMethod]
