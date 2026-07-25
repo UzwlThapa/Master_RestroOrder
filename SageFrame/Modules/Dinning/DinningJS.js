@@ -533,8 +533,24 @@ function IntegerAndDecimal(evt, element) {
                         break;
                 }
             },
-            ajaxFailure: function () {
-
+            ajaxFailure: function (xhr, status, error) {
+                // Log the error for debugging
+                console.log("AJAX Failure:", status, error);
+                console.log("Response:", xhr.responseText);
+                
+                var errorMsg = "Error connecting to server";
+                if (xhr.responseText) {
+                    try {
+                        var resp = JSON.parse(xhr.responseText);
+                        if (resp.message) {
+                            errorMsg = resp.message;
+                        }
+                    } catch (e) {
+                        // If can't parse, use default message
+                    }
+                }
+                
+                jAlert(errorMsg + " - Please try again or contact support.", "Connection Error");
             },
 
             //<<-----------------------------Post & Get Here ---------------------------------------->>
@@ -822,7 +838,21 @@ function IntegerAndDecimal(evt, element) {
                 var htmls = [];
                 $('.TablesInRooms').html("");
                 $('#DialogOrderDetail').html("");
-                var datas = JSON.parse(result.d);
+                var datas = [];
+                try {
+                    var parsedResult = JSON.parse(result.d);
+                    if (parsedResult && parsedResult.success === false) {
+                        jAlert(parsedResult.message || "Error loading tables", "Error");
+                        $('.TablesInRooms').html('No data');
+                        return;
+                    }
+                    datas = parsedResult.data || parsedResult;
+                } catch (e) {
+                    console.log("Error parsing table data:", e);
+                    jAlert("Error loading table data - Please refresh", "Error");
+                    $('.TablesInRooms').html('No data');
+                    return;
+                }
 
                 if (datas.length > 0) {
                     htmls += "<h4>Tables in " + datas[0].restroRoom + "</h4><hr><ul>";
@@ -910,7 +940,26 @@ function IntegerAndDecimal(evt, element) {
             BindRoomByRoomTypeId: function (result) {
                 var htmls = [];
                 $('.Rooms').html("");
-                var datas = JSON.parse(result.d);
+                var datas = [];
+                try {
+                    var parsedResult = JSON.parse(result.d);
+                    if (parsedResult && parsedResult.success === false) {
+                        jAlert(parsedResult.message || "Error loading rooms", "Error");
+                        $('.Rooms').html('No data');
+                        $('.Tables').hide();
+                        $('.TablesInRooms').hide();
+                        return;
+                    }
+                    datas = parsedResult.data || parsedResult;
+                } catch (e) {
+                    console.log("Error parsing room data:", e);
+                    jAlert("Error loading room data - Please refresh", "Error");
+                    $('.Rooms').html('No data');
+                    $('.Tables').hide();
+                    $('.TablesInRooms').hide();
+                    return;
+                }
+                
                 if (datas.length > 0) {
                     //htmls += "<h4>Rooms in " + datas[0].Title + "</h4><hr><ul>";
                     htmls += "<h4>Rooms</h4><hr><ul>";

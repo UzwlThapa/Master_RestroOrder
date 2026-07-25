@@ -436,7 +436,37 @@ public class DashBoardWebService : System.Web.Services.WebService
     [WebMethod]
     public string GetRoomByRoomTypeId(int RoomTypeID)
     {
-        return JsonConvert.SerializeObject(roc.GetRoomByRoomTypeId(RoomTypeID));
+        try
+        {
+            if (RoomTypeID <= 0)
+            {
+                return JsonConvert.SerializeObject(new { success = false, message = "Invalid RoomTypeID: " + RoomTypeID, data = new List<restroTable>() });
+            }
+            var rooms = roc.GetRoomByRoomTypeId(RoomTypeID);
+            if (rooms == null)
+            {
+                rooms = new List<restroTable>();
+            }
+            return JsonConvert.SerializeObject(new { success = true, message = "", data = rooms });
+        }
+        catch (Exception ex)
+        {
+            // Log the error for debugging
+            string logPath = HttpContext.Current.Server.MapPath("~/App_Data/OrderLogs");
+            if (!System.IO.Directory.Exists(logPath))
+            {
+                System.IO.Directory.CreateDirectory(logPath);
+            }
+            string logFile = System.IO.Path.Combine(logPath, "DashboardError_" + DateTime.Now.ToString("yyyyMMdd_HHmmss") + ".txt");
+            string logContent = "GetRoomByRoomTypeId Error\n" +
+                               "Time: " + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "\n" +
+                               "RoomTypeID: " + RoomTypeID + "\n" +
+                               "Exception: " + ex.ToString() + "\n" +
+                               "StackTrace: " + ex.StackTrace + "\n\n";
+            System.IO.File.AppendAllText(logFile, logContent);
+            
+            return JsonConvert.SerializeObject(new { success = false, message = "Error loading rooms: " + ex.Message, data = new List<restroTable>() });
+        }
     }
 
     [WebMethod]
@@ -448,16 +478,73 @@ public class DashBoardWebService : System.Web.Services.WebService
     [WebMethod]
     public string GetTableByRoomTypeId(int RoomId)
     {
-        List<restroTable> restroTableList = roc.GetTableByRoomTypeId(RoomId);
-
-        return JsonConvert.SerializeObject(restroTableList);
+        try
+        {
+            if (RoomId <= 0)
+            {
+                return JsonConvert.SerializeObject(new { success = false, message = "Invalid RoomId: " + RoomId, data = new List<restroTable>() });
+            }
+            List<restroTable> restroTableList = roc.GetTableByRoomTypeId(RoomId);
+            if (restroTableList == null)
+            {
+                restroTableList = new List<restroTable>();
+            }
+            return JsonConvert.SerializeObject(new { success = true, message = "", data = restroTableList });
+        }
+        catch (Exception ex)
+        {
+            // Log the error for debugging
+            string logPath = HttpContext.Current.Server.MapPath("~/App_Data/OrderLogs");
+            if (!System.IO.Directory.Exists(logPath))
+            {
+                System.IO.Directory.CreateDirectory(logPath);
+            }
+            string logFile = System.IO.Path.Combine(logPath, "DashboardError_" + DateTime.Now.ToString("yyyyMMdd_HHmmss") + ".txt");
+            string logContent = "GetTableByRoomTypeId Error\n" +
+                               "Time: " + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "\n" +
+                               "RoomId: " + RoomId + "\n" +
+                               "Exception: " + ex.ToString() + "\n" +
+                               "StackTrace: " + ex.StackTrace + "\n\n";
+            System.IO.File.AppendAllText(logFile, logContent);
+            
+            return JsonConvert.SerializeObject(new { success = false, message = "Error loading tables: " + ex.Message, data = new List<restroTable>() });
+        }
     }
 
     [WebMethod]
     public string GetTableByRoomTypeIdWeb(int RoomId)
     {
-        List<restroTable> restroTableList = roc.GetTableByRoomTypeIdWeb(RoomId);
-        return JsonConvert.SerializeObject(restroTableList);
+        try
+        {
+            if (RoomId <= 0)
+            {
+                return JsonConvert.SerializeObject(new { success = false, message = "Invalid RoomId: " + RoomId, data = new List<restroTable>() });
+            }
+            List<restroTable> restroTableList = roc.GetTableByRoomTypeIdWeb(RoomId);
+            if (restroTableList == null)
+            {
+                restroTableList = new List<restroTable>();
+            }
+            return JsonConvert.SerializeObject(new { success = true, message = "", data = restroTableList });
+        }
+        catch (Exception ex)
+        {
+            // Log the error for debugging
+            string logPath = HttpContext.Current.Server.MapPath("~/App_Data/OrderLogs");
+            if (!System.IO.Directory.Exists(logPath))
+            {
+                System.IO.Directory.CreateDirectory(logPath);
+            }
+            string logFile = System.IO.Path.Combine(logPath, "DashboardError_" + DateTime.Now.ToString("yyyyMMdd_HHmmss") + ".txt");
+            string logContent = "GetTableByRoomTypeIdWeb Error\n" +
+                               "Time: " + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "\n" +
+                               "RoomId: " + RoomId + "\n" +
+                               "Exception: " + ex.ToString() + "\n" +
+                               "StackTrace: " + ex.StackTrace + "\n\n";
+            System.IO.File.AppendAllText(logFile, logContent);
+            
+            return JsonConvert.SerializeObject(new { success = false, message = "Error loading tables (web): " + ex.Message, data = new List<restroTable>() });
+        }
     }
 
     [WebMethod]

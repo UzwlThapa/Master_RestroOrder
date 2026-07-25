@@ -25,12 +25,43 @@ public class DashBoardWebService : System.Web.Services.WebService {
         return "Hello World";
     }
     
-      [WebMethod]
-    public List<RestroRoom> GetRoomByRoomTypeId(string RoomTypeID)
+    [WebMethod]
+    public string GetRoomByRoomTypeId(string RoomTypeID)
     {
-        RestrOrderController controller = new RestrOrderController();
-        return controller.GetRoomByRoomTypeId(int.Parse(RoomTypeID));
-          
+        try
+        {
+            int roomTypeId;
+            if (!int.TryParse(RoomTypeID, out roomTypeId) || roomTypeId <= 0)
+            {
+                return Newtonsoft.Json.JsonConvert.SerializeObject(new { success = false, message = "Invalid RoomTypeID: " + RoomTypeID, data = new List<RestroRoom>() });
+            }
+            
+            RestrOrderController controller = new RestrOrderController();
+            var rooms = controller.GetRoomByRoomTypeId(roomTypeId);
+            if (rooms == null)
+            {
+                rooms = new List<RestroRoom>();
+            }
+            return Newtonsoft.Json.JsonConvert.SerializeObject(new { success = true, message = "", data = rooms });
+        }
+        catch (Exception ex)
+        {
+            // Log the error for debugging
+            string logPath = HttpContext.Current.Server.MapPath("~/App_Data/OrderLogs");
+            if (!System.IO.Directory.Exists(logPath))
+            {
+                System.IO.Directory.CreateDirectory(logPath);
+            }
+            string logFile = System.IO.Path.Combine(logPath, "RODashboardError_" + DateTime.Now.ToString("yyyyMMdd_HHmmss") + ".txt");
+            string logContent = "RODashBoard GetRoomByRoomTypeId Error\n" +
+                               "Time: " + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "\n" +
+                               "RoomTypeID: " + RoomTypeID + "\n" +
+                               "Exception: " + ex.ToString() + "\n" +
+                               "StackTrace: " + ex.StackTrace + "\n\n";
+            System.IO.File.AppendAllText(logFile, logContent);
+            
+            return Newtonsoft.Json.JsonConvert.SerializeObject(new { success = false, message = "Error loading rooms: " + ex.Message, data = new List<RestroRoom>() });
+        }
     }
     
     
