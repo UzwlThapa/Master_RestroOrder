@@ -283,7 +283,7 @@ function getBill(salesMasterId, foodCourtOrder) {
             // ===== TOTALS SECTION - THERMAL OPTIMIZED =====
             htmls += "<tr style='border-top:1px dashed #000;'>";
             htmls += "<td colspan='" + (splitCostCenter ? 2 : 3) + "' class='text-right bold' style='font-size:8px;padding:2px 0;'>";
-            if (totalItemsQntyVisible) {
+            if (typeof totalItemsQntyVisible !== 'undefined' && totalItemsQntyVisible) {
                 htmls += "Qty: " + itemsQnty + " | ";
             }
             htmls += "Sub Total:</td>";

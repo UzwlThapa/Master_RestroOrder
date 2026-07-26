@@ -5058,6 +5058,13 @@ namespace SageFrame.RestroOrder
                         Param1.Add(new KeyValuePair<string, object>("@IsRunningOrder", runningOrder));
                         sqlHandler.ExecuteNonQuery("[USP_RO_CancelORDERDETAIL]", Param1);
                     }
+
+                    // Recalculate TermAmount as SUM(Amount) from RO_Order_Detail for unpaid orders
+                    // This fixes the bug where tablet orders (which don't send TermAmount) get stuck at 0.00
+                    List<KeyValuePair<string, object>> updateTermParams = new List<KeyValuePair<string, object>>();
+                    updateTermParams.Add(new KeyValuePair<string, object>("@OrderMasterID", m));
+                    sqlHandler.ExecuteNonQuery("USP_RO_UpdateTermAmount", updateTermParams);
+
                     ts.Complete();
                     return m;
                 }
