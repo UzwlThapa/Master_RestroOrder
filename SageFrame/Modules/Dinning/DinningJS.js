@@ -1,15 +1,28 @@
 ﻿
 var companyInfo = JSON.parse(localStorage.getItem("companyInfo"));
 
-function formatDate(dateString) {
-    if (!dateString || dateString === '' || dateString === null || dateString === undefined) {
-        return '';
+function formatDate() {
+    var newDate = new Date();
+    var sMonth = padValue(newDate.getMonth() + 1);
+    var sDay = padValue(newDate.getDate());
+    var sYear = newDate.getFullYear();
+    var sHour = newDate.getHours();
+    var sMinute = padValue(newDate.getMinutes());
+    var sAMPM = "AM";
+    var iHourCheck = parseInt(sHour);
+    if (iHourCheck > 12) {
+        sAMPM = "PM";
+        sHour = iHourCheck - 12;
     }
-    var date = new Date(dateString);
-    if (isNaN(date.getTime())) {
-        return '';
+    else if (iHourCheck === 0) {
+        sHour = "12";
     }
-    return date.toLocaleDateString() + ' ' + date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+    sHour = padValue(sHour);
+    return sMonth + "-" + sDay + "-" + sYear + " " + sHour + ":" + sMinute + " " + sAMPM;
+}
+
+function padValue(value) {
+    return (value < 10) ? "0" + value : value;
 }
 
 function IntegerAndDecimal(evt, element) {

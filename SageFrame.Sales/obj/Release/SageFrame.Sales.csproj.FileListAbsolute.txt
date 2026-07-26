@@ -250,3 +250,12 @@ G:\Danfe\DanfeProductsSourceCode\OldCodeNoHttps\Master_RestroOrder\SageFrame.Sal
 G:\Danfe\DanfeProductsSourceCode\OldCodeNoHttps\Master_RestroOrder\SageFrame.Sales\obj\Release\SageFram.E113DE83.Up2Date
 G:\Danfe\DanfeProductsSourceCode\OldCodeNoHttps\Master_RestroOrder\SageFrame.Sales\obj\Release\SageFrame.Sales.dll
 G:\Danfe\DanfeProductsSourceCode\OldCodeNoHttps\Master_RestroOrder\SageFrame.Sales\obj\Release\SageFrame.Sales.pdb
+G:\Danfe\Restro_Order_Code\Master_RestroOrder\SageFrame.Sales\bin\Release\SageFrame.Sales.dll
+G:\Danfe\Restro_Order_Code\Master_RestroOrder\SageFrame.Sales\bin\Release\SageFrame.Sales.pdb
+G:\Danfe\Restro_Order_Code\Master_RestroOrder\SageFrame.Sales\bin\Release\SageFrame.Common.dll
+G:\Danfe\Restro_Order_Code\Master_RestroOrder\SageFrame.Sales\bin\Release\SageFrame.Common.pdb
+G:\Danfe\Restro_Order_Code\Master_RestroOrder\SageFrame.Sales\obj\Release\SageFrame.Sales.csproj.AssemblyReference.cache
+G:\Danfe\Restro_Order_Code\Master_RestroOrder\SageFrame.Sales\obj\Release\SageFrame.Sales.csproj.CoreCompileInputs.cache
+G:\Danfe\Restro_Order_Code\Master_RestroOrder\SageFrame.Sales\obj\Release\SageFram.E113DE83.Up2Date
+G:\Danfe\Restro_Order_Code\Master_RestroOrder\SageFrame.Sales\obj\Release\SageFrame.Sales.dll
+G:\Danfe\Restro_Order_Code\Master_RestroOrder\SageFrame.Sales\obj\Release\SageFrame.Sales.pdb
