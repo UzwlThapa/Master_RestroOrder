@@ -357,7 +357,7 @@ function getBill(salesMasterId, foodCourtOrder) {
             
             htmls += "<tr>";
             htmls += "<td colspan='" + (splitCostCenter ? 5 : 5) + "' class='text-left' style='font-size:7px;padding:1px 0;'>";
-            htmls += "Printed: " + formatAMPM();
+            htmls += "Printed: " + (typeof formatAMPM === 'function' ? formatAMPM() : new Date().toLocaleString());
             htmls += "</td></tr>";
             
             htmls += "<tr>";
@@ -431,4 +431,17 @@ function getBill(salesMasterId, foodCourtOrder) {
             });
         }
     });
+}
+
+// Helper function to format date/time with AM/PM
+function formatAMPM() {
+    var date = new Date();
+    var hours = date.getHours();
+    var minutes = date.getMinutes();
+    var ampm = hours >= 12 ? 'pm' : 'am';
+    hours = hours % 12;
+    hours = hours ? hours : 12; // the hour '0' should be '12'
+    minutes = minutes < 10 ? '0' + minutes : minutes;
+    var strDateTime = ((date.getMonth() + 1) < 10 ? '0' : '') + (date.getMonth() + 1) + '/' + (date.getDate() < 10 ? '0' : '') + date.getDate() + '/' + date.getFullYear() + "   " + hours + ':' + minutes + ' ' + ampm;
+    return strDateTime;
 }
