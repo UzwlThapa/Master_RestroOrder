@@ -62,6 +62,8 @@ function applyBillPrintLayout() {
     });
 }
 
+var totalItemsQntyVisible = true;
+
 function getBill(salesMasterId, foodCourtOrder) {
     $.ajax({
         type: "POST",
