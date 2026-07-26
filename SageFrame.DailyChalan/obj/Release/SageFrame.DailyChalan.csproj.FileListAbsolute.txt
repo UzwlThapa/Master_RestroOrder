@@ -237,3 +237,12 @@ G:\Danfe\DanfeProductsSourceCode\OldCodeNoHttps\Master_RestroOrder\SageFrame.Dai
 G:\Danfe\DanfeProductsSourceCode\OldCodeNoHttps\Master_RestroOrder\SageFrame.DailyChalan\obj\Release\SageFram.FAE39708.Up2Date
 G:\Danfe\DanfeProductsSourceCode\OldCodeNoHttps\Master_RestroOrder\SageFrame.DailyChalan\obj\Release\SageFrame.DailyChalan.dll
 G:\Danfe\DanfeProductsSourceCode\OldCodeNoHttps\Master_RestroOrder\SageFrame.DailyChalan\obj\Release\SageFrame.DailyChalan.pdb
+G:\Danfe\Restro_Order_Code\Master_RestroOrder\SageFrame.DailyChalan\bin\Release\SageFrame.DailyChalan.dll
+G:\Danfe\Restro_Order_Code\Master_RestroOrder\SageFrame.DailyChalan\bin\Release\SageFrame.DailyChalan.pdb
+G:\Danfe\Restro_Order_Code\Master_RestroOrder\SageFrame.DailyChalan\bin\Release\SageFrame.Common.dll
+G:\Danfe\Restro_Order_Code\Master_RestroOrder\SageFrame.DailyChalan\bin\Release\SageFrame.Common.pdb
+G:\Danfe\Restro_Order_Code\Master_RestroOrder\SageFrame.DailyChalan\obj\Release\SageFrame.DailyChalan.csproj.AssemblyReference.cache
+G:\Danfe\Restro_Order_Code\Master_RestroOrder\SageFrame.DailyChalan\obj\Release\SageFrame.DailyChalan.csproj.CoreCompileInputs.cache
+G:\Danfe\Restro_Order_Code\Master_RestroOrder\SageFrame.DailyChalan\obj\Release\SageFram.FAE39708.Up2Date
+G:\Danfe\Restro_Order_Code\Master_RestroOrder\SageFrame.DailyChalan\obj\Release\SageFrame.DailyChalan.dll
+G:\Danfe\Restro_Order_Code\Master_RestroOrder\SageFrame.DailyChalan\obj\Release\SageFrame.DailyChalan.pdb

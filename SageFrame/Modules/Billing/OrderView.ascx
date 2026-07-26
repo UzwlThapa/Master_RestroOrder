@@ -1,6 +1,7 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeFile="OrderView.ascx.cs" Inherits="Modules_Order_OrderView" %>
 
 <script type="text/javascript">
+    var totalItemsQntyVisible = true;
     var sentdata = 0;
     var roomdata = 0;
     var OID = 0;

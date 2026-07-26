@@ -1,6 +1,7 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeFile="UnpaidBills.ascx.cs" Inherits="Modules_UnPaid_Bills_UnpaidBills" %>
 
 <script type="text/javascript">
+    var totalItemsQntyVisible = true;
 
     $(function () {
         $(this).companyDashboardEDIT({

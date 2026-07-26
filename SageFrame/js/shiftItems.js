@@ -311,15 +311,32 @@ function shiftItems() {
         contentType: "application/json; charset=utf-8",
         dataType: "json",
         success: function (data) {
-            $('#shiftItems').dialog('close');
-            jAlert('Item Successfully Shifted', 'Information!!', function () {
-                $(".ui-dialog-content").dialog("close");
-                parent.$.colorbox.close();
-                var location = window.location.href.split('/')
-                if (location[location.length - 1] == "Dining.aspx") {
-                    window.location.reload();
-                }
-            });
+            var result = data.d;
+            // Check if the response indicates success or failure
+            if (result && typeof result === 'object' && result.Success === true) {
+                $('#shiftItems').dialog('close');
+                jAlert('Item Successfully Shifted', 'Information!!', function () {
+                    $(".ui-dialog-content").dialog("close");
+                    parent.$.colorbox.close();
+                    var location = window.location.href.split('/')
+                    if (location[location.length - 1] == "Dining.aspx") {
+                        window.location.reload();
+                    }
+                });
+            } else if (result && typeof result === 'object' && result.Success === false) {
+                jAlert('Shift Failed: ' + result.Message, 'Error!!');
+            } else {
+                // Legacy support: if no Success property, assume success for backward compatibility
+                $('#shiftItems').dialog('close');
+                jAlert('Item Successfully Shifted', 'Information!!', function () {
+                    $(".ui-dialog-content").dialog("close");
+                    parent.$.colorbox.close();
+                    var location = window.location.href.split('/')
+                    if (location[location.length - 1] == "Dining.aspx") {
+                        window.location.reload();
+                    }
+                });
+            }
             $('#hdnPinFor').val("");
             $('#hdnPinMatch').val("false");
         },
