@@ -1,0 +1,16 @@
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE PROCEDURE [dbo].[usp_PollInstalled]
+AS
+BEGIN 
+ SELECT ModuleName FROM Modules WHERE FolderName='Polling'  
+END
+
+
+
+
+
+GO

@@ -1,0 +1,12 @@
+-- ONE-TIME CLEANUP: Free any table that has no active orders
+UPDATE rt
+SET rt.restrotablesStatusID = 1 -- Set to Free
+FROM RO_restroTable rt
+WHERE rt.restrotablesStatusID != 1 -- Only if not already free
+AND NOT EXISTS (
+    SELECT 1 
+    FROM RO_OrderMasters om 
+    WHERE om.TableId = rt.restrotableId 
+    AND om.IsCancelled = 0 
+    AND om.BillPaid = 0
+);

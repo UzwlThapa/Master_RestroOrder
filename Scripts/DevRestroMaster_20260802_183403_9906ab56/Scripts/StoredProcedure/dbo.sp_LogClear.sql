@@ -1,0 +1,20 @@
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE PROCEDURE [dbo].[sp_LogClear]
+@PortalID INT
+AS
+BEGIN
+ SET NOCOUNT ON
+ DELETE
+ FROM [dbo].[Log]
+ WHERE PortalID=@PortalID
+END
+
+
+
+
+
+GO

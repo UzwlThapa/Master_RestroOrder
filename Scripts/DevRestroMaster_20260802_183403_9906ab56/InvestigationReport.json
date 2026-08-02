@@ -1,0 +1,50 @@
+{
+  "RunId": "9906ab56",
+  "StartedUtc": "2026-08-02T18:34:03.476986Z",
+  "CompletedUtc": "2026-08-02T18:53:31.6866864Z",
+  "TargetServer": "DESKTOP-9VVHFMK",
+  "TargetDatabase": "DevRestroMaster",
+  "ServerInfo": {
+    "ServerName": "DESKTOP-9VVHFMK",
+    "ProductVersion": "15.0.2000.5",
+    "ProductLevel": "RTM",
+    "Edition": "Developer Edition (64-bit)",
+    "EngineEdition": "3",
+    "ProcessorCount": 4,
+    "PhysicalMemoryMb": 12185,
+    "Collation": "Latin1_General_CI_AS",
+    "IsClustered": false,
+    "IsHadrEnabled": false,
+    "SqlServerStartTimeUtc": "2026-07-31T06:44:57.647Z",
+    "MaxServerMemoryMb": 2147483647,
+    "Platform": "Windows",
+    "Warnings": []
+  },
+  "ScriptedObjectCount": 1814,
+  "RecentlyModifiedObjectCount": 9,
+  "DependencyEdgeCount": 4008,
+  "SessionCount": 58,
+  "BlockingChainCount": 0,
+  "MissingIndexCount": 0,
+  "UnusedIndexCount": 76,
+  "FragmentedIndexCount": 1,
+  "ExpensiveQueryCount": 0,
+  "DbccResults": [
+    {
+      "CheckName": "CHECKCATALOG",
+      "Success": true,
+      "Messages": [],
+      "Duration": "00:00:01.0009917"
+    },
+    {
+      "CheckName": "CHECKDB",
+      "Success": true,
+      "Messages": [],
+      "Duration": "00:00:14.0837180"
+    }
+  ],
+  "Errors": [
+    "DatabaseInfo failed: Invalid object name \u0027sys.query_store_options\u0027."
+  ],
+  "Warnings": []
+}

@@ -1,0 +1,17 @@
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE [dbo].[USP_ROI_DELETEAJDUSTMENT]
+@AMId INT
+AS
+BEGIN
+
+DELETE from dbo.ROI_AdjustmentDetls where AMId = @AMId
+DELETE from dbo.ROI_AdjustmentMain where AMId = @AMId
+END
+
+
+
+
+GO

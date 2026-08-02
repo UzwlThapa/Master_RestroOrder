@@ -1,0 +1,19 @@
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE PROCEDURE [dbo].[usp_PortalGetParent]
+AS
+BEGIN
+ 
+ SET NOCOUNT ON;
+ SELECT PortalID,SEOName From [dbo].[Portal]
+ WHERE parentID=0
+END
+
+
+
+
+
+GO

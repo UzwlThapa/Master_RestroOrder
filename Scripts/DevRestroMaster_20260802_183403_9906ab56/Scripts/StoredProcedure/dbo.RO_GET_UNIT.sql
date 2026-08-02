@@ -1,0 +1,15 @@
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE [dbo].[RO_GET_UNIT]
+as
+begin
+ select * from FGetUnitTB()
+end
+
+
+
+
+
+GO

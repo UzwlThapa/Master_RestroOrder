@@ -1,0 +1,15 @@
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE PROCEDURE [dbo].[sp_GetAllPortals]
+AS
+    SELECT *
+    FROM   dbo.portal
+
+
+
+
+
+GO

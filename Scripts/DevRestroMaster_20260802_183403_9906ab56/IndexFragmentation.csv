@@ -1,0 +1,2 @@
+﻿SchemaName,TableName,IndexName,AvgFragmentationPercent,PageCount,RecommendedAction
+DanfeHangFire,State,PK_HangFire_State,41.78,146,REBUILD

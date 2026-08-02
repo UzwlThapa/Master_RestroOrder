@@ -1,0 +1,16 @@
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+
+
+
+CREATE PROCEDURE [dbo].[usp_GetMailKey]
+@MailKey NVARCHAR(500)
+AS
+BEGIN
+ SELECT SettingValue FROM [dbo].[NL_SettingValue] WHERE  SettingKey =  @MailKey
+END
+
+GO

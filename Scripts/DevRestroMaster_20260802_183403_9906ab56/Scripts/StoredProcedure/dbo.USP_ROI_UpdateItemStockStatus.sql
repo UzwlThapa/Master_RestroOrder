@@ -1,0 +1,14 @@
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE PROCEDURE [dbo].[USP_ROI_UpdateItemStockStatus] @ItemId INT
+AS
+BEGIN
+	UPDATE ROI_ItemDetails
+	SET IsOutOfStock = isnull(IsOutOfStock,0) ^ 1
+	WHERE ITId = @ItemId
+END
+
+GO

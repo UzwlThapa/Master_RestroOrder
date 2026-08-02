@@ -1,0 +1,21 @@
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE [dbo].[USP_GETITEMFROMCATEGORY] 
+ @PITId INT
+AS
+BEGIN
+SELECT *
+	FROM ROI_ITEMMain m
+	INNER JOIN ROI_ItemDetails d ON m.ITId = d.ITId
+	WHERE m.IsActive = 1
+		AND m.IsArchived = 0
+		--AND d.IsMenu = 1
+		AND d.IsProdMaterial = 0
+		AND m.IsCategory = 0
+	  AND PITId=@PITId 
+END
+
+
+GO

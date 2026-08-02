@@ -1,0 +1,14 @@
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+--select * FROM HK_HouseKeeping
+CREATE PROCEDURE [dbo].[usp_H_DeleteMainHouseKeepingDetails]
+	@HK_ID INT	
+AS
+	BEGIN
+	DELETE FROM H_HouseKeeping WHERE HK_ID=@HK_ID
+END
+
+GO

@@ -1,0 +1,23 @@
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE PROCEDURE [dbo].[usp_FileManagerGetUserID]
+(
+@UserName NVARCHAR(256)
+)
+AS
+BEGIN
+DECLARE @UserID INT
+SELECT @UserID=UserID FROM Users WHERE Username=@UserName
+IF @UserID IS NULL
+SET @UserID=0
+SELECT @UserID
+END;
+
+
+
+
+
+GO

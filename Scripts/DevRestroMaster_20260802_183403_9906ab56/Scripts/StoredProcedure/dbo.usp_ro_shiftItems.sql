@@ -1,0 +1,253 @@
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE PROCEDURE [dbo].[usp_ro_shiftItems]
+    @fromTable INT,
+    @fromSplitNo INT,
+    @toTable INT,
+    @toSplitNo INT,
+    @shiftedBy NVARCHAR(MAX),
+    @ItemId INT,
+    @Quantity FLOAT,
+    @IsCombo BIT
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    DECLARE @orderdetail INT,
+            @qnty FLOAT,
+            @orderMasterId INT,
+            @oldOrderMasterId INT,
+            @istable BIT,
+            @newDetailId INT,
+            @destBasicAmount DECIMAL(18, 2),
+            @srcBasicAmount DECIMAL(18, 2),
+            @itemRate DECIMAL(18, 2),
+            @itemCostCenter INT;
+
+    DECLARE @continue BIT = 0;
+
+    BEGIN TRY
+        BEGIN TRANSACTION;
+
+        -- 1. Identify Source Order
+        SET @oldOrderMasterId =
+        (
+            SELECT MAX(OrderMasterID)
+            FROM RO_OrderMasters
+            WHERE TableId = @fromTable
+                  AND ISNULL(BillPaid, 0) = 0
+                  AND ISNULL(IsCancelled, 0) = 0
+        );
+
+        IF @oldOrderMasterId IS NULL
+        BEGIN
+            RAISERROR('Source order not found or already closed.', 16, 1);
+            RETURN;
+        END;
+
+        -- 2. Identify or Create Destination Order
+        SET @orderMasterId =
+        (
+            SELECT MAX(OrderMasterID)
+            FROM RO_OrderMasters
+            WHERE TableId = @toTable
+                  AND ISNULL(BillPaid, 0) = 0
+                  AND ISNULL(IsCancelled, 0) = 0
+        );
+
+        IF (@orderMasterId IS NULL)
+        BEGIN
+            INSERT INTO RO_OrderMasters
+            (
+                RoomId,
+                TableId,
+                BillNo,
+                Date,
+                IsCancelled,
+                BasicAmount,
+                TermAmount,
+                NetAmount,
+                UserName,
+                Remarks,
+                IsSplit,
+                GuestNo,
+                BillPaid,
+                OID,
+                OrderStatus,
+                IsPrinted
+            )
+            VALUES
+            (
+                (
+                    SELECT restroRoomId FROM RO_restroTable WHERE restrotableId = @toTable
+                ), @toTable, 0, GETDATE(), 0, 0, 0, 0, @shiftedBy, '', 1, @toSplitNo, 0, 0, 1, 1);
+
+            SET @orderMasterId = SCOPE_IDENTITY();
+
+            INSERT INTO RO_OrderToken
+            (
+                OrderMasterID,
+                CustomerID,
+                CustomerName,
+                Phone,
+                TokenNo,
+                AddedBy,
+                Address
+            )
+            VALUES
+            (@orderMasterId, 0, '', '', 0, GETDATE(), '');
+        END;
+
+        -- 3. Log the Shift (CRITICAL FIX: Populate ToOrdermasterId immediately)
+        INSERT INTO RO_ItemShiftLog
+        (
+            FromTable,
+            FromSplitNo,
+            ToTable,
+            ToSplitNo,
+            ShiftedBy,
+            ItemId,
+            Quantity,
+            IsCombo,
+            ShiftedOn,
+            OrderMasterId,
+            ToOrdermasterId,
+            ShiftType
+        )
+        VALUES
+        (@fromTable, @fromSplitNo, @toTable, @toSplitNo, @shiftedBy, @ItemId, @Quantity, @IsCombo, GETDATE(),
+         @oldOrderMasterId, @orderMasterId, 'Regular');
+
+        -- 4. Process Item Transfer Loop
+        WHILE (@continue = 0)
+        BEGIN
+            SELECT TOP (1)
+                   @orderdetail = OrderDetailsID,
+                   @qnty = Quantity
+            FROM RO_Order_Detail
+            WHERE ROI_ItemId = @ItemId
+                  AND IsCombo = @IsCombo
+                  AND IsCancelled = 0
+                  AND SeatNo = @fromSplitNo
+                  AND OrderMasterId = @oldOrderMasterId
+            ORDER BY OrderDetailsID DESC;
+
+            IF @orderdetail IS NULL
+            BEGIN
+                SET @continue = 1;
+                CONTINUE;
+            END;
+
+            IF (@qnty <= @Quantity)
+            BEGIN
+                -- Move entire detail row to destination
+                UPDATE RO_Order_Detail
+                SET OrderMasterId = @orderMasterId,
+                    SeatNo = @toSplitNo
+                WHERE OrderDetailsID = @orderdetail;
+
+                SET @Quantity = @Quantity - @qnty;
+                IF (@Quantity <= 0)
+                    SET @continue = 1;
+            END;
+            ELSE
+            BEGIN
+                -- Split detail row: Reduce source, Insert new in destination
+                UPDATE RO_Order_Detail
+                SET Quantity = (Quantity - @Quantity)
+                WHERE OrderDetailsID = @orderdetail;
+
+                -- Get Rate and CostCenter for the new row
+                SELECT @itemRate = Rate,
+                       @itemCostCenter = CostCenterId
+                FROM RO_Order_Detail
+                WHERE OrderDetailsID = @orderdetail;
+
+                INSERT INTO dbo.RO_Order_Detail
+                (
+                    OrderMasterId,
+                    ROI_ItemId,
+                    Rate,
+                    Date,
+                    IsCancelled,
+                    Quantity,
+                    Amount,
+                    SeatNo,
+                    CostCenterId,
+                    IsRunningOrder,
+                    IsCombo
+                )
+                VALUES
+                (@orderMasterId, @ItemId, @itemRate, GETDATE(), 0, @Quantity, (@itemRate * @Quantity), @toSplitNo,
+                 @itemCostCenter, 0, @IsCombo);
+
+                SET @newDetailId = SCOPE_IDENTITY();
+
+                INSERT INTO RO_OrderItemStatus
+                (
+                    OrderDetailID,
+                    StatusID,
+                    TimeStamp
+                )
+                VALUES
+                (@newDetailId, 1, GETDATE());
+
+                SET @continue = 1;
+            END;
+        END;
+
+        -- 5. Recalculate Totals
+        SELECT @srcBasicAmount = SUM(ISNULL(Rate, 0) * ISNULL(Quantity, 0))
+        FROM RO_Order_Detail
+        WHERE OrderMasterId = @oldOrderMasterId
+              AND IsCancelled = 0;
+        UPDATE RO_OrderMasters
+        SET BasicAmount = ISNULL(@srcBasicAmount, 0)
+        WHERE OrderMasterID = @oldOrderMasterId;
+
+        SELECT @destBasicAmount = SUM(ISNULL(Rate, 0) * ISNULL(Quantity, 0))
+        FROM RO_Order_Detail
+        WHERE OrderMasterId = @orderMasterId
+              AND IsCancelled = 0;
+        UPDATE RO_OrderMasters
+        SET BasicAmount = ISNULL(@destBasicAmount, 0)
+        WHERE OrderMasterID = @orderMasterId;
+
+        -- 6. Close Source Order if Empty
+        IF (
+           (
+               SELECT COUNT(*)
+               FROM RO_Order_Detail
+               WHERE OrderMasterId = @oldOrderMasterId
+                     AND IsCancelled = 0
+           ) = 0
+           )
+        BEGIN
+            UPDATE om
+            SET om.IsCancelled = 1
+            FROM RO_OrderMasters om
+                INNER JOIN RO_restroTable rt
+                    ON rt.restrotableId = om.TableId
+            WHERE om.OrderMasterID = @oldOrderMasterId
+                  AND rt.IsTable = 1;
+        END;
+
+        -- 7. Ensure Table Statuses are 'Occupied'
+        UPDATE dbo.RO_restroTable
+        SET restrotablesStatusID = 6
+        WHERE restrotableId IN ( @fromTable, @toTable );
+
+        COMMIT TRANSACTION;
+    END TRY
+    BEGIN CATCH
+        IF @@TRANCOUNT > 0
+            ROLLBACK TRANSACTION;
+        DECLARE @ErrMsg NVARCHAR(4000) = ERROR_MESSAGE();
+        RAISERROR('Shift Failed: %s', 16, 1, @ErrMsg);
+    END CATCH;
+END;
+
+GO

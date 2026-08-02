@@ -1,0 +1,17 @@
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE PROCEDURE [dbo].[usp_SageBannerDeleteBannerContentByID] 
+ @ImageId INT
+AS
+BEGIN
+ DELETE FROM BannerImage WHERE ImageID=@ImageId
+END
+
+
+
+
+
+GO

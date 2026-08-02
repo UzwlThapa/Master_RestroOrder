@@ -1,0 +1,18 @@
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE [dbo].[USP_RO_UPDATECOMBOISACTIVE]
+@ComboID INT
+AS
+BEGIN
+update RO_Combo Set IsActive = ~IsActive where ComboID = @ComboID
+END
+
+
+
+
+
+
+
+GO

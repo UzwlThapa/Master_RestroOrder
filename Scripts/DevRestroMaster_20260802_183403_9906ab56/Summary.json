@@ -1,0 +1,36 @@
+{
+  "RunId": "9906ab56",
+  "GeneratedUtc": "2026-08-02T18:53:31.7556227Z",
+  "TargetServer": "DESKTOP-9VVHFMK",
+  "TargetDatabase": "DevRestroMaster",
+  "TopWaits": [
+    {
+      "WaitType": "SOS_WORK_DISPATCHER",
+      "WaitTimeMs": 5767277038
+    },
+    {
+      "WaitType": "HADR_FILESTREAM_IOMGR_IOCOMPLETION",
+      "WaitTimeMs": 216480545
+    },
+    {
+      "WaitType": "SQLTRACE_INCREMENTAL_FLUSH_SLEEP",
+      "WaitTimeMs": 216454774
+    },
+    {
+      "WaitType": "QDS_PERSIST_TASK_MAIN_LOOP_SLEEP",
+      "WaitTimeMs": 216429994
+    },
+    {
+      "WaitType": "ONDEMAND_TASK_QUEUE",
+      "WaitTimeMs": 215997476
+    }
+  ],
+  "TopMissingIndexes": [],
+  "TopExpensiveQueries": [],
+  "ActiveBlockingChains": 0,
+  "HighlyFragmentedIndexes": 1,
+  "Errors": [
+    "DatabaseInfo failed: Invalid object name \u0027sys.query_store_options\u0027."
+  ],
+  "Warnings": []
+}

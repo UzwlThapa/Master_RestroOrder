@@ -1,0 +1,16 @@
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE [dbo].[USP_RO_GETBILLTERMBYID]
+@billtermId INT
+AS
+BEGIN
+select * FROM dbo.RO_BillTerm WHERE RO_BillTerm.BilingID= @billtermId
+end
+
+
+
+
+
+GO

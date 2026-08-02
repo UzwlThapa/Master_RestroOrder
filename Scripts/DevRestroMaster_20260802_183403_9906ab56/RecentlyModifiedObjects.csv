@@ -1,0 +1,10 @@
+﻿SchemaName,ObjectName,ObjectType,CreateDateUtc,ModifyDateUtc
+dbo,USP_ROI_GetItemExtraListByItemID,StoredProcedure,2021-07-19 22:34:33,2026-07-30 08:36:52
+dbo,USP_RO_getItemForApi,StoredProcedure,2021-07-19 22:34:31,2026-07-30 08:36:52
+dbo,USP_RO_ShiftTable,StoredProcedure,2026-07-26 10:17:40,2026-07-26 10:17:40
+dbo,RO_OrderMasters,Table,2021-07-19 22:33:24,2026-07-26 10:17:40
+dbo,trg_UpdateTableStatus_OnOrderClose,Trigger,2026-07-26 10:17:40,2026-07-26 10:17:40
+dbo,usp_ro_shiftItems,StoredProcedure,2026-07-26 10:17:40,2026-07-26 10:17:40
+dbo,USP_RO_UpdateTermAmount,StoredProcedure,2026-07-26 10:16:25,2026-07-26 10:16:25
+dbo,usp_ro_savesalesMaster,StoredProcedure,2021-07-19 22:34:32,2026-07-17 03:37:47
+dbo,USP_SALES_REPORT,StoredProcedure,2021-07-19 22:34:34,2026-07-05 08:56:27

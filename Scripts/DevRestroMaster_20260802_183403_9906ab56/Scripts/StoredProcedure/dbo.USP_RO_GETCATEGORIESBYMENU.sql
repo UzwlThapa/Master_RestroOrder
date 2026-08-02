@@ -1,0 +1,19 @@
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE [dbo].[USP_RO_GETCATEGORIESBYMENU]
+(
+@MENUID INT
+)
+AS
+BEGIN
+select CategoriesID, CategoriesName, PhotoPath FROM  dbo.RO_Categories
+  WHERE dbo.RO_Categories.MenuID = @MENUID
+end
+
+
+
+
+
+GO

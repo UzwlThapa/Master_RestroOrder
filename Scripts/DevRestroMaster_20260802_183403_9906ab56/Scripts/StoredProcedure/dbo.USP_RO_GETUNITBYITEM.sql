@@ -1,0 +1,19 @@
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE [dbo].[USP_RO_GETUNITBYITEM]
+(
+@unitID INT
+)
+AS
+BEGIN
+select * FROM  dbo.RO_Units
+  WHERE dbo.RO_Units.UnitID = @unitID
+end
+
+
+
+
+
+GO

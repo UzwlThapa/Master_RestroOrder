@@ -1,0 +1,21 @@
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE [dbo].[USP_RO_ActiveBILLTERM]
+AS
+BEGIN
+	SELECT BilingID ID
+		,BT.NAME BillTerm
+		,BT.Rate
+		,BT.SequenceOrder
+		,BT.IsAdd
+	FROM dbo.RO_BillTerm BT
+	WHERE rate <> 0
+	ORDER BY SequenceOrder ASC
+END
+
+
+
+
+GO

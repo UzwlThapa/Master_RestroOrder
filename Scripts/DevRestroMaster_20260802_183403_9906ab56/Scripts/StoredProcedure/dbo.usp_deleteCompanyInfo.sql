@@ -1,0 +1,15 @@
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE [dbo].[usp_deleteCompanyInfo]
+ @cId INT
+AS
+BEGIN
+	DELETE FROM dbo.RO_CompanyInfo WHERE ID=@cId
+END
+
+
+
+
+GO

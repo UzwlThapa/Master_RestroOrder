@@ -1,0 +1,17 @@
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE [dbo].[USP_RO_ACCOUNTSUBGROUPDELETE]
+@AccountSubGroupId INT
+AS
+BEGIN
+DELETE FROM dbo.RO_AccountSubGroup WHERE AccountSubGroupId = @AccountSubGroupId
+
+end
+
+
+
+
+
+GO

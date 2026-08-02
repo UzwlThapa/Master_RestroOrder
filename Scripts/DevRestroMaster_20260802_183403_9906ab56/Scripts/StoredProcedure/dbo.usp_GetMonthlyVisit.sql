@@ -1,0 +1,18 @@
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE PROCEDURE [dbo].[usp_GetMonthlyVisit]
+AS
+BEGIN
+SELECT COUNT(*) AS [VisitTime] 
+FROM SessionTracker
+WHERE DATENAME(MONTH,[start] ) = DATENAME(mm,GETDATE()) 
+END
+
+
+
+
+
+GO

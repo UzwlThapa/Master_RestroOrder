@@ -1,0 +1,14 @@
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE [dbo].[RO_GET_ITEM]
+as
+begin
+select * from ROI_ITEMMain
+end
+
+
+
+
+GO

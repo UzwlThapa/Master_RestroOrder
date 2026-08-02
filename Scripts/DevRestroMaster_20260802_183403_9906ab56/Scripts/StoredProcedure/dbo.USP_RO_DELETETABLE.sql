@@ -1,0 +1,15 @@
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE [dbo].[USP_RO_DELETETABLE]
+ @restrotableId INT
+AS
+BEGIN
+	DELETE FROM dbo.RO_restroTable WHERE restrotableId=@restrotableId
+END
+
+
+
+
+GO

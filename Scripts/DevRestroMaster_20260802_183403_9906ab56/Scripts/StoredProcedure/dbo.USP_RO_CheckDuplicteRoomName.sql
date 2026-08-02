@@ -1,0 +1,15 @@
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE [dbo].[USP_RO_CheckDuplicteRoomName]
+@RoomName VARCHAR(250)
+AS 
+BEGIN
+	SELECT restroRoom FROM RO_RestroRoom WHERE restroRoom = @RoomName
+END
+
+
+
+
+GO

@@ -1,0 +1,23 @@
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE PROCEDURE [dbo].[usp_FileManagerUpdateFile]
+(
+@FileID INT,
+@FileName NVARCHAR(100)
+)
+AS
+BEGIN
+SET NOCOUNT ON;
+UPDATE [File] 
+SET FileName=@FileName
+WHERE FileId=@FileID
+END;
+
+
+
+
+
+GO

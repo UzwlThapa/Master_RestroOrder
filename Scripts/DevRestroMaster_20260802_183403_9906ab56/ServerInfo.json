@@ -1,0 +1,16 @@
+{
+  "ServerName": "DESKTOP-9VVHFMK",
+  "ProductVersion": "15.0.2000.5",
+  "ProductLevel": "RTM",
+  "Edition": "Developer Edition (64-bit)",
+  "EngineEdition": "3",
+  "ProcessorCount": 4,
+  "PhysicalMemoryMb": 12185,
+  "Collation": "Latin1_General_CI_AS",
+  "IsClustered": false,
+  "IsHadrEnabled": false,
+  "SqlServerStartTimeUtc": "2026-07-31T06:44:57.647Z",
+  "MaxServerMemoryMb": 2147483647,
+  "Platform": "Windows",
+  "Warnings": []
+}

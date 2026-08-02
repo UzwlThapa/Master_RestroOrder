@@ -1,0 +1,9 @@
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE [dbo].[USP_GetCashier]
+	as
+	SELECT Distinct Cashier FROM RO_Sales_View
+
+GO

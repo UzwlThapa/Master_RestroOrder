@@ -1,0 +1,16 @@
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE PROCEDURE [dbo].[usp_ScheduleGetAllCount]
+AS
+BEGIN
+ SELECT COUNT(*) AS RowTotal  FROM [dbo].[Schedule] 
+END;
+
+
+
+
+
+GO

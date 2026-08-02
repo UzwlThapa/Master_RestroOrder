@@ -1,0 +1,14 @@
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE [dbo].[usp_ro_removecombodetails]  @ComboID INT
+AS
+BEGIN
+	DELETE
+	FROM RO_ComboDetails
+	WHERE ComboID = @ComboID
+END
+
+
+GO

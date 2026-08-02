@@ -1,0 +1,18 @@
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+--[dbo].[USP_RO_GETRESTROTABLEBYID] 14
+CREATE PROCEDURE [dbo].[USP_RO_GETRESTROTABLEBYID] @restrotableId INT
+AS
+BEGIN
+	SELECT *
+	FROM dbo.RO_restroTable
+	WHERE restrotableId = @restrotableId
+END
+
+
+
+
+GO

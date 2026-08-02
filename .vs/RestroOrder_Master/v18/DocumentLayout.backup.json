@@ -1,0 +1,88 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "G:\\Danfe\\Restro_Order_Code\\Master_RestroOrder\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{660BBDD5-CA4D-4B01-91FB-5F871EEAC0B1}|G:\\Danfe\\Restro_Order_Code\\Master_RestroOrder\\SageFrame|g:\\danfe\\restro_order_code\\master_restroorder\\sageframe\\global.asax.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{660BBDD5-CA4D-4B01-91FB-5F871EEAC0B1}|G:\\Danfe\\Restro_Order_Code\\Master_RestroOrder\\SageFrame|solutionrelative:sageframe\\global.asax.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{660BBDD5-CA4D-4B01-91FB-5F871EEAC0B1}|G:\\Danfe\\Restro_Order_Code\\Master_RestroOrder\\SageFrame|g:\\danfe\\restro_order_code\\master_restroorder\\sageframe\\js\\breadcrumb\\breadcrumb.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}|",
+      "RelativeMoniker": "D:0:0:{660BBDD5-CA4D-4B01-91FB-5F871EEAC0B1}|G:\\Danfe\\Restro_Order_Code\\Master_RestroOrder\\SageFrame|solutionrelative:sageframe\\js\\breadcrumb\\breadcrumb.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{660BBDD5-CA4D-4B01-91FB-5F871EEAC0B1}|G:\\Danfe\\Restro_Order_Code\\Master_RestroOrder\\SageFrame|g:\\danfe\\restro_order_code\\master_restroorder\\sageframe\\modules\\roi_item\\roiitem.asmx||{FB9167C9-D3B8-4EDA-8083-9AF6B6F6DA62}",
+      "RelativeMoniker": "D:0:0:{660BBDD5-CA4D-4B01-91FB-5F871EEAC0B1}|G:\\Danfe\\Restro_Order_Code\\Master_RestroOrder\\SageFrame|solutionrelative:sageframe\\modules\\roi_item\\roiitem.asmx||{FB9167C9-D3B8-4EDA-8083-9AF6B6F6DA62}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{660BBDD5-CA4D-4B01-91FB-5F871EEAC0B1}|G:\\Danfe\\Restro_Order_Code\\Master_RestroOrder\\SageFrame|g:\\danfe\\restro_order_code\\master_restroorder\\sageframe\\modules\\breadcrumb\\breadcrumb.ascx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{660BBDD5-CA4D-4B01-91FB-5F871EEAC0B1}|G:\\Danfe\\Restro_Order_Code\\Master_RestroOrder\\SageFrame|solutionrelative:sageframe\\modules\\breadcrumb\\breadcrumb.ascx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Global.asax.cs",
+              "DocumentMoniker": "G:\\Danfe\\Restro_Order_Code\\Master_RestroOrder\\SageFrame\\Global.asax.cs",
+              "RelativeDocumentMoniker": "SageFrame\\Global.asax.cs",
+              "ToolTip": "G:\\Danfe\\Restro_Order_Code\\Master_RestroOrder\\SageFrame\\Global.asax.cs",
+              "RelativeToolTip": "SageFrame\\Global.asax.cs",
+              "ViewState": "AgIAAP0BAAAAAAAAAAA8wA0CAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-28T10:57:07.224Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "RoiItem.asmx",
+              "DocumentMoniker": "G:\\Danfe\\Restro_Order_Code\\Master_RestroOrder\\SageFrame\\Modules\\ROI_Item\\RoiItem.asmx",
+              "RelativeDocumentMoniker": "SageFrame\\Modules\\ROI_Item\\RoiItem.asmx",
+              "ToolTip": "G:\\Danfe\\Restro_Order_Code\\Master_RestroOrder\\SageFrame\\Modules\\ROI_Item\\RoiItem.asmx",
+              "RelativeToolTip": "SageFrame\\Modules\\ROI_Item\\RoiItem.asmx",
+              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003504|",
+              "WhenOpened": "2026-07-28T10:47:38.659Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "BreadCrumb.ascx.cs",
+              "DocumentMoniker": "G:\\Danfe\\Restro_Order_Code\\Master_RestroOrder\\SageFrame\\Modules\\BreadCrumb\\BreadCrumb.ascx.cs",
+              "RelativeDocumentMoniker": "SageFrame\\Modules\\BreadCrumb\\BreadCrumb.ascx.cs",
+              "ToolTip": "G:\\Danfe\\Restro_Order_Code\\Master_RestroOrder\\SageFrame\\Modules\\BreadCrumb\\BreadCrumb.ascx.cs",
+              "RelativeToolTip": "SageFrame\\Modules\\BreadCrumb\\BreadCrumb.ascx.cs",
+              "ViewState": "AgIAACgAAAAAAAAAAAAmwDYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-28T10:32:30.799Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "BreadCrumb.js",
+              "DocumentMoniker": "G:\\Danfe\\Restro_Order_Code\\Master_RestroOrder\\SageFrame\\js\\BreadCrumb\\BreadCrumb.js",
+              "RelativeDocumentMoniker": "SageFrame\\js\\BreadCrumb\\BreadCrumb.js",
+              "ToolTip": "G:\\Danfe\\Restro_Order_Code\\Master_RestroOrder\\SageFrame\\js\\BreadCrumb\\BreadCrumb.js",
+              "RelativeToolTip": "SageFrame\\js\\BreadCrumb\\BreadCrumb.js",
+              "ViewState": "AgIAABsAAACgzMzMzAwswCcAAAAXAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2026-07-28T10:24:46.93Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

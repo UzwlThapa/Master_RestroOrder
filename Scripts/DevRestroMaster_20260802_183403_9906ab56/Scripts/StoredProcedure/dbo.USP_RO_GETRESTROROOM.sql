@@ -1,0 +1,15 @@
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE [dbo].[USP_RO_GETRESTROROOM]
+AS
+BEGIN
+	select * from RO_RestroRoom
+	order by restroRoom
+END
+
+
+
+
+GO

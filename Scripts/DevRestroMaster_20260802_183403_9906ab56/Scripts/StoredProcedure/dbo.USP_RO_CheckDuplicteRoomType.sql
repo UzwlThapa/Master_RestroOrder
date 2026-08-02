@@ -1,0 +1,15 @@
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE [dbo].[USP_RO_CheckDuplicteRoomType]
+@RoomType VARCHAR(250)
+AS 
+BEGIN
+	SELECT Title FROM Ro_RoomType WHERE Title = @RoomType
+END
+
+
+
+
+GO

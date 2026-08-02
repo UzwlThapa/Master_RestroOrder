@@ -1,0 +1,26 @@
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[L_LaundryRate](
+	[ID] [int] IDENTITY(1,1) NOT NULL,
+	[ClothTypeID] [int] NULL,
+	[LaundryTypeID] [int] NULL,
+	[Rate] [decimal](18, 0) NULL,
+ CONSTRAINT [PK_L_LaundryRate] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+ALTER TABLE [dbo].[L_LaundryRate]  WITH CHECK ADD  CONSTRAINT [FK_L_LaundryRate_L_Cloth] FOREIGN KEY([ClothTypeID])
+REFERENCES [dbo].[L_Cloth] ([ID])
+GO
+ALTER TABLE [dbo].[L_LaundryRate] CHECK CONSTRAINT [FK_L_LaundryRate_L_Cloth]
+GO
+ALTER TABLE [dbo].[L_LaundryRate]  WITH CHECK ADD  CONSTRAINT [FK_L_LaundryRate_L_LaundryType] FOREIGN KEY([LaundryTypeID])
+REFERENCES [dbo].[L_LaundryType] ([ID])
+GO
+ALTER TABLE [dbo].[L_LaundryRate] CHECK CONSTRAINT [FK_L_LaundryRate_L_LaundryType]
+GO

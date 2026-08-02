@@ -1,0 +1,19 @@
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE PROCEDURE [dbo].[usp_TutorialRssContentGet]
+ AS
+BEGIN
+SET NOCOUNT ON ; SELECT
+ TutorialContent
+FROM
+ dbo.TutorialRssContent
+END
+
+
+
+
+
+GO

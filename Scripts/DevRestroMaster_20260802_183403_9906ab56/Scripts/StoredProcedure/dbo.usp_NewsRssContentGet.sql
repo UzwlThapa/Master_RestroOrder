@@ -1,0 +1,21 @@
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE PROCEDURE [dbo].[usp_NewsRssContentGet]
+
+AS
+BEGIN
+ SET NOCOUNT ON;
+  SELECT 
+  NewsContent 
+ FROM 
+  dbo.NewsRssContent    
+END
+
+
+
+
+
+GO

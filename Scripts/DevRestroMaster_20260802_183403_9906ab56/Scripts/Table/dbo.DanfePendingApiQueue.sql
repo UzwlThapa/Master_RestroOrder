@@ -1,0 +1,63 @@
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[DanfePendingApiQueue](
+	[Id] [bigint] IDENTITY(1,1) NOT NULL,
+	[TenantCode] [nvarchar](100) NOT NULL,
+	[Endpoint] [nvarchar](500) NOT NULL,
+	[Payload] [nvarchar](max) NOT NULL,
+	[RetryCount] [int] NOT NULL,
+	[LastAttemptTime] [datetime] NULL,
+	[Status] [nvarchar](20) NOT NULL,
+	[CreatedAt] [datetime] NOT NULL,
+	[LastError] [nvarchar](max) NULL,
+	[DedupeKey] [nvarchar](200) NULL,
+	[ApiUrl] [nvarchar](500) NULL,
+	[CreatedAtUtc] [datetime2](7) NULL,
+	[LastAttemptUtc] [datetime2](7) NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+
+GO
+CREATE NONCLUSTERED INDEX [IX_DanfePendingApiQueue_Created] ON [dbo].[DanfePendingApiQueue]
+(
+	[CreatedAtUtc] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+GO
+CREATE NONCLUSTERED INDEX [IX_DanfePendingApiQueue_RetryOrder] ON [dbo].[DanfePendingApiQueue]
+(
+	[RetryCount] ASC,
+	[LastAttemptUtc] ASC,
+	[CreatedAtUtc] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+GO
+SET ANSI_PADDING ON
+
+GO
+CREATE NONCLUSTERED INDEX [IX_DanfePendingApiQueue_Status] ON [dbo].[DanfePendingApiQueue]
+(
+	[Status] ASC,
+	[RetryCount] ASC,
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+GO
+SET ANSI_PADDING ON
+
+GO
+CREATE NONCLUSTERED INDEX [IX_DanfePendingApiQueue_Tenant_Dedupe] ON [dbo].[DanfePendingApiQueue]
+(
+	[TenantCode] ASC,
+	[DedupeKey] ASC,
+	[CreatedAt] DESC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+GO
+ALTER TABLE [dbo].[DanfePendingApiQueue] ADD  DEFAULT ((0)) FOR [RetryCount]
+GO
+ALTER TABLE [dbo].[DanfePendingApiQueue] ADD  DEFAULT ('Pending') FOR [Status]
+GO
+ALTER TABLE [dbo].[DanfePendingApiQueue] ADD  DEFAULT (getdate()) FOR [CreatedAt]
+GO

@@ -1,0 +1,16 @@
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+--select * FROM H_LostAndFound
+CREATE PROCEDURE [dbo].[usp_H_DeleteOutOfOrder]
+	@OutOfOrderID INT	
+AS
+	BEGIN
+	DELETE FROM RO_OutOfOrder WHERE OutOfOrderID = @OutOfOrderID
+END
+
+
+
+GO

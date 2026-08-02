@@ -1,0 +1,18 @@
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE [dbo].[USP_RO_GETITEMBYCATEGORY]
+(
+@catID INT
+)
+AS
+BEGIN
+select * FROM  RO_Items
+  WHERE dbo.RO_Items.CategoryID = @catID
+end
+
+
+
+
+GO

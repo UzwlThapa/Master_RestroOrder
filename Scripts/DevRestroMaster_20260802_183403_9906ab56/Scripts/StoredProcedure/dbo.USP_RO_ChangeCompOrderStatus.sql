@@ -1,0 +1,14 @@
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE [dbo].[USP_RO_ChangeCompOrderStatus] @CompId INT
+	,@StatusID INT
+AS
+UPDATE CompItemStatus
+SET StatusID = @StatusID
+WHERE CompId= @CompId
+
+
+
+GO

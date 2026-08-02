@@ -1,0 +1,24 @@
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[ROI_AdjustmentDetls](
+	[ADId] [int] IDENTITY(1,1) NOT NULL,
+	[AMId] [int] NOT NULL,
+	[ITId] [int] NOT NULL,
+	[UsedUnitId] [int] NOT NULL,
+	[Qnty] [bigint] NOT NULL,
+	[QntyInText] [varchar](250) NOT NULL,
+	[AdType] [int] NOT NULL,
+	[PDId] [int] NOT NULL,
+	[IsAdd] [bit] NULL,
+	[Conversion] [decimal](18, 2) NULL,
+ CONSTRAINT [PK_AdjustmentDetls] PRIMARY KEY CLUSTERED 
+(
+	[ADId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+ALTER TABLE [dbo].[ROI_AdjustmentDetls] ADD  CONSTRAINT [DF_AdjustmentDetls_PDId]  DEFAULT ((0)) FOR [PDId]
+GO

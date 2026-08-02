@@ -1,0 +1,14 @@
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE [dbo].[usp_ro_removeextraitemsforitem] @ItemID INT
+AS
+BEGIN
+	DELETE
+	FROM Roi_ExtraItemForItem
+	WHERE ItemID = @ItemID
+END
+
+
+GO

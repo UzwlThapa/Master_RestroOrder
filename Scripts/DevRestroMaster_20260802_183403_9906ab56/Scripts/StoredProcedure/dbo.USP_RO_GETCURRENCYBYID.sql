@@ -1,0 +1,17 @@
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE [dbo].[USP_RO_GETCURRENCYBYID]
+
+@CurrencyID int
+AS
+
+BEGIN
+	SELECT * FROM dbo.RO_Currency where CurrencyID = @CurrencyID
+END	
+
+
+
+
+GO

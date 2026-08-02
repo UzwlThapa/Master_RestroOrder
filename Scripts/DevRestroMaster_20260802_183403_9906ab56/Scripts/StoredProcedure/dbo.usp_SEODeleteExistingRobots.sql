@@ -1,0 +1,18 @@
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE PROCEDURE [dbo].[usp_SEODeleteExistingRobots]
+@PortalID INT
+AS
+BEGIN
+ DELETE FROM [dbo].[robots] WHERE PortalID NOT IN(SELECT PortalID FROM Portal)
+ DELETE FROM  [dbo].[robots] WHERE PortalID=@PortalID
+END
+
+
+
+
+
+GO

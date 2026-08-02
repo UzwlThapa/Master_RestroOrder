@@ -1,0 +1,21 @@
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[ROI_IssueMain](
+	[IMId] [int] IDENTITY(1,1) NOT NULL,
+	[ISNo] [nvarchar](50) NOT NULL,
+	[IssuedToSTId] [int] NOT NULL,
+	[IssuedFrSTId] [int] NOT NULL,
+	[IssuedOn] [datetime] NOT NULL,
+	[IssuedBy] [nvarchar](255) NOT NULL,
+	[ReceivedBy] [nvarchar](255) NULL,
+	[IsVerified] [bit] NULL,
+	[VerifiedOn] [datetime] NULL,
+ CONSTRAINT [PK_IssueMain] PRIMARY KEY CLUSTERED 
+(
+	[IMId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO

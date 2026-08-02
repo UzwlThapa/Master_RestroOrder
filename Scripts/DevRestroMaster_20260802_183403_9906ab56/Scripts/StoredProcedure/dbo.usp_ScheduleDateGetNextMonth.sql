@@ -1,0 +1,18 @@
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE PROCEDURE [dbo].[usp_ScheduleDateGetNextMonth] 
+@ScheduleID INT,
+@NextMonth NVARCHAR(10)
+AS 
+BEGIN
+ SELECT MIN(MonthID) AS NextMonth FROM ScheduleMonth WHERE MonthID>DATEPART(M,CAST(@NextMonth AS DATETIME )) AND ScheduleID=@ScheduleID
+END
+
+
+
+
+
+GO

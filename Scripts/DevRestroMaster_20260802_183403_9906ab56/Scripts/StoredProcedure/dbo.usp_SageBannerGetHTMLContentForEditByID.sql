@@ -1,0 +1,17 @@
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE PROCEDURE [dbo].[usp_SageBannerGetHTMLContentForEditByID]
+@ImageID INT 
+AS
+BEGIN
+ SELECT ImageID,HTMLBodyText,NavigationImage FROM BannerImage WHERE ImageID=@ImageID AND DATALENGTH(HTMLBodyText)>0
+END
+
+
+
+
+
+GO

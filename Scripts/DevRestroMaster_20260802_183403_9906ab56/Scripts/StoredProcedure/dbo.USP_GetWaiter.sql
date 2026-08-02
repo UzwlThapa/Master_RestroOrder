@@ -1,0 +1,10 @@
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+	CREATE PROCEDURE [dbo].[USP_GetWaiter]
+	as
+	SELECT Distinct Waiter FROM RO_Sales_View
+
+GO

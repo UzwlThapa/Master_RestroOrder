@@ -1,0 +1,14 @@
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE [dbo].[sp_GetSuperRoleID]
+AS
+BEGIN
+SELECT RoleID FROM dbo.aspnet_Roles WHERE RoleName='Super User'
+END
+
+
+
+
+GO

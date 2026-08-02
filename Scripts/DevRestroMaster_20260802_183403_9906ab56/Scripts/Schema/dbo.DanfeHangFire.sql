@@ -1,0 +1,2 @@
+CREATE SCHEMA [DanfeHangFire]
+GO

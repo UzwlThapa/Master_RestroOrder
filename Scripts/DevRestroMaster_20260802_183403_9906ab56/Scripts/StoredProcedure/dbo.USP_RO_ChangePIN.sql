@@ -1,0 +1,32 @@
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- USP_RO_ChangePIN '04F7D673-12B2-4011-8F16-681E22BF3FC0','1234'
+CREATE PROCEDURE [dbo].[USP_RO_ChangePIN] @userid NVARCHAR(max)
+	,@pin VARCHAR(4)
+AS
+BEGIN
+	IF (
+			@pin IN (
+				SELECT PINcode
+				FROM dbo.PortalUser
+				)
+			)
+	BEGIN
+		SELECT 0
+	END
+	ELSE
+	BEGIN
+		UPDATE dbo.PortalUser
+		SET PINcode = @pin
+		WHERE UserID = @userid
+
+		SELECT 1
+	END
+END
+
+
+
+
+GO

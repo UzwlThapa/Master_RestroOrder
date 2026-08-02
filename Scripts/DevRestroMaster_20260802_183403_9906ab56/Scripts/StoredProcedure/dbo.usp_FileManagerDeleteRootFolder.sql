@@ -1,0 +1,20 @@
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE PROCEDURE [dbo].[usp_FileManagerDeleteRootFolder]
+ @FolderID INT
+AS
+BEGIN
+ DELETE FROM [File]
+ WHERE FolderID=@FolderID
+ DELETE FROM Folder
+ WHERE FolderID=@FolderID
+END
+
+
+
+
+
+GO

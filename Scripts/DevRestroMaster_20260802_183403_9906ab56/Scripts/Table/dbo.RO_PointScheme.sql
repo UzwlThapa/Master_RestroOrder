@@ -1,0 +1,19 @@
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[RO_PointScheme](
+	[PSchemeId] [int] IDENTITY(1,1) NOT NULL,
+	[CompanyID] [int] NULL,
+	[IsPercentage] [bit] NULL,
+	[PercentageValue] [int] NULL,
+	[ValueFrom] [decimal](18, 2) NULL,
+	[ValueTo] [decimal](18, 2) NULL,
+	[Point] [decimal](18, 2) NULL,
+ CONSTRAINT [PK_RO_PointScheme] PRIMARY KEY CLUSTERED 
+(
+	[PSchemeId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO

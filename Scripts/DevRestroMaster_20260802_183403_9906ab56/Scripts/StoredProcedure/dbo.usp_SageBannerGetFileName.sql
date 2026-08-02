@@ -1,0 +1,17 @@
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE PROCEDURE [dbo].[usp_SageBannerGetFileName]
+@ImageId INT
+AS
+BEGIN
+ SELECT ImagePath FROM BannerImage WHERE ImageID=@ImageId
+END
+
+
+
+
+
+GO
