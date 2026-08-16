@@ -64,7 +64,8 @@ public partial class Modules_DatabaseBackup_DBBackupNRestore : BaseAdministratio
             string password = builder["Password"] as string;
             string _BackupName = database + "_" + DateTime.Now.Hour.ToString() + "_" + DateTime.Now.Minute.ToString() + "_" + DateTime.Now.Millisecond.ToString() + "_" + DateTime.Now.Day.ToString() + "_" + DateTime.Now.Month.ToString() + "_" + DateTime.Now.Year.ToString() + ".bak";
             string destination = AppDomain.CurrentDomain.BaseDirectory + @"Modules\DatabaseBackup\BUD\" + _BackupName;
-            JRBackupRestoreDB.BackupDatabase(database, user, password, server, destination, GetUsername);
+            string username = SageFrame.Common.PortalIDProvider.GetUsername(); // Get current logged-in username
+            JRBackupRestoreDB.BackupDatabase(database, user, password, server, destination, username);
             lblMessage.Text = "The " + database + " database Backup with the name " + _BackupName + " successfully...";
             lblMessage.ForeColor = System.Drawing.Color.Green;
             ReadBackupFiles();
@@ -92,7 +93,8 @@ public partial class Modules_DatabaseBackup_DBBackupNRestore : BaseAdministratio
             string user = builder["User ID"] as string;
             string password = builder["Password"] as string;
             string destination = AppDomain.CurrentDomain.BaseDirectory + @"Modules\DatabaseBackup\BUD\";
-            string message = JRBackupRestoreDB.RestoreData(SQLH.connectionString, database, lstBackupfiles.Text, GetUsername);
+            string username = SageFrame.Common.PortalIDProvider.GetUsername(); // Get current logged-in username
+            string message = JRBackupRestoreDB.RestoreData(SQLH.connectionString, database, lstBackupfiles.Text, username);
             lblMessage.Text = "The " + database + " database Restore successfully...";
             lblMessage.ForeColor = System.Drawing.Color.Green;
 
@@ -164,7 +166,7 @@ public partial class Modules_DatabaseBackup_DBBackupNRestore : BaseAdministratio
 
 public class JRBackupRestoreDB
 {
-    public static void BackupDatabase(String databaseName, String userName, String password, String serverName, String destinationPath,string GetUsername)
+    public static void BackupDatabase(String databaseName, String userName, String password, String serverName, String destinationPath, string username)
     {
         Backup sqlBackup = new Backup();
 
@@ -192,7 +194,7 @@ public class JRBackupRestoreDB
         sqlBackup.FormatMedia = false;
 
         sqlBackup.SqlBackup(sqlServer);
-        roc.SaveDBLog("B", destinationPath, GetUsername);
+        roc.SaveDBLog("B", destinationPath, username);
     }
 
     public static void RestoreDatabase(String databaseName, String filePath,
@@ -225,13 +227,13 @@ public class JRBackupRestoreDB
         db.SetOnline();
         sqlServer.Refresh();
     }
-    public static string RestoreData(string ConnectionString, string DatabaseFullPath, string backUpPath,string GetUsername)
+    public static string RestoreData(string ConnectionString, string DatabaseFullPath, string backUpPath, string username)
     {
         using (SqlConnection con = new SqlConnection(ConnectionString))
         {
             con.Open();
             RestrOrderController roc = new RestrOrderController();
-            roc.SaveDBLog("R", backUpPath, GetUsername);
+            roc.SaveDBLog("R", backUpPath, username);
 
             string UseMaster = "USE master";
             SqlCommand UseMasterCommand = new SqlCommand(UseMaster, con);
@@ -248,7 +250,7 @@ public class JRBackupRestoreDB
             string Alter2 = @"ALTER DATABASE [" + DatabaseFullPath + "] SET Multi_User";
             SqlCommand Alter2Cmd = new SqlCommand(Alter2, con);
             Alter2Cmd.ExecuteNonQuery();
-            roc.SaveDBLog("R", backUpPath, GetUsername);
+            roc.SaveDBLog("R", backUpPath, username);
 
             return "Restore Successful";
         }
