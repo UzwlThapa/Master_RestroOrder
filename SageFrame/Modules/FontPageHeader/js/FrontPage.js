@@ -9,11 +9,11 @@
         var ImageUrl;
 
         p = $.extend
-                ({
-                    HostUrl: '',
-                    CultureCode: '',
-                    UserModuleID: '1'
-                }, p);
+            ({
+                HostUrl: '',
+                CultureCode: '',
+                UserModuleID: '1'
+            }, p);
         var companyInfo = JSON.parse(localStorage.getItem("companyInfo"));
         var FrontPage = {
             config: {
@@ -33,7 +33,7 @@
                 Path: SageFrameAppPath + '/Modules/FrontPage/',
                 PortalID: SageFramePortalID,
                 UserName: SageFrameUserName,
-                UserModuleID: p.UserModuleID                
+                UserModuleID: p.UserModuleID
             },
             init: function () {
                 FrontPage.BindCompanyInfo();
@@ -47,7 +47,7 @@
                     FrontPage.GetOccupiedTable();
                     $(".RO_wrapper").dialog({
                         'title': 'Occupied Tables',
-                        width : 1000
+                        width: 1000
                     });
                 });
             },
@@ -72,12 +72,15 @@
                     case 1:
                         FrontPage.BindOccupiedTables(data.d);
                         break;
+                    case 2:                     // NEW: company info fallback
+                        FrontPage.BindCompanyInfoFromServer(data.d);
+                        break;
                 }
             },
             ajaxFailure: function () {
 
             },
-           
+
             GetFrontPageStatus: function () {
                 FrontPage.config.method = "getFrontpageStatus";
                 FrontPage.config.url = FrontPage.config.baseURL + FrontPage.config.method;
@@ -85,8 +88,6 @@
                 FrontPage.config.ajaxCallMode = 0;
                 FrontPage.ajaxCall(FrontPage.config);
             },
-
-
 
             GetOccupiedTable: function () {
 
@@ -97,29 +98,51 @@
                 FrontPage.ajaxCall(FrontPage.config);
             },
 
-
-
             BindFrontPageStatus: function (result) {
-             
                 var FrontPageList = JSON.parse(result);
-
                 $("#TodaySales").html("Rs. " + FrontPageList[0].TotalSales);
                 $("#OutstandingSales").html("Rs. " + FrontPageList[0].OutstandingSales);
                 $("#IssuedBills").html(FrontPageList[0].BillIssued);
                 $("#OrderedItems").html(FrontPageList[0].TotalOrders);
                 $("#CanclledItems").html(FrontPageList[0].TotalCancelled);
-                //$("#TotalSales").html(totalsales);
-                
             },
 
-            BindCompanyInfo: function () { 
-                ImageUrl = "/Modules/ROCompanyInfo/logo/" + companyInfo.Logo; 
+            // ===== PATCHED BindCompanyInfo =====
+            BindCompanyInfo: function () {
+                if (companyInfo && companyInfo.Logo !== undefined) {
+                    FrontPage.renderLogo();
+                    return;
+                }
+                console.warn('FrontPage(Header): companyInfo missing from localStorage, fetching from server.');
+                FrontPage.config.method = "getcompanyInfo";
+                FrontPage.config.url = FrontPage.config.baseURL + FrontPage.config.method;
+                FrontPage.config.data = '{}';
+                FrontPage.config.ajaxCallMode = 2;
+                FrontPage.ajaxCall(FrontPage.config);
+            },
+
+            renderLogo: function () {
+                ImageUrl = "/Modules/ROCompanyInfo/logo/" + companyInfo.Logo;
                 $("#logo").attr("src", ImageUrl);
                 $("#logo").on("error", function () {
-                $(this).attr('src', '/Modules/ROCompanyInfo/logo/logo.png');
-            });
-                $("#logo").css("display","block");
-                
+                    $(this).attr('src', '/Modules/ROCompanyInfo/logo/logo.png');
+                });
+                $("#logo").css("display", "block");
+            },
+
+            BindCompanyInfoFromServer: function (result) {
+                try {
+                    var list = JSON.parse(result);
+                    if (list && list.length > 0) {
+                        companyInfo = list[0];
+                        localStorage.setItem("companyInfo", JSON.stringify(companyInfo));
+                        FrontPage.renderLogo();
+                    } else {
+                        console.warn('FrontPage(Header): server returned no company info – logo left hidden, not crashing.');
+                    }
+                } catch (e) {
+                    console.error('FrontPage(Header): failed to parse company info from server.', e);
+                }
             },
 
             BindOccupiedTables: function (result) {
@@ -131,42 +154,38 @@
                     htmls += "<ul>";
                     $.each(datas, function (index, value) {
                         htmls += "<li>"
-                            htmls += ("<label for ='");
-                            htmls += ("Table_" + value.restrotableId + "_img_" + value.IsTable + "_" + value.restrotableTitle + '_no' + "' class = '' >");
-                            htmls += ("<img class='imgForTable' id='IMG_" + value.restrotableId + "' src='" + p.HostUrl + "/Modules/RestroDashboard/image/tablered.png'></label> ");
-                            htmls += ("<h5 class='occupiedTablee'>" + value.restrotableTitle + "</h5>");
+                        htmls += ("<label for ='");
+                        htmls += ("Table_" + value.restrotableId + "_img_" + value.IsTable + "_" + value.restrotableTitle + '_no' + "' class = '' >");
+                        htmls += ("<img class='imgForTable' id='IMG_" + value.restrotableId + "' src='" + p.HostUrl + "/Modules/RestroDashboard/image/tablered.png'></label> ");
+                        htmls += ("<h5 class='occupiedTablee'>" + value.restrotableTitle + "</h5>");
 
-                            if (value.BillPaid.toString() == '0' && value.IsCancelled.toString() == '0') {
-                                htmls += ("<h5 class='order-time'");
+                        if (value.BillPaid.toString() == '0' && value.IsCancelled.toString() == '0') {
+                            htmls += ("<h5 class='order-time'");
 
-                                var dateprev = new Date(value.tableDate);
-                                var datet = new Date();
-                                var diff = (datet - dateprev) / 1000;
-                                function secondsTimeSpanToHMS(s) {
-                                    var h = Math.floor(s / 3600); //Get whole hours
-                                    s -= h * 3600;
-                                    var m = Math.floor(s / 60); //Get remaining minutes
-                                    s -= m * 60;
-                                    if (h == 0) {
-                                        return (m < 10 ? '0' + m : m) + "M";//zero padding on minutes and seconds                           }
-                                    } else {
-                                        return h + ":" + (m < 10 ? '0' + m : m) + "M";//zero padding on minutes and seconds                           }
-                                    }
-
+                            var dateprev = new Date(value.tableDate);
+                            var datet = new Date();
+                            var diff = (datet - dateprev) / 1000;
+                            function secondsTimeSpanToHMS(s) {
+                                var h = Math.floor(s / 3600);
+                                s -= h * 3600;
+                                var m = Math.floor(s / 60);
+                                s -= m * 60;
+                                if (h == 0) {
+                                    return (m < 10 ? '0' + m : m) + "M";
+                                } else {
+                                    return h + ":" + (m < 10 ? '0' + m : m) + "M";
                                 }
-                                var dinal = secondsTimeSpanToHMS(diff)
-                                htmls += ("' >" + value.tabletime + "</h5><h5 class='order-timeA'>" + dinal + "</h5>");
                             }
-                            htmls += ("</li>");
-                    
+                            var dinal = secondsTimeSpanToHMS(diff)
+                            htmls += ("' >" + value.tabletime + "</h5><h5 class='order-timeA'>" + dinal + "</h5>");
+                        }
+                        htmls += ("</li>");
                     });
                     htmls += "</ul>";
                     htmls += "</div>";
                     $('.RO_wrapper').html(htmls);
-
                 }
             },
-           
         }
         FrontPage.init();
     }
