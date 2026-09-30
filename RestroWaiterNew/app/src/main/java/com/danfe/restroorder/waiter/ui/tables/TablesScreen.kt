@@ -20,8 +20,9 @@ import com.danfe.restroorder.waiter.util.AutoLogout
 
 /**
  * Table grid screen. Tap a table to open ordering; long-press for shift/merge/show-bill actions.
- * Status colours: free / occupied(status 7) / paid / cancelled — values inferred from the old app,
- * so we render them as neutral chips with text too (UNKNOWN semantics preserved conservatively).
+ * Status colours: free / occupied(status 7) / pending bill(status 5) / paid / cancelled — values
+ * inferred from the old app, so we render them as neutral chips with text too
+ * (UNKNOWN semantics preserved conservatively).
  */
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -48,6 +49,9 @@ fun TablesScreen(
                     TextButton(onClick = vm::toggleMergeMode) { Text("Cancel merge") }
                 } else {
                     TextButton(onClick = vm::toggleMergeMode) { Text("Merge") }
+                }
+                TextButton(onClick = vm::toggleBillFilter) {
+                    Text(if (ui.billFilterActive) "All tables" else "Pending bills")
                 }
                 IconButton(onClick = vm::refresh) { Text("⟳", style = MaterialTheme.typography.headlineSmall) }
                 TextButton(onClick = onOpenSettings) { Text("Server") }
@@ -84,14 +88,18 @@ fun TablesScreen(
             if (ui.busy) LinearProgressIndicator(Modifier.fillMaxWidth())
 
             // Table grid — large touch targets, readable status
+            val shownTables = if (ui.billFilterActive) {
+                ui.tables.filter { t -> t.tableId?.toString()?.trim('"') in ui.pendingBillOrderIds }
+            } else ui.tables
             LazyColumn(contentPadding = PaddingValues(12.dp)) {
                 val cols = 3
-                ui.tables.chunked(cols).forEach { rowTables ->
+                shownTables.chunked(cols).forEach { rowTables ->
                     item {
                         Row(horizontalArrangement = Arrangement.spacedBy(10.dp), modifier = Modifier.fillMaxWidth()) {
                             rowTables.forEach { t ->
                                 TableCard(
                                     table = t,
+                                    pendingBill = t.tableId?.toString()?.trim('"') in ui.pendingBillOrderIds,
                                     selected = t.tableId in ui.mergeSelection,
                                     modifier = Modifier.weight(1f),
                                     onClick = { vm.onTableTap(t) { tab -> com.danfe.restroorder.waiter.ui.nav.NavPayload.currentRoomId = ui.selectedRoomId; onOpenTable(tab.tableId ?: "", tab.orderMasterId ?: "") } },
@@ -132,11 +140,12 @@ private fun ActionRow(label: String, onClick: () -> Unit) {
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
-private fun TableCard(table: TableRow, selected: Boolean, modifier: Modifier = Modifier, onClick: () -> Unit, onLongClick: () -> Unit) {
+private fun TableCard(table: TableRow, selected: Boolean, pendingBill: Boolean = false, modifier: Modifier = Modifier, onClick: () -> Unit, onLongClick: () -> Unit) {
     val status = table.statusId?.toString()?.trim('"')
     val container = when {
         selected -> MaterialTheme.colorScheme.primaryContainer
         status == "7" -> MaterialTheme.colorScheme.errorContainer
+        status == "5" || pendingBill -> MaterialTheme.colorScheme.tertiaryContainer
         table.billPaid?.toString()?.trim('"').equals("true", true) -> MaterialTheme.colorScheme.secondaryContainer
         else -> MaterialTheme.colorScheme.surfaceVariant
     }
@@ -150,10 +159,11 @@ private fun TableCard(table: TableRow, selected: Boolean, modifier: Modifier = M
         Column(Modifier.padding(10.dp), verticalArrangement = Arrangement.SpaceBetween) {
             Text(table.tableTitle ?: "—", style = MaterialTheme.typography.titleMedium)
             Text(
-                when (status) {
-                    "7" -> "Occupied"
-                    "6" -> "Reserved"
-                    null, "" -> "Free"
+                when {
+                    status == "7" -> "Occupied"
+                    status == "6" -> "Reserved"
+                    status == "5" || pendingBill -> "Pending Bill"
+                    status.isNullOrEmpty() -> "Free"
                     else -> "Status $status"
                 },
                 style = MaterialTheme.typography.labelLarge,
