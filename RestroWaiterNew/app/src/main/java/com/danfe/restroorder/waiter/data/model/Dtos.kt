@@ -143,7 +143,7 @@ data class ApiForPayResponse(
 data class TableRow(
     @SerializedName("restrotableId") val tableId: String?,
     @SerializedName("restrotableTitle") val tableTitle: String?,
-    @SerializedName("restrotablesStatusID") val statusId: Any?,   // 7 = occupied w/ running order (inferred), 6 = valid shift target
+    @SerializedName("restrotablesStatusID") val statusId: Any?,   // 7 = occupied w/ running order (inferred), 6 = valid shift target, 5 = pending bill
     @SerializedName("Seatcap") val seatCap: Any?,
     @SerializedName("MergeID") val mergeId: String?,
     @SerializedName("MergeTableList") val mergeTableList: String?,

@@ -28,12 +28,29 @@ class TablesViewModel(private val app: App) : ViewModel() {
         val tables: List<TableRow> = emptyList(),
         val mergeMode: Boolean = false,
         val mergeSelection: MutableList<String> = mutableListOf(),
+        val billFilterActive: Boolean = false,
+        val pendingBillOrderIds: Set<String> = emptySet(),
     )
 
     private val _ui = MutableStateFlow(Ui())
     val ui: StateFlow<Ui> = _ui
 
     init { refresh() }
+
+    /**
+     * restrotablesStatusID == 5 is the server's "pending bill" table status (per legacy app).
+     * The set below mirrors that status from the already-loaded TableOrderByRoom rows so the UI
+     * can label/filter pending-bill tables. No extra endpoint call — keeps the API contract intact.
+     */
+    private fun computePendingBillIds(tables: List<TableRow>): Set<String> =
+        tables.mapNotNull { t ->
+            val st = t.statusId?.toString()?.trim('"')
+            if (st == "5") t.tableId?.toString()?.trim('"') else null
+        }.toSet()
+
+    fun toggleBillFilter() {
+        _ui.value = _ui.value.copy(billFilterActive = !_ui.value.billFilterActive)
+    }
 
     fun refresh() {
         _ui.value = _ui.value.copy(busy = true, error = null)
@@ -75,7 +92,11 @@ class TablesViewModel(private val app: App) : ViewModel() {
         viewModelScope.launch {
             try {
                 val tables = repo.tablesForRoom(roomId)
-                _ui.value = _ui.value.copy(selectedRoomId = roomId, tables = tables)
+                _ui.value = _ui.value.copy(
+                    selectedRoomId = roomId,
+                    tables = tables,
+                    pendingBillOrderIds = computePendingBillIds(tables),
+                )
             } catch (e: Exception) {
                 _ui.value = _ui.value.copy(error = com.danfe.restroorder.waiter.data.repository.AuthRepository.friendly(e))
             }
