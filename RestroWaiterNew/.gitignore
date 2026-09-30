@@ -1,0 +1,21 @@
+# Gradle / build outputs
+.gradle/
+build/
+*/build/
+
+# Android Studio / IntelliJ
+.idea/
+.idea/.
+*.iml
+captures/
+
+# Local machine configuration (contains sdk.dir)
+local.properties
+
+# Signing keystores — never commit
+*.jks
+*.keystore
+
+# JVM crash logs
+hs_err_pid*.log
+replay_pid*.log
