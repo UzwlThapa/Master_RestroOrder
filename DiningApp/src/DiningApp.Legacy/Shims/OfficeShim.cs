@@ -33,13 +33,18 @@ namespace OfficeOpenXml {
     }
     public class ExcelBorderItem { public object Style { get; set; } public ExcelColor Color { get; set; } = new ExcelColor(); }
     public class ExcelBorder { public ExcelBorderItem Top { get; } = new ExcelBorderItem(); public ExcelBorderItem Bottom { get; } = new ExcelBorderItem(); public ExcelBorderItem Left { get; } = new ExcelBorderItem(); public ExcelBorderItem Right { get; } = new ExcelBorderItem(); }
+        public class ExcelNumberFormat {
+        private string _f = "General";
+        public string Format { get => _f; set => _f = value; }
+        public static implicit operator string(ExcelNumberFormat n) => n._f;
+    }
     public class ExcelStyle {
         public ExcelFont Font { get; } = new ExcelFont();
         public ExcelFill Fill { get; } = new ExcelFill();
         public ExcelBorder Border { get; } = new ExcelBorder();
         public object HorizontalAlignment { get; set; }
         public object VerticalAlignment { get; set; }
-        public object Numberformat { get; set; }
+        public ExcelNumberFormat Numberformat { get; set; } = new ExcelNumberFormat();
     }
     public sealed class ExcelAddress : IDisposable {
         public int Start { get; set; } public int End { get; set; }
@@ -57,9 +62,11 @@ namespace OfficeOpenXml {
         public ExcelStyle Style { get; } = new ExcelStyle();
         public string Text { get; set; } = "";
         public object Value { get; set; }
+        public string Formula { get; set; } = "";
         public object Merge { get; set; }
         public ExcelRange this[string a] => this;
         public ExcelRange this[int a, int b] => this;
+        public ExcelRange this[int r1, int c1, int r2, int c2] => this;
         public ExcelAddress Columns(int i) => new ExcelAddress(i, i);
         public ExcelAddress Rows(int i) => new ExcelAddress(i, i);
         public ExcelRange LoadFromArrays(IEnumerable<object[]> items) => this;
@@ -67,7 +74,8 @@ namespace OfficeOpenXml {
     }
     public class ExcelWorksheet {
         public ExcelPackage Package { get; set; }
-        public ExcelRange Cells(string address) => new ExcelRange();
+        public ExcelRange Cells { get { return new ExcelRange(); } set { } }
+        public ExcelRange GetCells(string address) => Cells;
         public ExcelRange this[string a] => new ExcelRange();
         public ExcelRange this[int r, int c] => new ExcelRange();
         public void AddRow(params object[] values) { }
@@ -76,6 +84,8 @@ namespace OfficeOpenXml {
         public string Name { get; set; }
     }
     public class ExcelWorksheets {
+        public ExcelWorksheets Worksheets => this;
+        public void Calculate() { }
         internal readonly List<ExcelWorksheet> L = new();
         public ExcelWorksheet Add(string name) { var w = new ExcelWorksheet { Name = name }; L.Add(w); return w; }
         public ExcelWorksheet Add() => Add("Sheet" + (L.Count + 1));
@@ -97,6 +107,10 @@ namespace OfficeOpenXml {
         public void Dispose() { }
     }
 }
-namespace OfficeOpenXml.FormulaParsing { public class ExcelCalculationProvider { }
-  namespace Excel { public class IRange { }
-    namespace Functions { public class FunctionCategory { } } } }
+namespace OfficeOpenXml {
+    public class ExcelCalculation {
+        public void FullCalculation() { }
+        public void Iterate() { }
+    }
+}
+#pragma warning restore

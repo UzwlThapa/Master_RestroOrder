@@ -1,7 +1,8 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using SageFrame.Security;
+using SageFrame.Security.Controllers;
 
 namespace SageFrame.CostCenter
 {

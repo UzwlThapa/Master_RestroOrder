@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("DiningApp.Legacy")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+db64d59602e4f7f0580f3d0bdc7e23ec81070b60")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+586ada8312c6df46b03e771602ed552a843414a8")]
 [assembly: System.Reflection.AssemblyProductAttribute("DiningApp.Legacy")]
 [assembly: System.Reflection.AssemblyTitleAttribute("DiningApp.Legacy")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

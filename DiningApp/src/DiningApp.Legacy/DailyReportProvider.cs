@@ -36,7 +36,8 @@ namespace SageFrame.RestroOrder
         {
             List<KeyValuePair<string, object>> Param = new List<KeyValuePair<string, object>>();
             Param.Add(new KeyValuePair<string, object>("@salesMasterId", salesMasterId));
-            return sqlHandler.ExecuteAsScalar("[usp_cbms_CheckIfCBMSAlreadySent]", Param);
+            var v = sqlHandler.ExecuteAsScalar("[usp_cbms_CheckIfCBMSAlreadySent]", Param);
+            return v != null && v != DBNull.Value && Convert.ToBoolean(v);
         }
 
         internal List<StockReport> GenerateDailyStockReport(string period)

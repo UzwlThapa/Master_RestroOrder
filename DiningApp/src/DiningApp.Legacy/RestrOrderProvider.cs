@@ -1132,7 +1132,7 @@ namespace SageFrame.RestroOrder
             Param.Add(new KeyValuePair<string, object>("@Rate", bt.Rate));
             Param.Add(new KeyValuePair<string, object>("@Description", bt.Description));
             Param.Add(new KeyValuePair<string, object>("@SequenceOrder", bt.SequenceOrder));
-            return sqlHandler.ExecuteAsScalar("USP_RO_SAVEBILLINGTERM", Param);
+            return (int)Convert.ChangeType(sqlHandler.ExecuteAsScalar("USP_RO_SAVEBILLINGTERM"), typeof(int));
         }
         public void deleteBillTerm(int id)
         {
@@ -2197,7 +2197,7 @@ namespace SageFrame.RestroOrder
                     Param.Add(new KeyValuePair<string, object>("@PostedOn", DateTime.Now));
                     Param.Add(new KeyValuePair<string, object>("@PostedBy", PurchaseObject.PostedBy));
                     Param.Add(new KeyValuePair<string, object>("@SPMID", PurchaseObject.SPMID));
-                    int ids = sqlHandler.ExecuteAsScalar("[ROI_SAVEPURCHASEMAIN]", Param);
+                    int ids = (int)Convert.ChangeType(sqlHandler.ExecuteAsScalar("[ROI_SAVEPURCHASEMAIN]", Param), typeof(int));
 
                     List<KeyValuePair<string, object>> param6 = new List<KeyValuePair<string, object>>();
                     param6.Add(new KeyValuePair<string, object>("@PurchaseMainID", ids));
@@ -3191,7 +3191,7 @@ namespace SageFrame.RestroOrder
             Param.Add(new KeyValuePair<string, object>("@BillNo", BillNo));
             Param.Add(new KeyValuePair<string, object>("@PrintedBy", PrintedBy));
             Param.Add(new KeyValuePair<string, object>("@SalesType", SalesType));
-            return sqlHandler.ExecuteAsScalar("[usp_ro_SavePrintCountDetail]", Param);
+            return (string)Convert.ChangeType(sqlHandler.ExecuteAsScalar("[usp_ro_SavePrintCountDetail]"), typeof(string));
         }
         internal List<PrintDetail> getPrintedDetailByBillNo(string billNo)
         {
@@ -3619,7 +3619,7 @@ namespace SageFrame.RestroOrder
                 Param.Add(new KeyValuePair<string, object>("@AddedBy", comboorder.AddedBy));
                 //var obj = sqlHandler.ExecuteAsScalar("[USP_RO_COMBOSAVE]", Param);
                 //comboorder.ComboID = Convert.ToInt32(obj);
-                int ids = sqlHandler.ExecuteAsScalar("[USP_RO_COMBOSAVE]", Param);
+                int ids = (int)Convert.ChangeType(sqlHandler.ExecuteAsScalar("[USP_RO_COMBOSAVE]", Param), typeof(int));
                 List<KeyValuePair<string, object>> Para = new List<KeyValuePair<string, object>>();
                 Para.Add(new KeyValuePair<string, object>("@ComboID", ids));
                 sqlHandler.ExecuteNonQuery("[usp_ro_removecombodetails]", Para);
@@ -3716,7 +3716,7 @@ namespace SageFrame.RestroOrder
                     new KeyValuePair<string, dynamic>("@HsCode", itemObject.HsCode)
 
                 };
-                int ids = sqlHandler.ExecuteAsScalar("[usp_roi_SaveItemsOfRestro]", Param);
+                int ids = (int)Convert.ChangeType(sqlHandler.ExecuteAsScalar("[usp_roi_SaveItemsOfRestro]", Param), typeof(int));
 
                 if (ids > 0)
                 {
@@ -3804,7 +3804,7 @@ namespace SageFrame.RestroOrder
                 new KeyValuePair<string, dynamic>("@IsTaxable", itemObject.IsTaxable),
                 new KeyValuePair<string, dynamic>("@HsCode", itemObject.HsCode)
             };
-            int ids = sqlHandler.ExecuteAsScalar("[usp_roi_SaveItemsOfRestro]", Param);
+            int ids = (int)Convert.ChangeType(sqlHandler.ExecuteAsScalar("[usp_roi_SaveItemsOfRestro]", Param), typeof(int));
 
             if (ids > 0)
             {
@@ -3985,7 +3985,7 @@ namespace SageFrame.RestroOrder
             Param.Add(new KeyValuePair<string, object>("@GroupName", group.GroupName));
             Param.Add(new KeyValuePair<string, object>("@GroupCode", group.GroupCode));
             Param.Add(new KeyValuePair<string, object>("@userName", group.userName));
-            var obj = sqlHandler.ExecuteAsScalar("[usp_Roi_ItemGroup_InsertData]", Param);
+            var obj = (int)Convert.ChangeType(sqlHandler.ExecuteAsScalar("[usp_Roi_ItemGroup_InsertData]", Param), typeof(int));
             foreach (GroupWithItem item in group.GroupWithItem)
             {
                 List<KeyValuePair<string, object>> Param2 = new List<KeyValuePair<string, object>>();
@@ -4121,7 +4121,7 @@ namespace SageFrame.RestroOrder
         {
             List<KeyValuePair<string, object>> Param = new List<KeyValuePair<string, object>>();
             Param.Add(new KeyValuePair<string, object>("@term", term));
-            return sqlHandler.ExecuteAsScalar("usp_ro_CheckBillingTermExistence", Param);
+            return (string)Convert.ChangeType(sqlHandler.ExecuteAsScalar("usp_ro_CheckBillingTermExistence"), typeof(string));
         }
         internal List<purchaseMains> getPurchaseDetailsbyID(int mainId)
         {
@@ -4142,7 +4142,7 @@ namespace SageFrame.RestroOrder
             List<KeyValuePair<string, object>> Param = new List<KeyValuePair<string, object>>();
             Param.Add(new KeyValuePair<string, object>("@PinCode", PinCode));
             Param.Add(new KeyValuePair<string, object>("@Username", username));
-            return sqlHandler.ExecuteAsScalar("USP_RO_CheckPinCodeMatch", Param);
+            return (string)Convert.ChangeType(sqlHandler.ExecuteAsScalar("USP_RO_CheckPinCodeMatch"), typeof(string));
         }
         internal List<MvPurchaseDetails> GetInventoryItemWithSmallUnit()
         {
@@ -4304,7 +4304,7 @@ namespace SageFrame.RestroOrder
             List<KeyValuePair<string, object>> Param = new List<KeyValuePair<string, object>>();
             Param.Add(new KeyValuePair<string, object>("@userid", UserId));
             Param.Add(new KeyValuePair<string, object>("@pin", PIN));
-            return sqlHandler.ExecuteAsScalar("[USP_RO_ChangePIN]", Param);
+            return (int)Convert.ChangeType(sqlHandler.ExecuteAsScalar("[USP_RO_ChangePIN]"), typeof(int));
         }
         internal List<TargetSales> getTargetSales(DateTime date)
         {
@@ -4800,7 +4800,7 @@ namespace SageFrame.RestroOrder
             Param.Add(new KeyValuePair<string, object>("@endDate", endDate));
             Param.Add(new KeyValuePair<string, object>("@roombookDetailId", roombookDetailId));
             Param.Add(new KeyValuePair<string, object>("@TableId", tableId));
-            return sqlHandler.ExecuteAsScalar("[usp_ro_checkRoomAvailability]", Param);
+            return (int)Convert.ChangeType(sqlHandler.ExecuteAsScalar("[usp_ro_checkRoomAvailability]"), typeof(int));
         }
         internal void SaveRoomBoking(RoomBookingsInfo roomBooking, OrderMasterClass orderMaster)
         {
@@ -4848,7 +4848,7 @@ namespace SageFrame.RestroOrder
                 {
                     List<KeyValuePair<string, object>> Param3 = new List<KeyValuePair<string, object>>();
                     Param3.Add(new KeyValuePair<string, object>("@MembershipID", roomBooking.CustomerId));
-                    string prevVoucherNo = sqlHandler.ExecuteAsScalar("[usp_ac_getPrevousVoucherNo]", Param3);
+                    string prevVoucherNo = Convert.ToString(sqlHandler.ExecuteAsScalar("[usp_ac_getPrevousVoucherNo]", Param3));
                     string newVoucherNo = (Convert.ToInt32((prevVoucherNo != null ? prevVoucherNo.Split('-')[1] : "0")) + 1).ToString();
 
                     List<KeyValuePair<string, object>> Param4 = new List<KeyValuePair<string, object>>();
@@ -5635,7 +5635,7 @@ namespace SageFrame.RestroOrder
         }
         internal string getAutoRecquistionNo()
         {
-            return sqlHandler.ExecuteAsScalar("USP_getAutoRecquistionNo");
+            return (string)Convert.ChangeType(sqlHandler.ExecuteAsScalar("USP_getAutoRecquistionNo"), typeof(string));
         }
         internal void SendRecquistion(Recquistion recquistion)
         {
@@ -5939,7 +5939,7 @@ namespace SageFrame.RestroOrder
                 Param.Add(new KeyValuePair<string, object>("@IsActive", inv.IsActive));
                 Param.Add(new KeyValuePair<string, object>("@AddedBy", inv.AddedBy));
                 Param.Add(new KeyValuePair<string, object>("@IsTaxable", inv.IsTaxable));
-                int ids = sqlHandler.ExecuteAsScalar("[usp_roi_SaveItemsOfRestro]", Param);
+                int ids = (int)Convert.ChangeType(sqlHandler.ExecuteAsScalar("[usp_roi_SaveItemsOfRestro]", Param), typeof(int));
 
                 List<KeyValuePair<string, object>> Param4 = new List<KeyValuePair<string, object>>();
                 Param4.Add(new KeyValuePair<string, object>("@ITId", ids));
@@ -6106,7 +6106,7 @@ namespace SageFrame.RestroOrder
             {
                 List<KeyValuePair<string, object>> Param = new List<KeyValuePair<string, object>>();
                 Param.Add(new KeyValuePair<string, object>("@salesMasterId", salesMasterId));
-                return sqlHandler.ExecuteAsScalar("usp_ro_updateInvoiceNo", Param);
+                return (bool)Convert.ChangeType(sqlHandler.ExecuteAsScalar("usp_ro_updateInvoiceNo"), typeof(bool));
             }
             catch (Exception)
             {
@@ -6351,7 +6351,7 @@ namespace SageFrame.RestroOrder
         {
             List<KeyValuePair<string, object>> Param = new List<KeyValuePair<string, object>>();
             Param.Add(new KeyValuePair<string, object>("@salesMasterId", salesMasterId));
-            return sqlHandler.ExecuteAsScalar("[usp_cbms_CheckIfCBMSAlreadySent]", Param);
+            return (bool)Convert.ChangeType(sqlHandler.ExecuteAsScalar("[usp_cbms_CheckIfCBMSAlreadySent]"), typeof(bool));
         }
         internal List<goodsReceiveMain> GetPurchaseBook(string startDate, string endDate)
         {
@@ -6411,7 +6411,7 @@ namespace SageFrame.RestroOrder
             Param.Add(new KeyValuePair<string, object>("@Phone", table.Phone));
             Param.Add(new KeyValuePair<string, object>("@NotifyBefore", table.NotifyBefore));
             Param.Add(new KeyValuePair<string, object>("@Note", table.Note));
-            var obj = sqlHandler.ExecuteAsScalar("USP_ROI_SaveTableReservation", Param);
+            var obj = (int)Convert.ChangeType(sqlHandler.ExecuteAsScalar("USP_ROI_SaveTableReservation", Param), typeof(int));
 
             foreach (ReservedTable tbl in table.ReservedTable)
             {

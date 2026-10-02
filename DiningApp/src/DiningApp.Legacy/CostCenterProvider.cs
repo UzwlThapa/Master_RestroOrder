@@ -44,7 +44,7 @@ namespace SageFrame.CostCenter
             SQLHandler sqh = new SQLHandler();
             List<KeyValuePair<string, object>> Param = new List<KeyValuePair<string, object>>();
             Param.Add(new KeyValuePair<string, object>("@cid", id));
-            sqh.ExecuteAsList<CostCenterInfo>("USP_RO_DELETECOSTCENTER", Param);
+            sqh.ExecuteAsList<CostCenterInfo>("USP_RO_DELETECOSTCENTER", SQLHandler.ToColl(Param));
         }
 
         internal int CheckCostCenter(int id)
@@ -65,7 +65,7 @@ namespace SageFrame.CostCenter
 
             List<KeyValuePair<string, object>> Param = new List<KeyValuePair<string, object>>();
             Param.Add(new KeyValuePair<string, object>("@CostCenterId", Id));
-            costCenter = sqlhan.ExecuteAsObject<CostCenterInfo>("[dbo].[USP_RO_GETCOSTCENTERBYID]", Param);
+            costCenter = sqlhan.ExecuteAsObject<CostCenterInfo>("[dbo].[USP_RO_GETCOSTCENTERBYID]", SQLHandler.ToColl(Param));
             return costCenter;
         }
         

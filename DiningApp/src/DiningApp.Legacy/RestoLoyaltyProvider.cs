@@ -125,7 +125,7 @@ namespace SageFrame.RestoLoyalty
             List<KeyValuePair<string, object>> Param = new List<KeyValuePair<string, object>>();
             Param.Add(new KeyValuePair<string, object>("@ITId", ITId));
             SQLHandler sqh = new SQLHandler();
-            return sqh.ExecuteAsList<ItemInfo>("[USP_GET_ROUNIT]", Param);
+            return sqh.ExecuteAsList<ItemInfo>("[USP_GET_ROUNIT]", SQLHandler.ToColl(Param));
         }
 
         internal List<ItemInfo> GetItemDropDown()
@@ -195,7 +195,7 @@ namespace SageFrame.RestoLoyalty
             List<KeyValuePair<string, object>> Param = new List<KeyValuePair<string, object>>();
             Param.Add(new KeyValuePair<string, object>("@customer", customer));
             SQLHandler sqlhan = new SQLHandler();
-            return sqlhan.ExecuteAsList<MemberInfo>("[USP_GETMEMBERSHIPFORM]", Param);
+            return sqlhan.ExecuteAsList<MemberInfo>("[USP_GETMEMBERSHIPFORM]", SQLHandler.ToColl(Param));
         }
 
         public List<AgentInfo> getAgentList(int agent)
@@ -203,7 +203,7 @@ namespace SageFrame.RestoLoyalty
             List<KeyValuePair<string, object>> Param = new List<KeyValuePair<string, object>>();
             Param.Add(new KeyValuePair<string, object>("@IsAgent", agent));
             SQLHandler sqlhan = new SQLHandler();
-            return sqlhan.ExecuteAsList<AgentInfo>("[USP_GETAGENTLIST]", Param);
+            return sqlhan.ExecuteAsList<AgentInfo>("[USP_GETAGENTLIST]", SQLHandler.ToColl(Param));
         }
 
         public int deletemember(int RId, string deletedby)
@@ -322,7 +322,7 @@ namespace SageFrame.RestoLoyalty
         {
             List<KeyValuePair<string, object>> Param = new List<KeyValuePair<string, object>>();
             SQLHandler sqlhan = new SQLHandler();
-            return sqlhan.ExecuteAsList<MemberInfo>("[USP_GET_MEMBER_CREDIT]", Param);
+            return sqlhan.ExecuteAsList<MemberInfo>("[USP_GET_MEMBER_CREDIT]", SQLHandler.ToColl(Param));
         }
 
         internal List<MemberInfo> GetCusOnChange(int MembershipID)
@@ -330,7 +330,7 @@ namespace SageFrame.RestoLoyalty
             List<KeyValuePair<string, object>> Param = new List<KeyValuePair<string, object>>();
             Param.Add(new KeyValuePair<string, object>("@MembershipID", MembershipID));
             SQLHandler sqh = new SQLHandler();
-            return sqh.ExecuteAsList<MemberInfo>("[USP_GET_MEMBER_CREDIT_BYID]", Param);
+            return sqh.ExecuteAsList<MemberInfo>("[USP_GET_MEMBER_CREDIT_BYID]", SQLHandler.ToColl(Param));
         }
 
         internal void SaveTotalCashPaid(MemberInfo MemberInfo)
@@ -423,7 +423,7 @@ namespace SageFrame.RestoLoyalty
             List<KeyValuePair<string, object>> Param = new List<KeyValuePair<string, object>>();
             Param.Add(new KeyValuePair<string, object>("@eid", eid));
             SQLHandler sqh = new SQLHandler();
-            return sqh.ExecuteAsList<ExtraBilling>("[USP_GET_MEMBER_EXTRABILLING]", Param);
+            return sqh.ExecuteAsList<ExtraBilling>("[USP_GET_MEMBER_EXTRABILLING]", SQLHandler.ToColl(Param));
 
         }
 
@@ -434,7 +434,7 @@ namespace SageFrame.RestoLoyalty
             List<KeyValuePair<string, object>> Param = new List<KeyValuePair<string, object>>();
             Param.Add(new KeyValuePair<string, object>("@MembershipID", MembershipID));
             SQLHandler sqh = new SQLHandler();
-            return sqh.ExecuteAsList<BalanceTransaction>("[getCustomerBalanceTransactionRecordByID]", Param);
+            return sqh.ExecuteAsList<BalanceTransaction>("[getCustomerBalanceTransactionRecordByID]", SQLHandler.ToColl(Param));
         }
 
         internal string UPDATE_MembershipBalance(MemberInfo MemberInfo, CreditPayment payment)
@@ -485,7 +485,7 @@ namespace SageFrame.RestoLoyalty
             List<KeyValuePair<string, object>> Param = new List<KeyValuePair<string, object>>();
             Param.Add(new KeyValuePair<string, object>("@MembershipID", memberid));
             SQLHandler sqlhan = new SQLHandler();
-            return sqlhan.ExecuteAsList<MemberInfo>("USP_GetMemberByID", Param);
+            return sqlhan.ExecuteAsList<MemberInfo>("USP_GetMemberByID", SQLHandler.ToColl(Param));
         }
 
 
@@ -494,7 +494,7 @@ namespace SageFrame.RestoLoyalty
             List<KeyValuePair<string, object>> Param = new List<KeyValuePair<string, object>>();
             Param.Add(new KeyValuePair<string, object>("@info", info));
             SQLHandler sqlhan = new SQLHandler();
-            return sqlhan.ExecuteAsList<MemberInfo>("USP_GetMemberDetailsbyinfo", Param);
+            return sqlhan.ExecuteAsList<MemberInfo>("USP_GetMemberDetailsbyinfo", SQLHandler.ToColl(Param));
         }
 
         public List<CreditPayment> getcustomerbalanceReceipt(int memberpayid)
@@ -502,7 +502,7 @@ namespace SageFrame.RestoLoyalty
             List<KeyValuePair<string, object>> Param = new List<KeyValuePair<string, object>>();
             Param.Add(new KeyValuePair<string, object>("@MemberPayID", memberpayid));
             SQLHandler sqlhan = new SQLHandler();
-            return sqlhan.ExecuteAsList<CreditPayment>("USP_GETCREDITPAYBILL", Param);
+            return sqlhan.ExecuteAsList<CreditPayment>("USP_GETCREDITPAYBILL", SQLHandler.ToColl(Param));
         }
 
 
@@ -547,7 +547,7 @@ namespace SageFrame.RestoLoyalty
         {
             List<KeyValuePair<string, object>> Param = new List<KeyValuePair<string, object>>();
             SQLHandler sqlhan = new SQLHandler();
-            return sqlhan.ExecuteAsList<CardInfo>("USP_GetLoyalityCardType", Param);
+            return sqlhan.ExecuteAsList<CardInfo>("USP_GetLoyalityCardType", SQLHandler.ToColl(Param));
         }
 
         public List<CardInfo> GetLoyalityDiscountByCard(int CardTypeID)
@@ -555,7 +555,7 @@ namespace SageFrame.RestoLoyalty
             List<KeyValuePair<string, object>> Param = new List<KeyValuePair<string, object>>();
             Param.Add(new KeyValuePair<string, object>("@CardTypeID", CardTypeID));
             SQLHandler sqlhan = new SQLHandler();
-            return sqlhan.ExecuteAsList<CardInfo>("USP_GetLoyalityDiscountByCard", Param);
+            return sqlhan.ExecuteAsList<CardInfo>("USP_GetLoyalityDiscountByCard", SQLHandler.ToColl(Param));
         }
     }
 }

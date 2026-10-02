@@ -18,7 +18,7 @@ namespace SageFrame.Web.Utilities {
         public void AddParameterOutput(string name, Type t) { Items.Add(new SqlParameter(name, t) { Direction = ParameterDirection.Output }); }
     }
     public partial class SQLHandler {
-        internal static SQLParameterCollection ToColl(object ps) {
+        public static SQLParameterCollection ToColl(object ps) {
             var c = new SQLParameterCollection();
             if (ps is System.Collections.Generic.List<System.Collections.Generic.KeyValuePair<string, object>> l)
                 foreach (var kv in l) c.AddParameter(kv.Key, kv.Value);
@@ -40,6 +40,7 @@ namespace SageFrame.Web.Utilities {
             BindOutputs(cmd, ps);
             return list;
         }
+        public DataSet ExecuteAsDataSet(string spName, List<KeyValuePair<string, object>> ps) => ExecuteAsDataSet(spName, ToColl(ps));
         public DataSet ExecuteAsDataSet(string spName, SQLParameterCollection ps = null) {
             using var con = Open(); using var cmd = new SqlCommand(spName, con) { CommandType = CommandType.StoredProcedure, CommandTimeout = 0 };
             Fill(cmd, ps);
@@ -60,6 +61,10 @@ namespace SageFrame.Web.Utilities {
             var l = ExecuteAsList<T>(spName, ps);
             return l.Count > 0 ? l[0] : default;
         }
+        public int ExecuteAsScalar_int(string spName, List<KeyValuePair<string, object>> ps) { var v = ExecuteAsScalar(spName, ToColl(ps)); return v == null || v == System.DBNull.Value ? 0 : System.Convert.ToInt32(v); }
+        public bool ExecuteAsScalar_bool(string spName, List<KeyValuePair<string, object>> ps) { var v = ExecuteAsScalar(spName, ToColl(ps)); return v != null && v != System.DBNull.Value && System.Convert.ToBoolean(v); }
+        public string ExecuteAsScalar_string(string spName, List<KeyValuePair<string, object>> ps) { var v = ExecuteAsScalar(spName, ToColl(ps)); return v == null || v == System.DBNull.Value ? null : v.ToString(); }
+        public object ExecuteAsScalar(string spName, List<KeyValuePair<string, object>> ps) => ExecuteAsScalar(spName, ToColl(ps));
         public object ExecuteAsScalar(string spName, SQLParameterCollection ps = null) {
             using var con = Open(); using var cmd = new SqlCommand(spName, con) { CommandType = CommandType.StoredProcedure, CommandTimeout = 0 };
             Fill(cmd, ps);
@@ -74,7 +79,7 @@ namespace SageFrame.Web.Utilities {
             BindOutputs(cmd, ps);
             return r;
         }
-        public DataSet ExecuteAsDataSet(string sp, object ps) => ExecuteAsDataSet(sp, ToColl(ps));
+        
         public int ExecuteNonQuery(string sp, List<KeyValuePair<string, object>> ps) => ExecuteNonQuery(sp, ToColl(ps));
         private static void Fill(SqlCommand cmd, SQLParameterCollection ps) {
             if (ps == null) return;

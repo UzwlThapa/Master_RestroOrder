@@ -53,7 +53,7 @@ namespace SageFrame.Security.Controllers {
     public class MembershipController {
         public UserInfo GetUserDetails(int PortalID, string UserName) => MembershipDataProvider.GetUserDetails(UserName, PortalID);
     }
-    public class RoleController {
+    public partial class RoleController {
         // Roles are fetched via RestrOrderController.GetUsersDetail in the login path; kept for signature parity.
         public List<RoleInfo> GetRoles(int PortalID) => new List<RoleInfo>();
     }
