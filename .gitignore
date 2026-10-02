@@ -1,6 +1,3 @@
-# Build artifacts
-output/
-*.apk
-
-# Local configuration files
-local.properties
+# .NET build artifacts
+obj/
+bin/
