@@ -1,0 +1,5 @@
+/workspace/DiningApp/src/DiningApp.Legacy/obj/Debug/net8.0/DiningApp.Legacy.csproj.AssemblyReference.cache
+/workspace/DiningApp/src/DiningApp.Legacy/obj/Debug/net8.0/DiningApp.Legacy.GeneratedMSBuildEditorConfig.editorconfig
+/workspace/DiningApp/src/DiningApp.Legacy/obj/Debug/net8.0/DiningApp.Legacy.AssemblyInfoInputs.cache
+/workspace/DiningApp/src/DiningApp.Legacy/obj/Debug/net8.0/DiningApp.Legacy.AssemblyInfo.cs
+/workspace/DiningApp/src/DiningApp.Legacy/obj/Debug/net8.0/DiningApp.Legacy.csproj.CoreCompileInputs.cache
