@@ -56,5 +56,7 @@ namespace SageFrame.Security.Controllers {
     public partial class RoleController {
         // Roles are fetched via RestrOrderController.GetUsersDetail in the login path; kept for signature parity.
         public List<RoleInfo> GetRoles(int PortalID) => new List<RoleInfo>();
+        // Legacy ASMX called this on logout to drop the ASP.NET session cookie. Stateless JSON API: no-op.
+        public void LoggoutUser(string username) { }
     }
 }

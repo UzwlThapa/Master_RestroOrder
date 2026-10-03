@@ -11,6 +11,26 @@ public static class PrinterBackend {
     // Default: no-op (dev/offline). Replaced by DI in Program.cs for production.
     public static IPrinterBackend Current { get; set; } = new NullPrinterBackend();
 }
+// Waiter-call notification seam (legacy Hangfire job target). Pluggable like the printer backend;
+// default is a no-op so callWaiter never faults when no notifier is configured.
+public interface IWaiterNotifier { void CallWaiter(string waiterIp); }
+public static class WaiterNotification {
+    public static IWaiterNotifier Current { get; set; } = new NullWaiterNotifier();
+    public static void CallWaiter(string waiterIp) => Current.CallWaiter(waiterIp);
+}
+public class NullWaiterNotifier : IWaiterNotifier { public void CallWaiter(string waiterIp) { } }
+// Cash-drawer kick seam (legacy PrintRaw.CashDrawer.SendStringToPrinter, P/Invoke winspool.drv).
+// Windows-only in production (DiningApp.Api wires RawCashDrawerBackend); no-op elsewhere so a
+// missing/offline drawer never faults an order request.
+public interface ICashDrawerBackend { void SendStringToPrinter(string printerName, string command); }
+public static class CashDrawer {
+    public static ICashDrawerBackend Current { get; set; } = new NullCashDrawerBackend();
+    public static bool SendStringToPrinter(string printerName, string command) {
+        try { Current.SendStringToPrinter(printerName, command); } catch { /* best-effort, legacy parity */ }
+        return true;
+    }
+}
+public class NullCashDrawerBackend : ICashDrawerBackend { public void SendStringToPrinter(string p, string c) { } }
 public class NullPrinterBackend : IPrinterBackend {
     public void PrintKOT(string p, KOT k) { }
     public void PrintShiftBill(string p, KOT k, string f, string t) { }

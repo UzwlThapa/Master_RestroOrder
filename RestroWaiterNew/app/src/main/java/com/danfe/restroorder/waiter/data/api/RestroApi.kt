@@ -85,10 +85,10 @@ interface RestroApi {
     suspend fun fullRestroRoomData(@Url url: String): FullRoomDataResponse
 
     // ---------- RORestroTable/ROTableWebService.asmx ----------
-    /** form field tableId; response not parsed by the old app */
+    /** form field tableId; legacy response is void — parsed leniently, never trusted blindly. */
     @FormUrlEncoded
     @POST
-    suspend fun unMergeTable(@Url url: String, @Field("tableId") tableId: String): String
+    suspend fun unMergeTable(@Url url: String, @Field("tableId") tableId: String): retrofit2.Response<UnMergeTableResponse?>
 
     // ---------- ROI_Item/RoiItem.asmx ----------
     @GET
