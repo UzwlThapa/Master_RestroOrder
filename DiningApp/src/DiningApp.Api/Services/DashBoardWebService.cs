@@ -10,6 +10,7 @@ using SageFrame.RestoLoyalty;
 using System.Data;
 using System.Web.Script.Serialization;
 using Newtonsoft.Json;
+using Hangfire;
 
 
 /// <summary>

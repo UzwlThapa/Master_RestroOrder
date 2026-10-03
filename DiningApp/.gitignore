@@ -1,0 +1,16 @@
+# Build artifacts
+bin/
+obj/
+*.user
+.vs/
+
+# Secrets: never commit real config — appsettings.example.json is the template.
+# (Plain "appsettings.json" would also match Properties\appsettings.json in VS projects,
+#  so anchor to src/ and force-keep the example.)
+/src/**/appsettings.json
+!/src/**/appsettings.example.json
+
+# Runtime data (logs, print spool queue, legacy snapshot files)
+logs/
+upload/
+*.log

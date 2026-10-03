@@ -12,6 +12,7 @@ using SageFrame.Security.Entities;
 using System.Web.Services;
 using System.Web.Script.Serialization;
 using SageFrame.Security.Helpers;
+using SageFrame.Security.Controllers;
 using SageFrame.RestroOrder;
 using System.Web.Script.Services;
 using System.Net.Http;
@@ -28,7 +29,8 @@ using Newtonsoft.Json.Linq;
 [System.Web.Script.Services.ScriptService]
 public class RoLoginWebService : System.Web.Services.WebService
 {
-    public static int userid = 0;
+    // PROD-BUGFIX: legacy had "public static int userid" mutated per login (racy, meaningless across
+    // restarts, and never read by the notification SP). Removed — no shared mutable state.
     //public string modulePath = string.Empty;
     //public int userModuleID = 0;
     public RoLoginWebService()
@@ -48,8 +50,8 @@ public class RoLoginWebService : System.Web.Services.WebService
         UserClass usp = new UserClass();
         usp.Username = Username;
         usp.Password = Password;
-        usp.OrderMenuListType = ConfigurationManager.AppSettings["OrderMenuListType"];
-        usp.OrderMenuImageshow = ConfigurationManager.AppSettings["OrderMenuImageshow"];
+        usp.OrderMenuListType = System.Configuration.ConfigurationManager.AppSettings["OrderMenuListType"];
+        usp.OrderMenuImageshow = System.Configuration.ConfigurationManager.AppSettings["OrderMenuImageshow"];
         string test = JsonConvert.SerializeObject(usp);
         UserClass user = LoginUser(test);
 
@@ -190,8 +192,11 @@ public class RoLoginWebService : System.Web.Services.WebService
         {
             if (PasswordHelper.ValidateUser(user.PasswordFormat, userClass.Password, user.Password, user.PasswordSalt))
             {
-                userid += 1;
-                userClass.UserID = userid;
+                // BUGFIX (prod review): legacy used a static counter here ("userid += 1") — racy across threads
+                // and meaningless across restarts. UserID is not consumed by the notification SP
+                // (usp_SaveWaiterDetailForNotification uses @WaiterName/@WaiterIP only), so bind a stable
+                // deterministic value derived from the real account GUID. No shared mutable state.
+                userClass.UserID = user.UserID.ToString("N").GetHashCode();
                 //login is successfull SucessFullLogin(user);
                 if (userClass.RoleNames != "KitchenOrder")
                 {
@@ -211,8 +216,8 @@ public class RoLoginWebService : System.Web.Services.WebService
             userClass.Status = "Failed";
         }
         userClass.Password = "Encrypted";
-        userClass.OrderMenuListType = ConfigurationManager.AppSettings["OrderMenuListType"];
-        userClass.OrderMenuImageshow = ConfigurationManager.AppSettings["OrderMenuImageshow"];
+        userClass.OrderMenuListType = System.Configuration.ConfigurationManager.AppSettings["OrderMenuListType"];
+        userClass.OrderMenuImageshow = System.Configuration.ConfigurationManager.AppSettings["OrderMenuImageshow"];
         //var test = JObject.Parse(JsonConvert.SerializeObject(userClass)); ;
         //return test;
         // return userClass;
@@ -291,8 +296,8 @@ public class RoLoginWebService : System.Web.Services.WebService
         {
 
             info.Message = "Success";
-            info.OrderMenuListType = ConfigurationManager.AppSettings["OrderMenuListType"];
-            info.OrderMenuImageshow = ConfigurationManager.AppSettings["OrderMenuImageshow"];
+            info.OrderMenuListType = System.Configuration.ConfigurationManager.AppSettings["OrderMenuListType"];
+            info.OrderMenuImageshow = System.Configuration.ConfigurationManager.AppSettings["OrderMenuImageshow"];
             jsonString = jss.Serialize(info);
             userClass.Username = info.UserName;
             userClass.WaiterIP = loginClass.WaiterIP;

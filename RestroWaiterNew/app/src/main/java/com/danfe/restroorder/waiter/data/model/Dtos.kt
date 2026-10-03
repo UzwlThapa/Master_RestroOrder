@@ -189,6 +189,13 @@ data class CostCenter(
 /** POST .../StoreMergeTable */
 data class StoreMergeTableResponse(
     @SerializedName("statusCode") val statusCode: Any?,
+    @SerializedName("message") val message: String? = null,
+)
+
+/** POST .../UnMergeTable — legacy returns void/null; parse leniently so odd bodies never crash. */
+data class UnMergeTableResponse(
+    @SerializedName("statusCode") val statusCode: Any? = null,
+    @SerializedName("message") val message: String? = null,
 )
 
 // ---------- RestroWebservices/RestroWebService.asmx (under /Modules) ----------

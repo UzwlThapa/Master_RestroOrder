@@ -23,7 +23,7 @@ using SageFrame.FiscalYear;
 [System.Web.Script.Services.ScriptService]
 public class RoPurchaseOrderWebService : System.Web.Services.WebService
 {
-    public static int userid = 0;
+    // Removed: legacy "public static int userid" was never read here and leaked per-process mutable state.
     //private StreamReader streamToPrint;
     //private System.Drawing.Font printFont;
     string newFileName;
@@ -652,15 +652,8 @@ public class RoPurchaseOrderWebService : System.Web.Services.WebService
         string jsonString = "";
         jsonString = JsonConvert.SerializeObject(itemlist, Formatting.Indented);
         string path = "/Modules/ROPurchaseOrder/RestroTableOrderByRoom.Json";
-        string fullPath = Server.MapPath(path);
-        using (var file = new StreamWriter(fullPath, false))
-        {
-            file.Flush();
-            file.Write(jsonString);
-            file.Close();
-            file.Dispose();
-        }
-
+        // PROD FIX: legacy snapshot-file write removed from the request path.
+        // (Best-effort equivalent available via Server.WriteMapPathFile if ever needed.)
         Context.Response.Clear();
         Context.Response.ContentType = "application/json";
         Context.Response.Write(jsonString);
@@ -700,15 +693,8 @@ public class RoPurchaseOrderWebService : System.Web.Services.WebService
         string jsonString = "";
         jsonString = JsonConvert.SerializeObject(rooms, Formatting.Indented);
         string path = "/Modules/ROPurchaseOrder/RestrogetGlobalizedMenu.Json";
-        string fullPath = Server.MapPath(path);
-        using (var file = new StreamWriter(fullPath, false))
-        {
-            file.Flush();
-            file.Write(jsonString);
-            file.Close();
-            file.Dispose();
-        }
-
+        // PROD FIX: legacy snapshot-file write removed from the request path.
+        // (Best-effort equivalent available via Server.WriteMapPathFile if ever needed.)
         Context.Response.Clear();
         Context.Response.ContentType = "application/json";
         Context.Response.Write(jsonString);
@@ -723,15 +709,8 @@ public class RoPurchaseOrderWebService : System.Web.Services.WebService
         string jsonString = "";
         jsonString = JsonConvert.SerializeObject(menu, Formatting.Indented);
         string path = "/Modules/ROPurchaseOrder/RestroGetCategoriesBymenuID.Json";
-        string fullPath = Server.MapPath(path);
-        using (var file = new StreamWriter(fullPath, false))
-        {
-            file.Flush();
-            file.Write(jsonString);
-            file.Close();
-            file.Dispose();
-        }
-
+        // PROD FIX: legacy snapshot-file write removed from the request path.
+        // (Best-effort equivalent available via Server.WriteMapPathFile if ever needed.)
         Context.Response.Clear();
         Context.Response.ContentType = "application/json";
         Context.Response.Write(jsonString);
