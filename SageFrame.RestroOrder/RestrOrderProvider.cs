@@ -5542,7 +5542,7 @@ namespace SageFrame.RestroOrder
 
                 List<KeyValuePair<string, object>> Param = new List<KeyValuePair<string, object>>();
                 Param.Add(new KeyValuePair<string, object>("@date", today));
-                Param.Add(new KeyValuePair<string, object>("@viewOnly ", viewOnly));
+                Param.Add(new KeyValuePair<string, object>("@viewOnly", viewOnly));
                 return sqlHandler.ExecuteAsObject<DailyClosingReport>("[usp_ro_generateDailyFinancialReport]", Param);
             }
             catch (Exception)

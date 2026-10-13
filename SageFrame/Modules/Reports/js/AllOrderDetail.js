@@ -1,3 +1,13 @@
+function pad2(n) { return n < 10 ? '0' + n : '' + n; }
+function isoDate(dpSelector, endOfDay) {
+    var dt = null;
+    try { dt = $(dpSelector).datepicker('getDate'); } catch (e) { dt = null; }
+    if (!dt) { var v = $(dpSelector).val(); dt = v ? new Date(v) : null; }
+    if (!dt || isNaN(dt.getTime())) dt = new Date();
+    return dt.getFullYear() + '-' + pad2(dt.getMonth() + 1) + '-' + pad2(dt.getDate())
+           + (endOfDay ? ' 23:59' : ' 00:00');
+}
+function toInt(v) { var n = parseInt(v, 10); return isNaN(n) ? 0 : n; }
 
 (function ($) {
     var tabs = $("#tabs").tabs();
@@ -125,15 +135,20 @@
                         break;
                 }
             },
-            ajaxFailure: function () {
-            },
+           ajaxFailure: function (xhr) {
+			alert("Report failed: " + (xhr && xhr.responseText ? xhr.responseText.slice(0, 300) : xhr.status));
+			},
 
             //<<-----------------------------Post & Get Here ---------------------------------------->>
             GetOrderDetailsReportSummary: function () {
-                var startDate = $("#txtStartDate").val();
-                var endDate = $("#txtEndDate").val();
-                var tableid = $("#seltable").val();
-                var costCenter = $("#selectFilterBy").val();
+                // var startDate = $("#txtStartDate").val();
+                // var endDate = $("#txtEndDate").val();
+                // var tableid = $("#seltable").val();
+                // var costCenter = $("#selectFilterBy").val();
+				var startDate  = isoDate("#txtStartDate", false);
+				var endDate    = isoDate("#txtEndDate",   true);
+				var tableid    = toInt($("#seltable").val());
+				var costCenter = toInt($("#selectFilterBy").val());
 
                 eventFunction.config.method = "getOrderDetailsReportSummary";
                 eventFunction.config.url = eventFunction.config.baseURL + eventFunction.config.method;
@@ -145,10 +160,14 @@
             },
 
             GetAllOrderDetailReport: function () {
-                var startDate = $("#txtStartDate").val();
-                var endDate = $("#txtEndDate").val();
-                var tableid = $("#seltable").val(); 
-                var costCenter = $("#selectFilterBy").val();
+                // var startDate = $("#txtStartDate").val();
+                // var endDate = $("#txtEndDate").val();
+                // var tableid = $("#seltable").val(); 
+                // var costCenter = $("#selectFilterBy").val();
+				var startDate  = isoDate("#txtStartDate", false);
+				var endDate    = isoDate("#txtEndDate",   true);
+				var tableid    = toInt($("#seltable").val());
+				var costCenter = toInt($("#selectFilterBy").val());
 
                 eventFunction.config.method = "getAllOrderDetailReport";
                 eventFunction.config.url = eventFunction.config.baseURL + eventFunction.config.method;
