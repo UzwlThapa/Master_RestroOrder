@@ -1,3 +1,29 @@
+/* ===== FIX: Safe date + int helpers for .asmx calls ===== */
+function pad2(n) { return n < 10 ? '0' + n : '' + n; }
+
+/** Returns "yyyy-MM-dd HH:mm" from a datepicker input or Date object */
+function isoDate(dpSelectorOrDate, endOfDay) {
+    var dt;
+    if (dpSelectorOrDate instanceof Date) {
+        dt = dpSelectorOrDate;
+    } else {
+        try { dt = $(dpSelectorOrDate).datepicker('getDate'); } catch (e) { dt = null; }
+        if (!dt) {
+            var v = $(dpSelectorOrDate).val();
+            dt = v ? new Date(v) : null;
+        }
+    }
+    if (!dt || isNaN(dt.getTime())) { dt = new Date(); }
+    return dt.getFullYear() + '-' + pad2(dt.getMonth() + 1) + '-' + pad2(dt.getDate())
+           + (endOfDay ? ' 23:59' : ' 00:00');
+}
+
+/** Returns an int, 0 when input is null/undefined/empty */
+function toInt(val, fallback) {
+    var n = parseInt(val, 10);
+    return isNaN(n) ? (fallback === undefined ? 0 : fallback) : n;
+}
+
 (function ($) {
     var tabs = $("#tabs").tabs();
     $.companyProfcreate = function (p) {
@@ -170,12 +196,20 @@
                         break;
                 }
             },
-            ajaxFailure: function () {
-                //switch (parseInt(eventFunction.config.ajaxCallMode)) {
-                //    case 7:
-                //        alert("Delete fail ! Your data is being used: remove dependencies", "fail");
-                //        break;
-                //}
+            ajaxFailure: function (xhr, status, error) {
+                //FIX: surface real errors instead of silent failures / JSON parse crashes
+                $('.report-view').hide();
+                var msg = 'Unable to load report (HTTP ' + (xhr ? xhr.status : '?') + ').';
+                try {
+                    if (xhr && xhr.responseJSON && xhr.responseJSON.Message) {
+                        msg = xhr.responseJSON.Message;
+                    } else if (xhr && typeof xhr.responseText === 'string' && xhr.responseText.indexOf('System.') > -1) {
+                        // extract first line of the .NET exception for diagnostics
+                        var m = xhr.responseText.match(/Exception details:<\/?[^\n]*\n*[\s\S]*?<h4>|Message:[^<]*/i);
+                        msg = 'Server error: ' + (m ? m[0].replace(/<[^>]*>/g, '').substring(0, 300) : 'check server logs');
+                    }
+                } catch (e) { }
+                if (typeof jAlert === 'function') { jAlert(msg, 'Error!!'); } else { alert(msg); }
             },
             GetCancelledBY: function () {
 
@@ -189,7 +223,9 @@
 
             BindOrderCancelledBY: function (result) {
 
-                var datas = result.d;
+                //FIX: tolerate both raw-object and string-wrapped responses
+                var datas = (typeof result === 'string') ? JSON.parse(result) : result;
+                if (datas && datas.d) { datas = (typeof datas.d === 'string') ? JSON.parse(datas.d) : datas.d; }
                 var htmls = "";
                 $("#selcancelledby").html('');
                 htmls = "<option value='' selected>-All-</option>";
@@ -225,9 +261,10 @@
                 });
             },
             GetDailyReport: function () {
-                var startdate = $("#txtStartDate").val() + ' 0:0';
-                var enddate = $("#txtEndDate").val() + ' 23:59';
-                var cancelledby = $("#selcancelledby").val();
+                //FIX: send ISO dates ("yyyy-MM-dd HH:mm") — US format + "0:0" caused 500 date-conversion errors
+                var startdate = isoDate('#txtStartDate', false);
+                var enddate = isoDate('#txtEndDate', true);
+                var cancelledby = $("#selcancelledby").val() || '';
                 eventFunction.config.method = "getdailyReport";
                 eventFunction.config.url = eventFunction.config.baseURL + eventFunction.config.method;
                 eventFunction.config.data = JSON2.stringify({ startdate: startdate, enddate: enddate, cancelledby: cancelledby });
@@ -238,7 +275,8 @@
             },
 
             GetDailyReportByWeekly: function () {
-                var todaydate = $("#txtStartDate").val();
+                //FIX: ISO date — US-format strings caused 500 date-conversion errors
+                var todaydate = isoDate('#txtStartDate', false);
                 eventFunction.config.method = "getdailyReportByWeekly";
                 eventFunction.config.url = eventFunction.config.baseURL + eventFunction.config.method;
                 eventFunction.config.data = JSON2.stringify({ dateTime: todaydate });
@@ -248,8 +286,9 @@
             },
 
             GetDailyReportByMonthly: function () {
-                var year = $("#seit").val();
-                var month = $("#month").val();
+                var year = toInt($("#seit").val());
+                var month = toInt($("#month").val());
+                if (!year || !month) { year = new Date().getFullYear(); month = new Date().getMonth() + 1; }
                 eventFunction.config.method = "getdailyReportByMonthly";
                 eventFunction.config.url = eventFunction.config.baseURL + eventFunction.config.method;
                 eventFunction.config.data = JSON2.stringify({ year: year, month: month });
@@ -259,7 +298,7 @@
             },
 
             GetDailyReportByYearly: function () {
-                var year = $("#seit").val();
+                var year = toInt($("#seit").val()) || new Date().getFullYear();
                 eventFunction.config.method = "getdailyReportByYearly";
                 eventFunction.config.url = eventFunction.config.baseURL + eventFunction.config.method;
                 eventFunction.config.data = JSON2.stringify({ year: year });
