@@ -303,18 +303,13 @@ public class OrderWebService : System.Web.Services.WebService
                             // The system marks old items as cancelled to re-create them with new quantities.
                             // This is an internal operation, not a user cancellation.
 
-                            bool isUserInitiatedCancel = false;
-
-                            // Heuristic: If the OrderMaster is still active, these "cancellations"
-                            // are likely just system re-balancing. Suppress the print.
+                            // Suppress cancel prints entirely during AddItem operations to stop phantom cancel slips.
                             if (orderMasterInfo != null && orderMasterInfo.OrderMasterID > 0)
                             {
-                                // SAFE FIX: Suppress cancel prints entirely during AddItem operations
-                                // to stop the "Phantom Cancel" slips.
                                 cancelledOrders.Clear();
                             }
 
-                            // Only print if there are still items left after clearing
+                            // Only print if there are still items left after clearing.
                             if (cancelledOrders.Count > 0)
                             {
                                 status = "Cancelled";

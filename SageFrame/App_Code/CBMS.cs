@@ -19,46 +19,53 @@ public class CBMS
 	{
         apiBaseUrl = ConfigurationManager.AppSettings["CbmsApiBaseUrl"].ToString();
     }
+
     public void sendSales(int SalesMasterId)
+{
+    bool alreadySent = roc.CheckIfCBMSAlreadySent(SalesMasterId);
+    if (!alreadySent)
     {
-        bool alreadySent = roc.CheckIfCBMSAlreadySent(SalesMasterId);
-        if (!alreadySent)
-        {
-            company = roc.getcompanyInfo().FirstOrDefault();
-            List<OrderDetailClass> ord = roc.GetdataforViewBill(SalesMasterId);
-            flatorperdiscount discount = roc.getflatorperdiscount(SalesMasterId).FirstOrDefault();
+        company = roc.getcompanyInfo().FirstOrDefault();
+        List<OrderDetailClass> ord = roc.GetdataforViewBill(SalesMasterId);
+        flatorperdiscount discount = roc.getflatorperdiscount(SalesMasterId).FirstOrDefault();
 
-            List<customerBilling> bTerm = roc.getbillingTermbySalesMasterID(SalesMasterId.ToString());
-            decimal NetAmount = bTerm.Where(p => p.BillTerm == "NetAmount").FirstOrDefault().Amount;
-            decimal TaxAmnt = (company.IsPan ? 0 : bTerm.Where(p => p.BillTerm == "VAT").FirstOrDefault().Amount);
-            decimal taxableAmnt = NetAmount - TaxAmnt;
+        List<customerBilling> bTerm = roc.getbillingTermbySalesMasterID(SalesMasterId.ToString());
+        decimal NetAmount = bTerm.Where(p => p.BillTerm == "NetAmount").FirstOrDefault().Amount;
+        decimal TaxAmnt = (company.IsPan ? 0 : bTerm.Where(p => p.BillTerm == "VAT").FirstOrDefault().Amount);
+        decimal taxableAmnt = NetAmount - TaxAmnt;
 
-            BillViewModel bill = new BillViewModel();
-            bill.seller_pan = company.PAN;
-            bill.buyer_pan = ord[0].PAN;
-            bill.fiscal_year = ord[0].fiscalYear;
-            bill.buyer_name = ord[0].CusName;
-            bill.invoice_number = ord[0].BillNo;
-            bill.invoice_date = ord[0].NepaliInvoiceDate;
-            bill.total_sales = Convert.ToDouble(taxableAmnt);
-            bill.taxable_sales_vat = Convert.ToDouble(taxableAmnt);
-            bill.vat = Convert.ToDouble(TaxAmnt);
-            bill.excisable_amount = 0;
-            bill.excise = 0;
-            bill.taxable_sales_hst = 0;
-            bill.hst = 0;
-            bill.amount_for_esf = 0;
-            bill.esf = 0;
-            bill.export_sales = 0;
-            bill.tax_exempted_sales = 0;
-            bill.isrealtime = true;
-            bill.datetimeClient = DateTime.Now;
+        BillViewModel bill = new BillViewModel();
+        bill.seller_pan = company.PAN;
+        bill.buyer_pan = ord[0].PAN;
+        bill.fiscal_year = ord[0].fiscalYear;
+        bill.buyer_name = ord[0].CusName;
+        bill.invoice_number = ord[0].BillNo;
+        bill.invoice_date = ord[0].NepaliInvoiceDate;
+        bill.total_sales = Convert.ToDouble(taxableAmnt);
+        bill.taxable_sales_vat = Convert.ToDouble(taxableAmnt);
+        bill.vat = Convert.ToDouble(TaxAmnt);
+        bill.excisable_amount = 0;
+        bill.excise = 0;
+        bill.taxable_sales_hst = 0;
+        bill.hst = 0;
+        bill.amount_for_esf = 0;
+        bill.esf = 0;
+        bill.export_sales = 0;
+        bill.tax_exempted_sales = 0;
+        bill.isrealtime = true;
+        bill.datetimeClient = DateTime.Now;
 
-            int logId = roc.savePostedBill(bill, "410", "Bill Not Posted", DateTime.Now, SalesMasterId, ord[0].Date);
+        // FIX: format EnglishInvDate explicitly under InvariantCulture so it
+        // never depends on the IIS server's regional settings.
+        string englishInvDate = bill.datetimeClient.ToString(
+            "yyyy-MM-dd HH:mm:ss",
+            System.Globalization.CultureInfo.InvariantCulture);
 
-            BackgroundJob.Enqueue(() => PostBill(bill, SalesMasterId, logId));
-        }
+        int logId = roc.savePostedBill(bill, "410", "Bill Not Posted", DateTime.Now, SalesMasterId, englishInvDate);
+
+        BackgroundJob.Enqueue(() => PostBill(bill, SalesMasterId, logId));
     }
+}
 
     public void PostBill(BillViewModel bill, int salesMasterId, int logId)
     {

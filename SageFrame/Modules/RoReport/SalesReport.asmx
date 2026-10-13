@@ -161,7 +161,7 @@ public class SalesReport : System.Web.Services.WebService
         //}
 
         bill.orderDetail = ord;
-        //bill.billInfo = billInfo;
+        bill.billInfo = roc.getbillInfo(SalesMasterID, SalesType);
         bill.companyInfo = roc.getcompanyInfo();
         bill.billingTerm = roc.getcakebillingTermbySalesMasterID(SalesMasterID.ToString(), SalesType);
         bill.cuscenter = roc.getdiscountfromcostcenter();
@@ -293,13 +293,16 @@ public class SalesReport : System.Web.Services.WebService
     }
 
     [WebMethod]
-    public void CancelBillWithReason(int id, string userName, string reason, string date, bool restoreOrder)
+    public void CancelBillWithReason(int id, string userName, string reason, string date, bool restoreOrder, string salesType = "")
     {
         RestrOrderController rc = new RestrOrderController();
-        rc.CancelBillWithReason(id, userName, reason, restoreOrder);
+        rc.CancelBillWithReason(id, userName, reason, restoreOrder, salesType, date);
 
-        CBMS cbms = new CBMS();
-        cbms.returnSales(id, date, reason);
+        if (string.IsNullOrEmpty(salesType))
+        {
+            CBMS cbms = new CBMS();
+            cbms.returnSales(id, date, reason);
+        }
     }
 
     [WebMethod]

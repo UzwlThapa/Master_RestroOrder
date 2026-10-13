@@ -53,6 +53,61 @@ SELECT cbpl.LogID,
        cbpl.SalesType,
        ISNULL([dbo].[ufn_getsalesbillquantity](cbpl.SalesMasterId), 0) AS Qty
 FROM CBMS_BillPostLog cbpl
-WHERE invoice_date BETWEEN REPLACE(@FromDate, '-', '.') AND REPLACE(@ToDate, '-', '.');
+WHERE invoice_date BETWEEN REPLACE(@FromDate, '-', '.') AND REPLACE(@ToDate, '-', '.')
+
+UNION ALL
+
+SELECT 0 AS LogID,
+             ci.PAN AS seller_pan,
+             sm.PAN AS buyer_pan,
+             fy.fyName AS fiscal_year,
+             sm.CustomerName AS buyer_name,
+             ci.Code + fy.fyName + '-' + CAST(sm.InvoiceNo - fy.FirstSalesMasterID AS VARCHAR(20)) AS invoice_number,
+             sm.NepaliInvoiceDate AS invoice_date,
+             sm.BasicAmount AS total_sales,
+             sm.BasicAmount AS taxable_sales_vat,
+             ISNULL(vat.Amount, 0) AS vat,
+             0 AS excisable_amount,
+             0 AS excise,
+             0 AS taxable_sales_hst,
+             0 AS hst,
+             0 AS amount_for_esf,
+             0 AS esf,
+             0 AS export_sales,
+             0 AS tax_exempted_sales,
+             0 AS isrealtime,
+             sm.AddedOn AS datetimeClient,
+             sm.BillDate AS BillPostDateTime,
+             'LOCAL' AS StatusCode,
+             'LOCAL - NOT IRD SUBMITTED' AS StatusDetails,
+             sm.SalesMasterId,
+             sm.BillDate AS EnglishInvDate,
+             sm.SalesType,
+             ISNULL(qty.Qty, 0) AS Qty
+FROM dbo.RO_CakeSalesMaster sm
+INNER JOIN dbo.RO_fiscalYear fy ON fy.fyId = sm.FiscalYearID
+CROSS JOIN (SELECT TOP (1) Code, PAN FROM dbo.RO_CompanyInfo) ci
+LEFT JOIN dbo.RO_CAKE_BillingAmount vat
+        ON vat.SalesMasterID = sm.SalesMasterId
+     AND vat.BilingID = 54
+     AND LOWER(ISNULL(vat.SalesType, '')) = LOWER(ISNULL(sm.SalesType, ''))
+OUTER APPLY
+(
+        SELECT SUM(sd.Quantity) AS Qty
+        FROM dbo.RO_CakeSalesDetail sd
+        WHERE sd.SalesMasterId = sm.SalesMasterId
+            AND LOWER(ISNULL(sd.SalesType, '')) = LOWER(ISNULL(sm.SalesType, ''))
+) qty
+WHERE sm.IsArchived = 0
+    AND sm.IsUpdated = 1
+    AND LOWER(ISNULL(sm.SalesType, '')) IN ('cake', 'retail', 'wholesale')
+    AND sm.NepaliInvoiceDate BETWEEN REPLACE(@FromDate, '-', '.') AND REPLACE(@ToDate, '-', '.')
+    AND NOT EXISTS
+    (
+            SELECT 1
+            FROM dbo.CBMS_BillPostLog posted
+            WHERE posted.SalesMasterId = sm.SalesMasterId
+                AND LOWER(ISNULL(posted.SalesType, '')) = LOWER(ISNULL(sm.SalesType, ''))
+    );
 
 GO

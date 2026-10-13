@@ -1,3 +1,15 @@
+function pad2(n) { return n < 10 ? '0' + n : '' + n; }
+
+function ymd(dt) {
+    return dt.getFullYear() + '-' + pad2(dt.getMonth() + 1) + '-' + pad2(dt.getDate());
+}
+
+function isoDate(dpSelector, endOfDay) {
+    var dt = $(dpSelector).datepicker('getDate');
+    if (!dt) { dt = new Date(); }
+    return ymd(dt) + (endOfDay ? ' 23:59' : ' 00:00');
+}
+
 function Print() {
     $('#printedDate').show();
     $('#lblPrintedOn').html(new Date());
@@ -19,6 +31,7 @@ function Print() {
         document.body.removeChild(frame1);
     }, 500);
 }
+
 (function ($) {
     var tabs = $("#tabs").tabs();
     $.companyProfcreate = function (p) {
@@ -105,7 +118,7 @@ function Print() {
                     data: eventFunction.config.data,
                     dataType: eventFunction.config.dataType,
                     success: eventFunction.ajaxSuccess,
-                    failure: eventFunction.ajaxFailure
+                    error: eventFunction.ajaxFailure
                 });
             },
 
@@ -146,10 +159,10 @@ function Print() {
                 eventFunction.ajaxCall(eventFunction.config);
             },
             GetDailyItemSalesReport: function () {
-                var startDate = $("#startDate").val() + " " + 00 + ":" + 00;
-                var endDate = $("#EndDate").val() + " " + 23 + ":" + 59;
-                var costCenterID = $("#selectFilterBy").val();
-                var pitid = $("#ddlCategory").val();
+                var startDate = isoDate('#startDate', false);
+                var endDate   = isoDate('#EndDate',  true);
+                var costCenterID = parseInt($("#selectFilterBy").val() || 0);
+                var pitid        = parseInt($("#ddlCategory").val()  || 0);
                 eventFunction.config.method = "getDailyItemSalesReport";
                 eventFunction.config.url = eventFunction.config.baseURL + eventFunction.config.method;
                 eventFunction.config.data = JSON2.stringify({ startDate: startDate, endDate: endDate, costCenterID: costCenterID, pitid: pitid })
@@ -158,10 +171,10 @@ function Print() {
             },
 
             GetSummaryItemSalesReport: function () {
-                var startDate = $("#startDate").val() + " " + 00 + ":" + 00;
-                var endDate = $("#EndDate").val() + " " + 23 + ":" + 59;
-                var costCenterID = $("#selectFilterBy").val();
-                var pitid = $("#ddlCategory").val();
+                var startDate = isoDate('#startDate', false);
+                var endDate   = isoDate('#EndDate',  true);
+                var costCenterID = parseInt($("#selectFilterBy").val() || 0);
+                var pitid        = parseInt($("#ddlCategory").val()  || 0);
                 eventFunction.config.method = "getSummaryItemSalesReport";
                 eventFunction.config.url = eventFunction.config.baseURL + eventFunction.config.method;
                 eventFunction.config.data = JSON2.stringify({ startDate: startDate, endDate: endDate, costCenterID: costCenterID, pitid: pitid })
@@ -308,7 +321,6 @@ function Print() {
                     htmls += "<td colspan='4' style='text-align:center;'> No Data </td>";
                     htmls += '</tr>';
                 }
-                debugger;
                 htmls += "</tbody>";
                 htmls += "<tfoot>";
                 htmls += "<tr>";

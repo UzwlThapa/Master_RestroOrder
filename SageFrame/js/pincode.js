@@ -1,9 +1,31 @@
-var userRoles = JSON.parse(localStorage.getItem("userRoles"));
-var pinSettings = JSON.parse(localStorage.getItem("rolePinSettings"));
-var numpin = JSON.parse(localStorage.getItem("numpin"));
+function readPinCache(key) {
+    try {
+        var value = localStorage.getItem(key);
+        return value ? JSON.parse(value) : null;
+    } catch (e) {
+        localStorage.removeItem(key);
+        return null;
+    }
+}
+
+function normalizePinList(value) {
+    if (typeof value === 'string') {
+        try {
+            value = JSON.parse(value);
+        } catch (e) {
+            return null;
+        }
+    }
+    return Array.isArray(value) ? value : null;
+}
+
+var userRoles = normalizePinList(readPinCache("userRoles"));
+var pinSettings = normalizePinList(readPinCache("rolePinSettings"));
+var numpin = readPinCache("numpin");
 var disablePin = false;   // default stays fail-closed: PIN dialog shows unless proven unnecessary
 var obj;
 var value;
+var pinCacheRefreshStarted = false;
 
 var PIN_SETTINGS_MAX_RETRIES = 7;
 var PIN_SETTINGS_RETRY_DELAY_MS = 400;
@@ -30,10 +52,11 @@ function checkUserPinSetting(attempt) {
 
     // Re-read fresh each attempt in case another script (e.g. GetPinSettings)
     // populated localStorage after this file first loaded.
-    var currentRoles = JSON.parse(localStorage.getItem("userRoles"));
-    var currentPinSettings = JSON.parse(localStorage.getItem("rolePinSettings"));
+    var currentRoles = normalizePinList(readPinCache("userRoles"));
+    var currentPinSettings = normalizePinList(readPinCache("rolePinSettings"));
 
     if (!currentRoles || !currentPinSettings) {
+        refreshPinCache();
         console.warn('PIN settings not available yet (attempt ' + attempt + '/' + PIN_SETTINGS_MAX_RETRIES + ')');
         if (attempt < PIN_SETTINGS_MAX_RETRIES) {
             setTimeout(function () { checkUserPinSetting(attempt + 1); }, PIN_SETTINGS_RETRY_DELAY_MS);
@@ -212,5 +235,35 @@ function NumCodeSetup() {
         var newStr = v.substring(0, v.length - 1);
         $("#numbox").val(newStr);
         $("#numbox").focus();
+    });
+}
+
+function refreshPinCache() {
+    if (pinCacheRefreshStarted || typeof SageFrameHostURL === 'undefined') {
+        return;
+    }
+    pinCacheRefreshStarted = true;
+
+    var endpoints = [
+        { method: 'GetAllUserRoles', key: 'userRoles' },
+        { method: 'GetPinSettings', key: 'rolePinSettings' }
+    ];
+
+    $.each(endpoints, function (index, endpoint) {
+        $.ajax({
+            type: 'POST',
+            contentType: 'application/json; charset=utf-8',
+            url: SageFrameHostURL + '/Services/RestroWebService.asmx/' + endpoint.method,
+            data: '{}',
+            dataType: 'json',
+            success: function (response) {
+                var list = normalizePinList(response && response.d);
+                if (!list) {
+                    return;
+                }
+                localStorage.setItem(endpoint.key, JSON.stringify(list));
+                checkUserPinSetting();
+            }
+        });
     });
 }

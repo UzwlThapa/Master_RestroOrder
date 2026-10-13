@@ -64,7 +64,7 @@ public partial class Modules_DatabaseBackup_DBBackupNRestore : BaseAdministratio
             string password = builder["Password"] as string;
             string _BackupName = database + "_" + DateTime.Now.Hour.ToString() + "_" + DateTime.Now.Minute.ToString() + "_" + DateTime.Now.Millisecond.ToString() + "_" + DateTime.Now.Day.ToString() + "_" + DateTime.Now.Month.ToString() + "_" + DateTime.Now.Year.ToString() + ".bak";
             string destination = AppDomain.CurrentDomain.BaseDirectory + @"Modules\DatabaseBackup\BUD\" + _BackupName;
-            string username = SageFrame.Common.PortalIDProvider.GetUsername(); // Get current logged-in username
+            string username = GetUsername; // Get current logged-in username
             JRBackupRestoreDB.BackupDatabase(database, user, password, server, destination, username);
             lblMessage.Text = "The " + database + " database Backup with the name " + _BackupName + " successfully...";
             lblMessage.ForeColor = System.Drawing.Color.Green;
@@ -93,7 +93,7 @@ public partial class Modules_DatabaseBackup_DBBackupNRestore : BaseAdministratio
             string user = builder["User ID"] as string;
             string password = builder["Password"] as string;
             string destination = AppDomain.CurrentDomain.BaseDirectory + @"Modules\DatabaseBackup\BUD\";
-            string username = SageFrame.Common.PortalIDProvider.GetUsername(); // Get current logged-in username
+            string username = GetUsername; // Get current logged-in username
             string message = JRBackupRestoreDB.RestoreData(SQLH.connectionString, database, lstBackupfiles.Text, username);
             lblMessage.Text = "The " + database + " database Restore successfully...";
             lblMessage.ForeColor = System.Drawing.Color.Green;

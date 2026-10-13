@@ -95,6 +95,9 @@ namespace SageFrame.RestroOrder
         public string buyer_name { get; set; }
         public string invoice_number { get; set; }
         public string invoice_date { get; set; }
+        public string StatusCode { get; set; }
+        public string StatusDetails { get; set; }
+        public string SalesType { get; set; }
         public double total_sales { get; set; }
         public Nullable<double> taxable_sales_vat { get; set; }
         public Nullable<double> vat { get; set; }
@@ -225,6 +228,7 @@ namespace SageFrame.RestroOrder
         public int ITId { get; set; }
 
         public string Details { get; set; }
+        public string Waiter { get; set; }
     }
 
 

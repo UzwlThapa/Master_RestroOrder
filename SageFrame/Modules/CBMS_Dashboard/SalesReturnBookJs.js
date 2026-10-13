@@ -25,7 +25,12 @@ function Print() {
                  master: '0',
              }, p);
         var month = new Array();
-        var companyInfo = JSON.parse(localStorage.getItem("companyInfo"));
+        var companyInfo = null;
+        try {
+            companyInfo = JSON.parse(localStorage.getItem("companyInfo"));
+        } catch (e) {
+            companyInfo = null;
+        }
         var eventFunction = {
             config: {
                 isPostBack: false,
@@ -43,9 +48,10 @@ function Print() {
 
             init: function () {
 
-                $('#lblCompanyName').html(companyInfo.Name);
-                $('#lblCompanyPAN').html(companyInfo.PAN);
-                $('#lblCompanyAddress').html(companyInfo.Address);
+                eventFunction.bindCompanyInfo(companyInfo);
+                if (!companyInfo || !companyInfo.Name) {
+                    eventFunction.getCompanyInfo();
+                }
                 eventFunction.SetMonth();
                 $('#txtMnthYear').nepaliDatePicker({
                     npdMonth: true,
@@ -94,6 +100,45 @@ function Print() {
                         pdf.save('SalesReturnBook_From_' + $('#lblYear').html() + '_To_' + $('#lblMonth').html() + '.pdf');
                     });
                     
+                });
+            },
+            bindCompanyInfo: function (info) {
+                if (!info) {
+                    return;
+                }
+                $('#lblCompanyName').text(info.Name || '');
+                $('#lblCompanyPAN').text(info.PAN || '');
+                $('#lblCompanyAddress').text(info.Address || '');
+            },
+            getCompanyInfo: function () {
+                $.ajax({
+                    type: 'POST',
+                    contentType: 'application/json; charset=utf-8',
+                    url: eventFunction.config.baseURL + 'getCompanyInfo',
+                    data: '{}',
+                    dataType: 'json',
+                    success: function (response) {
+                        var info = response && response.d;
+                        if (typeof info === 'string') {
+                            try {
+                                info = JSON.parse(info);
+                            } catch (e) {
+                                return;
+                            }
+                        }
+                        if (!info || typeof info !== 'object') {
+                            return;
+                        }
+                        companyInfo = info;
+                        eventFunction.bindCompanyInfo(info);
+                        try {
+                            localStorage.setItem('companyInfo', JSON.stringify(info));
+                        } catch (e) {
+                        }
+                    },
+                    error: function (error) {
+                        console.debug(error);
+                    }
                 });
             },
             ajaxCall: function (config) {

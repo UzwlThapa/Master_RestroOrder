@@ -36,6 +36,7 @@ BEGIN
 						THEN 1
 					END), 0)
 	FROM CBMS_BillReturnPostLog brp
+	WHERE ISNULL(brp.SalesType, '') = ''
 
 	SELECT isnull(@totalSales, 0) AS TotalSales
 		,@SyncedSalesBill AS SyncedSalesBill

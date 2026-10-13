@@ -1,4 +1,15 @@
 (function ($) {
+    function serializeListPayload(payload) {
+        if (typeof payload === 'string') {
+            try {
+                payload = JSON.parse(payload);
+            } catch (e) {
+                payload = null;
+            }
+        }
+        return JSON.stringify($.isArray(payload) ? payload : []);
+    }
+
     var tabs = $("#tabs").tabs();
     $.companyProfcreate = function (p) {
         p = $.extend
@@ -195,10 +206,10 @@
                         }
                         break;
                     case 2:
-                        window.localStorage.setItem("userRoles", data.d);
+                        window.localStorage.setItem("userRoles", serializeListPayload(data.d));
                         break;
                     case 3:
-                        window.localStorage.setItem("rolePinSettings", data.d);
+                        window.localStorage.setItem("rolePinSettings", serializeListPayload(data.d));
                         break;
                 }
             },

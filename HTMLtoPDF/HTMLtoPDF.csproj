@@ -48,14 +48,16 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\SageFrame.Common\SageFrame.Common.csproj">
-      <Project>{6af77849-4e47-4e74-8944-4bdad509c0a3}</Project>
-      <Name>SageFrame.Common</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\SageFrame.Core\SageFrame.Core.csproj">
-      <Project>{e01db85d-70f0-4a32-ad9d-9d5ca1771d85}</Project>
-      <Name>SageFrame.Core</Name>
-    </ProjectReference>
+    <Reference Include="SageFrame.Common, Version=3.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\SageFrame\bin\SageFrame.Common.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="SageFrame.Core, Version=2.5.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\SageFrame\bin\SageFrame.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

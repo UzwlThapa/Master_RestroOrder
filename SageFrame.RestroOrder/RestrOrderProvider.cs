@@ -1892,12 +1892,13 @@ namespace SageFrame.RestroOrder
             }
         }
 
-        internal BillInfo getbillInfo(int salesMasterId)
+        internal BillInfo getbillInfo(int salesMasterId, string salesType = "")
         {
             try
             {
                 List<KeyValuePair<string, object>> Param = new List<KeyValuePair<string, object>>();
                 Param.Add(new KeyValuePair<string, object>("@salesMasterId", salesMasterId));
+                Param.Add(new KeyValuePair<string, object>("@SalesType", salesType));
                 BillInfo lst = sqlHandler.ExecuteAsObject<BillInfo>("[USP_RO_GetBillInfo]", Param);
                 return lst;
             }
@@ -3321,34 +3322,36 @@ namespace SageFrame.RestroOrder
         //    }
 
         //}
-        internal void CancelBillWithReason(int id, string userName, string reason, bool restoreOrder, bool? isWholesale = false)
+        internal void CancelBillWithReason(int id, string userName, string reason, bool restoreOrder, string salesType = "", string creditNoteDate = "")
         {
             try
             {
-                if (isWholesale != false)
+                if (!string.IsNullOrEmpty(salesType))
                 {
-                    // Handle wholesale cancellation if needed
+                    List<KeyValuePair<string, object>> cakeParam = new List<KeyValuePair<string, object>>();
+                    cakeParam.Add(new KeyValuePair<string, object>("@salesMasterId", id));
+                    cakeParam.Add(new KeyValuePair<string, object>("@SalesType", salesType));
+                    cakeParam.Add(new KeyValuePair<string, object>("@Reasons", reason));
+                    cakeParam.Add(new KeyValuePair<string, object>("@userName", userName));
+                    cakeParam.Add(new KeyValuePair<string, object>("@creditNoteDate", string.IsNullOrWhiteSpace(creditNoteDate) ? DateTime.Today.ToString("yyyy-MM-dd") : creditNoteDate));
+                    cakeParam.Add(new KeyValuePair<string, object>("@restoreOrder", restoreOrder));
+                    sqlHandler.ExecuteNonQuery("[USP_RO_CAKE_CancelReason]", cakeParam);
+                    return;
                 }
-                else
+
+                if (restoreOrder)
                 {
-                    // Step 1: Restore order if needed (restores ingredients)
-                    if (restoreOrder)
-                    {
-                        List<KeyValuePair<string, object>> Param2 = new List<KeyValuePair<string, object>>();
-                        Param2.Add(new KeyValuePair<string, object>("@salesMasterId", id));
-                        Param2.Add(new KeyValuePair<string, object>("@userName", userName));
-                        sqlHandler.ExecuteNonQuery("[USP_RO_restoreOrder]", Param2);
-                    }
-
-                    // Step 2: Cancel and handle stock return (now inside SP)
-                    List<KeyValuePair<string, object>> Param = new List<KeyValuePair<string, object>>();
-                    Param.Add(new KeyValuePair<string, object>("@salesMasterId", id));
-                    Param.Add(new KeyValuePair<string, object>("@Reasons", reason));
-                    Param.Add(new KeyValuePair<string, object>("@userName", userName));
-                    sqlHandler.ExecuteNonQuery("[USP_RO_CancelReason]", Param);
-
-                    // Stock return now handled inside USP_RO_CancelReason - no C# loop needed
+                    List<KeyValuePair<string, object>> Param2 = new List<KeyValuePair<string, object>>();
+                    Param2.Add(new KeyValuePair<string, object>("@salesMasterId", id));
+                    Param2.Add(new KeyValuePair<string, object>("@userName", userName));
+                    sqlHandler.ExecuteNonQuery("[USP_RO_restoreOrder]", Param2);
                 }
+
+                List<KeyValuePair<string, object>> Param = new List<KeyValuePair<string, object>>();
+                Param.Add(new KeyValuePair<string, object>("@salesMasterId", id));
+                Param.Add(new KeyValuePair<string, object>("@Reasons", reason));
+                Param.Add(new KeyValuePair<string, object>("@userName", userName));
+                sqlHandler.ExecuteNonQuery("[USP_RO_CancelReason]", Param);
             }
             catch (Exception)
             {

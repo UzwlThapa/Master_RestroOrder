@@ -29,7 +29,7 @@ function IntegerAndDecimal(evt, element) {
     var charCode = (evt.which) ? evt.which : event.keyCode
 
     if ((charCode != 8) &&
-        (charCode != 46 || $(element).val().indexOf('.') != -1) &&      // “.” CHECK DOT, AND ONLY ONE.
+        (charCode != 46 || $(element).val().indexOf('.') != -1) &&      // ï¿½.ï¿½ CHECK DOT, AND ONLY ONE.
         (charCode < 48 || charCode > 57))
         return false;
 
@@ -65,6 +65,7 @@ function IntegerAndDecimal(evt, element) {
         var totalamount = 0;
         var salesReport = [];
         var salesId = 0;
+        var pendingCreditNote = null;
         var userRole = "";
         var eventFunction = {
             config: {
@@ -107,6 +108,9 @@ function IntegerAndDecimal(evt, element) {
                                     modal: true,
                                     buttons: {
                                         "Return Bill": function () {
+                                            var idsArr = salesId.split("_");
+                                            var salesMaster = parseInt(idsArr[0], 10);
+                                            var salesType = (idsArr.length > 1 ? idsArr[1] : "");
                                             var myStr = $("#txtCancelWithReason").val();
                                             var newStr = myStr.replace(/  +/g, ' ');
                                             if (newStr.length <= 4) {
@@ -116,14 +120,18 @@ function IntegerAndDecimal(evt, element) {
                                                 var reason = $("#txtCancelWithReason").val();
                                                 eventFunction.config.method = "SalesReturnWithReason";
                                                 eventFunction.config.url = eventFunction.config.baseURL + eventFunction.config.method;
-                                                eventFunction.config.data = JSON2.stringify({ id: ids, userName: userName, reason: reason, date: nepaliDate, restoreOrder: false });
-                                                eventFunction.config.data = eventFunction.config.data;
+                                                eventFunction.config.data = JSON2.stringify({
+                                                    id: salesMaster,
+                                                    userName: userName,
+                                                    reason: reason,
+                                                    date: nepaliDate,
+                                                    restoreOrder: false,
+                                                    salesType: salesType
+                                                });
+                                                pendingCreditNote = { salesMasterId: salesMaster, salesType: salesType };
                                                 eventFunction.config.ajaxCallMode = 6;
-                                                alert(ids + " " + userName + " " + reason);
                                                 eventFunction.ajaxCall(eventFunction.config);
                                                 $(this).dialog('close');
-                                                eventFunction.GetBill(ids);
-                                                $('#btnPrints').click();
                                             }
                                         },
                                         Cancel: function () {
@@ -201,8 +209,10 @@ function IntegerAndDecimal(evt, element) {
                         $('#btnPayBill').show();
                     else
                         $('#btnPayBill').hide();
-                    $('#InvoiceType').html('INVOICE');
-
+                    //$('#InvoiceType').html('CREDIT NOTE');
+                    if ($('#InvoiceType').text().toUpperCase().indexOf('CREDIT') < 0) {
+                        $('#InvoiceType').html('INVOICE');
+                    }
                 });
 
 
@@ -375,9 +385,16 @@ function IntegerAndDecimal(evt, element) {
                         eventFunction.bindSumDaily(data);
                         break;
                     case 6:
-                        jAlert('Saved Reason successfully.', 'Information!!', function () { $.alerts.dialogClass = null; });
+                        if (pendingCreditNote) {
+                            if (!pendingCreditNote.salesType || pendingCreditNote.salesType === "") {
+                                eventFunction.GetBill(pendingCreditNote.salesMasterId);
+                            } else {
+                                eventFunction.GetCakeBill(pendingCreditNote.salesMasterId, pendingCreditNote.salesType, true);
+                            }
+                            pendingCreditNote = null;
+                        }
+                        jAlert('Return saved. Click Print in the dialog to print the credit note.', 'Information!!', function () { $.alerts.dialogClass = null; });
                         $("#StartEndReportView").click();
-                        //location.reload();
                         break;
                     case 7:
                         salesReport = JSON.parse(data.d);
@@ -458,10 +475,17 @@ function IntegerAndDecimal(evt, element) {
 
                 $('#btnPrints').unbind('click').on('click', function () {
                     $('#divPrintedOn').text(formatAMPM());
+
+                    var _pc = parseInt($('#hdfPrntCnt').val(), 10);
+                    if (isNaN(_pc)) { _pc = 1; } else { _pc = _pc + 1; }
+
                     eventFunction.config.method = "savePrintCount";
                     eventFunction.config.url = eventFunction.config.baseURL + eventFunction.config.method;
                     eventFunction.config.data = JSON2.stringify({
-                        Printcount: (parseInt($('#hdfPrntCnt').val()) + 1), BillNo: parseInt($('#hdfSMID').val()), PrintedBy: SageFrameUserName, SalesType: ''
+                        Printcount: _pc,
+                        BillNo: parseInt($('#hdfSMID').val(), 10),
+                        PrintedBy: SageFrameUserName,
+                        SalesType: ''
                     });
                     eventFunction.config.ajaxCallMode = 13;
                     eventFunction.ajaxCall(eventFunction.config);
@@ -479,11 +503,11 @@ function IntegerAndDecimal(evt, element) {
                 });
             },
 
-            GetCakeBill: function (SalesMasterID, SalesType) {
+            GetCakeBill: function (SalesMasterID, SalesType, isCreditNote) {
 
                 getSalesReport_CakeBill(SalesMasterID, SalesType);
                 $('#BillingView').dialog({
-                    'title': 'Vat Bill',
+                    'title': isCreditNote ? 'Credit Note' : 'Vat Bill',
                     width: '350',
                     height: 'auto',
                     modal: true,
@@ -492,10 +516,23 @@ function IntegerAndDecimal(evt, element) {
                 });
                 $('#btnPrints').unbind('click').on('click', function () {
                     $('#divPrintedOn').text(formatAMPM());
+
+                    if (isCreditNote) {
+                        eventFunction.print();
+                        $('#BillingView').dialog('close');
+                        return;
+                    }
+
+                    var _pc = parseInt($('#hdfPrntCnt').val(), 10);
+                    if (isNaN(_pc)) { _pc = 1; } else { _pc = _pc + 1; }
+
                     eventFunction.config.method = "savePrintCount";
                     eventFunction.config.url = eventFunction.config.baseURL + eventFunction.config.method;
                     eventFunction.config.data = JSON2.stringify({
-                        Printcount: (parseInt($('#hdfPrntCnt').val()) + 1), BillNo: parseInt($('#hdfSMID').val()), PrintedBy: SageFrameUserName, SalesType: SalesType
+                        Printcount: _pc,
+                        BillNo: parseInt($('#hdfSMID').val(), 10),
+                        PrintedBy: SageFrameUserName,
+                        SalesType: SalesType
                     });
                     eventFunction.config.ajaxCallMode = 13;
                     eventFunction.ajaxCall(eventFunction.config);
@@ -542,13 +579,48 @@ function IntegerAndDecimal(evt, element) {
             BindSalesDaily: function () {
                 $("#DailyReport").show();
                 $("#DailyReport").html('');
-                var companyInfo = JSON.parse(localStorage.getItem("companyInfo"));
+                var companyInfo = null;
+                try {
+                    companyInfo = JSON.parse(localStorage.getItem("companyInfo"));
+                } catch (e) {
+                    companyInfo = null;
+                }
+                if (!companyInfo || !companyInfo.Name) {
+                    $.ajax({
+                        type: 'POST',
+                        async: false,
+                        contentType: 'application/json; charset=utf-8',
+                        url: eventFunction.config.baseURL + 'getcompanyInfo',
+                        data: '{}',
+                        dataType: 'json',
+                        success: function (response) {
+                            companyInfo = response && response.d;
+                            if ($.isArray(companyInfo)) {
+                                companyInfo = companyInfo.length ? companyInfo[0] : null;
+                            }
+                            if (typeof companyInfo === 'string') {
+                                try {
+                                    companyInfo = JSON.parse(companyInfo);
+                                } catch (e) {
+                                    companyInfo = null;
+                                }
+                            }
+                            if (companyInfo) {
+                                try {
+                                    localStorage.setItem('companyInfo', JSON.stringify(companyInfo));
+                                } catch (e) {
+                                }
+                            }
+                        }
+                    });
+                }
+                companyInfo = companyInfo || {};
 
                 dailyList = salesReport;
 
                 var htmls = '';
-                htmls += '<div class="Report_header"><h4 style="text-align:center;margin:0;">' + companyInfo.Name + '</h4>';
-                htmls += '<p style="text-align:center;margin:0;">' + companyInfo.Address + ' , ' + (companyInfo.IsPan ? 'PAN' : 'VAT') + ' : ' + companyInfo.PAN + '</p>';
+                htmls += '<div class="Report_header"><h4 style="text-align:center;margin:0;">' + (companyInfo.Name || '') + '</h4>';
+                htmls += '<p style="text-align:center;margin:0;">' + (companyInfo.Address || '') + ' , ' + (companyInfo.IsPan ? 'PAN' : 'VAT') + ' : ' + (companyInfo.PAN || '') + '</p>';
                 htmls += '<p style="margin:0;text-align:center;">Sales Report </p> <p style="text-align:center;margin:0;">From :  ' + $('#startDate').val() + ' To :  ' + $('#EndDate').val() + '</p>';
                 htmls += '<p id="printedDate" style="display:none;text-align:center;margin:0;margin-bottom:5px;">Printed On : <label id="lblPrintedOn"></label></p></div>';
 
@@ -626,7 +698,7 @@ function IntegerAndDecimal(evt, element) {
                             var roles = userRole.split(',');
                         if (roles.includes("Super User") || roles.includes("Void Bill")) {
                                 if (value.IsArchived != 1) {
-                                    htmls += '<label id="' + value.salesMasterId + '" class="icon-close btnCancelBill"/>';
+                                    htmls += '<label id="' + value.salesMasterId + "_" + (value.SalesType || "") + '" class="icon-close btnCancelBill"/>';
                                 }
                             }
                             htmls += '</td>';

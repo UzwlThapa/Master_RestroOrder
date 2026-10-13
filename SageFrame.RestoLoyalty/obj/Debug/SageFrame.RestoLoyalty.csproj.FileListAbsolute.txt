@@ -254,3 +254,12 @@ G:\Danfe\DanfeProductsSourceCode\OldCodeNoHttps\Master_RestroOrder\SageFrame.Res
 G:\Danfe\DanfeProductsSourceCode\OldCodeNoHttps\Master_RestroOrder\SageFrame.RestoLoyalty\obj\Debug\SageFram.F3CAEF83.Up2Date
 G:\Danfe\DanfeProductsSourceCode\OldCodeNoHttps\Master_RestroOrder\SageFrame.RestoLoyalty\obj\Debug\SageFrame.RestoLoyalty.dll
 G:\Danfe\DanfeProductsSourceCode\OldCodeNoHttps\Master_RestroOrder\SageFrame.RestoLoyalty\obj\Debug\SageFrame.RestoLoyalty.pdb
+G:\Danfe\Restro_Order_Code\Master_RestroOrder\SageFrame.RestoLoyalty\bin\Debug\SageFrame.RestoLoyalty.dll
+G:\Danfe\Restro_Order_Code\Master_RestroOrder\SageFrame.RestoLoyalty\bin\Debug\SageFrame.RestoLoyalty.pdb
+G:\Danfe\Restro_Order_Code\Master_RestroOrder\SageFrame.RestoLoyalty\bin\Debug\SageFrame.Common.dll
+G:\Danfe\Restro_Order_Code\Master_RestroOrder\SageFrame.RestoLoyalty\bin\Debug\SageFrame.Common.pdb
+G:\Danfe\Restro_Order_Code\Master_RestroOrder\SageFrame.RestoLoyalty\obj\Debug\SageFrame.RestoLoyalty.csproj.AssemblyReference.cache
+G:\Danfe\Restro_Order_Code\Master_RestroOrder\SageFrame.RestoLoyalty\obj\Debug\SageFrame.RestoLoyalty.csproj.CoreCompileInputs.cache
+G:\Danfe\Restro_Order_Code\Master_RestroOrder\SageFrame.RestoLoyalty\obj\Debug\SageFram.F3CAEF83.Up2Date
+G:\Danfe\Restro_Order_Code\Master_RestroOrder\SageFrame.RestoLoyalty\obj\Debug\SageFrame.RestoLoyalty.dll
+G:\Danfe\Restro_Order_Code\Master_RestroOrder\SageFrame.RestoLoyalty\obj\Debug\SageFrame.RestoLoyalty.pdb

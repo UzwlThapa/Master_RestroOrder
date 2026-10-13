@@ -102,7 +102,7 @@ public class SalesReturn : System.Web.Services.WebService
         List<OrderDetailClass> ord = roc.GetdataforViewCakeBill(SalesMasterID, SalesType);
 
         bill.orderDetail = ord;
-        //bill.billInfo = billInfo;
+        bill.billInfo = roc.getbillInfo(SalesMasterID, SalesType);
         bill.companyInfo = roc.getcompanyInfo();
         bill.billingTerm = roc.getcakebillingTermbySalesMasterID(SalesMasterID.ToString(), SalesType);
         bill.cuscenter = roc.getdiscountfromcostcenter();
@@ -126,13 +126,16 @@ public class SalesReturn : System.Web.Services.WebService
     }
   
     [WebMethod]
-    public void SalesReturnWithReason(int id, string userName, string reason, string date, bool restoreOrder)
+    public void SalesReturnWithReason(int id, string userName, string reason, string date, bool restoreOrder, string salesType = "")
     {
         RestrOrderController rc = new RestrOrderController();
-        rc.CancelBillWithReason(id, userName, reason, restoreOrder);
+        rc.CancelBillWithReason(id, userName, reason, restoreOrder, salesType, date);
 
-        CBMS cbms = new CBMS();
-        cbms.returnSales(id, date, reason);
+        if (string.IsNullOrEmpty(salesType))
+        {
+            CBMS cbms = new CBMS();
+            cbms.returnSales(id, date, reason);
+        }
     }
 
     [WebMethod]

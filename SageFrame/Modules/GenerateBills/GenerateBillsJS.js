@@ -1,23 +1,11 @@
 ﻿var companyInfo = JSON.parse(localStorage.getItem("companyInfo"));
 
 function formatDate() {
-    var newDate = new Date();
-    var sMonth = padValue(newDate.getMonth() + 1);
-    var sDay = padValue(newDate.getDate());
-    var sYear = newDate.getFullYear();
-    var sHour = newDate.getHours();
-    var sMinute = padValue(newDate.getMinutes());
-    var sAMPM = "AM";
-    var iHourCheck = parseInt(sHour);
-    if (iHourCheck > 12) {
-        sAMPM = "PM";
-        sHour = iHourCheck - 12;
-    }
-    else if (iHourCheck === 0) {
-        sHour = "12";
-    }
-    sHour = padValue(sHour);
-    return sMonth + "-" + sDay + "-" + sYear + " " + sHour + ":" + sMinute + " " + sAMPM;
+    var date = new Date();
+    var dateformat = date.getFullYear() + '-'
+                   + ((date.getMonth() + 1) < 10 ? '0' : '') + (date.getMonth() + 1) + '-'
+                   + (date.getDate() < 10 ? '0' : '') + date.getDate();
+    return AD2BS(dateformat).split('-').join('.');
 }
 
 function padValue(value) {

@@ -30,6 +30,7 @@ BEGIN
 		,rbp.SalesMasterId
 	FROM CBMS_BillReturnPostLog rbp
 	WHERE rbp.StatusCode != '200'
+	  AND ISNULL(rbp.SalesType, '') = ''
 END
 
 

@@ -24,7 +24,7 @@ function IntegerAndDecimal(evt, element) {
     var charCode = (evt.which) ? evt.which : event.keyCode
 
     if ((charCode != 8) &&
-        (charCode != 46 || $(element).val().indexOf('.') != -1) &&      // “.” CHECK DOT, AND ONLY ONE.
+        (charCode != 46 || $(element).val().indexOf('.') != -1) &&      // ï¿½.ï¿½ CHECK DOT, AND ONLY ONE.
         (charCode < 48 || charCode > 57))
         return false;
 
@@ -69,6 +69,7 @@ function DeleteReport() {
         var totalamount = 0;
         var salesReport = [];
         var salesId = 0;
+        var pendingCreditNoteId = null;
         var userRole = "";
         var eventFunction = {
             config: {
@@ -121,12 +122,10 @@ function DeleteReport() {
                                             eventFunction.config.url = eventFunction.config.baseURL + eventFunction.config.method;
                                             eventFunction.config.data = JSON2.stringify({ id: ids, userName: userName, reason: reason, date: nepaliDate, restoreOrder : true });
                                             eventFunction.config.data = eventFunction.config.data;
+                                            pendingCreditNoteId = ids;
                                             eventFunction.config.ajaxCallMode = 6;
-                                            alert(ids + " " + userName + " " + reason);
                                             eventFunction.ajaxCall(eventFunction.config);
                                             $(this).dialog('close');
-                                            eventFunction.GetBill(ids);
-                                            $('#btnPrints').click();
                                         }
                                     },
                                     "Submit": function () {
@@ -141,12 +140,10 @@ function DeleteReport() {
                                             eventFunction.config.url = eventFunction.config.baseURL + eventFunction.config.method;
                                             eventFunction.config.data = JSON2.stringify({ id: ids, userName: userName, reason: reason, date: nepaliDate, restoreOrder: false });
                                             eventFunction.config.data = eventFunction.config.data;
+                                            pendingCreditNoteId = ids;
                                             eventFunction.config.ajaxCallMode = 6;
-                                            alert(ids + " " + userName + " " + reason);
                                             eventFunction.ajaxCall(eventFunction.config);
                                             $(this).dialog('close');
-                                            eventFunction.GetBill(ids);
-                                            $('#btnPrints').click();
                                         }
                                     },
                                     Cancel: function () {
@@ -751,7 +748,13 @@ function DeleteReport() {
                         eventFunction.bindSumDaily(data);
                         break;
                     case 6:
-                        jAlert('Saved Reason successfully.', 'Information!!', function () { $.alerts.dialogClass = null; });
+                        if (pendingCreditNoteId !== null) {
+                            eventFunction.GetBill(pendingCreditNoteId);
+                            eventFunction.print();
+                            $('#BillingView').dialog('close');
+                            pendingCreditNoteId = null;
+                        }
+                        jAlert('Bill return processed. Credit note printed.', 'Information!!', function () { $.alerts.dialogClass = null; });
                         $("#StartEndReportView").click();
                         //location.reload();
                         break;

@@ -25,7 +25,12 @@ function Print() {
                 master: '0',
             }, p);
         var month = new Array();
-        var companyInfo = JSON.parse(localStorage.getItem("companyInfo"));
+        var companyInfo = null;
+        try {
+            companyInfo = JSON.parse(localStorage.getItem("companyInfo"));
+        } catch (e) {
+            companyInfo = null;
+        }
         var eventFunction = {
             config: {
                 isPostBack: false,
@@ -43,9 +48,10 @@ function Print() {
 
             init: function () {
 
-                $('#lblCompanyName').html(companyInfo.Name);
-                $('#lblCompanyPAN').html(companyInfo.PAN);
-                $('#lblCompanyAddress').html(companyInfo.Address);
+                eventFunction.bindCompanyInfo(companyInfo);
+                if (!companyInfo || !companyInfo.Name) {
+                    eventFunction.getCompanyInfo();
+                }
 
                 eventFunction.SetMonth();
                 $('#txtMnthYear').nepaliDatePicker({
@@ -97,6 +103,45 @@ function Print() {
                         pdf.save('SalesBook_From_' + $('#lblYear').html() + '_To_' + $('#lblMonth').html() + '.pdf');
                     });
 
+                });
+            },
+            bindCompanyInfo: function (info) {
+                if (!info) {
+                    return;
+                }
+                $('#lblCompanyName').text(info.Name || '');
+                $('#lblCompanyPAN').text(info.PAN || '');
+                $('#lblCompanyAddress').text(info.Address || '');
+            },
+            getCompanyInfo: function () {
+                $.ajax({
+                    type: 'POST',
+                    contentType: 'application/json; charset=utf-8',
+                    url: eventFunction.config.baseURL + 'getCompanyInfo',
+                    data: '{}',
+                    dataType: 'json',
+                    success: function (response) {
+                        var info = response && response.d;
+                        if (typeof info === 'string') {
+                            try {
+                                info = JSON.parse(info);
+                            } catch (e) {
+                                return;
+                            }
+                        }
+                        if (!info || typeof info !== 'object') {
+                            return;
+                        }
+                        companyInfo = info;
+                        eventFunction.bindCompanyInfo(info);
+                        try {
+                            localStorage.setItem('companyInfo', JSON.stringify(info));
+                        } catch (e) {
+                        }
+                    },
+                    error: function (error) {
+                        console.debug(error);
+                    }
                 });
             },
             ajaxCall: function (config) {
@@ -162,7 +207,7 @@ function Print() {
                     htmls += "<td style='text-align:center;border:1px solid #575757;padding:2px;'>Item</td>";
                     htmls += "<td style='text-align:center;border:1px solid #575757;padding:2px;'>" + value.Qty + "</td>";
                     htmls += "<td style='text-align:center;border:1px solid #575757;padding:2px;'>pcs</td>";
-                    htmls += "<td style='text-align:center;border:1px solid #575757;padding:2px;'>N/A</td>";
+                    htmls += "<td style='text-align:center;border:1px solid #575757;padding:2px;'>" + (value.StatusCode === 'LOCAL' ? 'LOCAL - NOT IRD SUBMITTED' : 'N/A') + "</td>";
                     htmls += "<td style='text-align:center;border:1px solid #575757;padding:2px;' class='tdrate'>" + value.total_sales.toFixed(2) + "</td>";
 
                     htmls += "<td style='text-align:center;border:1px solid #575757;padding:2px;'>0</td>";

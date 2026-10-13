@@ -51,6 +51,13 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Reference Include="SageFrame.RestoLoyalty">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\SageFrame.RestoLoyalty\bin\$(Configuration)\SageFrame.RestoLoyalty.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="..\SageFrame.RestoLoyalty\SageFrame.RestoLoyalty.csproj">
       <Project>{ad0a3c3b-5778-4acf-b6d6-6583206a3b6f}</Project>
       <Name>SageFrame.RestoLoyalty</Name>

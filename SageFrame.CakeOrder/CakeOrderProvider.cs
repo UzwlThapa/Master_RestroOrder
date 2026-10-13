@@ -184,6 +184,32 @@ namespace SageFrame.CakeOrder
 
         internal int saveCakeSalesBill(CakeSalesMaster sm, List<CakeSalesDetails> sds, List<CustomerBilling> bt, SalesPayMode spm, Cakeflatorperdiscount flatorperdiscount)
         {
+            if (string.Equals(sm.SalesType, "wholesale", StringComparison.OrdinalIgnoreCase))
+            {
+                decimal detailAmount = sds.Sum(detail => detail.Amount);
+                if (flatorperdiscount.TotalDiscount > detailAmount)
+                {
+                    throw new InvalidOperationException("The wholesale discount cannot exceed the item total.");
+                }
+
+                sm.BasicAmount = detailAmount - flatorperdiscount.TotalDiscount;
+                flatorperdiscount.BasicAmount = sm.BasicAmount;
+
+                int customerId;
+                if (Convert.ToInt32(spm.SPMID) == 4 && (!int.TryParse(spm.CusID, out customerId) || customerId <= 0))
+                {
+                    throw new InvalidOperationException("Select a customer account before posting a wholesale credit bill.");
+                }
+            }
+
+            int paymentCustomerId;
+            if (!string.Equals(sm.SalesType, "wholesale", StringComparison.OrdinalIgnoreCase)
+                && Convert.ToInt32(spm.SPMID) == 4
+                && (!int.TryParse(spm.CusID, out paymentCustomerId) || paymentCustomerId <= 0))
+            {
+                throw new InvalidOperationException("Select a customer account before posting a credit bill.");
+            }
+
             using (TransactionScope ts = new TransactionScope())
             {
                 try

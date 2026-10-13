@@ -191,3 +191,5 @@ G:\Danfe\Restro_Order_Code\Master_RestroOrder\SageFrame.DBBackupNRestore\obj\Rel
 G:\Danfe\Restro_Order_Code\Master_RestroOrder\SageFrame.DBBackupNRestore\obj\Release\SageFram.A092DFED.Up2Date
 G:\Danfe\Restro_Order_Code\Master_RestroOrder\SageFrame.DBBackupNRestore\obj\Release\SageFrame.DBBackupNRestore.dll
 G:\Danfe\Restro_Order_Code\Master_RestroOrder\SageFrame.DBBackupNRestore\obj\Release\SageFrame.DBBackupNRestore.pdb
+C:\Users\Dell\AppData\Local\Temp\kombai-dbbackup-release-check\SageFrame.DBBackupNRestore.dll
+C:\Users\Dell\AppData\Local\Temp\kombai-dbbackup-release-check\SageFrame.DBBackupNRestore.pdb

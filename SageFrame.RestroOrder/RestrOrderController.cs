@@ -1038,9 +1038,9 @@ namespace SageFrame.RestroOrder
         {
             return restroOrderProvider.getitemwithRateForCombo(ItemID);
         }
-        public void CancelBillWithReason(int id, string userName, string reason, bool restoreOrder)
+        public void CancelBillWithReason(int id, string userName, string reason, bool restoreOrder, string salesType = "", string creditNoteDate = "")
         {
-            restroOrderProvider.CancelBillWithReason(id, userName, reason, restoreOrder);
+            restroOrderProvider.CancelBillWithReason(id, userName, reason, restoreOrder, salesType, creditNoteDate);
         }
 
         public void CancelBill(int id, string userName, string reason, bool restoreOrder)
@@ -1953,9 +1953,9 @@ namespace SageFrame.RestroOrder
         {
             return restroOrderProvider.GetPinSettings();
         }
-        public BillInfo getbillInfo(int salesMasterId)
+        public BillInfo getbillInfo(int salesMasterId, string salesType = "")
         {
-            return restroOrderProvider.getbillInfo(salesMasterId);
+            return restroOrderProvider.getbillInfo(salesMasterId, salesType);
         }
         public List<goodsReceiveMain> GetPurchaseBook(string startDate, string endDate)
         {

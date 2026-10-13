@@ -241,7 +241,11 @@ function getBill(salesMasterId, foodCourtOrder) {
                         comphtmls += ("<tr><td colspan='6' style='font-size:" + billFontHead + ";text-align:center;'><b id='InvoiceType'>TAX INVOICE</b></td></tr>");
                     }
                 } else {
-                    comphtmls += ("<tr><td colspan='6' style='font-size:" + billFontHead + ";text-align:center;'><b id='InvoiceType'>TAX INVOICE</b></td></tr>");
+                    if (billInfo.IsArchived || billInfo.IsCancelled) {
+                        comphtmls += ("<tr><td colspan='6' style='font-size:" + billFontHead + ";text-align:center;'><b>Credit Note</b></td></tr>");
+                    } else {
+                        comphtmls += ("<tr><td colspan='6' style='font-size:" + billFontHead + ";text-align:center;'><b id='InvoiceType'>TAX INVOICE</b></td></tr>");
+                    }
                 }
             }
 
@@ -258,11 +262,13 @@ function getBill(salesMasterId, foodCourtOrder) {
             var htmls = "";
 
             // Bill Number
-            htmls += "<tr><td colspan='6' style='text-align:left;font-size:" + billFontMeta + ";border-top:1px dotted;'>Bill Number : " + safeValue((billBody && billBody.length > 0 ? billBody[0].BillNo : ''), 'N/A') + "</td></tr>";
-
             if (billInfo.IsCancelled || billInfo.IsArchived) {
-                htmls += "<tr><td colspan='6' style='text-align:left;font-size:" + billFontMeta + ";'>C/N No : " + safeValue(billInfo.CreditNoteNumber, 'N/A') + "</td></tr>";
+                htmls += "<tr><td colspan='6' style='text-align:left;font-size:" + billFontMeta + ";border-top:1px dotted;'>C/N No : " + safeValue(billInfo.CreditNoteNumber, 'N/A') + "</td></tr>";
                 htmls += "<tr><td colspan='6' style='text-align:left;font-size:" + billFontMeta + ";'>Date : " + safeValue(billInfo.CreditNoteDate, 'N/A') + "</td></tr>";
+                htmls += "<tr><td colspan='6' style='text-align:left;font-size:" + billFontMeta + ";'>Ref Inv No : " + safeValue(billInfo.InvoiceNo, 'N/A') + "</td></tr>";
+                htmls += "<tr><td colspan='6' style='text-align:left;font-size:" + billFontMeta + ";'>C/N Remarks : " + safeValue(billInfo.CreditNoteReason, 'N/A') + "</td></tr>";
+            } else {
+                htmls += "<tr><td colspan='6' style='text-align:left;font-size:" + billFontMeta + ";border-top:1px dotted;'>Bill Number : " + safeValue((billBody && billBody.length > 0 ? billBody[0].BillNo : ''), 'N/A') + "</td></tr>";
             }
 
             // Purchaser's Name
@@ -838,7 +844,7 @@ function getSalesReport_CakeBill(SalesMasterID, SalesType) {
             } else {
                 comphtmls += "<colgroup><col style='width:4%'/><col style='width:7%'/><col style='width:38%'/><col style='width:8%'/><col style='width:20%'/><col style='width:23%'/></colgroup>";
             }
-            comphtmls += (" <tr><td colspan='6' style='text-align:center;'><img src='/Modules/ROCompanyInfo/logo/" + safeValue(companyInfo[0].Logo, '') + "' style='width:70px;'/></td></tr>");
+            comphtmls += (" <tr><td colspan='6' style='text-align:center;'><img src='/Modules/ROCompanyInfo/logo/" + safeValue(companyInfo[0].Logo, '') + "' onerror=\"this.onerror=null;this.src='/Modules/ROCompanyInfo/logo/logo.png'\" style='width:70px;'/></td></tr>");
             comphtmls += ("<tr><td colspan='6' style='font-size:" + billFontTitle + ";text-align:center;font-weight:bold;'>" + safeValue(companyInfo[0].Name, 'Company') + "</td></tr>");
             comphtmls += ("<tr><td colspan='6' style='font-size:10px;text-align:center;'>" + safeValue(companyInfo[0].Address, 'N/A') + "</td></tr>");
             comphtmls += ("<tr><td colspan='6' style='font-size:10px;text-align:center;'>" + safeValue(companyInfo[0].PhoneNo, 'N/A') + "</td></tr>");

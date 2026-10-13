@@ -135,3 +135,10 @@ G:\Danfe\DanfeProductsSourceCode\OldCodeNoHttps\Master_RestroOrder\SageFrame.Cha
 G:\Danfe\DanfeProductsSourceCode\OldCodeNoHttps\Master_RestroOrder\SageFrame.ChartOfAccount\obj\Debug\SageFram.9B72149E.Up2Date
 G:\Danfe\DanfeProductsSourceCode\OldCodeNoHttps\Master_RestroOrder\SageFrame.ChartOfAccount\obj\Debug\SageFrame.ChartOfAccount.dll
 G:\Danfe\DanfeProductsSourceCode\OldCodeNoHttps\Master_RestroOrder\SageFrame.ChartOfAccount\obj\Debug\SageFrame.ChartOfAccount.pdb
+G:\Danfe\Restro_Order_Code\Master_RestroOrder\SageFrame\bin\SageFrame.ChartOfAccount.dll
+G:\Danfe\Restro_Order_Code\Master_RestroOrder\SageFrame\bin\SageFrame.ChartOfAccount.pdb
+G:\Danfe\Restro_Order_Code\Master_RestroOrder\SageFrame.ChartOfAccount\obj\Debug\SageFrame.ChartOfAccount.csproj.AssemblyReference.cache
+G:\Danfe\Restro_Order_Code\Master_RestroOrder\SageFrame.ChartOfAccount\obj\Debug\SageFrame.ChartOfAccount.csproj.CoreCompileInputs.cache
+G:\Danfe\Restro_Order_Code\Master_RestroOrder\SageFrame.ChartOfAccount\obj\Debug\SageFram.9B72149E.Up2Date
+G:\Danfe\Restro_Order_Code\Master_RestroOrder\SageFrame.ChartOfAccount\obj\Debug\SageFrame.ChartOfAccount.dll
+G:\Danfe\Restro_Order_Code\Master_RestroOrder\SageFrame.ChartOfAccount\obj\Debug\SageFrame.ChartOfAccount.pdb

@@ -81,10 +81,6 @@
       <Project>{00613e6e-7435-4fc8-aef8-28a99199fa36}</Project>
       <Name>SageFrame.CostCenter</Name>
     </ProjectReference>
-    <ProjectReference Include="..\SageFrame.CostCenter\SageFrame.CostCenter.csproj">
-      <Project>{00613e6e-7435-4fc8-aef8-28a99199fa36}</Project>
-      <Name>SageFrame.CostCenter</Name>
-    </ProjectReference>
     <ProjectReference Include="..\SageFrame.FiscalYear\SageFrame.FiscalYear.csproj">
       <Project>{879d24b6-5e53-453a-a196-102759c92069}</Project>
       <Name>SageFrame.FiscalYear</Name>
