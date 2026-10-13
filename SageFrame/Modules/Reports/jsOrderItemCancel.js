@@ -1,3 +1,29 @@
+/* ===== FIX: Safe date + int helpers for .asmx calls ===== */
+function pad2(n) { return n < 10 ? '0' + n : '' + n; }
+
+/** Returns "yyyy-MM-dd HH:mm" from a datepicker input or Date object */
+function isoDate(dpSelectorOrDate, endOfDay) {
+    var dt;
+    if (dpSelectorOrDate instanceof Date) {
+        dt = dpSelectorOrDate;
+    } else {
+        try { dt = $(dpSelectorOrDate).datepicker('getDate'); } catch (e) { dt = null; }
+        if (!dt) {
+            var v = $(dpSelectorOrDate).val();
+            dt = v ? new Date(v) : null;
+        }
+    }
+    if (!dt || isNaN(dt.getTime())) { dt = new Date(); }
+    return dt.getFullYear() + '-' + pad2(dt.getMonth() + 1) + '-' + pad2(dt.getDate())
+           + (endOfDay ? ' 23:59' : ' 00:00');
+}
+
+/** Returns an int, 0 when input is null/undefined/empty */
+function toInt(val, fallback) {
+    var n = parseInt(val, 10);
+    return isNaN(n) ? (fallback === undefined ? 0 : fallback) : n;
+}
+
 function Print() {
     $('#printedDate').show();
     $('#lblPrintedOn').html(new Date());
@@ -172,7 +198,22 @@ function Print() {
                         break;
                 }
             },
-            ajaxFailure: function () {
+            ajaxFailure: function (xhr, status, error) {
+                //FIX: surface real errors instead of silent failures / JSON parse crashes
+                $('.report-view').hide();
+                var msg = 'Unable to load report (HTTP ' + (xhr ? xhr.status : '?') + ').';
+                try {
+                    if (xhr && xhr.responseJSON && xhr.responseJSON.Message) { msg = xhr.responseJSON.Message; }
+                } catch (e) { }
+                if (typeof jAlert === 'function') { jAlert(msg, 'Error!!'); } else { alert(msg); }
+            },
+
+            //FIX: accept either a JSON string or an already-parsed .asmx object
+            parseResult: function (result) {
+                var d = result;
+                if (typeof d === 'string') { try { d = JSON.parse(d); } catch (e) { d = []; } }
+                if (d && d.d !== undefined) { d = d.d; if (typeof d === 'string') { try { d = JSON.parse(d); } catch (e) { } } }
+                return d;
             },
 
             //<<-----------------------------Post & Get Here ---------------------------------------->>
@@ -221,20 +262,18 @@ function Print() {
 
 
             StartEndDateByReport: function () {
-               
-                var startDate = $("#startDate").val();
-                var Sdate = startDate + " " + "00:00";
-                var EndDate = $("#EndDate").val();
-                var EDate = EndDate + " " + "23:59";
-                var cancelledby = $("#selCancelledBy").val();
-                var orderby = $("#selOrderedBy").val();
-                var roomid = $("#selroom").val();
-                var tableid = $("#seltable").val();
-                var responsible = $("#selResponsible").val();
-                var itemname = $("#txtItem").val();
+                //FIX: ISO dates + safe ints — null dropdowns / US-format dates caused HTTP 500
+                var startDate = isoDate('#startDate', false);
+                var endDate = isoDate('#EndDate', true);
+                var cancelledby = $("#selCancelledBy").val() || '';
+                var orderby = $("#selOrderedBy").val() || '';
+                var roomid = toInt($("#selroom").val());
+                var tableid = toInt($("#seltable").val());
+                var responsible = $("#selResponsible").val() || '';
+                var itemname = $("#txtItem").val() || '';
                 eventFunction.config.method = "getOrderItemCancelReport";
                 eventFunction.config.url = eventFunction.config.baseURL + eventFunction.config.method;
-                eventFunction.config.data = JSON2.stringify({ startDate: Sdate, endDate: EDate, cancelledby: cancelledby, orderby: orderby, roomid: roomid, tableid: tableid, responsible: responsible, itemname: itemname});
+                eventFunction.config.data = JSON2.stringify({ startDate: startDate, endDate: endDate, cancelledby: cancelledby, orderby: orderby, roomid: roomid, tableid: tableid, responsible: responsible, itemname: itemname});
                 eventFunction.config.data = eventFunction.config.data;
                 eventFunction.config.ajaxCallMode = 0;
                 eventFunction.ajaxCall(eventFunction.config);
@@ -242,7 +281,7 @@ function Print() {
 
             //---------------------------------------------BindData-------------------------------------------\\
             BindOrderCancelResponsible: function (result) {
-                roomlist = JSON.parse(result);
+                roomlist = eventFunction.parseResult(result);
                 var htmls = "";
                 htmls += "<option value='' selected>All</option>";
                 if (roomlist.length > 0) {
@@ -256,7 +295,7 @@ function Print() {
 
 
             BindOrderCancelledBY: function (result) {
-                roomlist = JSON.parse(result);
+                roomlist = eventFunction.parseResult(result);
                 var htmls = "";
                 htmls += "<option value='' selected>All</option>";
                 if (roomlist.length > 0) {
@@ -270,7 +309,7 @@ function Print() {
 
 
             BindCancelledOrderBY: function (result) {
-                roomlist = JSON.parse(result);
+                roomlist = eventFunction.parseResult(result);
                 var htmls = "";
                 htmls += "<option value='' selected>All</option>";
                 if (roomlist.length > 0) {
@@ -283,7 +322,7 @@ function Print() {
 
 
             BindRoom: function (result) {
-                roomlist = JSON.parse(result);
+                roomlist = eventFunction.parseResult(result);
                 var htmls = "";
                 htmls += "<option value='0' selected>All</option>";
                 if (roomlist.length > 0) {
@@ -297,7 +336,7 @@ function Print() {
 
 
             BindTable: function (result) {
-                tablelist = JSON.parse(result);
+                tablelist = eventFunction.parseResult(result);
                 $("#seltable").html('');
                 var htmls = "";
                 htmls += "<option value='0' selected>All</option>";
@@ -311,7 +350,7 @@ function Print() {
             },
 
             BindOrderItemCancelReport: function (result) {
-                cancelList = JSON.parse(result);
+                cancelList = eventFunction.parseResult(result);
                 $("#OrderItemCancelReport").show();
                 $("#filter").show();
                 $("#OrderItemCancelReport").html('');

@@ -1,4 +1,30 @@
 
+/* ===== FIX: Safe date + int helpers for .asmx calls ===== */
+function pad2(n) { return n < 10 ? '0' + n : '' + n; }
+
+/** Returns "yyyy-MM-dd HH:mm" from a datepicker input or Date object */
+function isoDate(dpSelectorOrDate, endOfDay) {
+    var dt;
+    if (dpSelectorOrDate instanceof Date) {
+        dt = dpSelectorOrDate;
+    } else {
+        try { dt = $(dpSelectorOrDate).datepicker('getDate'); } catch (e) { dt = null; }
+        if (!dt) {
+            var v = $(dpSelectorOrDate).val();
+            dt = v ? new Date(v) : null;
+        }
+    }
+    if (!dt || isNaN(dt.getTime())) { dt = new Date(); }
+    return dt.getFullYear() + '-' + pad2(dt.getMonth() + 1) + '-' + pad2(dt.getDate())
+           + (endOfDay ? ' 23:59' : ' 00:00');
+}
+
+/** Returns an int, 0 when input is null/undefined/empty */
+function toInt(val, fallback) {
+    var n = parseInt(val, 10);
+    return isNaN(n) ? (fallback === undefined ? 0 : fallback) : n;
+}
+
 (function ($) {
     var tabs = $("#tabs").tabs();
     $.companyProfcreate = function (p) {
@@ -130,10 +156,11 @@
 
             //<<-----------------------------Post & Get Here ---------------------------------------->>
             GetOrderDetailsReportSummary: function () {
-                var startDate = $("#txtStartDate").val();
-                var endDate = $("#txtEndDate").val();
-                var tableid = $("#seltable").val();
-                var costCenter = $("#selectFilterBy").val();
+                //FIX: ISO dates + safe ints — empty dropdowns sent null -> "Cannot convert null to a value type" 500
+                var startDate = isoDate('#txtStartDate', false);
+                var endDate = isoDate('#txtEndDate', true);
+                var tableid = toInt($("#seltable").val());
+                var costCenter = toInt($("#selectFilterBy").val());
 
                 eventFunction.config.method = "getOrderDetailsReportSummary";
                 eventFunction.config.url = eventFunction.config.baseURL + eventFunction.config.method;
@@ -145,10 +172,11 @@
             },
 
             GetAllOrderDetailReport: function () {
-                var startDate = $("#txtStartDate").val();
-                var endDate = $("#txtEndDate").val();
-                var tableid = $("#seltable").val(); 
-                var costCenter = $("#selectFilterBy").val();
+                //FIX: ISO dates + safe ints — empty dropdowns sent null -> "Cannot convert null to a value type" 500
+                var startDate = isoDate('#txtStartDate', false);
+                var endDate = isoDate('#txtEndDate', true);
+                var tableid = toInt($("#seltable").val());
+                var costCenter = toInt($("#selectFilterBy").val());
 
                 eventFunction.config.method = "getAllOrderDetailReport";
                 eventFunction.config.url = eventFunction.config.baseURL + eventFunction.config.method;
