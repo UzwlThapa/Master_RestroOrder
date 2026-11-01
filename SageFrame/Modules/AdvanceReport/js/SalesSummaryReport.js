@@ -20,6 +20,47 @@ function Print() {
         document.body.removeChild(frame1);
     }, 500);
 }
+/* ---- shared report helpers (date/int/JSON safety) ---- */
+function pad2(n) { return n < 10 ? '0' + n : '' + n; }
+function isoDate(dpSelector, endOfDay) {
+    var dt = null;
+    try { dt = $(dpSelector).datepicker('getDate'); } catch (e) { dt = null; }
+    if (!dt) {
+        var v = $(dpSelector).val();
+        if (v) {
+            // jqUI datepicker with dateFormat:"yy-mm-dd" -> unambiguous ISO-ish text.
+            var m = /^(\d{4})-(\d{2})-(\d{2})/.exec(String(v).replace(/^\s+|\s+$/g, ''));
+            if (m) { dt = new Date(parseInt(m[1], 10), parseInt(m[2], 10) - 1, parseInt(m[3], 10)); }
+            else { dt = new Date(v); }   // legacy US-format pages: browser-dependent, but better than nothing
+        }
+    }
+    if (!dt || isNaN(dt.getTime())) dt = new Date();
+    return dt.getFullYear() + '-' + pad2(dt.getMonth() + 1) + '-' + pad2(dt.getDate())
+           + (endOfDay ? ' 23:59' : ' 00:00');
+}
+function toInt(v) { var n = parseInt(v, 10); return isNaN(n) ? 0 : n; }
+function parseResult(result) {
+    /* .asmx WebMethods returning JsonConvert.SerializeObject(list) arrive as
+       {d: "..."} -> data.d is a STRING. Older/newer builds may hand back an
+       object or a double-encoded string instead. Normalise all of them here so
+       dropdowns never die with:
+       Uncaught SyntaxError: "[object Object]" is not valid JSON */
+    if (result === null || result === undefined || result === '') return [];
+    if (typeof result === 'object') {
+        if (result.d !== undefined && result.d !== null) return parseResult(result.d);
+        return result;
+    }
+    if (typeof result === 'string') {
+        var s = result.replace(/^\s+|\s+$/g, '');
+        if (s === '') return [];
+        try {
+            var o = JSON.parse(s);
+            if (typeof o === 'string') { o = JSON.parse(o); }
+            return o;
+        } catch (e) { return []; }
+    }
+    return [];
+}
 (function ($) {
     var tabs = $("#tabs").tabs();
     $.companyProfcreate = function (p) {
@@ -184,7 +225,9 @@ function Print() {
                         break;
                 }
             },
-            ajaxFailure: function () {
+            ajaxFailure: function (xhr, status, err) {
+                alert("Report request failed (" + (xhr && xhr.status ? xhr.status : '?') + "): "
+                    + (xhr && xhr.responseText ? xhr.responseText.slice(0, 300) : (err || status)));
             },
 
             //<<-----------------------------Post & Get Here ---------------------------------------->>
@@ -253,26 +296,25 @@ function Print() {
 
             GetSummarySalesReport: function () {
 
-                if ($("#selroom").val() == '') {
-                    var room = $("#selroom").val();
-                }
-                else {
-                    var restroRoomId = $("#selroom").val();
-                    var ids = restroRoomId.split('_');
-                    var room = ids[1];
+                var rawRoom = $("#selroom").val() || '';
+                var room = '';
+                if (rawRoom !== '') {
+                    /* option value is "<restroRoomId>_<restroRoom>" - the SP wants the name */
+                    var parts = rawRoom.split('_');
+                    room = parts.slice(1).join('_') || rawRoom;
                 }
             
-                var table = $("#seltable").val();
-                var invoiceno = $("#txtInvoiceNo").val() == "" ? 0 : $("#txtInvoiceNo").val();
-                var customer = $("#selCustomer").val();
-                var waiter = $("#selWaiter").val();
-                var cashier = $("#selCashier").val();
-                var paymentmodeid = $("#selPaymentMode").val() == null ? 0 : $("#selPaymentMode").val();
-                var provider = $("#selProviderName").val();
-                var datefrom = $("#txtStartDate").val();
-                var dateTo = $("#txtEndDate").val();
-                var timefrom = $("#txtTimeFrom").val() == null ? 0 : $("#txtTimeFrom").val();
-                var timeTo = $("#txtTimeTo").val() == "" ? 24 : $("#txtTimeTo").val();
+                var table = $("#seltable").val() || '';
+                var invoiceno = toInt($("#txtInvoiceNo").val());
+                var customer = $("#selCustomer").val() || '';
+                var waiter = $("#selWaiter").val() || '';
+                var cashier = $("#selCashier").val() || '';
+                var paymentmodeid = toInt($("#selPaymentMode").val());
+                var provider = $("#selProviderName").val() || '';
+                var datefrom = isoDate("#txtStartDate", false);
+                var dateTo = isoDate("#txtEndDate", true);
+                var timefrom = toInt($("#txtTimeFrom").val());
+                var timeTo = $("#txtTimeTo").val() == "" ? 24 : toInt($("#txtTimeTo").val());
 
                 eventFunction.config.method = "getSalesSummaryReport";
                 eventFunction.config.url = eventFunction.config.baseURL + eventFunction.config.method;
@@ -293,7 +335,7 @@ function Print() {
             BindSalesSummaryReport: function (result) {
                 $("#SummarySalesReport").show();
                 $("#SummarySalesReport").html('');
-                saleslist = JSON.parse(result);
+                saleslist = parseResult(result);
                 var htmls = "";
                 htmls += '<div class="Report_header"><h4 style="text-align:center;margin:0;">' + companyInfo.Name + '</h4>';
                 htmls += '<p style="text-align:center;margin:0;">' + companyInfo.Address + ' , '+ (companyInfo.IsPan ? 'PAN':'VAT') +' : ' + companyInfo.PAN + '</p>';
@@ -350,7 +392,7 @@ function Print() {
             BindSummaryReport: function (result) {
                 $("#SummarySalesReport").show();
                 $("#SummarySalesReport").html('');
-                saleslist = JSON.parse(result);
+                saleslist = parseResult(result);
                 var htmls = "";
                 htmls += '<div class="Report_header"><h4 style="text-align:center;margin:0;">' + companyInfo.Name + '</h4>';
                 htmls += '<p style="text-align:center;margin:0;">' + companyInfo.Address + ' , ' + (companyInfo.IsPan ? 'PAN' : 'VAT') + ' : ' + companyInfo.PAN + '</p>';
@@ -407,7 +449,7 @@ function Print() {
             },
 
             BindRoom: function (result) {
-                roomlist = JSON.parse(result);
+                roomlist = parseResult(result);
                 if (roomlist.length > 0) {
                     var htmls = "";
                     htmls += "<option value='' selected>All</option>";
@@ -420,7 +462,7 @@ function Print() {
             },
 
             BindTable: function (result) {
-               tablelist = JSON.parse(result);
+               tablelist = parseResult(result);
                 $("#seltable").html('');
                 if (tablelist.length > 0) {                
                     var htmls = "";
@@ -436,7 +478,7 @@ function Print() {
 
             BindPaymentMode: function (result) {
 
-                paymentlist = JSON.parse(result)
+                paymentlist = parseResult(result)
                 if (paymentlist.length > 0) {
                     $("#selPaymentMode").html('');
                     var htmls = "";
@@ -452,7 +494,7 @@ function Print() {
 
             BindProvider: function (result) {
 
-                providerlist = JSON.parse(result);
+                providerlist = parseResult(result);
                 if (providerlist.length > 0) {
                     $("#selProviderName").html('');
                     var htmls = "";
@@ -467,7 +509,7 @@ function Print() {
 
             BindCustomer: function (result) {
 
-                customerlist = JSON.parse(result);
+                customerlist = parseResult(result);
                 if (customerlist.length > 0) {
                     $("#selCustomer").html('');
                     var htmls = "";
@@ -483,7 +525,7 @@ function Print() {
 
             BindWaiter: function (result) {
 
-                waiterlist = JSON.parse(result);
+                waiterlist = parseResult(result);
                 if (waiterlist.length > 0) {
                     $("#selWaiter").html('');
                     var htmls = "";
@@ -499,7 +541,7 @@ function Print() {
 
             BindCashier: function (result) {
 
-                cashierlist = JSON.parse(result);
+                cashierlist = parseResult(result);
                 if (cashierlist.length > 0) {
                     $("#selCashier").html('');
                     var htmls = "";

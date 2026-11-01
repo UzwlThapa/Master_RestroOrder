@@ -1,4 +1,40 @@
 
+function pad2(n) { return n < 10 ? '0' + n : '' + n; }
+function isoDate(dpSelector, endOfDay) {
+    var dt = null;
+    try { dt = $(dpSelector).datepicker('getDate'); } catch (e) { dt = null; }
+    if (!dt) {
+        var v = $(dpSelector).val();
+        if (v) {
+            // jqUI datepicker with dateFormat:"yy-mm-dd" -> unambiguous ISO-ish text.
+            var m = /^(\d{4})-(\d{2})-(\d{2})/.exec(String(v).replace(/^\s+|\s+$/g, ''));
+            if (m) { dt = new Date(parseInt(m[1], 10), parseInt(m[2], 10) - 1, parseInt(m[3], 10)); }
+            else { dt = new Date(v); }   // legacy US-format pages: browser-dependent, but better than nothing
+        }
+    }
+    if (!dt || isNaN(dt.getTime())) dt = new Date();
+    return dt.getFullYear() + '-' + pad2(dt.getMonth() + 1) + '-' + pad2(dt.getDate())
+           + (endOfDay ? ' 23:59' : ' 00:00');
+}
+function toInt(v) { var n = parseInt(v, 10); return isNaN(n) ? 0 : n; }
+function parseResult(result) {
+    if (result === null || result === undefined || result === '') return [];
+    if (typeof result === 'object') {
+        if (result.d !== undefined && result.d !== null) return parseResult(result.d);
+        return result;
+    }
+    if (typeof result === 'string') {
+        var s = result.replace(/^\s+|\s+$/g, '');
+        if (s === '') return [];
+        try {
+            var o = JSON.parse(s);
+            if (typeof o === 'string') { o = JSON.parse(o); }
+            return o;
+        } catch (e) { return []; }
+    }
+    return [];
+}
+
 (function ($) {
     var tabs = $("#tabs").tabs();
     $.companyProfcreate = function (p) {
@@ -125,7 +161,10 @@
                         break;
                 }
             },
-            ajaxFailure: function () {
+            ajaxFailure: function (xhr, status, err) {
+                alert("Report request failed (" + eventFunction.config.method + ")\nHTTP " +
+                      (xhr && xhr.status ? xhr.status : status) + "\n" +
+                      (xhr && xhr.responseText ? xhr.responseText.substring(0, 300) : err));
             },
 
             //<<-----------------------------Post & Get Here ---------------------------------------->>
@@ -160,14 +199,14 @@
                 var fromtable = $("#seltableFrom").val();
                 var totable = $("#selTableTo").val();
                 var shiftedby = $("#selShiftedBy").val();
-                var fromdate = $("#txtStartDate").val();
-                var todate = $("#txtEndDate").val();
+                var fromdate = isoDate("#txtStartDate", false);
+                var todate = isoDate("#txtEndDate", true);
                
 
                 eventFunction.config.method = "getItemShiftReport";
                 eventFunction.config.url = eventFunction.config.baseURL + eventFunction.config.method;
                 eventFunction.config.data = JSON2.stringify({
-                    itemname:itemname, fromtable:fromtable, totable:totable, shiftedby:shiftedby, fromdate:fromdate, todate:todate
+                    itemname: itemname || '', fromtable: fromtable || '', totable: totable || '', shiftedby: shiftedby || '', fromdate: fromdate, todate: todate
                 });
                 eventFunction.config.ajaxCallMode = 3
                 eventFunction.ajaxCall(eventFunction.config);
@@ -176,7 +215,7 @@
             //<<-----------------------------Bind Here ---------------------------------------->>
 
             BindItem: function (result) {
-                var datas = JSON.parse(result);
+                var datas = parseResult(result);
                 if (datas.length > 0) {
                     $.each(datas, function (index, v) {
 
@@ -212,7 +251,7 @@
 
             },
             BindItemShiftReport: function (result) {               
-                itemlist = JSON.parse(result);
+                itemlist = parseResult(result);
 
                 $("#ItemShiftReport").html('');
                 var htmls = "";
@@ -267,7 +306,7 @@
 
          
             BindTable: function (result) {
-                tablelist = JSON.parse(result);               
+                tablelist = parseResult(result);               
                 $("#seltableFrom").html('');
                 $("#selTableTo").html('');
                     var htmls = "";
@@ -282,7 +321,7 @@
             },
 
             BindShiftedBy: function (result) {
-                waiterlist = JSON.parse(result);
+                waiterlist = parseResult(result);
              
                 $("#selShiftedBy").html('');
                     var htmls = "";
@@ -297,7 +336,7 @@
 
 
             BindItemName: function (result) {
-                itemlist = JSON.parse(result);
+                itemlist = parseResult(result);
                 $("#selItemName").html('');
                 var htmls = "";
                 htmls += "<option value='' selected>All</option>";

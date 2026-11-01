@@ -50,6 +50,44 @@ function Print() {
         document.body.removeChild(frame1);
     }, 500);
 }
+
+function pad2(n) { return n < 10 ? '0' + n : '' + n; }
+function isoDate(dpSelector, endOfDay) {
+    var dt = null;
+    try { dt = $(dpSelector).datepicker('getDate'); } catch (e) { dt = null; }
+    if (!dt) {
+        var v = $(dpSelector).val();
+        if (v) {
+            // jqUI datepicker with dateFormat:"yy-mm-dd" -> unambiguous ISO-ish text.
+            var m = /^(\d{4})-(\d{2})-(\d{2})/.exec(String(v).replace(/^\s+|\s+$/g, ''));
+            if (m) { dt = new Date(parseInt(m[1], 10), parseInt(m[2], 10) - 1, parseInt(m[3], 10)); }
+            else { dt = new Date(v); }   // legacy US-format pages: browser-dependent, but better than nothing
+        }
+    }
+    if (!dt || isNaN(dt.getTime())) dt = new Date();
+    return dt.getFullYear() + '-' + pad2(dt.getMonth() + 1) + '-' + pad2(dt.getDate())
+           + (endOfDay ? ' 23:59' : ' 00:00');
+}
+function toInt(v) { var n = parseInt(v, 10); return isNaN(n) ? 0 : n; }
+function parseResult(result) {
+    if (result === null || result === undefined || result === '') return [];
+    if (typeof result === 'object') {
+        if (result.d !== undefined && result.d !== null) return parseResult(result.d);
+        return result;
+    }
+    if (typeof result === 'string') {
+        var s = result.replace(/^\s+|\s+$/g, '');
+        if (s === '') return [];
+        try {
+            var o = JSON.parse(s);
+            if (typeof o === 'string') { o = JSON.parse(o); }
+            return o;
+        } catch (e) { return []; }
+    }
+    return [];
+}
+
+
 (function ($) {
     var tabs = $("#tabs").tabs();
     $.companyProfcreate = function (p) {
@@ -237,7 +275,7 @@ function Print() {
                     case 0:
                         break;
                     case 1:
-                        providers = JSON.parse(data.d);
+                        providers = parseResult(data.d);
                         break;
                     case 2:
                         receivedlist = data.d;
@@ -273,7 +311,7 @@ function Print() {
                         $('#BillingView').dialog('close');
                         break;
                     case 15:
-                        var info = JSON.parse(data.d);
+                        var info = parseResult(data.d);
                         if (info.length > 0) {
 
                             eventFunction.PrintCreditReceipt(data.d);
@@ -287,8 +325,10 @@ function Print() {
                         break;
                 }
             },
-            ajaxFailure: function () {
-
+            ajaxFailure: function (xhr, status, err) {
+                alert("Report request failed (" + eventFunction.config.method + ")\nHTTP " +
+                      (xhr && xhr.status ? xhr.status : status) + "\n" +
+                      (xhr && xhr.responseText ? xhr.responseText.substring(0, 300) : err));
             },
 
 
@@ -869,7 +909,7 @@ function Print() {
 
             PrintReceipt: function (result) {
                 debugger;
-                var data = JSON.parse(result);
+                var data = parseResult(result);
                 var companyInfo = data.company;
                 var memberInfo = data.member;
                 var paymentInfo = data.paymentMode;
@@ -941,7 +981,7 @@ function Print() {
                 }, 500);
             },
             bindGoodsReceivedDetails: function (result) {
-                var datas = JSON.parse(result.d);
+                var datas = parseResult(result);
 
                 var htmls = '';
                 $('#goodReveivedDiv').html(htmls);
@@ -988,7 +1028,7 @@ function Print() {
             PrintCreditReceipt: function (result) {
                 debugger;
                 var companyInfo = JSON.parse(localStorage.getItem("companyInfo"));
-                var paymentInfo = JSON.parse(result);
+                var paymentInfo = parseResult(result);
                 $('#getReceiptbill').html('');
                 var comphtmls = "";
                 //htmls += "<div id='customer-bill' style='text-align:center;width:100%;'>";

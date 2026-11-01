@@ -1,4 +1,45 @@
 
+/* ---- shared report helpers (date/int/JSON safety) ---- */
+function pad2(n) { return n < 10 ? '0' + n : '' + n; }
+function isoDate(dpSelector, endOfDay) {
+    var dt = null;
+    try { dt = $(dpSelector).datepicker('getDate'); } catch (e) { dt = null; }
+    if (!dt) {
+        var v = $(dpSelector).val();
+        if (v) {
+            // jqUI datepicker with dateFormat:"yy-mm-dd" -> unambiguous ISO-ish text.
+            var m = /^(\d{4})-(\d{2})-(\d{2})/.exec(String(v).replace(/^\s+|\s+$/g, ''));
+            if (m) { dt = new Date(parseInt(m[1], 10), parseInt(m[2], 10) - 1, parseInt(m[3], 10)); }
+            else { dt = new Date(v); }   // legacy US-format pages: browser-dependent, but better than nothing
+        }
+    }
+    if (!dt || isNaN(dt.getTime())) dt = new Date();
+    return dt.getFullYear() + '-' + pad2(dt.getMonth() + 1) + '-' + pad2(dt.getDate())
+           + (endOfDay ? ' 23:59' : ' 00:00');
+}
+function toInt(v) { var n = parseInt(v, 10); return isNaN(n) ? 0 : n; }
+function parseResult(result) {
+    /* .asmx WebMethods returning JsonConvert.SerializeObject(list) arrive as
+       {d: "..."} -> data.d is a STRING. Older/newer builds may hand back an
+       object or a double-encoded string instead. Normalise all of them here so
+       dropdowns never die with:
+       Uncaught SyntaxError: "[object Object]" is not valid JSON */
+    if (result === null || result === undefined || result === '') return [];
+    if (typeof result === 'object') {
+        if (result.d !== undefined && result.d !== null) return parseResult(result.d);
+        return result;
+    }
+    if (typeof result === 'string') {
+        var s = result.replace(/^\s+|\s+$/g, '');
+        if (s === '') return [];
+        try {
+            var o = JSON.parse(s);
+            if (typeof o === 'string') { o = JSON.parse(o); }
+            return o;
+        } catch (e) { return []; }
+    }
+    return [];
+}
 (function ($) {
     var tabs = $("#tabs").tabs();
     $.companyProfcreate = function (p) {
@@ -74,10 +115,9 @@
 
                 }
             },
-            ajaxFailure: function (data) {
-
-                // alert("Department Not Unique");
-
+            ajaxFailure: function (xhr, status, err) {
+                alert("Report request failed (" + (xhr && xhr.status ? xhr.status : '?') + "): "
+                    + (xhr && xhr.responseText ? xhr.responseText.slice(0, 300) : (err || status)));
             },
 
 
@@ -89,8 +129,8 @@
             //---------------------------------------------BindData-------------------------------------------\\
 
             getitemsalesReport: function () {
-                var Start = $("#txtStartDate").val() + " 00:00";
-                var EndDate = $("#endDate").val() + " 23:59";
+                var Start = isoDate("#txtStartDate", false);
+                var EndDate = isoDate("#endDate", true);
                 companyProf.config.method = "getiemsalesreport";
                 companyProf.config.url = companyProf.config.baseURL + companyProf.config.method;
                 companyProf.config.data = JSON2.stringify({ Start: Start, EndDate: EndDate });
@@ -101,7 +141,7 @@
             BindCusCash: function (result) {
                 $("#reportDisplay").show();
                 $("#reportDisplay").html('');
-                salesList = JSON.parse(result);
+                salesList = parseResult(result);
                 var htmls = "<table id='Cashtable' class='sfGridwrapper display' cellspacing='0'>"
                 htmls += "<thead>"
                 htmls += "<tr>"

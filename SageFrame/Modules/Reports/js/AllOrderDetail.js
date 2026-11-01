@@ -2,12 +2,37 @@ function pad2(n) { return n < 10 ? '0' + n : '' + n; }
 function isoDate(dpSelector, endOfDay) {
     var dt = null;
     try { dt = $(dpSelector).datepicker('getDate'); } catch (e) { dt = null; }
-    if (!dt) { var v = $(dpSelector).val(); dt = v ? new Date(v) : null; }
+    if (!dt) {
+        var v = $(dpSelector).val();
+        if (v) {
+            // jqUI datepicker with dateFormat:"yy-mm-dd" -> unambiguous ISO-ish text.
+            var m = /^(\d{4})-(\d{2})-(\d{2})/.exec(String(v).replace(/^\s+|\s+$/g, ''));
+            if (m) { dt = new Date(parseInt(m[1], 10), parseInt(m[2], 10) - 1, parseInt(m[3], 10)); }
+            else { dt = new Date(v); }   // legacy US-format pages: browser-dependent, but better than nothing
+        }
+    }
     if (!dt || isNaN(dt.getTime())) dt = new Date();
     return dt.getFullYear() + '-' + pad2(dt.getMonth() + 1) + '-' + pad2(dt.getDate())
            + (endOfDay ? ' 23:59' : ' 00:00');
 }
 function toInt(v) { var n = parseInt(v, 10); return isNaN(n) ? 0 : n; }
+function parseResult(result) {
+    if (result === null || result === undefined || result === '') return [];
+    if (typeof result === 'object') {
+        if (result.d !== undefined && result.d !== null) return parseResult(result.d);
+        return result;
+    }
+    if (typeof result === 'string') {
+        var s = result.replace(/^\s+|\s+$/g, '');
+        if (s === '') return [];
+        try {
+            var o = JSON.parse(s);
+            if (typeof o === 'string') { o = JSON.parse(o); }
+            return o;
+        } catch (e) { return []; }
+    }
+    return [];
+}
 
 (function ($) {
     var tabs = $("#tabs").tabs();
@@ -203,7 +228,7 @@ function toInt(v) { var n = parseInt(v, 10); return isNaN(n) ? 0 : n; }
 
 
             BindTable: function (result) {
-                tablelist = JSON.parse(result);
+                tablelist = parseResult(result);
                 $("#seltable").html('');
                 var htmls = "";
                 htmls += "<option value='0' selected>All</option>";
@@ -217,7 +242,7 @@ function toInt(v) { var n = parseInt(v, 10); return isNaN(n) ? 0 : n; }
 
             BindCostCenter: function (result) {
 
-                costlist = JSON.parse(result);
+                costlist = parseResult(result);
                 $('#selectFilterBy').html("");
                 var htmls = "";
 
@@ -229,7 +254,7 @@ function toInt(v) { var n = parseInt(v, 10); return isNaN(n) ? 0 : n; }
             },
 
             BindOrderDetailsReportSummary: function (result) {
-                itemlist = JSON.parse(result);
+                itemlist = parseResult(result);
 
                 $("#reportDisplay").html('');
                 var htmls = "";
@@ -285,7 +310,7 @@ function toInt(v) { var n = parseInt(v, 10); return isNaN(n) ? 0 : n; }
 
 
             BindAllOrderDetailReport: function (result) {
-                itemlist = JSON.parse(result);
+                itemlist = parseResult(result);
 
                 $("#reportDisplay").html('');
                 var htmls = "";
