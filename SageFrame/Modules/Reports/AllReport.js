@@ -1,3 +1,44 @@
+/* .asmx WebMethods returning JsonConvert.SerializeObject(list) arrive as
+{d: "..."} -> data.d is a STRING. Older/newer builds may hand back an
+object or a double-encoded string instead. Normalise all of them here so
+dropdowns never die with:
+Uncaught SyntaxError: "[object Object]" is not valid JSON */
+function pad2(n) { return n < 10 ? '0' + n : '' + n; }
+function isoDate(dpSelector, endOfDay) {
+    var dt = null;
+    try { dt = $(dpSelector).datepicker('getDate'); } catch (e) { dt = null; }
+    if (!dt) {
+        var v = $(dpSelector).val();
+        if (v) {
+            // jqUI datepicker with dateFormat:"yy-mm-dd" -> unambiguous ISO-ish text.
+            var m = /^(\d{4})-(\d{2})-(\d{2})/.exec(String(v).replace(/^\s+|\s+$/g, ''));
+            if (m) { dt = new Date(parseInt(m[1], 10), parseInt(m[2], 10) - 1, parseInt(m[3], 10)); }
+            else { dt = new Date(v); }   // legacy US-format pages: browser-dependent, but better than nothing
+        }
+    }
+    if (!dt || isNaN(dt.getTime())) dt = new Date();
+    return dt.getFullYear() + '-' + pad2(dt.getMonth() + 1) + '-' + pad2(dt.getDate())
+           + (endOfDay ? ' 23:59' : ' 00:00');
+}
+function toInt(v) { var n = parseInt(v, 10); return isNaN(n) ? 0 : n; }
+function parseResult(result) {
+    if (result === null || result === undefined || result === '') return [];
+    if (typeof result === 'object') {
+        if (result.d !== undefined && result.d !== null) return parseResult(result.d);
+        return result;
+    }
+    if (typeof result === 'string') {
+        var s = result.replace(/^\s+|\s+$/g, '');
+        if (s === '') return [];
+        try {
+            var o = JSON.parse(s);
+            if (typeof o === 'string') { o = JSON.parse(o); }
+            return o;
+        } catch (e) { return []; }
+    }
+    return [];
+}
+
 (function ($) {
     var tabs = $("#tabs").tabs();
     $.companyProfcreate = function (p) {
@@ -414,24 +455,18 @@
                   
                 }
             },
-            ajaxFailure: function () {
-                //switch (parseInt(eventFunction.config.ajaxCallMode)) {
-                //    case 7:
-                //        alert("Delete fail ! Your data is being used: remove dependencies", "fail");
-                //        break;
-                //}
+            ajaxFailure: function (xhr, status, err) {
+                alert("Report request failed (" + eventFunction.config.method + ")\nHTTP " +
+                      (xhr && xhr.status ? xhr.status : status) + "\n" +
+                      (xhr && xhr.responseText ? xhr.responseText.substring(0, 300) : err));
             },
 
             StartEndDateByReport: function () {
-                var startDate = $("#startDate").val();
-                var StartHour = $("#StartHour").val();
-                var StartMin = $("#StartMin").val();
-                var Sdate = startDate + " " + StartHour + ":" + StartMin
-                var EndDate = $("#EndDate").val();
-                var EndHour = $("#EndHour").val();
-                var EndMin = $("#EndMin").val();
-                var EDate = EndDate + " " + EndHour + ":" + EndMin
-                var PaymentMode = $("#sltPayMode").val();
+                // NOTE: the page exposes #txtStartDate/#txtToDate; the old #startDate/#EndDate
+                // ids do not exist, so .val() returned undefined -> "undefined undefined:undefined"
+                // -> DateTime conversion 500. Hour/minute selects were removed with them.
+                var Sdate = isoDate("#txtStartDate", false);
+                var EDate = isoDate("#txtToDate", true);
                 eventFunction.config.method = "getOrderVoidReport";
                 eventFunction.config.url = eventFunction.config.baseURL + eventFunction.config.method;
                 eventFunction.config.data = JSON2.stringify({ startDate: Sdate, endDate: EDate});
@@ -443,7 +478,7 @@
                 $("#DailyReport").show();
                 $("#DailyReport").html('');
               
-                voidlist = JSON.parse(result);
+                voidlist = parseResult(result);
 
                     var htmls = "<table id='salseReport' class='sfGridwrapper display' cellspacing='0' style='border:none;width:100%;'>"
                     htmls += "<thead>"
@@ -499,7 +534,7 @@
             },
             
             GetDailyReport: function () {
-                var todaydate = $("#txtStartDate").val();
+                var todaydate = isoDate("#txtStartDate", false);
                 var reportNumber = parseInt($('#HiddenField1').val());
                 eventFunction.config.method = "getdailyReport";
                 eventFunction.config.url = eventFunction.config.baseURL + eventFunction.config.method;
@@ -511,7 +546,7 @@
           
 
             GetDailyReportByWeekly: function () {
-                var todaydate = $("#txtStartDate").val();
+                var todaydate = isoDate("#txtStartDate", false);
                 var reportNumber = parseInt($('#HiddenField1').val());
                 eventFunction.config.method = "getdailyReportByWeekly";
                 eventFunction.config.url = eventFunction.config.baseURL + eventFunction.config.method;
@@ -550,7 +585,7 @@
                 $("#DailyReport").show();
                 $("#DailyReport").html('');
 
-                salesList = JSON.parse(result);
+                salesList = parseResult(result);
                 
                 if (salesList.length > 0) {
                     var htmls = "<table id='salseReport' class='sfGridwrapper display' cellspacing='0' style='border:none;width:100%;'>"
@@ -620,7 +655,7 @@
                 $("#DailyReport").show();
                 $("#DailyReport").html('');
 
-                dailyList = JSON.parse(result);
+                dailyList = parseResult(result);
 
                 if (dailyList.length > 0) {
                     var htmls = "<table id='salseReport' class='sfGridwrapper nowrap display' cellspacing='0' style='border:none;width:100%;'>"

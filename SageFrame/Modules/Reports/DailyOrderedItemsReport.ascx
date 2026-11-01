@@ -4,11 +4,13 @@
         $("#txtStartDate").datepicker({
             changeMonth: true,
             changeYear: true,
+            dateFormat: "yy-mm-dd"
         });
         $("#txtStartDate").datepicker().datepicker("setDate", new Date());
         $("#txtToDate").datepicker({
             changeMonth: true,
             changeYear: true,
+            dateFormat: "yy-mm-dd"
         });
         $("#txtToDate").datepicker().datepicker("setDate", new Date());
         $(this).companyProfEDIT({});
