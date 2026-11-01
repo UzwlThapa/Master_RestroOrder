@@ -20,6 +20,39 @@ function Print() {
         document.body.removeChild(frame1);
     }, 500);
 }
+/* ---- shared report helpers (date/int/JSON safety) ---- */
+function pad2(n) { return n < 10 ? '0' + n : '' + n; }
+function isoDate(dpSelector, endOfDay) {
+    var dt = null;
+    try { dt = $(dpSelector).datepicker('getDate'); } catch (e) { dt = null; }
+    if (!dt) { var v = $(dpSelector).val(); dt = v ? new Date(v) : null; }
+    if (!dt || isNaN(dt.getTime())) dt = new Date();
+    return dt.getFullYear() + '-' + pad2(dt.getMonth() + 1) + '-' + pad2(dt.getDate())
+           + (endOfDay ? ' 23:59' : ' 00:00');
+}
+function toInt(v) { var n = parseInt(v, 10); return isNaN(n) ? 0 : n; }
+function parseResult(result) {
+    /* .asmx WebMethods returning JsonConvert.SerializeObject(list) arrive as
+       {d: "..."} -> data.d is a STRING. Older/newer builds may hand back an
+       object or a double-encoded string instead. Normalise all of them here so
+       dropdowns never die with:
+       Uncaught SyntaxError: "[object Object]" is not valid JSON */
+    if (result === null || result === undefined || result === '') return [];
+    if (typeof result === 'object') {
+        if (result.d !== undefined && result.d !== null) return parseResult(result.d);
+        return result;
+    }
+    if (typeof result === 'string') {
+        var s = result.replace(/^\s+|\s+$/g, '');
+        if (s === '') return [];
+        try {
+            var o = JSON.parse(s);
+            if (typeof o === 'string') { o = JSON.parse(o); }
+            return o;
+        } catch (e) { return []; }
+    }
+    return [];
+}
 function IntegerAndDecimal(evt, element) {
     var charCode = (evt.which) ? evt.which : event.keyCode
 
@@ -205,14 +238,15 @@ function IntegerAndDecimal(evt, element) {
                 switch (parseInt(eventFunction.config.ajaxCallMode)) {
 
                     case 1:
-                        salesReport = JSON.parse(data.d);
+                        salesReport = parseResult(data.d);
                         eventFunction.BindSalesDaily();
                         break;
 
                 }
             },
-            ajaxFailure: function () {
-
+            ajaxFailure: function (xhr, status, err) {
+                alert("Report request failed (" + (xhr && xhr.status ? xhr.status : '?') + "): "
+                    + (xhr && xhr.responseText ? xhr.responseText.slice(0, 300) : (err || status)));
             },
 
 
@@ -230,9 +264,8 @@ function IntegerAndDecimal(evt, element) {
 
 
             StartEndDateByReport: function () {
-                var startDate = $("#startDate").val();
-
-                var EndDate = $("#EndDate").val();
+                var startDate = isoDate("#startDate", false);
+                var EndDate = isoDate("#EndDate", true);
                 eventFunction.config.method = "GetCostCenterDiscountReport";
                 eventFunction.config.url = eventFunction.config.baseURL + eventFunction.config.method;
                 eventFunction.config.data = JSON2.stringify({ startDate: startDate, endDate: EndDate });
